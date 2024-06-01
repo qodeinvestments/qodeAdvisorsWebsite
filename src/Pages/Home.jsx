@@ -12,8 +12,8 @@ const Home = () => {
     <div>
         <Banner />
       <Container>
-        <WhatWeDo />
-        <InvestmentProcess />
+        {/* <WhatWeDo /> */}
+        {/* <InvestmentProcess /> */}
       </Container>
       <InvestmentStrategies />
       <Container>

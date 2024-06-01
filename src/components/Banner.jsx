@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
-import banImg from "../assets/landing.png";
+import React, { useState, useEffect } from "react";
+import banImg from "../assets/banner1-removebg.png";
 
 const Banner = () => {
   const [currentText, setCurrentText] = useState("");
@@ -8,12 +8,7 @@ const Banner = () => {
   const typingSpeed = 200; // Typing speed in milliseconds
   const deletingSpeed = 90; // Deleting speed in milliseconds
   const delayBetweenTexts = 1000; // Delay between texts in milliseconds
-  const textArray = [
-    "an investment house",
-    "a wealth management firm",
-    "not stock tip provider",
-    "focused on growth, research driven",
-  ];
+  const textArray = ["driven by data"];
 
   useEffect(() => {
     let timeout;
@@ -46,20 +41,24 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <div className="max-w-3xl mx-auto">
+    <div className="flex flex-row items-center justify-between h-[85vh] px-10">
+      <div className="w-2/3 px-20">
+        <h1 className="text-3xl md:text-5xl font-bold typewriter-font">
+          The best investments are <br /> {"{"}
+          <span className="text-red-500 italic">{currentText}</span>
+          {"}"}
+        </h1>
+        <p className="text-2xl inter-font font-medium mt-10">
+          We're an investment firm leveraging quantitative models to drive
+          informed and strategic investment decisions.
+        </p>
+      </div>
+      <div className="w-1/2">
         <img
-          className="w-full max-h-96  object-contain"
+          className="h-full object-contain "
           src={banImg}
           alt="Banner Image"
         />
-        <div className="text-center mt-4">
-          <h1 className="text-3xl md:text-5xl font-bold typewriter-font">
-            We are {"{"}
-            <span>{currentText}</span>
-            {"}"}
-          </h1>
-        </div>
       </div>
     </div>
   );

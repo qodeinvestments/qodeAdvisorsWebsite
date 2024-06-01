@@ -8,10 +8,9 @@ const InvestmentStrategies = () => {
         Qode Your Future: Data-Driven Decisions for a Quantum Leap.
       </p>
       <h2 className="text-4xl font-bold mt-4">Our Investment Strategies</h2>
-      <p className="text-gray-400 mt-4 text-md mx-auto max-w-4xl">
+      <p className="text-gray-400 font-medium mt-4 text-md mx-auto max-w-4xl">
         With the help of our team, data and technology we design models that
-        help us make investment decisions. Our models go back in time and find
-        repeatable patterns.
+        help us make investment decisions. Through our <span className="text-red-500">Portfolio Management Service (PMS)</span>, we invest your money in Indian Equity.
       </p>
       <div className="flex flex-col lg:flex-row justify-center mt-8">
         <div className="bg-white p-6 flex flex-col justify-between rounded-lg shadow-md mb-8 lg:mb-0 lg:mr-8 w-full lg:w-1/4">

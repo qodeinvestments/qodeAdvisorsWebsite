@@ -6,6 +6,7 @@ import WhatWeDo from "./WhatWeDo";
 import Blogs from "./Blogs";
 import InvestmentProcess from "./InvestmentProcess";
 import InvestmentStrategies from "./InvestmentStrategies";
+import './components.css'
 export {
     Header,
     Footer,

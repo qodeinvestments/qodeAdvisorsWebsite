@@ -41,21 +41,21 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="flex flex-row items-center justify-between h-[85vh] px-10">
-      <div className="w-2/3 px-20">
+    <div className="flex flex-col md:flex-row items-center justify-between px-4 md:px-10 py-10">
+      <div className="w-full md:w-2/3 md:px-20 mb-8 md:mb-0">
         <h1 className="text-3xl md:text-5xl font-bold typewriter-font">
           The best investments are <br /> {"{"}
           <span className="text-red-500 italic">{currentText}</span>
           {"}"}
         </h1>
-        <p className="text-2xl inter-font font-medium mt-10">
+        <p className="text-lg md:text-2xl inter-font font-medium mt-4 md:mt-10">
           We're an investment firm leveraging quantitative models to drive
           informed and strategic investment decisions.
         </p>
       </div>
-      <div className="w-1/2">
+      <div className="w-full md:w-1/2">
         <img
-          className="h-full object-contain "
+          className="h-auto max-w-full mx-auto"
           src={banImg}
           alt="Banner Image"
         />

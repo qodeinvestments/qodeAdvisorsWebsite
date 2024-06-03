@@ -5,7 +5,7 @@ import quantMomentumImg from "../assets/banner.png";
 import quantMomentum from "../assets/quantMomentum.png";
 const InvestmentStrategies = () => {
   return (
-    <div className="text-center inter-font bg-[#f8f9f9] p-5 sm:p-24">
+    <div className="text-center inter-font bg-[#f8f9f9] p-5 sm:px-24 sm:py-10">
       <p className="uppercase text-[12px] tracking-widest font-bold text-gray-400 ">
         Qode Your Future: Data-Driven Decisions for a Quantum Leap.
       </p>

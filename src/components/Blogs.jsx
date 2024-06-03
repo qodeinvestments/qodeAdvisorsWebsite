@@ -12,6 +12,7 @@ const Blogs = () => {
               Blog Title 1
               <span className="underline"></span> {/* Crayon effect underline */}
             </h3>
+            <span className="text-gray-500 text-sm block mb-2">&#x2022; 5 min read</span>
             <p className="text-gray-600 mb-10 grayscale transition-filter duration-300 hover:grayscale-0">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod,
               nisl nec tincidunt lacinia, nisl nunc aliquam nisl, eget aliquam nisl...
@@ -25,9 +26,10 @@ const Blogs = () => {
           <div className="p-6">
             <span className="text-red-500 font-bold text-sm">Blog</span>
             <h3 className="text-xl font-semibold typewriter-font mb-2 relative">
-              Blog Title 1
+              Blog Title 2
               <span className="underline"></span> {/* Crayon effect underline */}
             </h3>
+            <span className="text-gray-500 text-sm block mb-2 ">&#x2022; 3 min read</span>
             <p className="text-gray-600 mb-10 grayscale transition-filter duration-300 hover:grayscale-0">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod,
               nisl nec tincidunt lacinia, nisl nunc aliquam nisl, eget aliquam nisl...
@@ -41,9 +43,10 @@ const Blogs = () => {
           <div className="p-6">
             <span className="text-red-500 font-bold text-sm">Blog</span>
             <h3 className="text-xl font-semibold typewriter-font mb-2 relative">
-              Blog Title 1
+              Blog Title 3
               <span className="underline"></span> {/* Crayon effect underline */}
             </h3>
+            <span className="text-gray-500 text-sm block mb-2">&#x2022; 7 min read</span>
             <p className="text-gray-600 mb-10 grayscale transition-filter duration-300 hover:grayscale-0">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod,
               nisl nec tincidunt lacinia, nisl nunc aliquam nisl, eget aliquam nisl...

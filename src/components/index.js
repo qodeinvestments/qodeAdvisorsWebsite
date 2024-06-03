@@ -6,6 +6,7 @@ import WhatWeDo from "./WhatWeDo";
 import Blogs from "./Blogs";
 import InvestmentProcess from "./InvestmentProcess";
 import InvestmentStrategies from "./InvestmentStrategies";
+import OurFocus from "./Header/OurFocus";
 import './components.css'
 export {
     Header,
@@ -15,5 +16,6 @@ export {
     WhatWeDo,
     InvestmentProcess,
     Blogs,
-    InvestmentStrategies
+    InvestmentStrategies,
+    OurFocus
 }

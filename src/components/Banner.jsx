@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import banImg from "../assets/banner1-removebg.png";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faRss } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faFacebookF, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 const Banner = () => {
   const [currentText, setCurrentText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
@@ -8,7 +10,7 @@ const Banner = () => {
   const typingSpeed = 200; // Typing speed in milliseconds
   const deletingSpeed = 90; // Deleting speed in milliseconds
   const delayBetweenTexts = 1000; // Delay between texts in milliseconds
-  const textArray = ["driven by data"];
+  const textArray = ["driven by data", "objective and emotion free", "carried out by Qode"];
 
   useEffect(() => {
     let timeout;
@@ -52,6 +54,20 @@ const Banner = () => {
           We're an investment firm leveraging quantitative models to drive
           informed and strategic investment decisions.
         </p>
+        <div className="inter-font">
+            <h3 className="text-lg font-semibold text-white mb-4">Subscribe</h3>
+            <p className="text-gray-400 mb-4">Subscribe to our newsletter to get the latest updates:</p>
+            <form className="flex">
+              <input
+                type="email"
+                className="sm:w-1/2 px-4 py-2 rounded-l bg-gray-200 text-gray-400 border border-gray-600"
+                placeholder="Enter your email"
+              />
+              <button type="submit" className="px-4 py-2 bg-red-500 text-white rounded-r">
+                <FontAwesomeIcon icon={faEnvelope} />
+              </button>
+            </form> 
+          </div>
       </div>
       <div className="w-full md:w-1/2">
         <img

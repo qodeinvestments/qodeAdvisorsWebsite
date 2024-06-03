@@ -67,4 +67,14 @@
   .bg-white:hover a {
     opacity: 1;
   }
+
   
+  .tilt-effect {
+    transition: transform 0.3s ease-out;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .tilt-effect:hover {
+    transform: rotateX(15deg) rotateY(15deg);
+  }

@@ -6,20 +6,18 @@ import {
   InvestmentProcess,
   Blogs,
   InvestmentStrategies,
+  OurFocus,
 } from "../components/index";
 const Home = () => {
   return (
-    <div>
+    <>
         <Banner />
-      <Container>
-        {/* <WhatWeDo /> */}
-        {/* <InvestmentProcess /> */}
-      </Container>
       <InvestmentStrategies />
       <Container>
         <Blogs />
       </Container>
-    </div>
+      <OurFocus/>
+    </>
   );
 };
 

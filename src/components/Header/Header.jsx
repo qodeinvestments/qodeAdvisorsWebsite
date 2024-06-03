@@ -23,7 +23,7 @@ const Header = () => {
   ];
 
   return (
-    <div className="flex justify-between items-center h-16 px-4 sm:px-16 lg:px-28 shadow-md">
+    <div className="flex justify-between items-center h-16 px-4  shadow-md">
       <div className="mt-5">
         <img className="w-1/2" src={logo} alt="" />
       </div>

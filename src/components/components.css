@@ -78,3 +78,14 @@
   .tilt-effect:hover {
     transform: rotateX(15deg) rotateY(15deg);
   }
+
+
+  .half-underline::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 2px;
+    background-color: currentColor; /* Use the same color as the text */
+    margin: 0.5rem auto 0; /* Adjusts the space between the text and the underline */
+  }
+  

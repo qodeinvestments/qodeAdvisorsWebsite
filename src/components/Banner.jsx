@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import banImg from "../assets/banner1-removebg.png";
-import backgroundImage from '../assets/hero-background.svg'
+import backgroundImage from "../assets/hero-background.svg";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faRss } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faFacebookF, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faRss } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTwitter,
+  faFacebookF,
+  faLinkedinIn,
+} from "@fortawesome/free-brands-svg-icons";
 const Banner = () => {
   const [currentText, setCurrentText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
@@ -12,7 +16,11 @@ const Banner = () => {
   const typingSpeed = 200; // Typing speed in milliseconds
   const deletingSpeed = 90; // Deleting speed in milliseconds
   const delayBetweenTexts = 1000; // Delay between texts in milliseconds
-  const textArray = ["driven by data", "objective and emotion free", "carried out by Qode"];
+  const textArray = [
+    "driven by data",
+    "objective and emotion free",
+    "carried out by Qode",
+  ];
 
   useEffect(() => {
     let timeout;
@@ -45,16 +53,17 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between px-4 md:px-10 py-10"
-    style={{
-      backgroundImage: `url(${backgroundImage})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-      backgroundRepeat: "no-repeat",
-    }}
+    <div
+      className="flex flex-col md:flex-row items-center justify-between px-4 md:px-10 py-10"
+      style={{
+        // backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
       <div className="w-full md:w-2/3 md:px-20 mb-8 md:mb-0">
-        <h1 className="text-3xl md:text-5xl font-bold typewriter-font">
+        <h1 className="text-3xl md:text-5xl font-black inter-font">
           The best investments are <br /> {"{"}
           <span className="text-red-500 italic">{currentText}</span>
           {"}"}
@@ -64,19 +73,24 @@ const Banner = () => {
           informed and strategic investment decisions.
         </p>
         <div className="inter-font">
-            <h3 className="text-lg font-semibold text-white mb-4">Subscribe</h3>
-            <p className="text-gray-400 mb-4">Subscribe to our newsletter to get the latest updates:</p>
-            <form className="flex">
-              <input
-                type="email"
-                className="sm:w-1/2 px-4 py-2 rounded-l bg-gray-200 text-gray-400 border border-gray-600"
-                placeholder="Enter your email"
-              />
-              <button type="submit" className="px-4 py-2 bg-red-500 text-white rounded-r">
-                <FontAwesomeIcon icon={faEnvelope} />
-              </button>
-            </form> 
-          </div>
+          <h3 className="text-lg font-semibold text-white mb-4">Subscribe</h3>
+          <p className="text-gray-400 mb-4">
+            Subscribe to our newsletter to get the latest updates:
+          </p>
+          <form className="flex">
+            <input
+              type="email"
+              className="sm:w-1/2 px-4 py-2 rounded-l bg-gray-200 text-gray-400 border border-gray-600"
+              placeholder="Enter your email"
+            />
+            <button
+              type="submit"
+              className="px-4 py-2 bg-red-500 text-white rounded-r"
+            >
+              <FontAwesomeIcon icon={faEnvelope} />
+            </button>
+          </form>
+        </div>
       </div>
       <div className="w-full md:w-1/2">
         <img

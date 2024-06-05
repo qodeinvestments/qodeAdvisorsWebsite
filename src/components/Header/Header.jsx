@@ -72,7 +72,7 @@ const navItems = [
       },
     ],
   },
-  
+
   {
     name: "Blogs",
     // slug: "/blogs",
@@ -167,7 +167,9 @@ const Header = () => {
         <div className="max-w-[90rem] text-center  mx-auto ">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-44">
-              <img className="pt-5" src={logo} alt="Logo" />
+              <Link to={"/"}>
+                <img className="pt-5" src={logo} alt="Logo" />
+              </Link>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   {navItems.map((item) => (

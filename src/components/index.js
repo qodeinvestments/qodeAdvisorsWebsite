@@ -9,6 +9,8 @@ import InvestmentStrategies from "./InvestmentStrategies";
 import OurFocus from "./Header/OurFocus";
 import AreaChart from "./Charts/AreaChart";
 import './components.css'
+import GrayContainer from "./container/GrayContainer";
+
 export {
     Header,
     Footer,
@@ -19,5 +21,6 @@ export {
     Blogs,
     InvestmentStrategies,
     OurFocus,
-    AreaChart
+    AreaChart,
+    GrayContainer
 }

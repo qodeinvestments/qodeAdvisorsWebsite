@@ -1,78 +1,74 @@
 import React, { useState, useEffect } from "react";
-import Chart from "react-apexcharts";
+import { AreaChart, Container, GrayContainer } from "../components";
 import {
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-} from "@material-tailwind/react";
-import { Container } from "../components";
+  faList,
+  faBolt,
+  faChartLine,
+  faMoneyBillWave,
+  faDownload,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PerformanceChart from "../components/Charts/PerformanceChart";
+import { faCheckCircle, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
+
 const MomentumTabs = () => {
   const [activeTab, setActiveTab] = useState("Features");
   const tabs = ["Features", "Working", "Performance", "Calculator", "FAQ"];
+  const [activeIndex, setActiveIndex] = useState(null);
 
-  const tabData = {
-    Features: [
-      `The Universe: We have created a list of 500 companies out of all listed companies on the National Stock Exchange NSE. This list is created by a proprietary formula which takes its origin from the NSE 500 methodology. They are created using a volume and market cap based ranking system;`,
-      `Momentum: The idea of using momentum to generate higher returns has been around for well over 100 years. It's one of the most studied factors in quantitative investing, attracting interest from both academics and investment professionals. The concept gained significant traction in 1993 with a groundbreaking paper by professors Narasimhan and Titman from UCLA, titled "Returns to buying winners and selling losers: Implications for stock market efficiency." Since then, numerous studies have been conducted on momentum investing. Notably, a comprehensive analysis by the quantitative hedge fund AQR, titled "Fact, Fiction and Momentum Investing," explored the effectiveness of momentum strategies across various asset classes and countries over the past two centuries.`,
-      `Volatility: This is the base case where we buy top 30 stocks based on ROC ranking. This is pure vanilla momentum strategy we tested using momentum. `,
-      `Shifting to Cash: Stocks tend to rise in value most of the time, historically around 70%. However, they can experience significant downturns, sometimes dropping by 50% or more. While no investment strategy is completely immune to these corrections, a strategy that minimizes downside risk to a level close to or even slightly better than the market average has a strong chance of outperforming in the long run. This approach involves using specific criteria to select stocks. In real-world market conditions, these criteria have proven effective in reducing exposure to stocks during broad market corrections. This means the strategy automatically holds fewer stocks when the market is weakest, potentially limiting losses.`,
-    ],
-    Working: [
-      `We first look at the six months average rolling market cap and turnover for each security. We then use composite ranking of 50% weightage to each factor and choose the top 500 for the back test.`,
-      `Rate of Change is essentially the simplest form of momentum indicator which tells how much has a particular stock given return in a particular period of time. We ideally want to buy stocks that are in momentum and among them the one that have the highest momentum. This is used to compare stocks in the universe and rank based on pure momentum.`,
-      `This is a variation to the naive momentum where aim to buy stocks which have a high momentum but a lower volatility. The method used for this is to divided the rate of change of a particular stock with it’s standard deviation during the same lookback period. All stocks are ranked based on this parameter and we buy the top 30 stocks.`,
-    ],
-    Performance: [
-      "Links to download pdfs for- equity curve comparing Nifty 50/benchmarks, drawdown curve for the same, yearly/quarterly/monthly returns, days in drawdowns.",
-      "Interactive graphs to show why momentum is working (of different indices) and current holdings (can only be viewed by premium members post subscription).",
-    ],
-    Calculator: [
-      "SIP, Lumpsum reference- https://groww.in/calculators/sip-calculator",
-    ],
-    FAQ: [""],
+  const handleAccordionToggle = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
   };
+  const features = [
+    {
+      title: "The Universe",
+      description:
+        "We have created a list of 500 companies out of all listed companies on the National Stock Exchange NSE. ",
+      icon: faList,
+    },
+    {
+      title: "Momentum",
+      description: `The idea of using momentum to generate higher returns has been around for well over 100 years.`,
+      icon: faBolt,
+    },
+    {
+      title: "Volatility",
+      description:
+        "This is the base case where we buy top 30 stocks based on ROC ranking.",
+      icon: faChartLine,
+    },
+    {
+      title: "Shifting to Cash",
+      description:
+        "Stocks tend to rise in value most of the time, historically around 70%. ",
+      icon: faMoneyBillWave,
+    },
+  ];
+  const faqItems = [
+    {
+      question: `When is it a good time to invest in the Quant Growth Momentum?`,
+      answer: `There isn't a perfect moment to jump into a Quant Growth Momentum strategy. Instead, a Systematic Investment Plan (SIP) is your best bet.  By consistently investing smaller amounts at regular intervals, you average out market fluctuations. This approach, historically, has helped investors outperform the benchmark and achieve superior long-term returns.`,
+    },
+    {
+      question:
+        "How does the Quant Growth Momentum differ from traditional funds?",
+      answer:
+        "Unlike traditional funds, Quant Growth Momentum focuses on growth potential and not just company size. It actively buys and sells (high churn) based on quantitative signals, aiming to capture rising trends and avoid falling ones (opposite of traditional value investing). This strategy can be more volatile but has the potential for outperformance",
+    },
+    {
+      question: "Is Quant Growth Momentum suitable for all investors?",
+      answer: `Quant Growth Momentum might not be ideal for everyone. Investors who dislike high volatility or frequent portfolio changes (churn) may find this strategy stressful. It's best suited for those comfortable with potential ups and downs and a long-term investment horizon`,
+    },
+    {
+      question:
+        "What is the risk level associated with a Quant Growth Momentum Fund?",
+      answer: "High Risk Fund ",
+    },
+  ];
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
-
-  const [chartSeries, setChartSeries] = useState(
-    tabs.map(() => 1 / tabs.length)
-  );
-  const [chartOptions, setChartOptions] = useState({
-    labels: tabs,
-    legend: {
-      show: false,
-    },
-    plotOptions: {
-      pie: {
-        donut: {
-          size: "65%",
-        },
-      },
-    },
-    colors: tabs.map((tab) => (tab === activeTab ? "#ff0000" : "#cccccc")),
-    dataLabels: {
-      enabled: true,
-      formatter: (val, opts) => opts.w.config.labels[opts.seriesIndex],
-    },
-    events: {
-      dataPointSelection: (event, chartContext, config) => {
-        const selectedTabIndex = config.dataPointIndex;
-        const selectedTab = tabs[selectedTabIndex];
-        handleTabChange(selectedTab);
-      },
-    },
-  });
-
-  useEffect(() => {
-    setChartOptions((prevOptions) => ({
-      ...prevOptions,
-      colors: tabs.map((tab) => (tab === activeTab ? "#ff0000" : "#cccccc")),
-    }));
-  }, [activeTab, tabs]);
 
   return (
     <div className="mx-auto inter-font">
@@ -107,47 +103,190 @@ const MomentumTabs = () => {
             </div>
           </div>
         </div>
-        <Tabs value={activeTab}>
-          <TabsHeader className="mb-4 bg-gray-200">
-            {tabs.map((tab) => (
-              <Tab key={tab} value={tab} onClick={() => handleTabChange(tab)}>
-                {tab}
-              </Tab>
-            ))}
-          </TabsHeader>
-          <TabsBody>
-            {tabs.map((tab) => (
-              <TabPanel key={tab} value={tab}>
-                {activeTab === tab && (
-                  <div className="flex flex-row-reverse gap-6">
-                    <div className="">
-                      <Chart
-                        type="donut"
-                        series={chartSeries}
-                        options={chartOptions}
-                        width="400"
-                        height="500"
-                      />
+      </Container>
+      <GrayContainer>
+        <Container>
+          <div className="py-12">
+            <h2 className="text-3xl font-bold text-center mb-8">
+              Key Features
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-white p-6 rounded-lg  duration-300 flex flex-col justify-between"
+                >
+                  <div>
+                    <div className="text-2xl mb-4">
+                      <FontAwesomeIcon icon={feature.icon} />
                     </div>
-                    <div>
-                      <h3 className="text-xl font-semibold mb-4">
-                        {activeTab}
-                      </h3>
-                      <ul className="list-decimal space-y-5 ">
-                        {tabData[activeTab].map((value, index) => (
-                          <li key={index} className=" text-start">
-                            {value}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <h3 className="text-xl font-semibold mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600">{feature.description}</p>
+                  </div>
+                  <div className="mt-auto">
+                    <button className="mt-4 px-3 py-2 rounded-md text-white bg-gray-800 w-max">
+                      Learn More
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </GrayContainer>
+      <div className="px-4 sm:px-10">
+        <div className="py-4 sm:py-12">
+          <h2 className="text-3xl font-bold text-center ">Performance</h2>
+        </div>
+        <div className="mb-10">
+          <PerformanceChart />
+        </div>
+      </div>
+      <GrayContainer>
+        <Container>
+          <div className=" py-10">
+            <div className="container mx-auto sm:px-4">
+              <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
+                How Our Strategy Works
+              </h2>
+              <p className="text-center text-gray-600 sm:px-20 mb-10 text-xl">
+                Understand the step-by-step process we use to identify promising
+                investment opportunities and manage your portfolio.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div className="bg-white rounded-lg  p-6">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-200 mb-4">
+                    <FontAwesomeIcon
+                      icon={faCheckCircle}
+                      className="text-2xl text-gray-800"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    Step 1: Screening of the stocks
+                  </h3>
+                  <p className="text-gray-600">
+                    We first look at the six months average rolling market cap
+                    and turnover for each security. We then use composite
+                    ranking of 50% weightage to each factor and choose the top
+                    500 for the back test.
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg  p-6">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-200 mb-4">
+                    <FontAwesomeIcon
+                      icon={faChartLine}
+                      className="text-2xl text-gray-800"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    Step 2: How do we use momentum?
+                  </h3>
+                  <p className="text-gray-600">
+                    Rate of Change is essentially the simplest form of momentum
+                    indicator which tells how much has a particular stock given
+                    return in a particular period of time. We ideally want to
+                    buy stocks that are in momentum and among them the one that
+                    have the highest momentum. This is used to compare stocks in
+                    the universe and rank based on pure momentum.
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg  p-6">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-200 mb-4">
+                    <FontAwesomeIcon
+                      icon={faBolt}
+                      className="text-2xl text-gray-800"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    Step 3: How do we use volatility?
+                  </h3>
+                  <p className="text-gray-600">
+                    This is a variation to the naive momentum where aim to buy
+                    stocks which have a high momentum but a lower volatility.
+                    The method used for this is to divided the rate of change of
+                    a particular stock with it’s standard deviation during the
+                    same lookback period. All stocks are ranked based on this
+                    parameter and we buy the top 30 stocks.
+                  </p>
+                </div>
+                <div className="bg-white rounded-lg  p-6">
+                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-200 mb-4">
+                    <FontAwesomeIcon
+                      icon={faShieldAlt}
+                      className="text-2xl text-gray-800"
+                    />
+                  </div>
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    Step 4: Risk Management
+                  </h3>
+                  <p className="text-gray-600">
+                    Risk management is a crucial step where we ensure the
+                    portfolio is balanced and diversified. We regularly review
+                    the stocks and make adjustments as necessary to maintain
+                    optimal risk levels.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </GrayContainer>
+      <Container>
+        <div className="my-20 rounded-lg  p-6 flex items-center justify-between">
+          <div>
+            <h3 className="text-lg font-semibold text-gray-800 mb-2">
+              Download Strategy PPT
+            </h3>
+            <p className="text-gray-600">
+              Click the link below to download the PowerPoint presentation for
+              the entire strategy.
+            </p>
+          </div>
+          <a
+            href="/path-to-your-ppt-file.pptx"
+            download
+            className="text-blue-500 hover:text-blue-700 flex items-center"
+          >
+            <FontAwesomeIcon icon={faDownload} className="mr-2" />
+            Download PPT
+          </a>
+        </div>
+      </Container>
+      <GrayContainer>
+        <Container>
+          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
+            Got Questions? We've Got Answers.
+          </h2>
+          <div className="space-y-4">
+            {faqItems.map((item, index) => (
+              <div key={index} className="rounded-md  bg-white">
+                <div
+                  className="flex justify-between items-center p-4 cursor-pointer"
+                  onClick={() => handleAccordionToggle(index)}
+                >
+                  <h3 className="text-lg font-semibold text-gray-800">
+                    {item.question}
+                  </h3>
+                  <span
+                    className={`text-gray-800 transition-transform duration-300 ${
+                      activeIndex === index ? "transform rotate-180" : ""
+                    }`}
+                  >
+                    &darr;
+                  </span>
+                </div>
+                {activeIndex === index && (
+                  <div className="p-4 bg-gray-100 text-gray-600">
+                    {item.answer}
                   </div>
                 )}
-              </TabPanel>
+              </div>
             ))}
-          </TabsBody>
-        </Tabs>
-      </Container>
+          </div>
+        </Container>
+      </GrayContainer>
     </div>
   );
 };

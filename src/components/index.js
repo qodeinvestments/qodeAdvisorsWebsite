@@ -7,6 +7,7 @@ import Blogs from "./Blogs";
 import InvestmentProcess from "./InvestmentProcess";
 import InvestmentStrategies from "./InvestmentStrategies";
 import OurFocus from "./Header/OurFocus";
+import AreaChart from "./Charts/AreaChart";
 import './components.css'
 export {
     Header,
@@ -17,5 +18,6 @@ export {
     InvestmentProcess,
     Blogs,
     InvestmentStrategies,
-    OurFocus
+    OurFocus,
+    AreaChart
 }

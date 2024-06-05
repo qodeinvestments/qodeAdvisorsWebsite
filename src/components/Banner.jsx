@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import banImg from "../assets/banner1-removebg.png";
+import backgroundImage from '../assets/hero-background.svg'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faRss } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faFacebookF, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
@@ -43,7 +45,14 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="flex flex-col md:flex-row items-center justify-between px-4 md:px-10 py-10">
+    <div className="flex flex-col md:flex-row items-center justify-between px-4 md:px-10 py-10"
+    style={{
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}
+    >
       <div className="w-full md:w-2/3 md:px-20 mb-8 md:mb-0">
         <h1 className="text-3xl md:text-5xl font-bold typewriter-font">
           The best investments are <br /> {"{"}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import logo from "../../assets/companyLogo/Qode.png";
-
+import { Link } from "react-router-dom";
 const navItems = [
   {
     name: "Home",
@@ -9,7 +9,6 @@ const navItems = [
   },
   {
     name: "About Us",
-    slug: "/about-us",
     active: true,
     sublinks: [
       {
@@ -26,7 +25,6 @@ const navItems = [
   },
   {
     name: "Quant Investing",
-    slug: "/quant-investing",
     active: true,
     sublinks: [
       {
@@ -42,25 +40,7 @@ const navItems = [
     ],
   },
   {
-    name: "Contact Us",
-    slug: "/contact-us",
-    active: true,
-    sublinks: [
-      {
-        name: "Schedule a meeting",
-        slug: "/quant-investing-101",
-        active: true,
-      },
-      {
-        name: "Chat",
-        slug: "/chat",
-        active: true,
-      },
-    ],
-  },
-  {
     name: "Strategies",
-    slug: "/contact-us",
     active: true,
     sublinks: [
       {
@@ -76,8 +56,26 @@ const navItems = [
     ],
   },
   {
+    name: "Contact Us",
+    // slug: "/contact-us",
+    active: true,
+    sublinks: [
+      {
+        name: "Schedule a meeting",
+        slug: "/quant-investing-101",
+        active: true,
+      },
+      {
+        name: "Chat",
+        slug: "/chat",
+        active: true,
+      },
+    ],
+  },
+  
+  {
     name: "Blogs",
-    slug: "/blogs",
+    // slug: "/blogs",
     active: true,
     sublinks: [
       {
@@ -161,14 +159,15 @@ const Header = () => {
   }, []);
 
   return (
-    <div ref={navbarAreaRef} className="shadow-lg static w-full z-20 bg-white top-0">
+    <div
+      ref={navbarAreaRef}
+      className="shadow-lg inter-font static w-full z-20 bg-white top-0"
+    >
       <nav ref={navbarRef}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[90rem] text-center  mx-auto ">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <div className="">
-                <img className="w-2/3 pt-5" src={logo} alt="Logo" />
-              </div>
+            <div className="flex items-center gap-44">
+              <img className="pt-5" src={logo} alt="Logo" />
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   {navItems.map((item) => (
@@ -178,12 +177,12 @@ const Header = () => {
                       onMouseEnter={() => toggleNavbar(item, false, true)}
                       onMouseLeave={() => toggleNavbar(null)}
                     >
-                      <a
-                        href={item.slug}
+                      <Link
+                        to={item.slug}
                         className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       >
                         {item.name}
-                      </a>
+                      </Link>
                     </div>
                   ))}
                 </div>
@@ -219,7 +218,7 @@ const Header = () => {
         }`}
         style={{
           maxHeight:
-            isOpen && activeNavItem && activeNavItem.sublinks``
+            isOpen && activeNavItem && activeNavItem.sublinks
               ? `${activeNavItem.sublinks.length * 40}px`
               : "0px",
         }}
@@ -229,14 +228,18 @@ const Header = () => {
             {activeNavItem &&
               activeNavItem.sublinks &&
               activeNavItem.sublinks.map((sublink) => (
-                <a
+                <Link
                   key={sublink.name}
-                  href={sublink.slug}
-                  className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  to={sublink.slug}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
+                      : "text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  }
                   onClick={() => toggleNavbar(sublink, true)}
                 >
                   {sublink.name}
-                </a>
+                </Link>
               ))}
           </div>
         </div>
@@ -278,8 +281,7 @@ const Header = () => {
               <nav className="px-2">
                 {navItems.map((item) => (
                   <div key={item.name}>
-                    <a
-                      href={item.slug}
+                    <Link
                       className="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:bg-gray-100 transition ease-in-out duration-150"
                       onClick={() => handleItemClick(item)}
                     >
@@ -301,17 +303,17 @@ const Header = () => {
                           />
                         </svg>
                       )}
-                    </a>
+                    </Link>
                     {activeNavItem === item && item.sublinks && (
                       <div className="mt-1 ml-4 space-y-1">
                         {item.sublinks.map((sublink) => (
-                          <a
+                          <Link
                             key={sublink.name}
-                            href={sublink.slug}
+                            to={sublink.slug}
                             className="group flex items-center px-3 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:bg-gray-100 transition ease-in-out duration-150"
                           >
                             {sublink.name}
-                          </a>
+                          </Link>
                         ))}
                       </div>
                     )}

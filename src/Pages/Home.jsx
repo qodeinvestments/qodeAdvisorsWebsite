@@ -11,12 +11,12 @@ import {
 const Home = () => {
   return (
     <>
-        <Banner />
+      <Banner />
       <InvestmentStrategies />
       <Container>
         <Blogs />
       </Container>
-      <OurFocus/>
+      <OurFocus />
     </>
   );
 };

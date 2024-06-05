@@ -4,6 +4,7 @@ import quantGrowthImg from "../assets/whiteCode.png";
 import quantMomentumImg from "../assets/banner.png";
 import quantMomentum from "../assets/quantMomentum.png";
 import { Tilt } from "react-tilt";
+import AreaChart from "./Charts/AreaChart";
 const InvestmentStrategies = () => {
   return (
     <div className="text-center inter-font bg-[#f8f9f9] p-5 sm:px-24 sm:py-10">
@@ -105,14 +106,9 @@ const InvestmentStrategies = () => {
             </a>
           </div>
 
-          <div className="relative  w-full flex justify-end">
+          <div className="relative -right-2 w-full flex justify-end">
             <div className="w-11/12 sm:h-64 md:h-72 lg:h-96">
-              <img
-                src={quantMomentumImg}
-                alt="Responsive Image"
-                className="object-cover w-full h-full filter grayscale-[75%] rounded-tl-2xl"
-              />
-              <div className="absolute inset-0 bg-gradient-to-l from-gray-900 via-gray-500 to-transparent opacity-10 rounded-tl-2xl"></div>
+              <AreaChart />
             </div>
           </div>
         </Tilt>

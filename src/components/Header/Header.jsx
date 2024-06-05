@@ -45,12 +45,12 @@ const navItems = [
     sublinks: [
       {
         name: "Quant Growth Fund",
-        slug: "/quant-growth-fund",
+        slug: "/strategies/quant-growth-fund",
         active: true,
       },
       {
         name: "Quant Growth Momentum",
-        slug: "/quant-growth-momentum",
+        slug: "/strategies/quant-growth-momentum",
         active: true,
       },
     ],

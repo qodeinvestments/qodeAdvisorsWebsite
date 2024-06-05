@@ -17,7 +17,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/quant-growth-momentum",
+        path: "/strategies/quant-growth-momentum",
         element: <MomentumTabs />,
       },
     ],

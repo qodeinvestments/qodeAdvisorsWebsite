@@ -60,11 +60,11 @@ const InvestmentStrategies = () => {
               View details
             </a>
           </div>
-          <div className="relative w-full  flex justify-end">
-            <div className="w-1/2 sm:h-64 md:h-72 lg:h-96">
+          <div className="relative w-full  flex sm:flex-row flex-col justify-end">
+            <div className="sm:w-1/2 w-full sm:h-64 md:h-72 lg:h-96">
               <AreaChart />
             </div>
-            <div className="w-1/2 px-2">
+            <div className="sm:w-1/2 w-full px-2">
               <div className="w-full flex flex-col space-y-4">
                 <div className="rounded-lg border bg-white p-4">
                   <h3 className="text-lg font-semibold mb-4">Risk Ratio</h3>

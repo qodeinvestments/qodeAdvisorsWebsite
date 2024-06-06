@@ -126,7 +126,7 @@ const MomentumTabs = () => {
                     <p className="text-gray-600">{feature.description}</p>
                   </div>
                   <div className="mt-auto">
-                    <button className="mt-4 px-3 py-2 rounded-md text-white bg-gray-800 w-max">
+                    <button className="mt-4 px-2 py-1 rounded-md text-white bg-gray-800 w-max">
                       Learn More
                     </button>
                   </div>

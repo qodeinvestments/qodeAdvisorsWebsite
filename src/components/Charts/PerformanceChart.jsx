@@ -52,8 +52,9 @@ const PerformanceChart = () => {
 
     return data.map((item) => ({
       ...item,
-      normalizedMomentum: ((item["Vol Adjusted Momentum"] / initialMomentum) * 100),
-      normalizedNifty: ((item["Nifty 50"] / initialNifty) * 100),
+      normalizedMomentum:
+        (item["Vol Adjusted Momentum"] / initialMomentum) * 100,
+      normalizedNifty: (item["Nifty 50"] / initialNifty) * 100,
     }));
   };
 
@@ -81,14 +82,20 @@ const PerformanceChart = () => {
           filteredDates = new Date(0);
       }
 
-      filteredData = data.filter((item) => new Date(item.Date) >= filteredDates);
+      filteredData = data.filter(
+        (item) => new Date(item.Date) >= filteredDates
+      );
     }
 
     const normalizedData = normalizeData(filteredData);
 
     const dates = normalizedData.map((item) => item.Date);
-    const momentum = normalizedData.map((item) => Math.trunc(item.normalizedMomentum));
-    const nifty = normalizedData.map((item) => Math.trunc(item.normalizedNifty));
+    const momentum = normalizedData.map((item) =>
+      Math.trunc(item.normalizedMomentum)
+    );
+    const nifty = normalizedData.map((item) =>
+      Math.trunc(item.normalizedNifty)
+    );
 
     const options = {
       title: {
@@ -194,25 +201,25 @@ const PerformanceChart = () => {
                 YTD
               </button>
               <button
-                className="bg-gray-200 py-2 px-4 rounded"
+                className="bg-gray-200 py-1 px-4 rounded"
                 onClick={() => setTimeRange("6M")}
               >
                 6M
               </button>
               <button
-                className="bg-gray-200 py-2 px-4 rounded"
+                className="bg-gray-200 py-1 px-4 rounded"
                 onClick={() => setTimeRange("1Y")}
               >
                 1Y
               </button>
               <button
-                className="bg-gray-200 py-2 px-4 rounded"
+                className="bg-gray-200 py-1 px-4 rounded"
                 onClick={() => setTimeRange("5Y")}
               >
                 5Y
               </button>
               <button
-                className="bg-gray-200 py-2 px-4 rounded"
+                className="bg-gray-200 py-1 px-4 rounded"
                 onClick={() => setTimeRange("ALL")}
               >
                 ALL

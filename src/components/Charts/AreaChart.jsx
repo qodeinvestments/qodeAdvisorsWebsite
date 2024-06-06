@@ -1,77 +1,125 @@
-import React from 'react';
-import ApexCharts from 'apexcharts';
-import Chart from 'react-apexcharts';
+import React, { useEffect, useState } from "react";
+import Chart from "react-apexcharts";
 
 const AreaChart = () => {
-  const series = [
-    {
-      name: 'Quant Momentum',
-      data: [0, 40, 28, 51, 42, 109, 100]
-    },
-    {
-      name: 'Nifty 50',
-      data: [0, 32, 45, 32, 34, 52, 41]
-    }
-  ];
+  const [series, setSeries] = useState([]); // Manage series separately
 
-  const options = {
+  const chartOptions = {
     chart: {
       toolbar: {
-        show: false
+        show: false,
       },
       zoom: {
-        enabled: false
-      }
+        enabled: false,
+      },
     },
+    colors: ["#008000", "rgb(239, 44, 44)"], // Series and tooltip marker colors
     dataLabels: {
-      enabled: false
+      enabled: false,
+    },
+    legend: {
+      show: false,
     },
     stroke: {
-      curve: 'smooth',
-      colors: ['#008000','rgb(239, 44, 44)']
-
+      width: 1,
+      curve: "smooth",
+      colors: ["#008000", "rgb(239, 44, 44)"],
     },
-    
     fill: {
       type: "gradient",
       gradient: {
         shadeIntensity: 1,
-        opacityFrom: 0.6,
-        opacityTo: 0.9,
-        stops: [0, 90, 100]
+        opacityFrom: 1,
+        opacityTo: 0,
+        stops: [0, 10, 10],
       },
-      colors: ['#A8FF8F','rgb(239, 140, 140)']
-
     },
     xaxis: {
       labels: {
-        show: false
+        show: false,
       },
       axisBorder: {
-        show: false
+        show: false,
       },
       axisTicks: {
-        show: false
-      }
+        show: false,
+      },
     },
     yaxis: {
       labels: {
-        show: false
-      }
-    },
-    legend: {
-      show: false
-    },
-    tooltip: {
-      enabled: true
+        show: false,
+      },
+      legend: {
+        show: false,
+      },
+      tooltip: {
+        enabled: false,
+        theme: "dark", // Optional: Defines the theme of the tooltip
+        marker: {
+          show: false, // Ensures the color indicator is visible
+        },
+        x: {
+          show: false,
+        },
+        y: {
+          formatter: (val) => `${val.toFixed(2)}`, // Format tooltip values
+          title: {
+            formatter: (seriesName) => `${seriesName}: `, // Custom series name formatting
+          },
+        },
+      },
     },
     grid: {
-      show: false
-    }
+      show: false,
+    },
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/data/test2.json");
+        const jsonData = await response.json();
+        updateChartSeries(jsonData.Sheet1);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const updateChartSeries = (data) => {
+    // Calculate the date 6 months ago
+    const sixMonthsAgo = new Date();
+    sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+
+    // Filter the data to include only the past 6 months
+    const filteredData = data.filter((item) => {
+      const itemDate = new Date(item.Date);
+      return itemDate >= sixMonthsAgo;
+    });
+
+    // Extracting series data for both 'Naive Momentum' and 'Vol Adjusted Momentum'
+    const naiveMomentumSeries = filteredData.map((item) => ({
+      x: new Date(item.Date), // Convert string Date to Date object
+      y: item["Naive Momentum"], // Access the 'Naive Momentum' value
+    }));
+
+    const volAdjustedMomentumSeries = filteredData.map((item) => ({
+      x: new Date(item.Date), // Convert string Date to Date object
+      y: item["Vol Adjusted Momentum"], // Access the 'Vol Adjusted Momentum' value
+    }));
+
+    // Update the series state to include both data series
+    setSeries([
+      { name: "Naive Momentum", data: naiveMomentumSeries },
+      // { name: "Vol Adjusted Momentum", data: volAdjustedMomentumSeries },
+    ]);
+  };
+
   return (
     <div id="chart">
-      <Chart options={options} series={series} type="area" height={400} />
+      <Chart options={chartOptions} series={series} type="area" height={200} />
     </div>
   );
 };

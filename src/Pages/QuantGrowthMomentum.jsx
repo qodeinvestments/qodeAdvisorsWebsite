@@ -71,8 +71,8 @@ const MomentumTabs = () => {
   };
 
   return (
-    <div className="mx-auto inter-font">
-      <div className="bg-gray-800 py-12 md:py-20 inter-font">
+    <div className="mx-auto inter-font mt-10">
+      <div className="bg-gray-800 py-12 md:py-32 inter-font">
         <div className="container mx-auto px-4 sm:px-6 lg:px-36">
           <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
             <span className="block">Welcome to</span>
@@ -89,7 +89,7 @@ const MomentumTabs = () => {
           <div className="">
             <div className="lg:flex lg:items-center lg:justify-between">
               <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                <span className="block">Overview</span>
+                <span className="block text-[#151E28]">Overview</span>
               </h2>
             </div>
             <div className="mt-8 lg:mt-16">
@@ -107,7 +107,7 @@ const MomentumTabs = () => {
       <GrayContainer>
         <Container>
           <div className="py-12">
-            <h2 className="text-3xl font-bold text-center mb-8">
+            <h2 className="text-3xl text-[#151E28] font-bold text-center mb-8">
               Key Features
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -138,7 +138,9 @@ const MomentumTabs = () => {
       </GrayContainer>
       <div className="px-4 sm:px-10">
         <div className="py-4 sm:py-12">
-          <h2 className="text-3xl font-bold text-center ">Performance</h2>
+          <h2 className="text-3xl font-bold text-center text-[#151E28]">
+            Performance
+          </h2>
         </div>
         <div className="mb-10">
           <PerformanceChart />
@@ -148,7 +150,7 @@ const MomentumTabs = () => {
         <Container>
           <div className=" py-10">
             <div className="container mx-auto sm:px-4">
-              <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
+              <h2 className="text-3xl font-bold text-[#151E28] text-center mb-8">
                 How Our Strategy Works
               </h2>
               <p className="text-center text-gray-600 sm:px-20 mb-10 text-xl">
@@ -160,10 +162,10 @@ const MomentumTabs = () => {
                   <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-200 mb-4">
                     <FontAwesomeIcon
                       icon={faCheckCircle}
-                      className="text-2xl text-gray-800"
+                      className="text-2xl text-[#151E28]"
                     />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  <h3 className="text-lg font-semibold text-[#151E28] mb-2">
                     Step 1: Screening of the stocks
                   </h3>
                   <p className="text-gray-600">
@@ -177,10 +179,10 @@ const MomentumTabs = () => {
                   <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-200 mb-4">
                     <FontAwesomeIcon
                       icon={faChartLine}
-                      className="text-2xl text-gray-800"
+                      className="text-2xl text-[#151E28]"
                     />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  <h3 className="text-lg font-semibold text-[#151E28] mb-2">
                     Step 2: How do we use momentum?
                   </h3>
                   <p className="text-gray-600">
@@ -196,10 +198,10 @@ const MomentumTabs = () => {
                   <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-200 mb-4">
                     <FontAwesomeIcon
                       icon={faBolt}
-                      className="text-2xl text-gray-800"
+                      className="text-2xl text-[#151E28]"
                     />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  <h3 className="text-lg font-semibold text-[#151E28] mb-2">
                     Step 3: How do we use volatility?
                   </h3>
                   <p className="text-gray-600">
@@ -215,10 +217,10 @@ const MomentumTabs = () => {
                   <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-200 mb-4">
                     <FontAwesomeIcon
                       icon={faShieldAlt}
-                      className="text-2xl text-gray-800"
+                      className="text-2xl text-[#151E28]"
                     />
                   </div>
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  <h3 className="text-lg font-semibold text-[#151E28] mb-2">
                     Step 4: Risk Management
                   </h3>
                   <p className="text-gray-600">
@@ -236,7 +238,7 @@ const MomentumTabs = () => {
       <Container>
         <div className="my-20 rounded-lg  p-6 flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">
+            <h3 className="text-lg font-semibold text-[#151E28] mb-2">
               Download Strategy PPT
             </h3>
             <p className="text-gray-600">
@@ -256,7 +258,7 @@ const MomentumTabs = () => {
       </Container>
       <GrayContainer>
         <Container>
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">
+          <h2 className="text-3xl font-bold text-[#151E28] text-center mb-8">
             Got Questions? We've Got Answers.
           </h2>
           <div className="space-y-4">
@@ -266,11 +268,11 @@ const MomentumTabs = () => {
                   className="flex justify-between items-center p-4 cursor-pointer"
                   onClick={() => handleAccordionToggle(index)}
                 >
-                  <h3 className="text-lg font-semibold text-gray-800">
+                  <h3 className="text-lg font-semibold text-[#151E28]">
                     {item.question}
                   </h3>
                   <span
-                    className={`text-gray-800 transition-transform duration-300 ${
+                    className={`text-[#151E28] transition-transform duration-300 ${
                       activeIndex === index ? "transform rotate-180" : ""
                     }`}
                   >

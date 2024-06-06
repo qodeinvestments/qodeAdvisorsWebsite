@@ -8,19 +8,57 @@
 
 @font-face {
     font-family: 'CustomFont';
-    src: url('./assets/fonts/MonaSans-Regular.otf') format('truetype');
+    src: url('./assets/fonts/TTF/MonaSans-Bold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
   }
   
+  @font-face {
+    font-family: 'MonaSans';
+    src: url('./assets/fonts/OTF/MonaSans-Regular.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'MonaSans';
+    src: url('./assets/fonts/TTF/MonaSans-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+  }
+  
+  @font-face {
+    font-family: 'MonaSans';
+    src: url('./assets/fonts/TTF/MonaSans-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+  }
 
 .typewriter-font {
     font-family: "Libre Caslon Text", serif;
 }
 
-.inter-font{
+/* .inter-font{
     font-family: "CustomFont",serif;
-}
+} */
 
-
+.inter-font {
+    font-family: 'MonaSans', sans-serif;
+    font-weight: normal;
+  }
+  
+  .mona-sans-bold {
+    font-family: 'MonaSans', sans-serif;
+    font-weight: bold;
+  }
+  
+  .mona-sans-italic {
+    font-family: 'MonaSans', sans-serif;
+    font-style: italic;
+  }
+  
+  .mona-sans-light {
+    font-family: 'MonaSans', sans-serif;
+    font-weight: 300;
+  }
 

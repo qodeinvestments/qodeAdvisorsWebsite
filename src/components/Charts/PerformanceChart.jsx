@@ -181,7 +181,7 @@ const PerformanceChart = () => {
     <div className="flex flex-col md:flex-row gap-4">
       <div className="w-full md:w-3/4 lg:w-4/6 bg-white border sm:p-10 rounded-lg">
         <Tabs value="chart1">
-          <div className="flex flex-col sm:flex-row items-center justify-between p-2">
+          <div className="flex flex-col gap-2 sm:gap-0 sm:flex-row items-center justify-between p-2">
             <TabsHeader className="bg-gray-200 p-1">
               <Tab key="chart1" value="chart1">
                 Trailing

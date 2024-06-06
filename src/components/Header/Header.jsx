@@ -10,6 +10,8 @@ const navItems = [
   {
     name: "About Us",
     active: true,
+    slug: "#",
+
     sublinks: [
       {
         name: "Meet the team",
@@ -26,6 +28,7 @@ const navItems = [
   {
     name: "Quant Investing",
     active: true,
+    slug: "#",
     sublinks: [
       {
         name: "Quant Investing 101",
@@ -42,6 +45,7 @@ const navItems = [
   {
     name: "Strategies",
     active: true,
+    slug: "#",
     sublinks: [
       {
         name: "Quant Growth Fund",
@@ -179,10 +183,7 @@ const Header = () => {
                       onMouseEnter={() => toggleNavbar(item, false, true)}
                       onMouseLeave={() => toggleNavbar(null)}
                     >
-                      <Link
-                        to={item.slug}
-                        className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      >
+                      <Link className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
                         {item.name}
                       </Link>
                     </div>
@@ -190,7 +191,7 @@ const Header = () => {
                 </div>
               </div>
             </div>
-            <div className="-mr-2 flex md:hidden">
+            <div className="mr-4 flex md:hidden">
               <button
                 type="button"
                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
@@ -246,7 +247,7 @@ const Header = () => {
 
       {/* Mobile Sidebar */}
       <div className={`md:hidden ${isSidebarOpen ? "block" : "hidden"}`}>
-        <div className="fixed inset-0 flex z-40">
+        <div className="fixed inset-0 flex z-40 pr-10">
           <div className="fixed inset-0">
             <div className="absolute inset-0 bg-gray-600 opacity-75"></div>
           </div>

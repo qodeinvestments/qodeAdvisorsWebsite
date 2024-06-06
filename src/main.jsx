@@ -6,6 +6,8 @@ import Home from "./Pages/Home.jsx";
 import Tabs from "./Pages/QuantGrowthMomentum.jsx";
 import App from "./App";
 import MomentumTabs from "./Pages/QuantGrowthMomentum.jsx";
+import OurTeam from "./Pages/OurTeam.jsx";
+import OurBeliefs from "./Pages/OurBeliefs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,14 @@ const router = createBrowserRouter([
       {
         path: "/strategies/quant-growth-momentum",
         element: <MomentumTabs />,
+      },
+      {
+        path: "/about-us/our-team",
+        element: <OurTeam />,
+      },
+      {
+        path: "/about-us/beliefs-and-values",
+        element: <OurBeliefs />,
       },
     ],
   },

@@ -54,7 +54,7 @@ const Banner = () => {
 
   return (
     <div
-      className="flex flex-col md:flex-row items-center justify-between px-4 md:px-10 py-10"
+      className="flex flex-col md:flex-row items-center justify-between mt-20 px-4 md:px-10 py-10"
       style={{
         // backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
@@ -63,7 +63,7 @@ const Banner = () => {
       }}
     >
       <div className="w-full md:w-2/3 md:px-20 mb-8 md:mb-0">
-        <h1 className="text-3xl md:text-5xl font-black inter-font">
+        <h1 className="text-3xl text-[#151E28] md:text-5xl font-black inter-font">
           The best investments are <br /> {"{"}
           <span className="text-red-500 italic">{currentText}</span>
           {"}"}

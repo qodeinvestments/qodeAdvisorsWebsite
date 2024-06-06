@@ -13,12 +13,12 @@ const navItems = [
     sublinks: [
       {
         name: "Meet the team",
-        slug: "/our-team",
+        slug: "/about-us/our-team",
         active: true,
       },
       {
         name: "Our beliefs and values",
-        slug: "/beliefs-and-values",
+        slug: "/about-us/beliefs-and-values",
         active: true,
       },
     ],
@@ -161,7 +161,7 @@ const Header = () => {
   return (
     <div
       ref={navbarAreaRef}
-      className="shadow-lg inter-font static w-full z-20 bg-white top-0"
+      className="shadow-lg inter-font fixed  w-full z-20 bg-[#151E28] top-0"
     >
       <nav ref={navbarRef}>
         <div className="max-w-[90rem] text-center  mx-auto ">
@@ -181,7 +181,7 @@ const Header = () => {
                     >
                       <Link
                         to={item.slug}
-                        className="text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                        className="text-white hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                       >
                         {item.name}
                       </Link>
@@ -233,14 +233,11 @@ const Header = () => {
                 <Link
                   key={sublink.name}
                   to={sublink.slug}
-                  className={({ isActive }) =>
-                    isActive
-                      ? "bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium"
-                      : "text-gray-900 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                  }
+                  className="rounded-md text-sm font-medium px-3 py-2 text-white hover:bg-gray-700 hover:text-white"
+                  activeClassName="bg-gray-700 text-white"
                   onClick={() => toggleNavbar(sublink, true)}
                 >
-                  {sublink.name}
+                  <span className="px-3 py-2">{sublink.name}</span>
                 </Link>
               ))}
           </div>

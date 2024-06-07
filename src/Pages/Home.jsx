@@ -8,6 +8,7 @@ import {
   InvestmentStrategies,
   OurFocus,
 } from "../components/index";
+import { BackgroundBeams } from "../components/ui/background-beams";
 const Home = () => {
   return (
     <>

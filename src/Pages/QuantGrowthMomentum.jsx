@@ -84,7 +84,7 @@ const MomentumTabs = () => {
 
   return (
     <div className="mx-auto graphik-font-regular mt-10">
-      <div className="bg-[#171E27] rounded-b-[3rem]    py-12 md:py-20 ">
+      <div className="bg-[#171E27] rounded-b-[3rem] py-12 md:py-20 ">
         <div className="container flex flex-col sm:flex-row justify-between items-start mx-auto px-4 sm:px-6 lg:px-6">
           <div className="pt-16">
             <h2 className="text-3xl graphik-font-medium text-white sm:text-5xl">

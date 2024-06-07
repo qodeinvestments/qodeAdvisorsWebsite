@@ -8,12 +8,14 @@ import {
   faFacebookF,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
+import { BackgroundBeams } from "./ui/background-beams";
+import { BackgroundSVG } from "./ui/Background-SVG";
 
 const Banner = () => {
   const [currentText, setCurrentText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [index, setIndex] = useState(0);
-  const typingSpeed = 200; // Typing speed in milliseconds
+  const typingSpeed = 250; // Typing speed in milliseconds
   const deletingSpeed = 90; // Deleting speed in milliseconds
   const delayBetweenTexts = 1000; // Delay between texts in milliseconds
   const textArray = [
@@ -54,38 +56,24 @@ const Banner = () => {
 
   return (
     <div
-      className="flex flex-col md:flex-row items-center graphik-font-regular h-screen justify-center text-right px-4 md:px-10 py-10"
-      style={{
-        // backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "100%, 100%",
-        backgroundPosition: "center",
-        backgroundColor: `rgba(255, 255, 255, 0.9)`, // Adjust the opacity here
-        backgroundBlendMode: "overlay", // Add this line to blend the background color with the image
-        backgroundRepeat: "no-repeat",
-      }}
+      className="flex flex-col bg-[#171E27] rounded-b-[3rem] md:flex-row items-center graphik-font-regular h-screen justify-center text-center px-4 md:px-10 py-10"
     >
-      <div className="w-full md:w-2/3 md:px-20 mb-8 md:mb-0">
-        <h1 className="text-3xl text-[#171E27] md:text-5xl  font-black graphik-font-semibold">
+      <div className="w-full md:w-3/4 z-10 md:px-20 mb-8 md:mb-0">
+        <h1 className="text-3xl text-white md:text-6xl  font-black graphik-font-semibold">
           The best investments are <br /> {"{"}
-          <span className="text-red-500 italic">{currentText}</span>
+          <span className="text-red-500 codingFont font-black">{currentText}</span>
           {"}"}
         </h1>
-        <p className="text-lg md:text-2xl text-gray-600 font-medium mt-4 md:mt-10">
+        <p className="text-lg md:text-2xl  text-gray-400 font-medium mt-4 md:mt-10">
           We're an investment firm leveraging quantitative models to drive
           informed and strategic investment decisions.
         </p>
-        <div className="mt-8 text-right  flex justify-end">
-          <div
-            className="h-full w-full bg-red-500 max-w-3xl p-10 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100
-"
-          >
-            <p className="text-gray-800">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              viverra consequat magna, id malesuada nisi malesuada at.Lorem
-            </p>
-          </div>
-        </div>
       </div>
+      <div className="absolute inset-0 flex items-center justify-center">
+
+      <BackgroundSVG/>
+      </div>
+
     </div>
   );
 };

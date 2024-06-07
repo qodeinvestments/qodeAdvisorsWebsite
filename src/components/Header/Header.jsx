@@ -185,22 +185,22 @@ const Header = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <div key={item.name}>
-                  <a
-                    href={item.slug}
+                  <Link
+                    to={item.slug}
                     className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700"
                   >
                     {item.name}
-                  </a>
+                  </Link>
                   {item.sublinks.length > 0 && (
                     <ul className="pl-4">
                       {item.sublinks.map((sublink) => (
                         <li key={sublink.name}>
-                          <a
-                            href={sublink.slug}
+                          <Link
+                            to={sublink.slug}
                             className="block px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-600"
                           >
                             {sublink.name}
-                          </a>
+                          </Link>
                         </li>
                       ))}
                     </ul>

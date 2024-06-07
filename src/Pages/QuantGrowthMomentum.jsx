@@ -105,7 +105,7 @@ const MomentumTabs = () => {
               </li>
             </ul>
           </div>
-          <div className="w-1/3   h-auto">
+          <div className="sm:w-1/3   h-auto">
             <img src={bannerImage} alt="" />
           </div>
         </div>

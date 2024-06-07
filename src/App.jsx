@@ -3,11 +3,11 @@ import { Footer, Header } from "./components";
 
 function App() {
   return (
-    <>
+    <div className="bg-gray-100">
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 }
 

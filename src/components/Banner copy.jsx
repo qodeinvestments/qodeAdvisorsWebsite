@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import backgroundImage from "../assets/newBanner1.jpg";
+import banImg from "../assets/banner1-removebg.png";
+import backgroundImage from "../assets/bg-halftone@2x.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faRss } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +9,6 @@ import {
   faFacebookF,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
-
 const Banner = () => {
   const [currentText, setCurrentText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
@@ -54,37 +54,50 @@ const Banner = () => {
 
   return (
     <div
-      className="flex flex-col md:flex-row items-center graphik-font-regular h-screen justify-center text-right px-4 md:px-10 py-10"
+      className="flex flex-col md:flex-row items-center graphik-font-regular justify-between mt-20 px-4 md:px-10 py-10"
       style={{
         // backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "100%, 100%",
+        backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundColor: `rgba(255, 255, 255, 0.9)`, // Adjust the opacity here
-        backgroundBlendMode: "overlay", // Add this line to blend the background color with the image
-        backgroundRepeat: "no-repeat",
+        backgroundRepeat: "repeat",
       }}
     >
       <div className="w-full md:w-2/3 md:px-20 mb-8 md:mb-0">
-        <h1 className="text-3xl text-[#171E27] md:text-5xl  font-black graphik-font-semibold">
+        <h1 className="text-3xl text-[#171E27] md:text-5xl font-black graphik-font-medium">
           The best investments are <br /> {"{"}
           <span className="text-red-500 italic">{currentText}</span>
           {"}"}
         </h1>
-        <p className="text-lg md:text-2xl text-gray-600 font-medium mt-4 md:mt-10">
+        <p className="text-lg md:text-2xl  text-gray-600 font-medium mt-4 md:mt-10">
           We're an investment firm leveraging quantitative models to drive
           informed and strategic investment decisions.
         </p>
-        <div className="mt-8 text-right  flex justify-end">
-          <div
-            className="h-full w-full bg-red-500 max-w-3xl p-10 rounded-md bg-clip-padding backdrop-filter backdrop-blur-md bg-opacity-10 border border-gray-100
-"
-          >
-            <p className="text-gray-800">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              viverra consequat magna, id malesuada nisi malesuada at.Lorem
-            </p>
-          </div>
+        <div className="">
+          <h3 className="text-lg font-semibold text-white mb-4">Subscribe</h3>
+          <p className="text-gray-400 mb-4">
+            Subscribe to our newsletter to get the latest updates:
+          </p>
+          <form className="flex">
+            <input
+              type="email"
+              className="sm:w-1/2 px-4 py-2 rounded-l bg-gray-200 text-gray-400 border border-gray-600"
+              placeholder="Enter your email"
+            />
+            <button
+              type="submit"
+              className="px-4 py-2 bg-red-500 text-white rounded-r"
+            >
+              <FontAwesomeIcon icon={faEnvelope} />
+            </button>
+          </form>
         </div>
+      </div>
+      <div className="w-full md:w-1/2">
+        <img
+          className="h-auto max-w-full mx-auto"
+          src={banImg}
+          alt="Banner Image"
+        />
       </div>
     </div>
   );

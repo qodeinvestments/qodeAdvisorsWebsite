@@ -9,9 +9,21 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PerformanceChart from "../components/Charts/PerformanceChart";
+import bannerImage from "../assets/MomentumBanner.png";
 import { faCheckCircle, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
 
 const MomentumTabs = () => {
+  const listItemStyle = {
+    listStyleType: "none", // Remove default bullets
+    color: "#efefef",
+    background:
+      "url(https://www.tickertape.in/images/digitalgold/heroSection/star.webp) no-repeat",
+    backgroundPosition: "0px 5px", // Position the background
+    backgroundSize: "22px 22px", // Size of the background
+    paddingLeft: "30px", // Padding to separate text from background
+    marginBottom: "10px", // Space between items
+    lineHeight: "2", // Line height for better readability
+  };
   const [activeTab, setActiveTab] = useState("Features");
   const tabs = ["Features", "Working", "Performance", "Calculator", "FAQ"];
   const [activeIndex, setActiveIndex] = useState(null);
@@ -71,43 +83,53 @@ const MomentumTabs = () => {
   };
 
   return (
-    <div className="mx-auto inter-font mt-10">
-      <div className="bg-gray-800 py-12 md:py-32 inter-font">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-36">
-          <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
-            <span className="block">Welcome to</span>
-            <span className="block">Quant Growth Momentum</span>
-          </h2>
-          <p className="mt-4 max-w-3xl text-xl text-gray-300">
-            Experience the power of quantitative analysis and growth strategies.
-          </p>
+    <div className="mx-auto graphik-font-regular mt-10">
+      <div className="bg-[#171E27] rounded-b-[3rem]    py-12 md:py-20 ">
+        <div className="container flex justify-between items-start mx-auto px-4 sm:px-6 lg:px-6">
+          <div className="pt-16">
+            <h2 className="text-3xl graphik-font-medium text-white sm:text-5xl">
+              <span className="block">Quant Momentum Fund</span>
+            </h2>
+            <ul className="mt-10 text-lg " style={{ padding: 0 }}>
+              <li style={listItemStyle}>
+                Momentum is a highly researched strategy in global financial
+                markets.
+              </li>
+              <li style={listItemStyle}>
+                It consistently outperforms benchmarks in developed markets with
+                extensive data.
+              </li>
+              <li style={listItemStyle}>
+                This performance is evident across different markets, assets,
+                and time frames.
+              </li>
+            </ul>
+          </div>
+          <div className="w-1/3   h-auto">
+            <img src={bannerImage} alt="" />
+          </div>
         </div>
       </div>
-      <Container>
-        {/* Overview Section */}
+      {/* <Container>
         <div className="bg-white inter-font py-12 md:py-20">
           <div className="">
             <div className="lg:flex lg:items-center lg:justify-between">
               <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                <span className="block text-[#151E28]">Overview</span>
+                <span className="block text-[#151E28]"></span>
               </h2>
             </div>
             <div className="mt-8 lg:mt-16">
               <p className="text-gray-600">
-                Momentum is the most researched strategy in financial markets
-                around the world. In developed markets where there are long
-                periods of data available we have seen that momentum has
-                consistently been able to outperform the index or a benchmark
-                across markets, assets and different periods of time.{" "}
+                {" "}
               </p>
             </div>
           </div>
         </div>
-      </Container>
+      </Container> */}
       <GrayContainer>
         <Container>
           <div className="py-12">
-            <h2 className="text-3xl text-[#151E28] font-bold text-center mb-8">
+            <h2 className="text-3xl text-[#151E28]  font-bold text-center mb-8">
               Key Features
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -123,7 +145,9 @@ const MomentumTabs = () => {
                     <h3 className="text-xl font-semibold mb-2">
                       {feature.title}
                     </h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <p className="text-gray-600 font-normal">
+                      {feature.description}
+                    </p>
                   </div>
                   <div className="mt-auto">
                     <button className="mt-4 px-2 py-1 rounded-md text-white bg-gray-800 w-max">

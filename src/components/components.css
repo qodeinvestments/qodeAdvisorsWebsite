@@ -89,3 +89,69 @@
     margin: 0.5rem auto 0; /* Adjusts the space between the text and the underline */
   }
   
+
+  .dropdown-animate {
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+ }
+
+ .dropdown-slide-from-left {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  border-radius: 12px; /* Rounded corners for a card-like look */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+  backdrop-filter: blur(10px); /* Blur the background under the glass effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  padding: 12px 16px; /* Increased padding for a larger area */
+  display: block; /* Makes the link fill the card */
+  width: auto; /* Adjust width as needed */
+  text-align: center; /* Center text within the card */
+  margin: 5px; /* Space between cards */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.2); /* Slightly more opaque on hover */
+  border-color: rgba(255, 255, 255, 0.3); /* Brighter border on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.dropdown-container {
+  position: relative; /* Needed for absolute positioning of submenu */
+  display: inline-block; /* Align with other nav items */
+}
+
+.dropdown-content {
+  display: none; /* Hide by default */
+  position: absolute;
+  background-color: #f9f9f9; /* Light background for the dropdown */
+  min-width: 160px; /* Set a minimum width */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Shadow for dropdown */
+  z-index: 1; /* Ensure it's on top of other content */
+  flex-direction: column; /* Stack items vertically */
+  border-radius: 5px; /* Rounded corners for dropdown */
+}
+
+.dropdown-container:hover .dropdown-content {
+  display: flex; /* Display on hover */
+}
+
+.dropdown-item {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block; /* Dropdown items fill the container */
+  text-align: left; /* Align text to the left */
+}
+
+.dropdown-item:hover {
+  background-color: #ddd; /* Light grey background on hover */
+}
+
+.icon-left {
+  margin-right: 8px; /* Space between icon and text */
+}

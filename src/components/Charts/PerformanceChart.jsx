@@ -125,17 +125,27 @@ const PerformanceChart = () => {
           },
         },
         tickPositions: [0, Math.floor(dates.length / 2), dates.length - 1], // Custom tick positions
+        gridLineWidth: 0, // Hide x-grid lines
       },
       yAxis: {
         title: {
           text: "",
         },
+        gridLineWidth: 0, // Add this line to hide horizontal y-grid lines
       },
       series: [
         {
           name: "Momentum",
           data: momentum,
-          color: "rgba(75,192,192,1)",
+          type: "area",
+          color: {
+            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+            stops: [
+              [0, "rgba(75,192,192,0.8)"],
+              [1, "rgba(75,192,192,0.2)"],
+            ],
+          },
+          lineColor: "rgb(56, 143, 143)", // Darker line color, remove alpha
           lineWidth: 2,
           marker: {
             enabled: false,
@@ -144,7 +154,15 @@ const PerformanceChart = () => {
         {
           name: "Nifty 50",
           data: nifty,
-          color: "rgba(192,75,192,1)",
+          type: "area",
+          color: {
+            linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+            stops: [
+              [0, "rgba(192,75,192,0.8)"],
+              [1, "rgba(192,75,192,0.2)"],
+            ],
+          },
+          lineColor: "rgb(192,75,192)", // Darker line color, remove alpha
           lineWidth: 2,
           marker: {
             enabled: false,
@@ -155,7 +173,7 @@ const PerformanceChart = () => {
         enabled: false,
       },
       chart: {
-        type: "line",
+        type: "area",
         zoomType: "x",
       },
       tooltip: {

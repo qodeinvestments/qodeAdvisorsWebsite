@@ -3,8 +3,8 @@ import quant from "../../assets/quant-model.png";
 import data from "../../assets/data.png";
 const OurFocus = () => {
   return (
-    <div className="relative text-center inter-font bg-[#f8f9f9] sm:h-1/2 p-5 sm:px-44 mb-72 sm:pb-0 ">
-      <p className="uppercase text-[12px] tracking-widest font-bold text-gray-400">
+    <div className="relative text-center graphik-font-regular bg-[#f8f9f9] sm:h-1/2 p-5 sm:px-44 mb-72 sm:pb-0 ">
+      <p className="uppercase text-[12px] inter-font tracking-widest font-bold text-gray-400">
         Our Focus
       </p>
       <h2 className="text-4xl text-[#151E28] font-black mt-4">

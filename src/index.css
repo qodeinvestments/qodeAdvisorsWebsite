@@ -5,60 +5,40 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @font-face {
-    font-family: 'CustomFont';
-    src: url('./assets/fonts/TTF/MonaSans-Bold.ttf') format('truetype');
-    font-weight: normal;
+    font-family: 'Graphik-Semibold';
+    src: url('./assets/fonts/Graphik-Semibold.ttf') format('truetype');
+    font-weight: 600; /* Assuming you want semibold to be 600 */
     font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'MonaSans';
-    src: url('./assets/fonts/OTF/MonaSans-Regular.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'MonaSans';
-    src: url('./assets/fonts/TTF/MonaSans-Italic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-  }
-  
-  @font-face {
-    font-family: 'MonaSans';
-    src: url('./assets/fonts/TTF/MonaSans-Light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
-  }
-
-.typewriter-font {
-    font-family: "Libre Caslon Text", serif;
 }
 
-/* .inter-font{
-    font-family: "CustomFont",serif;
-} */
+@font-face {
+    font-family: 'Graphik-Regular';
+    src: url('./assets/fonts/Graphik-Regular.ttf') format('truetype');
+    font-weight: 400; /* Normal weight */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Graphik-Medium';
+    src: url('./assets/fonts/Graphik-Medium.ttf') format('truetype');
+    font-weight: 500; /* Medium is often 500 */
+    font-style: normal;
+}
 
 .inter-font {
-    font-family: 'MonaSans', sans-serif;
-    font-weight: normal;
-  }
-  
-  .mona-sans-bold {
-    font-family: 'MonaSans', sans-serif;
-    font-weight: bold;
-  }
-  
-  .mona-sans-italic {
-    font-family: 'MonaSans', sans-serif;
-    font-style: italic;
-  }
-  
-  .mona-sans-light {
-    font-family: 'MonaSans', sans-serif;
-    font-weight: 300;
-  }
+    font-family: 'Inter', sans-serif; /* Corrected the fallback font name */
+}
 
+.graphik-font-regular {
+    font-family: 'Graphik-Regular', sans-serif;
+}
+
+.graphik-font-semibold {
+    font-family: 'Graphik-Semibold', sans-serif;
+}
+
+.graphik-font-medium {
+    font-family: 'Graphik-Medium', sans-serif;
+    font-weight: 500; /* Ensure this aligns with your @font-face declaration */
+}

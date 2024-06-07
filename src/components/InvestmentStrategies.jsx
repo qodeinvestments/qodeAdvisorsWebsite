@@ -10,8 +10,8 @@ import AreaChart from "./Charts/AreaChart";
 import { Link } from "react-router-dom";
 const InvestmentStrategies = () => {
   return (
-    <div className="text-center inter-font bg-[#f8f9f9] p-5 sm:px-24 sm:py-10">
-      <p className="uppercase text-[12px] tracking-widest font-bold text-gray-400 ">
+    <div className="text-center graphik-font-regular bg-[#f8f9f9] sm:px-16 sm:py-10">
+      <p className="uppercase text-[12px] inter-font tracking-widest font-bold text-gray-400 ">
         Qode Your Future: Data-Driven Decisions for a Quantum Leap.
       </p>
       <h2 className="text-4xl font-bold mt-4 text-[#151E28]">
@@ -61,7 +61,7 @@ const InvestmentStrategies = () => {
             </a>
           </div>
           <div className="relative w-full  flex sm:flex-row flex-col justify-end">
-            <div className="sm:w-1/2 w-full sm:h-64 md:h-72 lg:h-96">
+            <div className="sm:w-1/2 w-full sm:h-64 md:h-72 lg:h-90">
               <AreaChart />
             </div>
             <div className="sm:w-1/2 w-full px-2">
@@ -152,7 +152,7 @@ const InvestmentStrategies = () => {
             </Link>
           </div>
 
-          <div className="relative w-full rounded-md flex justify-start px-2">
+          <div className="relative w-full rounded-md flex justify-start p-2">
             <Carousel
               autoPlay
               showArrows={false}

@@ -71,7 +71,7 @@ const Banner = () => {
       </div>
       <div className="absolute inset-0 flex items-center justify-center">
 
-      <BackgroundSVG/>
+      <BackgroundBeams/>
       </div>
 
     </div>

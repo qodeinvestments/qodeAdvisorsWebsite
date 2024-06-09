@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import backgroundImage from "../assets/newBanner1.jpg";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faRss } from "@fortawesome/free-solid-svg-icons";
 import {
   faTwitter,

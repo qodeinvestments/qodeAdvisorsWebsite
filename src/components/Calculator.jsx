@@ -59,7 +59,7 @@ const Calculator = () => {
       totalInvestmentValue += investmentValue; // This line calculates the current value of the investment made each month or year.
     console.log(totalInvestmentValue);
     }  
-    setFutureInvestmentValue(totalInvestmentValue);
+    setFutureInvestmentValue(totalInvestmentValue.toFixed(2));
   };
   
 

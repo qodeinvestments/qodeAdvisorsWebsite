@@ -146,8 +146,7 @@ const Calculator = () => {
       <div className="text-center px-10 py-3 border">
         <FontAwesomeIcon icon={faChartLine} />
         <p className="mb-3">
-          Projected future value of your investments based on historical
-          performance:
+            If you had invested <strong>₹{investmentAmount} {investmentPeriod} years ago </strong>, your investments would be worth 
         </p>
         <p>
           <strong>₹{futureInvestmentValue}</strong>

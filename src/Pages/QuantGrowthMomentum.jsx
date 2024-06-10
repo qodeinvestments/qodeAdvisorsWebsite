@@ -104,6 +104,11 @@ const MomentumTabs = () => {
                 and time frames.
               </li>
             </ul>
+            <div>
+              <button className="bg-white text-[#151E28] font-extrabold sm:w-1/2 mt-10 mx-auto rounded-md py-2">
+                Start Investing
+              </button>
+            </div>
           </div>
           <div className="sm:w-1/3   h-auto">
             <img src={bannerImage} alt="" />
@@ -150,7 +155,7 @@ const MomentumTabs = () => {
                     </p>
                   </div>
                   <div className="mt-auto">
-                    <button className="mt-4 px-2 py-1 rounded-md text-white bg-gray-800 w-max">
+                    <button className="mt-4 px-2 py-1 rounded-md text-white bg-[#151e28] w-max">
                       Learn More
                     </button>
                   </div>
@@ -160,7 +165,7 @@ const MomentumTabs = () => {
           </div>
         </Container>
       </GrayContainer>
-      <div className="px-4 sm:px-10">
+      <div className="px-4 sm:px-44">
         <div className="py-4 sm:py-12">
           <h2 className="text-3xl font-bold text-center text-[#151E28]">
             Performance
@@ -262,7 +267,7 @@ const MomentumTabs = () => {
       <Container>
         <div className="my-20 rounded-lg  p-6 flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-[#151E28] mb-2">
+            <h3 className="text-lg  font-semibold text-[#151E28] mb-2">
               Download Strategy PPT
             </h3>
             <p className="text-gray-600">
@@ -270,14 +275,27 @@ const MomentumTabs = () => {
               the entire strategy.
             </p>
           </div>
-          <a
-            href="/path-to-your-ppt-file.pptx"
-            download
-            className="text-blue-500 hover:text-blue-700 flex items-center"
-          >
-            <FontAwesomeIcon icon={faDownload} className="mr-2" />
-            Download PPT
-          </a>
+          <div className="flex justify-between gap-10">
+            <a
+              href="/path-to-your-ppt-file.pptx"
+              download
+              className="flex-1 relative bg-[#151E28] text-white py-8 px-20 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
+            >
+              <span className="relative z-10 flex items-center justify-center w-full h-full">
+                <FontAwesomeIcon icon={faDownload} className="mr-2" />
+                PPT
+              </span>
+            </a>
+            <a
+              className="flex-1 relative bg-[#151E28] text-white py-8 px-20 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
+              href=""
+            >
+              <span className="relative z-10 flex whitespace-nowrap items-center justify-center w-full h-full">
+                <FontAwesomeIcon icon={faDownload} className="mr-2" />
+                White Paper
+              </span>
+            </a>
+          </div>
         </div>
       </Container>
       <GrayContainer>
@@ -296,11 +314,11 @@ const MomentumTabs = () => {
                     {item.question}
                   </h3>
                   <span
-                    className={`text-[#151E28] transition-transform duration-300 ${
+                    className={`text-[#151E28] font-black transition-transform duration-300 ${
                       activeIndex === index ? "transform rotate-180" : ""
                     }`}
                   >
-                    &darr;
+                    &#8744;
                   </span>
                 </div>
                 {activeIndex === index && (

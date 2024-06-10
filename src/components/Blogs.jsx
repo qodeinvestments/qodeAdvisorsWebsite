@@ -27,7 +27,7 @@ const Blogs = () => {
               </p>
               <a
                 href="/"
-                className="text-red-500 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute bottom-6 left-6 arrow-link text-lg"
+                className="text-red-500 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute bottom-6  arrow-link text-lg"
               >
                 View details
               </a>
@@ -51,7 +51,7 @@ const Blogs = () => {
               </p>
               <a
                 href="/"
-                className="text-red-500 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute bottom-6 left-6 arrow-link text-lg"
+                className="text-red-500 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute bottom-6  arrow-link text-lg"
               >
                 View details
               </a>
@@ -75,7 +75,7 @@ const Blogs = () => {
               </p>
               <a
                 href="/"
-                className="text-red-500 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute bottom-6 left-6 arrow-link text-lg"
+                className="text-red-500 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute bottom-6  arrow-link text-lg"
               >
                 View details
               </a>

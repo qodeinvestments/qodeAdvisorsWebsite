@@ -1,12 +1,16 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faRss } from '@fortawesome/free-solid-svg-icons';
-import { faTwitter, faFacebookF, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelope, faRss } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTwitter,
+  faFacebookF,
+  faLinkedinIn,
+} from "@fortawesome/free-brands-svg-icons";
 import logo from "../../assets/companyLogo/Qode.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 py-12 inter-font">
+    <footer className=" bg-[#151e28] py-12 inter-font">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-0">
           <div>
@@ -63,18 +67,25 @@ const Footer = () => {
           </div>
           <div>
             <h3 className="text-lg font-semibold text-white mb-4">Subscribe</h3>
-            <p className="text-gray-400 mb-4">Subscribe to our newsletter to get the latest updates:</p>
+            <p className="text-gray-400 mb-4">
+              Subscribe to our newsletter to get the latest updates:
+            </p>
             <form className="flex">
               <input
                 type="email"
                 className="w-full px-4 py-2 rounded-l bg-gray-700 text-gray-400 border border-gray-600"
                 placeholder="Enter your email"
               />
-              <button type="submit" className="px-4 py-2 bg-gray-600 text-white rounded-r">
+              <button
+                type="submit"
+                className="px-4 py-2 bg-gray-600 text-white rounded-r"
+              >
                 <FontAwesomeIcon icon={faEnvelope} />
               </button>
             </form>
-            <h3 className="text-lg font-semibold text-white mt-8 mb-4">Follow Us</h3>
+            <h3 className="text-lg font-semibold text-white mt-8 mb-4">
+              Follow Us
+            </h3>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-gray-200">
                 <FontAwesomeIcon icon={faTwitter} />

@@ -8,60 +8,108 @@ const Calculator = () => {
   const [investmentFrequency, setInvestmentFrequency] = useState("monthly");
   const [investmentPeriod, setInvestmentPeriod] = useState(1);
   const [futureInvestmentValue, setFutureInvestmentValue] = useState(0);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch("/data/test2.json");
         const jsonData = await response.json();
-  
-        // Calculate the date from investmentPeriod years ago from today
-        const periodStartDate = new Date();
-        periodStartDate.setFullYear(periodStartDate.getFullYear() - investmentPeriod);
-  
-        const filteredData = jsonData.Sheet1.filter((entry) => {
-          const date = new Date(entry.Date);
-  
-          // Ensure the date is valid, is the first of the month, and falls within the investment period
-          return !isNaN(date.getTime()) && date.getDate() === 1 && date >= periodStartDate;
-        });
-  
-        console.log(filteredData);  // Log the filtered data to the console
-        setStartOfMonthData(filteredData);
+        setData(jsonData.Sheet1);
+
+        // Check if data array has at least one element
+        if (jsonData.Sheet1.length > 0) {
+          // Calculate the date from investmentPeriod years ago from today
+          const periodStartDate = new Date(
+            jsonData.Sheet1[jsonData.Sheet1.length - 1]["Date"]
+          );
+          periodStartDate.setFullYear(
+            periodStartDate.getFullYear() - investmentPeriod
+          );
+          const filteredData = jsonData.Sheet1.filter((entry) => {
+            const date = new Date(entry.Date);
+            // Ensure the date is valid, is the first of the month, and falls within the investment period
+            return (
+              !isNaN(date.getTime()) &&
+              date.getDate() === 1 &&
+              date >= periodStartDate
+            );
+          });
+
+          // console.log("Filter data", filteredData); // Log the filtered data to the console
+          setStartOfMonthData(filteredData);
+        }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-  
+
     fetchData();
   }, [investmentPeriod]); // Add investmentPeriod to the dependency array
-  
 
   useEffect(() => {
     if (startOfMonthData.length > 0) {
-        calculatePresentInvestmentValue();
+      calculatePresentInvestmentValue();
     }
-  }, [investmentAmount, investmentFrequency, investmentPeriod, startOfMonthData]);
+  }, [
+    investmentAmount,
+    investmentFrequency,
+    investmentPeriod,
+    startOfMonthData,
+  ]);
 
   const calculatePresentInvestmentValue = () => {
-    console.log(investmentPeriod)
-    const months = investmentFrequency === "monthly" ? investmentPeriod * 12 : investmentPeriod;
-    // console.log(months)
-    let totalInvestmentValue = 0;
-  
-    for (let i = 0; i < months && i < startOfMonthData.length; i++) {
-        console.log(startOfMonthData)
-      const volAdjustedMomentum = startOfMonthData[i]["Vol Adjusted Momentum"];
-      console.log("monthly data",volAdjustedMomentum)
-      const shares = investmentAmount / volAdjustedMomentum;
-      console.log("shares",shares)
-      const investmentValue = shares * volAdjustedMomentum;
-      totalInvestmentValue += investmentValue; // This line calculates the current value of the investment made each month or year.
-    console.log(totalInvestmentValue);
-    }  
-    setFutureInvestmentValue(totalInvestmentValue.toFixed(2));
+    if (investmentFrequency === "one-time") {
+      const investmentDate = new Date(data[data.length - 1]["Date"]);
+      investmentDate.setFullYear(
+        investmentDate.getFullYear() - investmentPeriod
+      );
+      console.log(investmentDate);
+
+      const investmentDateFormatted =
+        (investmentDate.getMonth() + 1).toString().padStart(2, "0") +
+        "/" +
+        investmentDate.getDate().toString().padStart(2, "0") +
+        "/" +
+        investmentDate.getFullYear();
+
+      const investmentEntry = data.find((entry) => {
+        return entry.Date === investmentDateFormatted;
+      });
+
+      console.log(investmentEntry);
+
+      if (investmentEntry) {
+        const volAdjustedMomentum = investmentEntry["Vol Adjusted Momentum"];
+        const shares = investmentAmount / volAdjustedMomentum;
+        const currentPrice = data[data.length - 1]["Vol Adjusted Momentum"];
+        const futureValue = shares * currentPrice;
+        setFutureInvestmentValue(futureValue.toFixed(2));
+      } else {
+        console.log("No exact match for investment date found in data.");
+        // Optionally, set future investment value to zero or handle this case appropriately
+        setFutureInvestmentValue(0);
+      }
+    } else {
+      // Handle other investment frequencies (monthly, yearly)
+      const months =
+        investmentFrequency === "monthly"
+          ? investmentPeriod * 12
+          : investmentPeriod;
+      let totalShares = 0;
+      let totalInvestmentValue = 0;
+      for (let i = 0; i < months && i < startOfMonthData.length; i++) {
+        const volAdjustedMomentum =
+          startOfMonthData[i]["Vol Adjusted Momentum"];
+        const shares = investmentAmount / volAdjustedMomentum;
+        totalShares += shares;
+        totalInvestmentValue += shares * volAdjustedMomentum; // Calculate the total investment value
+      }
+      const finalPrice =
+        totalShares * data[data.length - 1]["Vol Adjusted Momentum"];
+      setFutureInvestmentValue(finalPrice.toFixed(2));
+    }
   };
-  
 
   const handleInvestmentAmountChange = (e) => {
     setInvestmentAmount(parseInt(e.target.value));
@@ -72,11 +120,31 @@ const Calculator = () => {
   };
 
   const handleInvestmentPeriodChange = (action) => {
-    setInvestmentPeriod(prev => action === "increment" ? prev + 1 : Math.max(1, prev - 1));
+    setInvestmentPeriod((prev) =>
+      action === "increment" ? prev + 1 : Math.max(1, prev - 1)
+    );
+  };
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  const formatInvestmentPeriod = () => {
+    switch (investmentFrequency) {
+      case "monthly":
+        return `₹${investmentAmount} every month for ${investmentPeriod} years`;
+      case "yearly":
+        return `₹${investmentAmount} every year for ${investmentPeriod} years`;
+      case "one-time":
+        return `₹${investmentAmount} ${investmentPeriod} years ago`;
+      default:
+        return `₹${investmentAmount} ${investmentPeriod} years ago`;
+    }
   };
 
   return (
-    <div className="w-full md:w-1/4 lg:w-2/6 flex flex-col space-y-7 border bg-white rounded-md p-4">
+    <>
+      <h1 className="text-xl font-black">Calculate & Decide</h1>
       <div className="flex justify-between items-center">
         <p className="text-gray-500">Investment Amount (₹)</p>
         <input
@@ -91,24 +159,30 @@ const Calculator = () => {
       <p className="text-gray-500">Investment Frequency</p>
       <div className="flex justify-between items-center">
         <button
-          className={`px-10 py-2 text-center border rounded-md ${
-            investmentFrequency === "monthly" ? "bg-gray-300" : "bg-gray-100"
+          className={`px-8 py-2 text-center rounded-md ${
+            investmentFrequency === "monthly"
+              ? "bg-[#151e28] text-white"
+              : "bg-white  border border-gray-300 text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("monthly")}
         >
           Monthly
         </button>
         <button
-          className={`px-10 py-2 text-center border rounded-md ${
-            investmentFrequency === "yearly" ? "bg-gray-300" : "bg-gray-100"
+          className={`px-8 py-2 text-center border rounded-md ${
+            investmentFrequency === "yearly"
+              ? "bg-[#151e28] text-white"
+              : "bg-white  border border-gray-300 text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("yearly")}
         >
           Yearly
         </button>
         <button
-          className={`px-10 py-2 text-center border rounded-md ${
-            investmentFrequency === "one-time" ? "bg-gray-300" : "bg-gray-100"
+          className={`px-8 py-2 text-center border rounded-md ${
+            investmentFrequency === "one-time"
+              ? "bg-[#151e28] text-white"
+              : "bg-white  border border-gray-300 text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("one-time")}
         >
@@ -143,13 +217,17 @@ const Calculator = () => {
           </div>
         </div>
       </div>
-      <div className="text-center px-10 py-3 border">
+      <p className="text-xs text-gray-400 text-center">
+        Figures are calculated based on historical returns
+      </p>
+      <div className="text-center px-10 py-3 border rounded-lg">
         <FontAwesomeIcon icon={faChartLine} />
-        <p className="mb-3">
-            If you had invested <strong>₹{investmentAmount} {investmentPeriod} years ago </strong>, your investments would be worth 
+        <p className="mb-3 text-xs text-gray-400">
+          If you had invested <strong>{formatInvestmentPeriod()}</strong>, your
+          investments would be worth
         </p>
-        <p>
-          <strong>₹{futureInvestmentValue}</strong>
+        <p className="text-lg">
+          <strong>₹{numberWithCommas(futureInvestmentValue)}</strong>
         </p>
       </div>
       <div className="text-center">
@@ -157,7 +235,7 @@ const Calculator = () => {
           Invest Now
         </button>
       </div>
-    </div>
+    </>
   );
 };
 

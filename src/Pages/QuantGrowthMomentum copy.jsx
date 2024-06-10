@@ -76,11 +76,10 @@ const QuantGrowthMomentum = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [data]);
 
-
   return (
     <div>
       {/* Responsive Banner */}
-      <div className="bg-gray-800 py-12 md:py-20 inter-font">
+      <div className=" bg-[#151e28]py-12 md:py-20 inter-font">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
             <span className="block">Welcome to</span>

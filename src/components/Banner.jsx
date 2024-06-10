@@ -7,7 +7,7 @@ import {
   faFacebookF,
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
-import { BackgroundBeams } from "./ui/background-beams";
+import { BackgroundBeams } from "./ui/background-beams copy";
 import { BackgroundSVG } from "./ui/Background-SVG";
 
 const Banner = () => {
@@ -54,13 +54,11 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="flex flex-col bg-[#171E27] rounded-b-[3rem] md:flex-row items-center graphik-font-regular h-screen justify-center text-center px-4 md:px-10 py-10">
+    <div className="flex flex-col bg-[#151e28] rounded-b-[3rem] md:flex-row items-center graphik-font-regular  justify-center text-center px-4 md:px-10 py-12 md:py-36">
       <div className="w-full md:w-3/4 z-10 md:px-20 mb-8 md:mb-0">
-        <h1 className="text-3xl text-white md:text-6xl  font-black graphik-font-semibold">
+        <h1 className="text-3xl text-white md:text-5xl   graphik-font-semibold ">
           The best investments are <br /> {"{"}
-          <span className="text-red-500 codingFont font-black">
-            {currentText}
-          </span>
+          <span className="text-red-500 codingFont ">{currentText}</span>
           {"}"}
         </h1>
         <p className="text-lg md:text-2xl  text-gray-400 font-medium mt-4 md:mt-10">
@@ -68,9 +66,8 @@ const Banner = () => {
           informed and strategic investment decisions.
         </p>
       </div>
-      <div className="absolute inset-0 flex items-center justify-center">
-        <BackgroundSVG />
-      </div>
+      <BackgroundSVG />
+      <div className="absolute inset-0 flex items-center justify-center"></div>
     </div>
   );
 };

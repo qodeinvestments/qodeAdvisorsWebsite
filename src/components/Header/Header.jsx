@@ -53,9 +53,13 @@ const Header = () => {
     },
     {
       name: "Blogs",
-      slug: "#",
+      slug: "/blogs",
       icon: faFileAlt,
       sublinks: [
+        {
+          name: "Our Blogs",
+          slug: "/blogs",
+        },
         {
           name: "Weekly Newsletter",
           slug: "/weekly-newsletter",

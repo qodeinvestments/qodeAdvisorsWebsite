@@ -8,6 +8,8 @@ import App from "./App";
 import MomentumTabs from "./Pages/QuantGrowthMomentum.jsx";
 import OurTeam from "./Pages/OurTeam.jsx";
 import OurBeliefs from "./Pages/OurBeliefs.jsx";
+import Blogs from "./Pages/Blogs.jsx";
+import BlogDetails from "./Pages/BlogDetails.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +31,14 @@ const router = createBrowserRouter([
       {
         path: "/about-us/beliefs-and-values",
         element: <OurBeliefs />,
+      },
+      {
+        path: "/blogs",
+        element: <Blogs />,
+      },
+      {
+        path: "/blogs/:slug", // This route captures the postId parameter
+        element: <BlogDetails />,
       },
     ],
   },

@@ -9,7 +9,7 @@ const Blogs = () => {
           Recent Blogs
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 graphik-font-regular">
-          <div className="bg-white overflow-hidden transition-transform duration-300 hover:scale-105 relative">
+          <div className=" overflow-hidden transition-transform duration-300 hover:scale-105 relative">
             <div className="p-6">
               <span className="text-red-500 font-bold text-sm">Blog</span>
               <h3 className="text-xl font-semibold text-[#151E28] typewriter-font mb-2 relative">
@@ -27,13 +27,13 @@ const Blogs = () => {
               </p>
               <a
                 href="/"
-                className="text-red-500 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute bottom-6  arrow-link text-lg"
+                className="text-red-500 transition-opacity duration-300  absolute bottom-6  arrow-link text-lg"
               >
                 View details
               </a>
             </div>
           </div>
-          <div className="bg-white overflow-hidden transition-transform duration-300 hover:scale-105 relative">
+          <div className="overflow-hidden transition-transform duration-300 hover:scale-105 relative">
             <div className="p-6">
               <span className="text-red-500 font-bold text-sm">Blog</span>
               <h3 className="text-xl font-semibold text-[#151E28] typewriter-font mb-2 relative">
@@ -51,13 +51,13 @@ const Blogs = () => {
               </p>
               <a
                 href="/"
-                className="text-red-500 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute bottom-6  arrow-link text-lg"
+                className="text-red-500 transition-opacity duration-300  absolute bottom-6  arrow-link text-lg"
               >
                 View details
               </a>
             </div>
           </div>
-          <div className="bg-white overflow-hidden transition-transform duration-300 hover:scale-105 relative">
+          <div className=" overflow-hidden transition-transform duration-300 hover:scale-105 relative">
             <div className="p-6">
               <span className="text-red-500 font-bold text-sm">Blog</span>
               <h3 className="text-xl font-semibold text-[#151E28] typewriter-font mb-2 relative">
@@ -75,7 +75,7 @@ const Blogs = () => {
               </p>
               <a
                 href="/"
-                className="text-red-500 transition-opacity duration-300 opacity-0 hover:opacity-100 absolute bottom-6  arrow-link text-lg"
+                className="text-red-500 transition-opacity duration-300 absolute bottom-6  arrow-link text-lg"
               >
                 View details
               </a>

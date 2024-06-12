@@ -4,12 +4,13 @@ import { PortableText } from "@portabletext/react";
 import imageUrlBuilder from "@sanity/image-url";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faRss } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faL, faRss } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookF,
   faLinkedinIn,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import { CustomSpinner } from "../components/Spinner";
 
 const client = createClient({
   projectId: "8pot9lfd",
@@ -24,6 +25,8 @@ function urlFor(source) {
 
 const BlogDetails = () => {
   const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true); // Add loading state
+
   const { slug } = useParams();
   useEffect(() => {
     const fetchPostDetails = async () => {
@@ -41,13 +44,14 @@ const BlogDetails = () => {
       const params = { slug };
       const result = await client.fetch(query, params);
       setPost(result);
+      setLoading(false)
     };
 
     fetchPostDetails();
   }, [slug]);
 
-  if (!post) {
-    return <div className="text-center">Loading...</div>;
+  if (loading) {
+    return <CustomSpinner/>;
   }
 
   function formatDate(dateString) {

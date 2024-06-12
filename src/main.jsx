@@ -16,11 +16,16 @@ import Blogs from "./Pages/Blogs.jsx";
 import BlogDetails from "./Pages/BlogDetails.jsx";
 import QuantInvesting from "./Pages/QuantInvesting.jsx";
 import QuantInvesting101 from "./Pages/QuantInvesting101.jsx";
+import WhatIsQuantInvesting from "./Pages/QuantInvesting101/WhatIsQuantInvesting.jsx";
+import HowItWorks from "./Pages/QuantInvesting101/HowItWorks.jsx";
+import QuantitativeStrategies from "./Pages/QuantInvesting101/QuantitativeStrategies.jsx";
+import ErrorPage from "./Pages/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: "/",
@@ -47,8 +52,22 @@ const router = createBrowserRouter([
         element: <BlogDetails />,
       },
       {
-        path: "/docs/quant-investing-101/*", // Parent path for Quant Investing 101 with sub-routes
+        path: "/docs/quant-investing-101", // Parent path for Quant Investing 101 with sub-routes
         element: <QuantInvesting101 />,
+        children: [
+          {
+            path: "introduction/what-is-quant-investing",
+            element: <WhatIsQuantInvesting/>
+          },
+          {
+            path: "introduction/how-it-works",
+            element: <HowItWorks/>,
+          },
+          {
+            path : "introduction/quantitative-strategies",
+            element : <QuantitativeStrategies />
+          },
+        ],
       },
     ],
   },

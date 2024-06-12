@@ -5,6 +5,7 @@ import sanityClient, { createClient } from "@sanity/client";
 import BlockContent from "@sanity/block-content-to-react";
 import imageUrlBuilder from "@sanity/image-url";
 import { Spinner } from "@material-tailwind/react";
+import { CustomSpinner } from "../components/Spinner";
 
 // ... (Client and urlFor function setup)
 const client = createClient({
@@ -35,6 +36,7 @@ const serializers = {
 
 const Blogs = () => {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     client
@@ -49,12 +51,20 @@ const Blogs = () => {
           publishedAt
         }`
       )
-      .then((data) => setPosts(data))
-      .catch(console.error);
+      .then((data) => {
+        setPosts(data);
+        setLoading(false); // Set loading to false after data is fetched
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false); // Set loading to false even if there is an error
+      });
   }, []);
-  if (!posts) {
-    return <Spinner className="h-16 w-16 text-gray-900/50" />;
+
+  if (loading) {
+    return <CustomSpinner/>;
   }
+
   return (
     <GrayContainer>
       <div className=" graphik-font-regular py-12 md:py-32">

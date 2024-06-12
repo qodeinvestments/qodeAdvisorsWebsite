@@ -11,7 +11,19 @@
       @apply border-l-4 border-gray-200 pl-4 italic; /* Styling for blockquotes */
     }
   }
-
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .spinner {
+    @apply inline-block w-16 h-16 border-4 border-solid border-current border-r-transparent rounded-full animate-spin;
+    animation: spin 1s linear infinite;
+  }
 @font-face {
     font-family: 'Graphik-Semibold';
     src: url('./assets/fonts/Graphik-Semibold.ttf') format('truetype');

@@ -1,7 +1,6 @@
 import React from "react";
-import { NavLink, Routes, Route, useLocation } from "react-router-dom";
+import { NavLink, Routes, Route, useLocation, Outlet } from "react-router-dom";
 import { Container } from "../components";
-import AppRoutes from "./QuantInvesting101/Routes";
 import "./Pages.css";
 const QuantInvesting101 = () => {
   return (
@@ -186,7 +185,7 @@ const QuantInvesting101 = () => {
           </nav>
         </div>
         <div className="flex-1  p-4">
-          <AppRoutes />
+          <Outlet />
         </div>
       </div>
     </>

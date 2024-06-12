@@ -27,7 +27,7 @@ const Header = () => {
       sublinks: [
         {
           name: "Quant Investing 101",
-          slug: "/docs/quant-investing-101",
+          slug: "/docs/quant-investing-101/introduction/what-is-quant-investing",
         },
         {
           name: "The Quant Growth",

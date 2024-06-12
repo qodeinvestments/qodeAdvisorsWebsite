@@ -1,0 +1,35 @@
+/* Styles for main link containers */
+.nav-link-container, .nav-link-ladder {
+    position: relative;
+    padding-left: 0.21rem;
+  }
+  
+  /* Vertical line for main links */
+  .nav-link-container::before {
+    content: "";
+    position: absolute;
+    left: 0.85rem;
+    top: 25px;
+    bottom: 0;
+    height: 75px;
+    width: 2px;
+    background-color: #cbd5e0;
+  }
+  
+  /* Styles for sub-link ladders (sub-links) */
+  .nav-link-ladder {
+    position: relative;
+    padding-left: 0.61rem;
+  }
+  
+  /* Horizontal line connecting main link to sub-links */
+  .nav-link-ladder::before {
+    content: "";
+    position: absolute;
+    top: 50%; /* Center vertically in the item */
+    left: -0.35rem; /* Starts to the left of the item */
+    width: 1rem; /* Length of the horizontal line */
+    height: 2px;
+    background-color: #cbd5e0;
+  }
+  

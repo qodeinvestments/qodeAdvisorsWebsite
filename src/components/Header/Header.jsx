@@ -27,11 +27,11 @@ const Header = () => {
       sublinks: [
         {
           name: "Quant Investing 101",
-          slug: "/quant-investing-101",
+          slug: "/docs/quant-investing-101",
         },
         {
           name: "The Quant Growth",
-          slug: "/quant-growth",
+          slug: "/docs/quant-growth",
         },
       ],
     },

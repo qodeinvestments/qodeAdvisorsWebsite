@@ -4,6 +4,7 @@ import { Container } from "../components";
 import sanityClient, { createClient } from "@sanity/client";
 import BlockContent from "@sanity/block-content-to-react";
 import imageUrlBuilder from "@sanity/image-url";
+import { Spinner } from "@material-tailwind/react";
 
 const client = createClient({
   projectId: "8pot9lfd",
@@ -50,8 +51,11 @@ const Blogs = () => {
       .catch(console.error);
   }, []);
 
+  if (!posts) {
+    return <Spinner className="h-16 w-16 text-gray-900/50" />;
+  }
   return (
-    <div>
+    <>
       <div className="bg-gradient-to-r from-[#171E27] to-[#2C3E50] rounded-b-[3rem] py-12 md:py-52">
         <Container>
           <div className="flex flex-col items-start">
@@ -86,7 +90,7 @@ const Blogs = () => {
           ))}
         </div>
       </Container>
-    </div>
+    </>
   );
 };
 

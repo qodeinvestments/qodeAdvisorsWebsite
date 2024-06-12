@@ -23,7 +23,6 @@ const Header = () => {
     },
     {
       name: "Quant Investing",
-      slug: "#",
       icon: faChartLine,
       sublinks: [
         {
@@ -38,7 +37,6 @@ const Header = () => {
     },
     {
       name: "Strategies",
-      slug: "#",
       icon: faFileAlt,
       sublinks: [
         {
@@ -109,10 +107,14 @@ const Header = () => {
         <div className="hidden md:flex space-x-4 items-center">
           {navItems.map((item) => (
             <div key={item.name} className="relative group">
-              <Link className="text-white hover:bg-gray-700 hover:text-white px-4 py-3 rounded-lg text-sm font-medium flex items-center ">
+              <Link
+                to={item.slug ? item.slug : "#"}
+                className="text-white hover:bg-gray-700 hover:text-white px-4 py-3 rounded-lg text-sm font-medium flex items-center"
+              >
                 <FontAwesomeIcon icon={item.icon} className="mr-2" />
                 {item.name}
               </Link>
+
               {item.sublinks && item.sublinks.length > 0 && (
                 <ul className="absolute top-full w-72 left-0 right-0 mx-auto hidden group-hover:block bg-[#1a2635] text-white shadow-lg rounded-md">
                   {item.sublinks.map((sublink) => (

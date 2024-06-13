@@ -41,28 +41,28 @@ const Blogs = () => {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "post"]{
+        `*[_type == "post"] | order(publishedAt desc) {
           title,
           body,
           mainImage,
           "readTime": readTime,
           "detailLink": slug.current,
-          author->{ name,bio,"authorImage": image.asset->url },
+          author->{ name, bio, "authorImage": image.asset->url },
           publishedAt
         }`
       )
       .then((data) => {
         setPosts(data);
-        setLoading(false); // Set loading to false after data is fetched
+        setLoading(false);
       })
       .catch((error) => {
         console.error(error);
-        setLoading(false); // Set loading to false even if there is an error
+        setLoading(false);
       });
   }, []);
 
   if (loading) {
-    return <CustomSpinner/>;
+    return <CustomSpinner />;
   }
 
   return (
@@ -70,7 +70,7 @@ const Blogs = () => {
       <div className=" graphik-font-regular py-12 md:py-32">
         <Container>
           <div className="flex flex-col items-center">
-            <h1 className="text-[#151E28] graphik-font-medium text-4xl md:text-6xl font-bold mb-6 text-center">
+            <h1 className="text-[#151E28] graphik-font-medium text-4xl md:text-4xl font-bold mb-6 text-center">
               Welcome to Our Blog
             </h1>
             <p className="text-gray-600 text-lg md:text-xl max-w-3xl text-center">
@@ -81,7 +81,7 @@ const Blogs = () => {
         </Container>
       </div>
       <Container>
-        <div className=" mb-24 px-4 md:px-52 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className=" mb-24 px-4 md:px-52 grid grid-cols-1 md:grid-cols-2 gap-10 lg:grid-cols-3">
           {posts.map((post) => {
             const authorBioText = post.author.bio[0].children[0].text;
             return (

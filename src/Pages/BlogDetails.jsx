@@ -44,14 +44,14 @@ const BlogDetails = () => {
       const params = { slug };
       const result = await client.fetch(query, params);
       setPost(result);
-      setLoading(false)
+      setLoading(false);
     };
 
     fetchPostDetails();
   }, [slug]);
 
   if (loading) {
-    return <CustomSpinner/>;
+    return <CustomSpinner />;
   }
 
   function formatDate(dateString) {
@@ -83,17 +83,17 @@ const BlogDetails = () => {
           components={{
             block: {
               h1: ({ children }) => (
-                <h1 className="text-4xl font-bold my-3 text-blue-600">
+                <h1 className="text-4xl font-bold my-3 text-[#151e29]">
                   {children}
                 </h1>
               ),
               h2: ({ children }) => (
-                <h2 className="text-3xl font-bold my-2 text-blue-500">
+                <h2 className="text-3xl font-bold my-2 text-[#151e29]">
                   {children}
                 </h2>
               ),
               h3: ({ children }) => (
-                <h3 className="text-2xl font-semibold my-1 text-blue-400">
+                <h3 className="text-2xl font-semibold my-1 text-[#151e29]">
                   {children}
                 </h3>
               ),
@@ -101,7 +101,7 @@ const BlogDetails = () => {
                 <p className="text-md leading-relaxed mb-2">{children}</p>
               ),
               blockquote: ({ children }) => (
-                <blockquote className="italic border-l-4 border-purple-500 pl-4 my-4">
+                <blockquote className="italic border-l-4 border-gray-300 pl-4 my-4">
                   {children}
                 </blockquote>
               ),

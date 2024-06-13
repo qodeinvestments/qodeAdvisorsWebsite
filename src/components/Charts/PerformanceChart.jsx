@@ -301,7 +301,7 @@ const PerformanceChart = () => {
                 <button
                   key={range}
                   className={`bg-white py-1 px-3 text-sm rounded ${
-                    activeButton === range ? "bg-[#151e28f6] text-white" : ""
+                    activeButton === range ? "bg-[#1e2a3a] text-white" : ""
                   }`}
                   onClick={() => {
                     setTimeRange(range);
@@ -330,7 +330,7 @@ const PerformanceChart = () => {
 
               <button
                 className={`bg-white py-1 px-2 text-sm rounded ${
-                  activeButton === "ALL" ? "bg-[#151e28] text-white" : ""
+                  activeButton === "ALL" ? "bg-[#1e2a38] text-white" : ""
                 }`}
                 onClick={() => {
                   setTimeRange("ALL");

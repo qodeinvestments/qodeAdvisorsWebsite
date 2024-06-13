@@ -20,12 +20,15 @@ import WhatIsQuantInvesting from "./Pages/QuantInvesting101/WhatIsQuantInvesting
 import HowItWorks from "./Pages/QuantInvesting101/HowItWorks.jsx";
 import QuantitativeStrategies from "./Pages/QuantInvesting101/QuantitativeStrategies.jsx";
 import ErrorPage from "./Pages/ErrorPage.jsx";
+import BenefitsAndRisk from "./Pages/QuantInvesting101/BenefitsAndRisk.jsx";
+import QuantGrowthFund from "./Pages/QuantGrowthFund.jsx";
+import TheQuantGrowth from "./Pages/TheQuantGrowth.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -34,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/strategies/quant-growth-momentum",
         element: <MomentumTabs />,
+      },
+      {
+        path: "/strategies/quant-growth-fund",
+        element: <QuantGrowthFund />,
       },
       {
         path: "/about-us/our-team",
@@ -57,17 +64,26 @@ const router = createBrowserRouter([
         children: [
           {
             path: "introduction/what-is-quant-investing",
-            element: <WhatIsQuantInvesting/>
+            element: <WhatIsQuantInvesting />,
           },
           {
             path: "introduction/how-it-works",
-            element: <HowItWorks/>,
+            element: <HowItWorks />,
           },
           {
-            path : "introduction/quantitative-strategies",
-            element : <QuantitativeStrategies />
+            path: "introduction/quantitative-strategies",
+            element: <QuantitativeStrategies />,
+          },
+          {
+            path: "introduction/benefits-and-risks",
+            element: <BenefitsAndRisk />,
           },
         ],
+      },
+      {
+        path: "/docs/the-quant-growth",
+        element: <TheQuantGrowth />,
+        children: [],
       },
     ],
   },

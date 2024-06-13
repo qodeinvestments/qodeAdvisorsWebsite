@@ -179,3 +179,176 @@ input[type='number']::-webkit-inner-spin-button,
     text-overflow: ellipsis;
   }
   
+
+  .arrow-link {
+    position: relative;
+    color: inherit; 
+    text-decoration: none; 
+    transition: color 0.3s ease; 
+    padding-right: 20px; 
+  }
+  
+  .arrow-link::after {
+    content: '→'; /* Arrow character */
+    position: absolute;
+    opacity: 0;
+    right: 0; /* Position it to the far right of the padding */
+    top: 50%;
+    font-size: 1.8rem;
+    transform: translateY(-50%); /* Vertically center the arrow */
+    transition: right 0.3s ease, opacity 0.3s ease; /* Smooth transition for arrow movement and appearance */
+    color: inherit; /* Maintain the inherited color */
+  }
+  
+  .arrow-link::before {
+    content: '';
+    position: absolute;
+    bottom: -4px; /* Add space between the text and underline */
+    left: 0;
+    width: 90%; /* Match the width of the text */
+    height: 2px;
+    background-color: red;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease;
+  }
+  
+  .arrow-link:hover {
+    color: red; /* Change the color to red on hover */
+  }
+  
+  .arrow-link:hover::after {
+    right: -10px; /* Move the arrow 20px to the right of its initial position */
+    opacity: 1; /* Make the arrow visible */
+  }
+  
+  .arrow-link:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+  
+
+  /* Add the crayon effect underline */
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #f00; /* Red color */
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+  
+  /* Show the underline on hover */
+  .bg-white:hover .underline {
+    transform: scaleX(1);
+  }
+  
+  /* Adjust opacity of "Read More" text on hover */
+  .bg-white:hover a {
+    opacity: 1;
+  }
+
+  
+  .tilt-effect {
+    transition: transform 0.3s ease-out;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+  
+  .tilt-effect:hover {
+    transform: rotateX(15deg) rotateY(15deg);
+  }
+
+
+  .half-underline::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 2px;
+    background-color: currentColor; /* Use the same color as the text */
+    margin: 0.5rem auto 0; /* Adjusts the space between the text and the underline */
+  }
+  
+
+  .dropdown-animate {
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+ }
+
+ .dropdown-slide-from-left {
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-out;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+  border-radius: 12px; /* Rounded corners for a card-like look */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle white border */
+  backdrop-filter: blur(10px); /* Blur the background under the glass effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  padding: 12px 16px; /* Increased padding for a larger area */
+  display: block; /* Makes the link fill the card */
+  width: auto; /* Adjust width as needed */
+  text-align: center; /* Center text within the card */
+  margin: 5px; /* Space between cards */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.2); /* Slightly more opaque on hover */
+  border-color: rgba(255, 255, 255, 0.3); /* Brighter border on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+.dropdown-container {
+  position: relative; /* Needed for absolute positioning of submenu */
+  display: inline-block; /* Align with other nav items */
+}
+
+.dropdown-content {
+  display: none; /* Hide by default */
+  position: absolute;
+  background-color: #f9f9f9; /* Light background for the dropdown */
+  min-width: 160px; /* Set a minimum width */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Shadow for dropdown */
+  z-index: 1; /* Ensure it's on top of other content */
+  flex-direction: column; /* Stack items vertically */
+  border-radius: 5px; /* Rounded corners for dropdown */
+}
+
+.dropdown-container:hover .dropdown-content {
+  display: flex; /* Display on hover */
+}
+
+.dropdown-item {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block; /* Dropdown items fill the container */
+  text-align: left; /* Align text to the left */
+}
+
+.dropdown-item:hover {
+  background-color: #ddd; /* Light grey background on hover */
+}
+
+.icon-left {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+
+input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .custom-number-input input:focus {
+    outline: none !important;
+  }
+
+  .custom-number-input button:focus {
+    outline: none !important;
+  }

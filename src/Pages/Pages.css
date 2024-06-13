@@ -9,8 +9,8 @@
   content: "";
   position: absolute;
   left: 1.4rem; /* Adjusted to position consistently */
-  top: 1.4rem;
-  bottom: 0.58rem; /* Extend the line downwards */
+  top: 1.2rem;
+  bottom: 0.6rem; /* Extend the line downwards */
   width: 2px;
   background-color: #cbd5e0;
 }
@@ -32,3 +32,22 @@
   background-color: #cbd5e0;
 }
 
+
+
+.dot::before {
+  content: "";
+  height: 6px;
+  width: 6px;
+  background-color: #151e29; /* Match your active link color or any color you prefer */
+  border-radius: 50%;
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  /* display: inline-block; */
+}
+
+
+.sidebar{
+  max-height: calc(100vh - 160px); /* Adjust 160px to the actual height of your footer */
+    overflow-y: auto;
+}

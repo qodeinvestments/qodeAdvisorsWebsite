@@ -31,7 +31,7 @@ const Header = () => {
         },
         {
           name: "The Quant Growth",
-          slug: "/docs/quant-growth",
+          slug: "/docs/the-quant-growth",
         },
       ],
     },

@@ -10,7 +10,7 @@ import logo from "../../assets/companyLogo/Qode.png";
 
 const Footer = () => {
   return (
-    <footer className=" bg-[#151e28] py-12 inter-font">
+    <footer className=" bg-[#151e28] relative py-12 graphik-font-regular ">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-0">
           <div>

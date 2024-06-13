@@ -1,87 +1,108 @@
-import React from "react";
-import Container from "./container/Container";
+import React, { useEffect, useState } from "react";
+import BlogCard from "../components/BlogCard";
+import { Container } from "../components";
+import { Link } from "react-router-dom"; // Import Link for navigation
+import sanityClient, { createClient } from "@sanity/client";
+import BlockContent from "@sanity/block-content-to-react";
+import imageUrlBuilder from "@sanity/image-url";
+import { CustomSpinner } from "../components/Spinner";
+
+const client = createClient({
+  projectId: "8pot9lfd",
+  dataset: "production",
+  useCdn: true,
+});
+
+const builder = imageUrlBuilder(client);
+function urlFor(source) {
+  return builder.image(source);
+}
+
+const serializers = {
+  types: {
+    block: (props) => {
+      switch (props.node.style) {
+        case "h1":
+          return <h1>{props.children}</h1>;
+        case "h2":
+          return <h2>{props.children}</h2>;
+        default:
+          return <p>{props.children}</p>;
+      }
+    },
+  },
+};
 
 const Blogs = () => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    client
+      .fetch(
+        `*[_type == "post"] | order(publishedAt desc)[0...4] {
+          title,
+          body,
+          mainImage,
+          "readTime": readTime,
+          "detailLink": slug.current,
+          author->{ name,bio,"authorImage": image.asset->url },
+          publishedAt
+        }`
+      )
+      .then((data) => {
+        setPosts(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <CustomSpinner />;
+  }
+
   return (
     <Container>
-      <div className=" py-12">
+      <div className="py-12">
         <h2 className="text-3xl inter-font font-bold text-center text-[#151E28] mb-8">
           Recent Blogs
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 graphik-font-regular">
-          <div className=" overflow-hidden transition-transform duration-300 hover:scale-105 relative">
-            <div className="p-6">
-              <span className="text-red-500 font-bold text-sm">Blog</span>
-              <h3 className="text-xl font-semibold text-[#151E28] typewriter-font mb-2 relative">
-                The idea of Convergence Investing
-                <span className="underline"></span>{" "}
-                {/* Crayon effect underline */}
-              </h3>
-              <span className="text-gray-500 text-sm block mb-2">
-                &#x2022; 5 min read
-              </span>
-              <p className="text-gray-600 mb-10 grayscale transition-filter duration-300 hover:grayscale-0">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                euismod, nisl nec tincidunt lacinia, nisl nunc aliquam nisl,
-                eget aliquam nisl...
-              </p>
-              <a
-                href="/"
-                className="text-red-500 transition-opacity duration-300  absolute bottom-6  arrow-link text-lg"
-              >
-                View details
-              </a>
-            </div>
-          </div>
-          <div className="overflow-hidden transition-transform duration-300 hover:scale-105 relative">
-            <div className="p-6">
-              <span className="text-red-500 font-bold text-sm">Blog</span>
-              <h3 className="text-xl font-semibold text-[#151E28] typewriter-font mb-2 relative">
-                Identifying Brokers: Screening Process
-                <span className="underline"></span>{" "}
-                {/* Crayon effect underline */}
-              </h3>
-              <span className="text-gray-500 text-sm block mb-2 ">
-                &#x2022; 3 min read
-              </span>
-              <p className="text-gray-600 mb-10 grayscale transition-filter duration-300 hover:grayscale-0">
-                In our recent read of “What i learned about investing from
-                Darwin”, Pulak prasad talks about the idea of convergence
-                investing. We like the way he talks about it and ....
-              </p>
-              <a
-                href="/"
-                className="text-red-500 transition-opacity duration-300  absolute bottom-6  arrow-link text-lg"
-              >
-                View details
-              </a>
-            </div>
-          </div>
-          <div className=" overflow-hidden transition-transform duration-300 hover:scale-105 relative">
-            <div className="p-6">
-              <span className="text-red-500 font-bold text-sm">Blog</span>
-              <h3 className="text-xl font-semibold text-[#151E28] typewriter-font mb-2 relative">
-                Angel One and the rise of options trading
-                <span className="underline"></span>{" "}
-                {/* Crayon effect underline */}
-              </h3>
-              <span className="text-gray-500 text-sm block mb-2">
-                &#x2022; 7 min read
-              </span>
-              <p className="text-gray-600 mb-10 grayscale transition-filter duration-300 hover:grayscale-0">
-                As a team, with our background in algo trading and Investing, we
-                have a good understanding of the broking industry and how the
-                inner workings of the business work...
-              </p>
-              <a
-                href="/"
-                className="text-red-500 transition-opacity duration-300 absolute bottom-6  arrow-link text-lg"
-              >
-                View details
-              </a>
-            </div>
-          </div>
-          {/* Repeat the same structure for other blogs */}
+        <div className="mb-8 px-4  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {posts.map((post) => {
+            const authorBioText = post.author.bio[0].children[0].text;
+            return (
+              <BlogCard
+                key={post.detailLink}
+                title={post.title}
+                summary={
+                  <BlockContent
+                    blocks={post.body}
+                    serializers={serializers}
+                    projectId="8pot9lfd"
+                    dataset="production"
+                  />
+                }
+                mainImage={urlFor(post.mainImage)}
+                readTime={post.readTime}
+                detailLink={`/blogs/${post.detailLink}`}
+                author={post.author}
+                authorImage={post.author.authorImage}
+                bio={authorBioText}
+                publishedAt={post.publishedAt}
+              />
+            );
+          })}
+        </div>
+        <div className="text-center">
+          <Link
+            to="/blogs"
+            className="text-white bg-[#151E28] hover:bg-[#0d1117] font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+          >
+            View All Blogs
+          </Link>
         </div>
       </div>
     </Container>

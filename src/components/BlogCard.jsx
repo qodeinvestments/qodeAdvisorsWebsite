@@ -14,12 +14,14 @@ function BlogCard({
 }) {
   function formatDate(dateString) {
     const date = new Date(dateString);
-    return date.toLocaleDateString("en-US", {
+    return date.toLocaleDateString("en-IN", {
       year: "numeric",
       month: "long",
       day: "numeric",
     });
   }
+
+  console.log(publishedAt);
 
   function calculateReadDuration(blocks, wordsPerMinute = 200) {
     if (!Array.isArray(blocks) || blocks.length === 0) {
@@ -65,34 +67,29 @@ function BlogCard({
 
   return (
     <>
-      <div className="overflow-hidden transition-transform duration-500  max-w-[300px] hover:shadow-lg bg-white graphik-font-regular hover:scale-105 rounded-md">
+      <div className="overflow-hidden transition-transform duration-500 max-w-[400px] hover:shadow-lg bg-white graphik-font-regular hover:scale-105 rounded-md">
         <Link to={`${detailLink}`}>
-          <div className="flex flex-col justify-between h-full">
+          <div className="flex flex-col justify-between h-full p-6">
             <div>
-              <div className="relative">
-                <img
-                  src={mainImage}
-                  alt={title}
-                  className="w-full h-48 md:h-48 object-cover"
-                />
-                <div className=""></div>
-              </div>
-              <div className="p-4">
-                <h3 className="text-xl  graphik-font-semibold font-bold text-[#151E28] mb-2">
-                  {title}
-                </h3>
-
-                <p className="text-gray-400 text-sm mt-2 mb-4 line-clamp-3">
-                  {summary}
-                </p>
-              </div>
+              <span className="text-red-500 font-bold text-sm">Blog</span>
+              <h3 className="text-xl font-semibold text-[#151E28] typewriter-font mb-2 relative">
+                {title}
+                <span className="underline"></span>
+              </h3>
+              <span className="text-gray-500 text-sm block mb-2">
+                &#x2022; {duration} read
+              </span>
+              <p className="text-gray-600 mb-10 grayscale transition-filter duration-300 hover:grayscale-0 line-clamp-3">
+                {summary}
+              </p>
             </div>
-            <div className="flex text-gray-400 px-4 items-center justify-between mb-4">
-              <div className="">
-                <span className="text-xs">
-                  <FontAwesomeIcon icon={faClock} /> &nbsp; {duration} read
-                </span>
-              </div>
+            <div className="flex text-gray-400 items-center justify-between">
+              <a
+                href={detailLink}
+                className="text-red-500 transition-opacity duration-300 opacity-0 hover:opacity-100 arrow-link text-sm"
+              >
+                View details
+              </a>
               <div>
                 <p className="text-xs">{formatDate(publishedAt)}</p>
               </div>

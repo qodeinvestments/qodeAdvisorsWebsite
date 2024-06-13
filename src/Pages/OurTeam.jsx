@@ -58,7 +58,7 @@ const OurTeam = () => {
 
   return (
     <Container>
-      <div className="container graphik-font-regular mx-auto py-8 px-4 mt-28">
+      <div className="container graphik-font-regular mx-auto py-8 px-28 mt-16">
         <h2 className="text-4xl inter-font font-bold text-center mb-6">
           Our Team
         </h2>
@@ -69,7 +69,7 @@ const OurTeam = () => {
           manage investments to maximize returns and minimize risks, ensuring
           comprehensive financial growth and security.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-32">
           {teamMembers.map((member, index) => (
             <TeamMemberCard key={index} member={member} />
           ))}
@@ -81,7 +81,7 @@ const OurTeam = () => {
 
 const TeamMemberCard = ({ member }) => {
   return (
-    <div className="bg-white shadow-md graphik-font-regular rounded-lg overflow-hidden">
+    <div className="bg-white shadow-md graphik-font-regular  rounded-lg overflow-hidden">
       <img
         src={member.image}
         alt={member.name}

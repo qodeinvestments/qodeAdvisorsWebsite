@@ -301,12 +301,11 @@ const PerformanceChart = () => {
                 <button
                   key={range}
                   className={`bg-white py-1 px-3 text-sm rounded ${
-                    activeButton === range ? "bg-[#151e28] text-white" : ""
+                    activeButton === range ? "bg-[#151e28f6] text-white" : ""
                   }`}
                   onClick={() => {
                     setTimeRange(range);
                     setActiveButton(range);
-                    // Optionally fetch data or reset dates based on range
                     if (range !== "ALL") {
                       setStartDate(null);
                       setEndDate(null);

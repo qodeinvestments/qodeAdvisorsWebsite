@@ -73,11 +73,11 @@ const BlogDetails = () => {
           {post.title}
         </h1>
 
-        <img
+        {/* <img
           src={urlFor(post.mainImage).url()}
           alt={post.title}
           className="w-full object-cover h-auto mb-8"
-        />
+        /> */}
         <PortableText
           value={post.body}
           components={{

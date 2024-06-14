@@ -231,7 +231,7 @@ const PerformanceChart = () => {
           name: "Drawdown",
           data: drawdown,
           color: "rgba(250, 65, 65)",
-          lineWidth: 0,
+          lineWidth: 1,
           marker: {
             enabled: false,
           },

@@ -11,6 +11,7 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { CustomSpinner } from "../components/Spinner";
+import ImageComponent from "../components/BlogImages";
 
 const client = createClient({
   projectId: "8pot9lfd",
@@ -45,7 +46,6 @@ const BlogDetails = () => {
       const result = await client.fetch(query, params);
       setPost(result);
       setLoading(false);
-      // console.log(post.body);
     };
 
     fetchPostDetails();
@@ -105,7 +105,9 @@ const BlogDetails = () => {
   }
 
   const duration = calculateReadDuration(post.body);
-  console.log(duration);
+  // console.log(duration);
+
+  console.log(post);
 
   return (
     <div className="mx-auto px-4 py-12  graphik-font-regular">
@@ -173,6 +175,9 @@ const BlogDetails = () => {
               checkmarks: ({ children }) => (
                 <li className="ml-2">✅ {children}</li>
               ),
+            },
+            types: {
+              // image: ImageComponent,
             },
           }}
         />

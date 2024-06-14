@@ -100,8 +100,8 @@ const Header = () => {
 
   return (
     <div className="shadow-lg graphik-font-regular fixed w-full bg-white z-20  top-0 text-white">
-      <div className="flex max-w-[100rem] justify-around mx-auto items-center h-16 px-10 ">
-        <div className="flex-grow">
+      <div className="flex max-w-[100rem] justify-center mx-auto items-center h-12 px-52 ">
+        <div className="mt-3">
           <img className="w-40" src={logo} alt="Company Logo" />
         </div>
         <div className="hidden md:flex space-x-6 items-center">
@@ -109,14 +109,13 @@ const Header = () => {
             <div key={item.name} className="relative group">
               <Link
                 to={item.slug ? item.slug : "#"}
-                className="text-[#000] hover:bg-white/10 px-4 py-3 rounded-lg text-base font-medium flex items-center transition duration-300"
+                className="text-[#000] hover:bg-white/10 px-4 py-2 rounded-lg text-sm  font-medium flex items-center transition duration-300"
               >
-                <FontAwesomeIcon icon={item.icon} className="mr-3 text-lg" />
                 {item.name}
               </Link>
 
               {item.sublinks && item.sublinks.length > 0 && (
-                <ul className="absolute top-full w-72 left-0 text-base right-0 mx-auto hidden group-hover:block bg-white text-[#000] rounded-md overflow-hidden">
+                <ul className="absolute top-full w-72 left-0 text-sm right-0 mx-auto hidden group-hover:block bg-white text-[#000] rounded-md overflow-hidden">
                   {item.sublinks.map((sublink) => (
                     <li
                       key={sublink.name}

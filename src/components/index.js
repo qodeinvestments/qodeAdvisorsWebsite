@@ -6,21 +6,21 @@ import WhatWeDo from "./WhatWeDo";
 import Blogs from "./Blogs";
 import InvestmentProcess from "./InvestmentProcess";
 import InvestmentStrategies from "./InvestmentStrategies";
-import OurFocus from "./Header/OurFocus";
+import OurFocus from "./OurFocus";
 import AreaChart from "./Charts/AreaChart";
-import './components.css'
+import "./components.css";
 import GrayContainer from "./container/GrayContainer";
 
 export {
-    Header,
-    Footer,
-    Banner,
-    Container,
-    WhatWeDo,
-    InvestmentProcess,
-    Blogs,
-    InvestmentStrategies,
-    OurFocus,
-    AreaChart,
-    GrayContainer
-}
+  Header,
+  Footer,
+  Banner,
+  Container,
+  WhatWeDo,
+  InvestmentProcess,
+  Blogs,
+  InvestmentStrategies,
+  OurFocus,
+  AreaChart,
+  GrayContainer,
+};

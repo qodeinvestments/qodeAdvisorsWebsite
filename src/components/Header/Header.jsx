@@ -99,28 +99,28 @@ const Header = () => {
   ];
 
   return (
-    <div className="shadow-lg graphik-font-regular fixed  w-full z-20 bg-[#151E28] top-0 text-white">
-      <div className="flex max-w-[100rem] justify-around mx-auto items-center h-16 px-56 shadow-md">
+    <div className="shadow-lg graphik-font-regular fixed w-full bg-white z-20  top-0 text-white">
+      <div className="flex max-w-[100rem] justify-around mx-auto items-center h-16 px-10 ">
         <div className="flex-grow">
-          <img className="w-32" src={logo} alt="Company Logo" />
+          <img className="w-40" src={logo} alt="Company Logo" />
         </div>
-        <div className="hidden md:flex space-x-4 items-center">
+        <div className="hidden md:flex space-x-6 items-center">
           {navItems.map((item) => (
             <div key={item.name} className="relative group">
               <Link
                 to={item.slug ? item.slug : "#"}
-                className="text-white hover:bg-gray-700 hover:text-white px-4 py-3 rounded-lg text-sm font-medium flex items-center"
+                className="text-[#000] hover:bg-white/10 px-4 py-3 rounded-lg text-base font-medium flex items-center transition duration-300"
               >
-                <FontAwesomeIcon icon={item.icon} className="mr-2" />
+                <FontAwesomeIcon icon={item.icon} className="mr-3 text-lg" />
                 {item.name}
               </Link>
 
               {item.sublinks && item.sublinks.length > 0 && (
-                <ul className="absolute top-full w-72 left-0 right-0 mx-auto hidden group-hover:block bg-[#1a2635] text-white shadow-lg rounded-md">
+                <ul className="absolute top-full w-72 left-0 text-base right-0 mx-auto hidden group-hover:block bg-white text-[#000] rounded-md overflow-hidden">
                   {item.sublinks.map((sublink) => (
                     <li
                       key={sublink.name}
-                      className="px-3 py-2  hover:bg-gray-900"
+                      className="px-4 py-3 hover:bg-[#efefef] hover:text-black transition duration-300"
                     >
                       <Link to={sublink.slug}>{sublink.name}</Link>
                     </li>
@@ -133,12 +133,12 @@ const Header = () => {
         <div className="md:hidden flex items-center">
           <button
             type="button"
-            className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-700"
+            className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white/10 transition duration-300"
             onClick={() => setIsNavOpen(!isNavOpen)}
           >
             <span className="sr-only">Open menu</span>
             <svg
-              className="h-6 w-6"
+              className="h-8 w-8"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
@@ -160,19 +160,19 @@ const Header = () => {
       {isNavOpen && (
         <div className="fixed inset-0 z-30 bg-gray-900 bg-opacity-50">
           <div
-            className={`fixed inset-y-0 right-0 z-20 w-64 bg-[#151E28] text-white transition-transform duration-300 transform ${
+            className={`fixed inset-y-0 right-0 z-20 w-80 bg-[#48B4EA] text-white transition-transform duration-300 transform ${
               isNavOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
-            <div className="flex items-center justify-between px-4 py-2">
+            <div className="flex items-center justify-between px-6 py-4">
               <button
                 type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-700"
+                className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white/10 transition duration-300"
                 onClick={() => setIsNavOpen(false)}
               >
                 <span className="sr-only">Close menu</span>
                 <svg
-                  className="h-6 w-6"
+                  className="h-8 w-8"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -188,22 +188,23 @@ const Header = () => {
                 </svg>
               </button>
             </div>
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="px-4 pt-2 pb-3 space-y-2">
               {navItems.map((item) => (
                 <div key={item.name}>
                   <Link
                     to={item.slug}
-                    className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700"
+                    className="block px-4 py-3 rounded-md text-lg font-medium hover:bg-white/10 transition duration-300"
                   >
+                    <FontAwesomeIcon icon={item.icon} className="mr-3" />
                     {item.name}
                   </Link>
                   {item.sublinks.length > 0 && (
-                    <ul className="pl-4">
+                    <ul className="pl-8 mt-1 space-y-1">
                       {item.sublinks.map((sublink) => (
                         <li key={sublink.name}>
                           <Link
                             to={sublink.slug}
-                            className="block px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-600"
+                            className="block px-4 py-2 rounded-md text-base font-medium hover:bg-white/10 transition duration-300"
                           >
                             {sublink.name}
                           </Link>

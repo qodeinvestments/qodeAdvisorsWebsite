@@ -1,6 +1,6 @@
 import React from "react";
-import quant from "../../assets/quant-model.png";
-import data from "../../assets/data.png";
+import quant from "../assets/quant-model.png";
+import data from "../assets/data.png";
 const OurFocus = () => {
   return (
     <div className="relative text-center graphik-font-regular bg-[#f8f9f9] sm:h-1/2 p-5 sm:px-52 mb-72 sm:pb-0 ">
@@ -8,8 +8,8 @@ const OurFocus = () => {
         Our Focus
       </p>
       <h2 className="text-4xl text-[#151E28] font-black mt-4">
-        We are <span className="text-red-600">committed</span> to make financial{" "}
-        <br /> investment more reliable
+        We are <span className="text-[#48B4EA]">committed</span> to make
+        financial <br /> investment more reliable
       </h2>
 
       {/* Card Container */}

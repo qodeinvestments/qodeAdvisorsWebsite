@@ -12,13 +12,13 @@ const QuantInvesting101 = () => {
               <li>
                 <div className="nav-link-container">
                   <p className="text-sm font-black">Introduction</p>
-                  <ul className="pl-4 mt-4 space-y-3">
+                  <ul className=" mt-4 space-y-3">
                     <li className="nav-link-ladder">
                       <NavLink
                         to="introduction/what-is-quant-investing"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-[#151e29] dot font-black rounded-md px-2 py-1"
+                            ? "  text-sm text-[#48B4EA] dot font-black rounded-md px-2 py-1"
                             : "text-gray-500 font-medium hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
                         }
                       >
@@ -36,7 +36,7 @@ const QuantInvesting101 = () => {
                         to="introduction/how-it-works"
                         className={({ isActive }) =>
                           isActive
-                            ? " text-sm text-[#151e29] dot font-black rounded-md px-2 py-1"
+                            ? " text-sm text-[#48B4EA] dot font-black rounded-md px-2 py-1"
                             : "text-gray-500 font-medium hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
                         }
                       >
@@ -48,7 +48,7 @@ const QuantInvesting101 = () => {
                         to="introduction/benefits-and-risks"
                         className={({ isActive }) =>
                           isActive
-                            ? " text-sm text-[#151e29] dot font-black rounded-md px-2 py-1"
+                            ? " text-sm text-[#48B4EA] dot font-black rounded-md px-2 py-1"
                             : "text-gray-500 font-medium hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
                         }
                       >
@@ -61,13 +61,13 @@ const QuantInvesting101 = () => {
               <li>
                 <div className="nav-link-container">
                   <p className="text-sm font-black">Quantitative Strategies </p>
-                  <ul className="pl-4 mt-4 space-y-3">
+                  <ul className=" mt-4 space-y-3">
                     <li className="nav-link-ladder">
                       <NavLink
                         to="quantitative-strategies/trend-following"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-[#151e29] dot font-black rounded-md px-2 py-1"
+                            ? "  text-sm text-[#48B4EA] dot font-black rounded-md px-2 py-1"
                             : "text-gray-500 font-medium hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
                         }
                       >
@@ -79,7 +79,7 @@ const QuantInvesting101 = () => {
                         to="quantitative-strategies/mean-reversion"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-[#151e29] dot font-black rounded-md px-2 py-1"
+                            ? "  text-sm text-[#48B4EA] dot font-black rounded-md px-2 py-1"
                             : "text-gray-500 font-medium hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
                         }
                       >
@@ -91,7 +91,7 @@ const QuantInvesting101 = () => {
                         to="quantitative-strategies/statistical-arbitrage"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-[#151e29] dot font-black rounded-md px-2 py-1"
+                            ? "  text-sm text-[#48B4EA] dot font-black rounded-md px-2 py-1"
                             : "text-gray-500 font-medium hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
                         }
                       >
@@ -104,13 +104,13 @@ const QuantInvesting101 = () => {
               <li>
                 <div className="nav-link-container">
                   <p className="text-sm font-black">Data and Tools</p>
-                  <ul className="pl-4 mt-4 space-y-3">
+                  <ul className=" mt-4 space-y-3">
                     <li className="nav-link-ladder">
                       <NavLink
                         to="data-and-tools/data-sources"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-[#151e29] dot font-black rounded-md px-2 py-1"
+                            ? "  text-sm text-[#48B4EA] dot font-black rounded-md px-2 py-1"
                             : "text-gray-500 font-medium hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
                         }
                       >
@@ -122,7 +122,7 @@ const QuantInvesting101 = () => {
                         to="data-and-tools/backtesting"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-[#151e29] dot font-black rounded-md px-2 py-1"
+                            ? "  text-sm text-[#48B4EA] dot font-black rounded-md px-2 py-1"
                             : "text-gray-500 font-medium hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
                         }
                       >
@@ -134,7 +134,7 @@ const QuantInvesting101 = () => {
                         to="data-and-tools/programming-languages"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-[#151e29] dot font-black rounded-md px-2 py-1"
+                            ? "  text-sm text-[#48B4EA] dot font-black rounded-md px-2 py-1"
                             : "text-gray-500 font-medium hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
                         }
                       >
@@ -147,13 +147,13 @@ const QuantInvesting101 = () => {
               <li>
                 <div className="nav-link-container">
                   <p className="text-sm font-black">Portfolio Management</p>
-                  <ul className="pl-4 mt-4 space-y-3">
+                  <ul className=" mt-4 space-y-3">
                     <li className="nav-link-ladder">
                       <NavLink
                         to="portfolio-management/risk-management"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-[#151e29] dot font-black rounded-md px-2 py-1"
+                            ? "  text-sm text-[#48B4EA] dot font-black rounded-md px-2 py-1"
                             : "text-gray-500 font-medium hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
                         }
                       >
@@ -165,7 +165,7 @@ const QuantInvesting101 = () => {
                         to="portfolio-management/position-sizing"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-[#151e29] dot font-black rounded-md px-2 py-1"
+                            ? "  text-sm text-[#48B4EA] dot font-black rounded-md px-2 py-1"
                             : "text-gray-500 font-medium hover:text-gray-800 hover:bg-gray-100 px-2 py-1 text-sm rounded-m"
                         }
                       >
@@ -177,7 +177,7 @@ const QuantInvesting101 = () => {
                         to="portfolio-management/position-sizings"
                         className={({ isActive }) =>
                           isActive
-                            ? " text-sm text-[#151e29] dot font-black rounded-md px-2 py-1"
+                            ? " text-sm text-[#48B4EA] dot font-black rounded-md px-2 py-1"
                             : "text-gray-500 font-medium hover:text-gray-800 hover:bg-gray-100 px-2 py-1 text-sm rounded-m"
                         }
                       >

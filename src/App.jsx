@@ -4,7 +4,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
-    <div className="bg-[#F1F4F8]">
+    <div>
       <Header />
       <ScrollToTop />
       <Outlet />

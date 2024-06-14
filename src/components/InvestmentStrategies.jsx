@@ -20,7 +20,7 @@ const InvestmentStrategies = () => {
       <p className="text-gray-400 font-medium mt-4 text-md mx-auto max-w-4xl">
         With the help of our team, data and technology we design models that
         help us make investment decisions. Through our{" "}
-        <span className="text-red-500 font-bold">
+        <span className="text-[#48B4EA] font-bold">
           Portfolio Management Service (PMS)
         </span>
         , we invest your money in Indian Equity.

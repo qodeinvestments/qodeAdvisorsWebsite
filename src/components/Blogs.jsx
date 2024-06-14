@@ -99,7 +99,7 @@ const Blogs = () => {
         <div className="text-center">
           <Link
             to="/blogs"
-            className="text-white bg-[#151E28] hover:bg-[#0d1117] font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            className="text-white bg-[#48B4EA] hover:bg-[#1374A4] font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
           >
             View All Blogs
           </Link>

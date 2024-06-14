@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { motion } from "framer-motion";
 function BlogCard({
   title,
   summary,
@@ -67,12 +68,17 @@ function BlogCard({
 
   return (
     <>
-      <div className="overflow-hidden transition-transform duration-500 max-w-[400px] hover:shadow-lg bg-white graphik-font-regular hover:scale-105 rounded-md">
+      <motion.div
+        initial={{ opacity: 0, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="overflow-hidden transition-transform duration-500 max-w-[400px] hover:shadow-lg bg-white graphik-font-regular hover:scale-105 rounded-md"
+      >
         <Link to={`${detailLink}`}>
           <div className="flex flex-col justify-between h-full p-6">
             <div>
-              <span className="text-red-500 font-bold text-sm">Blog</span>
-              <h3 className="text-xl font-semibold text-[#151E28] typewriter-font mb-2 relative">
+              <span className="text-[#48B4EA] font-bold text-sm">Blog</span>
+              <h3 className="text-xl font-semibold text-[#151E28] multiline-underline typewriter-font mb-2 relative">
                 {title}
                 <span className="underline"></span>
               </h3>
@@ -86,9 +92,9 @@ function BlogCard({
             <div className="flex text-gray-400 items-center justify-between">
               <a
                 href={detailLink}
-                className="text-red-500 transition-opacity duration-300 opacity-0 hover:opacity-100 arrow-link text-sm"
+                className="transition-opacity duration-300 opacity-0 hover:opacity-100 arrow-link text-sm"
               >
-                View details
+                Continue Reading
               </a>
               <div>
                 <p className="text-xs">{formatDate(publishedAt)}</p>
@@ -96,7 +102,7 @@ function BlogCard({
             </div>
           </div>
         </Link>
-      </div>
+      </motion.div>
     </>
   );
 }

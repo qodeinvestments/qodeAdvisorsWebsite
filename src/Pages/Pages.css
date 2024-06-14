@@ -26,7 +26,7 @@
   content: "";
   position: absolute;
   top: 50%; /* Center vertically in the item */
-  left: -0.80rem; /* Starts to the left of the item */
+  left: 0.1rem; /* Starts to the left of the item */
   width: 1.25rem; /* Length of the horizontal line */
   height: 2px;
   background-color: #cbd5e0;
@@ -38,10 +38,10 @@
   content: "";
   height: 6px;
   width: 6px;
-  background-color: #151e29; /* Match your active link color or any color you prefer */
+  background-color: #48B4EA; /* Match your active link color or any color you prefer */
   border-radius: 50%;
   position: absolute;
-  left: 5px;
+  left: 20px;
   top: 10px;
   /* display: inline-block; */
 }

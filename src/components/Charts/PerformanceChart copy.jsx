@@ -106,11 +106,8 @@ const PerformanceChart = () => {
     }
   };
 
-
-
   return (
     <div className="flex flex-col md:flex-row gap-4">
-  
       <div className="w-full md:w-1/4 lg:w-2/6 flex flex-col space-y-7 border bg-white rounded-md p-4">
         {/* ... */}
         <div className="flex justify-between items-center">
@@ -197,7 +194,7 @@ const PerformanceChart = () => {
           </p>
         </div>
         <div className="text-center">
-          <button className="bg-[#151E28] text-white w-full rounded-md py-2">
+          <button className="bg-[#48B4EA] text-white w-full rounded-md py-2">
             Invest Now
           </button>
         </div>

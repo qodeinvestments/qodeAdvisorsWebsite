@@ -15,13 +15,13 @@ const HowItWorks = () => {
           the quant investing process:
         </p>
 
-        <div className="mb-12">
+        {/* <div className="mb-12">
           <img
             src={QuantInvesting101Process}
             alt="Quantitative Investing Process Illustration"
             className="rounded-lg shadow-md h-96 mx-auto w-auto"
           />
-        </div>
+        </div> */}
 
         <div className="space-y-8">
           <div className="bg-gray-100 rounded-lg p-6 shadow-sm">

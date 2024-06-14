@@ -161,7 +161,7 @@ const Calculator = () => {
         <button
           className={`px-8 py-2 text-center rounded-md ${
             investmentFrequency === "monthly"
-              ? "bg-[#151e28] text-white"
+              ? "bg-[#48B4EA] text-white"
               : "bg-white  border border-gray-300 text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("monthly")}
@@ -171,7 +171,7 @@ const Calculator = () => {
         <button
           className={`px-8 py-2 text-center border rounded-md ${
             investmentFrequency === "yearly"
-              ? "bg-[#151e28] text-white"
+              ? "bg-[#48B4EA] text-white"
               : "bg-white  border border-gray-300 text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("yearly")}
@@ -181,7 +181,7 @@ const Calculator = () => {
         <button
           className={`px-8 py-2 text-center border rounded-md ${
             investmentFrequency === "one-time"
-              ? "bg-[#151e28] text-white"
+              ? "bg-[#48B4EA] text-white"
               : "bg-white  border border-gray-300 text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("one-time")}
@@ -231,7 +231,7 @@ const Calculator = () => {
         </p>
       </div>
       <div className="text-center">
-        <button className="bg-[#151E28] text-white w-full rounded-md py-2">
+        <button className="bg-[#48B4EA] text-white w-full rounded-md py-2">
           Invest Now
         </button>
       </div>

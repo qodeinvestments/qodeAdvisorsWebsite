@@ -284,7 +284,7 @@ const PerformanceChart = () => {
       <div className="w-full md:w-3/4 lg:w-[70%]      sm:pb-10 rounded-lg">
         <Tabs value="chart1">
           <div className="flex flex-col sm:flex-row items-center justify-between p-2">
-            <TabsHeader className="bg-gray-200 border-gray-300  border  p-1">
+            <TabsHeader className="bg-[#f0eeee] border-gray-300  border  p-1">
               <Tab className="text-sm" key="chart1" value="chart1">
                 Trailing
               </Tab>
@@ -300,8 +300,8 @@ const PerformanceChart = () => {
               {["YTD", "6M", "1Y", "5Y"].map((range) => (
                 <button
                   key={range}
-                  className={`bg-white py-1 px-3 text-sm rounded ${
-                    activeButton === range ? "bg-[#1e2a3a] text-white" : ""
+                  className={`bg-[#f7f5f5] text-black py-1 px-3 text-sm rounded ${
+                    activeButton === range ? "bg-[#48B4EB] text-white" : ""
                   }`}
                   onClick={() => {
                     setTimeRange(range);
@@ -319,18 +319,18 @@ const PerformanceChart = () => {
                 type="date"
                 value={startDate || ""} // Fallback to empty string if null
                 onChange={(e) => setStartDate(e.target.value)}
-                className="bg-white text-gray-600 text-sm py-1 px-2 rounded"
+                className="bg-[#f7f5f5] text-gray-600 text-sm py-1 px-2 rounded"
               />
               <input
                 type="date"
                 value={endDate || ""} // Fallback to empty string if null
                 onChange={(e) => setEndDate(e.target.value)}
-                className="bg-white text-gray-600 text-sm py-1 px-2 rounded"
+                className="bg-[#f7f5f5] text-gray-600 text-sm py-1 px-2 rounded"
               />
 
               <button
-                className={`bg-white py-1 px-2 text-sm rounded ${
-                  activeButton === "ALL" ? "bg-[#1e2a38] text-white" : ""
+                className={`bg-[#f7f5f5] py-1 px-2 text-sm rounded ${
+                  activeButton === "ALL" ? "bg-[#48B4EA] text-white" : ""
                 }`}
                 onClick={() => {
                   setTimeRange("ALL");

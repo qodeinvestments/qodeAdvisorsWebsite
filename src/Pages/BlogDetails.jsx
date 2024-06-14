@@ -45,6 +45,7 @@ const BlogDetails = () => {
       const result = await client.fetch(query, params);
       setPost(result);
       setLoading(false);
+      // console.log(post.body);
     };
 
     fetchPostDetails();
@@ -63,11 +64,56 @@ const BlogDetails = () => {
     });
   }
 
+  function calculateReadDuration(blocks, wordsPerMinute = 200) {
+    if (!Array.isArray(blocks) || blocks.length === 0) {
+      return "0 minutes";
+    }
+
+    const textContent = blocks
+      .filter(
+        (block) => block._type === "block" && Array.isArray(block.children)
+      )
+      .map((block) =>
+        block.children
+          .filter(
+            (child) => child._type === "span" && typeof child.text === "string"
+          )
+          .map((child) => child.text)
+          .join(" ")
+      )
+      .join(" ");
+
+    if (!textContent.trim().length) {
+      return "0 minutes";
+    }
+
+    const words = textContent
+      .replace(/[^a-zA-Z0-9\s]/g, "")
+      .split(/\s+/)
+      .filter(Boolean);
+    const wordCount = words.length;
+    const readingTimeMinutes = wordCount / wordsPerMinute;
+    const roundedMinutes = Math.round(readingTimeMinutes);
+
+    if (roundedMinutes === 0) {
+      return "less than a min";
+    } else if (roundedMinutes === 1) {
+      return "1 min";
+    } else {
+      return `${roundedMinutes} min`;
+    }
+  }
+
+  const duration = calculateReadDuration(post.body);
+  console.log(duration);
+
   return (
     <div className="mx-auto px-4 py-12  graphik-font-regular">
       <div className="rounded-lg max-w-5xl mx-auto p-8">
         <div className="mt-20 mb-2 text-center">
-          <p>{formatDate(post.publishedAt)}</p>
+          <p className="text-[#48B4EA] font-medium">
+            {formatDate(post.publishedAt)} &#x2022; {duration} read
+          </p>
         </div>
         <h1 className="text-4xl graphik-font-semibold text-center font-bold mb-12">
           {post.title}

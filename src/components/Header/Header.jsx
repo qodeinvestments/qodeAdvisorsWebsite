@@ -121,7 +121,7 @@ const Header = () => {
                   {item.sublinks.map((sublink) => (
                     <li
                       key={sublink.name}
-                      className="px-4 py-3 hover:bg-[#efefef] hover:text-[#48B4EA] transition duration-300"
+                      className="px-4 py-3 hover:bg-[#efefef] hover:text-primary transition duration-300"
                     >
                       <Link to={sublink.slug}>{sublink.name}</Link>
                     </li>

@@ -58,7 +58,7 @@ const Banner = () => {
               className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#000] mb-6"
             >
               The best investments are <br />{" "}
-              <span className="text-[#48B4EA]  px-2 rounded">
+              <span className="text-primary  px-2 rounded">
                 {"{"}
                 <span className="font-mono">{currentText}</span>
                 {"}"}
@@ -76,7 +76,7 @@ const Banner = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#48B4EA] text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#1374A4] transition duration-300"
+              className="bg-primary text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#1374A4] transition duration-300"
             >
               Get Started
             </motion.button>

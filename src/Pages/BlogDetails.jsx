@@ -113,7 +113,7 @@ const BlogDetails = () => {
     <div className="mx-auto px-4 py-12  graphik-font-regular">
       <div className="rounded-lg max-w-5xl mx-auto p-8">
         <div className="mt-20 mb-2 text-center">
-          <p className="text-[#48B4EA] font-medium">
+          <p className="text-primary font-medium">
             {formatDate(post.publishedAt)} &#x2022; {duration} read
           </p>
         </div>

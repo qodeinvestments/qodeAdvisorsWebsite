@@ -194,7 +194,7 @@ const PerformanceChart = () => {
           </p>
         </div>
         <div className="text-center">
-          <button className="bg-[#48B4EA] text-white w-full rounded-md py-2">
+          <button className="bg-primary text-white w-full rounded-md py-2">
             Invest Now
           </button>
         </div>

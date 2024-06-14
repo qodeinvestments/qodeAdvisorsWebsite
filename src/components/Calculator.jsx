@@ -126,7 +126,11 @@ const Calculator = () => {
   };
 
   function numberWithCommas(x) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    const num = parseInt(x).toString();
+    let lastThree = num.substring(num.length - 3);
+    const otherNumbers = num.substring(0, num.length - 3);
+    if (otherNumbers !== "") lastThree = "," + lastThree;
+    return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
   }
 
   const formatInvestmentPeriod = () => {
@@ -161,7 +165,7 @@ const Calculator = () => {
         <button
           className={`px-8 py-2 text-center rounded-md ${
             investmentFrequency === "monthly"
-              ? "bg-[#48B4EA] text-white"
+              ? "bg-primary text-white"
               : "bg-white  border border-gray-300 text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("monthly")}
@@ -171,7 +175,7 @@ const Calculator = () => {
         <button
           className={`px-8 py-2 text-center border rounded-md ${
             investmentFrequency === "yearly"
-              ? "bg-[#48B4EA] text-white"
+              ? "bg-primary text-white"
               : "bg-white  border border-gray-300 text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("yearly")}
@@ -181,7 +185,7 @@ const Calculator = () => {
         <button
           className={`px-8 py-2 text-center border rounded-md ${
             investmentFrequency === "one-time"
-              ? "bg-[#48B4EA] text-white"
+              ? "bg-primary text-white"
               : "bg-white  border border-gray-300 text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("one-time")}
@@ -231,7 +235,7 @@ const Calculator = () => {
         </p>
       </div>
       <div className="text-center">
-        <button className="bg-[#48B4EA] text-white w-full rounded-md py-2">
+        <button className="bg-primary text-white w-full rounded-md py-2">
           Invest Now
         </button>
       </div>

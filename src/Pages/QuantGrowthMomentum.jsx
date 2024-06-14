@@ -105,7 +105,7 @@ const MomentumTabs = () => {
               </li>
             </ul>
             <div>
-              <button className="bg-[#48B4EA] text-[#fff] font-extrabold sm:w-1/2 mt-10 mx-auto rounded-md py-2">
+              <button className="bg-primary text-[#fff] font-extrabold sm:w-1/2 mt-10 mx-auto rounded-md py-2">
                 Start Investing
               </button>
             </div>
@@ -139,7 +139,7 @@ const MomentumTabs = () => {
                     </p>
                   </div>
                   <div className="mt-auto">
-                    <button className="mt-4 px-2 py-1 rounded-md text-white bg-[#48B4EA] w-max">
+                    <button className="mt-4 px-2 py-1 rounded-md text-white bg-primary w-max">
                       Learn More
                     </button>
                   </div>
@@ -263,7 +263,7 @@ const MomentumTabs = () => {
             <a
               href="/path-to-your-ppt-file.pptx"
               download
-              className="flex-1 relative bg-[#48B4EA] text-white py-2 px-10 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
+              className="flex-1 relative bg-primary text-white py-2 px-10 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
             >
               <span className="relative z-10 flex items-center justify-center w-full h-full">
                 <FontAwesomeIcon icon={faDownload} className="mr-2" />
@@ -271,7 +271,7 @@ const MomentumTabs = () => {
               </span>
             </a>
             <a
-              className="flex-1 relative bg-[#48B4EA] text-white py-2 px-10 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
+              className="flex-1 relative bg-primary text-white py-2 px-10 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
               href=""
             >
               <span className="relative z-10 flex whitespace-nowrap items-center justify-center w-full h-full">

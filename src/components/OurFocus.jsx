@@ -8,8 +8,8 @@ const OurFocus = () => {
         Our Focus
       </p>
       <h2 className="text-4xl text-[#151E28] font-black mt-4">
-        We are <span className="text-[#48B4EA]">committed</span> to make
-        financial <br /> investment more reliable
+        We are <span className="text-primary">committed</span> to make financial{" "}
+        <br /> investment more reliable
       </h2>
 
       {/* Card Container */}

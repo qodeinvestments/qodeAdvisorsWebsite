@@ -184,7 +184,7 @@ const Header = () => {
   return (
     <div
       ref={navbarAreaRef}
-      className="shadow-lg graphik-font-regular fixed  w-full z-20 bg-[#48B4EA] top-0"
+      className="shadow-lg graphik-font-regular fixed  w-full z-20 bg-primary top-0"
     >
       <nav ref={navbarRef}>
         <div className="max-w-[90rem] text-center  mx-auto ">

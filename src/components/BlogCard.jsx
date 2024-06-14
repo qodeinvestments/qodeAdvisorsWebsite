@@ -77,7 +77,7 @@ function BlogCard({
         <Link to={`${detailLink}`}>
           <div className="flex flex-col justify-between h-full p-6">
             <div>
-              <span className="text-[#48B4EA] font-bold text-sm">Blog</span>
+              <span className="text-primary font-bold text-sm">Blog</span>
               <h3 className="text-xl font-semibold text-[#151E28] multiline-underline typewriter-font mb-2 relative">
                 {title}
                 <span className="underline"></span>

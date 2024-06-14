@@ -102,7 +102,9 @@ const Header = () => {
     <div className="shadow-lg graphik-font-regular fixed w-full bg-white z-20  top-0 text-white">
       <div className="flex max-w-[100rem] justify-center mx-auto items-center h-12 px-52 ">
         <div className="mt-3">
-          <img className="w-40" src={logo} alt="Company Logo" />
+          <Link className="cursor-pointer" to={"/"}>
+            <img className="w-40" src={logo} alt="Company Logo" />
+          </Link>
         </div>
         <div className="hidden md:flex space-x-6 items-center">
           {navItems.map((item) => (

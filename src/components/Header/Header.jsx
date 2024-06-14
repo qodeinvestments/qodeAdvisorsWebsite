@@ -117,11 +117,11 @@ const Header = () => {
               </Link>
 
               {item.sublinks && item.sublinks.length > 0 && (
-                <ul className="absolute top-full w-72 left-0 text-sm right-0 mx-auto hidden group-hover:block bg-white text-[#000] rounded-md overflow-hidden">
+                <ul className="absolute top-full w-72 left-0 text-sm right-0 mx-auto hidden group-hover:block bg-white text-[#000]  rounded-md overflow-hidden">
                   {item.sublinks.map((sublink) => (
                     <li
                       key={sublink.name}
-                      className="px-4 py-3 hover:bg-[#efefef] hover:text-black transition duration-300"
+                      className="px-4 py-3 hover:bg-[#efefef] hover:text-[#48B4EA] transition duration-300"
                     >
                       <Link to={sublink.slug}>{sublink.name}</Link>
                     </li>

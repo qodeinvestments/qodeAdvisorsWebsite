@@ -160,14 +160,14 @@ const Header = () => {
       {isNavOpen && (
         <div className="fixed inset-0 z-30 bg-gray-900 bg-opacity-50">
           <div
-            className={`fixed inset-y-0 right-0 z-20 w-80 bg-[#48B4EA] text-white transition-transform duration-300 transform ${
+            className={`fixed inset-y-0 right-0 z-20 w-80 bg-[#efefef] text-black transition-transform duration-300 transform ${
               isNavOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
             <div className="flex items-center justify-between px-6 py-4">
               <button
                 type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white/10 transition duration-300"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:bg-white/10 transition duration-300"
                 onClick={() => setIsNavOpen(false)}
               >
                 <span className="sr-only">Close menu</span>

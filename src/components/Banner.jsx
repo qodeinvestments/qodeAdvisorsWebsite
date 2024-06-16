@@ -1,51 +1,40 @@
 import React, { useState, useEffect } from "react";
-import backgroundImage from "../assets/newBanner1.jpg";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faRss } from "@fortawesome/free-solid-svg-icons";
-import {
-  faTwitter,
-  faFacebookF,
-  faLinkedinIn,
-} from "@fortawesome/free-brands-svg-icons";
-import { BackgroundBeams } from "./ui/background-beams";
+import { motion } from "framer-motion";
+import bannerImage from "../assets/Investment data-amico.svg";
 import { BackgroundSVG } from "./ui/Background-SVG";
 
 const Banner = () => {
+  // ... previous state and useEffect code ...
   const [currentText, setCurrentText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [index, setIndex] = useState(0);
-  const typingSpeed = 250; // Typing speed in milliseconds
-  const deletingSpeed = 90; // Deleting speed in milliseconds
-  const delayBetweenTexts = 1000; // Delay between texts in milliseconds
+  const typingSpeed = 150;
+  const deletingSpeed = 75;
+  const delayBetweenTexts = 1500;
   const textArray = [
     "driven by data",
-    "objective and emotion free",
+    "objective and emotion-free",
     "carried out by Qode",
   ];
 
   useEffect(() => {
     let timeout;
     if (isTyping) {
-      // Typing effect
       if (currentText.length < textArray[index].length) {
         timeout = setTimeout(() => {
           setCurrentText(textArray[index].slice(0, currentText.length + 1));
         }, typingSpeed);
       } else {
-        // Finished typing, wait and then start deleting
         timeout = setTimeout(() => {
           setIsTyping(false);
         }, delayBetweenTexts);
       }
     } else {
-      // Deleting effect
       if (currentText.length > 0) {
         timeout = setTimeout(() => {
           setCurrentText(currentText.slice(0, -1));
         }, deletingSpeed);
       } else {
-        // Finished deleting, move to the next text
         setIsTyping(true);
         setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
       }
@@ -55,25 +44,68 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div
-      className="flex flex-col bg-[#171E27] rounded-b-[3rem] md:flex-row items-center graphik-font-regular h-screen justify-center text-center px-4 md:px-10 py-10"
-    >
-      <div className="w-full md:w-3/4 z-10 md:px-20 mb-8 md:mb-0">
-        <h1 className="text-3xl text-white md:text-6xl  font-black graphik-font-semibold">
-          The best investments are <br /> {"{"}
-          <span className="text-red-500 codingFont font-black">{currentText}</span>
-          {"}"}
-        </h1>
-        <p className="text-lg md:text-2xl  text-gray-400 font-medium mt-4 md:mt-10">
-          We're an investment firm leveraging quantitative models to drive
-          informed and strategic investment decisions.
-        </p>
-      </div>
-      <div className="absolute inset-0 flex items-center justify-center">
+    <div className="relative rounded-b-[3rem] h-[90vh] graphik-font-regular flex items-center overflow-hidden">
+      {/* Background SVG */}
 
-      <BackgroundBeams/>
+      {/* Container for content */}
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="flex flex-col  gap-10 md:flex-row items-center">
+          <div className="w-full md:w-2/3 text-center md:text-left mb-10 md:mb-0">
+            <motion.h1
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#000] mb-6"
+            >
+              The best investments are <br />{" "}
+              <span className="text-primary  px-2 rounded">
+                {"{"}
+                <span className="font-mono">{currentText}</span>
+                {"}"}
+              </span>
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xl text-gray-700 mb-10"
+            >
+              We're an investment firm leveraging quantitative models to drive
+              informed and strategic investment decisions.
+            </motion.p>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-primary text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#1374A4] transition duration-300"
+            >
+              Get Started
+            </motion.button>
+          </div>
+          {/* <div className="w-full md:w-1/2">
+            <motion.div
+              animate={{
+                y: [0, -10, 0],
+                rotate: [0, -1, 0, 1, 0],
+              }}
+              transition={{
+                duration: 5,
+                ease: "easeInOut",
+                times: [0, 0.2, 0.5, 0.8, 1],
+                repeat: Infinity,
+                repeatDelay: 0,
+              }}
+              className="filter drop-shadow-xl"
+            >
+              <img
+                src={bannerImage}
+                alt="Data-driven investments"
+                className="w-3/4  h-auto object-cover rounded-lg"
+              />
+            </motion.div>
+          </div> */}
+        </div>
       </div>
-
+      {/* <BackgroundSVG className="absolute top-0 left-0 inset-0 w-full h-full" /> */}
     </div>
   );
 };

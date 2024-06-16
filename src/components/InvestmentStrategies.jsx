@@ -20,7 +20,7 @@ const InvestmentStrategies = () => {
       <p className="text-gray-400 font-medium mt-4 text-md mx-auto max-w-4xl">
         With the help of our team, data and technology we design models that
         help us make investment decisions. Through our{" "}
-        <span className="text-red-500 font-bold">
+        <span className="text-primary font-bold">
           Portfolio Management Service (PMS)
         </span>
         , we invest your money in Indian Equity.
@@ -37,10 +37,10 @@ const InvestmentStrategies = () => {
           <div className="p-6 relative">
             <img src={quantGrowth} alt="Logo 1" className="w-10 h-10 mr-4" />
             <div className="absolute top-4 right-4 flex space-x-2">
-              <span className="bg-gray-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+              <span className="bg-primary text-white text-xs font-medium px-2.5 py-0.5 rounded-full">
                 Equity
               </span>
-              <span className="bg-gray-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+              <span className="bg-primary text-white text-xs font-medium px-2.5 py-0.5 rounded-full">
                 Long Short
               </span>
             </div>
@@ -125,10 +125,10 @@ const InvestmentStrategies = () => {
           <div className="p-6 relative">
             <img src={quantMomentum} alt="Logo 1" className="w-10 h-10 mr-4" />
             <div className="absolute top-4 right-4 flex space-x-2">
-              <span className="bg-gray-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+              <span className="bg-primary text-white text-xs font-medium px-2.5 py-0.5 rounded-full">
                 Equity
               </span>
-              <span className="bg-gray-200 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+              <span className="bg-primary  text-white text-xs font-medium px-2.5 py-0.5 rounded-full">
                 Long Short
               </span>
             </div>

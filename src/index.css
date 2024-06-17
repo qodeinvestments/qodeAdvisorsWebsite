@@ -57,14 +57,14 @@
 }
 
 .graphik-font-regular {
-    font-family: 'Graphik-Regular', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .graphik-font-semibold {
-    font-family: 'Graphik-Semibold', sans-serif;
+    font-family: 'Inter', sans-serif;
 }
 
 .graphik-font-medium {
-    font-family: 'Graphik-Medium', sans-serif;
-    font-weight: 500; /* Ensure this aligns with your @font-face declaration */
+   font-family: 'Inter', sans-serif;
+  font-weight: 500; /* Ensure this aligns with your @font-face declaration */
 }

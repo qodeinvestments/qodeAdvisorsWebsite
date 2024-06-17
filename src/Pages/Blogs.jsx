@@ -66,11 +66,11 @@ const Blogs = () => {
   }
 
   return (
-    <GrayContainer>
+    <>
       <div className=" graphik-font-regular py-12 md:py-32">
         <Container>
           <div className="flex flex-col items-center">
-            <h1 className="text-primary graphik-font-medium text-4xl md:text-4xl font-bold mb-6 text-center">
+            <h1 className="text-primary-dark graphik-font-medium text-4xl md:text-4xl font-bold mb-6 text-center">
               Welcome to Our Blog
             </h1>
             <p className="text-gray-600 text-lg md:text-xl max-w-3xl text-center">
@@ -80,7 +80,7 @@ const Blogs = () => {
           </div>
         </Container>
       </div>
-      <Container>
+      <>
         <div className=" mb-24 px-4 md:px-52 grid grid-cols-1 md:grid-cols-2 gap-10 lg:grid-cols-3">
           {posts.map((post) => {
             const authorBioText = post.author.bio[0].children[0].text;
@@ -107,8 +107,8 @@ const Blogs = () => {
             );
           })}
         </div>
-      </Container>
-    </GrayContainer>
+      </>
+    </>
   );
 };
 

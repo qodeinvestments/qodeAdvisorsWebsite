@@ -14,14 +14,13 @@ import { faCheckCircle, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
 
 const MomentumTabs = () => {
   const listItemStyle = {
-    listStyleType: "none", // Remove default bullets
-    color: "#171E27",
-    background:
-      "url(https://www.tickertape.in/images/digitalgold/heroSection/star.webp) no-repeat",
+    listStyleType: "disc", // Remove default bullets
+    // background:
+    //   "url(https://www.tickertape.in/images/digitalgold/heroSection/star.webp) no-repeat",
     backgroundPosition: "0px 5px", // Position the background
     backgroundSize: "22px 22px", // Size of the background
     paddingLeft: "30px", // Padding to separate text from background
-    marginBottom: "10px", // Space between items
+    marginBottom: "px", // Space between items
     lineHeight: "2", // Line height for better readability
   };
   const [activeTab, setActiveTab] = useState("Features");
@@ -84,37 +83,39 @@ const MomentumTabs = () => {
 
   return (
     <div className="mx-auto graphik-font-regular mt-10">
-      <div className="bg-[#fff] rounded-b-[3rem] py-12 md:py-20 ">
-        <div className="container flex flex-col sm:flex-row justify-between items-start mx-auto px-4 sm:px-6 lg:px-6">
-          <div className="pt-16">
-            <h2 className="text-3xl graphik-font-medium text-171E27 sm:text-5xl">
-              <span className="block">Quant Momentum Fund</span>
-            </h2>
-            <ul className="mt-10 text-lg " style={{ padding: 0 }}>
-              <li style={listItemStyle}>
-                Momentum is a highly researched strategy in global financial
-                markets.
-              </li>
-              <li style={listItemStyle}>
-                It consistently outperforms benchmarks in developed markets with
-                extensive data.
-              </li>
-              <li style={listItemStyle}>
-                This performance is evident across different markets, assets,
-                and time frames.
-              </li>
-            </ul>
-            <div>
-              <button className="bg-primary text-[#fff] font-extrabold sm:w-1/2 mt-10 mx-auto rounded-md py-2">
-                Start Investing
-              </button>
+      <Container>
+        <div className="bg-[#fff] rounded-b-[3rem] py-12 md:py-20 ">
+          <div className="flex flex-col sm:flex-row justify-between items-start mx-auto px-4 sm:px-6 lg:px-6">
+            <div className="pt-16">
+              <h2 className="text-3xl graphik-font-medium text-171E27 sm:text-5xl">
+                <span className="block">Quant Momentum Fund</span>
+              </h2>
+              <ul className="mt-10 text-lg " style={{ padding: 0 }}>
+                <li style={listItemStyle}>
+                  Momentum is a highly researched strategy in global financial
+                  markets.
+                </li>
+                <li style={listItemStyle}>
+                  It consistently outperforms benchmarks in developed markets
+                  with extensive data.
+                </li>
+                <li style={listItemStyle}>
+                  This performance is evident across different markets, assets,
+                  and time frames.
+                </li>
+              </ul>
+              <div>
+                <button className="bg-primary-dark text-[#fff] font-extrabold sm:w-1/2 mt-10 mx-auto rounded-md py-2">
+                  Start Investing
+                </button>
+              </div>
             </div>
-          </div>
-          {/* <div className="sm:w-1/3   h-auto">
+            {/* <div className="sm:w-1/3   h-auto">
             <img src={bannerImage} alt="" />
           </div> */}
+          </div>
         </div>
-      </div>
+      </Container>
       <GrayContainer>
         <Container>
           <div className="py-12">
@@ -139,7 +140,7 @@ const MomentumTabs = () => {
                     </p>
                   </div>
                   <div className="mt-auto">
-                    <button className="mt-4 px-2 py-1 rounded-md text-white bg-primary w-max">
+                    <button className="mt-4 px-2 py-1 rounded-md text-white bg-primary-dark w-max">
                       Learn More
                     </button>
                   </div>
@@ -263,7 +264,7 @@ const MomentumTabs = () => {
             <a
               href="/path-to-your-ppt-file.pptx"
               download
-              className="flex-1 relative bg-primary text-white py-2 px-10 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
+              className="flex-1 relative bg-primary-dark text-white py-2 px-10 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
             >
               <span className="relative z-10 flex items-center justify-center w-full h-full">
                 <FontAwesomeIcon icon={faDownload} className="mr-2" />
@@ -271,7 +272,7 @@ const MomentumTabs = () => {
               </span>
             </a>
             <a
-              className="flex-1 relative bg-primary text-white py-2 px-10 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
+              className="flex-1 relative bg-primary-dark text-white py-2 px-10 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
               href=""
             >
               <span className="relative z-10 flex whitespace-nowrap items-center justify-center w-full h-full">

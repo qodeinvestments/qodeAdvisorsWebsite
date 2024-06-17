@@ -182,7 +182,7 @@ const BlogDetails = () => {
           }}
         />
 
-        {post.author && (
+        {/* {post.author && (
           <div className="flex items-center mt-8 bg-gray-200 p-4 rounded-lg">
             {post.author.authorImage && (
               <img
@@ -196,7 +196,7 @@ const BlogDetails = () => {
               {post.author.bio && <PortableText value={post.author.bio} />}
             </div>
           </div>
-        )}
+        )} */}
         <div className="bg-white my-5 p-10 rounded-lg shadow-md text-center">
           <h3 className="text-2xl font-semibold text-black">Subscribe</h3>
           <p className="text-gray-400 mb-4">

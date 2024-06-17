@@ -77,7 +77,7 @@ function BlogCard({
         <Link to={`${detailLink}`}>
           <div className="flex flex-col justify-between h-full p-6">
             <div>
-              <span className="text-primary font-bold text-sm">Blog</span>
+              <span className="text-primary-dark font-bold text-sm">Blog</span>
               <h3 className="text-xl font-semibold text-[#151E28] multiline-underline typewriter-font mb-2 relative">
                 {title}
                 <span className="underline"></span>
@@ -89,13 +89,13 @@ function BlogCard({
                 {summary}
               </p>
             </div>
-            <div className="flex text-gray-400 items-center justify-between">
-              <a
-                href={detailLink}
+            <div className="flex text-primary-dark items-center justify-between">
+              <Link
+                to={detailLink}
                 className="transition-opacity duration-300 opacity-0 hover:opacity-100 arrow-link text-sm"
               >
                 Continue Reading
-              </a>
+              </Link>
               <div>
                 <p className="text-xs">{formatDate(publishedAt)}</p>
               </div>

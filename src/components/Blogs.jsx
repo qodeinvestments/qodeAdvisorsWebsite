@@ -40,7 +40,7 @@ const Blogs = () => {
   useEffect(() => {
     client
       .fetch(
-        `*[_type == "post"] | order(publishedAt desc)[0...4] {
+        `*[_type == "post"] | order(publishedAt desc)[0...3] {
           title,
           body,
           mainImage,
@@ -70,7 +70,7 @@ const Blogs = () => {
         <h2 className="text-3xl inter-font font-bold text-center text-[#151E28] mb-8">
           Recent Blogs
         </h2>
-        <div className="mb-8 px-4  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="mb-8  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => {
             const authorBioText = post.author.bio[0].children[0].text;
             return (
@@ -99,7 +99,7 @@ const Blogs = () => {
         <div className="text-center">
           <Link
             to="/blogs"
-            className="text-white bg-primary hover:bg-[#1374A4] font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            className="text-white bg-primary-dark font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
           >
             View All Blogs
           </Link>

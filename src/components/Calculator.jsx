@@ -148,22 +148,22 @@ const Calculator = () => {
 
   return (
     <>
-      <h1 className="text-xl font-black">Calculate & Decide</h1>
-      <div className="flex justify-between items-center">
-        <p className="text-gray-500">Investment Amount (₹)</p>
+      <h1 className="text-xl font-black md:text-2xl">Calculate & Decide</h1>
+      <div className="flex flex-col md:flex-row justify-between items-center">
+        <p className="text-gray-500 mb-2 md:mb-0">Investment Amount (₹)</p>
         <input
           type="number"
           name="investmentamount"
           placeholder="1000"
           value={investmentAmount}
           onChange={handleInvestmentAmountChange}
-          className="active:border-1 py-2 text-center rounded-lg border"
+          className="active:border-1 py-2 text-center rounded-lg border w-full md:w-auto"
         />
       </div>
-      <p className="text-gray-500">Investment Frequency</p>
-      <div className="flex justify-between items-center">
+      <p className="text-gray-500 mt-4">Investment Frequency</p>
+      <div className="flex flex-col md:flex-row justify-between items-center">
         <button
-          className={`px-8 py-2 text-center rounded-md ${
+          className={`px-8 py-2 text-center rounded-md w-full md:w-auto mb-2 md:mb-0 ${
             investmentFrequency === "monthly"
               ? "bg-primary-dark text-white"
               : "bg-white  border border-gray-300 text-black"
@@ -173,7 +173,7 @@ const Calculator = () => {
           Monthly
         </button>
         <button
-          className={`px-8 py-2 text-center border rounded-md ${
+          className={`px-8 py-2 text-center border rounded-md w-full md:w-auto mb-2 md:mb-0 ${
             investmentFrequency === "yearly"
               ? "bg-primary-dark text-white"
               : "bg-white  border border-gray-300 text-black"
@@ -183,7 +183,7 @@ const Calculator = () => {
           Yearly
         </button>
         <button
-          className={`px-8 py-2 text-center border rounded-md ${
+          className={`px-8 py-2 text-center border rounded-md w-full md:w-auto ${
             investmentFrequency === "one-time"
               ? "bg-primary-dark text-white"
               : "bg-white  border border-gray-300 text-black"
@@ -193,8 +193,8 @@ const Calculator = () => {
           One-time
         </button>
       </div>
-      <div className="flex justify-between items-center">
-        <p className="text-gray-500">Investment Period (Years)</p>
+      <div className="flex flex-col md:flex-row justify-between items-center mt-4">
+        <p className="text-gray-500 mb-2 md:mb-0">Investment Period (Years)</p>
         <div className="custom-number-input h-10 w-32">
           <div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1 border">
             <button
@@ -221,10 +221,10 @@ const Calculator = () => {
           </div>
         </div>
       </div>
-      <p className="text-xs text-gray-400 text-center">
+      <p className="text-xs text-gray-400 text-center mt-2">
         Figures are calculated based on historical returns
       </p>
-      <div className="text-center px-10 py-3 border rounded-lg">
+      <div className="text-center px-5 py-3 border rounded-lg mt-4">
         <FontAwesomeIcon icon={faChartLine} />
         <p className="mb-3 text-xs text-gray-400">
           If you had invested <strong>{formatInvestmentPeriod()}</strong>, your
@@ -234,7 +234,7 @@ const Calculator = () => {
           <strong>₹{numberWithCommas(futureInvestmentValue)}</strong>
         </p>
       </div>
-      <div className="text-center">
+      <div className="text-center mt-4">
         <button className="bg-primary-dark text-white w-full rounded-md py-2">
           Invest Now
         </button>

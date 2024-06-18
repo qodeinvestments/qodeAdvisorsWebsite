@@ -66,49 +66,45 @@ const Blogs = () => {
   }
 
   return (
-    <>
+    <Container>
       <div className=" graphik-font-regular py-12 md:py-32">
-        <Container>
-          <div className="flex flex-col items-center">
-            <h1 className="text-primary-dark graphik-font-medium text-4xl md:text-4xl font-bold mb-6 text-center">
-              Welcome to Our Blog
-            </h1>
-            <p className="text-gray-600 text-lg md:text-xl max-w-3xl text-center">
-              Explore our collection of insightful articles and stay up-to-date
-              with the latest trends and best practices in the industry.
-            </p>
-          </div>
-        </Container>
-      </div>
-      <>
-        <div className=" mb-24 px-4 md:px-52 grid grid-cols-1 md:grid-cols-2 gap-10 lg:grid-cols-3">
-          {posts.map((post) => {
-            const authorBioText = post.author.bio[0].children[0].text;
-            return (
-              <BlogCard
-                key={post.detailLink}
-                title={post.title}
-                summary={
-                  <BlockContent
-                    blocks={post.body}
-                    serializers={serializers}
-                    projectId="8pot9lfd"
-                    dataset="production"
-                  />
-                }
-                mainImage={urlFor(post.mainImage)}
-                readTime={post.readTime}
-                detailLink={`/blogs/${post.detailLink}`}
-                author={post.author}
-                authorImage={post.author.authorImage}
-                bio={authorBioText}
-                publishedAt={post.publishedAt}
-              />
-            );
-          })}
+        <div className="flex flex-col items-center">
+          <h1 className="text-primary-dark graphik-font-medium text-4xl md:text-4xl font-bold mb-6 text-center">
+            Welcome to Our Blog
+          </h1>
+          <p className="text-gray-600 text-lg md:text-xl max-w-3xl text-center">
+            Explore our collection of insightful articles and stay up-to-date
+            with the latest trends and best practices in the industry.
+          </p>
         </div>
-      </>
-    </>
+      </div>
+      <div className=" mb-24  grid grid-cols-1 md:grid-cols-2 gap-10 lg:grid-cols-3">
+        {posts.map((post) => {
+          const authorBioText = post.author.bio[0].children[0].text;
+          return (
+            <BlogCard
+              key={post.detailLink}
+              title={post.title}
+              summary={
+                <BlockContent
+                  blocks={post.body}
+                  serializers={serializers}
+                  projectId="8pot9lfd"
+                  dataset="production"
+                />
+              }
+              mainImage={urlFor(post.mainImage)}
+              readTime={post.readTime}
+              detailLink={`/blogs/${post.detailLink}`}
+              author={post.author}
+              authorImage={post.author.authorImage}
+              bio={authorBioText}
+              publishedAt={post.publishedAt}
+            />
+          );
+        })}
+      </div>
+    </Container>
   );
 };
 

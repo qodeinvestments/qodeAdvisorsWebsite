@@ -16,12 +16,12 @@ import Container from "../container/Container";
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const navItems = [
-    {
-      name: "Home",
-      slug: "/",
-      icon: faHome,
-      sublinks: [],
-    },
+    // {
+    //   name: "Home",
+    //   slug: "/",
+    //   icon: faHome,
+    //   sublinks: [],
+    // },
     {
       name: "Quant Investing",
       icon: faChartLine,

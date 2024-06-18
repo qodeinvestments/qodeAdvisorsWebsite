@@ -14,7 +14,7 @@ const Banner = () => {
   const delayBetweenTexts = 1500;
   const textArray = [
     "driven by data",
-    "objective and emotion-free",
+    "object and emotion-free",
     "carried out by Qode",
   ];
 

@@ -66,7 +66,7 @@ const Blogs = () => {
 
   return (
     <Container>
-      <div className="py-12">
+      <div className="py-20">
         <h2 className="text-3xl inter-font font-bold text-center text-[#151E28] mb-8">
           Recent Blogs
         </h2>

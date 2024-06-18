@@ -14,11 +14,11 @@ const InvestmentStrategies = () => {
   return (
     <GrayContainer>
       <Container>
-        <div className="text-center graphik-font-regular ">
+        <div className="text-center graphik-font-regular mt-10">
           <p className="uppercase text-[12px] inter-font tracking-widest font-bold text-gray-400 ">
             Qode Your Future: Data-Driven Decisions for a Quantum Leap.
           </p>
-          <h2 className="text-4xl font-bold mt-4 text-dark">
+          <h2 className="text-4xl font-bold mt-4 py-4 text-dark">
             Our Investment Strategies
           </h2>
           <p className="text-primary font-medium mt-4 text-md mx-auto max-w-4xl">

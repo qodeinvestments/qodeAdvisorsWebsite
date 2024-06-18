@@ -300,65 +300,87 @@ const PerformanceChart = ({ strategy }) => {
     <div className="flex flex-col lg:flex-row  gap-4">
       <div className="w-full lg:w-[70%] sm:pb-10 rounded-lg">
         <Tabs value="chart1">
-          <div className="flex flex-col sm:flex-row items-center justify-between p-2">
-            <TabsHeader className="bg-[#f0eeee] border-gray-300  border  p-1">
-              <Tab className="text-sm" key="chart1" value="chart1">
+          <div className="flex flex-col sm:flex-row items-center justify-between lg:p-2">
+            <TabsHeader className="bg-[#f0eeee] border-gray-300  border  lg:  p-1">
+              <Tab
+                className="text-sm"
+                onClick={() => handleTabClick("chart1")}
+                key="chart1"
+                value="chart1"
+              >
                 Trailing
               </Tab>
-              <Tab className="text-sm" key="chart2" value="chart2">
+              <Tab
+                className="text-sm"
+                onClick={() => handleTabClick("chart2")}
+                key="chart2"
+                value="chart2"
+              >
                 Discrete
               </Tab>
-              <Tab className="text-sm" key="chart3" value="chart3">
+              <Tab
+                className="text-sm"
+                onClick={() => handleTabClick("chart3")}
+                key="chart3"
+                value="chart3"
+              >
                 Rolling
               </Tab>
             </TabsHeader>
 
             <div className="flex flex-col sm:flex-row gap-2">
-              {["YTD", "6M", "1Y", "5Y"].map((range) => (
-                <button
-                  key={range}
-                  className={`bg-[#f7f5f5] text-black py-1 px-3 text-sm rounded ${
-                    activeButton === range ? "bg-primary-dark text-white" : ""
-                  }`}
-                  onClick={() => {
-                    setTimeRange(range);
-                    setActiveButton(range);
-                    if (range !== "ALL") {
-                      setStartDate(null);
-                      setEndDate(null);
-                    }
-                  }}
-                >
-                  {range}
-                </button>
-              ))}
-              <input
-                type="date"
-                value={startDate || ""} // Fallback to empty string if null
-                onChange={(e) => setStartDate(e.target.value)}
-                className="bg-[#f7f5f5] text-gray-600 text-sm py-1 px-2 rounded"
-              />
-              <input
-                type="date"
-                value={endDate || ""} // Fallback to empty string if null
-                onChange={(e) => setEndDate(e.target.value)}
-                className="bg-[#f7f5f5] text-gray-600 text-sm py-1 px-2 rounded"
-              />
+              {activeTab === "chart1" && (
+                <>
+                  {["YTD", "6M", "1Y", "5Y"].map((range) => (
+                    <button
+                      key={range}
+                      className={`bg-[#f7f5f5] text-black py-1 px-3 text-sm rounded ${
+                        activeButton === range
+                          ? "bg-primary-dark text-white"
+                          : ""
+                      }`}
+                      onClick={() => {
+                        setTimeRange(range);
+                        setActiveButton(range);
+                        if (range !== "ALL") {
+                          setStartDate(null);
+                          setEndDate(null);
+                        }
+                      }}
+                    >
+                      {range}
+                    </button>
+                  ))}
 
-              <button
-                className={`bg-[#f7f5f5] py-1 px-2 text-sm rounded ${
-                  activeButton === "ALL" ? "bg-primary-dark text-white" : ""
-                }`}
-                onClick={() => {
-                  setTimeRange("ALL");
-                  setStartDate("");
-                  setEndDate("");
-                  setActiveButton("ALL");
-                  fetchData();
-                }}
-              >
-                Reset
-              </button>
+                  <input
+                    type="date"
+                    value={startDate || ""}
+                    onChange={(e) => setStartDate(e.target.value)}
+                    className="bg-[#f7f5f5] text-gray-600 text-sm py-1 px-2 rounded"
+                  />
+                  <input
+                    type="date"
+                    value={endDate || ""}
+                    onChange={(e) => setEndDate(e.target.value)}
+                    className="bg-[#f7f5f5] text-gray-600 text-sm py-1 px-2 rounded"
+                  />
+
+                  <button
+                    className={`bg-[#f7f5f5] py-1 px-2 text-sm rounded ${
+                      activeButton === "ALL" ? "bg-primary-dark text-white" : ""
+                    }`}
+                    onClick={() => {
+                      setTimeRange("ALL");
+                      setStartDate("");
+                      setEndDate("");
+                      setActiveButton("ALL");
+                      fetchData();
+                    }}
+                  >
+                    Reset
+                  </button>
+                </>
+              )}
             </div>
           </div>
           <TabsBody>

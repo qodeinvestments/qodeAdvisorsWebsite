@@ -297,8 +297,8 @@ const PerformanceChart = ({ strategy }) => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row  gap-4">
-      <div className="w-full md:w-3/4 lg:w-[70%] sm:pb-10 rounded-lg">
+    <div className="flex flex-col lg:flex-row  gap-4">
+      <div className="w-full lg:w-[70%] sm:pb-10 rounded-lg">
         <Tabs value="chart1">
           <div className="flex flex-col sm:flex-row items-center justify-between p-2">
             <TabsHeader className="bg-[#f0eeee] border-gray-300  border  p-1">
@@ -313,7 +313,7 @@ const PerformanceChart = ({ strategy }) => {
               </Tab>
             </TabsHeader>
 
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               {["YTD", "6M", "1Y", "5Y"].map((range) => (
                 <button
                   key={range}
@@ -384,7 +384,7 @@ const PerformanceChart = ({ strategy }) => {
           </TabsBody>
         </Tabs>
       </div>
-      <div className="w-full md:w-1/4 lg:w-[30%] flex flex-col space-y-7 border bg-white rounded-md p-4">
+      <div className="w-full  lg:w-[30%] flex flex-col space-y-7 border bg-white rounded-md p-4">
         <Calculator />
       </div>
     </div>

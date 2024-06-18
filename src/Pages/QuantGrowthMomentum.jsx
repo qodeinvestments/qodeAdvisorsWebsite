@@ -150,7 +150,7 @@ const MomentumTabs = () => {
           </div>
         </Container>
       </GrayContainer>
-      <div className="px-4 sm:px-44">
+      <div className="px-4 lg:px-44">
         <div className="py-4 sm:py-12">
           <h2 className="text-3xl font-bold text-center text-[#151E28]">
             Performance
@@ -250,7 +250,7 @@ const MomentumTabs = () => {
         </Container>
       </GrayContainer>
       <Container>
-        <div className="my-20 rounded-lg  p-6 flex items-center justify-between">
+        <div className="my-20 rounded-lg  lg:p-6 flex lg:flex-row flex-col items-center justify-between">
           <div>
             <h3 className="text-lg  font-semibold text-[#151E28] mb-2">
               Download Strategy PPT
@@ -260,7 +260,7 @@ const MomentumTabs = () => {
               the entire strategy.
             </p>
           </div>
-          <div className="flex justify-between gap-10">
+          <div className="flex lg:flex-row flex-col mt-5 sm:mt-0 justify-between gap-10">
             <a
               href="/path-to-your-ppt-file.pptx"
               download

@@ -149,7 +149,7 @@ const Calculator = () => {
   return (
     <>
       <h1 className="text-xl font-black md:text-2xl">Calculate & Decide</h1>
-      <div className="flex flex-col md:flex-row justify-between items-center">
+      <div className="flex flex-col lg:flex-row justify-between items-center">
         <p className="text-gray-500 mb-2 md:mb-0">Investment Amount (₹)</p>
         <input
           type="number"
@@ -157,13 +157,13 @@ const Calculator = () => {
           placeholder="1000"
           value={investmentAmount}
           onChange={handleInvestmentAmountChange}
-          className="active:border-1 py-2 text-center rounded-lg border w-full md:w-auto"
+          className="active:border-1 py-2 text-center rounded-lg border w-full lg:w-auto"
         />
       </div>
       <p className="text-gray-500 mt-4">Investment Frequency</p>
-      <div className="flex flex-col md:flex-row justify-between items-center">
+      <div className="flex flex-col lg:flex-row justify-between items-center">
         <button
-          className={`px-8 py-2 text-center rounded-md w-full md:w-auto mb-2 md:mb-0 ${
+          className={`px-8 py-2 text-center rounded-md w-full lg:w-auto mb-2 md:mb-0 ${
             investmentFrequency === "monthly"
               ? "bg-primary-dark text-white"
               : "bg-white  border border-gray-300 text-black"
@@ -173,7 +173,7 @@ const Calculator = () => {
           Monthly
         </button>
         <button
-          className={`px-8 py-2 text-center border rounded-md w-full md:w-auto mb-2 md:mb-0 ${
+          className={`px-8 py-2 text-center border rounded-md w-full lg:w-auto mb-2 md:mb-0 ${
             investmentFrequency === "yearly"
               ? "bg-primary-dark text-white"
               : "bg-white  border border-gray-300 text-black"
@@ -183,7 +183,7 @@ const Calculator = () => {
           Yearly
         </button>
         <button
-          className={`px-8 py-2 text-center border rounded-md w-full md:w-auto ${
+          className={`px-8 py-2 text-center border rounded-md w-full lg:w-auto ${
             investmentFrequency === "one-time"
               ? "bg-primary-dark text-white"
               : "bg-white  border border-gray-300 text-black"

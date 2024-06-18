@@ -134,12 +134,12 @@ const Header = () => {
           <div className="md:hidden flex items-center">
             <button
               type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white/10 transition duration-300"
+              className="inline-flex items-center justify-center p-2 rounded-md text-black hover:bg-white/10 transition duration-300" // Change text-white to text-black
               onClick={() => setIsNavOpen(!isNavOpen)}
             >
               <span className="sr-only">Open menu</span>
               <svg
-                className="h-8 w-8"
+                className="h-8 w-8 text-black" // Add text-black class
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"

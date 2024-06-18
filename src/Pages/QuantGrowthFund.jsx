@@ -153,7 +153,7 @@ const QuantGrowthFund = () => {
           </div>
         </Container>
       </GrayContainer>
-      <div className="px-4 sm:px-44">
+      <div className="px-4 lg:px-44">
         <div className="py-4 sm:py-12">
           <h2 className="text-3xl font-bold text-center text-[#151E28]">
             Performance

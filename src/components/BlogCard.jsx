@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
+
 function BlogCard({
   title,
   summary,
@@ -21,8 +22,6 @@ function BlogCard({
       day: "numeric",
     });
   }
-
-  console.log(publishedAt);
 
   function calculateReadDuration(blocks, wordsPerMinute = 200) {
     if (!Array.isArray(blocks) || blocks.length === 0) {
@@ -76,16 +75,20 @@ function BlogCard({
       >
         <Link to={`${detailLink}`}>
           <div className="flex flex-col justify-between h-full p-6">
-            <div>
-              <span className="text-primary-dark font-bold text-sm">Blog</span>
-              <h3 className="text-xl font-semibold text-[#151E28] multiline-underline typewriter-font mb-2 relative">
-                {title}
-                <span className="underline"></span>
-              </h3>
-              <span className="text-gray-500 text-sm block mb-2">
-                &#x2022; {duration} read
-              </span>
-              <p className="text-gray-600 mb-10 grayscale transition-filter duration-300 hover:grayscale-0 line-clamp-3">
+            <div className="flex flex-col flex-grow">
+              <div className="mb-auto">
+                <span className="text-primary-dark font-bold text-sm">
+                  Blog
+                </span>
+                <h3 className="text-xl font-semibold text-[#151E28] multiline-underline typewriter-font mb-2 relative overflow-hidden text-ellipsis">
+                  {title}
+                  <span className="underline"></span>
+                </h3>
+                <span className="text-gray-500 text-sm block mb-2">
+                  &#x2022; {duration} read
+                </span>
+              </div>
+              <p className="text-gray-600 grayscale transition-filter duration-300 hover:grayscale-0 line-clamp-3">
                 {summary}
               </p>
             </div>

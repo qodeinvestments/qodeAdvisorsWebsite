@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-const DiscreteChart = () => {
+const DiscreteChart = ({ strategy }) => {
   const [chartData, setChartData] = useState([]);
-
+  console.log(strategy);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,11 +35,10 @@ const DiscreteChart = () => {
           )
           .map((item, index, array) => {
             const nextItem = array[index + 1];
+            const strategyKey = getStrategyKey(strategy);
+            // console.log("next item", nextItem[strategyKey]);
             const momentumPercentage = nextItem
-              ? (nextItem["Vol Adjusted Momentum"] /
-                  item["Vol Adjusted Momentum"] -
-                  1) *
-                100
+              ? (nextItem[strategyKey] / item[strategyKey] - 1) * 100
               : 0;
             const niftyPercentage = nextItem
               ? (nextItem["Nifty 50"] / item["Nifty 50"] - 1) * 100
@@ -60,10 +59,7 @@ const DiscreteChart = () => {
           const firstData = currentYearData[0]; // First data point of the year
           const lastData = currentYearData[currentYearData.length - 1]; // Last data point of the year
           const momentumPercentage =
-            (lastData["Vol Adjusted Momentum"] /
-              firstData["Vol Adjusted Momentum"] -
-              1) *
-            100;
+            (lastData[strategy] / firstData[strategy] - 1) * 100;
           const niftyPercentage =
             (lastData["Nifty 50"] / firstData["Nifty 50"] - 1) * 100;
 
@@ -75,6 +71,7 @@ const DiscreteChart = () => {
         }
 
         setChartData(chartData);
+        console.log(chartData);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
@@ -82,6 +79,25 @@ const DiscreteChart = () => {
 
     fetchData();
   }, []);
+
+  const getStrategyKey = (strategy) => {
+    switch (strategy) {
+      case "Vol Adjusted Momentum":
+        return "Vol Adjusted Momentum";
+      case "Naive Momentum":
+        return "Naive Momentum";
+      case "Nifty 50":
+        return "Nifty 50";
+      case "QGF":
+        return "QGF";
+      case "Short Flat":
+        return "Short Flat";
+      case "QGF + Short Flat":
+        return "QGF + Short Flat";
+      default:
+        throw new Error(`Invalid strategy: ${strategy}`); // Provide the invalid strategy value in the error message
+    }
+  };
 
   const chartOptions = {
     chart: {
@@ -130,7 +146,7 @@ const DiscreteChart = () => {
     },
     series: [
       {
-        name: "Momentum",
+        name: getStrategyKey(strategy),
         data: chartData.map((item) => ({ name: item.name, y: item.momentum })),
         color: "rgba(255,133,3)",
       },

@@ -157,7 +157,7 @@ const MomentumTabs = () => {
           </h2>
         </div>
         <div className="mb-10">
-          <PerformanceChart />
+          <PerformanceChart strategy="Vol Adjusted Momentum" />
         </div>
       </div>
       <GrayContainer>

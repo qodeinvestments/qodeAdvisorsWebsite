@@ -33,6 +33,7 @@ const PerformanceChart = ({ strategy }) => {
           throw new Error("No data found in the JSON response");
         }
 
+        // Filter data for Mondays
         const filteredData = jsonData.Sheet1.filter((item) => {
           const itemDate = new Date(item.Date);
           return itemDate.getDay() === 1; // Monday is the start of the week (0 for Sunday)
@@ -59,6 +60,7 @@ const PerformanceChart = ({ strategy }) => {
       normalizedValue: (item[strategyKey] / initialValue) * 100,
     }));
   };
+
   const getStrategyKey = (strategy) => {
     switch (strategy) {
       case "Vol Adjusted Momentum":
@@ -114,15 +116,12 @@ const PerformanceChart = ({ strategy }) => {
     }
 
     const normalizedData = normalizeData(filteredData, strategy);
-
     const dates = normalizedData.map((item) => item.Date);
-    const momentum = normalizedData.map((item) =>
-      Math.trunc(item.normalizedValue)
-    );
+    const momentum = normalizedData.map((item) => console.log(item));
 
     let maxValue = 0;
     const drawdown = normalizedData.map((item) => {
-      const value = item.normalizedValue;
+      const value = item.normalizedMomentum;
       const dd = maxValue > value ? (value / maxValue - 1) * 100 : 0;
       maxValue = Math.max(maxValue, value);
       return Math.trunc(dd);
@@ -223,7 +222,7 @@ const PerformanceChart = ({ strategy }) => {
       },
       series: [
         {
-          name: getStrategyKey(strategy),
+          name: "Momentum",
           data: momentum,
           color: "rgba(26,175,86)",
           lineWidth: 1,
@@ -294,11 +293,12 @@ const PerformanceChart = ({ strategy }) => {
     };
 
     setChartOptions(options);
+    console.log("Chart Options:", chartOptions);
   };
 
   return (
     <div className="flex flex-col md:flex-row  gap-4">
-      <div className="w-full md:w-3/4 lg:w-[70%] sm:pb-10 rounded-lg">
+      <div className="w-full md:w-3/4 lg:w-[70%]      sm:pb-10 rounded-lg">
         <Tabs value="chart1">
           <div className="flex flex-col sm:flex-row items-center justify-between p-2">
             <TabsHeader className="bg-[#f0eeee] border-gray-300  border  p-1">
@@ -371,7 +371,7 @@ const PerformanceChart = ({ strategy }) => {
               )}
             </TabPanel>
             <TabPanel key="chart2" value="chart2">
-              {<DiscreteChart strategy={strategy} />}
+              {<DiscreteChart />}
             </TabPanel>
             <TabPanel key="chart3" value="chart3">
               {chartOptions && (
@@ -384,7 +384,7 @@ const PerformanceChart = ({ strategy }) => {
           </TabsBody>
         </Tabs>
       </div>
-      <div className="w-full md:w-1/4 lg:w-[30%] flex flex-col space-y-7 border bg-white rounded-md p-4">
+      <div className="w-full md:w-1/4 lg:w-[30%]  flex flex-col space-y-7 border bg-white rounded-md p-4">
         <Calculator />
       </div>
     </div>

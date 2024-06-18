@@ -45,7 +45,7 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="relative rounded-b-[3rem] h-[90vh] graphik-font-regular flex mt-44 justify-center overflow-hidden">
+    <div className="relative rounded-b-[3rem] h-[60vh] graphik-font-regular flex mt-44 justify-center overflow-hidden">
       {/* Background SVG */}
 
       {/* Container for content */}
@@ -78,18 +78,18 @@ const Banner = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-primary-dark text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#696969] transition duration-300 text-base md:text-lg"
+                className="bg-primary-dark text-white font-semibold py-3 px-8 rounded-full shadow-2xl  hover:bg-[#696969] transition duration-300 text-base md:text-lg"
               >
                 Get Started
               </motion.button>
             </div>
-            <div className="w-full flex justify-center items-center  mx-auto">
+            {/* <div className="w-full flex justify-center items-center  mx-auto">
               <img
                 src={bannerImage}
                 alt="Data-driven investments"
                 className="mx-auto my-auto w-full h-auto  rounded-lg"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </Container>

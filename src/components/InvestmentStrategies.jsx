@@ -14,7 +14,7 @@ const InvestmentStrategies = () => {
   return (
     <GrayContainer>
       <Container>
-        <div className="text-center graphik-font-regular mt-10">
+        <div className="text-center graphik-font-regular my-32">
           <p className="uppercase text-[12px] inter-font tracking-widest font-bold text-gray-400 ">
             Qode Your Future: Data-Driven Decisions for a Quantum Leap.
           </p>
@@ -36,87 +36,46 @@ const InvestmentStrategies = () => {
                 scale: 1,
                 speed: 450,
               }}
-              className="bg-white flex flex-col rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 w-full lg:w-1/2"
+              className=" flex flex-col bg-black/70 rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 w-full lg:w-1/2"
             >
               <div className="p-6 relative">
-                <img
+                {/* <img
                   src={quantGrowth}
                   alt="Logo 1"
                   className="w-10 h-10 mr-4"
-                />
-                <div className="absolute top-4 right-4 flex space-x-2">
+                /> */}
+                <h3 className="text-2xl text-white text-left font-bold mt-4">
+                  Quant Growth Fund
+                </h3>
+                {/* <div className="absolute top-4 right-4 flex space-x-2">
                   <span className="bg-primary-dark text-white text-xs font-medium px-2.5 py-0.5 rounded-full">
                     Equity
                   </span>
                   <span className="bg-primary-dark text-white text-xs font-medium px-2.5 py-0.5 rounded-full">
                     Long Short
                   </span>
-                </div>
+                </div> */}
               </div>
-              <p className="text-primary-  px-6 font-light  text-start mb-2">
+              <p className="text-white  px-6 font-light  text-start mb-2">
                 The{" "}
-                <span className="font-black text-primary-dark text-lg">
+                <span className="font-black text-white text-lg">
                   Quant Growth Fund
                 </span>{" "}
                 seeks high-growth potential with data-driven precision. We
                 leverage quantitative analysis to identify companies poised for
-                significant expansion. This approach aims to deliver strong
+                significant expansion.
+                {/* This approach aims to deliver strong
                 returns while managing risk through a statistically rigorous
-                selection process.
+                selection process. */}
               </p>
               <div className="text-start px-6 py-2 mb-10">
-                <a href="/" className="arrow-link text-lg">
+                <Link
+                  to={"/strategies/quant-growth-fund"}
+                  className="text-white text-lg"
+                >
                   View details
-                </a>
+                </Link>
               </div>
-              {/* <div className="relative w-full  flex sm:flex-row flex-col justify-end">
-            <div className="sm:w-1/2 w-full sm:h-64 md:h-72 lg:h-90">
-              <AreaChart />
-            </div>
-            <div className="sm:w-1/2 w-full px-2">
-              <div className="w-full flex flex-col space-y-4">
-                <div className="rounded-lg border bg-white p-4">
-                  <h3 className="text-lg font-semibold mb-4">Risk Ratio</h3>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-600">Std Deviation:</span>
-                    <span className="font-bold">15%</span>
-                  </div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-600">Sharpe Ratio:</span>
-                    <span className="font-bold">1.50%</span>
-                  </div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-600">Beta:</span>
-                    <span className="font-bold">0.88%</span>
-                  </div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-600">Std Deviation:</span>
-                    <span className="font-bold">15%</span>
-                  </div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-600">Sharpe Ratio:</span>
-                    <span className="font-bold">1.50%</span>
-                  </div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-600">Beta:</span>
-                    <span className="font-bold">0.88%</span>
-                  </div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-600">Std Deviation:</span>
-                    <span className="font-bold">15%</span>
-                  </div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-600">Sharpe Ratio:</span>
-                    <span className="font-bold">1.50%</span>
-                  </div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-gray-600">Beta:</span>
-                    <span className="font-bold">0.88%</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> */}
             </Tilt>
 
             <Tilt
@@ -132,19 +91,22 @@ const InvestmentStrategies = () => {
               className="bg-white flex flex-col rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 w-full lg:w-1/2"
             >
               <div className="p-6 relative">
-                <img
+                <h3 className="text-lg text-left font-bold mt-4">
+                  Quant Growth Momentum
+                </h3>
+                {/* <img
                   src={quantMomentum}
                   alt="Logo 1"
                   className="w-10 h-10 mr-4"
-                />
-                <div className="absolute top-4 right-4 flex space-x-2">
+                /> */}
+                {/* <div className="absolute top-4 right-4 flex space-x-2">
                   <span className="bg-primary-dark text-white text-xs font-medium px-2.5 py-0.5 rounded-full">
                     Equity
                   </span>
                   <span className="bg-primary-dark  text-white text-xs font-medium px-2.5 py-0.5 rounded-full">
                     Long Short
                   </span>
-                </div>
+                </div> */}
               </div>
               <p className="text-primary-dark px-6 font-light  text-start mb-2">
                 Harnessing market trends, Qode's{" "}
@@ -152,9 +114,10 @@ const InvestmentStrategies = () => {
                   Quant Growth Momentum
                 </span>{" "}
                 fund utilizes data-driven algorithms to identify and capitalize
-                on securities with upward momentum. This systematic approach
+                on securities with upward momentum.
+                {/* This systematic approach
                 aims to capture short-term gains while managing risk through
-                rigorous quantitative analysis.
+                rigorous quantitative analysis. */}
               </p>
               <div className="text-start px-6 py-2 mb-10">
                 <Link

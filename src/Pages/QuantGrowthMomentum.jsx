@@ -87,24 +87,17 @@ const MomentumTabs = () => {
         <div className="bg-[#fff] rounded-b-[3rem] py-12 md:py-20 ">
           <div className="flex flex-col sm:flex-row justify-between items-start mx-auto px-4 sm:px-6 lg:px-6">
             <div className="pt-16">
-              <h2 className="text-3xl graphik-font-medium text-171E27 sm:text-5xl">
+              <h2 className="text-3xl graphik-font-medium font-bold mb-10 text-center text-primary-dark sm:text-5xl">
                 <span className="block">Quant Momentum Fund</span>
               </h2>
-              <ul className="mt-10 text-lg " style={{ padding: 0 }}>
-                <li style={listItemStyle}>
-                  Momentum is a highly researched strategy in global financial
-                  markets.
-                </li>
-                <li style={listItemStyle}>
-                  It consistently outperforms benchmarks in developed markets
-                  with extensive data.
-                </li>
-                <li style={listItemStyle}>
-                  This performance is evident across different markets, assets,
-                  and time frames.
-                </li>
-              </ul>
-              <div>
+              <div className="text-center text-md lg:px-32">
+                Momentum is the most researched strategy in financial markets
+                around the world. In developed markets where there are long
+                periods of data available we have seen that momentum has
+                consistently been able to outperform the index or a benchmark
+                across markets, assets and different periods of time.
+              </div>
+              <div className="text-center">
                 <button className="bg-primary-dark text-[#fff] font-extrabold sm:w-1/2 mt-10 mx-auto rounded-md py-2">
                   Start Investing
                 </button>
@@ -130,7 +123,7 @@ const MomentumTabs = () => {
                 >
                   <div>
                     <div className="text-2xl mb-4">
-                      <FontAwesomeIcon icon={feature.icon} />
+                      {/* <FontAwesomeIcon icon={feature.icon} /> */}
                     </div>
                     <h3 className="text-xl font-semibold mb-2">
                       {feature.title}
@@ -140,9 +133,9 @@ const MomentumTabs = () => {
                     </p>
                   </div>
                   <div className="mt-auto">
-                    <button className="mt-4 px-2 py-1 rounded-md text-white bg-primary-dark w-max">
+                    {/* <button className="mt-4 px-2 py-1 rounded-md text-white bg-primary-dark w-max">
                       Learn More
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               ))}

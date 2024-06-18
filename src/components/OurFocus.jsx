@@ -7,7 +7,7 @@ const OurFocus = () => {
   return (
     <GrayContainer>
       <Container>
-        <div className="relative text-center graphik-font-regular sm:h-1/2 p-5 sm:px-0 mb-72 sm:pb-0 ">
+        <div className="relative hover:shadow-xl hover:-translate-y-2 transition duration-300  text-center graphik-font-regular sm:h-1/2 p-5 sm:px-0 mb-72 sm:pb-0 ">
           <p className="uppercase text-[12px] inter-font tracking-widest font-bold text-gray-400">
             Our Focus
           </p>

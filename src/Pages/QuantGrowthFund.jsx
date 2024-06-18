@@ -34,18 +34,18 @@ const QuantGrowthFund = () => {
     {
       title: "Factor Investing",
       description:
-        "Factor Investing- Factor investing is an investment strategy that goes beyond just picking individual stocks or bonds. Instead, it focuses on targeting certain characteristics, or factors, that are believed to influence investment returns.",
+        "Factor Investing- Factor investing is an investment strategy that goes beyond just picking individual stocks or bonds. ",
       icon: faList,
     },
     {
       title: "Growth Stocks",
-      description: `Growth stocks are shares in companies that are anticipated to experience above-average growth in earnings and sales compared to the overall market. Investors are attracted to these stocks for the potential for significant capital appreciation, which means the stock price will increase substantially`,
+      description: `Growth stocks are shares in companies that are anticipated to experience above-average growth in earnings and sales compared to the overall market. `,
       icon: faBolt,
     },
     {
       title: "Starting small",
       description:
-        "Typically represent companies that are in the growth phase, offering potential for significant returns but also carrying higher risks compared to large cap stocks. These companies are usually more agile and have the potential for rapid expansion, though they might also be more susceptible to market volatility and economic downturns.",
+        "Typically represent companies that are in the growth phase, offering potential for significant returns but also carrying higher risks compared to large cap stocks.",
       icon: faChartLine,
     },
     // {
@@ -87,27 +87,15 @@ const QuantGrowthFund = () => {
         <div className="bg-[#fff] rounded-b-[3rem] py-12 md:py-20 ">
           <div className="flex flex-col sm:flex-row justify-between items-start mx-auto px-4 sm:px-6 lg:px-6">
             <div className="pt-16">
-              <h2 className="text-3xl graphik-font-medium text-171E27 sm:text-5xl">
+              <h2 className="text-3xl graphik-font-medium font-bold text-primary-dark text-center mb-10 sm:text-5xl">
                 <span className="block">Quant Growth Fund</span>
               </h2>
-              <ul className="mt-10 text-lg " style={{ padding: 0 }}>
-                <li style={listItemStyle}>
-                  Classic Growth Investing Approach: Focuses on high-quality
-                  businesses that have strong competitive advantages and are
-                  skilled in capital allocation.
-                </li>
-                <li style={listItemStyle}>
-                  Automated Stock Selection: Uses a fully automated, objective
-                  process to eliminate human errors and capitalize on market
-                  mispricing.
-                </li>
-                <li style={listItemStyle}>
-                  Proprietary Algorithm: Employs a multi-faceted algorithm to
-                  rank businesses based on capital efficiency, cash flow
-                  generation, and liquidity.
-                </li>
-              </ul>
-              <div>
+              <div className="text-center text-md lg:px-32">
+                The Quantitative Growth Fund uses a classic growth investing
+                approach, focusing on high-quality businesses with strong moats
+                and capital allocation skills.
+              </div>
+              <div className="text-center">
                 <button className="bg-primary-dark text-[#fff] font-extrabold sm:w-1/2 mt-10 mx-auto rounded-md py-2">
                   Start Investing
                 </button>
@@ -133,7 +121,7 @@ const QuantGrowthFund = () => {
                 >
                   <div>
                     <div className="text-2xl mb-4">
-                      <FontAwesomeIcon icon={feature.icon} />
+                      {/* <FontAwesomeIcon icon={feature.icon} /> */}
                     </div>
                     <h3 className="text-xl font-semibold mb-2">
                       {feature.title}
@@ -142,11 +130,11 @@ const QuantGrowthFund = () => {
                       {feature.description}
                     </p>
                   </div>
-                  <div className="mt-auto">
+                  {/* <div className="mt-auto">
                     <button className="mt-4 px-2 py-1 rounded-md text-white bg-primary-dark w-max">
                       Learn More
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               ))}
             </div>
@@ -189,9 +177,7 @@ const QuantGrowthFund = () => {
                     The investible universe defines all the stocks you can
                     potentially choose from. Here, it's narrowed to small and
                     mid-cap companies. Liquidity screens are then applied to
-                    ensure these chosen stocks are actively traded. This means
-                    they have sufficient buying and selling volume, making it
-                    easier to enter and exit positions.
+                    ensure these chosen stocks are actively traded.
                   </p>
                 </div>
                 <div className="bg-white rounded-lg  p-6">
@@ -207,12 +193,7 @@ const QuantGrowthFund = () => {
                   <p className="text-gray-600">
                     A profitability screener is a tool used to filter stocks
                     based on their financial performance, specifically focusing
-                    on profitability. It helps identify companies that are
-                    generating profits and ideally, those profits are growing at
-                    a healthy rate. It removes companies losing money and
-                    focuses on those with high profit growth. Common metrics
-                    used are profit margin, net profit margin, ROE, ROA, PAT/EPS
-                    growth.
+                    on profitability.
                   </p>
                 </div>
                 <div className="bg-white rounded-lg  p-6">
@@ -228,9 +209,7 @@ const QuantGrowthFund = () => {
                   <p className="text-gray-600">
                     After putting all the companies through our profitability
                     filter, we find a composite rank for all the remaining
-                    companies, we identify the 30 strongest performers. These
-                    top contenders are then weighted equally to create a
-                    diversified portfolio.
+                    companies, we identify the 30 strongest performers.
                   </p>
                 </div>
                 <div className="bg-white rounded-lg  p-6">
@@ -246,12 +225,7 @@ const QuantGrowthFund = () => {
                   <p className="text-gray-600">
                     Portfolio rebalancing is like course correction for your
                     investments. Done annually, it ensures your asset allocation
-                    stays on track. Imagine your portfolio weights stocks and
-                    bonds differently than you originally planned. Rebalancing
-                    involves buying or selling assets to get those weights back
-                    in line with your goals and risk tolerance. It helps
-                    maintain your investment strategy and potentially capture
-                    market opportunities.
+                    stays on track.
                   </p>
                 </div>
               </div>

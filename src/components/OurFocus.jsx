@@ -7,7 +7,7 @@ const OurFocus = () => {
   return (
     <GrayContainer>
       <Container>
-        <div className="relative hover:shadow-xl hover:-translate-y-2 transition duration-300  text-center graphik-font-regular sm:h-1/2 p-5 sm:px-0 mb-72 sm:pb-0 ">
+        <div className="relative hover:shadow-xl hover:-translate-y-2 transition duration-300  text-center graphik-font-regular sm:h-1/2 p-5 sm:px-20 mb-72 rounded-2xl sm:pb-0 ">
           <p className="uppercase text-[12px] inter-font tracking-widest font-bold text-gray-400">
             Our Focus
           </p>
@@ -18,7 +18,7 @@ const OurFocus = () => {
           </h2>
 
           {/* Card Container */}
-          <div className="relative top-28 flex flex-col sm:flex-row gap-10 justify-around">
+          <div className="flex flex-col mt-10 sm:flex-row gap-10 justify-around">
             {/* Card 1 */}
             <div className=" bg-white rounded-lg shadow-lg p-6 z-10 flex flex-col items-center">
               {/* Icon */}

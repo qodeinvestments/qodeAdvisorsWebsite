@@ -38,7 +38,7 @@ const PerformanceChart = ({ strategy }) => {
           return itemDate.getDay() === 1; // Monday is the start of the week (0 for Sunday)
         });
 
-        console.log(filteredData);
+        // console.log(filteredData);
 
         updateChartOptions(filteredData, timeRange);
       } catch (error) {
@@ -46,7 +46,7 @@ const PerformanceChart = ({ strategy }) => {
       }
     };
 
-    console.log(timeRange);
+    // console.log(timeRange);
 
     fetchData();
   }, [timeRange, startDate, endDate]);

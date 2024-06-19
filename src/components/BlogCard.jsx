@@ -92,7 +92,7 @@ function BlogCard({
                 {summary}
               </p>
             </div>
-            <div className="flex text-primary-dark items-center justify-between">
+            <div className="flex text-primary-dark items-center mt-4 justify-between">
               <Link
                 to={detailLink}
                 className="transition-opacity duration-300 opacity-0 hover:opacity-100 arrow-link text-sm"

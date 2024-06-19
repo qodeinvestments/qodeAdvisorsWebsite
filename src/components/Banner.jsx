@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import bannerImage from "../assets/pythonCoding2.png";
+import bannerImage from "../assets/bannImage.png";
 import { BackgroundSVG } from "./ui/Background-SVG";
 import Container from "./container/Container";
 
@@ -14,7 +14,7 @@ const Banner = () => {
   const delayBetweenTexts = 1500;
   const textArray = [
     "driven by data",
-    "object and emotion-free",
+    "objective and emotion-free",
     "carried out by Qode",
   ];
 
@@ -45,14 +45,14 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="relative rounded-b-[3rem] h-[60vh] graphik-font-regular flex mt-44 justify-center overflow-hidden">
+    <div className="relative rounded-b-[3rem] h-screen graphik-font-regular flex justify-center overflow-hidden">
       {/* Background SVG */}
 
       {/* Container for content */}
       <Container>
         <div className="mx-auto relative z-10">
-          <div className="flex flex-col  gap-10 items-start">
-            <div className="w-full  text-center mb-10 md:mb-0">
+          <div className="flex flex-col-reverse items-start">
+            <div className="w-full  text-center md:mb-0">
               <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -61,9 +61,7 @@ const Banner = () => {
               >
                 The best investments are <br />{" "}
                 <span className="text-primary-dark px-2 rounded">
-                  {"{"}
                   <span className="">{currentText}</span>
-                  {"}"}
                 </span>
               </motion.h1>
               <motion.p
@@ -83,13 +81,13 @@ const Banner = () => {
                 Get Started
               </motion.button>
             </div>
-            {/* <div className="w-full flex justify-center items-center  mx-auto">
+            <div className="w-full flex justify-center items-center  mx-auto">
               <img
                 src={bannerImage}
                 alt="Data-driven investments"
-                className="mx-auto my-auto w-full h-auto  rounded-lg"
+                className="mx-auto my-auto w-auto h-[40rem]   rounded-lg"
               />
-            </div> */}
+            </div>
           </div>
         </div>
       </Container>

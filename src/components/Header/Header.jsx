@@ -104,7 +104,7 @@ const Header = () => {
       <Container>
         <div className="flex justify-between gap-20 mx-auto items-center h-12  ">
           <Link className="cursor-pointer" to={"/"}>
-            <p className="text-black font-black">Qode.</p>
+            <p className="text-black text-2xl font-black">Qode.</p>
           </Link>
           <div className="hidden md:flex space-x-6 items-center">
             {navItems.map((item) => (

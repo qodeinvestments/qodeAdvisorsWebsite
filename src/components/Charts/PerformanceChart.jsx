@@ -397,7 +397,7 @@ const PerformanceChart = ({ strategy }) => {
               {<DiscreteChart strategy={strategy} />}
             </TabPanel>
             <TabPanel key="chart3" value="chart3">
-              {chartOptions && <RollingReturns />}
+              {chartOptions && <RollingReturns strategy={strategy} />}
             </TabPanel>
           </TabsBody>
         </Tabs>

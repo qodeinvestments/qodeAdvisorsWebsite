@@ -4,7 +4,7 @@ import HighchartsReact from "highcharts-react-official";
 
 const DiscreteChart = ({ strategy }) => {
   const [chartData, setChartData] = useState([]);
-  console.log(strategy);
+  // console.log(strategy);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -71,7 +71,7 @@ const DiscreteChart = ({ strategy }) => {
         }
 
         setChartData(chartData);
-        console.log(chartData);
+        // console.log(chartData);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }

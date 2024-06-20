@@ -34,12 +34,12 @@ const QuantGrowthFund = () => {
     {
       title: "Factor Investing",
       description:
-        "Factor Investing- Factor investing is an investment strategy that goes beyond just picking individual stocks or bonds. ",
+        " An investment strategy that goes beyond just picking individual stocks or bonds. ",
       icon: faList,
     },
     {
       title: "Growth Stocks",
-      description: `Growth stocks are shares in companies that are anticipated to experience above-average growth in earnings and sales compared to the overall market. `,
+      description: `Shares in companies that are anticipated to experience above-average growth in earnings and sales compared to the overall market. `,
       icon: faBolt,
     },
     {
@@ -57,23 +57,27 @@ const QuantGrowthFund = () => {
   ];
   const faqItems = [
     {
-      question: `When is it a good time to invest in the Quant Growth Momentum?`,
-      answer: `There isn't a perfect moment to jump into a Quant Growth Momentum strategy. Instead, a Systematic Investment Plan (SIP) is your best bet.  By consistently investing smaller amounts at regular intervals, you average out market fluctuations. This approach, historically, has helped investors outperform the benchmark and achieve superior long-term returns.`,
+      question: ` What is the type of stocks in which quant growth fund invests?`,
+      answer: `Quant growth funds typically invest in stocks of companies with strong growth potential.`,
     },
     {
-      question:
-        "How does the Quant Growth Momentum differ from traditional funds?",
+      question: "What are the market cap of stocks held?",
       answer:
-        "Unlike traditional funds, Quant Growth Momentum focuses on growth potential and not just company size. It actively buys and sells (high churn) based on quantitative signals, aiming to capture rising trends and avoid falling ones (opposite of traditional value investing). This strategy can be more volatile but has the potential for outperformance",
-    },
-    {
-      question: "Is Quant Growth Momentum suitable for all investors?",
-      answer: `Quant Growth Momentum might not be ideal for everyone. Investors who dislike high volatility or frequent portfolio changes (churn) may find this strategy stressful. It's best suited for those comfortable with potential ups and downs and a long-term investment horizon`,
+        "The market capitalization of stocks held in a quant growth fund typically ranges from 500 crore to 20,000 crore.",
     },
     {
       question:
-        "What is the risk level associated with a Quant Growth Momentum Fund?",
-      answer: "High Risk Fund ",
+        " Are there any sectors or types of companies Quant Growth fund avoids?",
+      answer: `Quant growth funds skip volatile sectors like trading, banking and financials, and focuses on profitable companies with long-term growth potential.`,
+    },
+    {
+      question: "How does the Quant Growth Fund differ from traditional funds?",
+      answer: "Quant growth funds are driven by algorithms and data ",
+    },
+    {
+      question: "What are the benefits of investing in the Quant Growth Fund?",
+      answer:
+        "Quant Growth Fund, a successful and diversified investment option, offers consistent winners and outperformance. By focusing on annual rebalancing, it maintains diversification and lowers costs, making it an attractive choice for investors. ",
     },
   ];
 
@@ -191,9 +195,8 @@ const QuantGrowthFund = () => {
                     Step 2: Profitability Screener
                   </h3>
                   <p className="text-gray-600">
-                    A profitability screener is a tool used to filter stocks
-                    based on their financial performance, specifically focusing
-                    on profitability.
+                    A tool used to filter stocks based on their financial
+                    performance, focusing on profitability.
                   </p>
                 </div>
                 <div className="bg-white rounded-lg  p-6">
@@ -207,9 +210,9 @@ const QuantGrowthFund = () => {
                     Step 3: Selecting top performers
                   </h3>
                   <p className="text-gray-600">
-                    After putting all the companies through our profitability
-                    filter, we find a composite rank for all the remaining
-                    companies, we identify the 30 strongest performers.
+                    After applying our profitability filter to all the
+                    companies, we determine a composite rank for each. From
+                    these rankings, we identify the 30 strongest performers.
                   </p>
                 </div>
                 <div className="bg-white rounded-lg  p-6">

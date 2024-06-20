@@ -34,8 +34,7 @@ const InvestmentStrategies = () => {
               Strategies
             </h2>
             <p className="text-primary text-start text-base lg:text-lg font-medium text-md mx-auto mb-8">
-              With the help of our team, data and technology we design models
-              that help us make investment decisions. Through our{" "}
+              Through our{" "}
               <span className="text-primary-dark font-bold">
                 Portfolio Management Service (PMS)
               </span>

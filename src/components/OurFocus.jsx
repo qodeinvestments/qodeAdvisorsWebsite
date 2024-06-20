@@ -32,10 +32,10 @@ const OurFocus = () => {
               </h3>
               {/* Card Content */}
               <p className="text-gray-600 mt-2">
-                Our data and technology models utilise cutting edge analytics
-                anf machine learning to transform raw data into actionable
-                investment insights by intgrating sophesticated technology we
-                enhance decision making and optimize porfolio performance.
+                Our data and technology models utilize cutting edge analytics
+                and machine learning to transform raw data into actionable
+                investment insights. By integrating sophisticated technology we
+                enhance decision making and optimize portfolio performance.
               </p>
             </div>
 
@@ -51,9 +51,9 @@ const OurFocus = () => {
               {/* Card Content */}
               <p className="text-gray-600 mt-2">
                 Our quant models leverage advanced algorithms and statistical
-                techniques to identify investment opportunity. By analysing vast
-                amount of data these models provide objective insights to drive
-                our investment strategies.
+                techniques to identify investment opportunities. By analyzing
+                vast amount of data these models provide objective insights to
+                drive our investment strategies.
               </p>
             </div>
           </div>

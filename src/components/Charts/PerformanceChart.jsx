@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import DiscreteChart from "./DiscreteChart";
+import RollingReturns from "./RollingReturns";
 import {
   Tabs,
   TabsHeader,
@@ -396,12 +397,7 @@ const PerformanceChart = ({ strategy }) => {
               {<DiscreteChart strategy={strategy} />}
             </TabPanel>
             <TabPanel key="chart3" value="chart3">
-              {chartOptions && (
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  options={chartOptions}
-                />
-              )}
+              {chartOptions && <RollingReturns />}
             </TabPanel>
           </TabsBody>
         </Tabs>

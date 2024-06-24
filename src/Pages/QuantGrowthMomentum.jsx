@@ -11,6 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PerformanceChart from "../components/Charts/PerformanceChart";
 import bannerImage from "../assets/MomentumBanner.png";
 import { faCheckCircle, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
+import HoldingDistribution from "../components/Charts/HoldingDistribution";
 
 const MomentumTabs = () => {
   const listItemStyle = {
@@ -143,6 +144,14 @@ const MomentumTabs = () => {
           </div>
         </Container>
       </GrayContainer>
+      <Container>
+        <div className="py-10">
+          <h2 className="text-3xl font-bold text-center text-[#151E28]">
+            Holding Distribution
+          </h2>
+          {/* <HoldingDistribution strategy={"QGF"} /> */}
+        </div>
+      </Container>
       <div className="px-4 lg:px-44">
         <div className="py-4 sm:py-12">
           <h2 className="text-3xl font-bold text-center text-[#151E28]">

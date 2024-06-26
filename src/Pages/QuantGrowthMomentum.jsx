@@ -148,7 +148,7 @@ const MomentumTabs = () => {
         </Container>
       </GrayContainer>
       <Container>
-        <TrailingReturns />
+        <TrailingReturns strategy="Vol Adjusted Momentum" />
       </Container>
       <Container>
         <div className="py-10">

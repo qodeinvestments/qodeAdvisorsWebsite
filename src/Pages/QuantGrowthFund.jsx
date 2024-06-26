@@ -13,6 +13,7 @@ import bannerImage from "../assets/MomentumBanner.png";
 import { faCheckCircle, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
 import HoldingDistribution from "../components/Charts/HoldingDistribution";
 import RelatedArticles from "../components/RelatedArticles";
+import TrailingReturns from "../components/TrailingReturns";
 
 const QuantGrowthFund = () => {
   const listItemStyle = {
@@ -147,6 +148,9 @@ const QuantGrowthFund = () => {
           </div>
         </Container>
       </GrayContainer>
+      <Container>
+        <TrailingReturns strategy="QGF" />
+      </Container>
       <Container>
         <HoldingDistribution strategy="QGF" />
       </Container>

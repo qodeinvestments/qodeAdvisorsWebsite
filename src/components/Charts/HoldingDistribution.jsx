@@ -138,7 +138,7 @@ const HoldingDistribution = ({ strategy }) => {
   }
 
   return (
-    <div className="py-10 bg-gray-100 md:p-10 p-4 rounded-2xl mt-10 shadow-lg flex flex-col md:flex-row items-start">
+    <div className="py-10 bg-gray-100 md:p-10 p-4 rounded-2xl mt-10  flex flex-col md:flex-row items-start">
       <div className="w-full md:w-1/2 pr-0 md:pr-4 mb-4 md:mb-0">
         <h2 className="text-3xl font-bold text-[#151E28]">
           Holding Distribution

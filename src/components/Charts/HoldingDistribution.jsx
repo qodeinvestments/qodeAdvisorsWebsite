@@ -109,17 +109,17 @@ const HoldingDistribution = ({ strategy }) => {
             {
               name: "Large Cap",
               data: [parseFloat(percentages.large)],
-              color: "#E63946", // A bright red for a strong presence
+              color: "#1995AD", // A bright red for a strong presence
             },
             {
               name: "Mid Cap",
               data: [parseFloat(percentages.mid)],
-              color: "#F4A261", // A vivid orange-saffron for visibility
+              color: "#A1D6E2", // A vivid orange-saffron for visibility
             },
             {
               name: "Small Cap",
               data: [parseFloat(percentages.small)],
-              color: "#2A9D8F", // A lively teal to contrast with the reds and oranges
+              color: "#F1F1F2 ", // A lively teal to contrast with the reds and oranges
             },
           ],
           credits: {

@@ -329,17 +329,12 @@ const PerformanceChart = ({ strategy }) => {
               </Tab>
             </TabsHeader>
 
-            <div className="flex flex-col sm:flex-row sm:flex-nowrap gap-2">
-              {activeTab === "chart1" && (
-                <>
+            {activeTab === "chart1" && (
+              <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                <div className="flex flex-wrap justify-center gap-2">
                   {["YTD", "6M", "1Y", "5Y"].map((range) => (
                     <button
                       key={range}
-                      className={`bg-[#f7f5f5] text-black py-1 px-2 text-xs sm:text-sm rounded ${
-                        activeButton === range
-                          ? "bg-primary-dark text-white"
-                          : ""
-                      }`}
                       onClick={() => {
                         setTimeRange(range);
                         setActiveButton(range);
@@ -348,41 +343,46 @@ const PerformanceChart = ({ strategy }) => {
                           setEndDate(null);
                         }
                       }}
+                      className={`px-3 py-1 text-sm rounded ${
+                        activeButton === range
+                          ? "bg-black text-white"
+                          : "bg-gray-200"
+                      }`}
                     >
                       {range}
                     </button>
                   ))}
+                </div>
 
+                <div className="flex flex-col sm:flex-row gap-2">
                   <input
                     type="date"
-                    value={startDate || ""}
                     onChange={(e) => setStartDate(e.target.value)}
-                    className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-1 px-2 rounded w-full sm:w-auto"
+                    placeholder="Please Enter Start Date"
+                    className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-2 px-3 rounded w-full"
                   />
                   <input
                     type="date"
-                    value={endDate || ""}
                     onChange={(e) => setEndDate(e.target.value)}
-                    className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-1 px-2 rounded w-full sm:w-auto"
+                    placeholder="Please Enter End Date"
+                    className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-2 px-3 rounded w-full"
                   />
+                </div>
 
-                  <button
-                    className={`bg-[#f7f5f5] py-1 px-2 text-xs sm:text-sm rounded ${
-                      activeButton === "ALL" ? "bg-primary-dark text-white" : ""
-                    }`}
-                    onClick={() => {
-                      setTimeRange("ALL");
-                      setStartDate("");
-                      setEndDate("");
-                      setActiveButton("ALL");
-                      fetchData();
-                    }}
-                  >
-                    Reset
-                  </button>
-                </>
-              )}
-            </div>
+                <button
+                  onClick={() => {
+                    setTimeRange("ALL");
+                    setStartDate("");
+                    setEndDate("");
+                    setActiveButton("ALL");
+                    fetchData();
+                  }}
+                  className="bg-gray-200 text-gray-800 px-4 py-2 rounded text-sm"
+                >
+                  Reset
+                </button>
+              </div>
+            )}
           </div>
           <TabsBody>
             <TabPanel key="chart1" value="chart1">

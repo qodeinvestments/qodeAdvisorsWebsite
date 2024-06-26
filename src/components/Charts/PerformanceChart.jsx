@@ -388,7 +388,7 @@ const PerformanceChart = ({ strategy }) => {
                 </div>
 
                 <button
-                  className={`bg-[#f7f5f5] py-1 px-2 text-xs sm:text-sm rounded ${
+                  className={`bg-[#f7f5f5] py-2 sm:py-1 px-2 text-xs sm:text-sm rounded ${
                     activeButton === "ALL" ? "bg-primary-dark text-white" : ""
                   }`}
                   onClick={() => {

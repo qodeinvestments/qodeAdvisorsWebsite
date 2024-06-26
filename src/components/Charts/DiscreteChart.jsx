@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 
-const DiscreteChart = () => {
+const DiscreteChart = ({ strategy }) => {
   const [chartData, setChartData] = useState([]);
-
+  // console.log(strategy);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,11 +35,10 @@ const DiscreteChart = () => {
           )
           .map((item, index, array) => {
             const nextItem = array[index + 1];
+            const strategyKey = getStrategyKey(strategy);
+            // console.log("next item", nextItem[strategyKey]);
             const momentumPercentage = nextItem
-              ? (nextItem["Vol Adjusted Momentum"] /
-                  item["Vol Adjusted Momentum"] -
-                  1) *
-                100
+              ? (nextItem[strategyKey] / item[strategyKey] - 1) * 100
               : 0;
             const niftyPercentage = nextItem
               ? (nextItem["Nifty 50"] / item["Nifty 50"] - 1) * 100
@@ -60,10 +59,7 @@ const DiscreteChart = () => {
           const firstData = currentYearData[0]; // First data point of the year
           const lastData = currentYearData[currentYearData.length - 1]; // Last data point of the year
           const momentumPercentage =
-            (lastData["Vol Adjusted Momentum"] /
-              firstData["Vol Adjusted Momentum"] -
-              1) *
-            100;
+            (lastData[strategy] / firstData[strategy] - 1) * 100;
           const niftyPercentage =
             (lastData["Nifty 50"] / firstData["Nifty 50"] - 1) * 100;
 
@@ -75,6 +71,7 @@ const DiscreteChart = () => {
         }
 
         setChartData(chartData);
+        // console.log(chartData);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
@@ -83,11 +80,67 @@ const DiscreteChart = () => {
     fetchData();
   }, []);
 
+  const getStrategyKey = (strategy) => {
+    switch (strategy) {
+      case "Vol Adjusted Momentum":
+        return "Vol Adjusted Momentum";
+      case "Naive Momentum":
+        return "Naive Momentum";
+      case "Nifty 50":
+        return "Nifty 50";
+      case "QGF":
+        return "QGF";
+      case "Short Flat":
+        return "Short Flat";
+      case "QGF + Short Flat":
+        return "QGF + Short Flat";
+      default:
+        throw new Error(`Invalid strategy: ${strategy}`); // Provide the invalid strategy value in the error message
+    }
+  };
+
   const chartOptions = {
     chart: {
       type: "column",
-      height: "50%", // Increase the chart height
       backgroundColor: "none",
+      spacingBottom: 15,
+      spacingTop: 10,
+      spacingLeft: 10,
+      spacingRight: 10,
+      // Remove fixed height
+      height: null,
+    },
+    responsive: {
+      rules: [
+        {
+          condition: {
+            maxWidth: 500,
+          },
+          chartOptions: {
+            legend: {
+              layout: "horizontal",
+              align: "center",
+              verticalAlign: "bottom",
+            },
+            yAxis: {
+              labels: {
+                align: "left",
+                x: 0,
+                y: -5,
+              },
+              title: {
+                text: null,
+              },
+            },
+            subtitle: {
+              text: null,
+            },
+            credits: {
+              enabled: false,
+            },
+          },
+        },
+      ],
     },
     title: {
       text: "",
@@ -99,7 +152,10 @@ const DiscreteChart = () => {
       },
       labels: {
         formatter: function () {
-          return this.value; // This will display the year on the X-axis
+          return this.value;
+        },
+        style: {
+          fontSize: "11px",
         },
       },
     },
@@ -110,27 +166,34 @@ const DiscreteChart = () => {
       gridLineWidth: 0,
       plotLines: [
         {
-          color: "darkgray", // Color of the X-axis line
-          width: 1, // Width of the line
-          value: 0, // Positioning the X-axis at Y=0
+          color: "darkgray",
+          width: 1,
+          value: 0,
         },
       ],
-      // Ensure that the axis doesn't automatically adjust to exclude 0 if there are only positive values
       minRange: 0.1,
+      labels: {
+        style: {
+          fontSize: "11px",
+        },
+      },
     },
     plotOptions: {
       column: {
         dataLabels: {
-          enabled: true, // Enable data labels
+          enabled: true,
           crop: false,
           overflow: "none",
-          format: "{y:.2f}%", // Display values with 2 decimal places and '%' sign
+          format: "{y:.2f}%",
+          style: {
+            fontSize: "10px",
+          },
         },
       },
     },
     series: [
       {
-        name: "Momentum",
+        name: getStrategyKey(strategy),
         data: chartData.map((item) => ({ name: item.name, y: item.momentum })),
         color: "rgba(255,133,3)",
       },
@@ -140,6 +203,11 @@ const DiscreteChart = () => {
         color: "rgba(6,118,141)",
       },
     ],
+    legend: {
+      itemStyle: {
+        fontSize: "11px",
+      },
+    },
   };
 
   useEffect(() => {

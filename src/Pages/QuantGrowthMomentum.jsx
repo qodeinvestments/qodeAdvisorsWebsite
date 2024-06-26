@@ -11,17 +11,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PerformanceChart from "../components/Charts/PerformanceChart";
 import bannerImage from "../assets/MomentumBanner.png";
 import { faCheckCircle, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
+import HoldingDistribution from "../components/Charts/HoldingDistribution";
+import { useParams } from "react-router-dom";
+import RelatedArticles from "../components/RelatedArticles";
+import TrailingReturns from "../components/TrailingReturns";
 
 const MomentumTabs = () => {
   const listItemStyle = {
-    listStyleType: "none", // Remove default bullets
-    color: "#171E27",
-    background:
-      "url(https://www.tickertape.in/images/digitalgold/heroSection/star.webp) no-repeat",
+    listStyleType: "disc", // Remove default bullets
+    // background:
+    //   "url(https://www.tickertape.in/images/digitalgold/heroSection/star.webp) no-repeat",
     backgroundPosition: "0px 5px", // Position the background
     backgroundSize: "22px 22px", // Size of the background
     paddingLeft: "30px", // Padding to separate text from background
-    marginBottom: "10px", // Space between items
+    marginBottom: "px", // Space between items
     lineHeight: "2", // Line height for better readability
   };
   const [activeTab, setActiveTab] = useState("Features");
@@ -84,37 +87,32 @@ const MomentumTabs = () => {
 
   return (
     <div className="mx-auto graphik-font-regular mt-10">
-      <div className="bg-[#fff] rounded-b-[3rem] py-12 md:py-20 ">
-        <div className="container flex flex-col sm:flex-row justify-between items-start mx-auto px-4 sm:px-6 lg:px-6">
-          <div className="pt-16">
-            <h2 className="text-3xl graphik-font-medium text-171E27 sm:text-5xl">
-              <span className="block">Quant Momentum Fund</span>
-            </h2>
-            <ul className="mt-10 text-lg " style={{ padding: 0 }}>
-              <li style={listItemStyle}>
-                Momentum is a highly researched strategy in global financial
-                markets.
-              </li>
-              <li style={listItemStyle}>
-                It consistently outperforms benchmarks in developed markets with
-                extensive data.
-              </li>
-              <li style={listItemStyle}>
-                This performance is evident across different markets, assets,
-                and time frames.
-              </li>
-            </ul>
-            <div>
-              <button className="bg-primary text-[#fff] font-extrabold sm:w-1/2 mt-10 mx-auto rounded-md py-2">
-                Start Investing
-              </button>
+      <Container>
+        <div className="bg-[#fff] rounded-b-[3rem] py-12 md:py-20 ">
+          <div className="flex flex-col sm:flex-row justify-between items-start mx-auto px-4 sm:px-6 lg:px-6">
+            <div className="pt-16">
+              <h2 className="text-3xl graphik-font-medium font-bold mb-10 text-center text-primary-dark sm:text-5xl">
+                <span className="block">Quant Momentum Fund</span>
+              </h2>
+              <div className="text-center text-md lg:px-32">
+                Momentum is the most researched strategy in financial markets
+                around the world. In developed markets where there are long
+                periods of data available we have seen that momentum has
+                consistently been able to outperform the index or a benchmark
+                across markets, assets and different periods of time.
+              </div>
+              <div className="text-center">
+                <button className="bg-primary-dark text-[#fff] font-extrabold px-10 sm:px-0 sm:w-1/2 mt-10 mx-auto rounded-md py-2">
+                  Start Investing
+                </button>
+              </div>
             </div>
-          </div>
-          {/* <div className="sm:w-1/3   h-auto">
+            {/* <div className="sm:w-1/3   h-auto">
             <img src={bannerImage} alt="" />
           </div> */}
+          </div>
         </div>
-      </div>
+      </Container>
       <GrayContainer>
         <Container>
           <div className="py-12">
@@ -129,7 +127,7 @@ const MomentumTabs = () => {
                 >
                   <div>
                     <div className="text-2xl mb-4">
-                      <FontAwesomeIcon icon={feature.icon} />
+                      {/* <FontAwesomeIcon icon={feature.icon} /> */}
                     </div>
                     <h3 className="text-xl font-semibold mb-2">
                       {feature.title}
@@ -139,9 +137,9 @@ const MomentumTabs = () => {
                     </p>
                   </div>
                   <div className="mt-auto">
-                    <button className="mt-4 px-2 py-1 rounded-md text-white bg-primary w-max">
+                    {/* <button className="mt-4 px-2 py-1 rounded-md text-white bg-primary-dark w-max">
                       Learn More
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               ))}
@@ -149,14 +147,22 @@ const MomentumTabs = () => {
           </div>
         </Container>
       </GrayContainer>
-      <div className="px-4 sm:px-44">
+      <Container>
+        <TrailingReturns />
+      </Container>
+      <Container>
+        <div className="py-10">
+          <HoldingDistribution strategy="Momentum" />
+        </div>
+      </Container>
+      <div className="px-4 lg:px-44">
         <div className="py-4 sm:py-12">
           <h2 className="text-3xl font-bold text-center text-[#151E28]">
             Performance
           </h2>
         </div>
         <div className="mb-10">
-          <PerformanceChart />
+          <PerformanceChart strategy="Vol Adjusted Momentum" />
         </div>
       </div>
       <GrayContainer>
@@ -249,7 +255,7 @@ const MomentumTabs = () => {
         </Container>
       </GrayContainer>
       <Container>
-        <div className="my-20 rounded-lg  p-6 flex items-center justify-between">
+        <div className="my-20 rounded-lg  lg:p-6 flex lg:flex-row flex-col items-center justify-between">
           <div>
             <h3 className="text-lg  font-semibold text-[#151E28] mb-2">
               Download Strategy PPT
@@ -259,11 +265,11 @@ const MomentumTabs = () => {
               the entire strategy.
             </p>
           </div>
-          <div className="flex justify-between gap-10">
+          <div className="flex lg:flex-row flex-col mt-5 sm:mt-0 justify-between gap-10">
             <a
               href="/path-to-your-ppt-file.pptx"
               download
-              className="flex-1 relative bg-primary text-white py-2 px-10 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
+              className="flex-1 relative bg-primary-dark text-white py-2 px-10 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
             >
               <span className="relative z-10 flex items-center justify-center w-full h-full">
                 <FontAwesomeIcon icon={faDownload} className="mr-2" />
@@ -271,7 +277,7 @@ const MomentumTabs = () => {
               </span>
             </a>
             <a
-              className="flex-1 relative bg-primary text-white py-2 px-10 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
+              className="flex-1 relative bg-primary-dark text-white py-2 px-10 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
               href=""
             >
               <span className="relative z-10 flex whitespace-nowrap items-center justify-center w-full h-full">
@@ -315,6 +321,10 @@ const MomentumTabs = () => {
           </div>
         </Container>
       </GrayContainer>
+
+      <Container>
+        <RelatedArticles strategySlug="quant-growth-momentum" limit={3} />
+      </Container>
     </div>
   );
 };

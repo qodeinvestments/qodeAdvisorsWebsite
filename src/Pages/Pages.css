@@ -38,7 +38,7 @@
   content: "";
   height: 6px;
   width: 6px;
-  background-color: #48B4EA; /* Match your active link color or any color you prefer */
+  background-color: #000000; /* Match your active link color or any color you prefer */
   border-radius: 50%;
   position: absolute;
   left: 20px;

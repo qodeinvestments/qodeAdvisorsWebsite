@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import DiscreteChart from "./DiscreteChart";
+import RollingReturns from "./RollingReturns";
 import {
   Tabs,
   TabsHeader,
@@ -10,7 +11,7 @@ import {
   TabPanel,
 } from "@material-tailwind/react";
 import Calculator from "../Calculator";
-const PerformanceChart = () => {
+const PerformanceChart = ({ strategy }) => {
   const [chartOptions, setChartOptions] = useState(null);
   const [timeRange, setTimeRange] = useState("ALL"); // State to manage selected time range
   const [startDate, setStartDate] = useState(null);
@@ -38,7 +39,7 @@ const PerformanceChart = () => {
           return itemDate.getDay() === 1; // Monday is the start of the week (0 for Sunday)
         });
 
-        console.log(filteredData);
+        // console.log(filteredData);
 
         updateChartOptions(filteredData, timeRange);
       } catch (error) {
@@ -46,19 +47,36 @@ const PerformanceChart = () => {
       }
     };
 
-    console.log(timeRange);
+    // console.log(timeRange);
 
     fetchData();
   }, [timeRange, startDate, endDate]);
 
-  const normalizeData = (data) => {
-    const initialMomentum = data[0]["Vol Adjusted Momentum"];
-
+  const normalizeData = (data, strategy) => {
+    const strategyKey = getStrategyKey(strategy);
+    const initialValue = data[0][strategyKey];
     return data.map((item) => ({
       ...item,
-      normalizedMomentum:
-        (item["Vol Adjusted Momentum"] / initialMomentum) * 100,
+      normalizedValue: (item[strategyKey] / initialValue) * 100,
     }));
+  };
+  const getStrategyKey = (strategy) => {
+    switch (strategy) {
+      case "Vol Adjusted Momentum":
+        return "Vol Adjusted Momentum";
+      case "Naive Momentum":
+        return "Naive Momentum";
+      case "Nifty 50":
+        return "Nifty 50";
+      case "QGF":
+        return "QGF";
+      case "Short Flat":
+        return "Short Flat";
+      case "QGF + Short Flat":
+        return "QGF + Short Flat";
+      default:
+        throw new Error(`Invalid strategy: ${strategy}`); // Provide the invalid strategy value in the error message
+    }
   };
 
   const updateChartOptions = (data, range) => {
@@ -96,16 +114,16 @@ const PerformanceChart = () => {
       );
     }
 
-    const normalizedData = normalizeData(filteredData);
+    const normalizedData = normalizeData(filteredData, strategy);
 
     const dates = normalizedData.map((item) => item.Date);
     const momentum = normalizedData.map((item) =>
-      Math.trunc(item.normalizedMomentum)
+      Math.trunc(item.normalizedValue)
     );
 
     let maxValue = 0;
     const drawdown = normalizedData.map((item) => {
-      const value = item.normalizedMomentum;
+      const value = item.normalizedValue;
       const dd = maxValue > value ? (value / maxValue - 1) * 100 : 0;
       maxValue = Math.max(maxValue, value);
       return Math.trunc(dd);
@@ -206,7 +224,7 @@ const PerformanceChart = () => {
       },
       series: [
         {
-          name: "Momentum",
+          name: getStrategyKey(strategy),
           data: momentum,
           color: "rgba(26,175,86)",
           lineWidth: 1,
@@ -280,68 +298,90 @@ const PerformanceChart = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row  gap-4">
-      <div className="w-full md:w-3/4 lg:w-[70%]      sm:pb-10 rounded-lg">
+    <div className="flex flex-col lg:flex-row gap-4">
+      <div className="lg:w-[70%] sm:pb-10 rounded-lg">
         <Tabs value="chart1">
-          <div className="flex flex-col sm:flex-row items-center justify-between p-2">
-            <TabsHeader className="bg-[#f0eeee] border-gray-300  border  p-1">
-              <Tab className="text-sm" key="chart1" value="chart1">
+          <div className="flex flex-col sm:flex-row  sm:items-center justify-between lg:p-2">
+            <TabsHeader className="bg-[#f0eeee] border-gray-300 border p-1 mb-4 sm:mb-0">
+              <Tab
+                className="text-xs sm:text-sm"
+                onClick={() => handleTabClick("chart1")}
+                key="chart1"
+                value="chart1"
+              >
                 Trailing
               </Tab>
-              <Tab className="text-sm" key="chart2" value="chart2">
+              <Tab
+                className="text-xs sm:text-sm"
+                onClick={() => handleTabClick("chart2")}
+                key="chart2"
+                value="chart2"
+              >
                 Discrete
               </Tab>
-              <Tab className="text-sm" key="chart3" value="chart3">
+              <Tab
+                className="text-xs sm:text-sm"
+                onClick={() => handleTabClick("chart3")}
+                key="chart3"
+                value="chart3"
+              >
                 Rolling
               </Tab>
             </TabsHeader>
 
-            <div className="flex gap-2">
-              {["YTD", "6M", "1Y", "5Y"].map((range) => (
-                <button
-                  key={range}
-                  className={`bg-[#f7f5f5] text-black py-1 px-3 text-sm rounded ${
-                    activeButton === range ? "bg-primary text-white" : ""
-                  }`}
-                  onClick={() => {
-                    setTimeRange(range);
-                    setActiveButton(range);
-                    if (range !== "ALL") {
-                      setStartDate(null);
-                      setEndDate(null);
-                    }
-                  }}
-                >
-                  {range}
-                </button>
-              ))}
-              <input
-                type="date"
-                value={startDate || ""} // Fallback to empty string if null
-                onChange={(e) => setStartDate(e.target.value)}
-                className="bg-[#f7f5f5] text-gray-600 text-sm py-1 px-2 rounded"
-              />
-              <input
-                type="date"
-                value={endDate || ""} // Fallback to empty string if null
-                onChange={(e) => setEndDate(e.target.value)}
-                className="bg-[#f7f5f5] text-gray-600 text-sm py-1 px-2 rounded"
-              />
+            <div className="flex flex-col sm:flex-row sm:flex-nowrap gap-2">
+              {activeTab === "chart1" && (
+                <>
+                  {["YTD", "6M", "1Y", "5Y"].map((range) => (
+                    <button
+                      key={range}
+                      className={`bg-[#f7f5f5] text-black py-1 px-2 text-xs sm:text-sm rounded ${
+                        activeButton === range
+                          ? "bg-primary-dark text-white"
+                          : ""
+                      }`}
+                      onClick={() => {
+                        setTimeRange(range);
+                        setActiveButton(range);
+                        if (range !== "ALL") {
+                          setStartDate(null);
+                          setEndDate(null);
+                        }
+                      }}
+                    >
+                      {range}
+                    </button>
+                  ))}
 
-              <button
-                className={`bg-[#f7f5f5] py-1 px-2 text-sm rounded ${
-                  activeButton === "ALL" ? "bg-primary text-white" : ""
-                }`}
-                onClick={() => {
-                  setTimeRange("ALL");
-                  setStartDate("");
-                  setEndDate("");
-                  setActiveButton("ALL");
-                  fetchData();
-                }}
-              >
-                Reset
-              </button>
+                  <input
+                    type="date"
+                    value={startDate || ""}
+                    onChange={(e) => setStartDate(e.target.value)}
+                    className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-1 px-2 rounded w-full sm:w-auto"
+                  />
+                  <input
+                    type="date"
+                    value={endDate || ""}
+                    onChange={(e) => setEndDate(e.target.value)}
+                    className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-1 px-2 rounded w-full sm:w-auto"
+                  />
+
+                  <button
+                    className={`bg-[#f7f5f5] py-1 px-2 text-xs sm:text-sm rounded ${
+                      activeButton === "ALL" ? "bg-primary-dark text-white" : ""
+                    }`}
+                    onClick={() => {
+                      setTimeRange("ALL");
+                      setStartDate("");
+                      setEndDate("");
+                      setActiveButton("ALL");
+                      fetchData();
+                    }}
+                  >
+                    Reset
+                  </button>
+                </>
+              )}
             </div>
           </div>
           <TabsBody>
@@ -354,20 +394,15 @@ const PerformanceChart = () => {
               )}
             </TabPanel>
             <TabPanel key="chart2" value="chart2">
-              {<DiscreteChart />}
+              {<DiscreteChart strategy={strategy} />}
             </TabPanel>
             <TabPanel key="chart3" value="chart3">
-              {chartOptions && (
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  options={chartOptions}
-                />
-              )}
+              {chartOptions && <RollingReturns strategy={strategy} />}
             </TabPanel>
           </TabsBody>
         </Tabs>
       </div>
-      <div className="w-full md:w-1/4 lg:w-[30%]  flex flex-col space-y-7 border bg-white rounded-md p-4">
+      <div className="w-full lg:w-[30%] flex flex-col space-y-7 border bg-white rounded-md p-4">
         <Calculator />
       </div>
     </div>

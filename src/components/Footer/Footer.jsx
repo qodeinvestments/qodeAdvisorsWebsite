@@ -17,16 +17,16 @@ const Footer = () => {
             {/* <img src={logo} alt="Company Logo" className="mb-4 w-32" /> */}
             <h3 className="text-lg font-semibold text-black  mb-4">Company</h3>
             <ul className="text-sm text-gray-400 ">
-              <li className="mb-2 hover:text-primary ">
+              <li className="mb-2 hover:text-primary-dark ">
                 <a href="#">About Us</a>
               </li>
-              <li className="mb-2 hover:text-primary ">
+              <li className="mb-2 hover:text-primary-dark ">
                 <a href="#">Our Team</a>
               </li>
-              <li className="mb-2 hover:text-primary ">
+              <li className="mb-2 hover:text-primary-dark ">
                 <a href="#">Careers</a>
               </li>
-              <li>
+              <li className="hover:text-primary-dark">
                 <a href="#">Contact Us</a>
               </li>
             </ul>
@@ -36,16 +36,16 @@ const Footer = () => {
               Services
             </h3>
             <ul className="text-sm text-gray-400">
-              <li className="mb-2 hover:text-primary">
+              <li className="mb-2 hover:text-primary-dark">
                 <a href="#">Investment Planning</a>
               </li>
-              <li className="mb-2 hover:text-primary">
+              <li className="mb-2 hover:text-primary-dark">
                 <a href="#">Wealth Management</a>
               </li>
-              <li className="mb-2 hover:text-primary">
+              <li className="mb-2 hover:text-primary-dark">
                 <a href="#">Tax Planning</a>
               </li>
-              <li>
+              <li className="hover:text-primary-dark">
                 <a href="#">Estate Planning</a>
               </li>
             </ul>
@@ -55,16 +55,16 @@ const Footer = () => {
               Resources
             </h3>
             <ul className="text-sm text-gray-400">
-              <li className="mb-2 hover:text-primary">
+              <li className="mb-2 hover:text-primary-dark">
                 <a href="#">Blog</a>
               </li>
-              <li className="mb-2 hover:text-primary">
+              <li className="mb-2 hover:text-primary-dark">
                 <a href="#">Whitepapers</a>
               </li>
-              <li className="mb-2 hover:text-primary">
+              <li className="mb-2 hover:text-primary-dark">
                 <a href="#">Calculators</a>
               </li>
-              <li>
+              <li className="hover:text-primary-dark">
                 <a href="#">FAQs</a>
               </li>
             </ul>
@@ -93,16 +93,28 @@ const Footer = () => {
               Follow Us
             </h3>
             <div className="flex space-x-4">
-              <a href="#" className="text-sm text-gray-400 hover:text-primary">
+              <a
+                href="#"
+                className="text-sm hover:text-primary-dark-dark text-gray-400"
+              >
                 <FontAwesomeIcon icon={faTwitter} />
               </a>
-              <a href="#" className="text-sm text-gray-400 hover:text-primary">
+              <a
+                href="#"
+                className="text-sm hover:text-primary-dark-dark text-gray-400"
+              >
                 <FontAwesomeIcon icon={faFacebookF} />
               </a>
-              <a href="#" className="text-sm text-gray-400 hover:text-primary">
+              <a
+                href="#"
+                className="text-sm hover:text-primary-dark-dark text-gray-400"
+              >
                 <FontAwesomeIcon icon={faLinkedinIn} />
               </a>
-              <a href="#" className="text-sm text-gray-400 hover:text-primary">
+              <a
+                href="#"
+                className="text-sm hover:text-primary-dark-dark text-gray-400"
+              >
                 <FontAwesomeIcon icon={faRss} />
               </a>
             </div>

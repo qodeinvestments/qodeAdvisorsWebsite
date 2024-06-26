@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import bannerImage from "../assets/Investment data-amico.svg";
+import bannerImage from "../assets/bannImage.png";
 import { BackgroundSVG } from "./ui/Background-SVG";
+import Container from "./container/Container";
 
 const Banner = () => {
   // ... previous state and useEffect code ...
@@ -44,67 +45,52 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="relative rounded-b-[3rem] h-[90vh] graphik-font-regular flex items-center overflow-hidden">
+    <div className="relative rounded-b-[3rem] h-screen graphik-font-regular flex justify-center overflow-hidden">
       {/* Background SVG */}
 
       {/* Container for content */}
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col  gap-10 md:flex-row items-center">
-          <div className="w-full md:w-2/3 text-center md:text-left mb-10 md:mb-0">
-            <motion.h1
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#000] mb-6"
-            >
-              The best investments are <br />{" "}
-              <span className="text-primary  px-2 rounded">
-                {"{"}
-                <span className="font-mono">{currentText}</span>
-                {"}"}
-              </span>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl text-gray-700 mb-10"
-            >
-              We're an investment firm leveraging quantitative models to drive
-              informed and strategic investment decisions.
-            </motion.p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-primary text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-[#1374A4] transition duration-300"
-            >
-              Get Started
-            </motion.button>
-          </div>
-          {/* <div className="w-full md:w-1/2">
-            <motion.div
-              animate={{
-                y: [0, -10, 0],
-                rotate: [0, -1, 0, 1, 0],
-              }}
-              transition={{
-                duration: 5,
-                ease: "easeInOut",
-                times: [0, 0.2, 0.5, 0.8, 1],
-                repeat: Infinity,
-                repeatDelay: 0,
-              }}
-              className="filter drop-shadow-xl"
-            >
+      <Container>
+        <div className="mx-auto relative z-10">
+          <div className="flex flex-col-reverse items-start">
+            <div className="w-full  text-center md:mb-0">
+              <motion.h1
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-3xl text-primary md:text-4xl lg:text-5xl font-bold mb-6"
+              >
+                The best investments are <br />{" "}
+                <span className="text-primary-dark px-2 rounded">
+                  <span className="">{currentText}</span>
+                </span>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-base md:text-lg lg:text-xl text-primary-dark mb-10"
+              >
+                We're an investment firm leveraging quantitative models to drive
+                informed and strategic investment decisions.
+              </motion.p>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-primary-dark text-white font-semibold py-3 px-8 rounded-full shadow-2xl  hover:bg-[#696969] transition duration-300 text-base md:text-lg"
+              >
+                Get Started
+              </motion.button>
+            </div>
+            <div className="w-full flex justify-center items-center mx-auto">
               <img
                 src={bannerImage}
                 alt="Data-driven investments"
-                className="w-3/4  h-auto object-cover rounded-lg"
+                className="mx-auto my-auto w-full h-auto max-w-full sm:max-w-[90%] md:max-w-[80%] lg:max-w-[70%] rounded-lg"
               />
-            </motion.div>
-          </div> */}
+            </div>
+          </div>
         </div>
-      </div>
+      </Container>
       {/* <BackgroundSVG className="absolute top-0 left-0 inset-0 w-full h-full" /> */}
     </div>
   );

@@ -10,17 +10,18 @@ import {
   faQuestionCircle,
   faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Container from "../container/Container";
 
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const navItems = [
-    {
-      name: "Home",
-      slug: "/",
-      icon: faHome,
-      sublinks: [],
-    },
+    // {
+    //   name: "Home",
+    //   slug: "/",
+    //   icon: faHome,
+    //   sublinks: [],
+    // },
     {
       name: "Quant Investing",
       icon: faChartLine,
@@ -97,67 +98,74 @@ const Header = () => {
       ],
     },
   ];
+  const handleNavLinkClick = () => {
+    setIsNavOpen(false);
+  };
 
   return (
     <div className="shadow-lg graphik-font-regular fixed w-full bg-white z-20  top-0 text-white">
-      <div className="flex max-w-[100rem] justify-center mx-auto items-center h-12 px-52 ">
-        <div className="mt-3">
+      <Container>
+        <div className="flex justify-between gap-20 mx-auto items-center h-12  ">
           <Link className="cursor-pointer" to={"/"}>
-            <img className="w-40" src={logo} alt="Company Logo" />
+            <p className="text-black text-2xl playfair-display-font font-semibold">
+              Qode.
+            </p>
           </Link>
-        </div>
-        <div className="hidden md:flex space-x-6 items-center">
-          {navItems.map((item) => (
-            <div key={item.name} className="relative group">
-              <Link
-                to={item.slug ? item.slug : "#"}
-                className="text-[#000] hover:bg-white/10 px-4 py-2 rounded-lg text-sm  font-medium flex items-center transition duration-300"
-              >
-                {item.name}
-              </Link>
+          <div className="hidden md:flex space-x-6 items-center">
+            {navItems.map((item) => (
+              <div key={item.name} className="relative group">
+                <Link
+                  to={item.slug ? item.slug : "#"}
+                  className="text-[#000] hover:bg-white/10 px-4 py-2 rounded-lg text-sm  font-medium flex items-center transition duration-300"
+                >
+                  {item.name}
+                </Link>
 
-              {item.sublinks && item.sublinks.length > 0 && (
-                <ul className="absolute top-full w-72 left-0 text-sm right-0 mx-auto hidden group-hover:block bg-white text-[#000]  rounded-md overflow-hidden">
-                  {item.sublinks.map((sublink) => (
-                    <li
-                      key={sublink.name}
-                      className="px-4 py-3 hover:bg-[#efefef] hover:text-primary transition duration-300"
-                    >
-                      <Link to={sublink.slug}>{sublink.name}</Link>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
-        </div>
-        <div className="md:hidden flex items-center">
-          <button
-            type="button"
-            className="inline-flex items-center justify-center p-2 rounded-md text-white hover:bg-white/10 transition duration-300"
-            onClick={() => setIsNavOpen(!isNavOpen)}
-          >
-            <span className="sr-only">Open menu</span>
-            <svg
-              className="h-8 w-8"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              aria-hidden="true"
+                {item.sublinks && item.sublinks.length > 0 && (
+                  <ul className="absolute top-full w-72 left-0 text-sm right-0 mx-auto hidden group-hover:block bg-white text-[#000]  rounded-md overflow-hidden">
+                    {item.sublinks.map((sublink) => (
+                      <li
+                        key={sublink.name}
+                        className="px-4 py-3 hover:bg-[#efefef] hover:text-primary transition duration-300"
+                      >
+                        <Link to={sublink.slug}>{sublink.name}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="md:hidden flex items-center">
+            <button
+              type="button"
+              className="inline-flex items-center justify-center p-2 rounded-md text-black hover:bg-white/10 transition duration-300" // Change text-white to text-black
+              onClick={() => setIsNavOpen(!isNavOpen)}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d={
-                  isNavOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
-                }
-              />
-            </svg>
-          </button>
+              <span className="sr-only">Open menu</span>
+              <svg
+                className="h-8 w-8 text-black" // Add text-black class
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d={
+                    isNavOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M4 6h16M4 12h16M4 18h16"
+                  }
+                />
+              </svg>
+            </button>
+          </div>
         </div>
-      </div>
+      </Container>
       {isNavOpen && (
         <div className="fixed inset-0 z-30 bg-gray-900 bg-opacity-50">
           <div
@@ -193,8 +201,9 @@ const Header = () => {
               {navItems.map((item) => (
                 <div key={item.name}>
                   <Link
-                    to={item.slug}
-                    className="block px-4 py-3 rounded-md text-lg font-medium hover:bg-white/10 transition duration-300"
+                    to={item.slug || "#"}
+                    onClick={handleNavLinkClick}
+                    className="block w-full text-left px-4 py-3 rounded-md text-lg font-medium hover:bg-white/10 transition duration-300"
                   >
                     <FontAwesomeIcon icon={item.icon} className="mr-3" />
                     {item.name}
@@ -205,7 +214,8 @@ const Header = () => {
                         <li key={sublink.name}>
                           <Link
                             to={sublink.slug}
-                            className="block px-4 py-2 rounded-md text-base font-medium hover:bg-white/10 transition duration-300"
+                            onClick={handleNavLinkClick}
+                            className="block w-full text-left px-4 py-2 rounded-md text-base font-medium hover:bg-white/10 transition duration-300"
                           >
                             {sublink.name}
                           </Link>

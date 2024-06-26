@@ -45,7 +45,7 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="relative rounded-b-[3rem] h-screen graphik-font-regular flex justify-center overflow-hidden">
+    <div className="relative rounded-b-[3rem] min-h-screen graphik-font-regular flex justify-center overflow-hidden">
       {/* Background SVG */}
 
       {/* Container for content */}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { AreaChart, Container, GrayContainer } from "../components";
+import { AreaChart, Blogs, Container, GrayContainer } from "../components";
 import {
   faList,
   faBolt,
@@ -12,6 +12,7 @@ import PerformanceChart from "../components/Charts/PerformanceChart";
 import bannerImage from "../assets/MomentumBanner.png";
 import { faCheckCircle, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
 import HoldingDistribution from "../components/Charts/HoldingDistribution";
+import RelatedArticles from "../components/RelatedArticles";
 
 const QuantGrowthFund = () => {
   const listItemStyle = {
@@ -146,12 +147,9 @@ const QuantGrowthFund = () => {
           </div>
         </Container>
       </GrayContainer>
-      <div className="px-4 lg:px-44 py-10">
-        <h2 className="text-3xl font-bold text-center text-[#151E28]">
-          Holding Distribution
-        </h2>
-        <HoldingDistribution strategy={"QGF"} />
-      </div>
+      <Container>
+        <HoldingDistribution strategy="QGF" />
+      </Container>
       <div className="px-4 lg:px-44">
         <div className="py-4 sm:py-12">
           <h2 className="text-3xl font-bold text-center text-[#151E28]">
@@ -277,6 +275,7 @@ const QuantGrowthFund = () => {
           </div>
         </div>
       </Container>
+
       <GrayContainer>
         <Container>
           <h2 className="text-3xl font-bold text-[#151E28] text-center mb-8">
@@ -310,6 +309,11 @@ const QuantGrowthFund = () => {
           </div>
         </Container>
       </GrayContainer>
+      <Container>
+        <RelatedArticles strategySlug="quant-growth-fund" limit={3} />
+      </Container>
+      {/* <Container> */}
+      {/* </Container> */}
     </div>
   );
 };

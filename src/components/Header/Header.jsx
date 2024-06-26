@@ -10,7 +10,7 @@ import {
   faQuestionCircle,
   faEllipsisH,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Container from "../container/Container";
 
 const Header = () => {
@@ -98,13 +98,18 @@ const Header = () => {
       ],
     },
   ];
+  const handleNavLinkClick = () => {
+    setIsNavOpen(false);
+  };
 
   return (
     <div className="shadow-lg graphik-font-regular fixed w-full bg-white z-20  top-0 text-white">
       <Container>
         <div className="flex justify-between gap-20 mx-auto items-center h-12  ">
           <Link className="cursor-pointer" to={"/"}>
-            <p className="text-black text-2xl font-black">Qode.</p>
+            <p className="text-black text-2xl playfair-display-font font-black">
+              Qode.
+            </p>
           </Link>
           <div className="hidden md:flex space-x-6 items-center">
             {navItems.map((item) => (
@@ -196,8 +201,9 @@ const Header = () => {
               {navItems.map((item) => (
                 <div key={item.name}>
                   <Link
-                    to={item.slug}
-                    className="block px-4 py-3 rounded-md text-lg font-medium hover:bg-white/10 transition duration-300"
+                    to={item.slug || "#"}
+                    onClick={handleNavLinkClick}
+                    className="block w-full text-left px-4 py-3 rounded-md text-lg font-medium hover:bg-white/10 transition duration-300"
                   >
                     <FontAwesomeIcon icon={item.icon} className="mr-3" />
                     {item.name}
@@ -208,7 +214,8 @@ const Header = () => {
                         <li key={sublink.name}>
                           <Link
                             to={sublink.slug}
-                            className="block px-4 py-2 rounded-md text-base font-medium hover:bg-white/10 transition duration-300"
+                            onClick={handleNavLinkClick}
+                            className="block w-full text-left px-4 py-2 rounded-md text-base font-medium hover:bg-white/10 transition duration-300"
                           >
                             {sublink.name}
                           </Link>

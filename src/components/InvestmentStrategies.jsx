@@ -77,7 +77,7 @@ const InvestmentStrategies = () => {
           </div>
           <div className="lg:w-1/2">
             <Carousel
-              autoPlay
+              autoPlay={false}
               infiniteLoop
               showStatus={false}
               showThumbs={false}

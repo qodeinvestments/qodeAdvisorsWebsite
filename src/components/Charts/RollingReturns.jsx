@@ -79,12 +79,9 @@ const RollingReturns = ({ strategy }) => {
           niftyValue: nifty * 100,
         });
       } else {
-        console.log(
-          `No data found for ${fiveYearsAgoDate.toISOString().slice(0, 10)}`
-        );
       }
     }
-    console.log(resultArray);
+    // console.log(resultArray);
     return resultArray;
   }
 

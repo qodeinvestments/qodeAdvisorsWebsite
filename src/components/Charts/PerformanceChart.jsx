@@ -298,13 +298,13 @@ const PerformanceChart = ({ strategy }) => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row  gap-4">
-      <div className="w-full lg:w-[70%] sm:pb-10 rounded-lg">
+    <div className="flex flex-col lg:flex-row gap-4">
+      <div className="lg:w-[70%] sm:pb-10 rounded-lg">
         <Tabs value="chart1">
-          <div className="flex flex-col sm:flex-row items-center justify-between lg:p-2">
-            <TabsHeader className="bg-[#f0eeee] border-gray-300  border  lg:  p-1">
+          <div className="flex flex-col sm:flex-row  sm:items-center justify-between lg:p-2">
+            <TabsHeader className="bg-[#f0eeee] border-gray-300 border p-1 mb-4 sm:mb-0">
               <Tab
-                className="text-sm"
+                className="text-xs sm:text-sm"
                 onClick={() => handleTabClick("chart1")}
                 key="chart1"
                 value="chart1"
@@ -312,7 +312,7 @@ const PerformanceChart = ({ strategy }) => {
                 Trailing
               </Tab>
               <Tab
-                className="text-sm"
+                className="text-xs sm:text-sm"
                 onClick={() => handleTabClick("chart2")}
                 key="chart2"
                 value="chart2"
@@ -320,7 +320,7 @@ const PerformanceChart = ({ strategy }) => {
                 Discrete
               </Tab>
               <Tab
-                className="text-sm"
+                className="text-xs sm:text-sm"
                 onClick={() => handleTabClick("chart3")}
                 key="chart3"
                 value="chart3"
@@ -329,13 +329,13 @@ const PerformanceChart = ({ strategy }) => {
               </Tab>
             </TabsHeader>
 
-            <div className="flex flex-col sm:flex-row gap-2">
+            <div className="flex flex-col sm:flex-row sm:flex-nowrap gap-2">
               {activeTab === "chart1" && (
                 <>
                   {["YTD", "6M", "1Y", "5Y"].map((range) => (
                     <button
                       key={range}
-                      className={`bg-[#f7f5f5] text-black py-1 px-3 text-sm rounded ${
+                      className={`bg-[#f7f5f5] text-black py-1 px-2 text-xs sm:text-sm rounded ${
                         activeButton === range
                           ? "bg-primary-dark text-white"
                           : ""
@@ -357,17 +357,17 @@ const PerformanceChart = ({ strategy }) => {
                     type="date"
                     value={startDate || ""}
                     onChange={(e) => setStartDate(e.target.value)}
-                    className="bg-[#f7f5f5] text-gray-600 text-sm py-1 px-2 rounded"
+                    className="bg-[#f7f5f5] text-gray-600 text-xs sm:text-sm py-1 px-2 rounded w-full sm:w-auto"
                   />
                   <input
                     type="date"
                     value={endDate || ""}
                     onChange={(e) => setEndDate(e.target.value)}
-                    className="bg-[#f7f5f5] text-gray-600 text-sm py-1 px-2 rounded"
+                    className="bg-[#f7f5f5] text-gray-600 text-xs sm:text-sm py-1 px-2 rounded w-full sm:w-auto"
                   />
 
                   <button
-                    className={`bg-[#f7f5f5] py-1 px-2 text-sm rounded ${
+                    className={`bg-[#f7f5f5] py-1 px-2 text-xs sm:text-sm rounded ${
                       activeButton === "ALL" ? "bg-primary-dark text-white" : ""
                     }`}
                     onClick={() => {
@@ -402,7 +402,7 @@ const PerformanceChart = ({ strategy }) => {
           </TabsBody>
         </Tabs>
       </div>
-      <div className="w-full  lg:w-[30%] flex flex-col space-y-7 border bg-white rounded-md p-4">
+      <div className="w-full lg:w-[30%] flex flex-col space-y-7 border bg-white rounded-md p-4">
         <Calculator />
       </div>
     </div>

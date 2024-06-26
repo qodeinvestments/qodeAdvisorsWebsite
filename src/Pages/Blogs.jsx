@@ -67,7 +67,7 @@ const Blogs = () => {
 
   return (
     <Container>
-      <div className=" graphik-font-regular py-12 md:py-32">
+      <div className=" graphik-font-regular py-12 md:py-44">
         <div className="flex flex-col items-center">
           <h1 className="text-primary-dark graphik-font-medium text-4xl md:text-4xl font-bold mb-6 text-center">
             Welcome to Our Blog

@@ -355,21 +355,42 @@ const PerformanceChart = ({ strategy }) => {
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-2">
-                  <input
-                    type="date"
-                    onChange={(e) => setStartDate(e.target.value)}
-                    placeholder="Please Enter Start Date"
-                    className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-2 px-3 rounded w-full"
-                  />
-                  <input
-                    type="date"
-                    onChange={(e) => setEndDate(e.target.value)}
-                    placeholder="Please Enter End Date"
-                    className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-2 px-3 rounded w-full"
-                  />
+                  <div className="flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:space-x-4">
+                    <div className="flex flex-col">
+                      <label
+                        htmlFor="startDate"
+                        className="text-sm md:hidden block text-gray-600 mb-1"
+                      >
+                        Start Date
+                      </label>
+                      <input
+                        id="startDate"
+                        type="date"
+                        onChange={(e) => setStartDate(e.target.value)}
+                        className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-2 px-3 rounded w-full"
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <label
+                        htmlFor="endDate"
+                        className="text-sm  md:hidden block text-gray-600 mb-1"
+                      >
+                        End Date
+                      </label>
+                      <input
+                        id="endDate"
+                        type="date"
+                        onChange={(e) => setEndDate(e.target.value)}
+                        className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-2 px-3 rounded w-full"
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <button
+                  className={`bg-[#f7f5f5] py-1 px-2 text-xs sm:text-sm rounded ${
+                    activeButton === "ALL" ? "bg-primary-dark text-white" : ""
+                  }`}
                   onClick={() => {
                     setTimeRange("ALL");
                     setStartDate("");
@@ -377,7 +398,6 @@ const PerformanceChart = ({ strategy }) => {
                     setActiveButton("ALL");
                     fetchData();
                   }}
-                  className="bg-gray-200 text-gray-800 px-4 py-2 rounded text-sm"
                 >
                   Reset
                 </button>

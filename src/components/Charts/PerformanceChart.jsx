@@ -357,13 +357,13 @@ const PerformanceChart = ({ strategy }) => {
                     type="date"
                     value={startDate || ""}
                     onChange={(e) => setStartDate(e.target.value)}
-                    className="bg-[#f7f5f5] text-gray-600 text-xs sm:text-sm py-1 px-2 rounded w-full sm:w-auto"
+                    className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-1 px-2 rounded w-full sm:w-auto"
                   />
                   <input
                     type="date"
                     value={endDate || ""}
                     onChange={(e) => setEndDate(e.target.value)}
-                    className="bg-[#f7f5f5] text-gray-600 text-xs sm:text-sm py-1 px-2 rounded w-full sm:w-auto"
+                    className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-1 px-2 rounded w-full sm:w-auto"
                   />
 
                   <button

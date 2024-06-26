@@ -101,7 +101,7 @@ const MomentumTabs = () => {
                 across markets, assets and different periods of time.
               </div>
               <div className="text-center">
-                <button className="bg-primary-dark text-[#fff] font-extrabold sm:w-1/2 mt-10 mx-auto rounded-md py-2">
+                <button className="bg-primary-dark text-[#fff] font-extrabold px-10 sm:px-0 sm:w-1/2 mt-10 mx-auto rounded-md py-2">
                   Start Investing
                 </button>
               </div>

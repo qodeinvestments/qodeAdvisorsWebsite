@@ -14,6 +14,7 @@ import { faCheckCircle, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
 import HoldingDistribution from "../components/Charts/HoldingDistribution";
 import { useParams } from "react-router-dom";
 import RelatedArticles from "../components/RelatedArticles";
+import TrailingReturns from "../components/TrailingReturns";
 
 const MomentumTabs = () => {
   const listItemStyle = {
@@ -146,6 +147,9 @@ const MomentumTabs = () => {
           </div>
         </Container>
       </GrayContainer>
+      <Container>
+        <TrailingReturns />
+      </Container>
       <Container>
         <div className="py-10">
           <HoldingDistribution strategy="Momentum" />

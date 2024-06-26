@@ -45,18 +45,21 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="relative rounded-b-[3rem] min-h-screen graphik-font-regular flex justify-center overflow-hidden py-8 md:py-16">
+    <div className="relative rounded-b-[3rem] h-screen graphik-font-regular flex justify-center overflow-hidden">
+      {/* Background SVG */}
+
+      {/* Container for content */}
       <Container>
         <div className="mx-auto relative z-10">
-          <div className="flex flex-col-reverse items-center md:items-start">
-            <div className="w-full text-center md:text-left mb-8 md:mb-0">
+          <div className="flex flex-col-reverse items-start">
+            <div className="w-full  text-center md:mb-0">
               <motion.h1
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6"
+                className="text-3xl text-primary md:text-4xl lg:text-5xl font-bold mb-6"
               >
-                The best investments are <br className="hidden md:inline" />{" "}
+                The best investments are <br />{" "}
                 <span className="text-primary-dark px-2 rounded">
                   <span className="">{currentText}</span>
                 </span>
@@ -65,7 +68,7 @@ const Banner = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-sm sm:text-base md:text-lg lg:text-xl text-primary-dark mb-6 md:mb-10"
+                className="text-base md:text-lg lg:text-xl text-primary-dark mb-10"
               >
                 We're an investment firm leveraging quantitative models to drive
                 informed and strategic investment decisions.
@@ -73,12 +76,12 @@ const Banner = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-primary-dark text-white font-semibold py-2 px-6 sm:py-3 sm:px-8 rounded-full shadow-2xl hover:bg-[#696969] transition duration-300 text-sm sm:text-base md:text-lg"
+                className="bg-primary-dark text-white font-semibold py-3 px-8 rounded-full shadow-2xl  hover:bg-[#696969] transition duration-300 text-base md:text-lg"
               >
                 Get Started
               </motion.button>
             </div>
-            <div className="w-full flex justify-center items-center mx-auto mb-8 md:mb-0">
+            <div className="w-full flex justify-center items-center mx-auto">
               <img
                 src={bannerImage}
                 alt="Data-driven investments"
@@ -88,6 +91,7 @@ const Banner = () => {
           </div>
         </div>
       </Container>
+      {/* <BackgroundSVG className="absolute top-0 left-0 inset-0 w-full h-full" /> */}
     </div>
   );
 };

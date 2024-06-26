@@ -107,7 +107,7 @@ const Header = () => {
       <Container>
         <div className="flex justify-between gap-20 mx-auto items-center h-12  ">
           <Link className="cursor-pointer" to={"/"}>
-            <p className="text-black text-2xl playfair-display-font font-black">
+            <p className="text-black text-2xl playfair-display-font font-semibold">
               Qode.
             </p>
           </Link>

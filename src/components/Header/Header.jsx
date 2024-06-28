@@ -135,6 +135,13 @@ const Header = () => {
                 )}
               </div>
             ))}
+            <Link
+              to="https://qode-dashboard.vercel.app/"
+              className="text-[#fff] bg-black px-4 py-2 rounded-lg text-sm font-medium flex items-center transition duration-300"
+              target="_blank"
+            >
+              Dashboard
+            </Link>
           </div>
           <div className="md:hidden flex items-center">
             <button

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import { Spinner } from "@material-tailwind/react";
 
 const HoldingDistribution = ({ strategy }) => {
   const [chartOptions, setChartOptions] = useState(null);
@@ -134,19 +135,20 @@ const HoldingDistribution = ({ strategy }) => {
   }, [strategy]);
 
   if (!chartOptions) {
-    return <div>Loading...</div>;
+    return <div className="text-center flex justify-center items-center"><Spinner/></div>;
   }
 
   return (
-    <div className="py-10 bg-gray-100 md:p-10 sm:p-4 rounded-2xl mt-10  flex flex-col md:flex-row items-start">
-      <h2 className="text-3xl font-bold text-[#151E28]">
-        Holding Distribution
-      </h2>
-      <div className="w-full md:w-1/2 pr-0 md:pr-4 mb-4 md:mb-0">
+    <div className="py-10 bg-gray-100 md:p-10 sm:p-4 rounded-2xl mt-10  flex flex-col md:flex-row justify-between items-start">
+      <div>
+        <h2 className="text-3xl font-bold text-[#151E28]">
+          Holding Distribution
+        </h2>
         <p className="text-lg text-gray-500">
           Our {strategy} Strategy's asset allocation.
         </p>
       </div>
+
       <div className="w-full md:w-1/2 bg-white rounded-2xl p-4">
         <HighchartsReact highcharts={Highcharts} options={chartOptions} />
       </div>

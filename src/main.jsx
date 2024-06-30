@@ -25,6 +25,8 @@ import QuantGrowthFund from "./Pages/QuantGrowthFund.jsx";
 import TheQuantGrowth from "./Pages/TheQuantGrowth.jsx";
 import OurBeliefsAndValues from "./Pages/OurBeliefs.jsx";
 import FAQs from "./Pages/faqs.jsx";
+import ContactUs from "./Pages/ContactUs.jsx";
+import WeeklyNewsletter from "./Pages/WeeklyNewsletter.jsx";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +57,14 @@ const router = createBrowserRouter([
       {
         path: "/faq",
         element: <FAQs />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs />,
+      },
+      {
+        path: "/weekly-newsletter",
+        element: <WeeklyNewsletter/>
       },
       {
         path: "/blogs",

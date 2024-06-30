@@ -70,6 +70,10 @@ const Header = () => {
       ],
     },
     {
+      name: "Contact Us",
+      slug: "/contact-us",
+    },
+    {
       name: "More",
       slug: "#",
       icon: faEllipsisH,
@@ -93,10 +97,7 @@ const Header = () => {
         // },
       ],
     },
-    {
-      name: "Contact Us",
-      slug: "/contact-us",
-    },
+    
   ];
   const handleNavLinkClick = () => {
     setIsNavOpen(false);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 
-const Calculator = () => {
+const Calculator = ({ strategy }) => {
   const [startOfMonthData, setStartOfMonthData] = useState([]);
   const [investmentAmount, setInvestmentAmount] = useState(1000);
   const [investmentFrequency, setInvestmentFrequency] = useState("monthly");
@@ -17,9 +17,7 @@ const Calculator = () => {
         const jsonData = await response.json();
         setData(jsonData.Sheet1);
 
-        // Check if data array has at least one element
         if (jsonData.Sheet1.length > 0) {
-          // Calculate the date from investmentPeriod years ago from today
           const periodStartDate = new Date(
             jsonData.Sheet1[jsonData.Sheet1.length - 1]["Date"]
           );
@@ -28,7 +26,6 @@ const Calculator = () => {
           );
           const filteredData = jsonData.Sheet1.filter((entry) => {
             const date = new Date(entry.Date);
-            // Ensure the date is valid, is the first of the month, and falls within the investment period
             return (
               !isNaN(date.getTime()) &&
               date.getDate() === 1 &&
@@ -36,7 +33,6 @@ const Calculator = () => {
             );
           });
 
-          // console.log("Filter data", filteredData); // Log the filtered data to the console
           setStartOfMonthData(filteredData);
         }
       } catch (error) {
@@ -45,7 +41,7 @@ const Calculator = () => {
     };
 
     fetchData();
-  }, [investmentPeriod]); // Add investmentPeriod to the dependency array
+  }, [investmentPeriod]);
 
   useEffect(() => {
     if (startOfMonthData.length > 0) {
@@ -56,6 +52,7 @@ const Calculator = () => {
     investmentFrequency,
     investmentPeriod,
     startOfMonthData,
+    strategy,
   ]);
 
   const calculatePresentInvestmentValue = () => {
@@ -64,7 +61,6 @@ const Calculator = () => {
       investmentDate.setFullYear(
         investmentDate.getFullYear() - investmentPeriod
       );
-      console.log(investmentDate);
 
       const investmentDateFormatted =
         (investmentDate.getMonth() + 1).toString().padStart(2, "0") +
@@ -77,36 +73,28 @@ const Calculator = () => {
         return entry.Date === investmentDateFormatted;
       });
 
-      console.log(investmentEntry);
-
       if (investmentEntry) {
-        const volAdjustedMomentum = investmentEntry["Vol Adjusted Momentum"];
-        const shares = investmentAmount / volAdjustedMomentum;
-        const currentPrice = data[data.length - 1]["Vol Adjusted Momentum"];
+        const strategyValue = investmentEntry[strategy];
+        const shares = investmentAmount / strategyValue;
+        const currentPrice = data[data.length - 1][strategy];
         const futureValue = shares * currentPrice;
         setFutureInvestmentValue(futureValue.toFixed(2));
       } else {
         console.log("No exact match for investment date found in data.");
-        // Optionally, set future investment value to zero or handle this case appropriately
         setFutureInvestmentValue(0);
       }
     } else {
-      // Handle other investment frequencies (monthly, yearly)
       const months =
         investmentFrequency === "monthly"
           ? investmentPeriod * 12
           : investmentPeriod;
       let totalShares = 0;
-      let totalInvestmentValue = 0;
       for (let i = 0; i < months && i < startOfMonthData.length; i++) {
-        const volAdjustedMomentum =
-          startOfMonthData[i]["Vol Adjusted Momentum"];
-        const shares = investmentAmount / volAdjustedMomentum;
+        const strategyValue = startOfMonthData[i][strategy];
+        const shares = investmentAmount / strategyValue;
         totalShares += shares;
-        totalInvestmentValue += shares * volAdjustedMomentum; // Calculate the total investment value
       }
-      const finalPrice =
-        totalShares * data[data.length - 1]["Vol Adjusted Momentum"];
+      const finalPrice = totalShares * data[data.length - 1][strategy];
       setFutureInvestmentValue(finalPrice.toFixed(2));
     }
   };

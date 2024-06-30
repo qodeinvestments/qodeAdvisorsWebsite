@@ -4,7 +4,7 @@ const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border px-10 bg-white mb-2 border-gray-200 last:border-b-0">
+    <div className="border px-10 bg-white mb-2 border-gray-200 ">
       <button
         className="flex justify-between items-center w-full py-6 text-left"
         onClick={() => setIsOpen(!isOpen)}
@@ -52,7 +52,7 @@ const FAQs = () => {
   ];
 
   return (
-    <div className="bg-white graphik-font-regular text-gray-900 min-h-screen">
+    <div className="bg-gray-50 graphik-font-regular text-gray-900 min-h-screen">
       <div className="bg-gray-100 text-black py-24 px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-4xl font-bold mb-4">Frequently Asked Questions</h1>
         <p className="max-w-3xl mx-auto text-xl">
@@ -61,7 +61,7 @@ const FAQs = () => {
       </div>
 
       <div className="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className=" rounded-lg ">
+        <div className="rounded-lg ">
           {faqData.map((faq, index) => (
             <FAQItem key={index} question={faq.question} answer={faq.answer} />
           ))}

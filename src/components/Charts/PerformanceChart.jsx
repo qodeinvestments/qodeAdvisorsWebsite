@@ -423,7 +423,7 @@ const PerformanceChart = ({ strategy }) => {
         </Tabs>
       </div>
       <div className="w-full lg:w-[30%] flex flex-col space-y-7 border bg-white rounded-md p-4">
-        <Calculator />
+        <Calculator strategy={strategy} />
       </div>
     </div>
   );

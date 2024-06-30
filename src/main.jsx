@@ -27,6 +27,8 @@ import OurBeliefsAndValues from "./Pages/OurBeliefs.jsx";
 import FAQs from "./Pages/faqs.jsx";
 import ContactUs from "./Pages/ContactUs.jsx";
 import WeeklyNewsletter from "./Pages/WeeklyNewsletter.jsx";
+import Calculators from "./Pages/Calculators.jsx";
+import StrategyCalculator from "./Pages/StrategyCalculator.jsx";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +67,14 @@ const router = createBrowserRouter([
       {
         path: "/weekly-newsletter",
         element: <WeeklyNewsletter/>
+      },
+      {
+        path: "/calculators",
+        element: <Calculators/>
+      },
+      {
+        path: "/calculators/:strategyID",
+        element: <StrategyCalculator/>
       },
       {
         path: "/blogs",

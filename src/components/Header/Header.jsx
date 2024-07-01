@@ -20,6 +20,8 @@ import { icon } from "@fortawesome/fontawesome-svg-core";
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [expandedItems, setExpandedItems] = useState({});
+  const navigate = useNavigate();
+
   const navItems = [
     // {
     //   name: "Home",
@@ -107,11 +109,16 @@ const Header = () => {
   const handleNavLinkClick = () => {
     setIsNavOpen(false);
   };
-  const toggleExpanded = (itemName) => {
-    setExpandedItems((prev) => ({
-      ...prev,
-      [itemName]: !prev[itemName],
-    }));
+  const toggleExpanded = (item) => {
+    if (item.sublinks && item.sublinks.length > 0) {
+      setExpandedItems((prev) => ({
+        ...prev,
+        [item.name]: !prev[item.name],
+      }));
+    } else if (item.slug) {
+      navigate(item.slug);
+      setIsNavOpen(false);
+    }
   };
 
   return (
@@ -197,26 +204,23 @@ const Header = () => {
               {navItems.map((item) => (
                 <div key={item.name}>
                   <button
-                    onClick={() => toggleExpanded(item.name)}
+                    onClick={() => toggleExpanded(item)}
                     className="flex justify-between items-center w-full text-left px-4 py-3 rounded-md text-lg font-medium hover:bg-white/10 transition duration-300"
                   >
                     <span>
                       <FontAwesomeIcon icon={item.icon} className="mr-3" />
                       {item.name}
                     </span>
-                    {Array.isArray(item.sublinks) &&
-                      item.sublinks.length > 0 && (
-                        <FontAwesomeIcon
-                          icon={
-                            expandedItems[item.name]
-                              ? faChevronUp
-                              : faChevronDown
-                          }
-                          className="ml-2"
-                        />
-                      )}
+                    {item.sublinks && item.sublinks.length > 0 && (
+                      <FontAwesomeIcon
+                        icon={
+                          expandedItems[item.name] ? faChevronUp : faChevronDown
+                        }
+                        className="ml-2"
+                      />
+                    )}
                   </button>
-                  {Array.isArray(item.sublinks) &&
+                  {item.sublinks &&
                     item.sublinks.length > 0 &&
                     expandedItems[item.name] && (
                       <ul className="pl-8 mt-1 space-y-1">

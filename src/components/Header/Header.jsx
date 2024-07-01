@@ -9,12 +9,17 @@ import {
   faEnvelope,
   faQuestionCircle,
   faEllipsisH,
+  faContactBook,
+  faChevronDown,
+  faChevronUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import Container from "../container/Container";
+import { icon } from "@fortawesome/fontawesome-svg-core";
 
 const Header = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const [expandedItems, setExpandedItems] = useState({});
   const navItems = [
     // {
     //   name: "Home",
@@ -71,6 +76,7 @@ const Header = () => {
     },
     {
       name: "Contact Us",
+      icon: faContactBook,
       slug: "/contact-us",
     },
     {
@@ -97,10 +103,15 @@ const Header = () => {
         // },
       ],
     },
-    
   ];
   const handleNavLinkClick = () => {
     setIsNavOpen(false);
+  };
+  const toggleExpanded = (itemName) => {
+    setExpandedItems((prev) => ({
+      ...prev,
+      [itemName]: !prev[itemName],
+    }));
   };
 
   return (
@@ -181,56 +192,47 @@ const Header = () => {
               isNavOpen ? "translate-x-0" : "translate-x-full"
             }`}
           >
-            <div className="flex items-center justify-between px-6 py-4">
-              <button
-                type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:bg-white/10 transition duration-300"
-                onClick={() => setIsNavOpen(false)}
-              >
-                <span className="sr-only">Close menu</span>
-                <svg
-                  className="h-8 w-8"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
+            {/* ... (keep the existing close button code) ... */}
             <div className="px-4 pt-2 pb-3 space-y-2">
               {navItems.map((item) => (
                 <div key={item.name}>
-                  <Link
-                    to={item.slug || "#"}
-                    onClick={handleNavLinkClick}
-                    className="block w-full text-left px-4 py-3 rounded-md text-lg font-medium hover:bg-white/10 transition duration-300"
+                  <button
+                    onClick={() => toggleExpanded(item.name)}
+                    className="flex justify-between items-center w-full text-left px-4 py-3 rounded-md text-lg font-medium hover:bg-white/10 transition duration-300"
                   >
-                    <FontAwesomeIcon icon={item.icon} className="mr-3" />
-                    {item.name}
-                  </Link>
-                  {Array.isArray(item.sublinks) && item.sublinks.length > 0 && (
-                    <ul className="pl-8 mt-1 space-y-1">
-                      {item.sublinks.map((sublink) => (
-                        <li key={sublink.name}>
-                          <Link
-                            to={sublink.slug}
-                            onClick={handleNavLinkClick}
-                            className="block w-full text-left px-4 py-2 rounded-md text-base font-medium hover:bg-white/10 transition duration-300"
-                          >
-                            {sublink.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                    <span>
+                      <FontAwesomeIcon icon={item.icon} className="mr-3" />
+                      {item.name}
+                    </span>
+                    {Array.isArray(item.sublinks) &&
+                      item.sublinks.length > 0 && (
+                        <FontAwesomeIcon
+                          icon={
+                            expandedItems[item.name]
+                              ? faChevronUp
+                              : faChevronDown
+                          }
+                          className="ml-2"
+                        />
+                      )}
+                  </button>
+                  {Array.isArray(item.sublinks) &&
+                    item.sublinks.length > 0 &&
+                    expandedItems[item.name] && (
+                      <ul className="pl-8 mt-1 space-y-1">
+                        {item.sublinks.map((sublink) => (
+                          <li key={sublink.name}>
+                            <Link
+                              to={sublink.slug}
+                              onClick={handleNavLinkClick}
+                              className="block w-full text-left px-4 py-2 rounded-md text-base font-medium hover:bg-white/10 transition duration-300"
+                            >
+                              {sublink.name}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                 </div>
               ))}
             </div>

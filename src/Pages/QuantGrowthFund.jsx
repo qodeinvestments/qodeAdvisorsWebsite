@@ -258,8 +258,8 @@ const QuantGrowthFund = () => {
           </div>
           <div className="flex lg:flex-row flex-col mt-5 sm:mt-0 justify-between gap-10">
             <a
-              href="/path-to-your-ppt-file.pptx"
-              download
+              href="/Quant Growth Fund Feb.pdf"
+              target="_blank"
               className="flex-1 relative bg-primary-dark text-white py-2 px-10 rounded-md overflow-hidden transition-all duration-300 text-lg hover:bg-[#3a536e]"
             >
               <span className="relative z-10 flex items-center justify-center w-full h-full">

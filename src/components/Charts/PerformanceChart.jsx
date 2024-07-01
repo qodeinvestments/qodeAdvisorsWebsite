@@ -301,7 +301,7 @@ const PerformanceChart = ({ strategy }) => {
     <div className="flex flex-col lg:flex-row gap-4">
       <div className="lg:w-[70%] sm:pb-10 rounded-lg">
         <Tabs value="chart1">
-          <div className="flex flex-col sm:flex-row  sm:items-center justify-between lg:p-2">
+          <div className="flex flex-col lg:flex-row gap-2  sm:items-center justify-between lg:p-2">
             <TabsHeader className="bg-[#f0eeee] border-gray-300 border p-1 mb-4 sm:mb-0">
               <Tab
                 className="text-xs sm:text-sm"
@@ -405,7 +405,7 @@ const PerformanceChart = ({ strategy }) => {
             )}
           </div>
           <TabsBody>
-            <TabPanel key="chart1" value="chart1">
+            <TabPanel className="p-0" key="chart1" value="chart1">
               {chartOptions && (
                 <HighchartsReact
                   highcharts={Highcharts}
@@ -423,7 +423,7 @@ const PerformanceChart = ({ strategy }) => {
         </Tabs>
       </div>
       <div className="w-full lg:w-[30%] flex flex-col space-y-7 border bg-white rounded-md p-4">
-        <Calculator />
+        <Calculator strategy={strategy} />
       </div>
     </div>
   );

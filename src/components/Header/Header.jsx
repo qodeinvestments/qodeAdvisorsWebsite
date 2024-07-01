@@ -22,20 +22,20 @@ const Header = () => {
     //   icon: faHome,
     //   sublinks: [],
     // },
-    {
-      name: "Quant Investing",
-      icon: faChartLine,
-      sublinks: [
-        {
-          name: "Quant Investing 101",
-          slug: "/docs/quant-investing-101/introduction/what-is-quant-investing",
-        },
-        {
-          name: "The Quant Growth",
-          slug: "/docs/the-quant-growth",
-        },
-      ],
-    },
+    // {
+    //   name: "Quant Investing",
+    //   icon: faChartLine,
+    //   sublinks: [
+    //     {
+    //       name: "Quant Investing 101",
+    //       slug: "/docs/quant-investing-101/introduction/what-is-quant-investing",
+    //     },
+    //     {
+    //       name: "The Quant Growth",
+    //       slug: "/docs/the-quant-growth",
+    //     },
+    //   ],
+    // },
     {
       name: "Strategies",
       icon: faFileAlt,
@@ -63,11 +63,15 @@ const Header = () => {
           name: "Weekly Newsletter",
           slug: "/weekly-newsletter",
         },
-        {
-          name: "Articles and infographics",
-          slug: "/articles-infographics",
-        },
+        // {
+        //   name: "Articles and infographics",
+        //   slug: "/articles-infographics",
+        // },
       ],
+    },
+    {
+      name: "Contact Us",
+      slug: "/contact-us",
     },
     {
       name: "More",
@@ -87,16 +91,13 @@ const Header = () => {
           name: "Our beliefs and values",
           slug: "/about-us/beliefs-and-values",
         },
-        {
-          name: "Schedule a meeting",
-          slug: "/quant-investing-101",
-        },
-        {
-          name: "Chat",
-          slug: "/chat",
-        },
+        // {
+        //   name: "Schedule a meeting",
+        //   slug: "/quant-investing-101",
+        // },
       ],
     },
+    
   ];
   const handleNavLinkClick = () => {
     setIsNavOpen(false);
@@ -215,7 +216,7 @@ const Header = () => {
                     <FontAwesomeIcon icon={item.icon} className="mr-3" />
                     {item.name}
                   </Link>
-                  {item.sublinks.length > 0 && (
+                  {Array.isArray(item.sublinks) && item.sublinks.length > 0 && (
                     <ul className="pl-8 mt-1 space-y-1">
                       {item.sublinks.map((sublink) => (
                         <li key={sublink.name}>

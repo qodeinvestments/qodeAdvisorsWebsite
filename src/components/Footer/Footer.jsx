@@ -7,6 +7,7 @@ import {
   faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
 import logo from "../../assets/companyLogo/Qode.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -18,36 +19,29 @@ const Footer = () => {
             <h3 className="text-lg font-semibold text-black  mb-4">Company</h3>
             <ul className="text-sm text-gray-400 ">
               <li className="mb-2 hover:text-primary-dark ">
-                <a href="#">About Us</a>
+                <Link to={'/'}>About Us</Link>
               </li>
               <li className="mb-2 hover:text-primary-dark ">
-                <a href="#">Our Team</a>
+                <Link to={'/about-us/our-team'}>Our Team</Link>
               </li>
               <li className="mb-2 hover:text-primary-dark ">
                 <a href="#">Careers</a>
               </li>
               <li className="hover:text-primary-dark">
-                <a href="#">Contact Us</a>
+              <Link to={'/contact-us'}>Contact Us</Link>
               </li>
             </ul>
           </div>
           <div>
             <h3 className="text-lg font-semibold text-[#171E27] mb-4">
-              Services
+              Strategis
             </h3>
             <ul className="text-sm text-gray-400">
               <li className="mb-2 hover:text-primary-dark">
-                <a href="#">Investment Planning</a>
-              </li>
+                <Link to={'/strategies/quant-growth-momentum'}>Quant Growth Momentum</Link>       </li>
               <li className="mb-2 hover:text-primary-dark">
-                <a href="#">Wealth Management</a>
-              </li>
-              <li className="mb-2 hover:text-primary-dark">
-                <a href="#">Tax Planning</a>
-              </li>
-              <li className="hover:text-primary-dark">
-                <a href="#">Estate Planning</a>
-              </li>
+                <Link to={'/strategies/quant-growth-fund'}>Quant Growth Fund</Link>    </li>
+              
             </ul>
           </div>
           <div>
@@ -56,16 +50,16 @@ const Footer = () => {
             </h3>
             <ul className="text-sm text-gray-400">
               <li className="mb-2 hover:text-primary-dark">
-                <a href="#">Blog</a>
+                <Link to={'/blogs'}>Blog</Link>
               </li>
               <li className="mb-2 hover:text-primary-dark">
                 <a href="#">Whitepapers</a>
               </li>
               <li className="mb-2 hover:text-primary-dark">
-                <a href="#">Calculators</a>
+                <Link to={'/calculators'}>Calculators</Link>
               </li>
               <li className="hover:text-primary-dark">
-                <a href="#">FAQs</a>
+                <Link to={'/faq'}>FAQs</Link>
               </li>
             </ul>
           </div>

@@ -17,16 +17,6 @@ import RelatedArticles from "../components/RelatedArticles";
 import TrailingReturns from "../components/TrailingReturns";
 
 const MomentumTabs = () => {
-  const listItemStyle = {
-    listStyleType: "disc", // Remove default bullets
-    // background:
-    //   "url(https://www.tickertape.in/images/digitalgold/heroSection/star.webp) no-repeat",
-    backgroundPosition: "0px 5px", // Position the background
-    backgroundSize: "22px 22px", // Size of the background
-    paddingLeft: "30px", // Padding to separate text from background
-    marginBottom: "px", // Space between items
-    lineHeight: "2", // Line height for better readability
-  };
   const [activeTab, setActiveTab] = useState("Features");
   const tabs = ["Features", "Working", "Performance", "Calculator", "FAQ"];
   const [activeIndex, setActiveIndex] = useState(null);
@@ -155,7 +145,7 @@ const MomentumTabs = () => {
           <HoldingDistribution strategy="Momentum" />
         </div>
       </Container>
-      <div className="px-4 lg:px-44">
+      <div className="px-4 2xl:px-24 3xl:px-44">
         <div className="py-4 sm:py-12">
           <h2 className="text-3xl font-bold text-center text-[#151E28]">
             Performance

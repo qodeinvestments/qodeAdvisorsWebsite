@@ -32,6 +32,10 @@ const config = {
         "6xl": ["3.75rem", { lineHeight: "1" }], // 60px
         "7xl": ["4.5rem", { lineHeight: "1" }], // 72px
       },
+      screens: {
+        '3xl': '2560px',
+        '4k': '3840px',
+      },
     },
   },
   plugins: [addVariablesForColors],

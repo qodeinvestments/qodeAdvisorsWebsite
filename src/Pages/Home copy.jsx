@@ -10,8 +10,6 @@ import {
 } from "../components/index";
 import { BackgroundBeams } from "../components/ui/background-beams";
 import ChartComponent from "../components/Charts/LightWeightChart";
-import FundManagers from "../components/FundManagers";
-import FAQSection from "../components/FAQ";
 const chartData = [
   { time: "2022-01-01", value: 100 },
   { time: "2022-01-02", value: 110 },
@@ -32,12 +30,11 @@ const Home = () => {
   return (
     <>
       <Banner />
-      <Banner />
       <InvestmentStrategies />
-      <FundManagers />
-      <Container>{/* <Blogs /> */}</Container>
-      <FAQSection />
-      {/* <OurFocus /> */}
+      <Container>
+        <Blogs />
+      </Container>
+      <OurFocus />
     </>
   );
 };

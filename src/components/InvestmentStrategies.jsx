@@ -25,133 +25,100 @@ const InvestmentStrategies = () => {
   return (
     <GrayContainer>
       <Container>
-        <p className="uppercase text-[12px] text-center pt-10 inter-font tracking-widest font-bold text-gray-400">
+        <p className="uppercase text-[12px] text-center pt-10 inter-font tracking-widest  text-gray-400">
           Qode Your Future: Data-Driven Decisions for a Quantum Leap.
         </p>
-        <div className="text-center graphik-font-regular mt-10 mb-32 flex flex-col lg:flex-row">
-          <div className="lg:w-1/2 px-4 lg:px-0 mb-8 lg:mb-0">
-            <h2 className="text-3xl lg:text-5xl font-bold mt-8 py-4 text-start text-dark">
+        <div className=" border-black graphik-font-regular mt-10 mb-32 flex flex-col lg:flex-row">
+          <div className="lg:w-1/2 border border-black px-4 lg:px-3 mb-8 lg:mb-0">
+            <h2 className="text-3xl lg:text-5xl  mt-8 py-4 playfair-display-font text-start text-dark">
               Strategies
             </h2>
             <p className="text-primary text-start text-base lg:text-lg font-medium text-md mx-auto mb-8">
-              Through our{" "}
-              <span className="text-primary-dark font-bold">
-                Portfolio Management Service (PMS)
-              </span>
-              , we invest your money in Indian Equity.
+              For Consistent Growth
             </p>
-            <div className="flex justify-start mt-8 lg:mt-20 space-x-4">
-              <button
-                onClick={handlePrevSlide}
-                className="bg-primary rounded-full text-white p-2 lg:p-4 hover:bg-primary-dark transition-colors duration-300 flex items-center"
-              >
-                <svg
-                  className="h-4 lg:h-5 w-4 lg:w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <polyline points="15 18 9 12 15 6" />
-                </svg>
-              </button>
-              <button
-                onClick={handleNextSlide}
-                className="bg-primary rounded-full text-white p-2 lg:p-4 hover:bg-primary-dark transition-colors duration-300 flex items-center"
-              >
-                <svg
-                  className="h-4 lg:h-5 w-4 lg:w-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <polyline points="9 18 15 12 9 6" />
-                </svg>
-              </button>
-            </div>
           </div>
           <div className="lg:w-1/2">
-            <Carousel
-              autoPlay={false}
-              infiniteLoop
-              showStatus={false}
-              showThumbs={false}
-              selectedItem={currentSlide}
-              renderIndicator={false}
-              showArrows={false}
-            >
-              <Tilt
-                options={{
-                  max: 5,
-                  scale: 1,
-                  speed: 450,
-                }}
-                className="flex flex-col py-6 lg:py-10 bg-black/70 rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 w-full"
-              >
-                <div className="p-4 lg:p-6 relative">
-                  <h3 className="text-xl lg:text-2xl text-white text-left font-bold mt-4">
-                    Quant Growth Fund
-                  </h3>
-                </div>
-                <p className="text-white px-4 lg:px-6 text-base lg:text-xl font-light text-start mb-2">
-                  The{" "}
-                  <span className="font-black text-base lg:text-xl text-white">
-                    Quant Growth Fund
-                  </span>{" "}
-                  seeks high-growth potential with data-driven precision. We
-                  leverage quantitative analysis to identify companies poised
-                  for significant expansion.
+            <div className="grid grid-cols-1 ">
+              <div className="bg-white  border border-black p-5">
+                <h3 className="text-2xl font-bold mb-4">Quant Growth Fund </h3>
+                <p className="mb-6">
+                  The <span className="font-bold">Quant Growth Fund</span> seeks
+                  high-growth potential with data-driven precision. We leverage
+                  quantitative analysis to identify companies poised for
+                  significant expansion.
                 </p>
-                <div className="text-start px-4 lg:px-6 py-2 mb-4 lg:mb-10">
+                <div className="flex items-end justify-between">
+                  <p className="text-5xl">
+                    23.4%
+                    <span className="text-sm ml-2">CAGR</span>
+                  </p>
+                  <p className="text-5xl">
+                    10%
+                    <span className="text-sm ml-2">MDD</span>
+                  </p>
                   <Link
                     to={"/strategies/quant-growth-fund"}
-                    className="text-white text-base lg:text-lg"
+                    className=" py-3    mt-5 text-center w-32  border border-black font-medium hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
                   >
-                    View details
+                    <span className="relative z-10">Know more</span>
                   </Link>
                 </div>
-              </Tilt>
+              </div>
 
-              <Tilt
-                options={{
-                  max: 5,
-                  scale: 1,
-                  speed: 450,
-                  transition: true,
-                  axis: null,
-                  reset: true,
-                  easing: "cubic-bezier(.03,.98,.52,.99)",
-                }}
-                className="bg-white flex py-6 lg:py-10 flex-col rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 w-full"
-              >
-                <div className="p-4 lg:p-6 relative">
-                  <h3 className="text-xl lg:text-2xl text-left font-bold mt-4">
-                    Quant Growth Momentum
-                  </h3>
-                </div>
-                <p className="text-primary-dark px-4 lg:px-6 text-base lg:text-xl font-light text-start mb-2">
+              <div className="bg-white  border border-black p-5">
+                <h3 className="text-2xl font-bold mb-4">
+                  Quant Growth Momentum
+                </h3>
+                <p className="mb-6">
                   Harnessing market trends, Qode's{" "}
-                  <span className="font-black text-[#151E28] text-base lg:text-xl">
-                    Quant Growth Momentum
-                  </span>{" "}
+                  <span className="font-bold">Quant Growth Momentum </span>
                   fund utilizes data-driven algorithms to identify and
                   capitalize on securities with upward momentum.
                 </p>
-                <div className="text-start px-4 lg:px-6 py-2 mb-4 lg:mb-10">
+                <div className="flex items-end justify-between">
+                  <p className="text-5xl">
+                    28.5%
+                    <span className="text-sm ml-2">CAGR</span>
+                  </p>
+                  <p className="text-5xl">
+                    10%
+                    <span className="text-sm ml-2">MDD</span>
+                  </p>
                   <Link
                     to={"/strategies/quant-growth-momentum"}
-                    className="arrow-link text-base lg:text-lg"
+                    className=" py-3    mt-5 text-center w-32  border border-black font-medium hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
                   >
-                    View details
+                    <span className="relative z-10">Know more</span>
                   </Link>
                 </div>
-              </Tilt>
-            </Carousel>
+              </div>
+
+              <div className="bg-white  border border-black p-5">
+                <h3 className="text-2xl font-bold mb-4">Low Vol Momentum</h3>
+                <p className="mb-6">
+                  Harnessing market trends, Qode's{" "}
+                  <span className="font-bold">Quant Growth Momentum </span>
+                  fund utilizes data-driven algorithms to identify and
+                  capitalize on securities with upward momentum.
+                </p>
+                <div className="flex items-end justify-between">
+                  <p className="text-5xl">
+                    23%
+                    <span className="text-sm ml-2">CAGR</span>
+                  </p>
+                  <p className="text-5xl">
+                    10%
+                    <span className="text-sm ml-2">MDD</span>
+                  </p>
+                  <Link
+                    to={"/strategies/quant-growth-fund"}
+                    className=" py-3    mt-5 text-center w-32  border border-black font-medium hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
+                  >
+                    <span className="relative z-10">Know more</span>
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </Container>

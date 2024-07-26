@@ -92,8 +92,8 @@ const MomentumTabs = () => {
                 across markets, assets and different periods of time.
               </div>
               <div className="text-center">
-                <button className="bg-primary-dark text-[#fff] font-extrabold px-10 sm:px-0 sm:w-1/2 mt-10 mx-auto rounded-md py-2">
-                  Start Investing
+                <button className="bg-primary-dark text-[#fff] font-extrabold px-10 sm:px-0 sm:w-1/2 mt-10 mx-auto  py-2">
+                  Schedule a Call
                 </button>
               </div>
             </div>
@@ -103,7 +103,17 @@ const MomentumTabs = () => {
           </div>
         </div>
       </Container>
-      <GrayContainer>
+      <div className="px-4 2xl:px-24 3xl:px-44">
+        {/* <div className="py-4 sm:py-12">
+          <h2 className="text-3xl font-bold text-center text-[#151E28]">
+            Performance
+          </h2>
+        </div> */}
+        <div className="mb-10">
+          <PerformanceChart strategy="momentum" />
+        </div>
+      </div>
+      {/* <GrayContainer>
         <Container>
           <div className="py-12">
             <h2 className="text-3xl text-[#151E28]  font-bold text-center mb-8">
@@ -117,7 +127,7 @@ const MomentumTabs = () => {
                 >
                   <div>
                     <div className="text-2xl mb-4">
-                      {/* <FontAwesomeIcon icon={feature.icon} /> */}
+                      <FontAwesomeIcon icon={feature.icon} />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">
                       {feature.title}
@@ -127,16 +137,16 @@ const MomentumTabs = () => {
                     </p>
                   </div>
                   <div className="mt-auto">
-                    {/* <button className="mt-4 px-2 py-1 rounded-md text-white bg-primary-dark w-max">
+                    <button className="mt-4 px-2 py-1 rounded-md text-white bg-primary-dark w-max">
                       Learn More
-                    </button> */}
+                    </button>
                   </div>
                 </div>
               ))}
             </div>
           </div>
         </Container>
-      </GrayContainer>
+      </GrayContainer> */}
       <Container>
         <TrailingReturns strategy="Vol Adjusted Momentum" />
       </Container>
@@ -145,16 +155,7 @@ const MomentumTabs = () => {
           <HoldingDistribution strategy="Momentum" />
         </div>
       </Container>
-      <div className="px-4 2xl:px-24 3xl:px-44">
-        <div className="py-4 sm:py-12">
-          <h2 className="text-3xl font-bold text-center text-[#151E28]">
-            Performance
-          </h2>
-        </div>
-        <div className="mb-10">
-          <PerformanceChart strategy="Vol Adjusted Momentum" />
-        </div>
-      </div>
+
       <GrayContainer>
         <Container>
           <div className=" py-10">

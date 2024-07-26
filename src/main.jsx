@@ -29,7 +29,9 @@ import ContactUs from "./Pages/ContactUs.jsx";
 import WeeklyNewsletter from "./Pages/WeeklyNewsletter.jsx";
 import Calculators from "./Pages/Calculators.jsx";
 import StrategyCalculator from "./Pages/StrategyCalculator.jsx";
-
+import Strategies from "./Pages/Strategies.jsx";
+import OpenAccount from "./Pages/OpenAccount.jsx";
+import BookAMeet from "./Pages/BookAMeet.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -39,6 +41,18 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/strategies",
+        element: <Strategies />,
+      },
+      {
+        path: "/book-a-meet",
+        element: <BookAMeet />,
+      },
+      {
+        path: "/open-account",
+        element: <OpenAccount />,
       },
       {
         path: "/strategies/quant-growth-momentum",
@@ -66,15 +80,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/weekly-newsletter",
-        element: <WeeklyNewsletter/>
+        element: <WeeklyNewsletter />,
       },
       {
         path: "/calculators",
-        element: <Calculators/>
+        element: <Calculators />,
       },
       {
         path: "/calculators/:strategyID",
-        element: <StrategyCalculator/>
+        element: <StrategyCalculator />,
       },
       {
         path: "/blogs",

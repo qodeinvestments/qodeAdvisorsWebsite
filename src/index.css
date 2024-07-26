@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,11 +27,17 @@
     animation: spin 1s linear infinite;
   }
 
-  .playfair-display-font {
-    font-family: "Playfair Display", serif;
+  @font-face {
+    font-family: 'helvetica';
+    src: url('./assets/fonts/helvetica-neue-5/HelveticaNeueLight.otf') format('truetype');
     font-optical-sizing: auto;
-    font-weight: 700;
+    /* font-weight: 100; */
     font-style: normal;
+  }
+  .playfair-display-font{
+    font-family: 'helvetica', sans-serif;
+    letter-spacing: 0.01em;
+  
   }
 @font-face {
     font-family: 'Graphik-Semibold';
@@ -60,17 +68,23 @@
 }
 
 .inter-font {
-    font-family: 'Inter', sans-serif; /* Corrected the fallback font name */
+  font-family: 'helvetica', sans-serif; /* Corrected the fallback font name */
 }
 
 .graphik-font-regular {
-    font-family: 'Inter', sans-serif;
+    font-family: 'helvetica', sans-serif;
 }
 
 .graphik-font-semibold {
-    font-family: 'Inter', sans-serif;
+    font-family: 'helvetica', sans-serif;
 }
 
 .graphik-font-medium {
-   font-family: 'Inter', sans-serif;
+   font-family: 'helvetica', sans-serif;
 }
+
+
+.know-more-cursor {
+  cursor: url('./assets/Know More.png'), auto;
+}
+

@@ -11,7 +11,7 @@ const OurFocus = () => {
           <p className="uppercase text-[12px] inter-font tracking-widest font-bold text-gray-400">
             Our Focus
           </p>
-          <h2 className="text-4xl text-primary-light font-semibold mt-4">
+          <h2 className="text-4xl text-primary-dark playfair-display-font font-semibold mt-4">
             We are{" "}
             <span className="text-primary-dark font-black">committed</span> to
             make financial <br /> investment more reliable
@@ -27,7 +27,7 @@ const OurFocus = () => {
                 <img src={data} alt="" />
               </div>
               {/* Card Title */}
-              <h3 className="text-lg font-bold mt-4">
+              <h3 className="text-lg playfair-display-font font-bold mt-4">
                 Data and technology driven
               </h3>
               {/* Card Content */}
@@ -47,7 +47,9 @@ const OurFocus = () => {
                 <img src={quant} alt="" />
               </div>
               {/* Card Title */}
-              <h3 className="text-lg font-bold mt-4">Quant Model</h3>
+              <h3 className="text-lg playfair-display-font font-bold mt-4">
+                Quant Model
+              </h3>
               {/* Card Content */}
               <p className="text-gray-600 mt-2">
                 Our quant models leverage advanced algorithms and statistical
@@ -61,7 +63,7 @@ const OurFocus = () => {
           <p className="relative top-48 text-2xl">
             Find out more about{" "}
             <a href="">
-              <span className="arrow-link cursor-pointer font-black">
+              <span className="arrow-link playfair-display-font cursor-pointer font-black">
                 Quant Investing
               </span>
             </a>

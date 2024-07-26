@@ -80,7 +80,7 @@ function BlogCard({
                 <span className="text-primary-dark font-bold text-sm">
                   Blog
                 </span>
-                <h3 className="text-xl font-semibold text-[#151E28] multiline-underline typewriter-font mb-2 relative overflow-hidden text-ellipsis">
+                <h3 className="text-xl font-semibold text-[#151E28] multiline-underline playfair-display-font mb-2 relative overflow-hidden text-ellipsis">
                   {title}
                   <span className="underline"></span>
                 </h3>

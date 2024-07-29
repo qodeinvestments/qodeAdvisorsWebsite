@@ -8,13 +8,12 @@ const OurFocus = () => {
     <GrayContainer>
       <Container>
         <div className="relative hover:shadow-xl hover:-translate-y-2 transition duration-300  text-center graphik-font-regular sm:h-1/2 p-5 sm:px-20 mb-72 rounded-2xl sm:pb-0 ">
-          <p className="uppercase text-[12px] inter-font tracking-widest font-bold text-gray-400">
+          <p className="uppercase text-[12px] inter-font tracking-widest  text-gray-400">
             Our Focus
           </p>
-          <h2 className="text-4xl text-primary-dark playfair-display-font font-semibold mt-4">
-            We are{" "}
-            <span className="text-primary-dark font-black">committed</span> to
-            make financial <br /> investment more reliable
+          <h2 className="text-4xl text-primary-dark playfair-display-font  mt-4">
+            We are <span className="text-primary-dark ">committed</span> to make
+            financial <br /> investment more reliable
           </h2>
 
           {/* Card Container */}
@@ -27,7 +26,7 @@ const OurFocus = () => {
                 <img src={data} alt="" />
               </div>
               {/* Card Title */}
-              <h3 className="text-lg playfair-display-font font-bold mt-4">
+              <h3 className="text-lg playfair-display-font  mt-4">
                 Data and technology driven
               </h3>
               {/* Card Content */}
@@ -47,7 +46,7 @@ const OurFocus = () => {
                 <img src={quant} alt="" />
               </div>
               {/* Card Title */}
-              <h3 className="text-lg playfair-display-font font-bold mt-4">
+              <h3 className="text-lg playfair-display-font  mt-4">
                 Quant Model
               </h3>
               {/* Card Content */}
@@ -63,7 +62,7 @@ const OurFocus = () => {
           <p className="relative top-48 text-2xl">
             Find out more about{" "}
             <a href="">
-              <span className="arrow-link playfair-display-font cursor-pointer font-black">
+              <span className="arrow-link playfair-display-font cursor-pointer ">
                 Quant Investing
               </span>
             </a>

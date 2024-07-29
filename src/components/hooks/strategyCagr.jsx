@@ -1,10 +1,10 @@
+"use client";
 import { useState, useEffect } from "react";
 
 const useStrategyData = (strategy) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
@@ -13,11 +13,12 @@ const useStrategyData = (strategy) => {
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
+
         const jsonData = await response.json();
-        if (!jsonData[strategy.toLowerCase()]) {
+        if (!jsonData[strategy]) {
           throw new Error(`No data found for strategy: ${strategy}`);
         }
-        setData(jsonData[strategy.toLowerCase()]);
+        setData(jsonData[strategy]);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -29,12 +30,13 @@ const useStrategyData = (strategy) => {
   }, [strategy]);
 
   const calculateReturns = (period) => {
+    // console.log("strategy data: ", data);
+    // console.log("strategy: ", strategy);
     if (!data || data.length < 2) return "N/A";
 
     const latestData = data[data.length - 1];
     const latestDate = new Date(latestData.Date);
     const startDate = new Date(latestDate);
-
     switch (period) {
       case "1M":
         startDate.setMonth(startDate.getMonth() - 1);
@@ -61,8 +63,8 @@ const useStrategyData = (strategy) => {
     const startIndex = data.findIndex((d) => new Date(d.Date) >= startDate);
     if (startIndex === -1) return "N/A"; // No data matches the start date
 
-    const startValue = data[startIndex][strategy.toLowerCase()];
-    const endValue = latestData[strategy.toLowerCase()];
+    const startValue = data[startIndex]["Total Portfolio NAV"];
+    const endValue = latestData["Total Portfolio NAV"];
 
     if (startValue === undefined || endValue === undefined) return "N/A";
 
@@ -70,10 +72,10 @@ const useStrategyData = (strategy) => {
     if (period === "1Y" || period === "3Y" || period === "5Y") {
       const years = parseInt(period.slice(0, -1)); // Extract the number of years from the string
       const cagr = (Math.pow(endValue / startValue, 1 / years) - 1) * 100;
-      return cagr.toFixed(2) + "%";
+      return cagr.toFixed(1) + "%";
     } else {
       const returns = ((endValue - startValue) / startValue) * 100;
-      return returns.toFixed(2) + "%";
+      return returns.toFixed(1) + "%";
     }
   };
 

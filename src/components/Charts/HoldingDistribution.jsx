@@ -146,7 +146,7 @@ const HoldingDistribution = ({ strategy }) => {
     <div className="bg-gray-100 rounded-2xl p-6 sm:p-8 md:p-10 my-10">
       <div className="flex flex-col lg:flex-row justify-between items-start gap-8">
         <div className="w-full lg:w-1/2">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#151E28] mb-2">
+          <h2 className="text-2xl sm:text-3xl  text-[#151E28] mb-2">
             Holding Distribution
           </h2>
           <p className="text-base sm:text-lg text-gray-500">

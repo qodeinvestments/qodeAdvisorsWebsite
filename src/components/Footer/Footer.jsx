@@ -16,40 +16,44 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-0">
           <div>
             {/* <img src={logo} alt="Company Logo" className="mb-4 w-32" /> */}
-            <h3 className="text-lg font-semibold text-black  mb-4">Company</h3>
+            <h3 className="text-lg  text-black  mb-4">Company</h3>
             <ul className="text-sm text-gray-400 ">
-              <li className="mb-2 hover:text-primary-dark ">
+              {/* <li className="mb-2 hover:text-primary-dark ">
                 <Link to={'/'}>About Us</Link>
-              </li>
+              </li> */}
               <li className="mb-2 hover:text-primary-dark ">
-                <Link to={'/about-us/our-team'}>Our Team</Link>
+                <Link to={"/about-us/our-team"}>Our Team</Link>
               </li>
-              <li className="mb-2 hover:text-primary-dark ">
+              {/* <li className="mb-2 hover:text-primary-dark ">
                 <a href="#">Careers</a>
-              </li>
+              </li> */}
               <li className="hover:text-primary-dark">
-              <Link to={'/contact-us'}>Contact Us</Link>
+                <Link to={"/contact-us"}>Contact Us</Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-[#171E27] mb-4">
-              Strategis
-            </h3>
+            <h3 className="text-lg  text-[#171E27] mb-4">Strategies</h3>
             <ul className="text-sm text-gray-400">
               <li className="mb-2 hover:text-primary-dark">
-                <Link to={'/strategies/quant-growth-momentum'}>Quant Growth Momentum</Link>       </li>
+                <Link to={"/strategies/quant-growth-momentum"}>
+                  Quant Growth Momentum
+                </Link>{" "}
+              </li>
               <li className="mb-2 hover:text-primary-dark">
-                <Link to={'/strategies/quant-growth-fund'}>Quant Growth Fund</Link>    </li>
-              
+                <Link to={"/strategies/quant-growth-fund"}>
+                  Quant Growth Fund
+                </Link>{" "}
+              </li>
+              <li className="mb-2 hover:text-primary-dark">
+                <Link to={"/strategies/quant-growth-fund"}>Low Vol Fund</Link>{" "}
+              </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-[#171E27] mb-4">
-              Resources
-            </h3>
+            <h3 className="text-lg  text-[#171E27] mb-4">Resources</h3>
             <ul className="text-sm text-gray-400">
-              <li className="mb-2 hover:text-primary-dark">
+              {/* <li className="mb-2 hover:text-primary-dark">
                 <Link to={'/blogs'}>Blog</Link>
               </li>
               <li className="mb-2 hover:text-primary-dark">
@@ -57,16 +61,14 @@ const Footer = () => {
               </li>
               <li className="mb-2 hover:text-primary-dark">
                 <Link to={'/calculators'}>Calculators</Link>
-              </li>
+              </li> */}
               <li className="hover:text-primary-dark">
-                <Link to={'/faq'}>FAQs</Link>
+                <Link to={"/faq"}>FAQs</Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-lg font-semibold text-[#171E27] mb-4">
-              Subscribe
-            </h3>
+            <h3 className="text-lg  text-[#171E27] mb-4">Subscribe</h3>
             <p className="text-sm text-gray-400 mb-4">
               Subscribe to our newsletter to get the latest updates:
             </p>
@@ -83,9 +85,7 @@ const Footer = () => {
                 <FontAwesomeIcon icon={faEnvelope} />
               </button>
             </form>
-            <h3 className="text-lg font-semibold text-white mt-8 mb-4">
-              Follow Us
-            </h3>
+            <h3 className="text-lg  text-white mt-8 mb-4">Follow Us</h3>
             <div className="flex space-x-4">
               <a
                 href="#"

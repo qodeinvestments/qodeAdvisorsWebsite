@@ -1,17 +1,17 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
 const OurBeliefsAndValues = () => {
   const fadeIn = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6 }
+    transition: { duration: 0.6 },
   };
 
   const tileVariants = {
     initial: { opacity: 0, scale: 0.9 },
     animate: { opacity: 1, scale: 1 },
-    transition: { duration: 0.5 }
+    transition: { duration: 0.5 },
   };
 
   return (
@@ -22,7 +22,7 @@ const OurBeliefsAndValues = () => {
         animate="animate"
         variants={fadeIn}
       >
-        <h1 className="text-4xl font-bold mb-4">Our Beliefs and Values</h1>
+        <h1 className="text-4xl  mb-4">Our Beliefs and Values</h1>
         <p className="max-w-3xl mx-auto text-xl">
           At Qode, we're an investment firm leveraging quantitative models to
           drive informed and strategic investment decisions.
@@ -37,9 +37,7 @@ const OurBeliefsAndValues = () => {
             initial="initial"
             animate="animate"
           >
-            <h2 className="text-2xl font-semibold mb-4">
-              Our Belief and Mission
-            </h2>
+            <h2 className="text-2xl  mb-4">Our Belief and Mission</h2>
             <p>
               We believe finance is a vital aspect of everyone's life,
               simplifying and enhancing daily living. Our mission is to make
@@ -55,7 +53,7 @@ const OurBeliefsAndValues = () => {
             initial="initial"
             animate="animate"
           >
-            <h2 className="text-2xl font-semibold mb-4">Transparency</h2>
+            <h2 className="text-2xl  mb-4">Transparency</h2>
             <p>
               We use clear, factual communication to help clients understand
               opportunities and risks realistically, ensuring transparency.
@@ -68,9 +66,7 @@ const OurBeliefsAndValues = () => {
             initial="initial"
             animate="animate"
           >
-            <h2 className="text-2xl font-semibold mb-4">
-              Fundamental Research
-            </h2>
+            <h2 className="text-2xl  mb-4">Fundamental Research</h2>
             <p>
               Our research is more than just numbers. We don't stop at
               spreadsheets and site visits. Year over year, we get to know the
@@ -84,9 +80,7 @@ const OurBeliefsAndValues = () => {
             initial="initial"
             animate="animate"
           >
-            <h2 className="text-2xl font-semibold mb-4">
-              Distinctive Investing Approach
-            </h2>
+            <h2 className="text-2xl  mb-4">Distinctive Investing Approach</h2>
             <p>
               Our system prioritizes consistent and repeatable investment
               results.
@@ -104,9 +98,7 @@ const OurBeliefsAndValues = () => {
                 <div
                   className={`bg-white p-8 rounded-lg transition-opacity duration-1000 `}
                 >
-                  <h2 className="text-2xl font-semibold mb-4">
-                    Long-term View
-                  </h2>
+                  <h2 className="text-2xl  mb-4">Long-term View</h2>
                   <p className="mb-4">
                     Because time is more important than timing, we focus on
                     long-term growth and sustainability.

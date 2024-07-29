@@ -23,7 +23,7 @@ const TrailingReturns = ({ strategy }) => {
 
   const getStrategyKey = (strategy) => {
     switch (strategy) {
-      case "Vol Adjusted Momentum":
+      case "Momentum":
         return "Vol Adjusted Momentum";
       case "Naive Momentum":
         return "Naive Momentum";
@@ -166,7 +166,7 @@ const TrailingReturns = ({ strategy }) => {
 
   return (
     <div className="graphik-font-regular overflow-x-auto">
-      <h2 className="text-3xl font-bold my-4">Trailing Returns</h2>
+      <h2 className="text-3xl  my-4">Trailing Returns</h2>
       <table className="w-full min-w-[640px]">
         <thead>
           <tr style={tableHeaderStyle} className="border-b-2 border-gray-200">
@@ -187,7 +187,7 @@ const TrailingReturns = ({ strategy }) => {
               key={strat}
               className="border-b border-gray-100"
             >
-              <td className="p-2 font-medium">{strat}</td>
+              <td className="p-2 ">{strat}</td>
               {periods.map((period) => (
                 <td style={tableCellStyle} key={period} className="p-2">
                   {returns[period] && returns[period][strat]

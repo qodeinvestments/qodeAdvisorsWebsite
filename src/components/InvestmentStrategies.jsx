@@ -25,24 +25,24 @@ const InvestmentStrategies = () => {
   return (
     <GrayContainer>
       <Container>
-        <p className="uppercase text-[12px] text-center pt-10 inter-font tracking-widest  text-gray-400">
+        {/* <p className="uppercase text-[12px] text-center pt-10 inter-font tracking-widest  text-gray-400">
           Qode Your Future: Data-Driven Decisions for a Quantum Leap.
-        </p>
+        </p> */}
         <div className=" border-black graphik-font-regular mt-10 mb-32 flex flex-col lg:flex-row">
           <div className="lg:w-1/2 border border-black px-4 lg:px-3 mb-8 lg:mb-0">
             <h2 className="text-3xl lg:text-5xl  mt-8 py-4 playfair-display-font text-start text-dark">
               Strategies
             </h2>
-            <p className="text-primary text-start text-base lg:text-lg font-medium text-md mx-auto mb-8">
+            <p className="text-primary text-start text-base lg:text-lg  text-md mx-auto mb-8">
               For Consistent Growth
             </p>
           </div>
           <div className="lg:w-1/2">
             <div className="grid grid-cols-1 ">
               <div className="bg-white  border border-black p-5">
-                <h3 className="text-2xl font-bold mb-4">Quant Growth Fund </h3>
+                <h3 className="text-2xl  mb-4">Quant Growth Fund </h3>
                 <p className="mb-6">
-                  The <span className="font-bold">Quant Growth Fund</span> seeks
+                  The <span className="">Quant Growth Fund</span> seeks
                   high-growth potential with data-driven precision. We leverage
                   quantitative analysis to identify companies poised for
                   significant expansion.
@@ -58,7 +58,7 @@ const InvestmentStrategies = () => {
                   </p>
                   <Link
                     to={"/strategies/quant-growth-fund"}
-                    className=" py-3    mt-5 text-center w-32  border border-black font-medium hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
+                    className=" py-3    mt-5 text-center w-32  border border-black  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
                   >
                     <span className="relative z-10">Know more</span>
                   </Link>
@@ -66,12 +66,10 @@ const InvestmentStrategies = () => {
               </div>
 
               <div className="bg-white  border border-black p-5">
-                <h3 className="text-2xl font-bold mb-4">
-                  Quant Growth Momentum
-                </h3>
+                <h3 className="text-2xl  mb-4">Quant Growth Momentum</h3>
                 <p className="mb-6">
                   Harnessing market trends, Qode's{" "}
-                  <span className="font-bold">Quant Growth Momentum </span>
+                  <span className="">Quant Growth Momentum </span>
                   fund utilizes data-driven algorithms to identify and
                   capitalize on securities with upward momentum.
                 </p>
@@ -86,7 +84,7 @@ const InvestmentStrategies = () => {
                   </p>
                   <Link
                     to={"/strategies/quant-growth-momentum"}
-                    className=" py-3    mt-5 text-center w-32  border border-black font-medium hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
+                    className=" py-3    mt-5 text-center w-32  border border-black  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
                   >
                     <span className="relative z-10">Know more</span>
                   </Link>
@@ -94,10 +92,10 @@ const InvestmentStrategies = () => {
               </div>
 
               <div className="bg-white  border border-black p-5">
-                <h3 className="text-2xl font-bold mb-4">Low Vol Momentum</h3>
+                <h3 className="text-2xl  mb-4">Low Vol Momentum</h3>
                 <p className="mb-6">
                   Harnessing market trends, Qode's{" "}
-                  <span className="font-bold">Quant Growth Momentum </span>
+                  <span className="">Quant Growth Momentum </span>
                   fund utilizes data-driven algorithms to identify and
                   capitalize on securities with upward momentum.
                 </p>
@@ -112,7 +110,7 @@ const InvestmentStrategies = () => {
                   </p>
                   <Link
                     to={"/strategies/quant-growth-fund"}
-                    className=" py-3    mt-5 text-center w-32  border border-black font-medium hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
+                    className=" py-3    mt-5 text-center w-32  border border-black  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
                   >
                     <span className="relative z-10">Know more</span>
                   </Link>

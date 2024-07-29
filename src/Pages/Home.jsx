@@ -33,10 +33,12 @@ const Home = () => {
     <>
       <Banner />
       <Banner />
-      <InvestmentStrategies />
-      <FundManagers />
-      <Container>{/* <Blogs /> */}</Container>
-      <FAQSection />
+      <Container>
+        <InvestmentStrategies />
+        <FundManagers />
+        <FAQSection />
+        {/* <Blogs /> */}
+      </Container>
       {/* <OurFocus /> */}
     </>
   );

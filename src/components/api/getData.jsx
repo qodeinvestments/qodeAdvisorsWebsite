@@ -7,12 +7,12 @@ const fetchStrategyData = async (strategy, timeRange, startDate, endDate) => {
       throw new Error("Failed to fetch data");
     }
     const jsonData = await response.json();
+    console.log(jsonData);
     if (!jsonData[strategy.toLowerCase()]) {
       throw new Error(`No data found for strategy: ${strategy}`);
     }
 
     const data = jsonData[strategy.toLowerCase()];
-
     // Find the latest date in the data to use as the reference for filtering
     const latestDate = data.reduce((latest, current) => {
       const currentDate = new Date(current.Date);
@@ -26,6 +26,7 @@ const fetchStrategyData = async (strategy, timeRange, startDate, endDate) => {
       endDate,
       latestDate.Date // Pass the latest date from your data
     );
+    console.log("filteredData", filteredData);
     return filteredData;
   } catch (error) {
     console.error("Error fetching data: ", error);

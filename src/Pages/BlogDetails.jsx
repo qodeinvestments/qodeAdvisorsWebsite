@@ -113,13 +113,11 @@ const BlogDetails = () => {
     <div className="mx-auto px-4 py-12  graphik-font-regular">
       <div className="rounded-lg max-w-5xl mx-auto p-8">
         <div className="mt-20 mb-2 text-center">
-          <p className="text-primary font-medium">
+          <p className="text-primary ">
             {formatDate(post.publishedAt)} &#x2022; {duration} read
           </p>
         </div>
-        <h1 className="text-4xl graphik-font-semibold text-center font-bold mb-12">
-          {post.title}
-        </h1>
+        <h1 className="text-4xl graphik- text-center  mb-12">{post.title}</h1>
 
         {/* <img
           src={urlFor(post.mainImage).url()}
@@ -131,19 +129,13 @@ const BlogDetails = () => {
           components={{
             block: {
               h1: ({ children }) => (
-                <h1 className="text-4xl font-bold my-3 text-[#151e29]">
-                  {children}
-                </h1>
+                <h1 className="text-4xl  my-3 text-[#151e29]">{children}</h1>
               ),
               h2: ({ children }) => (
-                <h2 className="text-3xl font-bold my-2 text-[#151e29]">
-                  {children}
-                </h2>
+                <h2 className="text-3xl  my-2 text-[#151e29]">{children}</h2>
               ),
               h3: ({ children }) => (
-                <h3 className="text-2xl font-semibold my-1 text-[#151e29]">
-                  {children}
-                </h3>
+                <h3 className="text-2xl  my-1 text-[#151e29]">{children}</h3>
               ),
               normal: ({ children }) => (
                 <p className="text-md leading-relaxed mb-2">{children}</p>
@@ -192,13 +184,13 @@ const BlogDetails = () => {
               />
             )}
             <div>
-              <p className="text-lg font-bold">{post.author.name}</p>
+              <p className="text-lg ">{post.author.name}</p>
               {post.author.bio && <PortableText value={post.author.bio} />}
             </div>
           </div>
         )} */}
         <div className="bg-white my-5 p-10 rounded-lg shadow-md text-center">
-          <h3 className="text-2xl font-semibold text-black">Subscribe</h3>
+          <h3 className="text-2xl  text-black">Subscribe</h3>
           <p className="text-gray-400 mb-4">
             Subscribe to our newsletter to get the latest updates:
           </p>
@@ -215,9 +207,7 @@ const BlogDetails = () => {
               <p>Subscribe</p>
             </button>
           </form>
-          <h3 className="text-lg font-semibold text-black mt-8 mb-4">
-            Follow Us
-          </h3>
+          <h3 className="text-lg  text-black mt-8 mb-4">Follow Us</h3>
           <div className="flex justify-center space-x-4">
             <a href="#" className="text-gray-400 hover:text-gray-200">
               <FontAwesomeIcon icon={faTwitter} />

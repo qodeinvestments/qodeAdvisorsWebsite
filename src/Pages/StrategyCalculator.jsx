@@ -1,13 +1,13 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import { Container } from '../components';
-import Calculator from '../components/Calculator';
-import { strategies } from '../config/strategies';
+import React from "react";
+import { useParams } from "react-router-dom";
+import { Container } from "../components";
+import Calculator from "../components/Calculator";
+import { strategies } from "../config/strategies";
 
 const StrategyCalculator = () => {
   const { strategyID } = useParams();
-  const strategy = strategies.find(s => s.id === strategyID);
-console.log(strategy);
+  const strategy = strategies.find((s) => s.id === strategyID);
+  console.log(strategy);
   const getStrategyKey = (strategy) => {
     switch (strategy) {
       case "Quant Growth Momentum":
@@ -33,7 +33,7 @@ console.log(strategy);
 
   return (
     <Container>
-      <h1 className="text-3xl font-bold my-8">{strategyKey} Calculator</h1>
+      <h1 className="text-3xl  my-8">{strategyKey} Calculator</h1>
       <Calculator strategy={strategyKey} />
     </Container>
   );

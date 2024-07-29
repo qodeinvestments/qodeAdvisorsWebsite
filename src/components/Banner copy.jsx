@@ -57,7 +57,7 @@ const Banner = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl text-primary md:text-4xl lg:text-5xl font-bold mb-6"
+                className="text-3xl text-primary md:text-4xl lg:text-5xl  mb-6"
               >
                 The best investments are <br />{" "}
                 <span className="text-primary-dark px-2 rounded">
@@ -76,7 +76,7 @@ const Banner = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-primary-dark text-white font-semibold py-3 px-8 rounded-full shadow-2xl  hover:bg-[#696969] transition duration-300 text-base md:text-lg"
+                className="bg-primary-dark text-white  py-3 px-8 rounded-full shadow-2xl  hover:bg-[#696969] transition duration-300 text-base md:text-lg"
               >
                 Get Started
               </motion.button>

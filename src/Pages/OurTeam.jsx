@@ -59,9 +59,7 @@ const OurTeam = () => {
   return (
     <Container>
       <div className="container graphik-font-regular mx-auto py-8  mt-16">
-        <h2 className="text-4xl inter-font font-bold text-center mb-6">
-          Our Team
-        </h2>
+        <h2 className="text-4xl inter-font  text-center mb-6">Our Team</h2>
         <p className="text-center text-gray-400 mb-12">
           We are Code Developers, Analysts, and Fund Managers dedicated to
           growing your money and optimizing your financial future. Using
@@ -90,7 +88,7 @@ const TeamMemberCard = ({ member }) => {
       <div className="p-2">
         <div className="flex justify-between mb-1 items-start">
           <div>
-            <h3 className="font-bold">{member.name}</h3>
+            <h3 className="">{member.name}</h3>
             <span className="text-gray-400 text-sm ">{member.designation}</span>
           </div>
           <div className="flex gap-2 flex-row-reverse">

@@ -8,13 +8,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import StrategyComponent from "../components/Strategy";
 
-const QuantGrowthFund = () => {
+const LowVolMomentum = () => {
   const strategyData = {
-    title: "Quant Growth Fund",
+    title: "Low Volatility Momentum Fund",
     description:
       "The Quantitative Growth Fund uses a classic growth investing approach, focusing on high-quality businesses with strong moats and capital allocation skills.",
-    strategyCode: "QGF",
-    strategySlug: "quant-growth-fund",
+    strategyCode: "lowvol",
+    strategySlug: "low-vol-momentum",
     pptLink: "/Quant Growth Fund Feb.pdf",
     whitePaperLink: "", // Add the white paper link when available
     steps: [
@@ -78,4 +78,4 @@ const QuantGrowthFund = () => {
   return <StrategyComponent strategyData={strategyData} />;
 };
 
-export default QuantGrowthFund;
+export default LowVolMomentum;

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import DiscreteChart from "./DiscreteChart";
-import RollingReturns from "./RollingReturns";
+
 import fetchStrategyData from "../api/getData";
 import {
   Tabs,
@@ -30,7 +29,6 @@ const PerformanceChart = ({ strategy }) => {
           startDate,
           endDate
         );
-        console.log("filteredData", filteredData);
         const chartData = prepareChartData(filteredData, strategy);
         updateChartOptions(chartData);
       } catch (error) {
@@ -42,7 +40,9 @@ const PerformanceChart = ({ strategy }) => {
   }, [strategy, timeRange, startDate, endDate, triggerFetch]);
 
   const prepareChartData = (data, strategy) => {
-    const strategyKey = strategy.toLowerCase();
+    console.log("data", data);
+    console.log("strategy", data[strategy["Total Portfolio NAV"]]);
+    const strategyKey = "Total Portfolio NAV";
     const initialValue = parseFloat(data[0][strategyKey]);
     const initialStrategyValue = parseFloat(data[0][strategyKey]);
     const initialNiftyValue = parseFloat(
@@ -61,6 +61,7 @@ const PerformanceChart = ({ strategy }) => {
   const updateChartOptions = (data) => {
     const dates = data.map((item) => item.date);
     const strategyValues = data.map((item) => Math.trunc(item.strategyValue));
+    console.log("strategyValues", strategyValues);
     const niftyValues = data.map((item) => Math.trunc(item.niftyValue));
 
     let maxStrategyValue = 0;

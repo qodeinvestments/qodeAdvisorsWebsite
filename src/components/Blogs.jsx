@@ -67,7 +67,7 @@ const Blogs = () => {
   return (
     <Container>
       <div className="py-20">
-        <h2 className="text-3xl playfair-display-font font-bold text-center  text-[#151E28] mb-8">
+        <h2 className="text-3xl playfair-display-font  text-center  text-[#151E28] mb-8">
           Recent Blogs
         </h2>
         <div className="mb-8  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -99,7 +99,7 @@ const Blogs = () => {
         <div className="text-center">
           <Link
             to="/blogs"
-            className="text-white bg-primary-dark font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            className="text-white bg-primary-dark  rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
           >
             View All Blogs
           </Link>

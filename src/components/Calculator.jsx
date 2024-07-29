@@ -16,28 +16,33 @@ const Calculator = ({ strategy }) => {
         const response = await fetch("/data/mainData.json");
         const jsonData = await response.json();
 
-        setData(jsonData[strategy.toLowerCase()]);
+        // Assuming strategy is something like "momentum", "qgf", or "lowvol"
+        const strategyData = jsonData[strategy.toLowerCase()];
+        const strategyKey = "Total Portfolio NAV";
+
+        setData(strategyData[strategyKey]);
         console.log(data);
-        if (jsonData[strategy.toLowerCase()].length > 0) {
+        console.log("calc", strategyData[strategyKey]);
+
+        if (strategyData[strategyKey] && strategyData[strategyKey].length > 0) {
           const periodStartDate = new Date(
-            jsonData[strategy.toLowerCase()][
-              jsonData[strategy.toLowerCase()].length - 1
-            ]["Date"]
+            strategyData[strategyKey][strategyData[strategyKey].length - 1][
+              "Date"
+            ]
           );
           console.log(periodStartDate);
           periodStartDate.setFullYear(
             periodStartDate.getFullYear() - investmentPeriod
           );
-          const filteredData = jsonData[strategy.toLowerCase()].filter(
-            (entry) => {
-              const date = new Date(entry.Date);
-              return (
-                !isNaN(date.getTime()) &&
-                date.getDate() === 1 &&
-                date >= periodStartDate
-              );
-            }
-          );
+
+          const filteredData = strategyData[strategyKey].filter((entry) => {
+            const date = new Date(entry.Date);
+            return (
+              !isNaN(date.getTime()) &&
+              date.getDate() === 1 &&
+              date >= periodStartDate
+            );
+          });
 
           setStartOfMonthData(filteredData);
         }
@@ -47,7 +52,7 @@ const Calculator = ({ strategy }) => {
     };
 
     fetchData();
-  }, [investmentPeriod]);
+  }, [investmentPeriod, strategy]);
 
   useEffect(() => {
     if (startOfMonthData.length > 0) {
@@ -155,7 +160,7 @@ const Calculator = ({ strategy }) => {
 
   return (
     <>
-      <h1 className="text-xl font-black md:text-2xl">Calculate & Decide</h1>
+      <h1 className="text-xl  md:text-2xl">Calculate & Decide</h1>
       <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
         <p className="text-gray-500 mb-2 sm:mb-0 w-full sm:w-auto">
           Investment Amount (₹)
@@ -217,7 +222,7 @@ const Calculator = ({ strategy }) => {
             </button>
             <input
               type="number"
-              className="outline-none focus:outline-none text-center w-full bg-white font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700"
+              className="outline-none focus:outline-none text-center w-full bg-white  text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700"
               name="custom-input-number"
               value={investmentPeriod}
               readOnly

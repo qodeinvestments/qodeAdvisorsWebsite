@@ -161,7 +161,7 @@ const PerformanceChart = () => {
               </button>
               <input
                 type="number"
-                className="outline-none focus:outline-none text-center w-full bg-white font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700"
+                className="outline-none focus:outline-none text-center w-full bg-white  text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700"
                 name="custom-input-number"
                 value={investmentPeriod}
                 readOnly

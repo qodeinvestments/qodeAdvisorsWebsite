@@ -32,6 +32,7 @@ import StrategyCalculator from "./Pages/StrategyCalculator.jsx";
 import Strategies from "./Pages/Strategies.jsx";
 import OpenAccount from "./Pages/OpenAccount.jsx";
 import BookAMeet from "./Pages/BookAMeet.jsx";
+import LowVolMomentum from "./Pages/LowVolMomentum.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: "/strategies/quant-growth-momentum",
         element: <MomentumTabs />,
+      },
+      {
+        path: "/strategies/low-vol-momentum",
+        element: <LowVolMomentum />,
       },
       {
         path: "/strategies/quant-growth-fund",

@@ -88,7 +88,7 @@ const RelatedArticles = ({ strategySlug, limit = 3 }) => {
   return (
     <Container>
       <div className="py-10">
-        <h2 className="text-3xl inter-font font-bold text-[#151E28] mb-6">
+        <h2 className="text-3xl inter-font  text-[#151E28] mb-6">
           Related Articles
         </h2>
         {/* <p className="text-2xl">

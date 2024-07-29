@@ -69,7 +69,7 @@ const Blogs = () => {
     <Container>
       <div className=" graphik-font-regular py-28 md:py-44">
         <div className="flex flex-col items-center">
-          <h1 className="text-primary-dark graphik-font-medium text-4xl md:text-4xl font-bold mb-6 text-center">
+          <h1 className="text-primary-dark graphik- text-4xl md:text-4xl  mb-6 text-center">
             Welcome to Our Blog
           </h1>
           <p className="text-gray-600 text-lg md:text-xl max-w-3xl text-center">

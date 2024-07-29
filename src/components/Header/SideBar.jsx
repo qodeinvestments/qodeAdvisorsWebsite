@@ -35,7 +35,7 @@ const Sidebar = ({ onClose }) => {
               <a
                 key={item.name}
                 href={item.slug}
-                className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                className="block px-3 py-2 rounded-md text-base  text-gray-700 hover:bg-gray-50 hover:text-gray-900"
               >
                 {item.name}
               </a>

@@ -1,90 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-    blockquote {
-      @apply border-l-4 border-gray-200 pl-4 italic; /* Styling for blockquotes */
-    }
+  blockquote {
+    @apply border-l-4 border-gray-200 pl-4 italic; /* Styling for blockquotes */
   }
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  
-  .spinner {
-    @apply inline-block w-16 h-16 border-4 border-solid border-current border-r-transparent rounded-full animate-spin;
-    animation: spin 1s linear infinite;
+  100% {
+    transform: rotate(360deg);
   }
+}
 
-  @font-face {
-    font-family: 'helvetica';
-    src: url('./assets/fonts/helvetica-neue-5/HelveticaNeueLight.otf') format('truetype');
-    font-optical-sizing: auto;
-    /* font-weight: 100; */
-    font-style: normal;
-  }
-  .playfair-display-font{
-    font-family: 'helvetica', sans-serif;
-    letter-spacing: 0.01em;
-  
-  }
-@font-face {
-    font-family: 'Graphik-Semibold';
-    src: url('./assets/fonts/Graphik-Semibold.ttf') format('truetype');
-    font-weight: 600; /* Assuming you want semibold to be 600 */
-    font-style: normal;
+.spinner {
+  @apply inline-block w-16 h-16 border-4 border-solid border-current border-r-transparent rounded-full animate-spin;
+  animation: spin 1s linear infinite;
 }
 
 @font-face {
-    font-family: 'Graphik-Regular';
-    src: url('./assets/fonts/Graphik-Regular.ttf') format('truetype');
-    font-weight: 400; /* Normal weight */
-    font-style: normal;
+  font-family: "helvetica";
+  src: url("./assets/fonts/helvetica-neue-5/HelveticaNeueLight.otf")
+    format("truetype");
+  font-optical-sizing: auto;
+  /* font-weight: 100; */
+  font-style: normal;
+}
+.playfair-display-font {
+  font-family: "helvetica", sans-serif;
+  letter-spacing: 0.01em;
+}
+@font-face {
+  font-family: "Graphik-Semibold";
+  src: url("./assets/fonts/Graphik-Semibold.ttf") format("truetype");
+  font-weight: 600; /* Assuming you want semibold to be 600 */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Graphik-Regular";
+  src: url("./assets/fonts/Graphik-Regular.ttf") format("truetype");
+  font-weight: 400; /* Normal weight */
+  font-style: normal;
 }
 
 .codingFont {
-    font-family: "Source Code Pro", monospace;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-  }
+  font-family: "Source Code Pro", monospace;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
 
 @font-face {
-    font-family: 'Graphik-Medium';
-    src: url('./assets/fonts/Graphik-Medium.ttf') format('truetype');
-    font-weight: 500; /* Medium is often 500 */
-    font-style: normal;
+  font-family: "Graphik-Medium";
+  src: url("./assets/fonts/Graphik-Medium.ttf") format("truetype");
+  font-weight: 500; /* Medium is often 500 */
+  font-style: normal;
 }
 
 .inter-font {
-  font-family: 'helvetica', sans-serif; /* Corrected the fallback font name */
+  font-family: "helvetica", sans-serif; /* Corrected the fallback font name */
 }
 
 .graphik-font-regular {
-    font-family: 'helvetica', sans-serif;
+  font-family: "helvetica", sans-serif;
 }
 
-.graphik-font-semibold {
-    font-family: 'helvetica', sans-serif;
+.graphik- {
+  font-family: "helvetica", sans-serif;
 }
 
-.graphik-font-medium {
-   font-family: 'helvetica', sans-serif;
+.graphik- {
+  font-family: "helvetica", sans-serif;
 }
-
 
 .know-more-cursor {
-  cursor: url('./assets/Know More.png'), auto;
+  cursor: url("./assets/Know More.png"), auto;
 }
-

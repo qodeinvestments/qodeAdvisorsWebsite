@@ -33,7 +33,7 @@ const StrategyCalculator = () => {
 
   return (
     <Container>
-      <h1 className="text-3xl  my-8">{strategyKey} Calculator</h1>
+      <h1 className="text-3xl  my-8">{strategyKey} Calculators</h1>
       <Calculator strategy={strategyKey} />
     </Container>
   );

@@ -47,7 +47,7 @@ const Strategies = () => {
       name: "High-Return Fund",
       slug: "quant-growth-momentum",
       description:
-        "Our strategies are designed to help you achieve your financial goals. We offer a range of strategies to suit your investment needs.",
+        "A strategy that invests in 30 businesses that have significantly grown in terms of stock price. and reinvest before they start falling. <br><i>The Principle - The stock price tells the story before the actual story unfolds.</i>",
     },
     {
       id: "lowvol",

@@ -11,7 +11,7 @@ import Tabs from "./Pages/QuantGrowthMomentum.jsx";
 import App from "./App";
 import MomentumTabs from "./Pages/QuantGrowthMomentum.jsx";
 import OurTeam from "./Pages/OurTeam.jsx";
-import OurBeliefs from "./Pages/OurBeliefs.jsx";
+import OurBelief from "./Pages/OurBeliefs.jsx";
 import Blogs from "./Pages/Blogs.jsx";
 import BlogDetails from "./Pages/BlogDetails.jsx";
 import QuantInvesting from "./Pages/QuantInvesting.jsx";
@@ -23,7 +23,16 @@ import ErrorPage from "./Pages/ErrorPage.jsx";
 import BenefitsAndRisk from "./Pages/QuantInvesting101/BenefitsAndRisk.jsx";
 import QuantGrowthFund from "./Pages/QuantGrowthFund.jsx";
 import TheQuantGrowth from "./Pages/TheQuantGrowth.jsx";
-
+import OurBeliefsAndValues from "./Pages/OurBeliefs.jsx";
+import FAQs from "./Pages/faqs.jsx";
+import ContactUs from "./Pages/ContactUs.jsx";
+import WeeklyNewsletter from "./Pages/WeeklyNewsletter.jsx";
+import Calculators from "./Pages/Calculators.jsx";
+import StrategyCalculator from "./Pages/StrategyCalculator.jsx";
+import Strategies from "./Pages/Strategies.jsx";
+import OpenAccount from "./Pages/OpenAccount.jsx";
+import BookAMeet from "./Pages/BookAMeet.jsx";
+import LowVolMomentum from "./Pages/LowVolMomentum.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,8 +44,24 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "/strategies",
+        element: <Strategies />,
+      },
+      {
+        path: "/book-a-meet",
+        element: <BookAMeet />,
+      },
+      {
+        path: "/open-account",
+        element: <OpenAccount />,
+      },
+      {
         path: "/strategies/quant-growth-momentum",
         element: <MomentumTabs />,
+      },
+      {
+        path: "/strategies/low-vol-momentum",
+        element: <LowVolMomentum />,
       },
       {
         path: "/strategies/quant-growth-fund",
@@ -48,7 +73,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/about-us/beliefs-and-values",
-        element: <OurBeliefs />,
+        element: <OurBeliefsAndValues />,
+      },
+      {
+        path: "/faq",
+        element: <FAQs />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs />,
+      },
+      {
+        path: "/weekly-newsletter",
+        element: <WeeklyNewsletter />,
+      },
+      {
+        path: "/calculators",
+        element: <Calculators />,
+      },
+      {
+        path: "/calculators/:strategyID",
+        element: <StrategyCalculator />,
       },
       {
         path: "/blogs",

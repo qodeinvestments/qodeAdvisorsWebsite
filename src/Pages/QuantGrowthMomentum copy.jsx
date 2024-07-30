@@ -109,7 +109,7 @@ const QuantGrowthMomentum = () => {
             </p>
             {/* <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               <div className="bg-gray-100 p-6 rounded-lg">
-                <h3 className="text-lg font-medium text-gray-900">
+                <h3 className="text-lg  text-gray-900">
                   Quantitative Analysis
                 </h3>
                 <p className="mt-2 text-gray-600">
@@ -118,7 +118,7 @@ const QuantGrowthMomentum = () => {
                 </p>
               </div>
               <div className="bg-gray-100 p-6 rounded-lg">
-                <h3 className="text-lg font-medium text-gray-900">
+                <h3 className="text-lg  text-gray-900">
                   Growth Strategies
                 </h3>
                 <p className="mt-2 text-gray-600">
@@ -127,7 +127,7 @@ const QuantGrowthMomentum = () => {
                 </p>
               </div>
               <div className="bg-gray-100 p-6 rounded-lg">
-                <h3 className="text-lg font-medium text-gray-900">
+                <h3 className="text-lg  text-gray-900">
                   Data-Driven Solutions
                 </h3>
                 <p className="mt-2 text-gray-600">

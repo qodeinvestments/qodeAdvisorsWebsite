@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import { Spinner } from "@material-tailwind/react";
 
 const HoldingDistribution = ({ strategy }) => {
   const [chartOptions, setChartOptions] = useState(null);
@@ -109,17 +110,17 @@ const HoldingDistribution = ({ strategy }) => {
             {
               name: "Large Cap",
               data: [parseFloat(percentages.large)],
-              color: "#E63946", // A bright red for a strong presence
+              color: "#1995AD", // A bright red for a strong presence
             },
             {
               name: "Mid Cap",
               data: [parseFloat(percentages.mid)],
-              color: "#F4A261", // A vivid orange-saffron for visibility
+              color: "#A1D6E2", // A vivid orange-saffron for visibility
             },
             {
               name: "Small Cap",
               data: [parseFloat(percentages.small)],
-              color: "#2A9D8F", // A lively teal to contrast with the reds and oranges
+              color: "#F1F1F2 ", // A lively teal to contrast with the reds and oranges
             },
           ],
           credits: {
@@ -134,21 +135,28 @@ const HoldingDistribution = ({ strategy }) => {
   }, [strategy]);
 
   if (!chartOptions) {
-    return <div>Loading...</div>;
+    return (
+      <div className="text-center flex justify-center items-center">
+        <Spinner />
+      </div>
+    );
   }
 
   return (
-    <div className="py-10 bg-gray-100 md:p-10 p-4 rounded-2xl mt-10 shadow-lg flex flex-col md:flex-row items-start">
-      <div className="w-full md:w-1/2 pr-0 md:pr-4 mb-4 md:mb-0">
-        <h2 className="text-3xl font-bold text-[#151E28]">
-          Holding Distribution
-        </h2>
-        <p className="text-lg text-gray-500">
-          Our {strategy} Strategy's asset allocation.
-        </p>
-      </div>
-      <div className="w-full md:w-1/2 bg-white rounded-2xl p-4">
-        <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+    <div className="bg-gray-100 rounded-2xl p-6 sm:p-8 md:p-10 my-10">
+      <div className="flex flex-col lg:flex-row justify-between items-start gap-8">
+        <div className="w-full lg:w-1/2">
+          <h2 className="text-2xl sm:text-3xl  text-[#151E28] mb-2">
+            Holding Distribution
+          </h2>
+          <p className="text-base sm:text-lg text-gray-500">
+            Our {strategy} Strategy's asset allocation.
+          </p>
+        </div>
+
+        <div className="w-full lg:w-1/2 bg-white rounded-2xl p-4 shadow-md">
+          <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+        </div>
       </div>
     </div>
   );

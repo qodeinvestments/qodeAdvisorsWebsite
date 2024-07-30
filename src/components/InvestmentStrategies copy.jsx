@@ -15,16 +15,16 @@ const InvestmentStrategies = () => {
     <GrayContainer>
       <Container>
         <div className="text-center graphik-font-regular my-32">
-          <p className="uppercase text-[12px] inter-font tracking-widest font-bold text-gray-400 ">
+          <p className="uppercase text-[12px] inter-font tracking-widest  text-gray-400 ">
             Qode Your Future: Data-Driven Decisions for a Quantum Leap.
           </p>
-          <h2 className="text-4xl font-bold mt-4 py-4 text-dark">
+          <h2 className="text-4xl  mt-4 py-4 text-dark">
             Our Investment Strategies
           </h2>
-          <p className="text-primary font-medium mt-4 text-md mx-auto max-w-4xl">
+          <p className="text-primary  mt-4 text-md mx-auto max-w-4xl">
             With the help of our team, data and technology we design models that
             help us make investment decisions. Through our{" "}
-            <span className="text-primary-dark font-bold">
+            <span className="text-primary-dark ">
               Portfolio Management Service (PMS)
             </span>
             , we invest your money in Indian Equity.
@@ -44,23 +44,21 @@ const InvestmentStrategies = () => {
                   alt="Logo 1"
                   className="w-10 h-10 mr-4"
                 /> */}
-                <h3 className="text-2xl text-white text-left font-bold mt-4">
+                <h3 className="text-2xl text-white text-left  mt-4">
                   Quant Growth Fund
                 </h3>
                 {/* <div className="absolute top-4 right-4 flex space-x-2">
-                  <span className="bg-primary-dark text-white text-xs font-medium px-2.5 py-0.5 rounded-full">
+                  <span className="bg-primary-dark text-white text-xs  px-2.5 py-0.5 rounded-full">
                     Equity
                   </span>
-                  <span className="bg-primary-dark text-white text-xs font-medium px-2.5 py-0.5 rounded-full">
+                  <span className="bg-primary-dark text-white text-xs  px-2.5 py-0.5 rounded-full">
                     Long Short
                   </span>
                 </div> */}
               </div>
               <p className="text-white  px-6 font-light  text-start mb-2">
                 The{" "}
-                <span className="font-black text-white text-lg">
-                  Quant Growth Fund
-                </span>{" "}
+                <span className=" text-white text-lg">Quant Growth Fund</span>{" "}
                 seeks high-growth potential with data-driven precision. We
                 leverage quantitative analysis to identify companies poised for
                 significant expansion.
@@ -91,7 +89,7 @@ const InvestmentStrategies = () => {
               className="bg-white flex flex-col rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 w-full lg:w-1/2"
             >
               <div className="p-6 relative">
-                <h3 className="text-lg text-left font-bold mt-4">
+                <h3 className="text-lg text-left  mt-4">
                   Quant Growth Momentum
                 </h3>
                 {/* <img
@@ -100,17 +98,17 @@ const InvestmentStrategies = () => {
                   className="w-10 h-10 mr-4"
                 /> */}
                 {/* <div className="absolute top-4 right-4 flex space-x-2">
-                  <span className="bg-primary-dark text-white text-xs font-medium px-2.5 py-0.5 rounded-full">
+                  <span className="bg-primary-dark text-white text-xs  px-2.5 py-0.5 rounded-full">
                     Equity
                   </span>
-                  <span className="bg-primary-dark  text-white text-xs font-medium px-2.5 py-0.5 rounded-full">
+                  <span className="bg-primary-dark  text-white text-xs  px-2.5 py-0.5 rounded-full">
                     Long Short
                   </span>
                 </div> */}
               </div>
               <p className="text-primary-dark px-6 font-light  text-start mb-2">
                 Harnessing market trends, Qode's{" "}
-                <span className="font-black text-[#151E28] text-lg">
+                <span className=" text-[#151E28] text-lg">
                   Quant Growth Momentum
                 </span>{" "}
                 fund utilizes data-driven algorithms to identify and capitalize

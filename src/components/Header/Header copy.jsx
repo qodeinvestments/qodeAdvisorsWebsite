@@ -202,7 +202,7 @@ const Header = () => {
                       onMouseEnter={() => toggleNavbar(item, false, true)}
                       onMouseLeave={() => toggleNavbar(null)}
                     >
-                      <Link className="text-white hover:bg-gray-700 hover:text-white px-4 py-3 rounded-lg text-sm font-medium flex items-center ">
+                      <Link className="text-white hover:bg-gray-700 hover:text-white px-4 py-3 rounded-lg text-sm  flex items-center ">
                         <FontAwesomeIcon icon={item.icon} className="mr-2" />
                         {item.name}
                       </Link>
@@ -256,7 +256,7 @@ const Header = () => {
                 <Link
                   key={sublink.name}
                   to={sublink.slug}
-                  className="glass-card text-3xl font-bold text-white"
+                  className="glass-card text-3xl  text-white"
                   activeClassName="bg-gray-700 text-white"
                   onClick={() => toggleNavbar(sublink, true)}
                 >
@@ -304,7 +304,7 @@ const Header = () => {
                 {navItems.map((item) => (
                   <div key={item.name}>
                     <Link
-                      className="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:bg-gray-100 transition ease-in-out duration-150"
+                      className="group flex items-center px-2 py-2 text-base leading-6  rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:bg-gray-100 transition ease-in-out duration-150"
                       onClick={() => handleItemClick(item)}
                     >
                       {item.name}
@@ -332,7 +332,7 @@ const Header = () => {
                           <Link
                             key={sublink.name}
                             to={sublink.slug}
-                            className="group flex items-center px-3 py-2 text-base leading-6 font-medium rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:bg-gray-100 transition ease-in-out duration-150"
+                            className="group flex items-center px-3 py-2 text-base leading-6  rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:bg-gray-100 transition ease-in-out duration-150"
                           >
                             {sublink.name}
                           </Link>

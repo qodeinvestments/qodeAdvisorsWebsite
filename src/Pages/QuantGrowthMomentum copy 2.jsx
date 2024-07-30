@@ -130,9 +130,7 @@ const MomentumTabs = () => {
                       />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold mb-4">
-                        {activeTab}
-                      </h3>
+                      <h3 className="text-xl  mb-4">{activeTab}</h3>
                       <ul className="list-decimal space-y-5 ">
                         {tabData[activeTab].map((value, index) => (
                           <li key={index} className=" text-start">

@@ -2,50 +2,54 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 
-const Calculator = () => {
+const Calculator = ({ strategy }) => {
   const [startOfMonthData, setStartOfMonthData] = useState([]);
   const [investmentAmount, setInvestmentAmount] = useState(1000);
   const [investmentFrequency, setInvestmentFrequency] = useState("monthly");
   const [investmentPeriod, setInvestmentPeriod] = useState(1);
   const [futureInvestmentValue, setFutureInvestmentValue] = useState(0);
   const [data, setData] = useState([]);
-
+  console.log(strategy);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/data/test2.json");
+        const response = await fetch("/data/mainData.json");
         const jsonData = await response.json();
-        setData(jsonData.Sheet1);
-
-        // Check if data array has at least one element
-        if (jsonData.Sheet1.length > 0) {
-          // Calculate the date from investmentPeriod years ago from today
-          const periodStartDate = new Date(
-            jsonData.Sheet1[jsonData.Sheet1.length - 1]["Date"]
-          );
-          periodStartDate.setFullYear(
-            periodStartDate.getFullYear() - investmentPeriod
-          );
-          const filteredData = jsonData.Sheet1.filter((entry) => {
+  
+        // Assuming strategy is something like "momentum", "qgf", or "lowvol"
+        const strategyData = jsonData[strategy.toLowerCase()];
+        
+        if (!strategyData) {
+          console.error(`No data found for strategy: ${strategy}`);
+          return;
+        }
+  
+        setData(strategyData);
+        console.log("data", strategyData);
+  
+        if (strategyData && strategyData.length > 0) {
+          const periodStartDate = new Date(strategyData[strategyData.length - 1].Date);
+          console.log(periodStartDate);
+          periodStartDate.setFullYear(periodStartDate.getFullYear() - investmentPeriod);
+  
+          const filteredData = strategyData.filter((entry) => {
             const date = new Date(entry.Date);
-            // Ensure the date is valid, is the first of the month, and falls within the investment period
             return (
               !isNaN(date.getTime()) &&
               date.getDate() === 1 &&
               date >= periodStartDate
             );
           });
-
-          // console.log("Filter data", filteredData); // Log the filtered data to the console
+  
           setStartOfMonthData(filteredData);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
+  
     fetchData();
-  }, [investmentPeriod]); // Add investmentPeriod to the dependency array
+  }, [investmentPeriod, strategy]);
 
   useEffect(() => {
     if (startOfMonthData.length > 0) {
@@ -56,57 +60,43 @@ const Calculator = () => {
     investmentFrequency,
     investmentPeriod,
     startOfMonthData,
+    strategy,
   ]);
 
   const calculatePresentInvestmentValue = () => {
     if (investmentFrequency === "one-time") {
-      const investmentDate = new Date(data[data.length - 1]["Date"]);
-      investmentDate.setFullYear(
-        investmentDate.getFullYear() - investmentPeriod
-      );
-      console.log(investmentDate);
-
+      const investmentDate = new Date(data[data.length - 1].Date);
+      investmentDate.setFullYear(investmentDate.getFullYear() - investmentPeriod);
+  
       const investmentDateFormatted =
         (investmentDate.getMonth() + 1).toString().padStart(2, "0") +
         "/" +
         investmentDate.getDate().toString().padStart(2, "0") +
         "/" +
         investmentDate.getFullYear();
-
-      const investmentEntry = data.find((entry) => {
-        return entry.Date === investmentDateFormatted;
-      });
-
-      console.log(investmentEntry);
-
+  
+      const investmentEntry = data.find((entry) => entry.Date === investmentDateFormatted);
+  
       if (investmentEntry) {
-        const volAdjustedMomentum = investmentEntry["Vol Adjusted Momentum"];
-        const shares = investmentAmount / volAdjustedMomentum;
-        const currentPrice = data[data.length - 1]["Vol Adjusted Momentum"];
+        const strategyValue = investmentEntry["Total Portfolio NAV"];
+        const shares = investmentAmount / strategyValue;
+        const currentPrice = data[data.length - 1]["Total Portfolio NAV"];
         const futureValue = shares * currentPrice;
+        console.log("Future value:", futureValue);
         setFutureInvestmentValue(futureValue.toFixed(2));
       } else {
         console.log("No exact match for investment date found in data.");
-        // Optionally, set future investment value to zero or handle this case appropriately
         setFutureInvestmentValue(0);
       }
     } else {
-      // Handle other investment frequencies (monthly, yearly)
-      const months =
-        investmentFrequency === "monthly"
-          ? investmentPeriod * 12
-          : investmentPeriod;
+      const months = investmentFrequency === "monthly" ? investmentPeriod * 12 : investmentPeriod;
       let totalShares = 0;
-      let totalInvestmentValue = 0;
       for (let i = 0; i < months && i < startOfMonthData.length; i++) {
-        const volAdjustedMomentum =
-          startOfMonthData[i]["Vol Adjusted Momentum"];
-        const shares = investmentAmount / volAdjustedMomentum;
+        const strategyValue = startOfMonthData[i]["Total Portfolio NAV"];
+        const shares = investmentAmount / strategyValue;
         totalShares += shares;
-        totalInvestmentValue += shares * volAdjustedMomentum; // Calculate the total investment value
       }
-      const finalPrice =
-        totalShares * data[data.length - 1]["Vol Adjusted Momentum"];
+      const finalPrice = totalShares * data[data.length - 1]["Total Portfolio NAV"];
       setFutureInvestmentValue(finalPrice.toFixed(2));
     }
   };
@@ -146,74 +136,90 @@ const Calculator = () => {
     }
   };
 
+  const calculateTotalInvestment = () => {
+    let periods = 0;
+    if (investmentFrequency === "monthly") {
+      periods = investmentPeriod * 12; // 12 months per year
+    } else if (investmentFrequency === "yearly") {
+      periods = investmentPeriod;
+    } else if (investmentFrequency === "one-time") {
+      periods = 1;
+    }
+    return investmentAmount * periods;
+  };
+
   return (
     <>
-      <h1 className="text-xl font-black md:text-2xl">Calculate & Decide</h1>
-      <div className="flex flex-col lg:flex-row justify-between items-center">
-        <p className="text-gray-500 mb-2 md:mb-0">Investment Amount (₹)</p>
+      <h1 className="text-xl  md:text-2xl">Calculate & Decide</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
+        <p className="text-gray-500 mb-2 sm:mb-0 w-full sm:w-auto">
+          Investment Amount (₹)
+        </p>
         <input
           type="number"
           name="investmentamount"
           placeholder="1000"
           value={investmentAmount}
           onChange={handleInvestmentAmountChange}
-          className="active:border-1 py-2 text-center rounded-lg border w-full lg:w-auto"
+          className="active:border-1 py-2 text-center  border w-full sm:w-48"
         />
       </div>
-      <p className="text-gray-500 mt-4">Investment Frequency</p>
-      <div className="flex flex-col lg:flex-row justify-between items-center">
+      <p className="text-gray-500 mb-2">Investment Frequency</p>
+      <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-4">
         <button
-          className={`px-8 py-2 text-center rounded-md w-full lg:w-auto mb-2 md:mb-0 ${
+          className={` py-2 text-center  w-full sm:w-1/3 ${
             investmentFrequency === "monthly"
               ? "bg-primary-dark text-white"
-              : "bg-white  border border-gray-300 text-black"
+              : "bg-white border border-gray-300 text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("monthly")}
         >
           Monthly
         </button>
         <button
-          className={`px-8 py-2 text-center border rounded-md w-full lg:w-auto mb-2 md:mb-0 ${
+          className={` py-2 text-center w-full sm:w-1/3 ${
             investmentFrequency === "yearly"
               ? "bg-primary-dark text-white"
-              : "bg-white  border border-gray-300 text-black"
+              : "bg-white border border-gray-300 text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("yearly")}
         >
           Yearly
         </button>
         <button
-          className={`px-8 py-2 text-center border rounded-md w-full lg:w-auto ${
+          className={` py-2 text-center  w-full sm:w-1/3 ${
             investmentFrequency === "one-time"
               ? "bg-primary-dark text-white"
-              : "bg-white  border border-gray-300 text-black"
+              : "bg-white border border-gray-300 text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("one-time")}
         >
           One-time
         </button>
       </div>
-      <div className="flex flex-col md:flex-row justify-between items-center mt-4">
-        <p className="text-gray-500 mb-2 md:mb-0">Investment Period (Years)</p>
-        <div className="custom-number-input h-10 w-32">
-          <div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1 border">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
+        <p className="text-gray-500 mb-2 sm:mb-0 w-full sm:w-auto">
+          Investment Period (Years)
+        </p>
+        <div className="custom-number-input h-10 w-full sm:w-48">
+          <div className="flex flex-row h-10 w-full  relative bg-transparent mt-1 border">
             <button
               data-action="decrement"
-              className="text-gray-600 h-full w-20 rounded-l cursor-pointer outline-none"
+              className="text-gray-600 h-full w-20  cursor-pointer outline-none"
               onClick={() => handleInvestmentPeriodChange("decrement")}
             >
               <span className="m-auto text-md font-thin">−</span>
             </button>
             <input
               type="number"
-              className="outline-none focus:outline-none text-center w-full bg-white font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700"
+              className="outline-none focus:outline-none text-center w-full bg-white  text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700"
               name="custom-input-number"
               value={investmentPeriod}
               readOnly
             />
             <button
               data-action="increment"
-              className="text-gray-600 h-full w-20 rounded-r cursor-pointer"
+              className="text-gray-600 h-full w-20  cursor-pointer"
               onClick={() => handleInvestmentPeriodChange("increment")}
             >
               <span className="m-auto text-md font-thin">+</span>
@@ -221,10 +227,10 @@ const Calculator = () => {
           </div>
         </div>
       </div>
-      <p className="text-xs text-gray-400 text-center mt-2">
+      <p className="text-xs text-gray-400 text-center mb-4">
         Figures are calculated based on historical returns
       </p>
-      <div className="text-center px-5 py-3 border rounded-lg mt-4">
+      <div className="text-center px-5 py-3 border  mb-4">
         <FontAwesomeIcon icon={faChartLine} />
         <p className="mb-3 text-xs text-gray-400">
           If you had invested <strong>{formatInvestmentPeriod()}</strong>, your
@@ -233,9 +239,13 @@ const Calculator = () => {
         <p className="text-lg">
           <strong>₹{numberWithCommas(futureInvestmentValue)}</strong>
         </p>
+        <p className="text-xs text-gray-400">
+          Total Amount Invested:{" "}
+          <strong>₹{numberWithCommas(calculateTotalInvestment())}</strong>
+        </p>
       </div>
-      <div className="text-center mt-4">
-        <button className="bg-primary-dark text-white w-full rounded-md py-2">
+      <div className="text-center">
+        <button className="bg-primary-dark text-white w-full  py-2">
           Invest Now
         </button>
       </div>

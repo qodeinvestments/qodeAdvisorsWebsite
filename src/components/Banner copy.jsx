@@ -1,49 +1,41 @@
 import React, { useState, useEffect } from "react";
-import banImg from "../assets/banner1-removebg.png";
-import backgroundImage from "../assets/bg-halftone@2x.png";
+import { motion } from "framer-motion";
+import bannerImage from "../assets/bannImage.png";
+import { BackgroundSVG } from "./ui/Background-SVG";
+import Container from "./container/Container";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faRss } from "@fortawesome/free-solid-svg-icons";
-import {
-  faTwitter,
-  faFacebookF,
-  faLinkedinIn,
-} from "@fortawesome/free-brands-svg-icons";
 const Banner = () => {
+  // ... previous state and useEffect code ...
   const [currentText, setCurrentText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [index, setIndex] = useState(0);
-  const typingSpeed = 200; // Typing speed in milliseconds
-  const deletingSpeed = 90; // Deleting speed in milliseconds
-  const delayBetweenTexts = 1000; // Delay between texts in milliseconds
+  const typingSpeed = 150;
+  const deletingSpeed = 75;
+  const delayBetweenTexts = 1500;
   const textArray = [
     "driven by data",
-    "objective and emotion free",
+    "objective and emotion-free",
     "carried out by Qode",
   ];
 
   useEffect(() => {
     let timeout;
     if (isTyping) {
-      // Typing effect
       if (currentText.length < textArray[index].length) {
         timeout = setTimeout(() => {
           setCurrentText(textArray[index].slice(0, currentText.length + 1));
         }, typingSpeed);
       } else {
-        // Finished typing, wait and then start deleting
         timeout = setTimeout(() => {
           setIsTyping(false);
         }, delayBetweenTexts);
       }
     } else {
-      // Deleting effect
       if (currentText.length > 0) {
         timeout = setTimeout(() => {
           setCurrentText(currentText.slice(0, -1));
         }, deletingSpeed);
       } else {
-        // Finished deleting, move to the next text
         setIsTyping(true);
         setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
       }
@@ -53,52 +45,53 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div
-      className="flex flex-col md:flex-row items-center graphik-font-regular justify-between mt-20 px-4 md:px-10 py-10"
-      style={{
-        // backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "repeat",
-      }}
-    >
-      <div className="w-full md:w-2/3 md:px-20 mb-8 md:mb-0">
-        <h1 className="text-3xl text-[#171E27] md:text-5xl font-black graphik-font-medium">
-          The best investments are <br /> {"{"}
-          <span className="text-red-500 italic">{currentText}</span>
-          {"}"}
-        </h1>
-        <p className="text-lg md:text-2xl  text-gray-600 font-medium mt-4 md:mt-10">
-          We're an investment firm leveraging quantitative models to drive
-          informed and strategic investment decisions.
-        </p>
-        <div className="">
-          <h3 className="text-lg font-semibold text-white mb-4">Subscribe</h3>
-          <p className="text-gray-400 mb-4">
-            Subscribe to our newsletter to get the latest updates:
-          </p>
-          <form className="flex">
-            <input
-              type="email"
-              className="sm:w-1/2 px-4 py-2 rounded-l bg-gray-200 text-gray-400 border border-gray-600"
-              placeholder="Enter your email"
-            />
-            <button
-              type="submit"
-              className="px-4 py-2 bg-red-500 text-white rounded-r"
-            >
-              <FontAwesomeIcon icon={faEnvelope} />
-            </button>
-          </form>
+    <div className="relative rounded-b-[3rem] min-h-screen graphik-font-regular flex justify-center overflow-hidden">
+      {/* Background SVG */}
+
+      {/* Container for content */}
+      <Container>
+        <div className="mx-auto relative z-10">
+          <div className="flex flex-col-reverse items-start">
+            <div className="w-full  text-center md:mb-0">
+              <motion.h1
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="text-3xl text-primary md:text-4xl lg:text-5xl  mb-6"
+              >
+                The best investments are <br />{" "}
+                <span className="text-primary-dark px-2 rounded">
+                  <span className="">{currentText}</span>
+                </span>
+              </motion.h1>
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="text-base md:text-lg lg:text-xl text-primary-dark mb-10"
+              >
+                We're an investment firm leveraging quantitative models to drive
+                informed and strategic investment decisions.
+              </motion.p>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-primary-dark text-white  py-3 px-8 rounded-full shadow-2xl  hover:bg-[#696969] transition duration-300 text-base md:text-lg"
+              >
+                Get Started
+              </motion.button>
+            </div>
+            <div className="w-full flex justify-center items-center mx-auto">
+              <img
+                src={bannerImage}
+                alt="Data-driven investments"
+                className="mx-auto my-auto w-full h-auto max-w-full sm:max-w-[90%] md:max-w-[80%] lg:max-w-[70%] rounded-lg"
+              />
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="w-full md:w-1/2">
-        <img
-          className="h-auto max-w-full mx-auto"
-          src={banImg}
-          alt="Banner Image"
-        />
-      </div>
+      </Container>
+      {/* <BackgroundSVG className="absolute top-0 left-0 inset-0 w-full h-full" /> */}
     </div>
   );
 };

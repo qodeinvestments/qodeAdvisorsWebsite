@@ -77,10 +77,8 @@ function BlogCard({
           <div className="flex flex-col justify-between h-full p-6">
             <div className="flex flex-col flex-grow">
               <div className="mb-auto">
-                <span className="text-primary-dark font-bold text-sm">
-                  Blog
-                </span>
-                <h3 className="text-xl font-semibold text-[#151E28] multiline-underline typewriter-font mb-2 relative overflow-hidden text-ellipsis">
+                <span className="text-primary-dark  text-sm">Blog</span>
+                <h3 className="text-xl  text-[#151E28] multiline-underline playfair-display-font mb-2 relative overflow-hidden text-ellipsis">
                   {title}
                   <span className="underline"></span>
                 </h3>

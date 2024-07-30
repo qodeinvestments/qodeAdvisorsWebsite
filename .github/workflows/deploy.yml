@@ -1,8 +1,9 @@
 name: Node.js Package
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -44,4 +45,4 @@ jobs:
 
       - name: Deploy to VPS
         run: |
-          ssh sanket@139.5.190.184 "cd /var/www/www.qodeinvestments.com && git pull && ./build-script.sh"
+          ssh -i ~/.ssh/id_rsa sanket@139.5.190.184 "cd /var/www/www.qodeinvestments.com && ./build-script.sh"

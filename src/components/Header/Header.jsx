@@ -135,7 +135,7 @@ const Header = () => {
               </button>
               <Link
                 to="https://qode-dashboard.vercel.app/"
-                className="flex justify-between items-center w-full mt-20 text-left text-lg  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black relative h-[50px] overflow-hidden bg-white px-3 before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
+                className="flex justify-between items-center w-full mt-20 text-left text-lg font-medium hover:bg-white/10 transition duration-300 text-black hover:before:bg-black relative h-[50px] overflow-hidden bg-white px-3 before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
                 target="_blank"
                 onClick={() => setIsNavOpen(false)}
               >
@@ -147,7 +147,7 @@ const Header = () => {
                 <div key={item.name} className="py-2">
                   <button
                     onClick={() => toggleExpanded(item)}
-                    className="flex justify-between items-center w-full text-left text-lg  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black relative h-[50px] overflow-hidden bg-white px-3 before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
+                    className="flex justify-between items-center w-full text-left text-lg font-medium hover:bg-white/10 transition duration-300 text-black hover:before:bg-black relative h-[50px] overflow-hidden bg-white px-3 before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
                   >
                     <span className="relative z-10">
                       <Link to={item.slug} onClick={handleNavLinkClick}>

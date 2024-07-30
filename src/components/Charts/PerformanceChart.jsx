@@ -198,7 +198,7 @@ const PerformanceChart = ({ strategy }) => {
                       className={`px-3 py-1 text-sm ${
                         activeButton === range
                           ? "bg-black text-white"
-                          : "bg-gray-200"
+                          : "bg-white text-black border border-black"
                       }`}
                     >
                       {range}

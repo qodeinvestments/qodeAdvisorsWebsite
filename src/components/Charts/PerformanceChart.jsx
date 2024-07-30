@@ -41,19 +41,19 @@ const PerformanceChart = ({ strategy }) => {
 
   const prepareChartData = (data, strategy) => {
     console.log("data", data);
-    console.log("strategy", data[strategy["Total Portfolio NAV"]]);
-    const strategyKey = "Total Portfolio NAV";
+    console.log("strategy", data[strategy["total_portfolio_nav"]]);
+    const strategyKey = "total_portfolio_nav";
     const initialValue = parseFloat(data[0][strategyKey]);
     const initialStrategyValue = parseFloat(data[0][strategyKey]);
     const initialNiftyValue = parseFloat(
-      data[0]["Nifty 50"] || data[0]["Nifty"]
+      data[0]["Nifty 50"] || data[0]["nifty"]
     );
     return data.map((item) => ({
       date: item.Date,
       strategyValue:
         (parseFloat(item[strategyKey]) / initialStrategyValue) * 100,
       niftyValue:
-        (parseFloat(item["Nifty 50"] || item["Nifty"]) / initialNiftyValue) *
+        (parseFloat(item["Nifty 50"] || item["nifty"]) / initialNiftyValue) *
         100,
     }));
   };

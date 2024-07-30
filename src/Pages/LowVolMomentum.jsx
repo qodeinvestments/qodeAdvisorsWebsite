@@ -13,7 +13,7 @@ const LowVolMomentum = () => {
     title: "Low Volatility Momentum Fund",
     description:
       "The Quantitative Growth Fund uses a classic growth investing approach, focusing on high-quality businesses with strong moats and capital allocation skills.",
-    strategyCode: "lowvol",
+    strategyCode: "LVF",
     strategySlug: "low-vol-momentum",
     pptLink: "/Quant Growth Fund Feb.pdf",
     whitePaperLink: "", // Add the white paper link when available

@@ -10,7 +10,7 @@ export const quantMomentumFundData = {
   title: "Quant Momentum Fund",
   description:
     "Momentum is the most researched strategy in financial markets around the world. In developed markets where there are long periods of data available we have seen that momentum has consistently been able to outperform the index or a benchmark across markets, assets and different periods of time.",
-  strategyCode: "Momentum",
+  strategyCode: "QMF",
   strategySlug: "quant-growth-momentum",
   pptLink: "/path-to-your-ppt-file.pptx",
   whitePaperLink: "",

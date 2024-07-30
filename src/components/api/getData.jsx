@@ -1,22 +1,26 @@
 const fetchStrategyData = async (strategy, timeRange, startDate, endDate) => {
   console.log(timeRange);
   try {
-    const response = await fetch("/data/mainData.json");
+    // Replace this URL with your actual localhost URL
+    const response = await fetch(
+      `http://localhost:5000/api/strategies/${strategy}`
+    );
+    console.log(`http://localhost:5000/api/strategies/${strategy}`);
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");
     }
-    const jsonData = await response.json();
-    console.log(jsonData);
-    if (!jsonData[strategy.toLowerCase()]) {
+    const data = await response.json();
+    console.log(data);
+
+    if (!data || data.length === 0) {
       throw new Error(`No data found for strategy: ${strategy}`);
     }
 
-    const data = jsonData[strategy.toLowerCase()];
     // Find the latest date in the data to use as the reference for filtering
     const latestDate = data.reduce((latest, current) => {
-      const currentDate = new Date(current.Date);
-      return currentDate > new Date(latest.Date) ? current : latest;
+      const currentDate = new Date(current.date);
+      return currentDate > new Date(latest.date) ? current : latest;
     }, data[0]);
 
     const filteredData = filterDataByTimeRange(
@@ -24,7 +28,7 @@ const fetchStrategyData = async (strategy, timeRange, startDate, endDate) => {
       timeRange,
       startDate,
       endDate,
-      latestDate.Date // Pass the latest date from your data
+      latestDate.date // Pass the latest date from your data
     );
     console.log("filteredData", filteredData);
     return filteredData;
@@ -40,8 +44,8 @@ const filterDataByTimeRange = (data, range, start, end, latestDataDate) => {
   if (start && end) {
     return data.filter(
       (item) =>
-        new Date(item.Date) >= new Date(start) &&
-        new Date(item.Date) <= new Date(end)
+        new Date(item.date) >= new Date(start) &&
+        new Date(item.date) <= new Date(end)
     );
   }
 
@@ -74,7 +78,7 @@ const filterDataByTimeRange = (data, range, start, end, latestDataDate) => {
       return data; // "ALL" case or undefined time range
   }
 
-  return data.filter((item) => new Date(item.Date) >= filterDate);
+  return data.filter((item) => new Date(item.date) >= filterDate);
 };
 
 export default fetchStrategyData;

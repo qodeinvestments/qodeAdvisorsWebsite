@@ -1,49 +1,108 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-
-import fetchStrategyData from "../api/getData";
-import {
-  Tabs,
-  TabsHeader,
-  TabsBody,
-  Tab,
-  TabPanel,
-} from "@material-tailwind/react";
+import { Tabs, TabsBody, TabPanel } from "@material-tailwind/react";
 import Calculator from "../Calculator";
+import fetchStrategyData from "../api/getData";
+
 const PerformanceChart = ({ strategy }) => {
   const [chartOptions, setChartOptions] = useState(null);
   const [timeRange, setTimeRange] = useState("ALL");
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
   const [activeButton, setActiveButton] = useState("ALL");
-  const [triggerFetch, setTriggerFetch] = useState(0);
-  const [activeTab, setActiveTab] = useState("chart1");
+  const [filteredData, setFilteredData] = useState([]);
+
+  const loadData = useCallback(async () => {
+    try {
+      const data = await fetchStrategyData(
+        strategy,
+        timeRange,
+        startDate,
+        endDate
+      );
+      const chartData = prepareChartData(data, strategy);
+      updateChartOptions(chartData);
+      setFilteredData(data);
+    } catch (error) {
+      console.error("Error loading data: ", error);
+    }
+  }, [strategy, timeRange, startDate, endDate]);
 
   useEffect(() => {
-    const loadData = async () => {
-      try {
-        const filteredData = await fetchStrategyData(
-          strategy,
-          timeRange,
-          startDate,
-          endDate
-        );
-        const chartData = prepareChartData(filteredData, strategy);
-        updateChartOptions(chartData);
-      } catch (error) {
-        console.error("Error loading data: ", error);
-      }
-    };
-
     loadData();
-  }, [strategy, timeRange, startDate, endDate, triggerFetch]);
+  }, [loadData]);
 
-  const prepareChartData = (data, strategy) => {
-    console.log("data", data);
-    console.log("strategy", data[strategy["total_portfolio_nav"]]);
+  const calculateCAGR = useCallback(
+    (data, timeRange = "3Y", portfolioType = "total_portfolio_nav") => {
+      const parseDate = (dateString) => new Date(dateString);
+
+      const sortedData = [...data].sort(
+        (a, b) => parseDate(a.date) - parseDate(b.date)
+      );
+
+      if (sortedData.length < 2) return "Loading...";
+
+      const latestData = sortedData[sortedData.length - 1];
+      const latestDate = parseDate(latestData.date);
+      let startDate = new Date(latestDate);
+
+      switch (timeRange) {
+        case "1M":
+          startDate.setMonth(startDate.getMonth() - 1);
+          break;
+        case "3M":
+          startDate.setMonth(startDate.getMonth() - 3);
+          break;
+        case "6M":
+          startDate.setMonth(startDate.getMonth() - 6);
+          break;
+        case "1Y":
+          startDate.setFullYear(startDate.getFullYear() - 1);
+          break;
+        case "3Y":
+          startDate.setFullYear(startDate.getFullYear() - 3);
+          break;
+        case "5Y":
+          startDate.setFullYear(startDate.getFullYear() - 5);
+          break;
+        case "ALL":
+          startDate = parseDate(sortedData[0].date);
+          break;
+        case "YTD":
+          startDate.setMonth(0, 1);
+          break;
+        default:
+          return "Invalid time range";
+      }
+
+      const startIndex = sortedData.findIndex(
+        (d) => parseDate(d.date) >= startDate
+      );
+      if (startIndex === -1) return "N/A";
+
+      const startValue = parseFloat(sortedData[startIndex][portfolioType]);
+      const endValue = parseFloat(latestData[portfolioType]);
+
+      if (isNaN(startValue) || isNaN(endValue)) return "N/A";
+
+      const years =
+        (latestDate - parseDate(sortedData[startIndex].date)) /
+        (365 * 24 * 60 * 60 * 1000);
+      const cagr = (Math.pow(endValue / startValue, 1 / years) - 1) * 100;
+
+      return cagr.toFixed(2) + "%";
+    },
+    []
+  );
+
+  const strategyCagr = useMemo(
+    () => calculateCAGR(filteredData, timeRange, "total_portfolio_nav"),
+    [calculateCAGR, filteredData, timeRange]
+  );
+
+  const prepareChartData = useCallback((data, strategy) => {
     const strategyKey = "total_portfolio_nav";
-    const initialValue = parseFloat(data[0][strategyKey]);
     const initialStrategyValue = parseFloat(data[0][strategyKey]);
     const initialNiftyValue = parseFloat(
       data[0]["Nifty 50"] || data[0]["nifty"]
@@ -56,12 +115,27 @@ const PerformanceChart = ({ strategy }) => {
         (parseFloat(item["Nifty 50"] || item["nifty"]) / initialNiftyValue) *
         100,
     }));
-  };
+  }, []);
+
+  // const prepareChartData = (data, strategy) => {
+  //   const strategyKey = "total_portfolio_nav";
+  //   const initialStrategyValue = parseFloat(data[0][strategyKey]);
+  //   const initialNiftyValue = parseFloat(
+  //     data[0]["Nifty 50"] || data[0]["nifty"]
+  //   );
+  //   return data.map((item) => ({
+  //     date: item.date,
+  //     strategyValue:
+  //       (parseFloat(item[strategyKey]) / initialStrategyValue) * 100,
+  //     niftyValue:
+  //       (parseFloat(item["Nifty 50"] || item["nifty"]) / initialNiftyValue) *
+  //       100,
+  //   }));
+  // };
 
   const updateChartOptions = (data) => {
     const dates = data.map((item) => item.date);
     const strategyValues = data.map((item) => Math.trunc(item.strategyValue));
-    console.log("strategyValues", strategyValues);
     const niftyValues = data.map((item) => Math.trunc(item.niftyValue));
 
     let maxStrategyValue = 0;
@@ -92,13 +166,6 @@ const PerformanceChart = ({ strategy }) => {
           title: { text: "Performance" },
           height: "100%",
         },
-        // {
-        //   title: { text: "Drawdown" },
-        //   top: "65%",
-        //   height: "35%",
-        //   offset: 0,
-        //   opposite: false,
-        // },
       ],
       series: [
         {
@@ -117,22 +184,6 @@ const PerformanceChart = ({ strategy }) => {
           marker: { enabled: false },
           type: "line",
         },
-        // {
-        //   name: "Drawdown",
-        //   data: drawdown,
-        //   color: "rgba(250, 65, 65)",
-        //   lineWidth: 1,
-        //   marker: { enabled: false },
-        //   type: "area",
-        //   yAxis: 1,
-        //   fillColor: {
-        //     linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
-        //     stops: [
-        //       [0, "rgba(250, 65, 65, 0.3)"],
-        //       [1, "rgba(250, 65, 65, 0.9)"],
-        //     ],
-        //   },
-        // },
       ],
       chart: {
         height: 600,
@@ -148,53 +199,27 @@ const PerformanceChart = ({ strategy }) => {
     setChartOptions(options);
   };
 
-  return (
-    <div className="flex flex-col  gap-4">
-      <div className="lg:w-full  border p-14 border-black sm:pb-10 ">
-        <Tabs value="chart1">
-          <div className="flex flex-col lg:flex-row gap-2   lg:p-2">
-            {/* <TabsHeader className="bg-[#f0eeee] border-gray-300 border p-1 mb-4 sm:mb-0">
-              <Tab
-                className="text-xs sm:text-sm"
-                onClick={() => handleTabClick("chart1")}
-                key="chart1"
-                value="chart1"
-              >
-                Trailing
-              </Tab>
-              <Tab
-                className="text-xs sm:text-sm"
-                onClick={() => handleTabClick("chart2")}
-                key="chart2"
-                value="chart2"
-              >
-                Discrete
-              </Tab>
-              <Tab
-                className="text-xs sm:text-sm"
-                onClick={() => handleTabClick("chart3")}
-                key="chart3"
-                value="chart3"
-              >
-                Rolling
-              </Tab>
-            </TabsHeader> */}
+  const handleTimeRangeChange = useCallback((range) => {
+    setTimeRange(range);
+    setActiveButton(range);
+    if (range !== "ALL") {
+      setStartDate(null);
+      setEndDate(null);
+    }
+  }, []);
 
-            {activeTab === "chart1" && (
-              <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-                <div className="flex flex-wrap justify-center gap-2">
-                  {["YTD", "1M", "3M", "6M", "1Y", "5Y", "All"].map((range) => (
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="lg:w-full border p-14 border-black sm:pb-10">
+        <Tabs value="chart1">
+          <div className="flex flex-col lg:flex-row gap-2 lg:p-2">
+            <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 gap-20 sm:space-x-4 w-full items-center">
+              <div className="flex flex-wrap justify-between gap-2">
+                {["YTD", "1M", "3M", "6M", "1Y", "3Y", "5Y", "ALL"].map(
+                  (range) => (
                     <button
                       key={range}
-                      onClick={() => {
-                        setTimeRange(range);
-                        setActiveButton(range);
-                        if (range !== "ALL") {
-                          setStartDate(null);
-                          setEndDate(null);
-                        }
-                        setTriggerFetch((prev) => prev + 1); // Add this line
-                      }}
+                      onClick={() => handleTimeRangeChange(range)}
                       className={`px-3 py-1 text-sm ${
                         activeButton === range
                           ? "bg-black text-white"
@@ -203,59 +228,27 @@ const PerformanceChart = ({ strategy }) => {
                     >
                       {range}
                     </button>
-                  ))}
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-2">
-                  <div className="flex flex-col space-y-2 sm:space-y-0 sm:flex-row sm:space-x-4">
-                    <div className="flex flex-col">
-                      <label
-                        htmlFor="startDate"
-                        className="text-sm md:hidden block text-gray-600 mb-1"
-                      >
-                        Start Date
-                      </label>
-                      <input
-                        id="startDate"
-                        type="date"
-                        onChange={(e) => setStartDate(e.target.value)}
-                        className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-2 px-3 "
-                      />
-                    </div>
-                    <div className="flex flex-col">
-                      <label
-                        htmlFor="endDate"
-                        className="text-sm  md:hidden block text-gray-600 mb-1"
-                      >
-                        End Date
-                      </label>
-                      <input
-                        id="endDate"
-                        type="date"
-                        onChange={(e) => setEndDate(e.target.value)}
-                        className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-2 px-3 "
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* <button
-                  className={`bg-[#f7f5f5] py-2 sm:py-1 px-2 text-xs sm:text-sm ${
-                    activeButton === "ALL" ? "bg-primary-dark text-white" : ""
-                  }`}
-                  onClick={() => {
-                    setTimeRange("ALL");
-                    setStartDate("");
-                    setEndDate("");
-                    setActiveButton("ALL");
-                    fetchStrategyData();
-                  }}
-                >
-                  Reset
-                </button> */}
+                  )
+                )}
               </div>
-            )}
+              <div className="flex flex-col sm:flex-row gap-2">
+                <input
+                  type="date"
+                  onChange={(e) => setStartDate(e.target.value)}
+                  className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-2 px-3"
+                />
+                <input
+                  type="date"
+                  onChange={(e) => setEndDate(e.target.value)}
+                  className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-2 px-3"
+                />
+              </div>
+              <div className="text-right sm:ml-auto">
+                <p className="text-6xl">{strategyCagr}</p>
+              </div>
+            </div>
           </div>
+
           <TabsBody className="mt-20">
             <TabPanel className="p-0" key="chart1" value="chart1">
               {chartOptions && (
@@ -265,16 +258,10 @@ const PerformanceChart = ({ strategy }) => {
                 />
               )}
             </TabPanel>
-            {/* <TabPanel key="chart2" value="chart2">
-              {<DiscreteChart strategy={strategy} />}
-            </TabPanel> */}
-            {/* <TabPanel key="chart3" value="chart3">
-              {chartOptions && <RollingReturns strategy={strategy} />}
-            </TabPanel> */}
           </TabsBody>
         </Tabs>
       </div>
-      <div className="w-full  flex flex-col space-y-7 border border-black  bg-white  p-14">
+      <div className="w-full flex flex-col space-y-7 border border-black bg-white p-14">
         <Calculator strategy={strategy.toLowerCase()} />
       </div>
     </div>

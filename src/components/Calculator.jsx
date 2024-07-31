@@ -15,23 +15,31 @@ const Calculator = ({ strategy }) => {
       try {
         const response = await fetch("/data/mainData.json");
         const jsonData = await response.json();
-  
+
         // Assuming strategy is something like "momentum", "qgf", or "lowvol"
-        const strategyData = jsonData[strategy.toLowerCase()];
-        
+        if ((strategy = "qgm")) {
+          strategy = "momentum";
+        }
+        const strategyData = jsonData[strategy];
+        console.log(jsonData);
+
         if (!strategyData) {
           console.error(`No data found for strategy: ${strategy}`);
           return;
         }
-  
+
         setData(strategyData);
         console.log("data", strategyData);
-  
+
         if (strategyData && strategyData.length > 0) {
-          const periodStartDate = new Date(strategyData[strategyData.length - 1].Date);
+          const periodStartDate = new Date(
+            strategyData[strategyData.length - 1].Date
+          );
           console.log(periodStartDate);
-          periodStartDate.setFullYear(periodStartDate.getFullYear() - investmentPeriod);
-  
+          periodStartDate.setFullYear(
+            periodStartDate.getFullYear() - investmentPeriod
+          );
+
           const filteredData = strategyData.filter((entry) => {
             const date = new Date(entry.Date);
             return (
@@ -40,14 +48,14 @@ const Calculator = ({ strategy }) => {
               date >= periodStartDate
             );
           });
-  
+
           setStartOfMonthData(filteredData);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-  
+
     fetchData();
   }, [investmentPeriod, strategy]);
 
@@ -66,17 +74,21 @@ const Calculator = ({ strategy }) => {
   const calculatePresentInvestmentValue = () => {
     if (investmentFrequency === "one-time") {
       const investmentDate = new Date(data[data.length - 1].Date);
-      investmentDate.setFullYear(investmentDate.getFullYear() - investmentPeriod);
-  
+      investmentDate.setFullYear(
+        investmentDate.getFullYear() - investmentPeriod
+      );
+
       const investmentDateFormatted =
         (investmentDate.getMonth() + 1).toString().padStart(2, "0") +
         "/" +
         investmentDate.getDate().toString().padStart(2, "0") +
         "/" +
         investmentDate.getFullYear();
-  
-      const investmentEntry = data.find((entry) => entry.Date === investmentDateFormatted);
-  
+
+      const investmentEntry = data.find(
+        (entry) => entry.Date === investmentDateFormatted
+      );
+
       if (investmentEntry) {
         const strategyValue = investmentEntry["Total Portfolio NAV"];
         const shares = investmentAmount / strategyValue;
@@ -89,14 +101,18 @@ const Calculator = ({ strategy }) => {
         setFutureInvestmentValue(0);
       }
     } else {
-      const months = investmentFrequency === "monthly" ? investmentPeriod * 12 : investmentPeriod;
+      const months =
+        investmentFrequency === "monthly"
+          ? investmentPeriod * 12
+          : investmentPeriod;
       let totalShares = 0;
       for (let i = 0; i < months && i < startOfMonthData.length; i++) {
         const strategyValue = startOfMonthData[i]["Total Portfolio NAV"];
         const shares = investmentAmount / strategyValue;
         totalShares += shares;
       }
-      const finalPrice = totalShares * data[data.length - 1]["Total Portfolio NAV"];
+      const finalPrice =
+        totalShares * data[data.length - 1]["Total Portfolio NAV"];
       setFutureInvestmentValue(finalPrice.toFixed(2));
     }
   };

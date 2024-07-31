@@ -28,37 +28,29 @@ const StrategyComponent = ({ strategyData }) => {
   return (
     <div className="mx-auto graphik-font-regular mt-10">
       <Container>
-        <div className="bg-white rounded-b-3xl py-12 md:py-20">
+        <div className="bg-white rounded-b-3xl py-12 md:py-5">
           <div className="flex flex-col sm:flex-row justify-between items-start mx-auto px-4 sm:px-6 lg:px-6">
             <div className="pt-16 w-full">
-              <h2 className="text-3xl graphik-  text-primary-dark text-center mb-10 sm:text-5xl">
+              <h2 className="text-4xl sm:text-6xl graphik-  text-primary-dark text-center ">
                 <span className="block">{title}</span>
               </h2>
-              <div className="text-center text-md lg:px-32">{description}</div>
-              <div className="text-center">
-                <button className="bg-primary-dark text-white font-extrabold px-10 sm:px-0 sm:w-1/2 mt-10 mx-auto py-2">
-                  Schedule a Call
-                </button>
-              </div>
+              <div
+                className="text-center text-4xl  lg:px-32"
+                dangerouslySetInnerHTML={{ __html: description }}
+              ></div>
             </div>
           </div>
         </div>
-      </Container>
 
-      <div className="px-4 2xl:px-24 3xl:px-44">
-        <div className="mb-10">
-          <PerformanceChart strategy={strategyCode} />
+        <div className="px-4 mt-20 2xl:px-24 3xl:px-44">
+          <div className="mb-10 ">
+            <PerformanceChart strategy={strategyCode} />
+          </div>
         </div>
-      </div>
 
-      <Container>{/* <TrailingReturns strategy={strategyCode} /> */}</Container>
-
-      <Container>
         <HoldingDistribution strategy={strategyCode} />
-      </Container>
 
-      <GrayContainer>
-        <Container>
+        <GrayContainer>
           <div className="py-10">
             <div className="container mx-auto sm:px-4">
               <h2 className="text-3xl  text-[#151E28] text-center mb-8">
@@ -86,10 +78,8 @@ const StrategyComponent = ({ strategyData }) => {
               </div>
             </div>
           </div>
-        </Container>
-      </GrayContainer>
+        </GrayContainer>
 
-      <Container>
         <div className="my-20 rounded-lg lg:p-6 flex lg:flex-row flex-col items-center justify-between">
           <div>
             <h3 className="text-lg  text-[#151E28] mb-2">
@@ -125,9 +115,7 @@ const StrategyComponent = ({ strategyData }) => {
             </a>
           </div>
         </div>
-      </Container>
 
-      <GrayContainer>
         <Container>
           <h2 className="text-3xl  text-[#151E28] text-center mb-8">
             Got Questions? We've Got Answers.
@@ -157,10 +145,14 @@ const StrategyComponent = ({ strategyData }) => {
             ))}
           </div>
         </Container>
-      </GrayContainer>
 
-      <Container>
         <RelatedArticles strategySlug={strategySlug} limit={3} />
+
+        <div className="text-center">
+          <button className="bg-primary-dark text-white font-extrabold px-10 sm:px-0 sm:w-1/2 mt-10 mx-auto py-2">
+            Schedule a Call
+          </button>
+        </div>
       </Container>
     </div>
   );

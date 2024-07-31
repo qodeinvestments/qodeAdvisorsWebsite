@@ -10,9 +10,9 @@ import StrategyComponent from "../components/Strategy";
 
 const QuantGrowthFund = () => {
   const strategyData = {
-    title: "Quant Growth Fund",
+    title: "Quality Fund",
     description:
-      "The Quantitative Growth Fund uses a classic growth investing approach, focusing on high-quality businesses with strong moats and capital allocation skills.",
+      "<p class='mb-4'>Invest in quality business. Get quality results.</p>This strategy invests in 30 Quality businesses. (Quality Business - A company that generates a high return on invested capital). Principle - In the long run the stock price always matches the business performance.",
     strategyCode: "QGF",
     strategySlug: "quant-growth-fund",
     pptLink: "/Quant Growth Fund Feb.pdf",

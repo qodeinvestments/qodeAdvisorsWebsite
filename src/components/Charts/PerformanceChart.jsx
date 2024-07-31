@@ -49,7 +49,7 @@ const PerformanceChart = ({ strategy }) => {
       data[0]["Nifty 50"] || data[0]["nifty"]
     );
     return data.map((item) => ({
-      date: item.Date,
+      date: item.date,
       strategyValue:
         (parseFloat(item[strategyKey]) / initialStrategyValue) * 100,
       niftyValue:
@@ -149,10 +149,10 @@ const PerformanceChart = ({ strategy }) => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-4">
-      <div className="lg:w-[70%] sm:pb-10 ">
+    <div className="flex flex-col  gap-4">
+      <div className="lg:w-full  border p-14 border-black sm:pb-10 ">
         <Tabs value="chart1">
-          <div className="flex flex-col lg:flex-row gap-2  sm:items-center justify-between lg:p-2">
+          <div className="flex flex-col lg:flex-row gap-2   lg:p-2">
             {/* <TabsHeader className="bg-[#f0eeee] border-gray-300 border p-1 mb-4 sm:mb-0">
               <Tab
                 className="text-xs sm:text-sm"
@@ -183,7 +183,7 @@ const PerformanceChart = ({ strategy }) => {
             {activeTab === "chart1" && (
               <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
                 <div className="flex flex-wrap justify-center gap-2">
-                  {["YTD", "1M", "3M", "6M", "1Y", "5Y"].map((range) => (
+                  {["YTD", "1M", "3M", "6M", "1Y", "5Y", "All"].map((range) => (
                     <button
                       key={range}
                       onClick={() => {
@@ -239,7 +239,7 @@ const PerformanceChart = ({ strategy }) => {
                   </div>
                 </div>
 
-                <button
+                {/* <button
                   className={`bg-[#f7f5f5] py-2 sm:py-1 px-2 text-xs sm:text-sm ${
                     activeButton === "ALL" ? "bg-primary-dark text-white" : ""
                   }`}
@@ -252,11 +252,11 @@ const PerformanceChart = ({ strategy }) => {
                   }}
                 >
                   Reset
-                </button>
+                </button> */}
               </div>
             )}
           </div>
-          <TabsBody>
+          <TabsBody className="mt-20">
             <TabPanel className="p-0" key="chart1" value="chart1">
               {chartOptions && (
                 <HighchartsReact
@@ -274,7 +274,7 @@ const PerformanceChart = ({ strategy }) => {
           </TabsBody>
         </Tabs>
       </div>
-      <div className="w-full lg:w-[30%] flex flex-col space-y-7 border bg-white rounded-md p-4">
+      <div className="w-full  flex flex-col space-y-7 border border-black  bg-white  p-14">
         <Calculator strategy={strategy.toLowerCase()} />
       </div>
     </div>

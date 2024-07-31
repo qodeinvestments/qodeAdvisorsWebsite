@@ -10,9 +10,9 @@ import StrategyComponent from "../components/Strategy";
 
 const LowVolMomentum = () => {
   const strategyData = {
-    title: "Low Volatility Momentum Fund",
+    title: "Steady Fund",
     description:
-      "The Quantitative Growth Fund uses a classic growth investing approach, focusing on high-quality businesses with strong moats and capital allocation skills.",
+      "<p class='mb-4'>Slow but Steady.</p>This strategy invests in the 30 most stable stocks in the market. This strategy outperforms the Index with considerably lower risk.",
     strategyCode: "LVF",
     strategySlug: "low-vol-momentum",
     pptLink: "/Quant Growth Fund Feb.pdf",

@@ -88,7 +88,7 @@ const Header = () => {
 
           <div className="w-1/2 flex justify-center">
             <Link className="cursor-pointer" to="/">
-              <p className="text-black text-4xl py-5 playfair-display-font ">
+              <p className="text-black text-5xl py-5 playfair-display-font ">
                 Qode
               </p>
             </Link>

@@ -24,102 +24,91 @@ const InvestmentStrategies = () => {
 
   return (
     <GrayContainer>
-      <Container>
-        {/* <p className="uppercase text-[12px] text-center pt-10 inter-font tracking-widest  text-gray-400">
+      {/* <p className="uppercase text-[12px] text-center pt-10 inter-font tracking-widest  text-gray-400">
           Qode Your Future: Data-Driven Decisions for a Quantum Leap.
         </p> */}
-        <div className=" border-black graphik-font-regular mt-10 mb-32 flex flex-col lg:flex-row">
-          <div className="lg:w-1/2 border border-black px-4 lg:px-3 mb-8 lg:mb-0">
-            <h2 className="text-3xl lg:text-5xl  mt-8 py-4 playfair-display-font text-start text-dark">
-              Strategies
-            </h2>
-            <p className="text-primary text-start text-base lg:text-lg  text-md mx-auto mb-8">
-              For Consistent Growth
+      <div className=" border-black graphik-font-regular   flex  justify-start  p-10 flex-row">
+        <div className="mb-8 mr-20 lg:mb-0 w-1/2">
+          <h2 className=" text-6xl  mt-8   playfair-display-font text-start text-dark">
+            Strategies
+          </h2>
+        </div>
+        <div className="grid grid-cols-1 gap-10">
+          <div className="bg-white  border border-black p-5">
+            <h3 className="text-5xl  mb-4">Quality Fund </h3>
+            <p className="mb-6 text-3xl">
+              <span className="text-4xl">
+                Invest in quality business. Get quality results.
+              </span>{" "}
+              <br />
+              <br />
+              This strategy invests in 30 Quality businesses. (Quality Business
+              - A company that generates a high return on invested capital).
+              Principle - In the long run the stock price always matches the
+              business performance
             </p>
+            <div className="flex items-end justify-between">
+              <p className="text-6xl">
+                23.4%
+                <span className="text-sm ml-2">CAGR</span>
+              </p>
+
+              <Link
+                to={"/strategies/quant-growth-fund"}
+                className=" py-3    mt-5 text-center w-32  border border-black  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
+              >
+                <span className="relative z-10">Know more</span>
+              </Link>
+            </div>
           </div>
-          <div className="lg:w-1/2">
-            <div className="grid grid-cols-1 ">
-              <div className="bg-white  border border-black p-5">
-                <h3 className="text-2xl  mb-4">Quant Growth Fund </h3>
-                <p className="mb-6">
-                  The <span className="">Quant Growth Fund</span> seeks
-                  high-growth potential with data-driven precision. We leverage
-                  quantitative analysis to identify companies poised for
-                  significant expansion.
-                </p>
-                <div className="flex items-end justify-between">
-                  <p className="text-5xl">
-                    23.4%
-                    <span className="text-sm ml-2">CAGR</span>
-                  </p>
-                  <p className="text-5xl">
-                    10%
-                    <span className="text-sm ml-2">MDD</span>
-                  </p>
-                  <Link
-                    to={"/strategies/quant-growth-fund"}
-                    className=" py-3    mt-5 text-center w-32  border border-black  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
-                  >
-                    <span className="relative z-10">Know more</span>
-                  </Link>
-                </div>
-              </div>
 
-              <div className="bg-white  border border-black p-5">
-                <h3 className="text-2xl  mb-4">Quant Growth Momentum</h3>
-                <p className="mb-6">
-                  Harnessing market trends, Qode's{" "}
-                  <span className="">Quant Growth Momentum </span>
-                  fund utilizes data-driven algorithms to identify and
-                  capitalize on securities with upward momentum.
-                </p>
-                <div className="flex items-end justify-between">
-                  <p className="text-5xl">
-                    28.5%
-                    <span className="text-sm ml-2">CAGR</span>
-                  </p>
-                  <p className="text-5xl">
-                    10%
-                    <span className="text-sm ml-2">MDD</span>
-                  </p>
-                  <Link
-                    to={"/strategies/quant-growth-momentum"}
-                    className=" py-3    mt-5 text-center w-32  border border-black  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
-                  >
-                    <span className="relative z-10">Know more</span>
-                  </Link>
-                </div>
-              </div>
+          <div className="bg-white  border border-black p-5">
+            <h3 className="text-5xl  mb-4">High-Return & Churn Fund</h3>
+            <p className="mb-6 text-3xl">
+              <span className="text-4xl"> Buy high sell higher. </span>
+              <br /> <br />
+              This strategy invests in 30 businesses whose stock price has grown
+              significantly and sells it before they start falling. Principle -
+              The stock price tells the story before the actual story unfolds.
+            </p>
+            <div className="flex items-end justify-between">
+              <p className="text-6xl">
+                28.5%
+                <span className="text-sm ml-2">CAGR</span>
+              </p>
 
-              <div className="bg-white  border border-black p-5">
-                <h3 className="text-2xl  mb-4">Low Vol Momentum</h3>
-                <p className="mb-6">
-                  Harnessing market trends, Qode's{" "}
-                  <span className="">Quant Growth Momentum </span>
-                  fund utilizes data-driven algorithms to identify and
-                  capitalize on securities with upward momentum.
-                </p>
-                <div className="flex items-end justify-between">
-                  <p className="text-5xl">
-                    23%
-                    <span className="text-sm ml-2">CAGR</span>
-                  </p>
-                  <p className="text-5xl">
-                    10%
-                    <span className="text-sm ml-2">MDD</span>
-                  </p>
-                  <Link
-                    to={"/strategies/quant-growth-fund"}
-                    className=" py-3    mt-5 text-center w-32  border border-black  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
-                  >
-                    <span className="relative z-10">Know more</span>
-                  </Link>
-                </div>
-              </div>
+              <Link
+                to={"/strategies/quant-growth-momentum"}
+                className=" py-3    mt-5 text-center w-32  border border-black  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
+              >
+                <span className="relative z-10">Know more</span>
+              </Link>
+            </div>
+          </div>
+
+          <div className="bg-white  border border-black p-5">
+            <h3 className="text-5xl  mb-4">Steady Fund </h3>
+            <p className="mb-6 text-3xl">
+              <span className="text-4xl">Slow but Steady.</span> <br /> <br />
+              This strategy invests in the 30 most stable stocks in the market.
+              This strategy outperforms the Index with considerably lower risk.
+            </p>
+            <div className="flex items-end justify-between">
+              <p className="text-6xl">
+                23%
+                <span className="text-sm ml-2">CAGR</span>
+              </p>
+
+              <Link
+                to={"/strategies/low-vol-momentum"}
+                className=" py-3    mt-5 text-center w-32  border border-black  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
+              >
+                <span className="relative z-10">Know more</span>
+              </Link>
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </GrayContainer>
   );
 };

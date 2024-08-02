@@ -28,7 +28,7 @@ const config = {
         "2xl": ["1.5rem", { lineHeight: "2rem" }], // 24px
         "3xl": ["0.875rem", { lineHeight: "1.25rem" }], // 14px
         "4xl": ["1.375rem", { lineHeight: "2rem" }], // 22px
-        "5xl": ["2.2rem", { lineHeight: "1" }], // 35px
+        "5xl": ["2.2rem", { lineHeight: "2.5rem" }], // 35px
         "6xl": ["3.5rem", { lineHeight: "1" }], // 56px
         "7xl": ["5.625rem", { lineHeight: "1" }], // 90px
       },

@@ -45,53 +45,46 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="relative rounded-b-[3rem] min-h-screen graphik-font-regular flex justify-center overflow-hidden">
-      {/* Background SVG */}
-
-      {/* Container for content */}
-      <Container>
-        <div className="mx-auto relative z-10">
-          <div className="flex flex-col-reverse items-start">
-            <div className="w-full  text-center md:mb-0">
-              <motion.h1
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="text-5xl text-primary-dark md:text-4xl playfair-display-font lg:text-7xl  mb-6"
-              >
-                The best investments are <br />{" "}
-                <span className="text-primary-dark px-2 rounded">
-                  {/* <span className="">{currentText}</span> */}
-                </span>
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-base md:text-lg lg:text-xl text-primary-dark mb-10"
-              >
-                We're an investment firm leveraging quantitative models to drive
-                informed and strategic investment decisions.
-              </motion.p>
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="bg-primary-dark text-white  py-3 px-8 rounded-full shadow-2xl  hover:bg-[#696969] transition duration-300 text-base md:text-lg"
-              >
-                Get Started
-              </motion.button>
-            </div>
-            <div className="w-full flex justify-center items-center mx-auto">
-              <img
-                src={bannerImage}
-                alt="Data-driven investments"
-                className="mx-auto my-auto w-full h-auto max-w-full sm:max-w-[90%] md:max-w-[80%] lg:max-w-[70%] rounded-lg"
-              />
-            </div>
-          </div>
+    <div className="relative min-h-screen graphik-font-regular flex mt-10 items-center justify-center overflow-hidden">
+      <Container className="flex-grow flex items-center justify-center">
+        <div className="w-full   py-32  border border-black   mx-auto  text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl lg:text-7xl playfair-display-font text-primary-dark mb-28"
+          >
+            We manage wealth for Individuals, Families & Businesses
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-base md:text-lg lg:text-5xl  max-w-3xl mx-auto  text-primary-dark my-10"
+          >
+            To help you build wealth in the long term we’ve made data-driven
+            investment strategies.
+          </motion.p>
+          {/* <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="h-16 mb-10"
+          >
+            <p className="text-xl md:text-2xl lg:text-3xl text-primary-dark">
+              {currentText}
+              <span className="animate-blink">|</span>
+            </p>
+          </motion.div> */}
+          {/* <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-primary-dark text-white py-3 px-8 rounded-full shadow-2xl hover:bg-[#696969] transition duration-300 text-base md:text-lg"
+          >
+            Get Started
+          </motion.button> */}
         </div>
       </Container>
-      {/* <BackgroundSVG className="absolute top-0 left-0 inset-0 w-full h-full" /> */}
     </div>
   );
 };

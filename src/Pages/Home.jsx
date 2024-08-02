@@ -32,7 +32,6 @@ const Home = () => {
   return (
     <>
       <Banner />
-      <Banner />
       <Container>
         <InvestmentStrategies />
         <FundManagers />

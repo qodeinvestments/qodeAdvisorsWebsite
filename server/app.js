@@ -15,8 +15,8 @@ app.use("/api/strategies", strategyRoutes);
 db.sequelize
   .sync()
   .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
+    app.listen(PORT,'139.5.190.184', () => {
+      console.log(`Server running at http://139.5.190.184:${PORT}/`);
     });
   })
   .catch((err) => {

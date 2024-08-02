@@ -3,9 +3,9 @@ const fetchStrategyData = async (strategy, timeRange, startDate, endDate) => {
   try {
     // Replace this URL with your actual localhost URL
     const response = await fetch(
-      `http://localhost:5000/api/strategies/${strategy}`
+      `https://api.qodeinvestments.com/api/strategies/${strategy}`
     );
-    console.log(`http://localhost:5000/api/strategies/${strategy}`);
+    console.log(`https://api.qodeinvestments.com/api/strategies/${strategy}`);
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");

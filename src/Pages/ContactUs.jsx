@@ -23,17 +23,17 @@ const ContactUs = () => {
 
   return (
     <>
-      <div className="bg-gray-100 graphik-font-regular text-black py-24 text-center">
-        <h1 className="text-4xl  mb-4">Contact Us</h1>
-        <p className="max-w-3xl mx-auto text-xl mb-16">
+      <div className=" graphik-font-regular text-black pt-14 text-center">
+        <h1 className="text-6xl pt-20 ">Contact Us</h1>
+        {/* <p className="max-w-3xl mx-auto text-xl mb-16">
           We're here to help. Reach out to us with any questions or inquiries.
-        </p>
+        </p> */}
       </div>
       <Container>
         <div className="graphik-font-regular text-gray-900 min-h-screen">
           <div className="max-w-7xl mx-auto py-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-              <div className="bg-white rounded-lg shadow-md p-8">
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-16">
+              {/* <div className="bg-white rounded-lg shadow-md p-8">
                 <h2 className="text-2xl  mb-6">Send us a message</h2>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
@@ -111,10 +111,10 @@ const ContactUs = () => {
                     Send Message
                   </button>
                 </form>
-              </div>
+              </div> */}
 
               <div>
-                <div className="bg-white rounded-lg shadow-md p-8 mb-8">
+                <div className="bg-white border border-black p-8 mb-8">
                   <h2 className="text-2xl  mb-6">Contact Information</h2>
                   <div className="mb-4">
                     <h3 className="text-lg  mb-2">Address</h3>
@@ -141,12 +141,12 @@ const ContactUs = () => {
                         href="mailto:info@qode.com"
                         className="text-gray-900 hover:text-gray-600 transition duration-300"
                       >
-                        info@qode.com
+                        rishabh@swancapital.in
                       </a>
                     </p>
                   </div>
                 </div>
-                <div className="bg-white rounded-lg shadow-md p-8">
+                <div className="bg-white border border-black p-8">
                   <h2 className="text-2xl  mb-6">Our Location</h2>
                   <div className="aspect-w-16 aspect-h-9">
                     <iframe

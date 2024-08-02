@@ -24,7 +24,7 @@ const BookAMeet = () => {
             href={calendlyOfficeLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="py-4 w-1/2 bg-red-500 text-white  rounded-none hover:bg-white hover:text-red-500 border-2 border-red-500 transition duration-300"
+            className="py-4 w-1/2 bg-black text-white  rounded-none hover:bg-white hover:text-black   border border-black  transition duration-300"
           >
             Book Office Visit
           </a>
@@ -35,7 +35,7 @@ const BookAMeet = () => {
             href={calendlyZoomLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="py-4 w-1/2 bg-blue-500 text-white  rounded-none hover:bg-white hover:text-blue-500 border-2 border-blue-500 transition duration-300"
+            className="py-4 w-1/2 bg-black text-white  rounded-none hover:bg-white hover:text-black   border border-black transition duration-300"
           >
             Schedule Zoom Call
           </a>

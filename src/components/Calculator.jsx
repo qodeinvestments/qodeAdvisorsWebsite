@@ -166,7 +166,7 @@ const Calculator = ({ strategy }) => {
 
   return (
     <div className="border border-black p-8 pb-10">
-      <h1 className="text-5xl mb-6">Calculate & Decide</h1>
+      <h1 className="text-5xl mb-6">Returns Calculator</h1>
       <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
         <p className="text-4xl mb-2 sm:mb-0 w-full sm:w-auto">
           Investment Amount (₹)
@@ -243,9 +243,9 @@ const Calculator = ({ strategy }) => {
           </div>
         </div>
       </div>
-      <p className="text-3xl text-center mb-9">
-        Figures are based on historical returns and do not guarantee future
-        results.
+      <p className="text-3xl text-center mt-12 mb-3 ">
+        "Figures are based on historical returns and do not guarantee future
+        results."
       </p>
       <div className="text-center px-5 py-6 border border-black ">
         <p className="text-5xl">

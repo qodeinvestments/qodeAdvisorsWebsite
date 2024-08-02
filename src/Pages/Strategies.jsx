@@ -101,14 +101,6 @@ const Strategies = () => {
             Talk to a Fund Manager
           </button>
         </div>
-        {/* <div className="text-center">
-          <Link
-            to={"/open-account"}
-            className="bg-black text-white  text-center py-5 px-10 mt-5"
-          >
-            Open Account With Qode
-          </Link>
-        </div> */}
       </div>
       {isModalOpen && (
         <Modal onClose={closeModal}>

@@ -5,6 +5,8 @@ import { Tabs, TabsBody, TabPanel } from "@material-tailwind/react";
 import Calculator from "../Calculator";
 import fetchStrategyData from "../api/getData";
 import HoldingDistribution from "./HoldingDistribution";
+import Modal from "../Modal";
+import BookAMeet from "../../Pages/BookAMeet";
 
 const PerformanceChart = ({ strategy }) => {
   const [chartOptions, setChartOptions] = useState(null);
@@ -263,11 +265,11 @@ const PerformanceChart = ({ strategy }) => {
           </TabsBody>
         </Tabs>
       </div>
-      <div className="flex flex-row justify-between items-start gap-4 flex-grow">
-        <div>
+      <div className="flex flex-row justify-between items-stretch gap-4 mt-10 flex-grow">
+        <div className="flex-1">
           <Calculator strategy={strategy.toLowerCase()} />
         </div>
-        <div>
+        <div className="flex-1">
           {(strategy === "QGF" || strategy === "QMF") && (
             <HoldingDistribution strategy={strategy} />
           )}

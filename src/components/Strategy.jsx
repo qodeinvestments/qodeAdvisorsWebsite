@@ -6,6 +6,8 @@ import PerformanceChart from "../components/Charts/PerformanceChart";
 import HoldingDistribution from "../components/Charts/HoldingDistribution";
 import RelatedArticles from "../components/RelatedArticles";
 import TrailingReturns from "../components/TrailingReturns";
+import { Modal } from "bootstrap";
+import ModalButton from "./ModalButton";
 
 const StrategyComponent = ({ strategyData }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -42,13 +44,13 @@ const StrategyComponent = ({ strategyData }) => {
           </div>
         </div>
 
-        <div className="mb-10 mt-20 ">
+        <div className=" mt-20 ">
           <PerformanceChart strategy={strategyCode} />
         </div>
 
-        <div className="py-10">
-          <div className="container mx-auto sm:px-4">
-            <h2 className="text-5xl  text-[#151E28] text-center mb-8">
+        <div className="p-10 border mt-10 border-black">
+          <div className=" mx-auto">
+            <h2 className="text-6xl  text-[#151E28] text-center mb-8">
               How Our Strategy Works
             </h2>
             <p className="text-center text-gray-600 sm:px-20 mb-10 text-4xl">
@@ -57,7 +59,7 @@ const StrategyComponent = ({ strategyData }) => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
               {steps.map((step, index) => (
-                <div key={index} className="bg-white rounded-lg p-6">
+                <div key={index} className="bg-white border border-black p-6">
                   <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-200 mb-4">
                     <FontAwesomeIcon
                       icon={step.icon}
@@ -109,42 +111,38 @@ const StrategyComponent = ({ strategyData }) => {
             </a>
           </div>
         </div> */}
-
-        <h2 className="text-3xl  text-[#151E28] text-center mb-8">
-          Got Questions? We've Got Answers.
-        </h2>
-        <div className="space-y-4">
-          {faqItems.map((item, index) => (
-            <div key={index} className="border border-black bg-white">
-              <div
-                className="flex justify-between items-center p-4 cursor-pointer"
-                onClick={() => handleAccordionToggle(index)}
-              >
-                <h3 className="text-lg  text-[#151E28]">{item.question}</h3>
-                <span
-                  className={`text-[#151E28]  transition-transform duration-300 ${
-                    activeIndex === index ? "transform rotate-180" : ""
-                  }`}
+        <div>
+          <ModalButton />
+        </div>
+        <div className="border border-black mt-10 p-10">
+          <h2 className="text-5xl   text-[#151E28] text-center mb-8">FAQ's</h2>
+          <div className="space-y-4">
+            {faqItems.map((item, index) => (
+              <div key={index} className="border border-black bg-white">
+                <div
+                  className="flex justify-between items-center p-4 cursor-pointer"
+                  onClick={() => handleAccordionToggle(index)}
                 >
-                  &#8744;
-                </span>
-              </div>
-              {activeIndex === index && (
-                <div className="p-4 bg-gray-100 text-gray-600">
-                  {item.answer}
+                  <h3 className="text-lg  text-[#151E28]">{item.question}</h3>
+                  <span
+                    className={`text-[#151E28]  transition-transform duration-300 ${
+                      activeIndex === index ? "transform rotate-180" : ""
+                    }`}
+                  >
+                    &#8744;
+                  </span>
                 </div>
-              )}
-            </div>
-          ))}
+                {activeIndex === index && (
+                  <div className="p-4 bg-gray-100 text-gray-600">
+                    {item.answer}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* <RelatedArticles strategySlug={strategySlug} limit={3} /> */}
-
-        <div className="text-center">
-          <button className="bg-primary-dark text-white font-extrabold px-10 sm:px-0 sm:w-1/2 mt-10 mx-auto py-2">
-            Schedule a Call
-          </button>
-        </div>
       </Container>
     </div>
   );

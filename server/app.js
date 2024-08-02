@@ -8,14 +8,24 @@ const { getAllStrategies } = require("./controllers/strategyControllers");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://qodeinvestments.com",
+      "http://dashboard.qodeinvestments.com/",
+    ], // or use ['http://example1.com', 'https://example2.com']
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: "Content-Type,Authorization",
+  })
+);
+
 app.use(bodyParser.json());
 app.use("/api/strategies", strategyRoutes);
 
 db.sequelize
   .sync()
   .then(() => {
-    app.listen(PORT,'139.5.190.184', () => {
+    app.listen(PORT, "139.5.190.184", () => {
       console.log(`Server running at http://139.5.190.184:${PORT}/`);
     });
   })

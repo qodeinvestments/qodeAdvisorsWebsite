@@ -31,7 +31,7 @@ const StrategyComponent = ({ strategyData }) => {
         <div className="bg-white rounded-b-3xl py-12 md:py-5">
           <div className="flex flex-col sm:flex-row justify-between items-start mx-auto px-4 sm:px-6 lg:px-6">
             <div className="pt-16 w-full">
-              <h2 className="text-4xl sm:text-6xl graphik-  text-primary-dark text-center ">
+              <h2 className="text-4xl sm:text-6xl graphik- mb-2 text-primary-dark text-center ">
                 <span className="block">{title}</span>
               </h2>
               <div
@@ -46,16 +46,12 @@ const StrategyComponent = ({ strategyData }) => {
           <PerformanceChart strategy={strategyCode} />
         </div>
 
-        {(strategyCode === "QGF" || strategyCode === "QMF") && (
-          <HoldingDistribution strategy={strategyCode} />
-        )}
-
         <div className="py-10">
           <div className="container mx-auto sm:px-4">
-            <h2 className="text-3xl  text-[#151E28] text-center mb-8">
+            <h2 className="text-5xl  text-[#151E28] text-center mb-8">
               How Our Strategy Works
             </h2>
-            <p className="text-center text-gray-600 sm:px-20 mb-10 text-xl">
+            <p className="text-center text-gray-600 sm:px-20 mb-10 text-4xl">
               Understand the step-by-step process we use to identify promising
               investment opportunities and manage your portfolio.
             </p>
@@ -68,8 +64,10 @@ const StrategyComponent = ({ strategyData }) => {
                       className="text-2xl text-[#151E28]"
                     />
                   </div>
-                  <h3 className="text-lg  text-[#151E28] mb-2">{step.title}</h3>
-                  <p className="text-gray-600">{step.description}</p>
+                  <h3 className="text-4xl  text-[#151E28] mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-600 text-3xl">{step.description}</p>
                 </div>
               ))}
             </div>

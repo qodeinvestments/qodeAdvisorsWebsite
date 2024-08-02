@@ -4,6 +4,7 @@ import HighchartsReact from "highcharts-react-official";
 import { Tabs, TabsBody, TabPanel } from "@material-tailwind/react";
 import Calculator from "../Calculator";
 import fetchStrategyData from "../api/getData";
+import HoldingDistribution from "./HoldingDistribution";
 
 const PerformanceChart = ({ strategy }) => {
   const [chartOptions, setChartOptions] = useState(null);
@@ -213,14 +214,14 @@ const PerformanceChart = ({ strategy }) => {
       <div className="lg:w-full border p-14 border-black sm:pb-10">
         <Tabs value="chart1">
           <div className="flex flex-col lg:flex-row gap-2 lg:p-2">
-            <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 gap-20 sm:space-x-4 w-full items-center">
+            <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 gap-5 w-full items-center">
               <div className="flex flex-wrap justify-between gap-2">
                 {["YTD", "1M", "3M", "6M", "1Y", "3Y", "5Y", "ALL"].map(
                   (range) => (
                     <button
                       key={range}
                       onClick={() => handleTimeRangeChange(range)}
-                      className={`px-3 py-1 text-sm ${
+                      className={`px-5 py-2 text-sm ${
                         activeButton === range
                           ? "bg-black text-white"
                           : "bg-white text-black border border-black"
@@ -235,16 +236,17 @@ const PerformanceChart = ({ strategy }) => {
                 <input
                   type="date"
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-2 px-3"
+                  className="border border-black text-gray-900 text-xs sm:text-sm py-2 px-3"
                 />
                 <input
                   type="date"
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="bg-[#f7f5f5] text-gray-900 text-xs sm:text-sm py-2 px-3"
+                  className="border border-black text-gray-900 text-xs sm:text-sm py-2 px-3"
                 />
               </div>
               <div className="text-right sm:ml-auto">
                 <p className="text-6xl">{strategyCagr}</p>
+                <p className="text-right text-4xl">{timeRange} CAGR</p>
               </div>
             </div>
           </div>
@@ -261,8 +263,15 @@ const PerformanceChart = ({ strategy }) => {
           </TabsBody>
         </Tabs>
       </div>
-      <div className="w-full flex flex-col space-y-7 border border-black bg-white p-14">
-        <Calculator strategy={strategy.toLowerCase()} />
+      <div className="flex flex-row justify-between items-start gap-4 flex-grow">
+        <div>
+          <Calculator strategy={strategy.toLowerCase()} />
+        </div>
+        <div>
+          {(strategy === "QGF" || strategy === "QMF") && (
+            <HoldingDistribution strategy={strategy} />
+          )}
+        </div>
       </div>
     </div>
   );

@@ -14,7 +14,10 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   const periods = ["1M", "3M", "6M", "1Y", "3Y", "5Y"];
 
   return (
-    <Link to={slug} className="block border-black border p-14 pb-20 relative">
+    <Link
+      to={slug}
+      className="block border-black border mb-20 p-14 pb-20 relative"
+    >
       <h1 className="text-6xl playfair-display-font mt-4">{name}</h1>
       <p
         className="text-4xl  leading-[2.5rem]  "
@@ -71,7 +74,12 @@ const Strategies = () => {
 
   return (
     <Container>
-      <div className="flex flex-col gap-20 graphik-font-regular mx-auto my-20">
+      <div className="flex flex-col  graphik-font-regular mx-auto my-20">
+        <p className="text-6xl text-center mb-5">All Strategies</p>
+        <p className="text-4xl text-center mb-20">
+          One of these strategies will help you in reaching your financial goal
+          based on how much risk you’re willing to take.
+        </p>
         {strategies.map((strategy) => (
           <StrategyCard
             key={strategy.id}

@@ -165,10 +165,10 @@ const Calculator = ({ strategy }) => {
   };
 
   return (
-    <>
-      <h1 className="text-xl  md:text-2xl">Calculate & Decide</h1>
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
-        <p className="text-gray-500 mb-2 sm:mb-0 w-full sm:w-auto">
+    <div className="border border-black p-8 pb-10">
+      <h1 className="text-5xl mb-6">Calculate & Decide</h1>
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
+        <p className="text-4xl mb-2 sm:mb-0 w-full sm:w-auto">
           Investment Amount (₹)
         </p>
         <input
@@ -177,16 +177,16 @@ const Calculator = ({ strategy }) => {
           placeholder="1000"
           value={investmentAmount}
           onChange={handleInvestmentAmountChange}
-          className="active:border-1 py-2 text-center  border w-full sm:w-48"
+          className="active:border-1 py-2 text-start pl-5  border w-full sm:w-48"
         />
       </div>
-      <p className="text-gray-500 mb-2">Investment Frequency</p>
-      <div className="flex flex-col sm:flex-row justify-between items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-4">
+      <p className="text-4xl mb-4">Investment Frequency</p>
+      <div className="flex flex-col sm:flex-row  justify-between items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-10">
         <button
           className={` py-2 text-center  w-full sm:w-1/3 ${
             investmentFrequency === "monthly"
               ? "bg-primary-dark text-white"
-              : "bg-white border border-gray-300 text-black"
+              : "bg-white border border-black text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("monthly")}
         >
@@ -196,7 +196,7 @@ const Calculator = ({ strategy }) => {
           className={` py-2 text-center w-full sm:w-1/3 ${
             investmentFrequency === "yearly"
               ? "bg-primary-dark text-white"
-              : "bg-white border border-gray-300 text-black"
+              : "bg-white border border-black text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("yearly")}
         >
@@ -206,19 +206,19 @@ const Calculator = ({ strategy }) => {
           className={` py-2 text-center  w-full sm:w-1/3 ${
             investmentFrequency === "one-time"
               ? "bg-primary-dark text-white"
-              : "bg-white border border-gray-300 text-black"
+              : "bg-white border border-black text-black"
           }`}
           onClick={() => handleInvestmentFrequencyChange("one-time")}
         >
           One-time
         </button>
       </div>
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-4">
-        <p className="text-gray-500 mb-2 sm:mb-0 w-full sm:w-auto">
+      <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
+        <p className="text-4xl mb-2 sm:mb-0 w-full sm:w-auto">
           Investment Period (Years)
         </p>
         <div className="custom-number-input h-10 w-full sm:w-48">
-          <div className="flex flex-row h-10 w-full  relative bg-transparent mt-1 border">
+          <div className="flex flex-row h-10 w-full  relative bg-transparent mt-1 border border-black">
             <button
               data-action="decrement"
               className="text-gray-600 h-full w-20  cursor-pointer outline-none"
@@ -243,29 +243,31 @@ const Calculator = ({ strategy }) => {
           </div>
         </div>
       </div>
-      <p className="text-xs text-gray-400 text-center mb-4">
-        Figures are calculated based on historical returns
+      <p className="text-3xl text-center mb-9">
+        Figures are based on historical returns and do not guarantee future
+        results.
       </p>
-      <div className="text-center px-5 py-3 border  mb-4">
-        <FontAwesomeIcon icon={faChartLine} />
-        <p className="mb-3 text-xs text-gray-400">
+      <div className="text-center px-5 py-6 border border-black ">
+        <p className="text-5xl">
+          <strong>₹{numberWithCommas(futureInvestmentValue)}</strong>
+        </p>
+        <p className="text-3xl text-black mb-2">
+          Total Amount Invested:{" "}
+          <strong className="">
+            ₹{numberWithCommas(calculateTotalInvestment())}
+          </strong>
+        </p>
+        <p className="mb-3 text-3xl text-gray-400">
           If you had invested <strong>{formatInvestmentPeriod()}</strong>, your
           investments would be worth
         </p>
-        <p className="text-lg">
-          <strong>₹{numberWithCommas(futureInvestmentValue)}</strong>
-        </p>
-        <p className="text-xs text-gray-400">
-          Total Amount Invested:{" "}
-          <strong>₹{numberWithCommas(calculateTotalInvestment())}</strong>
-        </p>
       </div>
-      <div className="text-center">
+      {/* <div className="text-center">
         <button className="bg-primary-dark text-white w-full  py-2">
           Invest Now
         </button>
-      </div>
-    </>
+      </div> */}
+    </div>
   );
 };
 

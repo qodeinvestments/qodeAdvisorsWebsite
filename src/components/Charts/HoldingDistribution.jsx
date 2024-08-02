@@ -47,12 +47,10 @@ const HoldingDistribution = ({ strategy }) => {
           small: parseFloat((totals.small / totals.total) * 100).toFixed(2),
         };
 
-        console.log(`Market Cap Distribution for ${strategy}:`, percentages);
-
         setChartOptions({
           chart: {
             type: "bar",
-            height: 150,
+            height: 160,
             backgroundColor: "rgba(0, 0, 0, 0)",
           },
           title: {
@@ -81,7 +79,7 @@ const HoldingDistribution = ({ strategy }) => {
           },
           legend: {
             reversed: true,
-            enabled: true,
+            enabled: false,
             align: "center",
             verticalAlign: "bottom",
             layout: "horizontal",
@@ -97,10 +95,15 @@ const HoldingDistribution = ({ strategy }) => {
             bar: {
               dataLabels: {
                 enabled: true,
-                format: "{y}%",
-                color: "#000",
+                useHTML: true, // Enable HTML in labels
+                format:
+                  '<span style="font-size: 14px;">{y}%</span><br><span style="font-size: 14px;">{series.name}</span>', // Custom HTML format
+                align: "center",
+                verticalAlign: "middle",
+                inside: true,
                 style: {
                   textOutline: "none",
+                  color: "#000",
                 },
               },
             },
@@ -112,19 +115,23 @@ const HoldingDistribution = ({ strategy }) => {
             {
               name: "Large Cap",
               data: [parseFloat(percentages.large)],
-              color: "#1995AD", // A bright red for a strong presence
+              color: "#58A992", // Soft mint green
+              borderColor: "#000",
             },
             {
               name: "Mid Cap",
               data: [parseFloat(percentages.mid)],
-              color: "#A1D6E2", // A vivid orange-saffron for visibility
+              color: "#7BCBA5", // Light seafoam green
+              borderColor: "#000",
             },
             {
               name: "Small Cap",
               data: [parseFloat(percentages.small)],
-              color: "#F1F1F2 ", // A lively teal to contrast with the reds and oranges
+              color: "#A3E4B6", // Pale spring green
+              borderColor: "#000",
             },
           ],
+
           credits: {
             enabled: false,
           },
@@ -136,6 +143,13 @@ const HoldingDistribution = ({ strategy }) => {
     fetchData();
   }, [strategy]);
 
+  let strategyName;
+  if (strategy == "QGF") {
+    strategyName = "Quality Fund";
+  } else if (strategy == "QMF") {
+    strategyName = "High Return & Churn Fund";
+  }
+
   if (!chartOptions) {
     return (
       <div className="text-center flex justify-center items-center">
@@ -145,19 +159,54 @@ const HoldingDistribution = ({ strategy }) => {
   }
 
   return (
-    <div className="border border-black p-6 sm:p-8 md:p-10 my-10">
-      <div className="flex flex-col lg:flex-row justify-between items-start gap-8">
-        <div className="w-full lg:w-1/2">
-          <h2 className="text-2xl sm:text-3xl  text-[#151E28] mb-2">
-            Holding Distribution
-          </h2>
-          <p className="text-base sm:text-lg text-gray-500">
-            Our {strategy} Strategy's asset allocation.
-          </p>
-        </div>
-
-        <div className="w-full lg:w-1/2 border border-black p-4 ">
+    <div className="flex flex-col gap-4 justify-start relative">
+      <div className="flex flex-col justify-between border border-black p-8 pb-0 items-start gap-2">
+        <h2 className="text-5xl text-[#151E28] mb-2">Holding Distribution</h2>
+        <p className="text-base sm:text-4xl text-black">
+          Our {strategyName} Strategy's asset allocation.
+        </p>
+        <div className="text-start">
           <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+        </div>
+      </div>
+      <div className="border p-10 border-black">
+        <h1 className="text-5xl mb-10">Our Stock Holdings</h1>
+        <div className="relative text-center flex items-center justify-center bg-black/20  ">
+          <table className="border-collapse w-full blur-sm   ">
+            <thead>
+              <tr>
+                <th className="border border-black px-4 py-2">Company</th>
+                <th className="border border-black px-4 py-2">Quantity</th>
+                <th className="border border-black px-4 py-2">Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="border border-black px-4 py-2">Company A</td>
+                <td className="border border-black px-4 py-2">100</td>
+                <td className="border border-black px-4 py-2">$10,000</td>
+              </tr>
+              <tr>
+                <td className="border border-black px-4 py-2">Company B</td>
+                <td className="border border-black px-4 py-2">200</td>
+                <td className="border border-black px-4 py-2">$20,000</td>
+              </tr>
+              <tr>
+                <td className="border border-black px-4 py-2">Company C</td>
+                <td className="border border-black px-4 py-2">300</td>
+                <td className="border border-black px-4 py-2">$30,000</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div className="grid grid-cols-1 gap-4">
+            <div className="absolute top-0 left-0 w-full h-full bg-white bg-opacity-30 flex flex-col justify-center items-center">
+              <div className="w-full">Sign Up to see view our holdings</div>
+              <button className="bg-black text-white font-bold py-2 px-4 rounded">
+                Sign Up
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ echo "Building the React project..."
 npm run build || exit
 
 echo "Restarting the application with PM2..."
-pm2 restart react-app || pm2 start serve --name "react-app" -- -s build || exit
+pm2 restart react-app || pm2 start serve --name "react-app" -- -s dist || exit
 
 echo "Reapplying stashed changes..."
 git stash pop

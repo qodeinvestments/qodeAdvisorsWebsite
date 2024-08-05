@@ -5,7 +5,7 @@ import { resolve } from "path";
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: "build", // Set output directory to 'build' instead of 'dist'
+    outDir: "dist", // Set output directory to 'build' instead of 'dist'
   },
-  base: "./", // Ensure paths are relative to the index.html
+  base: "/", // Ensure paths are relative to the index.html
 });

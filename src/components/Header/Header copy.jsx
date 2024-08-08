@@ -184,7 +184,7 @@ const Header = () => {
   return (
     <div
       ref={navbarAreaRef}
-      className="shadow-lg graphik-font-regular fixed  w-full z-20 bg-primary top-0"
+      className="shadow-lg sophia-pro-font fixed  w-full z-20 bg-primary top-0"
     >
       <nav ref={navbarRef}>
         <div className="max-w-[90rem] text-center  mx-auto ">
@@ -256,7 +256,7 @@ const Header = () => {
                 <Link
                   key={sublink.name}
                   to={sublink.slug}
-                  className="glass-card text-3xl  text-white"
+                  className="glass-card text-xl  text-white"
                   activeClassName="bg-gray-700 text-white"
                   onClick={() => toggleNavbar(sublink, true)}
                 >

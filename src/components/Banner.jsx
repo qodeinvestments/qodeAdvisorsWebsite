@@ -13,9 +13,9 @@ const Banner = () => {
   const deletingSpeed = 75;
   const delayBetweenTexts = 1500;
   const textArray = [
-    "driven by data",
-    "objective and emotion-free",
-    "carried out by Qode",
+    "driven by data.",
+    "objective and emotion-free.",
+    "carried out by Qode.",
   ];
 
   useEffect(() => {
@@ -45,46 +45,66 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="relative min-h-screen graphik-font-regular flex mt-10 items-center justify-center overflow-hidden">
-      <Container className="flex-grow flex items-center justify-center">
-        <div className="w-full   py-32  border border-black   mx-auto  text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-4xl md:text-5xl lg:text-7xl playfair-display-font text-primary-dark mb-28"
-          >
-            We manage wealth for Individuals, Families & Businesses
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-base md:text-lg lg:text-5xl  max-w-3xl mx-auto  text-primary-dark my-10"
-          >
-            To help you build wealth in the long term we’ve made data-driven
+    <div className="relative min-h-screen md:p-14 flex items-center justify-center overflow-hidden sophia-pro-bold-font">
+      <div className="  mx-auto px-4 py-16 md:py-24 lg:py-32  md:text-start">
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-xl md:text-2xl mt-10 lg:text-5xl text-gray-900 mb-6"
+        >
+          The best investments are <br />
+          <div className="h-[1.5em] md:h-[1.2em] lg:h-[1.5em] mb-6">
+            {currentText} <span className="animate-blink">|</span>
+          </div>
+        </motion.h1>
+        {/* <div className="flex flex-col md:flex-row  items-center md:items-start  gap-6 md:gap-14">
+          <hr
+            style={{
+              color: "#cccccc",
+              backgroundColor: "#cccccc",
+            }}
+            className="flex-grow max-w-[4rem] w-16 md:w-32 mt-3 mb-4 md:mb-0"
+          />
+          <p className="text-lg md:text-xl text-black max-w-xs md:max-w-sm">
+            {currentText}
+            <span className="animate-blink">|</span>
+          </p>
+        </div> */}
+        {/* <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="h-12 md:h-16 lg:h-20 mb-6 overflow-hidden"
+        >
+          <div className="text-xl minion-pro-font md:text-2xl lg:text-3xl font-bold text-primary-dark bg-gray-100 py-2 px-4 rounded inline-block">
+            {currentText}
+            <span className="animate-blink">|</span>
+          </div>
+        </motion.div> */}
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-xl sm:text-2xl md:text-3xl lg:text-5xl text-gray-900 mt-20 mb-6 md:mb-8"
+        >
+          We manage wealth for Individuals, Families & Businesses.
+        </motion.h1>
+
+        <div className="flex flex-col md:flex-row minion-pro-font items-center md:items-start mt-10 md:mt-20 gap-6 md:gap-14">
+          <hr
+            style={{
+              color: "#cccccc",
+              backgroundColor: "#cccccc",
+            }}
+            className="flex-grow max-w-[4rem] w-16 md:w-32 mt-3 mb-4 md:mb-0"
+          />
+          <p className="text-lg md:text-xl text-black max-w-xs md:max-w-sm">
+            To help you build wealth in the long term, we've made data-driven
             investment strategies.
-          </motion.p>
-          {/* <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="h-16 mb-10"
-          >
-            <p className="text-xl md:text-2xl lg:text-3xl text-primary-dark">
-              {currentText}
-              <span className="animate-blink">|</span>
-            </p>
-          </motion.div> */}
-          {/* <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-primary-dark text-white py-3 px-8 rounded-full shadow-2xl hover:bg-[#696969] transition duration-300 text-base md:text-lg"
-          >
-            Get Started
-          </motion.button> */}
+          </p>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };

@@ -56,9 +56,9 @@ const OpenAccount = () => {
         >
           {step === 1 && (
             <>
-              <h1 className="text-4xl  mb-16">Let's start with your name</h1>
+              <h1 className="text-xl  mb-16">Let's start with your name</h1>
               <div className="w-full max-w-3xl mb-16">
-                <label htmlFor="firstName" className="block text-2xl mb-4">
+                <label htmlFor="firstName" className="block text-xl mb-4">
                   1. Enter Your First Name
                 </label>
                 <input
@@ -67,11 +67,11 @@ const OpenAccount = () => {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 text-3xl bg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
+                  className="w-full px-4 py-2 text-xl bg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
                 />
               </div>
               <div className="w-full max-w-3xl mb-16">
-                <label htmlFor="lastName" className="block text-2xl mb-4">
+                <label htmlFor="lastName" className="block text-xl mb-4">
                   2. Enter Your Last Name
                 </label>
                 <input
@@ -80,16 +80,16 @@ const OpenAccount = () => {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 text-3xl bg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
+                  className="w-full px-4 py-2 text-xl bg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
                 />
               </div>
             </>
           )}
           {step === 2 && (
             <>
-              <h1 className="text-4xl  mb-16">Your identification details</h1>
+              <h1 className="text-xl  mb-16">Your identification details</h1>
               <div className="w-full max-w-3xl mb-16">
-                <label htmlFor="uidNo" className="block text-2xl mb-4">
+                <label htmlFor="uidNo" className="block text-xl mb-4">
                   3. Enter Your UID Number
                 </label>
                 <input
@@ -98,11 +98,11 @@ const OpenAccount = () => {
                   name="uidNo"
                   value={formData.uidNo}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 text-3xl bg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
+                  className="w-full px-4 py-2 text-xl bg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
                 />
               </div>
               <div className="w-full max-w-3xl mb-16">
-                <label htmlFor="panNumber" className="block text-2xl mb-4">
+                <label htmlFor="panNumber" className="block text-xl mb-4">
                   4. Enter Your PAN Number
                 </label>
                 <input
@@ -111,16 +111,16 @@ const OpenAccount = () => {
                   name="panNumber"
                   value={formData.panNumber}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 text-3xl bg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
+                  className="w-full px-4 py-2 text-xl bg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
                 />
               </div>
             </>
           )}
           {step === 3 && (
             <>
-              <h1 className="text-4xl  mb-16">Upload your documents</h1>
+              <h1 className="text-xl  mb-16">Upload your documents</h1>
               <div className="w-full max-w-3xl mb-16">
-                <label htmlFor="eSign" className="block text-2xl mb-4">
+                <label htmlFor="eSign" className="block text-xl mb-4">
                   5. Upload Your E-Sign
                 </label>
                 <input
@@ -137,7 +137,7 @@ const OpenAccount = () => {
                 />
               </div>
               <div className="w-full max-w-3xl mb-16">
-                <label htmlFor="panCard" className="block text-2xl mb-4">
+                <label htmlFor="panCard" className="block text-xl mb-4">
                   6. Upload Your PAN Card
                 </label>
                 <input
@@ -159,7 +159,7 @@ const OpenAccount = () => {
             {step > 1 && (
               <button
                 onClick={prevStep}
-                className="px-8 py-3 rounded-full bg-black text-white  text-xl hover:bg-gray-200 transition duration-300"
+                className="px-8 py-3 rounded-full bg-red-600 text-white  text-xl hover:bg-gray-200 transition duration-300"
               >
                 Back
               </button>
@@ -167,14 +167,14 @@ const OpenAccount = () => {
             {step < 3 ? (
               <button
                 onClick={nextStep}
-                className="px-8 py-3 rounded-full bg-black text-white  text-xl hover:bg-gray-200 transition duration-300 ml-auto"
+                className="px-8 py-3 rounded-full bg-red-600 text-white  text-xl hover:bg-gray-200 transition duration-300 ml-auto"
               >
                 Next
               </button>
             ) : (
               <button
                 onClick={submitForm}
-                className="px-8 py-3 rounded-full bg-black text-white  text-xl transition duration-300 ml-auto"
+                className="px-8 py-3 rounded-full bg-red-600 text-white  text-xl transition duration-300 ml-auto"
               >
                 Submit
               </button>
@@ -186,7 +186,7 @@ const OpenAccount = () => {
   };
 
   return (
-    <div className="h-screen overflow-hidden graphik-font-regular">
+    <div className="h-screen overflow-hidden sophia-pro-font">
       {renderStep()}
     </div>
   );

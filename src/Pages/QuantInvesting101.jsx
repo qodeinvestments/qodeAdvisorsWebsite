@@ -5,7 +5,7 @@ import "./Pages.css";
 const QuantInvesting101 = () => {
   return (
     <>
-      <div className="flex flex-grow min-h-screen graphik-font-regular mt-16">
+      <div className="flex flex-grow min-h-screen sophia-pro-font mt-16">
         <div className="bg-[#F8FAFC] p-4  w-70 static  overflow-y-auto">
           <nav>
             <ul className="space-y-3 ">

@@ -6,7 +6,7 @@ import analysis from "../assets/analysis.gif";
 const WhatWeDo = () => {
   return (
     <div className="text-center inter-font mt-10">
-      <h2 className="text-4xl  ">What we do?</h2>
+      <h2 className="text-xl  ">What we do?</h2>
       <p className="text-gray-400 mt-4 text-xl">Our Investment process is</p>
       <div className="flex flex-col md:flex-row justify-between items-center mt-8 space-y-8  md:space-y-0 md:space-x-28">
         <div className="flex border rounded-lg w-1/3   flex-col items-center text-center p-4 shadow-md">

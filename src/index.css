@@ -8,11 +8,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Base styles for blockquotes */
 @layer base {
   blockquote {
-    @apply border-l-4 border-gray-200 pl-4 italic; /* Styling for blockquotes */
+    @apply border-l-4 border-gray-200 pl-4 italic;
   }
 }
+
+/* Spinner animation keyframes */
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -22,67 +25,120 @@
   }
 }
 
+/* Spinner styling */
 .spinner {
   @apply inline-block w-16 h-16 border-4 border-solid border-current border-r-transparent rounded-full animate-spin;
   animation: spin 1s linear infinite;
 }
 
+/* Custom font faces */
 @font-face {
-  font-family: "helvetica";
+  font-family: "HelveticaNeue";
   src: url("./assets/fonts/helvetica-neue-5/HelveticaNeueLight.otf")
     format("truetype");
   font-optical-sizing: auto;
-  /* font-weight: 100; */
   font-style: normal;
 }
+
+@font-face {
+  font-family: "GraphikSemibold";
+  src: url("./assets/fonts/Graphik-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SophiaPro";
+  src: url("./assets/fonts/sofia-pro/Sofia Pro Regular Az.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SophiaProBold";
+  src: url("./assets/fonts/sofia-pro/Sofia Pro Bold Az.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "GraphikMedium";
+  src: url("./assets/fonts/Graphik-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MinionPro";
+  src: url("./assets/fonts/minion-pro/MinionPro-Regular.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Font class definitions */
 .playfair-display-font {
-  font-family: "helvetica", sans-serif;
+  font-family: "Playfair Display", serif; /* Use Google font family for Playfair Display */
   letter-spacing: 0.01em;
 }
-@font-face {
-  font-family: "Graphik-Semibold";
-  src: url("./assets/fonts/Graphik-Semibold.ttf") format("truetype");
-  font-weight: 600; /* Assuming you want semibold to be 600 */
-  font-style: normal;
-}
 
-@font-face {
-  font-family: "Graphik-Regular";
-  src: url("./assets/fonts/Graphik-Regular.ttf") format("truetype");
-  font-weight: 400; /* Normal weight */
-  font-style: normal;
-}
-
-.codingFont {
+.source-code-pro-font {
   font-family: "Source Code Pro", monospace;
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: normal;
 }
 
-@font-face {
-  font-family: "Graphik-Medium";
-  src: url("./assets/fonts/Graphik-Medium.ttf") format("truetype");
-  font-weight: 500; /* Medium is often 500 */
-  font-style: normal;
-}
-
 .inter-font {
-  font-family: "helvetica", sans-serif; /* Corrected the fallback font name */
+  font-family: "Inter", sans-serif; /* Use Google font family for Inter */
 }
 
-.graphik-font-regular {
-  font-family: "helvetica", sans-serif;
+.sophia-pro-font {
+  font-family: "GraphikRegular", sans-serif;
 }
 
-.graphik- {
-  font-family: "helvetica", sans-serif;
+.sophia-pro-bold-font {
+  font-family: "SophiaProBold", sans-serif;
 }
 
-.graphik- {
-  font-family: "helvetica", sans-serif;
+.graphik-font-medium {
+  font-family: "GraphikMedium", sans-serif;
 }
 
+.graphik-font-semibold {
+  font-family: "GraphikSemibold", sans-serif;
+}
+
+.minion-pro-font {
+  font-family: "MinionPro", sans-serif;
+}
+
+/* Apply MinionPro font to paragraphs and list items */
+p,
+li {
+  font-family: "MinionPro", sans-serif;
+}
+
+
+.sophia-pro-font {
+  font-family: "SophiaPro";
+}
+
+/* Custom cursor */
 .know-more-cursor {
   cursor: url("./assets/Know More.png"), auto;
+}
+
+/* h1,h2,h3,h4,h5,h6 {
+  font-family: "SophiaProBold";
+} */
+
+
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
 }

@@ -1,108 +1,172 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BlogCard from "../components/BlogCard";
-import { Container, GrayContainer } from "../components";
-import sanityClient, { createClient } from "@sanity/client";
-import BlockContent from "@sanity/block-content-to-react";
-import imageUrlBuilder from "@sanity/image-url";
-import { Spinner } from "@material-tailwind/react";
-import { CustomSpinner } from "../components/Spinner";
+import { Container } from "../components";
 
-// ... (Client and urlFor function setup)
-const client = createClient({
-  projectId: "8pot9lfd",
-  dataset: "production",
-  useCdn: true, // Set to `false` for development purposes
-});
-const builder = imageUrlBuilder(client);
-function urlFor(source) {
-  return builder.image(source);
-}
-const serializers = {
-  types: {
-    block: (props) => {
-      switch (props.node.style) {
-        case "h1":
-          return <h1>{props.children}</h1>;
-        case "h2":
-          return <h2>{props.children}</h2>;
-        case "normal": // Default style
-          return <p>{props.children}</p>;
-        default:
-          return BlockContent.defaultSerializers.types.block(props);
-      }
+// Dummy data for 9 blog posts
+const dummyPosts = [
+  {
+    title: "The Future of AI in Healthcare",
+    body: "Artificial Intelligence is revolutionizing the healthcare industry...",
+    mainImage: "https://example.com/ai-healthcare.jpg",
+    readTime: "5 min read",
+    detailLink: "future-of-ai-in-healthcare",
+    author: {
+      name: "Dr. Jane Smith",
+      bio: "AI researcher and healthcare consultant",
+      authorImage: "https://example.com/jane-smith.jpg",
     },
+    publishedAt: "2024-08-01",
   },
-};
+  {
+    title: "Sustainable Living: Small Changes, Big Impact",
+    body: "Discover how small everyday changes can lead to a more sustainable lifestyle...",
+    mainImage: "https://example.com/sustainable-living.jpg",
+    readTime: "4 min read",
+    detailLink: "sustainable-living-small-changes",
+    author: {
+      name: "Alex Green",
+      bio: "Environmental activist and writer",
+      authorImage: "https://example.com/alex-green.jpg",
+    },
+    publishedAt: "2024-07-28",
+  },
+  {
+    title: "The Rise of Remote Work: Challenges and Opportunities",
+    body: "Explore the pros and cons of the growing trend of remote work...",
+    mainImage: "https://example.com/remote-work.jpg",
+    readTime: "6 min read",
+    detailLink: "rise-of-remote-work",
+    author: {
+      name: "Sam Johnson",
+      bio: "HR consultant and workplace strategist",
+      authorImage: "https://example.com/sam-johnson.jpg",
+    },
+    publishedAt: "2024-07-25",
+  },
+  {
+    title: "Cybersecurity in the Age of IoT",
+    body: "As IoT devices proliferate, learn about the new challenges in cybersecurity...",
+    mainImage: "https://example.com/iot-security.jpg",
+    readTime: "7 min read",
+    detailLink: "cybersecurity-iot-age",
+    author: {
+      name: "Emily Chen",
+      bio: "Cybersecurity expert and tech writer",
+      authorImage: "https://example.com/emily-chen.jpg",
+    },
+    publishedAt: "2024-07-22",
+  },
+  {
+    title: "The Psychology of Productivity",
+    body: "Uncover the psychological principles behind high productivity...",
+    mainImage: "https://example.com/productivity-psychology.jpg",
+    readTime: "5 min read",
+    detailLink: "psychology-of-productivity",
+    author: {
+      name: "Dr. Michael Brown",
+      bio: "Psychologist and productivity coach",
+      authorImage: "https://example.com/michael-brown.jpg",
+    },
+    publishedAt: "2024-07-19",
+  },
+  {
+    title: "Blockchain Beyond Cryptocurrency",
+    body: "Explore the diverse applications of blockchain technology beyond digital currencies...",
+    mainImage: "https://example.com/blockchain-apps.jpg",
+    readTime: "8 min read",
+    detailLink: "blockchain-beyond-crypto",
+    author: {
+      name: "Sophia Lee",
+      bio: "Blockchain researcher and tech enthusiast",
+      authorImage: "https://example.com/sophia-lee.jpg",
+    },
+    publishedAt: "2024-07-16",
+  },
+  {
+    title: "The Art of Mindfulness in a Digital Age",
+    body: "Learn how to practice mindfulness in our increasingly digital world...",
+    mainImage: "https://example.com/digital-mindfulness.jpg",
+    readTime: "6 min read",
+    detailLink: "mindfulness-digital-age",
+    author: {
+      name: "David Wong",
+      bio: "Mindfulness coach and digital wellness advocate",
+      authorImage: "https://example.com/david-wong.jpg",
+    },
+    publishedAt: "2024-07-13",
+  },
+  {
+    title: "The Evolution of E-commerce",
+    body: "Trace the journey of online shopping from its inception to current trends...",
+    mainImage: "https://example.com/ecommerce-evolution.jpg",
+    readTime: "7 min read",
+    detailLink: "ecommerce-evolution",
+    author: {
+      name: "Lisa Thompson",
+      bio: "E-commerce strategist and business analyst",
+      authorImage: "https://example.com/lisa-thompson.jpg",
+    },
+    publishedAt: "2024-07-10",
+  },
+  {
+    title: "Artificial Intelligence in Creative Industries",
+    body: "Discover how AI is transforming art, music, and other creative fields...",
+    mainImage: "https://example.com/ai-creativity.jpg",
+    readTime: "5 min read",
+    detailLink: "ai-creative-industries",
+    author: {
+      name: "Robert Kim",
+      bio: "AI researcher and digital artist",
+      authorImage: "https://example.com/robert-kim.jpg",
+    },
+    publishedAt: "2024-07-07",
+  },
+  {
+    title: "Artificial Intelligence in Creative Industries",
+    body: "Discover how AI is transforming art, music, and other creative fields...",
+    mainImage: "https://example.com/ai-creativity.jpg",
+    readTime: "5 min read",
+    detailLink: "ai-creative-industries",
+    author: {
+      name: "Robert Kim",
+      bio: "AI researcher and digital artist",
+      authorImage: "https://example.com/robert-kim.jpg",
+    },
+    publishedAt: "2024-07-07",
+  },
+];
 
 const Blogs = () => {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true); // Add loading state
-
-  useEffect(() => {
-    client
-      .fetch(
-        `*[_type == "post"] | order(publishedAt desc) {
-          title,
-          body,
-          mainImage,
-          "readTime": readTime,
-          "detailLink": slug.current,
-          author->{ name, bio, "authorImage": image.asset->url },
-          publishedAt
-        }`
-      )
-      .then((data) => {
-        setPosts(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        setLoading(false);
-      });
-  }, []);
-
-  if (loading) {
-    return <CustomSpinner />;
-  }
-
   return (
     <Container>
-      <div className=" graphik-font-regular py-28 md:py-44">
-        <div className="flex flex-col items-center">
-          <h1 className="text-primary-dark graphik- text-4xl md:text-4xl  mb-6 text-center">
-            Welcome to Our Blog
-          </h1>
-          <p className="text-gray-600 text-lg md:text-xl max-w-3xl text-center">
-            Explore our collection of insightful articles and stay up-to-date
-            with the latest trends and best practices in the industry.
-          </p>
+      <div className=" p-14 mx-auto">
+        <div className="minion-pro-font py-28 md:py-44">
+          <div className="flex flex-col">
+            <h1 className="text-primary-dark sophia-pro-font text-5xl font-black mb-6 text-start">
+              Welcome to Our Blog
+            </h1>
+            <p className="text-gray-600 text-lg md:text-xl text-start">
+              Explore our collection of insightful articles and stay up-to-date
+              with the latest trends and best practices in the industry.
+            </p>
+          </div>
         </div>
-      </div>
-      <div className=" mb-24  grid grid-cols-1 md:grid-cols-2 gap-10 lg:grid-cols-3">
-        {posts.map((post) => {
-          const authorBioText = post.author.bio[0].children[0].text;
-          return (
+        <div className="mb-24 mx-auto flex flex-wrap justify-center gap-5">
+          {dummyPosts.map((post) => (
             <BlogCard
               key={post.detailLink}
               title={post.title}
-              summary={
-                <BlockContent
-                  blocks={post.body}
-                  serializers={serializers}
-                  projectId="8pot9lfd"
-                  dataset="production"
-                />
-              }
-              mainImage={urlFor(post.mainImage)}
+              summary={post.body}
+              mainImage={post.mainImage}
               readTime={post.readTime}
               detailLink={`/blogs/${post.detailLink}`}
               author={post.author}
               authorImage={post.author.authorImage}
-              bio={authorBioText}
+              bio={post.author.bio}
               publishedAt={post.publishedAt}
             />
-          );
-        })}
+          ))}
+        </div>
       </div>
     </Container>
   );

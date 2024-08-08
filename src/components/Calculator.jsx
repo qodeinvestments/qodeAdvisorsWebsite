@@ -165,109 +165,101 @@ const Calculator = ({ strategy }) => {
   };
 
   return (
-    <div className="border border-black p-8 pb-10">
-      <h1 className="text-5xl mb-6">Returns Calculator</h1>
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-8">
-        <p className="text-4xl mb-2 sm:mb-0 w-full sm:w-auto">
-          Investment Amount (₹)
-        </p>
-        <input
-          type="number"
-          name="investmentamount"
-          placeholder="1000"
-          value={investmentAmount}
-          onChange={handleInvestmentAmountChange}
-          className="active:border-1 py-2 text-start pl-5  border w-full sm:w-48"
-        />
-      </div>
-      <p className="text-4xl mb-4">Investment Frequency</p>
-      <div className="flex flex-col sm:flex-row  justify-between items-center space-y-2 sm:space-y-0 sm:space-x-2 mb-10">
-        <button
-          className={` py-2 text-center  w-full sm:w-1/3 ${
-            investmentFrequency === "monthly"
-              ? "bg-primary-dark text-white"
-              : "bg-white border border-black text-black"
-          }`}
-          onClick={() => handleInvestmentFrequencyChange("monthly")}
-        >
-          Monthly
-        </button>
-        <button
-          className={` py-2 text-center w-full sm:w-1/3 ${
-            investmentFrequency === "yearly"
-              ? "bg-primary-dark text-white"
-              : "bg-white border border-black text-black"
-          }`}
-          onClick={() => handleInvestmentFrequencyChange("yearly")}
-        >
-          Yearly
-        </button>
-        <button
-          className={` py-2 text-center  w-full sm:w-1/3 ${
-            investmentFrequency === "one-time"
-              ? "bg-primary-dark text-white"
-              : "bg-white border border-black text-black"
-          }`}
-          onClick={() => handleInvestmentFrequencyChange("one-time")}
-        >
-          One-time
-        </button>
-      </div>
-      <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
-        <p className="text-4xl mb-2 sm:mb-0 w-full sm:w-auto">
-          Investment Period (Years)
-        </p>
-        <div className="custom-number-input h-10 w-full sm:w-48">
-          <div className="flex flex-row h-10 w-full  relative bg-transparent mt-1 border border-black">
-            <button
-              data-action="decrement"
-              className="text-gray-600 h-full w-20  cursor-pointer outline-none"
-              onClick={() => handleInvestmentPeriodChange("decrement")}
-            >
-              <span className="m-auto text-md font-thin">−</span>
-            </button>
+    <>
+      <div className=" p-20  bg-[#fafafa]">
+        <h1 className="text-xl sm:text-3xl font-bold mb-4 sm:mb-14">
+          Returns Calculator
+        </h1>
+
+        <div className="space-y-10">
+          <div className="flex flex-col sm:flex-row gap-20  justify-between items-center">
+            <p className="text-lg sm:text-xl mb-2 sm:mb-0 w-full sm:w-1/2">
+              Investment Amount (₹)
+            </p>
             <input
               type="number"
-              className="outline-none focus:outline-none text-center w-full bg-white  text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-700"
-              name="custom-input-number"
-              value={investmentPeriod}
-              readOnly
+              name="investmentamount"
+              placeholder="1000"
+              value={investmentAmount}
+              onChange={handleInvestmentAmountChange}
+              className="w-full  h-12 py-2 px-2 border text-start"
             />
-            <button
-              data-action="increment"
-              className="text-gray-600 h-full w-20  cursor-pointer"
-              onClick={() => handleInvestmentPeriodChange("increment")}
-            >
-              <span className="m-auto text-md font-thin">+</span>
-            </button>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-20  justify-between items-center">
+            <p className="text-lg sm:text-xl mb-2 sm:mb-0 w-full sm:w-1/2">
+              Investment Frequency
+            </p>
+            <div className="flex flex-row justify-between space-x-2 w-full  ">
+              {["Monthly", "Yearly", "One-time"].map((freq) => (
+                <button
+                  key={freq}
+                  className={`h-12 py-2 px-4 border text-center flex-grow ${
+                    investmentFrequency === freq.toLowerCase()
+                      ? "bg-red-600 text-white"
+                      : "bg-white text-black"
+                  }`}
+                  onClick={() =>
+                    handleInvestmentFrequencyChange(freq.toLowerCase())
+                  }
+                >
+                  {freq}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row justify-between items-center">
+            <p className="text-lg sm:text-xl mb-2 sm:mb-0 w-full sm:w-1/2">
+              Investment Period (Years)
+            </p>
+            <div className="w-4/5  h-12">
+              <div className="flex flex-row h-full w-full relative bg-transparent border ">
+                <button
+                  data-action="decrement"
+                  className="text-gray-600 h-full w-1/4 cursor-pointer outline-none"
+                  onClick={() => handleInvestmentPeriodChange("decrement")}
+                >
+                  <span className="m-auto text-2xl font-thin">−</span>
+                </button>
+                <input
+                  type="number"
+                  className="outline-none focus:outline-none text-center w-1/2 bg-white text-md hover:text-black focus:text-black md:text-base cursor-default flex items-center text-gray-700"
+                  name="custom-input-number"
+                  value={investmentPeriod}
+                  readOnly
+                />
+                <button
+                  data-action="increment"
+                  className="text-gray-600 h-full w-1/4 cursor-pointer"
+                  onClick={() => handleInvestmentPeriodChange("increment")}
+                >
+                  <span className="m-auto text-2xl font-thin">+</span>
+                </button>
+              </div>
+            </div>
           </div>
         </div>
+
+        <div className="text-center mt-20 minion-pro-font px-3 sm:px-5   ">
+          <p className="mb-3 text-base sm:text-xl text-black">
+            If you had invested {formatInvestmentPeriod()}, <br /> your
+            investments would be worth
+          </p>
+          <p className="text-xl sophia-pro-font mt-10  sm:text-2xl">
+            ₹{numberWithCommas(futureInvestmentValue)}
+          </p>
+          <p className="text-lg sm:text-xl text-black  ">
+            Total Amount Invested: ₹
+            {numberWithCommas(calculateTotalInvestment())}
+          </p>
+        </div>
       </div>
-      <p className="text-3xl text-center mt-12 mb-3 ">
-        "Figures are based on historical returns and do not guarantee future
-        results."
+      <p className="text-base sm:text-xl text-center mt-8 sm:mt-4 ">
+        Figures are based on historical returns and do not guarantee future
+        results.*
       </p>
-      <div className="text-center px-5 py-6 border border-black ">
-        <p className="text-5xl">
-          <strong>₹{numberWithCommas(futureInvestmentValue)}</strong>
-        </p>
-        <p className="text-3xl text-black mb-2">
-          Total Amount Invested:{" "}
-          <strong className="">
-            ₹{numberWithCommas(calculateTotalInvestment())}
-          </strong>
-        </p>
-        <p className="mb-3 text-3xl text-gray-400">
-          If you had invested <strong>{formatInvestmentPeriod()}</strong>, your
-          investments would be worth
-        </p>
-      </div>
-      {/* <div className="text-center">
-        <button className="bg-primary-dark text-white w-full  py-2">
-          Invest Now
-        </button>
-      </div> */}
-    </div>
+    </>
   );
 };
 

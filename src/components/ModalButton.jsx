@@ -10,13 +10,13 @@ const ModalButton = () => {
     setIsModalOpen(true);
   };
   return (
-    <div className="text-center mt-10">
-      <p className=" text-4xl">
-        I want to speak to fund manager before investing.
+    <div className="text-center  mt-10">
+      <p className="sophia-pro-font text-xl">
+        Do you want to speak to fund manager before investing?
       </p>
       <button
         onClick={openModal}
-        className="bg-black text-3xl text-white py-4 px-10 my-5 hover:bg-gray-800 transition-colors "
+        className="bg-red-600 sm:text-md sophia-pro-font text-white py-3 px-8 my-5 hover:bg-red-500 transition-colors "
       >
         Talk to a Fund Manager
       </button>

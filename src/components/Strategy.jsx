@@ -28,16 +28,16 @@ const StrategyComponent = ({ strategyData }) => {
   } = strategyData;
 
   return (
-    <div className="mx-auto graphik-font-regular mt-10">
-      <Container>
+    <Container>
+      <div className="mx-auto sophia-pro-font mt-10">
         <div className="bg-white rounded-b-3xl py-12 md:py-5">
           <div className="flex flex-col sm:flex-row justify-between items-start mx-auto px-4 sm:px-6 lg:px-6">
             <div className="pt-16 w-full">
-              <h2 className="text-4xl sm:text-6xl graphik- mb-2 text-primary-dark text-center ">
+              <h2 className="text-xl sm:text-5xl sophia-pro-font font-bold  mb-2 text-primary-dark text-center ">
                 <span className="block">{title}</span>
               </h2>
               <div
-                className="text-center text-4xl  lg:px-32"
+                className="text-center text-xl  lg:px-32"
                 dangerouslySetInnerHTML={{ __html: description }}
               ></div>
             </div>
@@ -48,28 +48,30 @@ const StrategyComponent = ({ strategyData }) => {
           <PerformanceChart strategy={strategyCode} />
         </div>
 
-        <div className="p-10 border mt-10 border-black">
-          <div className=" mx-auto">
-            <h2 className="text-6xl  text-[#151E28] text-center mb-8">
+        <div className="p-4 sm:p-6 md:p-14 mt-6 sm:mt-10">
+          <div className="mx-auto ">
+            <h2 className="text-xl sm:text-xl md:text-xl lg:text-4xl font-black text-[#151E28] text-center mb-4 sm:mb-8">
               How Our Strategy Works
             </h2>
-            <p className="text-center text-gray-600 sm:px-20 mb-10 text-4xl">
+            <p className="text-center text-gray-600 px-2 sm:px-10 md:px-20 mb-6 sm:mb-10 text-base sm:text-xl md:text-xl lg:text-lg">
               Understand the step-by-step process we use to identify promising
               investment opportunities and manage your portfolio.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 minion-pro-font gap-4 sm:gap-8">
               {steps.map((step, index) => (
-                <div key={index} className="bg-white border border-black p-6">
-                  <div className="flex items-center justify-center w-16 h-16 rounded-full bg-gray-200 mb-4">
+                <div key={index} className="bg-[#fafafa] p-4 sm:p-14">
+                  <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gray-200 mb-4">
                     <FontAwesomeIcon
                       icon={step.icon}
-                      className="text-2xl text-[#151E28]"
+                      className="text-xl sm:text-xl text-[#151E28]"
                     />
                   </div>
-                  <h3 className="text-4xl  text-[#151E28] mb-2">
+                  <h3 className="text-xl sm:text-xl font-bold sophia-pro-font  text-[#151E28] mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-gray-600 text-3xl">{step.description}</p>
+                  <p className="text-gray-600 text-base sm:text-lg ">
+                    {step.description}
+                  </p>
                 </div>
               ))}
             </div>
@@ -114,18 +116,22 @@ const StrategyComponent = ({ strategyData }) => {
         <div>
           <ModalButton />
         </div>
-        <div className="border border-black mt-10 p-10">
-          <h2 className="text-5xl   text-[#151E28] text-center mb-8">FAQ's</h2>
-          <div className="space-y-4">
+        <div className="mt-6 sm:mt-32 mb-20 p-4 sm:p-6 md:p-14">
+          <h2 className="text-xl sm:text-xl md:text-4xl font-black sophia-pro-font text-[#151E28] text-center mb-4 sm:mb-8">
+            FAQ's
+          </h2>
+          <div className="space-y-2 sm:space-y-4 mx-auto">
             {faqItems.map((item, index) => (
-              <div key={index} className="border border-black bg-white">
+              <div key={index} className=" bg-white border">
                 <div
-                  className="flex justify-between items-center p-4 cursor-pointer"
+                  className="flex justify-between  items-center p-3 sm:p-4 cursor-pointer"
                   onClick={() => handleAccordionToggle(index)}
                 >
-                  <h3 className="text-lg  text-[#151E28]">{item.question}</h3>
+                  <h3 className="text-base sophia-pro-font font-medium sm:text-lg md:text-xl text-[#151E28] pr-4">
+                    {item.question}
+                  </h3>
                   <span
-                    className={`text-[#151E28]  transition-transform duration-300 ${
+                    className={`text-[#151E28] text-xl sm:text-xl  transition-transform duration-300 ${
                       activeIndex === index ? "transform rotate-180" : ""
                     }`}
                   >
@@ -133,7 +139,7 @@ const StrategyComponent = ({ strategyData }) => {
                   </span>
                 </div>
                 {activeIndex === index && (
-                  <div className="p-4 bg-gray-100 text-gray-600">
+                  <div className="p-3 sm:p-4 bg-[#fafafa] minion-pro-font text-black text-sm sm:text-lg">
                     {item.answer}
                   </div>
                 )}
@@ -143,8 +149,8 @@ const StrategyComponent = ({ strategyData }) => {
         </div>
 
         {/* <RelatedArticles strategySlug={strategySlug} limit={3} /> */}
-      </Container>
-    </div>
+      </div>
+    </Container>
   );
 };
 

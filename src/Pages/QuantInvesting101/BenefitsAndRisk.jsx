@@ -3,7 +3,7 @@ import React from "react";
 const BenefitsAndRisk = () => {
   return (
     <div className=" mx-auto p-6 bg-white shadow-md rounded-lg">
-      <h1 className="text-center text-3xl  text-gray-800">
+      <h1 className="text-center text-xl  text-gray-800">
         Quantitative Investment: Benefits and Risks
       </h1>
 

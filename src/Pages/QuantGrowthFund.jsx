@@ -12,7 +12,7 @@ const QuantGrowthFund = () => {
   const strategyData = {
     title: "Quality Fund",
     description:
-      "<p class='mb-4'>Invest in quality business. Get quality results.</p>This strategy invests in 30 Quality businesses. (Quality Business - A company that generates a high return on invested capital). Principle - In the long run the stock price always matches the business performance.",
+      "<p class='mb-4 sophia-pro-font '>Invest in quality business. Get quality results.</p> <p class='minion-pro-font'>This strategy invests in 30 Quality businesses. (Quality Business - A company that generates a high return on invested capital). Principle - In the long run the stock price always matches the business performance.</p>",
     strategyCode: "QGF",
     strategySlug: "quant-growth-fund",
     pptLink: "/Quant Growth Fund Feb.pdf",

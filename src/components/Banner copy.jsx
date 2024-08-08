@@ -45,7 +45,7 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="relative rounded-b-[3rem] min-h-screen graphik-font-regular flex justify-center overflow-hidden">
+    <div className="relative rounded-b-[3rem] min-h-screen sophia-pro-font flex justify-center overflow-hidden">
       {/* Background SVG */}
 
       {/* Container for content */}
@@ -57,7 +57,7 @@ const Banner = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-3xl text-primary md:text-4xl lg:text-5xl  mb-6"
+                className="text-xl text-primary md:text-xl lg:text-xl  mb-6"
               >
                 The best investments are <br />{" "}
                 <span className="text-primary-dark px-2 rounded">

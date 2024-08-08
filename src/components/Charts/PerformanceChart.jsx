@@ -7,6 +7,7 @@ import fetchStrategyData from "../api/getData";
 import HoldingDistribution from "./HoldingDistribution";
 import Modal from "../Modal";
 import BookAMeet from "../../Pages/BookAMeet";
+import { Link } from "react-router-dom";
 
 const PerformanceChart = ({ strategy }) => {
   const [chartOptions, setChartOptions] = useState(null);
@@ -174,7 +175,7 @@ const PerformanceChart = ({ strategy }) => {
         {
           name: strategy,
           data: strategyValues,
-          color: "rgba(26,175,86)",
+          color: "#9ddd55",
           lineWidth: 1,
           marker: { enabled: false },
           type: "line",
@@ -182,7 +183,7 @@ const PerformanceChart = ({ strategy }) => {
         {
           name: "Nifty 50",
           data: niftyValues,
-          color: "rgba(70,130,180)",
+          color: "#000",
           lineWidth: 2,
           marker: { enabled: false },
           type: "line",
@@ -213,7 +214,7 @@ const PerformanceChart = ({ strategy }) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="lg:w-full border p-14 border-black sm:pb-10">
+      <div className="lg:w-full  p-14  sm:pb-10">
         <Tabs value="chart1">
           <div className="flex flex-col lg:flex-row gap-2 lg:p-2">
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 gap-5 w-full items-center">
@@ -223,10 +224,10 @@ const PerformanceChart = ({ strategy }) => {
                     <button
                       key={range}
                       onClick={() => handleTimeRangeChange(range)}
-                      className={`px-5 py-2 text-sm ${
+                      className={`px-5 border py-2 text-sm ${
                         activeButton === range
-                          ? "bg-black text-white"
-                          : "bg-white text-black border border-black"
+                          ? "bg-red-600 text-white"
+                          : "bg-white text-black "
                       }`}
                     >
                       {range}
@@ -238,17 +239,19 @@ const PerformanceChart = ({ strategy }) => {
                 <input
                   type="date"
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="border border-black text-gray-900 text-xs sm:text-sm py-2 px-3"
+                  className=" text-gray-900 border text-xs sm:text-sm py-2 px-3"
                 />
                 <input
                   type="date"
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="border border-black text-gray-900 text-xs sm:text-sm py-2 px-3"
+                  className=" text-gray-900 border text-xs sm:text-sm py-2 px-3"
                 />
               </div>
-              <div className="text-right sm:ml-auto">
-                <p className="text-6xl">{strategyCagr}</p>
-                <p className="text-right text-4xl">{timeRange} CAGR</p>
+              <div className="text-right  sm:ml-auto">
+                <p className="text-5xl sophia-pro-font">{strategyCagr}</p>
+                <p className="text-right sophia-pro-font text-xl">
+                  {timeRange} CAGR
+                </p>
               </div>
             </div>
           </div>
@@ -265,14 +268,22 @@ const PerformanceChart = ({ strategy }) => {
           </TabsBody>
         </Tabs>
       </div>
-      <div className="flex flex-row justify-between items-stretch gap-4 mt-10 flex-grow">
-        <div className="flex-1">
-          <Calculator strategy={strategy.toLowerCase()} />
+      <div className="flex flex-col  justify-center  md:p-16   gap-20 mt-10 flex-grow">
+        <div className="flex-1  ">
+          <Calculator strategy={strategy} />
         </div>
-        <div className="flex-1">
-          {(strategy === "QGF" || strategy === "QMF") && (
-            <HoldingDistribution strategy={strategy} />
-          )}
+        <div className="text-center mx-auto  w-full bg-[#fafafa] p-24 mt-8 md:my-32">
+          <p className="my-4 text-xl sophia-pro-font font-black  md:text-xl lg:text-3xl">
+            Not sure which strategy is right for you? <br />
+            <span className="minion-pro-font font-normal text-xl">
+              Sign Up to track our live portfolio.
+            </span>
+          </p>
+          <Link target="_blank" to={"https://dashboard.qodeinvestments.com"}>
+            <button className="bg-red-600 text-lg sophia-pro-font md:text-xl lg:text-md text-white py-3 md:py-4 lg:py-4 px-6 md:px-8 lg:px-6 mt-5 hover:bg-red-500 transition-colors">
+              Sign Up
+            </button>
+          </Link>
         </div>
       </div>
     </div>

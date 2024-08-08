@@ -1,59 +1,103 @@
-import React, { useState, useEffect } from "react";
-import { createClient } from "@sanity/client";
-import { PortableText } from "@portabletext/react";
-import imageUrlBuilder from "@sanity/image-url";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faL, faRss } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookF,
   faLinkedinIn,
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
-import { CustomSpinner } from "../components/Spinner";
-import ImageComponent from "../components/BlogImages";
+import { faRss } from "@fortawesome/free-solid-svg-icons";
 
-const client = createClient({
-  projectId: "8pot9lfd",
-  dataset: "production",
-  useCdn: true,
-});
-
-const builder = imageUrlBuilder(client);
-function urlFor(source) {
-  return builder.image(source);
-}
+// Dummy data for a single blog post
+const dummyPost = {
+  title: "The Future of AI in Healthcare",
+  body: [
+    {
+      _type: "block",
+      style: "normal",
+      children: [
+        {
+          _type: "span",
+          text: "Artificial Intelligence is revolutionizing the healthcare industry. From diagnosis to treatment planning, AI is making significant strides in improving patient care and outcomes.",
+        },
+      ],
+    },
+    {
+      _type: "block",
+      style: "h2",
+      children: [
+        {
+          _type: "span",
+          text: "AI in Diagnosis",
+        },
+      ],
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [
+        {
+          _type: "span",
+          text: "AI algorithms can analyze medical images with incredible accuracy, often outperforming human radiologists in detecting certain conditions.",
+        },
+      ],
+    },
+    {
+      _type: "block",
+      style: "h2",
+      children: [
+        {
+          _type: "span",
+          text: "Personalized Treatment Plans",
+        },
+      ],
+    },
+    {
+      _type: "block",
+      style: "normal",
+      children: [
+        {
+          _type: "span",
+          text: "By analyzing vast amounts of patient data, AI can help create highly personalized treatment plans, taking into account individual genetic makeup, lifestyle factors, and medical history.",
+        },
+      ],
+    },
+    {
+      _type: "block",
+      style: "blockquote",
+      children: [
+        {
+          _type: "span",
+          text: "The integration of AI in healthcare is not about replacing doctors, but about augmenting their capabilities and improving patient outcomes.",
+        },
+      ],
+    },
+  ],
+  publishedAt: "2024-08-01",
+  author: {
+    name: "Dr. Jane Smith",
+    bio: [
+      {
+        _type: "block",
+        children: [
+          {
+            _type: "span",
+            text: "AI researcher and healthcare consultant with over 15 years of experience in the field.",
+          },
+        ],
+      },
+    ],
+    authorImage: "https://example.com/jane-smith.jpg",
+  },
+  mainImage: "https://example.com/ai-healthcare.jpg",
+};
 
 const BlogDetails = () => {
-  const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true); // Add loading state
-
   const { slug } = useParams();
-  useEffect(() => {
-    const fetchPostDetails = async () => {
-      const query = `*[_type == 'post' && slug.current == $slug][0] {
-        title,
-        body,
-        publishedAt,
-        author->{
-          name,
-          bio,
-          "authorImage": image.asset->url
-        },
-        mainImage,
-      }`;
-      const params = { slug };
-      const result = await client.fetch(query, params);
-      setPost(result);
-      setLoading(false);
-    };
 
-    fetchPostDetails();
-  }, [slug]);
-
-  if (loading) {
-    return <CustomSpinner />;
-  }
+  // In a real application, you would fetch the post based on the slug
+  // For this example, we're using the dummy data regardless of the slug
+  const post = dummyPost;
 
   function formatDate(dateString) {
     const date = new Date(dateString);
@@ -65,116 +109,72 @@ const BlogDetails = () => {
   }
 
   function calculateReadDuration(blocks, wordsPerMinute = 200) {
-    if (!Array.isArray(blocks) || blocks.length === 0) {
-      return "0 minutes";
-    }
-
-    const textContent = blocks
-      .filter(
-        (block) => block._type === "block" && Array.isArray(block.children)
-      )
-      .map((block) =>
-        block.children
-          .filter(
-            (child) => child._type === "span" && typeof child.text === "string"
-          )
-          .map((child) => child.text)
-          .join(" ")
-      )
-      .join(" ");
-
-    if (!textContent.trim().length) {
-      return "0 minutes";
-    }
-
-    const words = textContent
-      .replace(/[^a-zA-Z0-9\s]/g, "")
-      .split(/\s+/)
-      .filter(Boolean);
-    const wordCount = words.length;
-    const readingTimeMinutes = wordCount / wordsPerMinute;
-    const roundedMinutes = Math.round(readingTimeMinutes);
-
-    if (roundedMinutes === 0) {
-      return "less than a min";
-    } else if (roundedMinutes === 1) {
-      return "1 min";
-    } else {
-      return `${roundedMinutes} min`;
-    }
+    // ... (keep the existing function)
   }
 
   const duration = calculateReadDuration(post.body);
-  // console.log(duration);
-
-  console.log(post);
 
   return (
-    <div className="mx-auto px-4 py-12  graphik-font-regular">
-      <div className="rounded-lg max-w-5xl mx-auto p-8">
+    <div className="mx-auto px-4 py-12 sophia-pro-font">
+      <div className="max-w-4xl mx-auto p-8">
         <div className="mt-20 mb-2 text-center">
-          <p className="text-primary ">
+          <p className="text-primary">
             {formatDate(post.publishedAt)} &#x2022; {duration} read
           </p>
         </div>
-        <h1 className="text-4xl graphik- text-center  mb-12">{post.title}</h1>
+        <h1 className="text-5xl sophia-pro-bold-font mb-12">{post.title}</h1>
 
-        {/* <img
-          src={urlFor(post.mainImage).url()}
+        <img
+          src={post.mainImage}
           alt={post.title}
           className="w-full object-cover h-auto mb-8"
-        /> */}
-        <PortableText
-          value={post.body}
-          components={{
-            block: {
-              h1: ({ children }) => (
-                <h1 className="text-4xl  my-3 text-[#151e29]">{children}</h1>
-              ),
-              h2: ({ children }) => (
-                <h2 className="text-3xl  my-2 text-[#151e29]">{children}</h2>
-              ),
-              h3: ({ children }) => (
-                <h3 className="text-2xl  my-1 text-[#151e29]">{children}</h3>
-              ),
-              normal: ({ children }) => (
-                <p className="text-md leading-relaxed mb-2">{children}</p>
-              ),
-              blockquote: ({ children }) => (
-                <blockquote className="italic border-l-4 border-gray-300 pl-4 my-4">
-                  {children}
-                </blockquote>
-              ),
-            },
-            list: {
-              bullet: ({ children }) => (
-                <ul className="list-disc pl-5 my-3">{children}</ul>
-              ),
-              number: ({ children }) => (
-                <ol className="list-decimal pl-5 my-3">{children}</ol>
-              ),
-              checkmarks: ({ children }) => (
-                <ol className="list-none pl-5 my-3">
-                  {children.map((child) => (
-                    <li key={child.key}>✅ {child}</li>
-                  ))}
-                </ol>
-              ),
-            },
-            listItem: {
-              bullet: ({ children }) => <li className="ml-2">{children}</li>,
-              number: ({ children }) => <li className="ml-2">{children}</li>,
-              checkmarks: ({ children }) => (
-                <li className="ml-2">✅ {children}</li>
-              ),
-            },
-            types: {
-              // image: ImageComponent,
-            },
-          }}
         />
 
-        {/* {post.author && (
+        {post.body.map((block, index) => {
+          switch (block.style) {
+            case "h1":
+              return (
+                <h1 key={index} className="text-xl my-3 text-[#151e29]">
+                  {block.children[0].text}
+                </h1>
+              );
+            case "h2":
+              return (
+                <h2 key={index} className="text-xl my-2 text-[#151e29]">
+                  {block.children[0].text}
+                </h2>
+              );
+            case "h3":
+              return (
+                <h3 key={index} className="text-xl my-1 text-[#151e29]">
+                  {block.children[0].text}
+                </h3>
+              );
+            case "normal":
+              return (
+                <p key={index} className="text-xl leading-relaxed my-5">
+                  {block.children[0].text}
+                </p>
+              );
+            case "blockquote":
+              return (
+                <blockquote
+                  key={index}
+                  className="border-l-4 text-xl pl-4 my-20"
+                >
+                  {block.children[0].text}
+                </blockquote>
+              );
+            default:
+              return (
+                <p key={index} className="text-xl leading-relaxed my-5">
+                  {block.children[0].text}
+                </p>
+              );
+          }
+        })}
+
+        {post.author && (
           <div className="flex items-center mt-8 bg-gray-200 p-4 rounded-lg">
             {post.author.authorImage && (
               <img
@@ -184,13 +184,14 @@ const BlogDetails = () => {
               />
             )}
             <div>
-              <p className="text-lg ">{post.author.name}</p>
-              {post.author.bio && <PortableText value={post.author.bio} />}
+              <p className="text-lg">{post.author.name}</p>
+              {post.author.bio && <p>{post.author.bio[0].children[0].text}</p>}
             </div>
           </div>
-        )} */}
+        )}
+
         <div className="bg-white my-5 p-10 rounded-lg shadow-md text-center">
-          <h3 className="text-2xl  text-black">Subscribe</h3>
+          <h3 className="text-xl text-black">Subscribe</h3>
           <p className="text-gray-400 mb-4">
             Subscribe to our newsletter to get the latest updates:
           </p>
@@ -207,7 +208,7 @@ const BlogDetails = () => {
               <p>Subscribe</p>
             </button>
           </form>
-          <h3 className="text-lg  text-black mt-8 mb-4">Follow Us</h3>
+          <h3 className="text-lg text-black mt-8 mb-4">Follow Us</h3>
           <div className="flex justify-center space-x-4">
             <a href="#" className="text-gray-400 hover:text-gray-200">
               <FontAwesomeIcon icon={faTwitter} />

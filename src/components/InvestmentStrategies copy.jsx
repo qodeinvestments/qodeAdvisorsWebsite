@@ -14,11 +14,11 @@ const InvestmentStrategies = () => {
   return (
     <GrayContainer>
       <Container>
-        <div className="text-center graphik-font-regular my-32">
+        <div className="text-center sophia-pro-font my-32">
           <p className="uppercase text-[12px] inter-font tracking-widest  text-gray-400 ">
             Qode Your Future: Data-Driven Decisions for a Quantum Leap.
           </p>
-          <h2 className="text-4xl  mt-4 py-4 text-dark">
+          <h2 className="text-xl  mt-4 py-4 text-dark">
             Our Investment Strategies
           </h2>
           <p className="text-primary  mt-4 text-md mx-auto max-w-4xl">
@@ -36,7 +36,7 @@ const InvestmentStrategies = () => {
                 scale: 1,
                 speed: 450,
               }}
-              className=" flex flex-col bg-black/70 rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 w-full lg:w-1/2"
+              className=" flex flex-col bg-red-600/70 rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 w-full lg:w-1/2"
             >
               <div className="p-6 relative">
                 {/* <img
@@ -44,7 +44,7 @@ const InvestmentStrategies = () => {
                   alt="Logo 1"
                   className="w-10 h-10 mr-4"
                 /> */}
-                <h3 className="text-2xl text-white text-left  mt-4">
+                <h3 className="text-xl text-white text-left  mt-4">
                   Quant Growth Fund
                 </h3>
                 {/* <div className="absolute top-4 right-4 flex space-x-2">

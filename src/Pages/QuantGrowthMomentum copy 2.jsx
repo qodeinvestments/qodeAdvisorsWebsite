@@ -78,7 +78,7 @@ const MomentumTabs = () => {
     <div className="mx-auto inter-font">
       <div className=" bg-primarypy-12 md:py-20 inter-font">
         <div className="container mx-auto px-4 sm:px-6 lg:px-36">
-          <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
+          <h2 className="text-xl  text-white sm:text-xl">
             <span className="block">Welcome to</span>
             <span className="block">Quant Growth Momentum</span>
           </h2>
@@ -92,7 +92,7 @@ const MomentumTabs = () => {
         <div className="bg-white inter-font py-12 md:py-20">
           <div className="">
             <div className="lg:flex lg:items-center lg:justify-between">
-              <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+              <h2 className="text-xl  tracking-tight text-gray-900 sm:text-xl">
                 <span className="block">Overview</span>
               </h2>
             </div>

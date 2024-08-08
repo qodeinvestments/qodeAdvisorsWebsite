@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { Spinner } from "@material-tailwind/react";
+import { Link } from "react-router-dom";
 
 const HoldingDistribution = ({ strategy }) => {
   const [chartOptions, setChartOptions] = useState(null);
@@ -159,42 +160,44 @@ const HoldingDistribution = ({ strategy }) => {
   }
 
   return (
-    <div className="flex flex-col gap-4 justify-start relative">
-      <div className="flex flex-col justify-between border border-black p-8 pb-0 items-start gap-2">
-        <h2 className="text-5xl text-[#151E28] mb-2">Holding Distribution</h2>
-        <p className="text-base sm:text-4xl text-black">
+    <div className="flex flex-col gap-4 bg-[#fafafa] p-36 justify-center ">
+      <div className="flex flex-col justify-between  text-start pb-0 items-start gap-2">
+        <h2 className="text-xl sm:text-3xl font-bold text-[#151E28] mb-2">
+          Holding Distribution
+        </h2>
+        <p className="text-base sm:text-xl text-black">
           Our {strategyName} Strategy's asset allocation.
         </p>
         <div className="text-start">
           <HighchartsReact highcharts={Highcharts} options={chartOptions} />
         </div>
       </div>
-      <div className="border p-10 border-black">
-        <h1 className="text-5xl mb-10">Our Stock Holdings</h1>
-        <div className="relative text-center flex items-center justify-center bg-black/20  ">
+      <div className="border p-10 ">
+        <h1 className="text-xl mb-10">Our Stock Holdings</h1>
+        <div className="relative text-center flex items-center justify-center bg-red-600/20  ">
           <table className="border-collapse w-full blur-sm   ">
             <thead>
               <tr>
-                <th className="border border-black px-4 py-2">Company</th>
-                <th className="border border-black px-4 py-2">Quantity</th>
-                <th className="border border-black px-4 py-2">Value</th>
+                <th className=" px-4 py-2">Company</th>
+                <th className=" px-4 py-2">Quantity</th>
+                <th className=" px-4 py-2">Value</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="border border-black px-4 py-2">Company A</td>
-                <td className="border border-black px-4 py-2">100</td>
-                <td className="border border-black px-4 py-2">$10,000</td>
+                <td className=" px-4 py-2">Company A</td>
+                <td className=" px-4 py-2">100</td>
+                <td className=" px-4 py-2">$10,000</td>
               </tr>
               <tr>
-                <td className="border border-black px-4 py-2">Company B</td>
-                <td className="border border-black px-4 py-2">200</td>
-                <td className="border border-black px-4 py-2">$20,000</td>
+                <td className=" px-4 py-2">Company B</td>
+                <td className=" px-4 py-2">200</td>
+                <td className=" px-4 py-2">$20,000</td>
               </tr>
               <tr>
-                <td className="border border-black px-4 py-2">Company C</td>
-                <td className="border border-black px-4 py-2">300</td>
-                <td className="border border-black px-4 py-2">$30,000</td>
+                <td className=" px-4 py-2">Company C</td>
+                <td className=" px-4 py-2">300</td>
+                <td className=" px-4 py-2">$30,000</td>
               </tr>
             </tbody>
           </table>
@@ -202,9 +205,11 @@ const HoldingDistribution = ({ strategy }) => {
           <div className="grid grid-cols-1 gap-4">
             <div className="absolute top-0 left-0 w-full h-full bg-white bg-opacity-30 flex flex-col justify-center items-center">
               <div className="w-full">Sign Up to see view our holdings</div>
-              <button className="bg-black text-white font-bold py-2 px-4 rounded">
-                Sign Up
-              </button>
+              <Link to={"https://dashboard.qodeinvestments.com"}>
+                <button className="bg-red-600 text-white font-bold py-2 px-4 rounded">
+                  Sign Up
+                </button>
+              </Link>
             </div>
           </div>
         </div>

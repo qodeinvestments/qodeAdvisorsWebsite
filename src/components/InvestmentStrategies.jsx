@@ -10,6 +10,8 @@ import AreaChart from "./Charts/AreaChart";
 import { Link } from "react-router-dom";
 import Container from "./container/Container";
 import GrayContainer from "./container/GrayContainer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 const InvestmentStrategies = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -23,93 +25,87 @@ const InvestmentStrategies = () => {
   };
 
   return (
-    <GrayContainer>
+    <>
       {/* <p className="uppercase text-[12px] text-center pt-10 inter-font tracking-widest  text-gray-400">
           Qode Your Future: Data-Driven Decisions for a Quantum Leap.
         </p> */}
-      <div className=" border-black graphik-font-regular   flex  justify-start  p-10 flex-row">
-        <div className="mb-8 mr-20 lg:mb-0 w-1/2">
-          <h2 className=" text-6xl  mt-8   playfair-display-font text-start text-dark">
-            Strategies
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 gap-10">
-          <div className="bg-white  border border-black p-5">
-            <h3 className="text-5xl  mb-4">Quality Fund </h3>
-            <p className="mb-6 text-3xl">
-              <span className="text-4xl">
-                Invest in quality business. Get quality results.
-              </span>{" "}
-              <br />
-              <br />
-              This strategy invests in 30 Quality businesses. (Quality Business
-              - A company that generates a high return on invested capital).
-              Principle - In the long run the stock price always matches the
-              business performance
-            </p>
-            <div className="flex items-end justify-between">
-              <p className="text-6xl">
-                23.4%
-                <span className="text-sm ml-2">CAGR</span>
-              </p>
-
-              <Link
-                to={"/strategies/quant-growth-fund"}
-                className=" py-3    mt-5 text-center w-32  border border-black  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
-              >
-                <span className="relative z-10">Know more</span>
+      <div className="sophia-pro-font flex justify-center py-10 md:py-20 flex-col md:p-16 md:flex-row">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 ">
+          <div className="text-center md:text-left">
+            <h2 className="text-xl md:text-xl lg:text-2xl font-bold mt-4 md:mt-8 text-dark">
+              Strategies
+            </h2>
+            <p className="my-2 text-lg md:text-xl">
+              View all our strategies.{" "}
+              <Link to={"/strategies"} className="text-red-600">
+                <span className="text-red-600">
+                  Here &nbsp; <FontAwesomeIcon icon={faArrowRight} />
+                </span>
               </Link>
-            </div>
-          </div>
-
-          <div className="bg-white  border border-black p-5">
-            <h3 className="text-5xl  mb-4">High-Return & Churn Fund</h3>
-            <p className="mb-6 text-3xl">
-              <span className="text-4xl"> Buy high sell higher. </span>
-              <br /> <br />
-              This strategy invests in 30 businesses whose stock price has grown
-              significantly and sells it before they start falling. Principle -
-              The stock price tells the story before the actual story unfolds.
             </p>
-            <div className="flex items-end justify-between">
-              <p className="text-6xl">
-                28.5%
-                <span className="text-sm ml-2">CAGR</span>
-              </p>
-
-              <Link
-                to={"/strategies/quant-growth-momentum"}
-                className=" py-3    mt-5 text-center w-32  border border-black  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
-              >
-                <span className="relative z-10">Know more</span>
-              </Link>
-            </div>
           </div>
-
-          <div className="bg-white  border border-black p-5">
-            <h3 className="text-5xl  mb-4">Steady Fund </h3>
-            <p className="mb-6 text-3xl">
-              <span className="text-4xl">Slow but Steady.</span> <br /> <br />
-              This strategy invests in the 30 most stable stocks in the market.
-              This strategy outperforms the Index with considerably lower risk.
-            </p>
-            <div className="flex items-end justify-between">
-              <p className="text-6xl">
-                23%
-                <span className="text-sm ml-2">CAGR</span>
-              </p>
-
-              <Link
-                to={"/strategies/low-vol-momentum"}
-                className=" py-3    mt-5 text-center w-32  border border-black  hover:bg-white/10 transition duration-300 text-black hover:before:bg-black  relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-black before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full"
-              >
-                <span className="relative z-10">Know more</span>
-              </Link>
+          <Link to={"/strategies/quant-growth-fund"} className="text-black">
+            <div className="bg-white hover:shadow-xl transition-all px-8 md:px-10 lg:px-14 py-10 md:py-12 lg:py-16 h-[220px] group overflow-hidden relative">
+              <div className="transition-all duration-300 transform group-hover:-translate-y-5">
+                <h3 className="font-bold mb-2 md:mb-4 text-xl md:text-xl lg:text-xl">
+                  Quality Fund
+                </h3>
+                <p className="text-lg md:text-xl lg:text-xl">
+                  <span className="text-sm md:text-base lg:text-lg">
+                    Invest in quality business. Get quality results.
+                  </span>
+                </p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 px-8 md:px-10 lg:px-14 py-4 md:py-6 lg:py-10 transition-all duration-300 opacity-0 group-hover:opacity-100">
+                <span className="relative z-10 text-red-600">
+                  Explore <FontAwesomeIcon icon={faArrowRight} />
+                </span>
+              </div>
             </div>
-          </div>
+          </Link>
+
+          <Link to={"/strategies/quant-growth-momentum"} className="text-black">
+            <div className="bg-white hover:shadow-xl transition-all px-8 md:px-10 lg:px-14 py-10 md:py-12 lg:py-16 h-[220px] group overflow-hidden relative">
+              <div className="transition-all duration-300 transform group-hover:-translate-y-5">
+                <h3 className="font-bold mb-2 md:mb-4 text-xl md:text-xl lg:text-xl">
+                  High-Return & Churn Fund
+                </h3>
+                <p className="text-lg md:text-xl lg:text-xl">
+                  <span className="text-sm md:text-base lg:text-lg">
+                    Buy high sell higher
+                  </span>
+                </p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 px-8 md:px-10 lg:px-14 py-4 md:py-6 lg:py-10 transition-all duration-300 opacity-0 group-hover:opacity-100">
+                <span className="relative z-10 text-red-600">
+                  Explore <FontAwesomeIcon icon={faArrowRight} />
+                </span>
+              </div>
+            </div>
+          </Link>
+
+          <Link to={"/strategies/low-vol-momentum"} className="text-black">
+            <div className="bg-white hover:shadow-xl transition-all px-8 md:px-10 lg:px-14 py-10 md:py-12 lg:py-16 h-[220px] group overflow-hidden relative">
+              <div className="transition-all duration-300 transform group-hover:-translate-y-5">
+                <h3 className="font-bold mb-2 md:mb-4 text-xl md:text-xl lg:text-xl">
+                  Steady Fund
+                </h3>
+                <p className="text-lg md:text-xl lg:text-xl">
+                  <span className="text-sm md:text-base lg:text-lg">
+                    Slow but Steady
+                  </span>
+                </p>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 px-8 md:px-10 lg:px-14 py-4 md:py-6 lg:py-10 transition-all duration-300 opacity-0 group-hover:opacity-100">
+                <span className="relative z-10 text-red-600">
+                  Explore <FontAwesomeIcon icon={faArrowRight} />
+                </span>
+              </div>
+            </div>
+          </Link>
         </div>
       </div>
-    </GrayContainer>
+    </>
   );
 };
 

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
+import MailerLite from "mailerlite-api-v2-node";
 const WeeklyNewsletter = () => {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -11,6 +11,20 @@ const WeeklyNewsletter = () => {
     setEmail("");
   };
 
+  const mailerLiteClient = new MailerLite(
+    process.env.REACT_APP_MAILERLITE_API_KEY
+  );
+  async function getAccountEmail() {
+    const { email } = await mailerLiteClient.getAccount();
+    return email;
+  }
+
+  useEffect(() => {
+    getAccountEmail().then((email) => {
+      console.log("Account email:", email);
+    });
+  }, []);
+
   const benefits = [
     "In-depth market trend analysis",
     "Exclusive quantitative research insights",
@@ -21,10 +35,10 @@ const WeeklyNewsletter = () => {
   ];
 
   return (
-    <div className="bg-gray-100 graphik-font-regular text-gray-900 min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+    <div className="bg-gray-100 sophia-pro-font text-gray-900 min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="my-10">
-          <h1 className="text-4xl mb-4   text-center">Qode Weekly Insights</h1>
+          <h1 className="text-xl mb-4   text-center">Qode Weekly Insights</h1>
           <div className="text-center mb-12">
             <p className="text-xl text-gray-700 mb-2">
               Harness the power of quantitative analysis for smarter investing
@@ -37,8 +51,8 @@ const WeeklyNewsletter = () => {
         </div>
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="md:flex">
-            <div className="md:w-1/2 p-8 bg-black text-white">
-              <h2 className="text-2xl  mb-6">Stay Ahead of the Markets</h2>
+            <div className="md:w-1/2 p-8 bg-red-600 text-white">
+              <h2 className="text-xl  mb-6">Stay Ahead of the Markets</h2>
               <ul className="space-y-4">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-center">
@@ -61,7 +75,7 @@ const WeeklyNewsletter = () => {
               </ul>
             </div>
             <div className="md:w-1/2 p-8">
-              <h2 className="text-2xl  mb-6">Subscribe to Our Newsletter</h2>
+              <h2 className="text-xl  mb-6">Subscribe to Our Newsletter</h2>
               {!subscribed ? (
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
@@ -83,7 +97,7 @@ const WeeklyNewsletter = () => {
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
+                    className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-300"
                   >
                     Subscribe Now
                   </button>
@@ -102,7 +116,7 @@ const WeeklyNewsletter = () => {
         </div>
 
         {/* <div className="mt-16">
-          <h2 className="text-2xl  mb-6 text-center">What Our Subscribers Say</h2>
+          <h2 className="text-xl  mb-6 text-center">What Our Subscribers Say</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {

@@ -64,9 +64,9 @@ const FAQs = () => {
   ];
 
   return (
-    <div className="bg-gray-50 graphik-font-regular text-gray-900 min-h-screen">
+    <div className="bg-gray-50 sophia-pro-font text-gray-900 min-h-screen">
       <div className="bg-gray-100 text-black py-24 px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-4xl  mb-4">Frequently Asked Questions</h1>
+        <h1 className="text-xl  mb-4">Frequently Asked Questions</h1>
         <p className="max-w-3xl mx-auto text-xl">
           Find answers to common questions about Qode's investment approach and
           services.

@@ -28,9 +28,9 @@ const InvestmentStrategies = () => {
         <p className="uppercase text-[12px] text-center pt-10 inter-font tracking-widest  text-gray-400">
           Qode Your Future: Data-Driven Decisions for a Quantum Leap.
         </p>
-        <div className="text-center graphik-font-regular mt-10 mb-32 flex flex-col lg:flex-row">
+        <div className="text-center sophia-pro-font mt-10 mb-32 flex flex-col lg:flex-row">
           <div className="lg:w-1/2 px-4 lg:px-0 mb-8 lg:mb-0">
-            <h2 className="text-3xl lg:text-5xl  mt-8 py-4 playfair-display-font text-start text-dark">
+            <h2 className="text-xl lg:text-xl  mt-8 py-4 sophia-pro-font text-start text-dark">
               Strategies
             </h2>
             <p className="text-primary text-start text-base lg:text-lg  text-md mx-auto mb-8">
@@ -91,10 +91,10 @@ const InvestmentStrategies = () => {
                   scale: 1,
                   speed: 450,
                 }}
-                className="flex flex-col py-6 lg:py-10 bg-black/70 rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 w-full"
+                className="flex flex-col py-6 lg:py-10 bg-red-600/70 rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 w-full"
               >
                 <div className="p-4 lg:p-6 relative">
-                  <h3 className="text-xl lg:text-2xl playfair-display-font text-white text-left  mt-4">
+                  <h3 className="text-xl lg:text-xl sophia-pro-font text-white text-left  mt-4">
                     Quant Growth Fund
                   </h3>
                 </div>
@@ -130,7 +130,7 @@ const InvestmentStrategies = () => {
                 className="bg-white flex py-6 lg:py-10 flex-col rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 w-full"
               >
                 <div className="p-4 lg:p-6 relative">
-                  <h3 className="text-xl lg:text-2xl playfair-display-font text-left  mt-4">
+                  <h3 className="text-xl lg:text-xl sophia-pro-font text-left  mt-4">
                     Quant Growth Momentum
                   </h3>
                 </div>

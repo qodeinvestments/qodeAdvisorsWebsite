@@ -58,8 +58,8 @@ const OurTeam = () => {
 
   return (
     <Container>
-      <div className="container graphik-font-regular mx-auto py-8  mt-16">
-        <h2 className="text-4xl inter-font  text-center mb-6">Our Team</h2>
+      <div className="container sophia-pro-font mx-auto py-8  mt-16">
+        <h2 className="text-xl inter-font  text-center mb-6">Our Team</h2>
         <p className="text-center text-gray-400 mb-12">
           We are Code Developers, Analysts, and Fund Managers dedicated to
           growing your money and optimizing your financial future. Using
@@ -79,7 +79,7 @@ const OurTeam = () => {
 
 const TeamMemberCard = ({ member }) => {
   return (
-    <div className="bg-white shadow-md graphik-font-regular  rounded-lg overflow-hidden">
+    <div className="bg-white shadow-md sophia-pro-font  rounded-lg overflow-hidden">
       <img
         src={member.image}
         alt={member.name}

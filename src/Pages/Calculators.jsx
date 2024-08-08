@@ -16,10 +16,10 @@ const StrategyTile = ({ title, link, description }) => (
 
 const Calculators = () => {
   return (
-    <div className="bg-white graphik-font-regular min-h-screen">
+    <div className="bg-white sophia-pro-font min-h-screen">
       <div className="bg-gray-100 text-center text-black py-44">
         <Container>
-          <h1 className="text-4xl  mb-4">Strategy Calculators</h1>
+          <h1 className="text-xl  mb-4">Strategy Calculators</h1>
           <p className="text-xl">
             Explore and calculate returns for various investment strategies
           </p>
@@ -28,7 +28,7 @@ const Calculators = () => {
 
       <Container>
         <div className="my-12">
-          <h2 className="text-2xl  text-gray-700 mb-6">Choose a Strategy</h2>
+          <h2 className="text-xl  text-gray-700 mb-6">Choose a Strategy</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {strategies.map((strategy) => (
               <StrategyTile

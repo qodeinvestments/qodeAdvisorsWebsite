@@ -1,9 +1,9 @@
 const Modal = ({ children, onClose }) => {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-gray-800 bg-opacity-60 flex items-center justify-center z-50">
       <div className="bg-white p-8 max-w-2xl w-full">
         <div className="flex justify-end">
-          <button onClick={onClose} className="text-2xl">
+          <button onClick={onClose} className="text-xl">
             &times;
           </button>
         </div>

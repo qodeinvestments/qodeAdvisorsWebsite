@@ -11,109 +11,68 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className=" bg-[#fcfcfd] border-t border-black relative py-12 graphik-font-regular ">
+    <footer className="bg-[#000] relative py-16 sm:py-24 md:py-28 graphik-">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 text-center md:grid-cols-3 gap-20 sm:gap-0">
+        <div className="flex justify-center items-start  gap-32 mb-8">
+          <div className="text-center sm:text-left col-span-1 sm:col-span-2  md:col-span-1">
+            <h2 className="text-xl sm:text-xl  playfair-display-font font-bold text-red-500 mb-4">
+              Qode
+            </h2>
+            <p className="text-base sm:text-lg max-w-xs mx-auto sm:mx-0 text-white">
+              2nd Floor, Tree Building, Raghuvanshi Mills Compound, Gandhi
+              Nagar, Upper Worli, Lower Parel, Mumbai, Maharashtra 400013
+            </p>
+          </div>
           <div>
-            {/* <img src={logo} alt="Company Logo" className="mb-4 w-32" /> */}
-            <h3 className="text-4xl  text-black  mb-4">Company</h3>
-            <ul className="text-3xl text-black ">
-              {/* <li className="mb-2 hover:text-primary-dark ">
-                <Link to={'/'}>About Us</Link>
-              </li> */}
-              {/* <li className="mb-2 hover:text-primary-dark ">
-                <Link to={"/about-us/our-team"}>Our Team</Link>
-              </li> */}
-              {/* <li className="mb-2 hover:text-primary-dark ">
-                <a href="#">Careers</a>
-              </li> */}
-              <li className="hover:text-primary-dark">
+            <h3 className="text-xl sm:text-xl font-semibold text-red-500 mb-4">
+              Company
+            </h3>
+            <ul className="text-base sm:text-lg text-white">
+              <li className="mb-2 hover:text-red-500">
                 <Link to={"/contact-us"}>Contact Us</Link>
               </li>
+              <li className="mb-2 hover:text-red-500">
+                <Link to={"/privacy-policy"}>Privacy Policy</Link>
+              </li>
+              <li className="mb-2 hover:text-red-500">
+                <Link to={"/terms-n-conditions"}>Terms and Conditions</Link>
+              </li>
+              <li className="mb-2 hover:text-red-500">
+                <Link to={"/disclosure"}>Disclosure</Link>
+              </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-4xl  text-[#171E27] mb-4">Strategies</h3>
-            <ul className="text-3xl text-black">
-              <li className="mb-2 hover:text-primary-dark">
-                <Link to={"/strategies/quant-growth-fund"}>Quality Fund</Link>{" "}
+            <h3 className="text-xl sm:text-xl font-semibold text-red-500 mb-4">
+              Strategies
+            </h3>
+            <ul className="text-base sm:text-lg text-white">
+              <li className="mb-2 hover:text-red-500">
+                <Link to={"/strategies/quant-growth-fund"}>Quality Fund</Link>
               </li>
-              <li className="mb-2 hover:text-primary-dark">
+              <li className="mb-2 hover:text-red-500">
                 <Link to={"/strategies/quant-growth-momentum"}>
                   High Return & Churn Fund
-                </Link>{" "}
+                </Link>
               </li>
-              <li className="mb-2 hover:text-primary-dark">
-                <Link to={"/strategies/low-vol-momentum"}>Steady Fund</Link>{" "}
+              <li className="mb-2 hover:text-red-500">
+                <Link to={"/strategies/low-vol-momentum"}>Steady Fund</Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="text-4xl  text-[#171E27] mb-4">Resources</h3>
-            <ul className="text-3xl text-black">
-              {/* <li className="mb-2 hover:text-primary-dark">
-                <Link to={'/blogs'}>Blog</Link>
-              </li>
-              <li className="mb-2 hover:text-primary-dark">
-                <a href="#">Whitepapers</a>
-              </li>
-              <li className="mb-2 hover:text-primary-dark">
-                <Link to={'/calculators'}>Calculators</Link>
-              </li> */}
-              <li className="hover:text-primary-dark">
+            <h3 className="text-xl sm:text-xl font-semibold text-red-500 mb-4">
+              Resources
+            </h3>
+            <ul className="text-base sm:text-lg text-white">
+              <li className="hover:text-red-500">
                 <Link to={"/faq"}>FAQs</Link>
               </li>
             </ul>
           </div>
-          {/* <div>
-            <h3 className="text-lg  text-[#171E27] mb-4">Subscribe</h3>
-            <p className="text-3xl text-black mb-4">
-              Subscribe to our newsletter to get the latest updates:
-            </p>
-            <form className="flex">
-              <input
-                type="email"
-                className="w-full px-4 py-2 rounded-l bg-white text-3xl text-black border border-gray-600"
-                placeholder="Enter your email"
-              />
-              <button
-                type="submit"
-                className="px-4 py-2 bg-primary hover:bg-primary-dark text-white rounded-r"
-              >
-                <FontAwesomeIcon icon={faEnvelope} />
-              </button>
-            </form>
-            <h3 className="text-lg  text-white mt-8 mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
-              <a
-                href="#"
-                className="text-3xl hover:text-primary-dark-dark text-black"
-              >
-                <FontAwesomeIcon icon={faTwitter} />
-              </a>
-              <a
-                href="#"
-                className="text-3xl hover:text-primary-dark-dark text-black"
-              >
-                <FontAwesomeIcon icon={faFacebookF} />
-              </a>
-              <a
-                href="#"
-                className="text-3xl hover:text-primary-dark-dark text-black"
-              >
-                <FontAwesomeIcon icon={faLinkedinIn} />
-              </a>
-              <a
-                href="#"
-                className="text-3xl hover:text-primary-dark-dark text-black"
-              >
-                <FontAwesomeIcon icon={faRss} />
-              </a>
-            </div>
-          </div> */}
         </div>
-        <div className="mt-8 border-t border-gray-700 pt-8">
-          <p className="text-3xl text-black text-center">
+        <div className="border-t border-gray-200 pt-8">
+          <p className="text-base sm:text-lg text-white text-center">
             &copy; {new Date().getFullYear()} Qode. All rights reserved.
           </p>
         </div>

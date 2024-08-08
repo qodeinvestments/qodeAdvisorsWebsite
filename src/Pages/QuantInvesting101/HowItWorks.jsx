@@ -5,7 +5,7 @@ const HowItWorks = () => {
   return (
     <div className="bg-white p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl  text-gray-800 mb-8 text-center">
+        <h1 className="text-xl  text-gray-800 mb-8 text-center">
           How Quantitative Investing Works
         </h1>
 
@@ -25,7 +25,7 @@ const HowItWorks = () => {
 
         <div className="space-y-8">
           <div className="bg-gray-100 rounded-lg p-6 shadow-sm">
-            <h3 className="text-2xl  text-gray-800 mb-4">
+            <h3 className="text-xl  text-gray-800 mb-4">
               Steps in the Quant Investing Process
             </h3>
             <ul className="space-y-3">
@@ -42,14 +42,14 @@ const HowItWorks = () => {
                 <span>Backtesting strategies with historical data</span>
               </li>
               <li className="flex items-center">
-                <span className="text-red-500 mr-2">■</span>
+                <span className="text-red-600 mr-2">■</span>
                 <span>Implementing the strategies in live trading</span>
               </li>
             </ul>
           </div>
 
           <div className="bg-gray-100 rounded-lg p-6 shadow-sm">
-            <h3 className="text-2xl  text-gray-800 mb-4">Key Considerations</h3>
+            <h3 className="text-xl  text-gray-800 mb-4">Key Considerations</h3>
             <ul className="space-y-3">
               <li className="flex items-center">
                 <span className="text-purple-500 mr-2">●</span>

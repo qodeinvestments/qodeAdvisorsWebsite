@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { faClock } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
 
@@ -23,88 +23,47 @@ function BlogCard({
     });
   }
 
-  function calculateReadDuration(blocks, wordsPerMinute = 200) {
-    if (!Array.isArray(blocks) || blocks.length === 0) {
-      return "0 minutes";
-    }
-
-    const textContent = blocks
-      .filter(
-        (block) => block._type === "block" && Array.isArray(block.children)
-      )
-      .map((block) =>
-        block.children
-          .filter(
-            (child) => child._type === "span" && typeof child.text === "string"
-          )
-          .map((child) => child.text)
-          .join(" ")
-      )
-      .join(" ");
-
-    if (!textContent.trim().length) {
-      return "0 minutes";
-    }
-
-    const words = textContent
-      .replace(/[^a-zA-Z0-9\s]/g, "")
-      .split(/\s+/)
-      .filter(Boolean);
-    const wordCount = words.length;
-    const readingTimeMinutes = wordCount / wordsPerMinute;
-    const roundedMinutes = Math.round(readingTimeMinutes);
-
-    if (roundedMinutes === 0) {
-      return "less than a min";
-    } else if (roundedMinutes === 1) {
-      return "1 min";
-    } else {
-      return `${roundedMinutes} min`;
-    }
-  }
-
-  const duration = calculateReadDuration(summary.props.blocks);
-
   return (
-    <>
-      <motion.div
-        initial={{ opacity: 0, y: 0 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="overflow-hidden transition-transform duration-500 max-w-[400px] hover:shadow-lg bg-white graphik-font-regular hover:scale-105 rounded-md"
-      >
-        <Link to={`${detailLink}`}>
-          <div className="flex flex-col justify-between h-full p-6">
-            <div className="flex flex-col flex-grow">
-              <div className="mb-auto">
-                <span className="text-primary-dark  text-sm">Blog</span>
-                <h3 className="text-xl  text-[#151E28] multiline-underline playfair-display-font mb-2 relative overflow-hidden text-ellipsis">
-                  {title}
-                  <span className="underline"></span>
-                </h3>
-                <span className="text-gray-500 text-sm block mb-2">
-                  &#x2022; {duration} read
-                </span>
-              </div>
-              <p className="text-gray-600 grayscale transition-filter duration-300 hover:grayscale-0 line-clamp-3">
-                {summary}
-              </p>
+    <motion.div
+      initial={{ opacity: 0, y: 0 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      className="overflow-hidden transition-transform duration-75 max-w-[400px] hover:scale-105  flex flex-col"
+    >
+      <Link to={`${detailLink}`} className="block flex-grow">
+        <div className="p-6 h-full group overflow-hidden relative flex flex-col">
+          <div className="transition-all duration-500 transform group-hover:-translate-y-5 flex flex-col h-full">
+            <div className="mb-auto">
+              <span className="text-primary-dark text-sm">Blog</span>
+              <h3 className="text-xl text-black group-hover:text-red-600 font-bold sophia-pro-font mb-2 relative overflow-hidden text-ellipsis">
+                {title}
+              </h3>
             </div>
-            <div className="flex text-primary-dark items-center mt-4 justify-between">
-              <Link
-                to={detailLink}
-                className="transition-opacity duration-300 opacity-0 hover:opacity-100 arrow-link text-sm"
-              >
-                Continue Reading
-              </Link>
-              <div>
-                <p className="text-xs">{formatDate(publishedAt)}</p>
-              </div>
+            <p className="text-lg line-clamp-5 my-4">{summary}</p>
+            <div className="flex items-center justify-between mt-4">
+              {/* <div className="flex items-center">
+                <img
+                  src={authorImage}
+                  alt={author.name}
+                  className="w-8 h-8 rounded-full mr-2"
+                />
+                <span className="text-sm">{author.name}</span>
+              </div> */}
+              {/* <div className="flex items-center">
+                <FontAwesomeIcon icon={faClock} className="mr-1" />
+                <span className="text-sm">{readTime}</span>
+              </div> */}
             </div>
           </div>
-        </Link>
-      </motion.div>
-    </>
+          <div className="absolute bottom-0 left-0 right-0 px-6 py-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
+            <Link to={detailLink} className="text-red-600">
+              Continue Reading <FontAwesomeIcon icon={faArrowRight} />
+            </Link>
+          </div>
+        </div>
+      </Link>
+      <hr className="w-full" />
+    </motion.div>
   );
 }
 

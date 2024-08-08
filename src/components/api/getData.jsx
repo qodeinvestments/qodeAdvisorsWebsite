@@ -5,13 +5,11 @@ const fetchStrategyData = async (strategy, timeRange, startDate, endDate) => {
     const response = await fetch(
       `https://api.qodeinvestments.com/api/strategies/${strategy}`
     );
-    console.log(`https://api.qodeinvestments.com/api/strategies/${strategy}`);
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");
     }
     const data = await response.json();
-    console.log(data);
 
     if (!data || data.length === 0) {
       throw new Error(`No data found for strategy: ${strategy}`);
@@ -30,7 +28,6 @@ const fetchStrategyData = async (strategy, timeRange, startDate, endDate) => {
       endDate,
       latestDate.date // Pass the latest date from your data
     );
-    console.log("filteredData", filteredData);
     return filteredData;
   } catch (error) {
     console.error("Error fetching data: ", error);

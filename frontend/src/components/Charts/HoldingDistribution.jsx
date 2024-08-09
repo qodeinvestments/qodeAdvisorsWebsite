@@ -205,7 +205,7 @@ const HoldingDistribution = ({ strategy }) => {
           <div className="grid grid-cols-1 gap-4">
             <div className="absolute top-0 left-0 w-full h-full bg-white bg-opacity-30 flex flex-col justify-center items-center">
               <div className="w-full">Sign Up to see view our holdings</div>
-              <Link to={"https://dashboard.qodeinvestments.com"}>
+              <Link to={"https://dashboard.qodeinvest.com"}>
                 <button className="bg-red-600 text-white font-bold py-2 px-4 rounded">
                   Sign Up
                 </button>

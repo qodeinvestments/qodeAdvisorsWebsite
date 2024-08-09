@@ -128,7 +128,7 @@ const Strategies = () => {
               Not sure which strategy is right for you? <br /> Sign Up to track
               our live portfolio.
             </p>
-            <Link target="_blank" to={"https://dashboard.qodeinvestments.com"}>
+            <Link target="_blank" to={"https://dashboard.qodeinvest.com"}>
               <button className="bg-red-600 text-lg sophia-pro-font md:text-xl lg:text-xl text-white py-3 md:py-4 lg:py-3 px-6 md:px-8 lg:px-6 mt-5 hover:bg-red-500 transition-colors">
                 Sign Up
               </button>

@@ -38,7 +38,7 @@ const Header = () => {
             </Link>
 
             <a
-              href="https://dashboard.qodeinvestments.com/"
+              href="https://dashboard.qodeinvest.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-md bg-red-600 text-white px-5 py-3 hover:bg-red-500 transition duration-300"
@@ -99,7 +99,7 @@ const Header = () => {
               </Link>
 
               <a
-                href="https://dashboard.qodeinvestments.com/"
+                href="https://dashboard.qodeinvest.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-lg hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md"

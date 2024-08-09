@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Navigating to project directory..."
-cd /var/www/www.qodeinvestments.com || exit
+cd /var/www/www.qodeinvestments.com/frontend || exit
 
 echo "Stashing local changes..."
 git stash

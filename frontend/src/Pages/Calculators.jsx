@@ -9,7 +9,7 @@ const StrategyTile = ({ title, link, description }) => (
     to={link}
     className="bg-white hover:bg-gray-300 transition-colors duration-300 p-6 rounded-lg shadow-md text-center"
   >
-    <h3 className="text-xl  text-gray-800">{title}</h3>
+    <h3 className="text-lg  text-gray-800">{title}</h3>
     <p className="mt-2 text-gray-600 text-sm">{description}</p>
   </Link>
 );
@@ -19,8 +19,8 @@ const Calculators = () => {
     <div className="bg-white sophia-pro-font min-h-screen">
       <div className="bg-gray-100 text-center text-black py-44">
         <Container>
-          <h1 className="text-xl  mb-4">Strategy Calculators</h1>
-          <p className="text-xl">
+          <h1 className="text-lg  mb-4">Strategy Calculators</h1>
+          <p className="text-lg">
             Explore and calculate returns for various investment strategies
           </p>
         </Container>
@@ -28,7 +28,7 @@ const Calculators = () => {
 
       <Container>
         <div className="my-12">
-          <h2 className="text-xl  text-gray-700 mb-6">Choose a Strategy</h2>
+          <h2 className="text-lg  text-gray-700 mb-6">Choose a Strategy</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {strategies.map((strategy) => (
               <StrategyTile

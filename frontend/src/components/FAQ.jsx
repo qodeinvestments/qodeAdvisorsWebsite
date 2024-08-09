@@ -38,7 +38,7 @@ const FAQSection = () => {
     <div className="container mx-auto  py-16 sophia-pro-font bg-white">
       <div className="flex flex-col md:flex-row ">
         <div className="md:w-1/3 border-r border-black p-8 ">
-          <h2 className="text-5xl  transform -rotate-90 md:rotate-0">FAQ</h2>
+          <h2 className="text-4xl  transform -rotate-90 md:rotate-0">FAQ</h2>
         </div>
         <div className="md:w-2/3 p-8">
           {faqs.map((faq, index) => (
@@ -47,11 +47,11 @@ const FAQSection = () => {
                 className="w-full text-left p-4 focus:outline-none flex justify-between items-center"
                 onClick={() => toggleAccordion(index)}
               >
-                <span className="text-xl">{faq.question}</span>
+                <span className="text-lg">{faq.question}</span>
                 <span className="">{openAccordion === index ? "v" : "^"}</span>
               </button>
               {openAccordion === index && (
-                <div className="p-4 text-xl border-t border-black">
+                <div className="p-4 text-lg border-t border-black">
                   <p>{faq.answer}</p>
                 </div>
               )}

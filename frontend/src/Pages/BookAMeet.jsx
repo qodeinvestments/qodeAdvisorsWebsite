@@ -8,17 +8,17 @@ const BookAMeet = () => {
   return (
     <div className="min-h-1/2 bg-white flex items-center sophia-pro-font justify-center font-sans">
       <div className="w-full  px-6 py-3 text-center">
-        <h1 className="text-5xl  mb-20 text-black font-black tracking-tight">
+        <h1 className="text-4xl  mb-20 text-black font-black tracking-tight">
           Schedule a Meeting
         </h1>
-        {/* <p className="text-xl mb-12 text-gray-700">
+        {/* <p className="text-lg mb-12 text-gray-700">
           Choose how you'd like to connect with us
         </p> */}
 
         <div className="flex flex-col items-center justify-center  gap-5 mb-8">
           <p className="text-2xl font-bold sophia-pro-font">
             In Mumbai? <br />{" "}
-            <span className="minion-pro-font font-normal text-lg">
+            <span className="minion-pro-font font-normal text-md">
               We'll be happy to meet you in person
             </span>
           </p>
@@ -33,7 +33,7 @@ const BookAMeet = () => {
           </a>
           <p className="text-2xl font-bold sophia-pro-font mt-10">
             Outside Mumbai? <br />
-            <span className="minion-pro-font font-normal text-lg">
+            <span className="minion-pro-font font-normal text-md">
               {" "}
               Let's get on a call.
             </span>

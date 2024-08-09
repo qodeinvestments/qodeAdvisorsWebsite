@@ -11,7 +11,7 @@ const OurFocus = () => {
           <p className="uppercase text-[12px] inter-font tracking-widest  text-gray-400">
             Our Focus
           </p>
-          <h2 className="text-xl text-primary-dark sophia-pro-font  mt-4">
+          <h2 className="text-lg text-primary-dark sophia-pro-font  mt-4">
             We are <span className="text-primary-dark ">committed</span> to make
             financial <br /> investment more reliable
           </h2>
@@ -26,7 +26,7 @@ const OurFocus = () => {
                 <img src={data} alt="" />
               </div>
               {/* Card Title */}
-              <h3 className="text-lg sophia-pro-font  mt-4">
+              <h3 className="text-md sophia-pro-font  mt-4">
                 Data and technology driven
               </h3>
               {/* Card Content */}
@@ -46,7 +46,7 @@ const OurFocus = () => {
                 <img src={quant} alt="" />
               </div>
               {/* Card Title */}
-              <h3 className="text-lg sophia-pro-font  mt-4">Quant Model</h3>
+              <h3 className="text-md sophia-pro-font  mt-4">Quant Model</h3>
               {/* Card Content */}
               <p className="text-gray-600 mt-2">
                 Our quant models leverage advanced algorithms and statistical
@@ -57,7 +57,7 @@ const OurFocus = () => {
             </div>
           </div>
 
-          <p className="relative top-48 text-xl">
+          <p className="relative top-48 text-lg">
             Find out more about{" "}
             <a href="">
               <span className="arrow-link sophia-pro-font cursor-pointer ">

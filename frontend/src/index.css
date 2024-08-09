@@ -113,10 +113,6 @@
 }
 
 /* Apply MinionPro font to paragraphs and list items */
-p,
-li {
-  font-family: "MinionPro", sans-serif;
-}
 
 
 .sophia-pro-font {

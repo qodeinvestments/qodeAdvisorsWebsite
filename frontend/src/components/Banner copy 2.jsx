@@ -52,7 +52,7 @@ const Banner = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-xl md:text-xl lg:text-7xl sophia-pro-font text-primary-dark mb-28"
+            className="text-lg md:text-lg lg:text-7xl sophia-pro-font text-primary-dark mb-28"
           >
             We manage wealth for Individuals, Families & Businesses
           </motion.h1>
@@ -60,7 +60,7 @@ const Banner = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-base md:text-lg lg:text-xl  max-w-3xl mx-auto  text-primary-dark my-10"
+            className="text-base md:text-md lg:text-lg  max-w-3xl mx-auto  text-primary-dark my-10"
           >
             Driven by data and crafted to be objective and emotion-free, our
             investment strategies are designed to help you build long-term
@@ -73,7 +73,7 @@ const Banner = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="h-16 mb-10"
           >
-            <p className="text-xl md:text-xl lg:text-xl text-primary-dark">
+            <p className="text-lg md:text-lg lg:text-lg text-primary-dark">
               {currentText}
               <span className="animate-blink">|</span>
             </p>
@@ -81,7 +81,7 @@ const Banner = () => {
           {/* <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="bg-primary-dark text-white py-3 px-8 rounded-full shadow-2xl hover:bg-[#696969] transition duration-300 text-base md:text-lg"
+            className="bg-primary-dark text-white py-3 px-8 rounded-full shadow-2xl hover:bg-[#696969] transition duration-300 text-base md:text-md"
           >
             Get Started
           </motion.button> */}

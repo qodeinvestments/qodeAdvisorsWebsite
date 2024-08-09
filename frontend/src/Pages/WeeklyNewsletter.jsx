@@ -38,12 +38,12 @@ const WeeklyNewsletter = () => {
     <div className="bg-gray-100 sophia-pro-font text-gray-900 min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="my-10">
-          <h1 className="text-xl mb-4   text-center">Qode Weekly Insights</h1>
+          <h1 className="text-lg mb-4   text-center">Qode Weekly Insights</h1>
           <div className="text-center mb-12">
-            <p className="text-xl text-gray-700 mb-2">
+            <p className="text-lg text-gray-700 mb-2">
               Harness the power of quantitative analysis for smarter investing
             </p>
-            <p className="text-lg text-gray-600">
+            <p className="text-md text-gray-600">
               Join thousands of investors receiving our data-driven market
               insights every week
             </p>
@@ -52,7 +52,7 @@ const WeeklyNewsletter = () => {
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="md:flex">
             <div className="md:w-1/2 p-8 bg-red-600 text-white">
-              <h2 className="text-xl  mb-6">Stay Ahead of the Markets</h2>
+              <h2 className="text-lg  mb-6">Stay Ahead of the Markets</h2>
               <ul className="space-y-4">
                 {benefits.map((benefit, index) => (
                   <li key={index} className="flex items-center">
@@ -75,7 +75,7 @@ const WeeklyNewsletter = () => {
               </ul>
             </div>
             <div className="md:w-1/2 p-8">
-              <h2 className="text-xl  mb-6">Subscribe to Our Newsletter</h2>
+              <h2 className="text-lg  mb-6">Subscribe to Our Newsletter</h2>
               {!subscribed ? (
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
@@ -116,7 +116,7 @@ const WeeklyNewsletter = () => {
         </div>
 
         {/* <div className="mt-16">
-          <h2 className="text-xl  mb-6 text-center">What Our Subscribers Say</h2>
+          <h2 className="text-lg  mb-6 text-center">What Our Subscribers Say</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {

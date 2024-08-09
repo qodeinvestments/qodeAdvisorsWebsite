@@ -122,7 +122,7 @@ const BlogDetails = () => {
             {formatDate(post.publishedAt)} &#x2022; {duration} read
           </p>
         </div>
-        <h1 className="text-5xl sophia-pro-bold-font mb-12">{post.title}</h1>
+        <h1 className="text-4xl sophia-pro-bold-font mb-12">{post.title}</h1>
 
         <img
           src={post.mainImage}
@@ -134,25 +134,25 @@ const BlogDetails = () => {
           switch (block.style) {
             case "h1":
               return (
-                <h1 key={index} className="text-xl my-3 text-[#151e29]">
+                <h1 key={index} className="text-lg my-3 text-[#151e29]">
                   {block.children[0].text}
                 </h1>
               );
             case "h2":
               return (
-                <h2 key={index} className="text-xl my-2 text-[#151e29]">
+                <h2 key={index} className="text-lg my-2 text-[#151e29]">
                   {block.children[0].text}
                 </h2>
               );
             case "h3":
               return (
-                <h3 key={index} className="text-xl my-1 text-[#151e29]">
+                <h3 key={index} className="text-lg my-1 text-[#151e29]">
                   {block.children[0].text}
                 </h3>
               );
             case "normal":
               return (
-                <p key={index} className="text-xl leading-relaxed my-5">
+                <p key={index} className="text-lg leading-relaxed my-5">
                   {block.children[0].text}
                 </p>
               );
@@ -160,14 +160,14 @@ const BlogDetails = () => {
               return (
                 <blockquote
                   key={index}
-                  className="border-l-4 text-xl pl-4 my-20"
+                  className="border-l-4 text-lg pl-4 my-20"
                 >
                   {block.children[0].text}
                 </blockquote>
               );
             default:
               return (
-                <p key={index} className="text-xl leading-relaxed my-5">
+                <p key={index} className="text-lg leading-relaxed my-5">
                   {block.children[0].text}
                 </p>
               );
@@ -184,14 +184,14 @@ const BlogDetails = () => {
               />
             )}
             <div>
-              <p className="text-lg">{post.author.name}</p>
+              <p className="text-md">{post.author.name}</p>
               {post.author.bio && <p>{post.author.bio[0].children[0].text}</p>}
             </div>
           </div>
         )}
 
         <div className="bg-white my-5 p-10 rounded-lg shadow-md text-center">
-          <h3 className="text-xl text-black">Subscribe</h3>
+          <h3 className="text-lg text-black">Subscribe</h3>
           <p className="text-gray-400 mb-4">
             Subscribe to our newsletter to get the latest updates:
           </p>
@@ -208,7 +208,7 @@ const BlogDetails = () => {
               <p>Subscribe</p>
             </button>
           </form>
-          <h3 className="text-lg text-black mt-8 mb-4">Follow Us</h3>
+          <h3 className="text-md text-black mt-8 mb-4">Follow Us</h3>
           <div className="flex justify-center space-x-4">
             <a href="#" className="text-gray-400 hover:text-gray-200">
               <FontAwesomeIcon icon={faTwitter} />

@@ -32,10 +32,10 @@ const InvestmentStrategies = () => {
       <div className="sophia-pro-font flex justify-center py-10 md:py-20 flex-col md:p-16 md:flex-row">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 ">
           <div className="text-center md:text-left">
-            <h2 className="text-xl md:text-xl lg:text-2xl font-bold mt-4 md:mt-8 text-dark">
+            <h2 className="text-lg md:text-lg lg:text-2xl font-bold mt-4 md:mt-8 text-dark">
               Strategies
             </h2>
-            <p className="my-2 text-lg md:text-xl">
+            <p className="my-2 text-md md:text-lg">
               View all our strategies.{" "}
               <Link to={"/strategies"} className="text-red-600">
                 <span className="text-red-600">
@@ -47,11 +47,11 @@ const InvestmentStrategies = () => {
           <Link to={"/strategies/quant-growth-fund"} className="text-black">
             <div className="bg-white hover:shadow-xl transition-all px-8 md:px-10 lg:px-14 py-10 md:py-12 lg:py-16 h-[220px] group overflow-hidden relative">
               <div className="transition-all duration-300 transform group-hover:-translate-y-5">
-                <h3 className="font-bold mb-2 md:mb-4 text-xl md:text-xl lg:text-xl">
+                <h3 className="font-bold mb-2 md:mb-4 text-lg md:text-lg lg:text-lg">
                   Quality Fund
                 </h3>
-                <p className="text-lg md:text-xl lg:text-xl">
-                  <span className="text-sm md:text-base lg:text-lg">
+                <p className="text-md md:text-lg lg:text-lg">
+                  <span className="text-sm md:text-base lg:text-md">
                     Invest in quality business. Get quality results.
                   </span>
                 </p>
@@ -67,11 +67,11 @@ const InvestmentStrategies = () => {
           <Link to={"/strategies/quant-growth-momentum"} className="text-black">
             <div className="bg-white hover:shadow-xl transition-all px-8 md:px-10 lg:px-14 py-10 md:py-12 lg:py-16 h-[220px] group overflow-hidden relative">
               <div className="transition-all duration-300 transform group-hover:-translate-y-5">
-                <h3 className="font-bold mb-2 md:mb-4 text-xl md:text-xl lg:text-xl">
+                <h3 className="font-bold mb-2 md:mb-4 text-lg md:text-lg lg:text-lg">
                   High-Return & Churn Fund
                 </h3>
-                <p className="text-lg md:text-xl lg:text-xl">
-                  <span className="text-sm md:text-base lg:text-lg">
+                <p className="text-md md:text-lg lg:text-lg">
+                  <span className="text-sm md:text-base lg:text-md">
                     Buy high sell higher
                   </span>
                 </p>
@@ -87,11 +87,11 @@ const InvestmentStrategies = () => {
           <Link to={"/strategies/low-vol-momentum"} className="text-black">
             <div className="bg-white hover:shadow-xl transition-all px-8 md:px-10 lg:px-14 py-10 md:py-12 lg:py-16 h-[220px] group overflow-hidden relative">
               <div className="transition-all duration-300 transform group-hover:-translate-y-5">
-                <h3 className="font-bold mb-2 md:mb-4 text-xl md:text-xl lg:text-xl">
+                <h3 className="font-bold mb-2 md:mb-4 text-lg md:text-lg lg:text-lg">
                   Steady Fund
                 </h3>
-                <p className="text-lg md:text-xl lg:text-xl">
-                  <span className="text-sm md:text-base lg:text-lg">
+                <p className="text-md md:text-lg lg:text-lg">
+                  <span className="text-sm md:text-base lg:text-md">
                     Slow but Steady
                   </span>
                 </p>

@@ -162,10 +162,10 @@ const HoldingDistribution = ({ strategy }) => {
   return (
     <div className="flex flex-col gap-4 bg-[#fafafa] p-36 justify-center ">
       <div className="flex flex-col justify-between  text-start pb-0 items-start gap-2">
-        <h2 className="text-xl sm:text-3xl font-bold text-[#151E28] mb-2">
+        <h2 className="text-lg sm:text-3xl font-bold text-[#151E28] mb-2">
           Holding Distribution
         </h2>
-        <p className="text-base sm:text-xl text-black">
+        <p className="text-base sm:text-lg text-black">
           Our {strategyName} Strategy's asset allocation.
         </p>
         <div className="text-start">
@@ -173,7 +173,7 @@ const HoldingDistribution = ({ strategy }) => {
         </div>
       </div>
       <div className="border p-10 ">
-        <h1 className="text-xl mb-10">Our Stock Holdings</h1>
+        <h1 className="text-lg mb-10">Our Stock Holdings</h1>
         <div className="relative text-center flex items-center justify-center bg-red-600/20  ">
           <table className="border-collapse w-full blur-sm   ">
             <thead>

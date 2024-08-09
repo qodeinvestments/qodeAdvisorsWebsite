@@ -8,6 +8,7 @@ import HoldingDistribution from "./HoldingDistribution";
 import Modal from "../Modal";
 import BookAMeet from "../../Pages/BookAMeet";
 import { Link } from "react-router-dom";
+import Container from "../container/Container";
 
 const PerformanceChart = ({ strategy }) => {
   const [chartOptions, setChartOptions] = useState(null);
@@ -213,79 +214,79 @@ const PerformanceChart = ({ strategy }) => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="lg:w-full  p-14  sm:pb-10">
-        <Tabs value="chart1">
-          <div className="flex flex-col lg:flex-row gap-2 lg:p-2">
-            <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 gap-5 w-full items-center">
-              <div className="flex flex-wrap justify-between gap-2">
-                {["YTD", "1M", "3M", "6M", "1Y", "3Y", "5Y", "ALL"].map(
-                  (range) => (
-                    <button
-                      key={range}
-                      onClick={() => handleTimeRangeChange(range)}
-                      className={`px-5 border py-2 text-sm ${
-                        activeButton === range
-                          ? "bg-red-600 text-white"
-                          : "bg-white text-black "
-                      }`}
-                    >
-                      {range}
-                    </button>
-                  )
-                )}
-              </div>
-              <div className="flex flex-col sm:flex-row gap-2">
-                <input
-                  type="date"
-                  onChange={(e) => setStartDate(e.target.value)}
-                  className=" text-gray-900 border text-xs sm:text-sm py-2 px-3"
-                />
-                <input
-                  type="date"
-                  onChange={(e) => setEndDate(e.target.value)}
-                  className=" text-gray-900 border text-xs sm:text-sm py-2 px-3"
-                />
-              </div>
-              <div className="text-right  sm:ml-auto">
-                <p className="text-5xl sophia-pro-font">{strategyCagr}</p>
-                <p className="text-right sophia-pro-font text-xl">
-                  {timeRange} CAGR
-                </p>
-              </div>
-            </div>
-          </div>
+    <div className="mx-auto ">
+      <div className="flex flex-col px-2 lg:flex-row gap-2">
+        {/* Chart Section */}
+        <div className="lg:w-2/3 ">
+          <div className="p-6">
+            <Tabs value="chart1">
+              <div className="flex gap-4">
+                {/* Time Range Buttons */}
+                <div className="flex  flex-wrap items-center justify-between gap-2">
+                  {["YTD", "1M", "3M", "6M", "1Y", "3Y", "5Y", "ALL"].map(
+                    (range) => (
+                      <button
+                        key={range}
+                        onClick={() => handleTimeRangeChange(range)}
+                        className={`px-5 h-2/7 border py-2 text-sm ${
+                          activeButton === range
+                            ? "bg-red-600 text-white"
+                            : "bg-white text-black "
+                        }`}
+                      >
+                        {range}
+                      </button>
+                    )
+                  )}
+                </div>
 
-          <TabsBody className="mt-20">
-            <TabPanel className="p-0" key="chart1" value="chart1">
-              {chartOptions && (
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  options={chartOptions}
-                />
-              )}
-            </TabPanel>
-          </TabsBody>
-        </Tabs>
-      </div>
-      <div className="flex flex-col  justify-center  md:p-16   gap-20 mt-10 flex-grow">
-        <div className="flex-1  ">
-          <Calculator strategy={strategy} />
+                {/* Date Inputs and CAGR */}
+                <div className="flex flex-col sm:flex-row sophia-pro-font items-center justify-between gap-32">
+                  <div className="flex gap-2 w-full sm:w-auto">
+                    <input
+                      type="date"
+                      onChange={(e) => setStartDate(e.target.value)}
+                      className="border  px-3 py-2 text-sm w-full sm:w-auto"
+                    />
+                    <input
+                      type="date"
+                      onChange={(e) => setEndDate(e.target.value)}
+                      className="border  px-3 py-2 text-sm w-full sm:w-auto"
+                    />
+                  </div>
+                  <div className="text-center sm:text-right">
+                    <p className="text-3xl  text-gray-800">{strategyCagr}</p>
+                    <p className="text-sm text-gray-600">{timeRange} CAGR</p>
+                  </div>
+                </div>
+              </div>
+
+              <TabsBody className="mt-6">
+                <TabPanel className="p-0" key="chart1" value="chart1">
+                  {chartOptions && (
+                    <HighchartsReact
+                      highcharts={Highcharts}
+                      options={chartOptions}
+                    />
+                  )}
+                </TabPanel>
+              </TabsBody>
+            </Tabs>
+          </div>
         </div>
-        <div className="text-center mx-auto  w-full bg-[#fafafa] p-24 mt-8 md:my-32">
-          <p className="my-4 text-xl sophia-pro-font font-black  md:text-xl lg:text-3xl">
-            Not sure which strategy is right for you? <br />
-            <span className="minion-pro-font font-normal text-xl">
-              Sign Up to track our live portfolio.
-            </span>
-          </p>
-          <Link target="_blank" to={"https://dashboard.qodeinvest.com"}>
-            <button className="bg-red-600 text-lg sophia-pro-font md:text-xl lg:text-md text-white py-3 md:py-4 lg:py-4 px-6 md:px-8 lg:px-6 mt-5 hover:bg-red-500 transition-colors">
-              Sign Up
-            </button>
-          </Link>
+
+        {/* Calculator Section */}
+        <div className="lg:w-1/3 border">
+          <div className="bg-white p-6">
+            {/* <h2 className="text-2xl font-bold mb-4 text-gray-800">
+              Calculator
+            </h2> */}
+            <Calculator strategy={strategy} />
+          </div>
         </div>
       </div>
+
+      {/* Sign Up Section */}
     </div>
   );
 };

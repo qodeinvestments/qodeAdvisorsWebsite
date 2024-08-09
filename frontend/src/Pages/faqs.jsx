@@ -4,23 +4,27 @@ const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border px-10 bg-white mb-2 border-gray-200 ">
-      <button
-        className="flex justify-between items-center w-full py-6 text-left"
+    <div className="bg-white border mb-2">
+      <div
+        className="flex justify-between items-center p-3 sm:p-4 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="text-lg  pr-8">{question}</span>
+        <h3 className="text-base sophia-pro-font font-medium sm:text-md md:text-md text-[#151E28] pr-4">
+          {question}
+        </h3>
         <span
-          className={`transform transition-transform duration-300 ${
-            isOpen ? "rotate-180" : ""
+          className={`text-[#151E28] text-lg sm:text-lg transition-transform duration-300 ${
+            isOpen ? "transform rotate-180" : ""
           }`}
         >
-          ▼
+          &#8744;
         </span>
-      </button>
+      </div>
       {isOpen && (
-        <div className="pb-6 pr-12">
-          <p className="text-gray-700">{answer}</p>
+        <div className="p-3 sm:p-4 bg-[#fafafa]">
+          <p className="minion-pro-font text-black text-sm sm:text-md">
+            {answer}
+          </p>
         </div>
       )}
     </div>
@@ -64,13 +68,9 @@ const FAQs = () => {
   ];
 
   return (
-    <div className="bg-gray-50 sophia-pro-font text-gray-900 min-h-screen">
-      <div className="bg-gray-100 text-black py-24 px-4 sm:px-6 lg:px-8 text-center">
-        <h1 className="text-xl  mb-4">Frequently Asked Questions</h1>
-        <p className="max-w-3xl mx-auto text-xl">
-          Find answers to common questions about Qode's investment approach and
-          services.
-        </p>
+    <div className=" minion-pro-font text-gray-900 min-h-screen">
+      <div className=" text-black  px-4 sm:px-6 lg:px-8 mt-44 text-center">
+        <h1 className="text-3xl font-black sophia-pro-font mb-4">FAQ's</h1>
       </div>
 
       <div className="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">

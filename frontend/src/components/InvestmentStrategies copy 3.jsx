@@ -29,15 +29,15 @@ const InvestmentStrategies = () => {
         </p> */}
       <div className=" border-black sophia-pro-font   flex  justify-start  p-10 flex-row">
         <div className="mb-8 mr-20 lg:mb-0 w-1/2">
-          <h2 className=" text-5xl  mt-8   sophia-pro-font text-start text-dark">
+          <h2 className=" text-4xl  mt-8   sophia-pro-font text-start text-dark">
             Strategies
           </h2>
         </div>
         <div className="grid grid-cols-1 gap-10">
           <div className="bg-white   p-5">
-            <h3 className="text-xl  mb-4">Quality Fund </h3>
-            <p className="mb-6 text-xl">
-              <span className="text-xl">
+            <h3 className="text-lg  mb-4">Quality Fund </h3>
+            <p className="mb-6 text-lg">
+              <span className="text-lg">
                 Invest in quality business. Get quality results.
               </span>{" "}
               <br />
@@ -48,7 +48,7 @@ const InvestmentStrategies = () => {
               business performance
             </p>
             <div className="flex items-end justify-between">
-              <p className="text-5xl">
+              <p className="text-4xl">
                 23.4%
                 <span className="text-sm ml-2">CAGR</span>
               </p>
@@ -63,16 +63,16 @@ const InvestmentStrategies = () => {
           </div>
 
           <div className="bg-white   p-5">
-            <h3 className="text-xl  mb-4">High-Return & Churn Fund</h3>
-            <p className="mb-6 text-xl">
-              <span className="text-xl"> Buy high sell higher. </span>
+            <h3 className="text-lg  mb-4">High-Return & Churn Fund</h3>
+            <p className="mb-6 text-lg">
+              <span className="text-lg"> Buy high sell higher. </span>
               <br /> <br />
               This strategy invests in 30 businesses whose stock price has grown
               significantly and sells it before they start falling. Principle -
               The stock price tells the story before the actual story unfolds.
             </p>
             <div className="flex items-end justify-between">
-              <p className="text-5xl">
+              <p className="text-4xl">
                 28.5%
                 <span className="text-sm ml-2">CAGR</span>
               </p>
@@ -87,14 +87,14 @@ const InvestmentStrategies = () => {
           </div>
 
           <div className="bg-white   p-5">
-            <h3 className="text-xl  mb-4">Steady Fund </h3>
-            <p className="mb-6 text-xl">
-              <span className="text-xl">Slow but Steady.</span> <br /> <br />
+            <h3 className="text-lg  mb-4">Steady Fund </h3>
+            <p className="mb-6 text-lg">
+              <span className="text-lg">Slow but Steady.</span> <br /> <br />
               This strategy invests in the 30 most stable stocks in the market.
               This strategy outperforms the Index with considerably lower risk.
             </p>
             <div className="flex items-end justify-between">
-              <p className="text-5xl">
+              <p className="text-4xl">
                 23%
                 <span className="text-sm ml-2">CAGR</span>
               </p>

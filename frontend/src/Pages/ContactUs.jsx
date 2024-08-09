@@ -24,8 +24,8 @@ const ContactUs = () => {
   return (
     <>
       <div className=" sophia-pro-font text-black pt-14 text-center">
-        <h1 className="text-5xl pt-20 ">Contact Us</h1>
-        {/* <p className="max-w-3xl mx-auto text-xl mb-16">
+        <h1 className="text-4xl pt-20 ">Contact Us</h1>
+        {/* <p className="max-w-3xl mx-auto text-lg mb-16">
           We're here to help. Reach out to us with any questions or inquiries.
         </p> */}
       </div>
@@ -34,7 +34,7 @@ const ContactUs = () => {
           <div className="max-w-7xl mx-auto py-16">
             <div className="grid grid-cols-1 md:grid-cols-1 gap-16">
               {/* <div className="bg-white rounded-lg shadow-md p-8">
-                <h2 className="text-xl  mb-6">Send us a message</h2>
+                <h2 className="text-lg  mb-6">Send us a message</h2>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <label
@@ -115,16 +115,16 @@ const ContactUs = () => {
 
               <div>
                 <div className="bg-white  p-8 mb-8">
-                  <h2 className="text-xl  mb-6">Contact Information</h2>
+                  <h2 className="text-lg  mb-6">Contact Information</h2>
                   <div className="mb-4">
-                    <h3 className="text-lg  mb-2">Address</h3>
+                    <h3 className="text-md  mb-2">Address</h3>
                     <p>XRW9+HQP, Shah and Nahar Industrial Estate,</p>
                     <p>Worli Naka, Siddharth Nagar, Worli,</p>
                     <p>Mumbai, Maharashtra 400018</p>
                     <p>India</p>
                   </div>
                   <div className="mb-4">
-                    <h3 className="text-lg  mb-2">Phone</h3>
+                    <h3 className="text-md  mb-2">Phone</h3>
                     <p>
                       <a
                         href="tel:+919920111053"
@@ -135,7 +135,7 @@ const ContactUs = () => {
                     </p>
                   </div>
                   <div>
-                    <h3 className="text-lg  mb-2">Email</h3>
+                    <h3 className="text-md  mb-2">Email</h3>
                     <p>
                       <a
                         href="mailto:info@qode.com"
@@ -147,7 +147,7 @@ const ContactUs = () => {
                   </div>
                 </div>
                 <div className="bg-white  p-8">
-                  <h2 className="text-xl  mb-6">Our Location</h2>
+                  <h2 className="text-lg  mb-6">Our Location</h2>
                   <div className="aspect-w-16 aspect-h-9">
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15090.109826698288!2d72.8194424!3d18.9964656!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cff81471d8f7%3A0xfe0f743d6a385cef!2sSwan%20Capital!5e0!3m2!1sen!2sin!4v1719750122422!5m2!1sen!2sin"

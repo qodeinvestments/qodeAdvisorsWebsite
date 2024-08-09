@@ -57,7 +57,7 @@ const Banner = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
-                className="text-xl text-primary md:text-xl lg:text-xl  mb-6"
+                className="text-lg text-primary md:text-lg lg:text-lg  mb-6"
               >
                 The best investments are <br />{" "}
                 <span className="text-primary-dark px-2 rounded">
@@ -68,7 +68,7 @@ const Banner = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-base md:text-lg lg:text-xl text-primary-dark mb-10"
+                className="text-base md:text-md lg:text-lg text-primary-dark mb-10"
               >
                 We're an investment firm leveraging quantitative models to drive
                 informed and strategic investment decisions.
@@ -76,7 +76,7 @@ const Banner = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-primary-dark text-white  py-3 px-8 rounded-full shadow-2xl  hover:bg-[#696969] transition duration-300 text-base md:text-lg"
+                className="bg-primary-dark text-white  py-3 px-8 rounded-full shadow-2xl  hover:bg-[#696969] transition duration-300 text-base md:text-md"
               >
                 Get Started
               </motion.button>

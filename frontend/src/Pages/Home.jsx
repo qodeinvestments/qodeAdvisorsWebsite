@@ -127,7 +127,7 @@ const Home = () => {
                   <h2 className="text-2xl font-semibold mb-6">
                     Qode Weekly Insights
                   </h2>
-                  <p className="text-xl text-gray-600">
+                  <p className="text-lg text-gray-600">
                     Join thousands of investors receiving our data-driven market
                     insights every week
                   </p>

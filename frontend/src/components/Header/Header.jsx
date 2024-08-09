@@ -85,14 +85,14 @@ const Header = () => {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <Link
                 to="/blogs"
-                className="block text-lg hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md"
+                className="block text-md hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md"
                 onClick={toggleMobileMenu}
               >
                 Blogs
               </Link>
               <Link
                 to="/strategies"
-                className="block text-lg hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md"
+                className="block text-md hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md"
                 onClick={toggleMobileMenu}
               >
                 Strategies
@@ -102,7 +102,7 @@ const Header = () => {
                 href="https://dashboard.qodeinvest.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-lg hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md"
+                className="block text-md hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md"
                 onClick={toggleMobileMenu}
               >
                 Dashboard

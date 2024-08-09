@@ -5,7 +5,7 @@ const InvestmentProcess = () => {
   return (
     <div className="flex flex-col md:flex-row items-center  justify-between py-12 inter-font">
       <div className="md:w-1/2 p-4">
-        <h2 className="text-xl  mb-4">Investment Process</h2>
+        <h2 className="text-lg  mb-4">Investment Process</h2>
         <p className="text-gray-700 mb-4">
           Explain your investment process here. This is where you can provide
           details about your approach, strategies, and methodologies for

@@ -81,11 +81,11 @@ const QuantGrowthMomentum = () => {
       {/* Responsive Banner */}
       <div className=" bg-primarypy-12 md:py-20 inter-font">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-xl  text-white sm:text-xl">
+          <h2 className="text-lg  text-white sm:text-lg">
             <span className="block">Welcome to</span>
             <span className="block">Quant Growth Momentum</span>
           </h2>
-          <p className="mt-4 max-w-3xl text-xl text-gray-300">
+          <p className="mt-4 max-w-3xl text-lg text-gray-300">
             Experience the power of quantitative analysis and growth strategies.
           </p>
         </div>
@@ -95,7 +95,7 @@ const QuantGrowthMomentum = () => {
       <div className="bg-white inter-font py-12 md:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:flex lg:items-center lg:justify-between">
-            <h2 className="text-xl  tracking-tight text-gray-900 sm:text-xl">
+            <h2 className="text-lg  tracking-tight text-gray-900 sm:text-lg">
               <span className="block">Overview</span>
             </h2>
           </div>
@@ -109,7 +109,7 @@ const QuantGrowthMomentum = () => {
             </p>
             {/* <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
               <div className="bg-gray-100 p-6 rounded-lg">
-                <h3 className="text-lg  text-gray-900">
+                <h3 className="text-md  text-gray-900">
                   Quantitative Analysis
                 </h3>
                 <p className="mt-2 text-gray-600">
@@ -118,7 +118,7 @@ const QuantGrowthMomentum = () => {
                 </p>
               </div>
               <div className="bg-gray-100 p-6 rounded-lg">
-                <h3 className="text-lg  text-gray-900">
+                <h3 className="text-md  text-gray-900">
                   Growth Strategies
                 </h3>
                 <p className="mt-2 text-gray-600">
@@ -127,7 +127,7 @@ const QuantGrowthMomentum = () => {
                 </p>
               </div>
               <div className="bg-gray-100 p-6 rounded-lg">
-                <h3 className="text-lg  text-gray-900">
+                <h3 className="text-md  text-gray-900">
                   Data-Driven Solutions
                 </h3>
                 <p className="mt-2 text-gray-600">

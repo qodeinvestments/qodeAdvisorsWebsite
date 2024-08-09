@@ -166,14 +166,14 @@ const Calculator = ({ strategy }) => {
 
   return (
     <>
-      <div className=" p-20  bg-[#fafafa]">
-        <h1 className="text-xl sm:text-3xl font-bold mb-4 sm:mb-14">
+      <div className="py-8">
+        <h1 className="text-lg sm:text-3xl font-bold mb-4 sm:mb-14">
           Returns Calculator
         </h1>
 
         <div className="space-y-10">
           <div className="flex flex-col sm:flex-row gap-20  justify-between items-center">
-            <p className="text-lg sm:text-xl mb-2 sm:mb-0 w-full sm:w-1/2">
+            <p className="text-md sm:text-md mb-2 sm:mb-0 w-full ">
               Investment Amount (₹)
             </p>
             <input
@@ -186,15 +186,15 @@ const Calculator = ({ strategy }) => {
             />
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-20  justify-between items-center">
-            <p className="text-lg sm:text-xl mb-2 sm:mb-0 w-full sm:w-1/2">
+          <div className="flex flex-col sm:flex-row gap-10  justify-between items-center">
+            <p className="text-md sm:text-md mb-2 sm:mb-0 w-full sm:w-3/5  ">
               Investment Frequency
             </p>
             <div className="flex flex-row justify-between space-x-2 w-full  ">
               {["Monthly", "Yearly", "One-time"].map((freq) => (
                 <button
                   key={freq}
-                  className={`h-12 py-2 px-4 border text-center flex-grow ${
+                  className={`h-12 py-2 px-2 border text-center flex-grow ${
                     investmentFrequency === freq.toLowerCase()
                       ? "bg-red-600 text-white"
                       : "bg-white text-black"
@@ -210,10 +210,10 @@ const Calculator = ({ strategy }) => {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-lg sm:text-xl mb-2 sm:mb-0 w-full sm:w-1/2">
+            <p className="text-md sm:text-md mb-2 sm:mb-0 w-full sm:w-1/2">
               Investment Period (Years)
             </p>
-            <div className="w-4/5  h-12">
+            <div className="w-2/3  h-12">
               <div className="flex flex-row h-full w-full relative bg-transparent border ">
                 <button
                   data-action="decrement"
@@ -242,20 +242,20 @@ const Calculator = ({ strategy }) => {
         </div>
 
         <div className="text-center mt-20 minion-pro-font px-3 sm:px-5   ">
-          <p className="mb-3 text-base sm:text-xl text-black">
+          <p className="mb-3 text-base sm:text-md text-black">
             If you had invested {formatInvestmentPeriod()}, <br /> your
             investments would be worth
           </p>
-          <p className="text-xl sophia-pro-font mt-10  sm:text-2xl">
+          <p className="text-lg sophia-pro-font mt-10  sm:text-2xl">
             ₹{numberWithCommas(futureInvestmentValue)}
           </p>
-          <p className="text-lg sm:text-xl text-black  ">
+          <p className="text-md sm:text-md text-black  ">
             Total Amount Invested: ₹
             {numberWithCommas(calculateTotalInvestment())}
           </p>
         </div>
       </div>
-      <p className="text-base sm:text-xl text-center mt-8 sm:mt-4 ">
+      <p className="text-base minion-pro-font sm:text-md text-center mt-8 sm:mt-4 ">
         Figures are based on historical returns and do not guarantee future
         results.*
       </p>

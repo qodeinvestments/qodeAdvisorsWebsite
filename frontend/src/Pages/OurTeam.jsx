@@ -59,7 +59,7 @@ const OurTeam = () => {
   return (
     <Container>
       <div className="container sophia-pro-font mx-auto py-8  mt-16">
-        <h2 className="text-xl inter-font  text-center mb-6">Our Team</h2>
+        <h2 className="text-lg inter-font  text-center mb-6">Our Team</h2>
         <p className="text-center text-gray-400 mb-12">
           We are Code Developers, Analysts, and Fund Managers dedicated to
           growing your money and optimizing your financial future. Using
@@ -96,7 +96,7 @@ const TeamMemberCard = ({ member }) => {
               href={member.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 transition-colors text-lg"
+              className="text-blue-600 hover:text-blue-800 transition-colors text-md"
             >
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
@@ -104,7 +104,7 @@ const TeamMemberCard = ({ member }) => {
               href={`mailto:${member.email}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-800 transition-colors text-lg"
+              className="text-gray-600 hover:text-gray-800 transition-colors text-md"
             >
               <FontAwesomeIcon icon={faEnvelope} />
             </a>

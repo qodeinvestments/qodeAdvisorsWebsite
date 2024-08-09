@@ -66,7 +66,7 @@ const dummyPosts = [
 const Blogs = () => {
   return (
     <div className="py-20">
-      <h2 className="text-xl sophia-pro-font text-center text-[#151E28] mb-8">
+      <h2 className="text-lg sophia-pro-font text-center text-[#151E28] mb-8">
         Recent Blogs
       </h2>
       <div className="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -88,7 +88,7 @@ const Blogs = () => {
       <div className="text-center">
         <Link
           to="/blogs"
-          className="text-white bg-red-600 sophia-pro-font text-lg hover:bg-red-500 px-5 py-2.5 text-center mr-2 mb-2"
+          className="text-white bg-red-600 sophia-pro-font text-md hover:bg-red-500 px-5 py-2.5 text-center mr-2 mb-2"
         >
           View All Blogs
         </Link>

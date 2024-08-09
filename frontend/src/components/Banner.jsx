@@ -45,19 +45,27 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="relative min-h-screen md:p-14 flex items-center justify-center overflow-hidden sophia-pro-bold-font">
-      <div className="  mx-auto px-4 py-16 md:py-24 lg:py-32  md:text-start">
+    <div className="relative min-h-[90vh] md:p-14 flex  justify-center overflow-hidden sophia-pro-bold-font">
+      <div className="  mx-auto px-4 py-16 md:py-24 lg:py-12  md:text-start">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-xl md:text-2xl mt-10 lg:text-5xl text-gray-900 mb-6"
+          className="text-lg md:text-2xl mt-10 lg:text-4xl text-gray-900 mb-6"
         >
           The best investments are <br />
           <div className="h-[1.5em] md:h-[1.2em] lg:h-[1.5em] mb-6">
             {currentText} <span className="animate-blink">|</span>
           </div>
         </motion.h1>
+
+        <hr
+          style={{
+            color: "#cccccc",
+            backgroundColor: "#cccccc",
+          }}
+          className="flex-grow max-w-[25rem] my-20"
+        />
         {/* <div className="flex flex-col md:flex-row  items-center md:items-start  gap-6 md:gap-14">
           <hr
             style={{
@@ -66,7 +74,7 @@ const Banner = () => {
             }}
             className="flex-grow max-w-[4rem] w-16 md:w-32 mt-3 mb-4 md:mb-0"
           />
-          <p className="text-lg md:text-xl text-black max-w-xs md:max-w-sm">
+          <p className="text-md md:text-lg text-black max-w-xs md:max-w-sm">
             {currentText}
             <span className="animate-blink">|</span>
           </p>
@@ -77,7 +85,7 @@ const Banner = () => {
           transition={{ duration: 0.8 }}
           className="h-12 md:h-16 lg:h-20 mb-6 overflow-hidden"
         >
-          <div className="text-xl minion-pro-font md:text-2xl lg:text-3xl font-bold text-primary-dark bg-gray-100 py-2 px-4 rounded inline-block">
+          <div className="text-lg minion-pro-font md:text-2xl lg:text-3xl font-bold text-primary-dark bg-gray-100 py-2 px-4 rounded inline-block">
             {currentText}
             <span className="animate-blink">|</span>
           </div>
@@ -86,7 +94,7 @@ const Banner = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-xl sm:text-2xl md:text-3xl lg:text-5xl text-gray-900 mt-20 mb-6 md:mb-8"
+          className="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-gray-900  mb-6 md:mb-8"
         >
           We manage wealth for Individuals, Families & Businesses.
         </motion.h1>
@@ -99,7 +107,7 @@ const Banner = () => {
             }}
             className="flex-grow max-w-[4rem] w-16 md:w-32 mt-3 mb-4 md:mb-0"
           />
-          <p className="text-lg md:text-xl text-black max-w-xs md:max-w-sm">
+          <p className="text-md md:text-lg text-black max-w-xs md:max-w-sm">
             To help you build wealth in the long term, we've made data-driven
             investment strategies.
           </p>

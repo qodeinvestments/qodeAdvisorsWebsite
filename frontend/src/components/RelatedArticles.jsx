@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import BlogCard from "../components/BlogCard";
-import { Container } from "../components";
+import BlogCard from "./BlogCard";
+import { Container } from ".";
 import { Link } from "react-router-dom";
 import { createClient } from "@sanity/client";
 import BlockContent from "@sanity/block-content-to-react";
 import imageUrlBuilder from "@sanity/image-url";
-import { CustomSpinner } from "../components/Spinner";
+import { CustomSpinner } from "./Spinner";
 
 const client = createClient({
   projectId: "8pot9lfd",

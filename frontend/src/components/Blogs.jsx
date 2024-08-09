@@ -1,5 +1,5 @@
 import React from "react";
-import BlogCard from "../components/BlogCard";
+import BlogCard from "./BlogCard";
 import { Link } from "react-router-dom";
 
 // Commented out Sanity-related imports

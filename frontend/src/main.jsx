@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Home from "./Pages/Home.jsx";
 import Tabs from "./Pages/QuantGrowthMomentum.jsx";
-import App from "./App";
+import App from "./App.jsx";
 import MomentumTabs from "./Pages/QuantGrowthMomentum.jsx";
 import OurTeam from "./Pages/OurTeam.jsx";
 import OurBelief from "./Pages/OurBeliefs.jsx";

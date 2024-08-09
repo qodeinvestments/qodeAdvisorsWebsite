@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Container, GrayContainer } from "../components";
+import { Container, GrayContainer } from ".";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons";
-import PerformanceChart from "../components/Charts/PerformanceChart";
-import HoldingDistribution from "../components/Charts/HoldingDistribution";
-import RelatedArticles from "../components/RelatedArticles";
-import TrailingReturns from "../components/TrailingReturns";
+import PerformanceChart from "./Charts/PerformanceChart";
+import HoldingDistribution from "./Charts/HoldingDistribution";
+import RelatedArticles from "./RelatedArticles";
+import TrailingReturns from "./TrailingReturns";
 import { Modal } from "bootstrap";
 import ModalButton from "./ModalButton";
 

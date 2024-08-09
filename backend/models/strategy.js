@@ -1,4 +1,3 @@
-const { time } = require("highcharts");
 
 module.exports = (sequelize, DataTypes) => {
   const Strategy = sequelize.define(

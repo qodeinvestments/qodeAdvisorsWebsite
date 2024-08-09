@@ -51,6 +51,9 @@ const Footer = () => {
             </h3>
             <ul className="text-base sm:text-md text-white">
               <li className="mb-2 hover:text-red-500">
+                <Link to="/about-us">About Us</Link>
+              </li>
+              <li className="mb-2 hover:text-red-500">
                 <Link to="/contact-us">Contact Us</Link>
               </li>
               <li className="mb-2 hover:text-red-500">

@@ -1,5 +1,6 @@
 const express = require('express');
-
+const sendNewsletterMail = require('../controllers/sendMail');
+i
 module.exports = (mailerlite) => {
     const router = express.Router();
 
@@ -15,7 +16,13 @@ module.exports = (mailerlite) => {
                 status: 'active'
             };
             const response = await mailerlite.subscribers.createOrUpdate(params);
-            console.log('MailerLite response data:', response.data);
+            // console.log('MailerLite response data:', response.data);
+
+            if (response.status === 200) {
+                const subject = 'Qode Newsletter Subscription';
+                const text = 'Hello,\n\nThank you for subscribing to the Qode Newsletter! We are excited to have you on board.\n\nBest regards,\nThe Qode Team'; // plain text body
+                sendNewsletterMail(email, subject, text);
+            }
             res.status(200).json({ message: 'Subscription successful', data: response.data });
         } catch (error) {
             console.error('Error:', error.message);

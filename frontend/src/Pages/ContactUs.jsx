@@ -23,14 +23,14 @@ const ContactUs = () => {
 
   return (
     <>
-      <div className=" sophia-pro-font text-black pt-14 text-center">
-        <h1 className="text-4xl pt-20 ">Contact Us</h1>
+      <div className="  text-black pt-14 text-center">
+        <h1 className="text-4xl pt-20 sophia-pro-font ">Contact Us</h1>
         {/* <p className="max-w-3xl mx-auto text-lg mb-16">
           We're here to help. Reach out to us with any questions or inquiries.
         </p> */}
       </div>
       <Container>
-        <div className="sophia-pro-font text-gray-900 min-h-screen">
+        <div className="minion-pro-font text-gray-900 min-h-screen">
           <div className="max-w-7xl mx-auto py-16">
             <div className="grid grid-cols-1 md:grid-cols-1 gap-16">
               {/* <div className="bg-white rounded-lg shadow-md p-8">
@@ -113,54 +113,77 @@ const ContactUs = () => {
                 </form>
               </div> */}
 
-              <div>
+              <Container>
                 <div className="bg-white  p-8 mb-8">
-                  <h2 className="text-lg  mb-6">Contact Information</h2>
-                  <div className="mb-4">
-                    <h3 className="text-md  mb-2">Address</h3>
-                    <p>XRW9+HQP, Shah and Nahar Industrial Estate,</p>
-                    <p>Worli Naka, Siddharth Nagar, Worli,</p>
-                    <p>Mumbai, Maharashtra 400018</p>
-                    <p>India</p>
-                  </div>
-                  <div className="mb-4">
-                    <h3 className="text-md  mb-2">Phone</h3>
-                    <p>
-                      <a
-                        href="tel:+919920111053"
-                        className="text-gray-900 hover:text-gray-600 transition duration-300"
-                      >
-                        +91 99201 11053
-                      </a>
-                    </p>
-                  </div>
-                  <div>
-                    <h3 className="text-md  mb-2">Email</h3>
-                    <p>
-                      <a
-                        href="mailto:info@qode.com"
-                        className="text-gray-900 hover:text-gray-600 transition duration-300"
-                      >
-                        rishabh@swancapital.in
-                      </a>
-                    </p>
+                  <div className="flex gap-44 items-start justify-start   mx-auto">
+                    <div>
+                      <div className="mb-4">
+                        <h3 className="text-xl sophia-pro-font mb-2">
+                          Address
+                        </h3>
+                        <p>
+                          2nd Floor, Tree Building, Raghuvanshi Mills Compound,
+                        </p>
+                        <p>
+                          Gandhi Nagar, Upper Worli, Lower Parel, Mumbai,
+                          Maharashtra 400013,
+                        </p>
+                        <p>Mumbai, Maharashtra 400018</p>
+                        <p>India</p>
+                      </div>
+                      <div className="mb-4">
+                        <h3 className="text-xl sophia-pro-font  mb-2">Phone</h3>
+                        <p>
+                          <a
+                            href="tel:+919920111053"
+                            className="text-gray-900 hover:text-gray-600 transition duration-300"
+                          >
+                            +91 99201 11053
+                          </a>
+                        </p>
+                      </div>
+                      <div>
+                        <h3 className="text-xl sophia-pro-font mb-2">Email</h3>
+                        <p>
+                          <a
+                            href="mailto:info@qode.com"
+                            className="text-gray-900 hover:text-gray-600 transition duration-300"
+                          >
+                            rishabh@swancapital.in
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="  ">
+                      <h2 className="text-xl sophia-pro-font mb-6">
+                        Our Location
+                      </h2>
+                      <div className=" h-60    bg-red-50 ">
+                        <iframe
+                          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.6322147006836!2d72.82033437580478!3d18.991843454607952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cec445995555%3A0x198651c83d7c4bd5!2sQode%20Advisors%20LLP!5e0!3m2!1sen!2sin!4v1723199089828!5m2!1sen!2sin"
+                          width="100%"
+                          height="100%"
+                          style={{ border: 0 }}
+                          allowFullScreen=""
+                          loading="lazy"
+                          title="Qode Location"
+                        ></iframe>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="bg-white  p-8">
-                  <h2 className="text-lg  mb-6">Our Location</h2>
-                  <div className="aspect-w-16 aspect-h-9">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15090.109826698288!2d72.8194424!3d18.9964656!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cff81471d8f7%3A0xfe0f743d6a385cef!2sSwan%20Capital!5e0!3m2!1sen!2sin!4v1719750122422!5m2!1sen!2sin"
-                      width="100%"
-                      height="100%"
-                      style={{ border: 0 }}
-                      allowFullScreen=""
-                      loading="lazy"
-                      title="Qode Location"
-                    ></iframe>
-                  </div>
-                </div>
-              </div>
+              </Container>
+
+              {/* <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.6322147006836!2d72.82033437580478!3d18.991843454607952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7cec445995555%3A0x198651c83d7c4bd5!2sQode%20Advisors%20LLP!5e0!3m2!1sen!2sin!4v1723199089828!5m2!1sen!2sin"
+                width="600"
+                height="450"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe> */}
             </div>
           </div>
         </div>

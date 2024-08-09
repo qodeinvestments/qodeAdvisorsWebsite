@@ -1,24 +1,35 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const MailerLite = require('@mailerlite/mailerlite-nodejs').default;
+require('dotenv').config();
+
 const strategyRoutes = require("./routes/strategyRoutes");
+const mailerLiteRoutes = require("./routes/mailerLiteRoutes");
 const db = require("./models");
-const { getAllStrategies } = require("./controllers/strategyControllers");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+console.log(process.env.MAILERLITE_API_KEY);
 
-app.use(
-  cors({
-    origin: true, // Allow all origins
-    methods: "*", // Allow all HTTP methods
-    allowedHeaders: "*", // Allow all headers
-  })
-);
-
+// Middleware
+app.use(cors({
+  origin: true,
+  methods: "*",
+  allowedHeaders: "*",
+}));
 app.use(bodyParser.json());
-app.use("/api/strategies", strategyRoutes);
 
+// Initialize MailerLite
+const mailerlite = new MailerLite({
+  api_key: process.env.MAILERLITE_API_KEY
+});
+
+// Routes
+app.use("/api/strategies", strategyRoutes);
+app.use("/api/mailerlite", mailerLiteRoutes(mailerlite));
+
+// Database connection and server start
 db.sequelize
   .sync()
   .then(() => {

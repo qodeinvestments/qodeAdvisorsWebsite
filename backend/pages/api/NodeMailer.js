@@ -26,7 +26,7 @@ app.post('/api/mailerlite/subscribe', async (req, res) => {
             email: email,
             status: 'active'
         };
-
+        x
         const response = await mailerlite.subscribers.createOrUpdate(params);
         console.log('MailerLite response data:', response.data); // Log only the data part
         res.status(200).json({ message: 'Subscription successful', data: response.data });

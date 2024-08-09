@@ -22,12 +22,16 @@ function sendNewsletterMail(email, subject, text) {
     };
 
     // Send the email
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.log('Error occurred:', error.message);
-        } else {
-            console.log('Email sent successfully!');
-        }
+    return new Promise((resolve, reject) => {
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log('Error occurred:', error.message);
+                reject(error);
+            } else {
+                console.log('Email sent successfully!');
+                resolve(info);
+            }
+        });
     });
 }
 

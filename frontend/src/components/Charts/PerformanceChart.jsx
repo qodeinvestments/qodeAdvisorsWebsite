@@ -168,7 +168,7 @@ const PerformanceChart = ({ strategy }) => {
       },
       yAxis: [
         {
-          title: { text: "Performance" },
+          title: { text: "" },
           height: "100%",
         },
       ],
@@ -218,7 +218,7 @@ const PerformanceChart = ({ strategy }) => {
       <div className="flex flex-col justify-center xl:flex-row gap-4">
         {/* Chart Section */}
         <div className="w-full  xl:w-1/2">
-          <div className="p-4">
+          <div className="">
             <Tabs value="chart1">
               <div className="flex flex-col  gap-4">
                 {/* Time Range Buttons */}

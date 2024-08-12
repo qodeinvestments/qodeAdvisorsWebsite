@@ -35,7 +35,7 @@ const StrategyComponent = ({ strategyData }) => {
         <div className="bg-white rounded-b-3xl  ">
           <div className="flex flex-col sm:flex-row justify-between items-start mx-auto px-4 sm:px-6 lg:px-6">
             <div className="pt-16 w-full">
-              <h2 className="text-lg sm:text-4xl sophia-pro-font font-bold  mb-2 text-primary-dark text-center ">
+              <h2 className="text-2xl sm:text-4xl sophia-pro-font font-bold  mb-2 text-primary-dark text-center ">
                 <span className="block">{title}</span>
               </h2>
               <div
@@ -67,7 +67,7 @@ const StrategyComponent = ({ strategyData }) => {
       </Container>
 
       <Container>
-        <div className="mx-auto ">
+        <div className="mx-auto p-6 sm:p-0">
           <h2 className="text-lg sm:text-lg md:text-md lg:text-3xl font-black text-[#151E28] text-center mb-4 sm:mb-8">
             How Our Strategy Works
           </h2>
@@ -142,7 +142,7 @@ const StrategyComponent = ({ strategyData }) => {
         </GrayContainer>
       </div>
       <Container>
-        <div className="mb-20">
+        <div className="mb-20 p-6 sm:p-0">
           <h2 className="text-lg sm:text-lg md:text-3xl font-black sophia-pro-font text-[#151E28] text-center mb-4 sm:mb-8">
             FAQ's
           </h2>

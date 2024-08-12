@@ -26,16 +26,13 @@ const InvestmentStrategies = () => {
 
   return (
     <>
-      {/* <p className="uppercase text-[12px] text-center pt-10 inter-font tracking-widest  text-gray-400">
-          Qode Your Future: Data-Driven Decisions for a Quantum Leap.
-        </p> */}
-      <div className="sophia-pro-font flex justify-center py-10 md:py-10 flex-col md:p-16 md:flex-row">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 ">
+      <div className="sophia-pro-font flex justify-center py-8 sm:py-10 md:py-12 lg:py-16 flex-col md:flex-row">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
           <div className="text-center md:text-left">
-            <h2 className="md:text-lg   lg:text-2xl font-bold mt-4 md:mt-8 text-dark">
+            <h2 className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold mt-4 md:mt-6 lg:mt-8 text-dark">
               Strategies
             </h2>
-            <p className="my-2 text-md md:text-lg">
+            <p className="my-2 text-sm sm:text-md md:text-lg">
               View all our strategies.{" "}
               <Link to={"/strategies"} className="text-red-600">
                 <span className="text-red-600">
@@ -44,19 +41,20 @@ const InvestmentStrategies = () => {
               </Link>
             </p>
           </div>
+
           <Link to={"/strategies/quant-growth-fund"} className="text-black">
-            <div className="bg-white hover:shadow-xl transition-all px-8 md:px-10 lg:px-14 py-10 md:py-12 lg:py-16 h-[220px] group overflow-hidden relative">
+            <div className="bg-white hover:shadow-xl transition-all px-6 sm:px-8 md:px-10 lg:px-14 py-8 sm:py-10 md:py-12 lg:py-16 h-[180px] sm:h-[200px] md:h-[220px] group overflow-hidden relative">
               <div className="transition-all duration-300 transform group-hover:-translate-y-5">
-                <h3 className="font-bold mb-2 md:mb-4 md:text-lg md:text-lg lg:md:text-lg">
+                <h3 className="font-bold mb-2 sm:mb-3 md:mb-4 text-md sm:text-lg md:text-xl">
                   Quality Fund
                 </h3>
-                <p className="text-md md:text-lg lg:md:text-lg">
-                  <span className="text-sm md:text-base lg:text-md">
+                <p className="text-sm sm:text-md md:text-lg">
+                  <span className="text-xs sm:text-sm md:text-base">
                     Invest in quality business. Get quality results.
                   </span>
                 </p>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 px-8 md:px-10 lg:px-14 py-4 md:py-6 lg:py-10 transition-all duration-300 opacity-0 group-hover:opacity-100">
+              <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 md:px-10 lg:px-14 py-3 sm:py-4 md:py-6 lg:py-8 transition-all duration-300 opacity-0 group-hover:opacity-100">
                 <span className="relative z-10 text-red-600">
                   Explore <FontAwesomeIcon icon={faArrowRight} />
                 </span>
@@ -65,18 +63,18 @@ const InvestmentStrategies = () => {
           </Link>
 
           <Link to={"/strategies/quant-growth-momentum"} className="text-black">
-            <div className="bg-white hover:shadow-xl transition-all px-8 md:px-10 lg:px-14 py-10 md:py-12 lg:py-16 h-[220px] group overflow-hidden relative">
+            <div className="bg-white hover:shadow-xl transition-all px-6 sm:px-8 md:px-10 lg:px-14 py-8 sm:py-10 md:py-12 lg:py-16 h-[180px] sm:h-[200px] md:h-[220px] group overflow-hidden relative">
               <div className="transition-all duration-300 transform group-hover:-translate-y-5">
-                <h3 className="font-bold mb-2 md:mb-4 md:text-lg md:text-lg lg:md:text-lg">
+                <h3 className="font-bold mb-2 sm:mb-3 md:mb-4 text-md sm:text-lg md:text-xl">
                   High-Return & Churn Fund
                 </h3>
-                <p className="text-md md:text-lg lg:md:text-lg">
-                  <span className="text-sm md:text-base lg:text-md">
+                <p className="text-sm sm:text-md md:text-lg">
+                  <span className="text-xs sm:text-sm md:text-base">
                     Buy high sell higher
                   </span>
                 </p>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 px-8 md:px-10 lg:px-14 py-4 md:py-6 lg:py-10 transition-all duration-300 opacity-0 group-hover:opacity-100">
+              <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 md:px-10 lg:px-14 py-3 sm:py-4 md:py-6 lg:py-8 transition-all duration-300 opacity-0 group-hover:opacity-100">
                 <span className="relative z-10 text-red-600">
                   Explore <FontAwesomeIcon icon={faArrowRight} />
                 </span>
@@ -85,18 +83,18 @@ const InvestmentStrategies = () => {
           </Link>
 
           <Link to={"/strategies/low-vol-momentum"} className="text-black">
-            <div className="bg-white hover:shadow-xl transition-all px-8 md:px-10 lg:px-14 py-10 md:py-12 lg:py-16 h-[220px] group overflow-hidden relative">
+            <div className="bg-white hover:shadow-xl transition-all px-6 sm:px-8 md:px-10 lg:px-14 py-8 sm:py-10 md:py-12 lg:py-16 h-[180px] sm:h-[200px] md:h-[220px] group overflow-hidden relative">
               <div className="transition-all duration-300 transform group-hover:-translate-y-5">
-                <h3 className="font-bold mb-2 md:mb-4 md:text-lg md:text-lg lg:md:text-lg">
+                <h3 className="font-bold mb-2 sm:mb-3 md:mb-4 text-md sm:text-lg md:text-xl">
                   Steady Fund
                 </h3>
-                <p className="text-md md:text-lg lg:md:text-lg">
-                  <span className="text-sm md:text-base lg:text-md">
+                <p className="text-sm sm:text-md md:text-lg">
+                  <span className="text-xs sm:text-sm md:text-base">
                     Slow but Steady
                   </span>
                 </p>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 px-8 md:px-10 lg:px-14 py-4 md:py-6 lg:py-10 transition-all duration-300 opacity-0 group-hover:opacity-100">
+              <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 md:px-10 lg:px-14 py-3 sm:py-4 md:py-6 lg:py-8 transition-all duration-300 opacity-0 group-hover:opacity-100">
                 <span className="relative z-10 text-red-600">
                   Explore <FontAwesomeIcon icon={faArrowRight} />
                 </span>

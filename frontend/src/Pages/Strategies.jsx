@@ -19,24 +19,19 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   return (
     <Link
       to={slug}
-      className="mb-20 p-14 pb-20 relative bg-[#fafafa] hover:bg-[#fff] hover:shadow-xl group transition duration-300"
+      className="mb-16 sm:mb-20 p-10 sm:p-14 pb-16 sm:pb-20 relative bg-[#fafafa] hover:bg-white hover:shadow-xl group transition duration-300"
     >
-      <div className="transition-all duration-500  transform group-hover:-translate-y-4 ">
-        <h1 className="text-2xl  font-black sophia-pro-font mt-4">{name}</h1>
+      <div className="transition-all duration-500 transform group-hover:-translate-y-4">
+        <h1 className="text-xl sm:text-2xl font-black sophia-pro-font mt-4 sm:mt-6">
+          {name}
+        </h1>
         <p
-          className="text-md leading-[2.5rem]"
+          className="text-sm sm:text-md leading-[2rem] sm:leading-[2.5rem]"
           dangerouslySetInnerHTML={{ __html: description }}
         ></p>
       </div>
-      <div className="flex flex-row justify-between items-end gap-16">
-        {/* {periods.map((period) => (
-      <div key={period} className="flex flex-col mt-9">
-        <h1 className="text-xl sophia-pro-font">{period}</h1>
-        <p className="text-xl mt-5">{calculateReturns(period)}</p>
-      </div>
-    ))} */}
-
-        <div className="absolute bottom-0 left-0 right-0 px-14 py-10 transition-all duration-300 opacity-0 group-hover:opacity-100">
+      <div className="flex flex-row justify-between items-end gap-8 sm:gap-16">
+        <div className="absolute bottom-0 left-0 right-0 px-10 sm:px-14 py-6 sm:py-10 transition-all duration-300 opacity-0 group-hover:opacity-100">
           <Link to={"/strategies/quant-growth-momentum"} className="text-black">
             <span className="relative z-10 text-red-600">
               Explore <FontAwesomeIcon icon={faArrowRight} />

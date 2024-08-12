@@ -45,16 +45,16 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="relative min-h-[70vh] flex  justify-start p-10 overflow-hidden sophia-pro-bold-font">
-      <div className="  py-16 md:py-24 lg:py-12  md:text-start">
+    <div className="relative min-h-[70vh] flex justify-start p-6 sm:p-8 md:p-10 lg:p-12 overflow-hidden sophia-pro-bold-font">
+      <div className="py-10 sm:py-14 md:py-16 lg:py-24 text-start">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="md:text-2xl mt-10 lg:text-4xl text-gray-900 mb-6"
+          className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl text-gray-900 mb-4 sm:mb-6"
         >
           The best investments are <br />
-          <div className="h-[1.5em] md:h-[1.2em] lg:h-[1.5em] mb-6">
+          <div className="h-[1.2em] sm:h-[1.4em] md:h-[1.2em] lg:h-[1.5em] mb-4 sm:mb-6">
             {currentText} <span className="animate-blink">|</span>
           </div>
         </motion.h1>
@@ -64,50 +64,27 @@ const Banner = () => {
             color: "#cccccc",
             backgroundColor: "#cccccc",
           }}
-          className="flex-grow max-w-[25rem] my-20"
+          className="flex-grow max-w-[15rem] sm:max-w-[20rem] lg:max-w-[25rem] my-8 sm:my-12 lg:my-20"
         />
-        {/* <div className="flex flex-col md:flex-row  items-center md:items-start  gap-6 md:gap-14">
-          <hr
-            style={{
-              color: "#cccccc",
-              backgroundColor: "#cccccc",
-            }}
-            className="flex-grow max-w-[4rem] w-16 md:w-32 mt-3 mb-4 md:mb-0"
-          />
-          <p className="text-md md:text-lg text-black max-w-xs md:max-w-sm">
-            {currentText}
-            <span className="animate-blink">|</span>
-          </p>
-        </div> */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="h-12 md:h-16 lg:h-20 mb-6 overflow-hidden"
-        >
-          <div className="md:text-lg minion-pro-font md:text-2xl lg:text-3xl font-bold text-primary-dark bg-gray-100 py-2 px-4 rounded inline-block">
-            {currentText}
-            <span className="animate-blink">|</span>
-          </div>
-        </motion.div> */}
+
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="  sm:text-2xl md:text-3xl lg:text-4xl text-gray-900  mb-6 md:mb-8"
+          className="text-2xl sm:text-xl md:text-2xl lg:text-4xl text-gray-900 mb-4 sm:mb-6 md:mb-8"
         >
           We manage wealth for Individuals, Families & Businesses.
         </motion.h1>
 
-        <div className="flex flex-col md:flex-row minion-pro-font items-center md:items-start mt-10 md:mt-20 gap-6 md:gap-14">
+        <div className="flex flex-col md:flex-row minion-pro-font items-center md:items-start mt-8 sm:mt-10 md:mt-16 lg:mt-20 gap-4 sm:gap-6 md:gap-14">
           <hr
             style={{
               color: "#cccccc",
               backgroundColor: "#cccccc",
             }}
-            className="flex-grow max-w-[4rem] w-16 md:w-32 mt-3 mb-4 md:mb-0"
+            className="flex-grow max-w-[4rem] w-12 sm:w-16 md:w-32 mt-2 mb-4 md:mb-0"
           />
-          <p className="text-md  text-black max-w-xs md:max-w-sm">
+          <p className="text-sm sm:text-md text-black max-w-xs sm:max-w-sm">
             To help you build wealth in the long term, we've made data-driven
             investment strategies.
           </p>

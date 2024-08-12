@@ -29,7 +29,7 @@ const InvestmentStrategies = () => {
       {/* <p className="uppercase text-[12px] text-center pt-10 inter-font tracking-widest  text-gray-400">
           Qode Your Future: Data-Driven Decisions for a Quantum Leap.
         </p> */}
-      <div className="sophia-pro-font flex justify-center  flex-col   md:flex-row">
+      <div className="sophia-pro-font flex justify-center py-10 md:py-10 flex-col md:p-16 md:flex-row">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 ">
           <div className="text-center md:text-left">
             <h2 className="md:text-lg   lg:text-2xl font-bold mt-4 md:mt-8 text-dark">

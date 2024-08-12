@@ -119,7 +119,7 @@ const Home = () => {
         </Container>
       </GrayContainer>
       <Container>
-        <div className="p-14 sophia-pro-font text-gray-900 my-5 px-4 sm:px-6 lg:px-8">
+        <div className="sophia-pro-font text-gray-900 my-5 p-6">
           <div className="max-w-7xl mx-auto">
             <div className="overflow-hidden">
               <div className="md:flex items-center justify-center">

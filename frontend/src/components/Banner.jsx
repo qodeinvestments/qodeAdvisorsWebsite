@@ -45,13 +45,13 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="relative min-h-[70vh] md:p-14 flex  justify-center overflow-hidden sophia-pro-bold-font">
-      <div className="  mx-auto px-4 py-16 md:py-24 lg:py-12  md:text-start">
+    <div className="relative min-h-[70vh] flex  justify-start p-10 overflow-hidden sophia-pro-bold-font">
+      <div className="  py-16 md:py-24 lg:py-12  md:text-start">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="md:text-lg md:text-2xl mt-10 lg:text-4xl text-gray-900 mb-6"
+          className="md:text-2xl mt-10 lg:text-4xl text-gray-900 mb-6"
         >
           The best investments are <br />
           <div className="h-[1.5em] md:h-[1.2em] lg:h-[1.5em] mb-6">
@@ -94,7 +94,7 @@ const Banner = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="md:text-lg sm:text-2xl md:text-3xl lg:text-4xl text-gray-900  mb-6 md:mb-8"
+          className="  sm:text-2xl md:text-3xl lg:text-4xl text-gray-900  mb-6 md:mb-8"
         >
           We manage wealth for Individuals, Families & Businesses.
         </motion.h1>

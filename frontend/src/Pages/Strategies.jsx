@@ -197,7 +197,7 @@ const Strategies = () => {
   ];
   return (
     <Container>
-      <div className="mx-auto p-4 md:p-14">
+      <div className="mx-auto p-8 ">
         <p className="text-xl sm:text-xl md:text-xl lg:text-5xl sophia-pro-font mt-10 sm:mt-16 md:mt-20 font-black mb-6 md:mb-4 ">
           All Strategies
         </p>

@@ -166,7 +166,7 @@ const TrailingReturns = ({ strategy }) => {
 
   return (
     <div className="sophia-pro-font overflow-x-auto">
-      <h2 className="text-lg  my-4">Trailing Returns</h2>
+      <h2 className="md:text-lg  my-4">Trailing Returns</h2>
       <table className="w-full min-w-[640px]">
         <thead>
           <tr style={tableHeaderStyle} className="border-b-2 border-gray-200">

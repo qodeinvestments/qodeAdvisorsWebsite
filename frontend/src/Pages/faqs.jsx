@@ -9,11 +9,11 @@ const FAQItem = ({ question, answer }) => {
         className="flex justify-between items-center p-3 sm:p-4 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h3 className="text-base sophia-pro-font font-medium sm:text-md md:text-md text-[#151E28] pr-4">
+        <h3 className="text-base sophia-pro-font font-medium sm:text-md md:text-lg text-[#151E28] pr-4">
           {question}
         </h3>
         <span
-          className={`text-[#151E28] text-lg sm:text-lg transition-transform duration-300 ${
+          className={`text-[#151E28] md:text-lg sm:md:text-lg transition-transform duration-300 ${
             isOpen ? "transform rotate-180" : ""
           }`}
         >

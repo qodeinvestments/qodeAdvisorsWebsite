@@ -31,8 +31,8 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
       <div className="flex flex-row justify-between items-end gap-16">
         {/* {periods.map((period) => (
       <div key={period} className="flex flex-col mt-9">
-        <h1 className="text-lg sophia-pro-font">{period}</h1>
-        <p className="text-lg mt-5">{calculateReturns(period)}</p>
+        <h1 className="text-xl sophia-pro-font">{period}</h1>
+        <p className="text-xl mt-5">{calculateReturns(period)}</p>
       </div>
     ))} */}
 
@@ -198,14 +198,14 @@ const Strategies = () => {
   return (
     <Container>
       <div className="mx-auto p-4 md:p-14">
-        <p className="text-lg sm:text-lg md:text-lg lg:text-4xl sophia-pro-font mt-10 sm:mt-16 md:mt-20 font-black mb-6 md:mb-4 ">
+        <p className="text-xl sm:text-xl md:text-xl lg:text-5xl sophia-pro-font mt-10 sm:mt-16 md:mt-20 font-black mb-6 md:mb-4 ">
           All Strategies
         </p>
-        <p className="text-md sm:text-lg md:text-lg lg:text-lg minion-pro-font font-thin mb-8 md:mb-20 ">
+        <p className="text-md sm:text-xl md:text-xl lg:text-xl minion-pro-font font-thin mb-8 md:mb-20 ">
           One of these strategies will help you in reaching your financial goal
           based on how much risk you’re willing to take.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 sophia-pro-font mx-auto my-10 md:my-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 sophia-pro-font mx-auto my-10 ">
           {strategies.map((strategy) => (
             <StrategyCard
               key={strategy.id}
@@ -217,12 +217,12 @@ const Strategies = () => {
           ))}
 
           <div className="text-center mt-8 md:mt-10">
-            <p className="my-4 text-lg md:text-lg lg:text-lg">
+            <p className="my-4 text-xl md:text-xl lg:text-xl">
               Not sure which strategy is right for you? <br /> Sign Up to track
               our live portfolio.
             </p>
             <Link target="_blank" to={"https://dashboard.qodeinvest.com"}>
-              <button className="bg-red-600 text-md sophia-pro-font md:text-lg lg:text-lg text-white py-3 md:py-4 lg:py-3 px-6 md:px-8 lg:px-6 mt-5 hover:bg-red-500 transition-colors">
+              <button className="bg-red-600 text-md sophia-pro-font md:text-xl lg:text-xl text-white py-3 md:py-4 lg:py-3 px-6 md:px-8 lg:px-6 mt-5 hover:bg-red-500 transition-colors">
                 Sign Up
               </button>
             </Link>

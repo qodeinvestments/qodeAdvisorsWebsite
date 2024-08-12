@@ -11,7 +11,7 @@ const OurFocus = () => {
           <p className="uppercase text-[12px] inter-font tracking-widest  text-gray-400">
             Our Focus
           </p>
-          <h2 className="text-lg text-primary-dark sophia-pro-font  mt-4">
+          <h2 className="md:text-lg text-primary-dark sophia-pro-font  mt-4">
             We are <span className="text-primary-dark ">committed</span> to make
             financial <br /> investment more reliable
           </h2>
@@ -57,7 +57,7 @@ const OurFocus = () => {
             </div>
           </div>
 
-          <p className="relative top-48 text-lg">
+          <p className="relative top-48 md:text-lg">
             Find out more about{" "}
             <a href="">
               <span className="arrow-link sophia-pro-font cursor-pointer ">

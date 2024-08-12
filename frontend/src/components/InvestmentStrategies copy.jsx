@@ -18,7 +18,7 @@ const InvestmentStrategies = () => {
           <p className="uppercase text-[12px] inter-font tracking-widest  text-gray-400 ">
             Qode Your Future: Data-Driven Decisions for a Quantum Leap.
           </p>
-          <h2 className="text-lg  mt-4 py-4 text-dark">
+          <h2 className="md:text-lg  mt-4 py-4 text-dark">
             Our Investment Strategies
           </h2>
           <p className="text-primary  mt-4 text-md mx-auto max-w-4xl">
@@ -44,7 +44,7 @@ const InvestmentStrategies = () => {
                   alt="Logo 1"
                   className="w-10 h-10 mr-4"
                 /> */}
-                <h3 className="text-lg text-white text-left  mt-4">
+                <h3 className="md:text-lg text-white text-left  mt-4">
                   Quant Growth Fund
                 </h3>
                 {/* <div className="absolute top-4 right-4 flex space-x-2">

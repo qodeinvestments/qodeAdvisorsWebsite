@@ -59,7 +59,7 @@ const OurTeam = () => {
   return (
     <Container>
       <div className="container sophia-pro-font mx-auto py-8  mt-16">
-        <h2 className="text-lg inter-font  text-center mb-6">Our Team</h2>
+        <h2 className="md:text-lg inter-font  text-center mb-6">Our Team</h2>
         <p className="text-center text-gray-400 mb-12">
           We are Code Developers, Analysts, and Fund Managers dedicated to
           growing your money and optimizing your financial future. Using

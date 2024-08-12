@@ -79,7 +79,7 @@ const RelatedArticles = ({ strategySlug, limit = 3 }) => {
 
   if (posts.length === 0) {
     return (
-      <div className="text-lg text-center my-20">
+      <div className="md:text-lg text-center my-20">
         No related articles found.
       </div>
     );
@@ -88,10 +88,10 @@ const RelatedArticles = ({ strategySlug, limit = 3 }) => {
   return (
     <Container>
       <div className="py-10">
-        <h2 className="text-lg inter-font  text-[#151E28] mb-6">
+        <h2 className="md:text-lg inter-font  text-[#151E28] mb-6">
           Related Articles
         </h2>
-        {/* <p className="text-lg">
+        {/* <p className="md:text-lg">
           Check out our latest blog posts on investing and portfolio management.
         </p> */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

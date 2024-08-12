@@ -16,7 +16,7 @@ const Disclosure = () => {
 
   return (
     <Container>
-      <div className="flex flex-col  items-center justify-center min-h-screen  p-6">
+      <div className="flex flex-col  items-center justify-center min-h-screen ">
         <div className="bg-white  p-8 rounded-lg  mx-auto mt-10">
           <h1 className="font-black mt-20 sophia-pro-font text-4xl text-start mb-10">
             Disclosure
@@ -70,7 +70,7 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className="minion-pro-font text-lg space-y-10 mt-10">
+          <div className="minion-pro-font md:text-lg space-y-10 mt-10">
             <p>
               For general queries and updates, write to support@qodeinvest.com
             </p>

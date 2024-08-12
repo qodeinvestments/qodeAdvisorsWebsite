@@ -78,11 +78,11 @@ const MomentumTabs = () => {
     <div className="mx-auto inter-font">
       <div className=" bg-primarypy-12 md:py-20 inter-font">
         <div className="container mx-auto px-4 sm:px-6 lg:px-36">
-          <h2 className="text-lg  text-white sm:text-lg">
+          <h2 className="md:text-lg  text-white sm:md:text-lg">
             <span className="block">Welcome to</span>
             <span className="block">Quant Growth Momentum</span>
           </h2>
-          <p className="mt-4 max-w-3xl text-lg text-gray-300">
+          <p className="mt-4 max-w-3xl md:text-lg text-gray-300">
             Experience the power of quantitative analysis and growth strategies.
           </p>
         </div>
@@ -92,7 +92,7 @@ const MomentumTabs = () => {
         <div className="bg-white inter-font py-12 md:py-20">
           <div className="">
             <div className="lg:flex lg:items-center lg:justify-between">
-              <h2 className="text-lg  tracking-tight text-gray-900 sm:text-lg">
+              <h2 className="md:text-lg  tracking-tight text-gray-900 sm:md:text-lg">
                 <span className="block">Overview</span>
               </h2>
             </div>
@@ -130,7 +130,7 @@ const MomentumTabs = () => {
                       />
                     </div>
                     <div>
-                      <h3 className="text-lg  mb-4">{activeTab}</h3>
+                      <h3 className="md:text-lg  mb-4">{activeTab}</h3>
                       <ul className="list-decimal space-y-5 ">
                         {tabData[activeTab].map((value, index) => (
                           <li key={index} className=" text-start">

@@ -62,7 +62,7 @@ const AboutUs = () => {
         <h2 className="text-4xl sophia-pro-font font-bold text-center mb-6">
           About Qode
         </h2>
-        <p className="text-center   mb-12 max-w-2xl text-lg mx-auto">
+        <p className="text-center   mb-12 max-w-2xl md:text-lg mx-auto">
           At Qode, we offer rigorous data-driven investment strategies geared to
           build long term wealth. Experience transparent, low-cost portfolio
           management tailored to free up your time for life's important moments.
@@ -72,7 +72,7 @@ const AboutUs = () => {
           <h3 className=" sophia-pro-font font-semibold text-4xl mb-6">
             Why Choose Qode?
           </h3>
-          <ul className="list-decimal text-lg  list-inside space-y-2">
+          <ul className="list-decimal md:text-lg  list-inside space-y-2">
             {/* <li>Innovative financial technology solutions</li>
             <li>Expert team of developers, analysts, and fund managers</li> */}
             <li>Data-driven decision-making processes</li>
@@ -84,7 +84,7 @@ const AboutUs = () => {
         <h2 className=" mt-24 text-4xl sophia-pro-font font-bold text-center mb-6">
           Our Team
         </h2>
-        <p className="text-center text-black text-lg mb-12 max-w-3xl mx-auto">
+        <p className="text-center text-black md:text-lg mb-12 max-w-3xl mx-auto">
           We at Qode are dedicated to growing your money and optimizing your
           financial future. Using innovative strategies and our extensive
           expertise, we effectively manage investments to maximize returns and
@@ -103,7 +103,7 @@ const AboutUs = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold mb-6">Financial Analysis</h3>
-              <p className="text-black text-lg">
+              <p className="text-black md:text-lg">
                 In-depth analysis of market trends and investment opportunities
                 to guide your financial decisions.
               </p>
@@ -112,14 +112,14 @@ const AboutUs = () => {
               <h3 className="text-xl font-semibold mb-6">
                 Portfolio Management
               </h3>
-              <p className="text-black text-lg">
+              <p className="text-black md:text-lg">
                 Expert management of your investment portfolio to optimize
                 returns and minimize risks.
               </p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <h3 className="text-xl font-semibold mb-6">FinTech Solutions</h3>
-              <p className="text-black text-lg">
+              <p className="text-black md:text-lg">
                 Cutting-edge financial technology tools to streamline your
                 business operations and financial processes.
               </p>
@@ -154,7 +154,7 @@ const TeamMemberCard = ({ member }) => {
               href={`mailto:${member.email}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black text-lg hover:text-gray-800 transition-colors text-md"
+              className="text-black md:text-lg hover:text-gray-800 transition-colors text-md"
             >
               <FontAwesomeIcon icon={faEnvelope} />
             </a>

@@ -66,7 +66,7 @@ const dummyPosts = [
 const Blogs = () => {
   return (
     <div className="py-20">
-      <h2 className="text-lg sophia-pro-font text-center text-[#151E28] mb-8">
+      <h2 className="md:text-lg sophia-pro-font text-center text-[#151E28] mb-8">
         Recent Blogs
       </h2>
       <div className="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

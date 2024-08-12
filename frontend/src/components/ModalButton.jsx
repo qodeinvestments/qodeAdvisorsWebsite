@@ -11,7 +11,7 @@ const ModalButton = () => {
   };
   return (
     <div className="text-center  mt-10">
-      <p className="sophia-pro-font text-lg">
+      <p className="sophia-pro-font md:text-lg">
         Do you want to speak to fund manager before investing?
       </p>
       <button

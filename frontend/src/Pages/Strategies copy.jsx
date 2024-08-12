@@ -20,19 +20,19 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
     >
       <h1 className="text-4xl sophia-pro-font mt-4">{name}</h1>
       <p
-        className="text-lg  leading-[2.5rem]  "
+        className="md:text-lg  leading-[2.5rem]  "
         dangerouslySetInnerHTML={{ __html: description }}
       ></p>
       <div className="flex flex-row justify-between items-end gap-16">
         {periods.map((period) => (
           <div key={period} className="flex flex-col mt-9">
-            <h1 className="text-lg sophia-pro-font">{period}</h1>
-            <p className="text-lg mt-5">{calculateReturns(period)}</p>
+            <h1 className="md:text-lg sophia-pro-font">{period}</h1>
+            <p className="md:text-lg mt-5">{calculateReturns(period)}</p>
           </div>
         ))}
 
         <div className="py-5 px-10 mt-5 text-center flex justify-between items-center  hover:bg-white/10 transition duration-300 text-black hover:before:bg-red-600 relative h-[50px] overflow-hidden before:absolute before:bottom-0 before:left-0 before:top-0 before:z-0 before:h-full before:w-0 before:bg-red-600 before:transition-all before:duration-500 hover:text-white hover:before:left-0 hover:before:w-full">
-          <span className="relative z-10 text-lg">Know more</span>
+          <span className="relative z-10 md:text-lg">Know more</span>
         </div>
       </div>
     </Link>
@@ -76,7 +76,7 @@ const Strategies = () => {
     <Container>
       <div className="flex flex-col  sophia-pro-font mx-auto my-20">
         <p className="text-4xl text-center mb-5">All Strategies</p>
-        <p className="text-lg text-center mb-20">
+        <p className="md:text-lg text-center mb-20">
           One of these strategies will help you in reaching your financial goal
           based on how much risk you’re willing to take.
         </p>
@@ -91,12 +91,12 @@ const Strategies = () => {
         ))}
 
         <div className="text-center mt-10">
-          <p className="my-4 text-lg">
+          <p className="my-4 md:text-lg">
             I want to speak to fund manager before investing.
           </p>
           <button
             onClick={openModal}
-            className="bg-red-600 text-lg text-white py-5 px-10 mt-5 hover:bg-gray-800 transition-colors "
+            className="bg-red-600 md:text-lg text-white py-5 px-10 mt-5 hover:bg-gray-800 transition-colors "
           >
             Talk to a Fund Manager
           </button>

@@ -256,7 +256,7 @@ const Header = () => {
                 <Link
                   key={sublink.name}
                   to={sublink.slug}
-                  className="glass-card text-lg  text-white"
+                  className="glass-card md:text-lg  text-white"
                   activeClassName="bg-gray-700 text-white"
                   onClick={() => toggleNavbar(sublink, true)}
                 >

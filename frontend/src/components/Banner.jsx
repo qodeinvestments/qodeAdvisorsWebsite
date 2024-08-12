@@ -45,13 +45,13 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="relative min-h-[90vh] md:p-14 flex  justify-center overflow-hidden sophia-pro-bold-font">
+    <div className="relative min-h-[70vh] md:p-14 flex  justify-center overflow-hidden sophia-pro-bold-font">
       <div className="  mx-auto px-4 py-16 md:py-24 lg:py-12  md:text-start">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-lg md:text-2xl mt-10 lg:text-4xl text-gray-900 mb-6"
+          className="md:text-lg md:text-2xl mt-10 lg:text-4xl text-gray-900 mb-6"
         >
           The best investments are <br />
           <div className="h-[1.5em] md:h-[1.2em] lg:h-[1.5em] mb-6">
@@ -85,7 +85,7 @@ const Banner = () => {
           transition={{ duration: 0.8 }}
           className="h-12 md:h-16 lg:h-20 mb-6 overflow-hidden"
         >
-          <div className="text-lg minion-pro-font md:text-2xl lg:text-3xl font-bold text-primary-dark bg-gray-100 py-2 px-4 rounded inline-block">
+          <div className="md:text-lg minion-pro-font md:text-2xl lg:text-3xl font-bold text-primary-dark bg-gray-100 py-2 px-4 rounded inline-block">
             {currentText}
             <span className="animate-blink">|</span>
           </div>
@@ -94,7 +94,7 @@ const Banner = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-lg sm:text-2xl md:text-3xl lg:text-4xl text-gray-900  mb-6 md:mb-8"
+          className="md:text-lg sm:text-2xl md:text-3xl lg:text-4xl text-gray-900  mb-6 md:mb-8"
         >
           We manage wealth for Individuals, Families & Businesses.
         </motion.h1>
@@ -107,7 +107,7 @@ const Banner = () => {
             }}
             className="flex-grow max-w-[4rem] w-16 md:w-32 mt-3 mb-4 md:mb-0"
           />
-          <p className="text-md md:text-lg text-black max-w-xs md:max-w-sm">
+          <p className="text-md  text-black max-w-xs md:max-w-sm">
             To help you build wealth in the long term, we've made data-driven
             investment strategies.
           </p>

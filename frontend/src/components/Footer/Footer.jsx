@@ -15,7 +15,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
           <div className="text-center sm:text-left col-span-1 sm:col-span-2 md:col-span-1">
-            <h2 className="text-lg sm:text-lg sophia-pro-font playfair-display-font font-bold text-red-500 mb-4">
+            <h2 className="md:text-lg sm:md:text-lg sophia-pro-font playfair-display-font font-bold text-red-500 mb-4">
               Qode Advisors LLP
             </h2>
             <p className="text-base sm:text-md max-w-xs mx-auto sm:mx-0 text-white">
@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg sm:text-lg sophia-pro-font font-semibold text-red-500 mb-4">
+            <h3 className="md:text-lg sm:md:text-lg sophia-pro-font font-semibold text-red-500 mb-4">
               Company
             </h3>
             <ul className="text-base sm:text-md text-white">
@@ -69,7 +69,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg sm:text-lg sophia-pro-font font-semibold text-red-500 mb-4">
+            <h3 className="md:text-lg sm:md:text-lg sophia-pro-font font-semibold text-red-500 mb-4">
               Strategies
             </h3>
             <ul className="text-base sm:text-md text-white">
@@ -88,7 +88,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h3 className="text-lg sm:text-lg sophia-pro-font font-semibold text-red-500 mb-4">
+            <h3 className="md:text-lg sm:md:text-lg sophia-pro-font font-semibold text-red-500 mb-4">
               Resources
             </h3>
             <ul className="text-base sm:text-md text-white">

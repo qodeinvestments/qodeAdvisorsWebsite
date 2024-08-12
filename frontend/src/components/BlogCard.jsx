@@ -28,14 +28,14 @@ function BlogCard({
       initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="overflow-hidden transition-transform duration-75 max-w-[400px] hover:scale-105  flex flex-col"
+      className="overflow-hidden transition-transform duration-75 minion-pro-font max-w-[400px] hover:scale-105  flex flex-col"
     >
       <Link to={`${detailLink}`} className="block flex-grow">
         <div className="p-6 h-full group overflow-hidden relative flex flex-col">
           <div className="transition-all duration-500 transform group-hover:-translate-y-5 flex flex-col h-full">
             <div className="mb-auto">
               <span className="text-primary-dark text-sm">Blog</span>
-              <h3 className="text-lg text-black group-hover:text-red-600 font-bold sophia-pro-font mb-2 relative overflow-hidden text-ellipsis">
+              <h3 className="md:text-lg text-black group-hover:text-red-600 font-bold sophia-pro-font mb-2 relative overflow-hidden text-ellipsis">
                 {title}
               </h3>
             </div>

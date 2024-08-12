@@ -35,8 +35,8 @@ const FundManagers = () => {
   };
 
   return (
-    <div className="sophia-pro-font my-12 p-14 md:my-8 md:mb-12">
-      <h2 className="text-lg md:text-2xl font-black my-6 md:my-10 text-center">
+    <div className="sophia-pro-font  md:my-8 md:mb-12">
+      <h2 className="md:text-2xl  font-black my-6 md:my-10 text-center">
         Do you want to speak to fund manager before investing?
       </h2>
       <div className="flex flex-col md:flex-row  mx-auto p-5 minion-pro-font justify-around items-center">
@@ -56,10 +56,10 @@ const FundManagers = () => {
 
             {/* Name, Designation, and Button */}
             <div className="flex flex-col items-center md:items-start md:ml-10">
-              <h3 className="text-lg sophia-pro-font font-bold md:text-2xl text-center md:text-left">
+              <h3 className="md:text-lg sophia-pro-font font-bold md:text-2xl text-center md:text-left">
                 {manager.name}
               </h3>
-              <p className="text-black text-lg md:text-md mb-4 text-center md:text-left">
+              <p className="text-black md:text-lg md:text-lg mb-4 text-center md:text-left">
                 {manager.position}
               </p>
               <button

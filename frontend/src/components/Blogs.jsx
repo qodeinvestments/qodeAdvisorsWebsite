@@ -64,7 +64,7 @@ const dummyPosts = [
 
 const Blogs = () => {
   return (
-    <div className="py-20 p-14">
+    <div className=" p-14 py-5">
       <h2 className="text-3xl font-bold sophia-pro-font text-center text-[#151E28] mb-8">
         Related Blogs
       </h2>

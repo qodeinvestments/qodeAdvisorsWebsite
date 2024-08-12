@@ -17,7 +17,7 @@ const AboutUs = () => {
           <h2 className="text-2xl sophia-pro-font font-bold  mb-6">
             Our Mission
           </h2>
-          <p className="text-lg mb-8">
+          <p className="md:text-lg mb-8">
             At Qode, we are dedicated to revolutionizing the way Indians grow
             and manage their wealth. As India's premier wealth management firm,
             we are our clients' most trusted partner, providing investment
@@ -81,7 +81,7 @@ const AboutUs = () => {
           <h2 className="text-2xl sophia-pro-font font-bold  mb-6">
             Investment Strategies
           </h2>
-          <p className="text-lg text-gray-700 mb-8">
+          <p className="md:text-lg text-gray-700 mb-8">
             Distinct yet complementary investment strategies unified by a solid
             core.
           </p>
@@ -152,7 +152,7 @@ const AboutUs = () => {
 
         <section className="mb-16">
           <h2 className="text-2xl sophia-pro-font font-bold  mb-6">Our Team</h2>
-          <p className="text-lg mb-8">
+          <p className="md:text-lg mb-8">
             Qode is powered by a diverse team of financial experts, data
             scientists, and technology innovators. Our collective expertise
             drives our success in navigating the complex world of wealth
@@ -179,7 +179,7 @@ const AboutUs = () => {
           <h2 className="text-2xl sophia-pro-font font-bold mb-6">
             Ready to Transform Your Wealth?
           </h2>
-          <p className="text-lg mb-8">
+          <p className="md:text-lg mb-8">
             Join the hundreds of individuals and businesses who trust Qode with
             their financial future. Let's start your journey to financial
             success today.

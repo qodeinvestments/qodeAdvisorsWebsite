@@ -11,7 +11,7 @@ const BookAMeet = () => {
         <h1 className="text-4xl  mb-20 text-black font-black tracking-tight">
           Schedule a Meeting
         </h1>
-        {/* <p className="text-lg mb-12 text-gray-700">
+        {/* <p className="md:text-lg mb-12 text-gray-700">
           Choose how you'd like to connect with us
         </p> */}
 

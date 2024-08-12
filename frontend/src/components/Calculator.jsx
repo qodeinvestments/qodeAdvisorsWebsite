@@ -167,7 +167,7 @@ const Calculator = ({ strategy }) => {
   return (
     <>
       <div className="py-8">
-        <h1 className="text-lg sm:text-3xl font-bold mb-4 sm:mb-14">
+        <h1 className="md:text-lg sm:text-3xl font-bold mb-4 sm:mb-14">
           Returns Calculator
         </h1>
 
@@ -246,7 +246,7 @@ const Calculator = ({ strategy }) => {
             If you had invested {formatInvestmentPeriod()}, <br /> your
             investments would be worth
           </p>
-          <p className="text-lg sophia-pro-font mt-10  sm:text-2xl">
+          <p className="md:text-lg sophia-pro-font mt-10  sm:text-2xl">
             ₹{numberWithCommas(futureInvestmentValue)}
           </p>
           <p className="text-md sm:text-md text-black  ">

@@ -30,7 +30,7 @@ const InvestmentStrategies = () => {
         </p>
         <div className="text-center sophia-pro-font mt-10 mb-32 flex flex-col lg:flex-row">
           <div className="lg:w-1/2 px-4 lg:px-0 mb-8 lg:mb-0">
-            <h2 className="text-lg lg:text-lg  mt-8 py-4 sophia-pro-font text-start text-dark">
+            <h2 className="md:text-lg lg:md:text-lg  mt-8 py-4 sophia-pro-font text-start text-dark">
               Strategies
             </h2>
             <p className="text-primary text-start text-base lg:text-md  text-md mx-auto mb-8">
@@ -94,13 +94,13 @@ const InvestmentStrategies = () => {
                 className="flex flex-col py-6 lg:py-10 bg-red-600/70 rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 w-full"
               >
                 <div className="p-4 lg:p-6 relative">
-                  <h3 className="text-lg lg:text-lg sophia-pro-font text-white text-left  mt-4">
+                  <h3 className="md:text-lg lg:md:text-lg sophia-pro-font text-white text-left  mt-4">
                     Quant Growth Fund
                   </h3>
                 </div>
-                <p className="text-white px-4 lg:px-6 text-base lg:text-lg font-light text-start mb-2">
+                <p className="text-white px-4 lg:px-6 text-base lg:md:text-lg font-light text-start mb-2">
                   The{" "}
-                  <span className=" text-base lg:text-lg text-white">
+                  <span className=" text-base lg:md:text-lg text-white">
                     Quant Growth Fund
                   </span>{" "}
                   seeks high-growth potential with data-driven precision. We
@@ -130,13 +130,13 @@ const InvestmentStrategies = () => {
                 className="bg-white flex py-6 lg:py-10 flex-col rounded-lg shadow-lg mb-8 lg:mb-0 lg:mr-8 w-full"
               >
                 <div className="p-4 lg:p-6 relative">
-                  <h3 className="text-lg lg:text-lg sophia-pro-font text-left  mt-4">
+                  <h3 className="md:text-lg lg:md:text-lg sophia-pro-font text-left  mt-4">
                     Quant Growth Momentum
                   </h3>
                 </div>
-                <p className="text-primary-dark px-4 lg:px-6 text-base lg:text-lg font-light text-start mb-2">
+                <p className="text-primary-dark px-4 lg:px-6 text-base lg:md:text-lg font-light text-start mb-2">
                   Harnessing market trends, Qode's{" "}
-                  <span className=" text-[#151E28] text-base lg:text-lg">
+                  <span className=" text-[#151E28] text-base lg:md:text-lg">
                     Quant Growth Momentum
                   </span>{" "}
                   fund utilizes data-driven algorithms to identify and

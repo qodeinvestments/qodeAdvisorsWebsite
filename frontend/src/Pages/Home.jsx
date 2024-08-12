@@ -119,7 +119,7 @@ const Home = () => {
         </Container>
       </GrayContainer>
       <Container>
-        <div className="p-14 sophia-pro-font text-gray-900 my-20 py-16 px-4 sm:px-6 lg:px-8">
+        <div className="p-14 sophia-pro-font text-gray-900 my-5 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="overflow-hidden">
               <div className="md:flex items-center justify-center">
@@ -127,7 +127,7 @@ const Home = () => {
                   <h2 className="text-2xl font-semibold mb-6">
                     Qode Weekly Insights
                   </h2>
-                  <p className="text-lg text-gray-600">
+                  <p className="md:text-lg text-gray-600">
                     Join thousands of investors receiving our data-driven market
                     insights every week
                   </p>

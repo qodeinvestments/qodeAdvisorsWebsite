@@ -68,7 +68,7 @@ const StrategyComponent = ({ strategyData }) => {
 
       <Container>
         <div className="mx-auto ">
-          <h2 className="text-lg sm:text-lg md:text-lg lg:text-3xl font-black text-[#151E28] text-center mb-4 sm:mb-8">
+          <h2 className="text-lg sm:text-lg md:text-md lg:text-3xl font-black text-[#151E28] text-center mb-4 sm:mb-8">
             How Our Strategy Works
           </h2>
           <p className="text-center text-gray-600 px-2 sm:px-10 md:px-20 mb-6 sm:mb-10 text-base lg:text-md">

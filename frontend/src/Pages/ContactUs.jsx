@@ -25,16 +25,16 @@ const ContactUs = () => {
     <>
       <div className="  text-black pt-14 text-center">
         <h1 className="text-4xl pt-20 sophia-pro-font ">Contact Us</h1>
-        {/* <p className="max-w-3xl mx-auto text-lg mb-16">
+        {/* <p className="max-w-3xl mx-auto md:text-lg mb-16">
           We're here to help. Reach out to us with any questions or inquiries.
         </p> */}
       </div>
       <Container>
-        <div className="minion-pro-font text-gray-900 min-h-screen">
-          <div className="max-w-7xl mx-auto py-16">
+        <div className="minion-pro-font text-gray-900 min-h-[60vh]">
+          <div className="max-w-7xl mx-auto ">
             <div className="grid grid-cols-1 md:grid-cols-1 gap-16">
               {/* <div className="bg-white rounded-lg shadow-md p-8">
-                <h2 className="text-lg  mb-6">Send us a message</h2>
+                <h2 className="md:text-lg  mb-6">Send us a message</h2>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <label

@@ -35,9 +35,9 @@ const InvestmentStrategies = () => {
         </div>
         <div className="grid grid-cols-1 gap-10">
           <div className="bg-white   p-5">
-            <h3 className="text-lg  mb-4">Quality Fund </h3>
-            <p className="mb-6 text-lg">
-              <span className="text-lg">
+            <h3 className="md:text-lg  mb-4">Quality Fund </h3>
+            <p className="mb-6 md:text-lg">
+              <span className="md:text-lg">
                 Invest in quality business. Get quality results.
               </span>{" "}
               <br />
@@ -63,9 +63,9 @@ const InvestmentStrategies = () => {
           </div>
 
           <div className="bg-white   p-5">
-            <h3 className="text-lg  mb-4">High-Return & Churn Fund</h3>
-            <p className="mb-6 text-lg">
-              <span className="text-lg"> Buy high sell higher. </span>
+            <h3 className="md:text-lg  mb-4">High-Return & Churn Fund</h3>
+            <p className="mb-6 md:text-lg">
+              <span className="md:text-lg"> Buy high sell higher. </span>
               <br /> <br />
               This strategy invests in 30 businesses whose stock price has grown
               significantly and sells it before they start falling. Principle -
@@ -87,9 +87,9 @@ const InvestmentStrategies = () => {
           </div>
 
           <div className="bg-white   p-5">
-            <h3 className="text-lg  mb-4">Steady Fund </h3>
-            <p className="mb-6 text-lg">
-              <span className="text-lg">Slow but Steady.</span> <br /> <br />
+            <h3 className="md:text-lg  mb-4">Steady Fund </h3>
+            <p className="mb-6 md:text-lg">
+              <span className="md:text-lg">Slow but Steady.</span> <br /> <br />
               This strategy invests in the 30 most stable stocks in the market.
               This strategy outperforms the Index with considerably lower risk.
             </p>

@@ -9,7 +9,7 @@ const PrivacyPolicy = () => {
         <h1 className="mb-6 sophia-pro-font text-start text-4xl font-black">
           Privacy Policy
         </h1>
-        <p className="  minion-pro-font text-lg">
+        <p className="  minion-pro-font md:text-lg">
           At Qode Advisors LLP("Qode"), we prioritize the privacy and security
           of our clients' personal, financial, and transactional information.
           Our commitment to safeguarding your privacy is integral to our
@@ -30,7 +30,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-semibold  mb-6 sophia-pro-font">
               Information Collection and Use
             </h2>
-            <p className="mb-12 minion-pro-font text-lg">
+            <p className="mb-12 minion-pro-font md:text-lg">
               Qode collects personal information such as your name, address,
               email address, phone number, birth date, PAN, Aadhaar, occupation,
               income, risk profile, nominee details, investment details, and
@@ -45,7 +45,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
               Sharing and Disclosure of Information
             </h2>
-            <p className="mb-12 minion-pro-font text-lg">
+            <p className="mb-12 minion-pro-font md:text-lg">
               Qode may share your personal information with third parties,
               including custodians like ICICI Bank, KYC and KRA centers, CRM
               systems, auditors, and other service providers, to add value and
@@ -58,7 +58,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
               Protection of Information
             </h2>
-            <p className="mb-12 minion-pro-font text-lg">
+            <p className="mb-12 minion-pro-font md:text-lg">
               We are committed to protecting your information with the same
               degree of care that we apply to our own confidential information.
               This includes taking all reasonable steps to prevent unauthorized
@@ -71,7 +71,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
               Cookies and Web Analytics
             </h2>
-            <p className="mb-12 minion-pro-font text-lg">
+            <p className="mb-12 minion-pro-font md:text-lg">
               Our website uses cookies and Google Analytics to enhance your
               browsing experience, remember your preferences, and improve site
               navigation. These cookies do not collect personal sensitive
@@ -83,7 +83,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
               Your Rights and Responsibilities
             </h2>
-            <p className="mb-12 minion-pro-font text-lg">
+            <p className="mb-12 minion-pro-font md:text-lg">
               You have the right to access, update, and correct your personal
               information. We encourage you to keep your information accurate
               and up-to-date by using the features available on our website.
@@ -95,7 +95,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
               Changes to the Privacy Policy
             </h2>
-            <p className="mb-12 minion-pro-font text-lg">
+            <p className="mb-12 minion-pro-font md:text-lg">
               Qode reserves the right to update or modify this Privacy Policy at
               any time without prior notice. We encourage you to review this
               policy periodically to stay informed about how we are protecting
@@ -105,7 +105,7 @@ const PrivacyPolicy = () => {
             <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
               Contact Us
             </h2>
-            <p className="mb-52 minion-pro-font text-lg">
+            <p className=" minion-pro-font md:text-lg">
               If you have any questions or concerns about this Privacy Policy or
               our privacy practices, please contact us through our website{" "}
               <a

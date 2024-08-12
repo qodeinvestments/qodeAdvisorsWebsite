@@ -191,7 +191,7 @@ const PerformanceChart = ({ strategy }) => {
         },
       ],
       chart: {
-        height: 600,
+        height: 520,
         backgroundColor: "none",
         zoomType: "x",
       },
@@ -214,24 +214,24 @@ const PerformanceChart = ({ strategy }) => {
   }, []);
 
   return (
-    <div className="mx-auto ">
-      <div className="flex flex-col px-2 lg:flex-row gap-2">
+    <div className="mx-auto container px-4">
+      <div className="flex flex-col justify-center xl:flex-row gap-4">
         {/* Chart Section */}
-        <div className="lg:w-2/3 ">
-          <div className="p-6">
+        <div className="w-full  xl:w-1/2">
+          <div className="p-4">
             <Tabs value="chart1">
-              <div className="flex gap-4">
+              <div className="flex flex-col  gap-4">
                 {/* Time Range Buttons */}
-                <div className="flex  flex-wrap items-center justify-between gap-2">
+                <div className="flex flex-wrap justify-center xl:justify-start gap-2">
                   {["YTD", "1M", "3M", "6M", "1Y", "3Y", "5Y", "ALL"].map(
                     (range) => (
                       <button
                         key={range}
                         onClick={() => handleTimeRangeChange(range)}
-                        className={`px-5 h-2/7 border py-2 text-sm ${
+                        className={`px-2 sm:px-3 md:px-4 py-1 md:py-2 border text-xs sm:text-sm ${
                           activeButton === range
                             ? "bg-red-600 text-white"
-                            : "bg-white text-black "
+                            : "bg-white text-black"
                         }`}
                       >
                         {range}
@@ -241,22 +241,26 @@ const PerformanceChart = ({ strategy }) => {
                 </div>
 
                 {/* Date Inputs and CAGR */}
-                <div className="flex flex-col sm:flex-row sophia-pro-font items-center justify-between gap-32">
-                  <div className="flex gap-2 w-full sm:w-auto">
+                <div className="flex flex-col sm:flex-row sophia-pro-font items-center justify-between gap-4">
+                  <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                     <input
                       type="date"
                       onChange={(e) => setStartDate(e.target.value)}
-                      className="border  px-3 py-2 text-sm w-full sm:w-auto"
+                      className="border px-3 py-2 text-sm w-full sm:w-auto"
                     />
                     <input
                       type="date"
                       onChange={(e) => setEndDate(e.target.value)}
-                      className="border  px-3 py-2 text-sm w-full sm:w-auto"
+                      className="border px-3 py-2 text-sm w-full sm:w-auto"
                     />
                   </div>
-                  <div className="text-center sm:text-right">
-                    <p className="text-3xl  text-gray-800">{strategyCagr}</p>
-                    <p className="text-sm text-gray-600">{timeRange} CAGR</p>
+                  <div className="text-center sm:text-right mt-4 sm:mt-0">
+                    <p className="text-2xl sm:text-3xl md:text-4xl text-gray-800">
+                      {strategyCagr}
+                    </p>
+                    <p className="text-xs sm:text-sm text-gray-600">
+                      {timeRange} CAGR
+                    </p>
                   </div>
                 </div>
               </div>
@@ -276,17 +280,29 @@ const PerformanceChart = ({ strategy }) => {
         </div>
 
         {/* Calculator Section */}
-        <div className="lg:w-1/3 border">
-          <div className="bg-white p-6">
-            {/* <h2 className="text-2xl font-bold mb-4 text-gray-800">
-              Calculator
-            </h2> */}
+        <div className="w-full xl:w-1/3 ">
+          <div className="bg-white border p-4">
             <Calculator strategy={strategy} />
           </div>
         </div>
       </div>
 
       {/* Sign Up Section */}
+      {/* <Container>
+        <div className="bg-gray-100 container p-8 sm:p-12 mt-28 text-center">
+          <h2 className="text-3xl font-bold mb-4 text-gray-800">
+            Not sure which strategy is right for you?
+          </h2>
+          <p className="text-xl mb-6 text-gray-600">
+            Sign Up to track our live portfolio.
+          </p>
+          <Link target="_blank" to="https://dashboard.qodeinvest.com">
+            <button className="bg-red-600 text-white text-lg font-medium py-3 px-8 -full hover:bg-red-700 transition-colors">
+              Sign Up
+            </button>
+          </Link>
+        </div>
+      </Container> */}
     </div>
   );
 };

@@ -47,11 +47,11 @@ const StrategyComponent = ({ strategyData }) => {
         </div>
       </Container>
 
-      <div className=" my-24 ">
+      <div className=" my-12 ">
         <PerformanceChart strategy={strategyCode} />
       </div>
       <Container>
-        <div className="bg-[#fafafa]  p-8 sm:p-20 my-8 mb-20 text-center">
+        <div className="bg-[#fafafa]  p-8 sm:p-20  text-center">
           <h2 className="text-3xl font-bold mb-4 text-gray-800">
             Not sure which strategy is right for you?
           </h2>
@@ -131,7 +131,7 @@ const StrategyComponent = ({ strategyData }) => {
             </a>
           </div>
         </div> */}
-      <div className="my-24 ">
+      <div className="my-20 ">
         <ModalButton />
       </div>
       <div className="my-20">

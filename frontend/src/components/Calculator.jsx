@@ -166,8 +166,8 @@ const Calculator = ({ strategy }) => {
 
   return (
     <>
-      <div className="py-8">
-        <h1 className="md:text-lg sm:text-3xl font-bold mb-4 sm:mb-14">
+      <div className="py-8 ">
+        <h1 className="md:text-xl font-bold mb-4 sm:mb-14">
           Returns Calculator
         </h1>
 
@@ -191,7 +191,7 @@ const Calculator = ({ strategy }) => {
               Investment Frequency
             </p>
             <div className="flex flex-row justify-between space-x-2 w-full  ">
-              {["Monthly", "Yearly", "One-time"].map((freq) => (
+              {["Monthly", "One-time"].map((freq) => (
                 <button
                   key={freq}
                   className={`h-12 py-2 px-2 border text-center flex-grow ${
@@ -242,11 +242,11 @@ const Calculator = ({ strategy }) => {
         </div>
 
         <div className="text-center mt-20 minion-pro-font px-3 sm:px-5   ">
-          <p className="mb-3 text-base sm:text-md text-black">
+          {/* <p className="mb-3 text-base sm:text-md text-black">
             If you had invested {formatInvestmentPeriod()}, <br /> your
             investments would be worth
-          </p>
-          <p className="md:text-lg sophia-pro-font mt-10  sm:text-2xl">
+          </p> */}
+          <p className="md:text-xl sophia-pro-font mt-10  font-bold">
             ₹{numberWithCommas(futureInvestmentValue)}
           </p>
           <p className="text-md sm:text-md text-black  ">
@@ -255,7 +255,7 @@ const Calculator = ({ strategy }) => {
           </p>
         </div>
       </div>
-      <p className="text-base minion-pro-font sm:text-md text-center mt-8 sm:mt-4 ">
+      <p className="text-base minion-pro-font sm:text-md text-center my-8  sm:mt-4 ">
         Figures are based on historical returns and do not guarantee future
         results.*
       </p>

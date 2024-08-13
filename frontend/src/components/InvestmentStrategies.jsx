@@ -46,7 +46,7 @@ const InvestmentStrategies = () => {
             <div className="bg-white hover:shadow-xl transition-all px-6 sm:px-8 md:px-10 lg:px-14 py-8 sm:py-10 md:py-12 lg:py-16 h-[180px] sm:h-[200px] md:h-[220px] group overflow-hidden relative">
               <div className="transition-all duration-300 transform group-hover:-translate-y-5">
                 <h3 className="font-bold mb-2 sm:mb-3 md:mb-4 text-md sm:text-lg md:text-xl">
-                  Quality Fund
+                  Qode Growth Fund
                 </h3>
                 <p className="text-sm sm:text-md md:text-lg">
                   <span className="text-xs sm:text-sm md:text-base">
@@ -66,7 +66,7 @@ const InvestmentStrategies = () => {
             <div className="bg-white hover:shadow-xl transition-all px-6 sm:px-8 md:px-10 lg:px-14 py-8 sm:py-10 md:py-12 lg:py-16 h-[180px] sm:h-[200px] md:h-[220px] group overflow-hidden relative">
               <div className="transition-all duration-300 transform group-hover:-translate-y-5">
                 <h3 className="font-bold mb-2 sm:mb-3 md:mb-4 text-md sm:text-lg md:text-xl">
-                  High-Return & Churn Fund
+                  Qode Momentum Fund
                 </h3>
                 <p className="text-sm sm:text-md md:text-lg">
                   <span className="text-xs sm:text-sm md:text-base">
@@ -90,7 +90,7 @@ const InvestmentStrategies = () => {
                 </h3>
                 <p className="text-sm sm:text-md md:text-lg">
                   <span className="text-xs sm:text-sm md:text-base">
-                    Slow but Steady
+                    Qode Low Volatility Fund
                   </span>
                 </p>
               </div>

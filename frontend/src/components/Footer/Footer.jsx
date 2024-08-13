@@ -74,15 +74,17 @@ const Footer = () => {
             </h3>
             <ul className="text-base sm:text-md text-white">
               <li className="mb-2 hover:text-red-500">
-                <Link to="/strategies/quant-growth-fund">Quality Fund</Link>
+                <Link to="/strategies/quant-growth-fund">Qode Growth Fund</Link>
               </li>
               <li className="mb-2 hover:text-red-500">
                 <Link to="/strategies/quant-growth-momentum">
-                  High Return & Churn Fund
+                  Qode Momentum Fund
                 </Link>
               </li>
               <li className="mb-2 hover:text-red-500">
-                <Link to="/strategies/low-vol-momentum">Steady Fund</Link>
+                <Link to="/strategies/low-vol-momentum">
+                  Qode Low Volatility Fund
+                </Link>
               </li>
             </ul>
           </div>

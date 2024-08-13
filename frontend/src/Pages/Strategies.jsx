@@ -55,20 +55,20 @@ const Strategies = () => {
   const strategies = [
     {
       id: "qgf",
-      name: "Quality Fund",
+      name: "Qode Growth Fund",
       slug: "quant-growth-fund",
       description:
         "<p class='mb-4'>Invest in quality business. Get quality results.</p>",
     },
     {
       id: "momentum",
-      name: "High-Return & Churn Fund",
+      name: "Qode Momentum Fund",
       slug: "quant-growth-momentum",
       description: "<p class='mb-4'>Buy high sell higher.</p> ",
     },
     {
       id: "lowvol",
-      name: "Steady Fund",
+      name: "Qode Low Volatility Fund",
       slug: "low-vol-momentum",
       description: "<p class='mb-4'>Slow but Steady.</p>",
     },

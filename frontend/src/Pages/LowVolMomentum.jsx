@@ -10,7 +10,7 @@ import StrategyComponent from "../components/Strategy";
 
 const LowVolMomentum = () => {
   const strategyData = {
-    title: "Steady Fund",
+    title: "Qode Low Volatility Fund",
     description:
       "<p class='mb-4 sophia-pro-font '>Slow but Steady.</p><p class='minion-pro-font'>This strategy invests in the 30 most stable stocks in the market. This strategy outperforms the Index with considerably lower risk.</p>",
     strategyCode: "LVF",

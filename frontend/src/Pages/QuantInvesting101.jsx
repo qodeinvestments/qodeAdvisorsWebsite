@@ -2,16 +2,17 @@ import React from "react";
 import { NavLink, Routes, Route, useLocation, Outlet } from "react-router-dom";
 import { Container } from "../components";
 import "./Pages.css";
+import Text from "../components/common/Text";
 const QuantInvesting101 = () => {
   return (
     <>
-      <div className="flex flex-grow min-h-screen sophia-pro-font mt-16">
+      <div className="flex flex-grow min-h-screen  mt-16">
         <div className="bg-[#F8FAFC] p-4  w-70 static  overflow-y-auto">
           <nav>
             <ul className="space-y-3 ">
               <li>
                 <div className="nav-link-container">
-                  <p className="text-sm ">Introduction</p>
+                  <Text className="text-sm ">Introduction</Text>
                   <ul className=" mt-4 space-y-3">
                     <li className="nav-link-ladder">
                       <NavLink
@@ -60,7 +61,7 @@ const QuantInvesting101 = () => {
               </li>
               <li>
                 <div className="nav-link-container">
-                  <p className="text-sm ">Quantitative Strategies </p>
+                  <Text className="text-sm ">Quantitative Strategies </Text>
                   <ul className=" mt-4 space-y-3">
                     <li className="nav-link-ladder">
                       <NavLink
@@ -103,7 +104,7 @@ const QuantInvesting101 = () => {
               </li>
               <li>
                 <div className="nav-link-container">
-                  <p className="text-sm ">Data and Tools</p>
+                  <Text className="text-sm ">Data and Tools</Text>
                   <ul className=" mt-4 space-y-3">
                     <li className="nav-link-ladder">
                       <NavLink
@@ -146,7 +147,7 @@ const QuantInvesting101 = () => {
               </li>
               <li>
                 <div className="nav-link-container">
-                  <p className="text-sm ">Portfolio Management</p>
+                  <Text className="text-sm ">Portfolio Management</Text>
                   <ul className=" mt-4 space-y-3">
                     <li className="nav-link-ladder">
                       <NavLink

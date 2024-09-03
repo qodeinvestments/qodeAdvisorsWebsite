@@ -33,10 +33,11 @@ import Strategies from "./Pages/Strategies.jsx";
 import OpenAccount from "./Pages/OpenAccount.jsx";
 import BookAMeet from "./Pages/BookAMeet.jsx";
 import LowVolMomentum from "./Pages/LowVolMomentum.jsx";
-import PrivacyPolicy from "./Pages/PrivasyPolicy.jsx";
+import PrivacyPolicy from "./Pages/PrivacyPolicy.jsx";
 import TermsnConditions from "./Pages/TermsandConditions.jsx";
 import Disclosure from "./Pages/Disclosure.jsx";
 import AboutUs from "./Pages/AboutUs.jsx";
+import PythonCalculator from "./Pages/PythonCalculator.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -118,6 +119,10 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs />,
+      },
+      {
+        path: "/python-calculator",
+        element: <PythonCalculator />,
       },
       {
         path: "/blogs/:slug", // This route captures the postId parameter

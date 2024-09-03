@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Heading from "./common/Heading";
 
 const TrailingReturns = ({ strategy }) => {
   const [returns, setReturns] = useState({
@@ -165,8 +166,10 @@ const TrailingReturns = ({ strategy }) => {
   const periods = ["10D", "1W", "1M", "3M", "6M", "1Y", "3Y", "5Y", "YTD"];
 
   return (
-    <div className="sophia-pro-font overflow-x-auto">
-      <h2 className="md:text-lg  my-4">Trailing Returns</h2>
+    <div className=" overflow-x-auto">
+      <Heading level={2} className="md:text-lg  my-4">
+        Trailing Returns
+      </Heading>
       <table className="w-full min-w-[640px]">
         <thead>
           <tr style={tableHeaderStyle} className="border-b-2 border-gray-200">

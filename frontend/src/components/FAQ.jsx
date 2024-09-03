@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Text from "./common/Text";
+import Heading from "./common/Heading";
 
 const FAQSection = () => {
   const [openAccordion, setOpenAccordion] = useState(null);
@@ -35,10 +37,15 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="container mx-auto  py-16 sophia-pro-font bg-white">
+    <div className="container mx-auto  py-16  bg-white">
       <div className="flex flex-col md:flex-row ">
         <div className="md:w-1/3 border-r border-black p-8 ">
-          <h2 className="text-4xl  transform -rotate-90 md:rotate-0">FAQ</h2>
+          <Heading
+            level={2}
+            className="text-4xl  transform -rotate-90 md:rotate-0"
+          >
+            FAQ
+          </Heading>
         </div>
         <div className="md:w-2/3 p-8">
           {faqs.map((faq, index) => (
@@ -52,7 +59,7 @@ const FAQSection = () => {
               </button>
               {openAccordion === index && (
                 <div className="p-4 md:text-lg border-t border-black">
-                  <p>{faq.answer}</p>
+                  <Text>{faq.answer}</Text>
                 </div>
               )}
             </div>

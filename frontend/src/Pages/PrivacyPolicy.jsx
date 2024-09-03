@@ -1,15 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../components";
+import Heading from "../components/common/Heading";
+import Text from "../components/common/Text";
 
 const PrivacyPolicy = () => {
   return (
     <Container>
       <div className="p-24">
-        <h1 className="mb-6 sophia-pro-font text-start text-4xl font-black">
+        <Heading level={1} className="mb-6  text-start text-4xl font-black">
           Privacy Policy
-        </h1>
-        <p className="  minion-pro-font md:text-lg">
+        </Heading>
+        <Text className="   md:text-lg">
           At Qode Advisors LLP("Qode"), we prioritize the privacy and security
           of our clients' personal, financial, and transactional information.
           Our commitment to safeguarding your privacy is integral to our
@@ -24,13 +26,13 @@ const PrivacyPolicy = () => {
             qodeinvest.com
           </a>
           , and it reflects our dedication to protecting your privacy.
-        </p>
+        </Text>
         <div className="flex flex-col mt-24 items-center justify-start">
           <div className="text-start max-w-4xl ">
-            <h2 className="text-2xl font-semibold  mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold  mb-6 ">
               Information Collection and Use
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               Qode collects personal information such as your name, address,
               email address, phone number, birth date, PAN, Aadhaar, occupation,
               income, risk profile, nominee details, investment details, and
@@ -40,12 +42,12 @@ const PrivacyPolicy = () => {
               We also use this information to keep you informed about our latest
               product announcements, special offers, and to provide you with
               better services.
-            </p>
+            </Text>
 
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Sharing and Disclosure of Information
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               Qode may share your personal information with third parties,
               including custodians like ICICI Bank, KYC and KRA centers, CRM
               systems, auditors, and other service providers, to add value and
@@ -53,12 +55,12 @@ const PrivacyPolicy = () => {
               information will be done in strict compliance with confidentiality
               standards and only when necessary for audits, account opening, or
               as required by law.
-            </p>
+            </Text>
 
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Protection of Information
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               We are committed to protecting your information with the same
               degree of care that we apply to our own confidential information.
               This includes taking all reasonable steps to prevent unauthorized
@@ -66,46 +68,46 @@ const PrivacyPolicy = () => {
               Access to your personal information on our website is secured
               through a unique login ID and password, which you are advised to
               handle carefully and change periodically.
-            </p>
+            </Text>
 
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Cookies and Web Analytics
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               Our website uses cookies and Google Analytics to enhance your
               browsing experience, remember your preferences, and improve site
               navigation. These cookies do not collect personal sensitive
               information. By using our website, you consent to the placement of
               these cookies on your device. You are free to disable or delete
               these cookies through your web browser settings.
-            </p>
+            </Text>
 
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Your Rights and Responsibilities
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               You have the right to access, update, and correct your personal
               information. We encourage you to keep your information accurate
               and up-to-date by using the features available on our website.
               Please be aware that disclosing confidential information obtained
               through our services to third parties without our consent may
               constitute a breach of this policy.
-            </p>
+            </Text>
 
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Changes to the Privacy Policy
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               Qode reserves the right to update or modify this Privacy Policy at
               any time without prior notice. We encourage you to review this
               policy periodically to stay informed about how we are protecting
               your information.
-            </p>
+            </Text>
 
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Contact Us
-            </h2>
-            <p className=" minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="  md:text-lg">
               If you have any questions or concerns about this Privacy Policy or
               our privacy practices, please contact us through our website{" "}
               <a
@@ -119,7 +121,7 @@ const PrivacyPolicy = () => {
               requirements, including those set forth by SEBI. It does not
               create any contractual or other legal rights on behalf of any
               party.
-            </p>
+            </Text>
           </div>
         </div>
       </div>

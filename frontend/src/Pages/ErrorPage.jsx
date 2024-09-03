@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CustomLink from "../components/common/CustomLink";
 
 const ErrorPage = () => {
   return (
@@ -10,12 +11,12 @@ const ErrorPage = () => {
         <p className="text-md text-gray-500 mt-2">
           Sorry, the page you're looking for doesn't exist.
         </p>
-        <Link
+        <CustomLink
           to={"/"}
           className="mt-6 inline-block px-6 py-3 text-sm  text-gray-800 bg-gray-200 rounded-lg hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-50"
         >
           Go back to Homepage
-        </Link>
+        </CustomLink>
       </div>
     </div>
   );

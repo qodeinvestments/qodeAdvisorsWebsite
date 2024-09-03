@@ -8,26 +8,33 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import logo from "../../assets/companyLogo/Qode.png";
 import { Link } from "react-router-dom";
+import Text from "../common/Text";
+import Heading from "../common/Heading";
+import CustomLink from "../common/CustomLink";
+import List from "../common/List";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#000] relative minion-pro-font py-16 sm:py-24 md:py-28">
+    <footer className="bg-[#000] relative  py-16 sm:py-24 md:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
           <div className="text-center sm:text-left col-span-1 sm:col-span-2 md:col-span-1">
-            <h2 className="md:text-lg sm:md:text-lg sophia-pro-font playfair-display-font font-bold text-red-500 mb-4">
+            <Heading
+              level={2}
+              className="md:text-lg sm:md:text-lg  playfair-display-font font-bold text-red-500 mb-4"
+            >
               Qode Advisors LLP
-            </h2>
-            <p className="text-base sm:text-md max-w-xs mx-auto sm:mx-0 text-white">
+            </Heading>
+            <Text className="text-base sm:text-md max-w-xs mx-auto sm:mx-0 text-white">
               2nd Floor, Tree Building, Raghuvanshi Mills Compound, Gandhi
               Nagar, Upper Worli, Lower Parel, Mumbai, Maharashtra 400013
-            </p>
+            </Text>
             <div className="mt-4 text-base sm:text-md text-white">
-              <p className="mb-2">
+              <Text className="mb-2">
                 PMS No:{" "}
                 <span className="font-semibold">56165411118919841981</span>
-              </p>
-              <p className="mb-2">
+              </Text>
+              <Text className="mb-2">
                 Email:{" "}
                 <a
                   href="mailto:contact@qodeinvestments.com"
@@ -35,77 +42,82 @@ const Footer = () => {
                 >
                   contact@qodeinvest.com
                 </a>
-              </p>
-              <p>
+              </Text>
+              <Text>
                 Mobile:{" "}
                 <a href="tel:+919876543210" className="hover:text-red-500">
                   +91 99201 11053
                 </a>
-              </p>
+              </Text>
             </div>
           </div>
 
           <div>
-            <h3 className="md:text-lg sm:md:text-lg sophia-pro-font font-semibold text-red-500 mb-4">
+            <Heading
+              level={3}
+              className="md:text-lg sm:md:text-lg  font-semibold text-red-500 mb-4"
+            >
               Company
-            </h3>
-            <ul className="text-base sm:text-md text-white">
-              <li className="mb-2 hover:text-red-500">
-                <Link to="/about-us">About Us</Link>
-              </li>
-              <li className="mb-2 hover:text-red-500">
-                <Link to="/contact-us">Contact Us</Link>
-              </li>
-              <li className="mb-2 hover:text-red-500">
-                <Link to="/privacy-policy">Privacy Policy</Link>
-              </li>
-              <li className="mb-2 hover:text-red-500">
-                <Link to="/terms-n-conditions">Terms and Conditions</Link>
-              </li>
-              <li className="mb-2 hover:text-red-500">
-                <Link to="/disclosure">Disclosure</Link>
-              </li>
-            </ul>
+            </Heading>
+            <List
+              className="text-base sm:text-md text-white"
+              itemClassName="mb-2 hover:text-red-500"
+              items={[
+                <CustomLink to="/about-us">About Us</CustomLink>,
+                <CustomLink to="/contact-us">Contact Us</CustomLink>,
+                <CustomLink to="/privacy-policy">Privacy Policy</CustomLink>,
+                <CustomLink to="/terms-n-conditions">
+                  Terms and Conditions
+                </CustomLink>,
+                <CustomLink to="/disclosure">Disclosure</CustomLink>,
+              ]}
+            />
           </div>
 
           <div>
-            <h3 className="md:text-lg sm:md:text-lg sophia-pro-font font-semibold text-red-500 mb-4">
+            <Heading
+              level={3}
+              className="md:text-lg sm:md:text-lg  font-semibold text-red-500 mb-4"
+            >
               Strategies
-            </h3>
-            <ul className="text-base sm:text-md text-white">
-              <li className="mb-2 hover:text-red-500">
-                <Link to="/strategies/quant-growth-fund">Qode Growth Fund</Link>
-              </li>
-              <li className="mb-2 hover:text-red-500">
-                <Link to="/strategies/quant-growth-momentum">
+            </Heading>
+            <List
+              className="text-base sm:text-md text-white"
+              itemClassName="mb-2 hover:text-red-500"
+              items={[
+                <CustomLink to="/strategies/quant-growth-fund">
+                  Qode Growth Fund
+                </CustomLink>,
+                <CustomLink to="/strategies/quant-growth-momentum">
                   Qode Momentum Fund
-                </Link>
-              </li>
-              <li className="mb-2 hover:text-red-500">
-                <Link to="/strategies/low-vol-momentum">
+                </CustomLink>,
+                <CustomLink to="/strategies/low-vol-momentum">
                   Qode Low Volatility Fund
-                </Link>
-              </li>
-            </ul>
+                </CustomLink>,
+              ]}
+            />
           </div>
 
           <div>
-            <h3 className="md:text-lg sm:md:text-lg sophia-pro-font font-semibold text-red-500 mb-4">
+            <Heading
+              level={3}
+              className="md:text-lg sm:md:text-lg  font-semibold text-red-500 mb-4"
+            >
               Resources
-            </h3>
-            <ul className="text-base sm:text-md text-white">
-              <li className="hover:text-red-500">
-                <Link to="/faq">FAQs</Link>
-              </li>
-            </ul>
+            </Heading>
+            <List
+              className="text-base sm:text-md text-white"
+              itemClassName="hover:text-red-500"
+              items={[<CustomLink to="/faq">FAQs</CustomLink>]}
+            />
           </div>
         </div>
 
         <div className="border-t border-gray-200 pt-8">
-          <p className="text-base sm:text-md text-white text-center">
+          <Text className="text-base sm:text-md text-white text-center">
             &copy; {new Date().getFullYear()} Qode Advisors LLP. All rights
             reserved.
-          </p>
+          </Text>
         </div>
       </div>
     </footer>

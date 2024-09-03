@@ -9,7 +9,9 @@ import Modal from "../Modal";
 import BookAMeet from "../../Pages/BookAMeet";
 import { Link } from "react-router-dom";
 import Container from "../container/Container";
-
+import Section from "../container/Section";
+import Button from "../common/Button";
+import Text from "../common/Text";
 const PerformanceChart = ({ strategy }) => {
   const [chartOptions, setChartOptions] = useState(null);
   const [timeRange, setTimeRange] = useState("ALL");
@@ -122,22 +124,6 @@ const PerformanceChart = ({ strategy }) => {
     }));
   }, []);
 
-  // const prepareChartData = (data, strategy) => {
-  //   const strategyKey = "total_portfolio_nav";
-  //   const initialStrategyValue = parseFloat(data[0][strategyKey]);
-  //   const initialNiftyValue = parseFloat(
-  //     data[0]["Nifty 50"] || data[0]["nifty"]
-  //   );
-  //   return data.map((item) => ({
-  //     date: item.date,
-  //     strategyValue:
-  //       (parseFloat(item[strategyKey]) / initialStrategyValue) * 100,
-  //     niftyValue:
-  //       (parseFloat(item["Nifty 50"] || item["nifty"]) / initialNiftyValue) *
-  //       100,
-  //   }));
-  // };
-
   const updateChartOptions = (data) => {
     const dates = data.map((item) => item.date);
     const strategyValues = data.map((item) => Math.trunc(item.strategyValue));
@@ -214,95 +200,71 @@ const PerformanceChart = ({ strategy }) => {
   }, []);
 
   return (
-    <div className="mx-auto container px-4">
-      <div className="flex flex-col justify-center xl:flex-row gap-4">
-        {/* Chart Section */}
-        <div className="w-full  xl:w-1/2">
-          <div className="">
-            <Tabs value="chart1">
-              <div className="flex flex-col  gap-4">
-                {/* Time Range Buttons */}
-                <div className="flex flex-wrap justify-center xl:justify-start gap-2">
-                  {["YTD", "1M", "3M", "6M", "1Y", "3Y", "5Y", "ALL"].map(
-                    (range) => (
-                      <button
-                        key={range}
-                        onClick={() => handleTimeRangeChange(range)}
-                        className={`px-2 sm:px-3 md:px-4 py-1 md:py-2 border text-xs sm:text-sm ${
-                          activeButton === range
-                            ? "bg-red-600 text-white"
-                            : "bg-white text-black"
-                        }`}
-                      >
-                        {range}
-                      </button>
-                    )
-                  )}
-                </div>
+    <div className="flex flex-col xl:flex-row justify-center gap-4">
+      <div className="w-full xl:w-2/3">
+        <Tabs value="chart1">
+          <div className="flex flex-col gap-4">
+            {/* Time Range Buttons */}
+            <div className="flex flex-wrap justify-center xl:justify-start gap-2">
+              {["YTD", "1M", "3M", "6M", "1Y", "3Y", "5Y", "ALL"].map(
+                (range) => (
+                  <button
+                    onClick={() => handleTimeRangeChange(range)}
+                    className={`px-2 sm:px-3 md:px-4 sophia-pro-font py-1 md:py-2 border text-xs sm:text-sm ${
+                      activeButton === range
+                        ? "bg-red-600 text-white"
+                        : "bg-white text-black"
+                    }`}
+                  >
+                    {range}
+                  </button>
+                )
+              )}
+            </div>
 
-                {/* Date Inputs and CAGR */}
-                <div className="flex flex-col sm:flex-row sophia-pro-font items-center justify-between gap-4">
-                  <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-                    <input
-                      type="date"
-                      onChange={(e) => setStartDate(e.target.value)}
-                      className="border px-3 py-2 text-sm w-full sm:w-auto"
-                    />
-                    <input
-                      type="date"
-                      onChange={(e) => setEndDate(e.target.value)}
-                      className="border px-3 py-2 text-sm w-full sm:w-auto"
-                    />
-                  </div>
-                  <div className="text-center sm:text-right mt-4 sm:mt-0">
-                    <p className="text-2xl sm:text-3xl md:text-4xl text-gray-800">
-                      {strategyCagr}
-                    </p>
-                    <p className="text-xs sm:text-sm text-gray-600">
-                      {timeRange} CAGR
-                    </p>
-                  </div>
-                </div>
+            {/* Date Inputs and CAGR */}
+            <div className="flex flex-col sm:flex-row sophia-pro-font items-center justify-between gap-4">
+              <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                <input
+                  type="date"
+                  onChange={(e) => setStartDate(e.target.value)}
+                  className="border px-3 py-2 text-sm w-full sm:w-auto"
+                />
+                <input
+                  type="date"
+                  onChange={(e) => setEndDate(e.target.value)}
+                  className="border px-3 py-2 text-sm w-full sm:w-auto"
+                />
               </div>
-
-              <TabsBody className="mt-6">
-                <TabPanel className="p-0" key="chart1" value="chart1">
-                  {chartOptions && (
-                    <HighchartsReact
-                      highcharts={Highcharts}
-                      options={chartOptions}
-                    />
-                  )}
-                </TabPanel>
-              </TabsBody>
-            </Tabs>
+              <div className="text-center sm:text-right mt-4 sm:mt-0">
+                <Text className="text-2xl sm:text-3xl md:text-4xl text-gray-800">
+                  {strategyCagr}
+                </Text>
+                <Text className="text-xs sm:text-sm text-gray-600">
+                  {timeRange} CAGR
+                </Text>
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Calculator Section */}
-        <div className="w-full xl:w-1/3 ">
-          <div className="bg-white border p-4">
-            <Calculator strategy={strategy} />
-          </div>
-        </div>
+          <TabsBody className="mt-6">
+            <TabPanel className="p-0" key="chart1" value="chart1">
+              {chartOptions && (
+                <HighchartsReact
+                  highcharts={Highcharts}
+                  options={chartOptions}
+                />
+              )}
+            </TabPanel>
+          </TabsBody>
+        </Tabs>
       </div>
 
-      {/* Sign Up Section */}
-      {/* <Container>
-        <div className="bg-gray-100 container p-8 sm:p-12 mt-28 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-gray-800">
-            Not sure which strategy is right for you?
-          </h2>
-          <p className="text-xl mb-6 text-gray-600">
-            Sign Up to track our live portfolio.
-          </p>
-          <Link target="_blank" to="https://dashboard.qodeinvest.com">
-            <button className="bg-red-600 text-white text-lg font-medium py-3 px-8 -full hover:bg-red-700 transition-colors">
-              Sign Up
-            </button>
-          </Link>
+      <div className="w-full xl:w-1/3">
+        <div className="bg-white border p-4">
+          <Calculator strategy={strategy} />
         </div>
-      </Container> */}
+      </div>
     </div>
   );
 };

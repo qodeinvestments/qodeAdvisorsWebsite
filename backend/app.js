@@ -10,7 +10,7 @@ const db = require("./models");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-console.log(process.env.MAILERLITE_API_KEY);
+// // console.log(process.env.MAILERLITE_API_KEY);
 
 // Middleware
 app.use(cors({
@@ -34,7 +34,7 @@ db.sequelize
   .sync()
   .then(() => {
     app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
+      // console.log(`Server running on port ${PORT}`);
     });
   })
   .catch((err) => {

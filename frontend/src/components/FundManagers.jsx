@@ -5,6 +5,9 @@ import karan from "../assets/team/Karan HS.png";
 import kavan from "../assets/team/Kavan HS.png";
 import rishabh from "../assets/team/Rishabh Nahar HS 1.2.png";
 import GrayContainer from "./container/GrayContainer";
+import Button from "./common/Button";
+import Heading from "./common/Heading";
+import Text from "./common/Text";
 const FundManagers = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -35,11 +38,14 @@ const FundManagers = () => {
   };
 
   return (
-    <div className="sophia-pro-font  md:my-8 md:mb-12">
-      <h2 className="md:text-2xl  font-black my-6 md:my-10 text-center">
+    <div className="">
+      <Heading
+        level={2}
+        className="md:text-2xl font-black my-6 md:my-10 text-center"
+      >
         Do you want to speak to fund manager before investing?
-      </h2>
-      <div className="flex flex-col md:flex-row  mx-auto p-5 minion-pro-font justify-around items-center">
+      </Heading>
+      <div className="flex flex-col md:flex-row  mx-auto p-5  justify-around items-center">
         {managers.map((manager, index) => (
           <div
             key={index}
@@ -56,18 +62,16 @@ const FundManagers = () => {
 
             {/* Name, Designation, and Button */}
             <div className="flex flex-col items-center md:items-start md:ml-10">
-              <h3 className="md:text-lg sophia-pro-font font-bold md:text-2xl text-center md:text-left">
-                {manager.name}
-              </h3>
-              <p className="text-black md:text-lg md:text-lg mb-4 text-center md:text-left">
-                {manager.position}
-              </p>
-              <button
-                onClick={openModal}
-                className="bg-red-600 sophia-pro-font text-white py-2 px-4 md:py-3 font-medium md:px-6 hover:bg-red-500 transition-colors text-md md:text-base"
+              <Heading
+                level={3}
+                className="md:text-lg  font-bold  text-center md:text-left"
               >
-                Talk to a Fund Manager
-              </button>
+                {manager.name}
+              </Heading>
+              <Text className="text-black md:text-lg  mb-4 text-center md:text-left">
+                {manager.position}
+              </Text>
+              <Button onClick={openModal}>Schedule A Call</Button>
             </div>
           </div>
         ))}

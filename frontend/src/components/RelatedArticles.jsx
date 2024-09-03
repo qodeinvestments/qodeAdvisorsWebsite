@@ -6,6 +6,8 @@ import { createClient } from "@sanity/client";
 import BlockContent from "@sanity/block-content-to-react";
 import imageUrlBuilder from "@sanity/image-url";
 import { CustomSpinner } from "./Spinner";
+import Heading from "./common/Heading";
+import Text from "./common/Text";
 
 const client = createClient({
   projectId: "8pot9lfd",
@@ -22,11 +24,11 @@ const serializers = {
     block: (props) => {
       switch (props.node.style) {
         case "h1":
-          return <h1>{props.children}</h1>;
+          return <Heading level={1}>{props.children}</Heading>;
         case "h2":
-          return <h2>{props.children}</h2>;
+          return <Heading level={2}>{props.children}</Heading>;
         default:
-          return <p>{props.children}</p>;
+          return <Text>{props.children}</Text>;
       }
     },
   },
@@ -40,7 +42,7 @@ const RelatedArticles = ({ strategySlug, limit = 3 }) => {
   useEffect(() => {
     if (!strategySlug) {
       setError("Strategy slug is missing");
-      console.log(strategySlug);
+      // console.log(strategySlug);
       setLoading(false);
       return;
     }
@@ -88,9 +90,12 @@ const RelatedArticles = ({ strategySlug, limit = 3 }) => {
   return (
     <Container>
       <div className="py-10">
-        <h2 className="md:text-lg inter-font  text-[#151E28] mb-6">
+        <Heading
+          level={2}
+          className="md:text-lg inter-font  text-[#151E28] mb-6"
+        >
           Related Articles
-        </h2>
+        </Heading>
         {/* <p className="md:text-lg">
           Check out our latest blog posts on investing and portfolio management.
         </p> */}

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Button from "../common/Button";
+import CustomLink from "../common/CustomLink";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -9,7 +11,7 @@ const Header = () => {
   };
 
   return (
-    <header className="border-b sm:px-72   fixed w-full bg-white z-20 top-0 text-black sophia-pro-font">
+    <header className="border-b sm:px-72   fixed w-full bg-white z-20 top-0 text-black ">
       <div className="mx-auto px-4">
         <div className="flex sm:px-10 justify-between items-center h-16">
           {/* Logo */}
@@ -24,27 +26,26 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link
+            <CustomLink
               to="/blogs"
               className="text-md hover:text-gray-600 transition duration-300"
             >
               Blogs
-            </Link>
-            <Link
+            </CustomLink>
+            <CustomLink
               to="/strategies"
               className="text-md hover:text-gray-600 transition duration-300"
             >
               Strategies
-            </Link>
+            </CustomLink>
 
-            <a
+            <Button
               href="https://dashboard.qodeinvest.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-md bg-red-600 text-white px-5 py-3 hover:bg-red-500 transition duration-300"
             >
               Dashboard
-            </a>
+            </Button>
           </nav>
 
           {/* Mobile menu button */}
@@ -83,20 +84,20 @@ const Header = () => {
         {isMobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <Link
+              <CustomLink
                 to="/blogs"
                 className="block text-md hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md"
                 onClick={toggleMobileMenu}
               >
                 Blogs
-              </Link>
-              <Link
+              </CustomLink>
+              <CustomLink
                 to="/strategies"
                 className="block text-md hover:bg-gray-100 hover:text-black px-3 py-2 rounded-md"
                 onClick={toggleMobileMenu}
               >
                 Strategies
-              </Link>
+              </CustomLink>
 
               <a
                 href="https://dashboard.qodeinvest.com/"

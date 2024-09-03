@@ -11,12 +11,17 @@ import {
 } from "../components/index";
 import { BackgroundBeams } from "../components/ui/background-beams";
 import ChartComponent from "../components/Charts/LightWeightChart";
+import Section from "../components/container/Section";
 import FundManagers from "../components/FundManagers";
 import FAQSection from "../components/FAQ";
 import MailerLite from "mailerlite-api-v2-node";
 import process from "process";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import SectionContent from "../components/container/SectionContent";
+import Button from "../components/common/Button";
+import Text from "../components/common/Text";
+import Heading from "../components/common/Heading";
 const chartData = [
   { time: "2022-01-01", value: 100 },
   { time: "2022-01-02", value: 110 },
@@ -101,102 +106,81 @@ const Home = () => {
 
   return (
     <>
-      <Container>
-        <Banner />
-      </Container>
-      <GrayContainer>
-        <Container>
-          <InvestmentStrategies />
-        </Container>
-      </GrayContainer>
-      <Container>
-        <FundManagers />
-      </Container>
+      <Section>
+        <SectionContent>
+          <Banner />
+        </SectionContent>
+      </Section>
+      <Section gray>
+        <InvestmentStrategies />
+      </Section>
+      {/* </GrayContainer> */}
+      <Section>
+        <SectionContent>
+          <FundManagers />
+        </SectionContent>
+      </Section>
       {/* <FAQSection /> */}
-      <GrayContainer>
-        <Container>
-          <Blogs />
-        </Container>
-      </GrayContainer>
-      <Container>
-        <div className="sophia-pro-font text-gray-900 my-5 sm:p-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="overflow-hidden">
-              <div className="md:flex items-center justify-center">
-                <div className="md:w-1/2 p-8">
-                  <h2 className="text-2xl font-semibold mb-6">
-                    Qode Weekly Insights
-                  </h2>
-                  <p className="md:text-lg text-gray-600">
-                    Join thousands of investors receiving our data-driven market
-                    insights every week
-                  </p>
-                </div>
-                <div className="md:w-1/2 p-8">
-                  <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                      <input
-                        type="email"
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="Your Best Email"
-                        required
-                        className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
-                      />
-                    </div>
-                    <button
-                      type="submit"
-                      disabled={isSubmitting}
-                      className="w-full bg-red-600 text-white py-2 px-4 hover:bg-red-500 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <svg
-                            className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                          >
-                            <circle
-                              className="opacity-25"
-                              cx="12"
-                              cy="12"
-                              r="10"
-                              stroke="currentColor"
-                              strokeWidth="4"
-                            ></circle>
-                            <path
-                              className="opacity-75"
-                              fill="currentColor"
-                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                            ></path>
-                          </svg>
-                          Subscribing...
-                        </>
-                      ) : (
-                        "Subscribe Now"
-                      )}
-                    </button>
-                  </form>
+
+      <Section gray>
+        <Blogs />
+      </Section>
+      <Section>
+        <SectionContent>
+          <div className=" text-gray-900 ">
+            <div className="max-w-7xl mx-auto">
+              <div className="overflow-hidden">
+                <div className="md:flex items-center justify-center">
+                  <div className="md:w-1/2 p-8">
+                    <Heading level={2} className="text-2xl font-semibold mb-6">
+                      Qode Weekly Insights
+                    </Heading>
+                    <Text className="md:text-lg text-gray-600">
+                      Join thousands of investors receiving our data-driven
+                      market insights every week
+                    </Text>
+                  </div>
+                  <div className="md:w-1/2 p-8">
+                    <form onSubmit={handleSubmit}>
+                      <div className="mb-4">
+                        <input
+                          type="email"
+                          id="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          placeholder="Your Best Email"
+                          required
+                          className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
+                        />
+                      </div>
+                      <Button
+                        className="w-full"
+                        type="submit"
+                        disabled={isSubmitting}
+                        isLoading={isSubmitting}
+                      >
+                        Subscribe Now
+                      </Button>
+                    </form>
+                  </div>
                 </div>
               </div>
             </div>
+            <ToastContainer
+              position="bottom-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
           </div>
-          <ToastContainer
-            position="bottom-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
-        </div>
-      </Container>
+        </SectionContent>
+      </Section>
 
       {/* <OurFocus /> */}
     </>

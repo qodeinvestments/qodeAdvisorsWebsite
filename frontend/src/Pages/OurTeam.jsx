@@ -9,6 +9,8 @@ import vidhi from "../assets/team/Vidhi HS.png";
 import neha from "../assets/team/Neha HS.png";
 import sakshi from "../assets/team/Sakshi HS.png";
 import { Container } from "../components";
+import Text from "../components/common/Text";
+import Heading from "../components/common/Heading";
 
 const OurTeam = () => {
   const teamMembers = [
@@ -58,15 +60,17 @@ const OurTeam = () => {
 
   return (
     <Container>
-      <div className="container sophia-pro-font mx-auto py-8  mt-16">
-        <h2 className="md:text-lg inter-font  text-center mb-6">Our Team</h2>
-        <p className="text-center text-gray-400 mb-12">
+      <div className="container  mx-auto py-8  mt-16">
+        <Heading level={2} className="md:text-lg inter-font  text-center mb-6">
+          Our Team
+        </Heading>
+        <Text className="text-center text-gray-400 mb-12">
           We are Code Developers, Analysts, and Fund Managers dedicated to
           growing your money and optimizing your financial future. Using
           innovative strategies and our extensive expertise, we effectively
           manage investments to maximize returns and minimize risks, ensuring
           comprehensive financial growth and security.
-        </p>
+        </Text>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {teamMembers.map((member, index) => (
             <TeamMemberCard key={index} member={member} />
@@ -79,7 +83,7 @@ const OurTeam = () => {
 
 const TeamMemberCard = ({ member }) => {
   return (
-    <div className="bg-white shadow-md sophia-pro-font  rounded-lg overflow-hidden">
+    <div className="bg-white shadow-md   rounded-lg overflow-hidden">
       <img
         src={member.image}
         alt={member.name}
@@ -88,7 +92,9 @@ const TeamMemberCard = ({ member }) => {
       <div className="p-2">
         <div className="flex justify-between mb-1 items-start">
           <div>
-            <h3 className="">{member.name}</h3>
+            <Heading level={3} className="">
+              {member.name}
+            </Heading>
             <span className="text-gray-400 text-sm ">{member.designation}</span>
           </div>
           <div className="flex gap-2 flex-row-reverse">

@@ -7,6 +7,10 @@ import Modal from "../components/Modal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import BlogCard from "../components/BlogCard";
+import Heading from "../components/common/Heading";
+import Text from "../components/common/Text";
+import Button from "../components/common/Button";
+import CustomLink from "../components/common/CustomLink";
 
 const StrategyCard = ({ strategy, name, description, slug }) => {
   const { loading, error, calculateReturns } = useStrategyData(strategy);
@@ -17,29 +21,35 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   const periods = ["1M", "3M", "6M", "1Y", "3Y", "5Y"];
 
   return (
-    <Link
+    <CustomLink
       to={slug}
       className="mb-16 sm:mb-20 p-10 sm:p-14 pb-16 sm:pb-20 relative bg-[#fafafa] hover:bg-white hover:shadow-xl group transition duration-300"
     >
       <div className="transition-all duration-500 transform group-hover:-translate-y-4">
-        <h1 className="text-xl sm:text-2xl font-black sophia-pro-font mt-4 sm:mt-6">
+        <Heading
+          level={1}
+          className="text-xl sm:text-2xl font-black  mt-4 sm:mt-6"
+        >
           {name}
-        </h1>
-        <p
+        </Heading>
+        <Text
           className="text-sm sm:text-md leading-[2rem] sm:leading-[2.5rem]"
           dangerouslySetInnerHTML={{ __html: description }}
-        ></p>
+        ></Text>
       </div>
       <div className="flex flex-row justify-between items-end gap-8 sm:gap-16">
         <div className="absolute bottom-0 left-0 right-0 px-10 sm:px-14 py-6 sm:py-10 transition-all duration-300 opacity-0 group-hover:opacity-100">
-          <Link to={"/strategies/quant-growth-momentum"} className="text-black">
+          <CustomLink
+            to={"/strategies/quant-growth-momentum"}
+            className="text-black"
+          >
             <span className="relative z-10 text-red-600">
               Explore <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </Link>
+          </CustomLink>
         </div>
       </div>
-    </Link>
+    </CustomLink>
   );
 };
 
@@ -58,19 +68,19 @@ const Strategies = () => {
       name: "Qode Growth Fund",
       slug: "quant-growth-fund",
       description:
-        "<p class='mb-4'>Invest in quality business. Get quality results.</p>",
+        "<Text class='mb-4'>Invest in quality business. Get quality results.</Text>",
     },
     {
       id: "momentum",
       name: "Qode Momentum Fund",
       slug: "quant-growth-momentum",
-      description: "<p class='mb-4'>Buy high sell higher.</p> ",
+      description: "<Text class='mb-4'>Buy high sell higher.</Text> ",
     },
     {
       id: "lowvol",
       name: "Qode Low Volatility Fund",
       slug: "low-vol-momentum",
-      description: "<p class='mb-4'>Slow but Steady.</p>",
+      description: "<Text class='mb-4'>Slow but Steady.</Text>",
     },
   ];
 
@@ -80,21 +90,21 @@ const Strategies = () => {
   //     name: "Quality Fund",
   //     slug: "quant-growth-fund",
   //     description:
-  //       "<p class='mb-4'>Invest in quality business. Get quality results.</p>This strategy invests in 30 Quality businesses. (Quality Business - A company that generates a high return on invested capital). Principle - In the long run the stock price always matches the business performance.",
+  //       "<Text class='mb-4'>Invest in quality business. Get quality results.</Text>This strategy invests in 30 Quality businesses. (Quality Business - A company that generates a high return on invested capital). Principle - In the long run the stock price always matches the business performance.",
   //   },
   //   {
   //     id: "momentum",
   //     name: "High-Return & Churn Fund",
   //     slug: "quant-growth-momentum",
   //     description:
-  //       "<p class='mb-4'>Buy high sell higher.</p>  This strategy invests in 30 businesses whose stock price has grown significantly and sells it before they start falling. Principle - The stock price tells the story before the actual story unfolds.",
+  //       "<Text class='mb-4'>Buy high sell higher.</Text>  This strategy invests in 30 businesses whose stock price has grown significantly and sells it before they start falling. Principle - The stock price tells the story before the actual story unfolds.",
   //   },
   //   {
   //     id: "lowvol",
   //     name: "Steady Fund",
   //     slug: "low-vol-momentum",
   //     description:
-  //       "<p class='mb-4'>Slow but Steady.</p>This strategy invests in the 30 most stable stocks in the market. This strategy outperforms the Index with considerably lower risk.",
+  //       "<Text class='mb-4'>Slow but Steady.</Text>This strategy invests in the 30 most stable stocks in the market. This strategy outperforms the Index with considerably lower risk.",
   //   },
   // ];
   const dummyPosts = [
@@ -192,15 +202,15 @@ const Strategies = () => {
   ];
   return (
     <Container>
-      <div className="mx-auto p-8 ">
-        <p className="text-xl sm:text-xl md:text-xl lg:text-5xl sophia-pro-font mt-10 sm:mt-16 md:mt-20 font-black mb-6 md:mb-4 ">
+      <div className="mx-auto">
+        <Heading className="text-xl sm:text-xl md:text-xl lg:text-5xl  mt-10 sm:mt-16 md:mt-20 font-black mb-6 md:mb-4 ">
           All Strategies
-        </p>
-        <p className="text-md sm:text-xl md:text-xl lg:text-xl minion-pro-font font-thin mb-8 md:mb-20 ">
+        </Heading>
+        <Text className="text-md sm:text-xl md:text-xl lg:text-xl  font-thin mb-8 md:mb-20 ">
           One of these strategies will help you in reaching your financial goal
           based on how much risk you’re willing to take.
-        </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 sophia-pro-font mx-auto my-10 ">
+        </Text>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10  mx-auto my-10 ">
           {strategies.map((strategy) => (
             <StrategyCard
               key={strategy.id}
@@ -212,15 +222,11 @@ const Strategies = () => {
           ))}
 
           <div className="text-center mt-8 md:mt-10">
-            <p className="my-4 text-xl md:text-xl lg:text-xl">
+            <Text className="my-4 text-xl md:text-xl lg:text-xl">
               Not sure which strategy is right for you? <br /> Sign Up to track
               our live portfolio.
-            </p>
-            <Link target="_blank" to={"https://dashboard.qodeinvest.com"}>
-              <button className="bg-red-600 text-md sophia-pro-font md:text-xl lg:text-xl text-white py-3 md:py-4 lg:py-3 px-6 md:px-8 lg:px-6 mt-5 hover:bg-red-500 transition-colors">
-                Sign Up
-              </button>
-            </Link>
+            </Text>
+            <Button to="https://dashboard.qodeinvest.com">Sign Up</Button>
           </div>
         </div>
         {isModalOpen && (
@@ -229,7 +235,7 @@ const Strategies = () => {
           </Modal>
         )}
       </div>
-      {/* <h1 className="text-3xl sophia-pro-font mb-10 p-14 font-black">
+      {/* <h1 className="text-3xl  mb-10 p-14 font-black">
         Related Blogs
       </h1> */}
       {/* <div className="mb-24 mx-auto flex flex-wrap p-6  justify-center gap-5">

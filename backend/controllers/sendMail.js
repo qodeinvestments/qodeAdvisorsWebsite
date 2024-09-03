@@ -25,10 +25,10 @@ function sendNewsletterMail(email, subject, text) {
     return new Promise((resolve, reject) => {
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
-                console.log('Error occurred:', error.message);
+                // console.log('Error occurred:', error.message);
                 reject(error);
             } else {
-                console.log('Email sent successfully!');
+                // console.log('Email sent successfully!');
                 resolve(info);
             }
         });

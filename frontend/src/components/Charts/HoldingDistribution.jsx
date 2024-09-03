@@ -3,6 +3,8 @@ import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { Spinner } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import Button from "../common/Button";
+import Heading from "../common/Heading";
 
 const HoldingDistribution = ({ strategy }) => {
   const [chartOptions, setChartOptions] = useState(null);
@@ -23,7 +25,7 @@ const HoldingDistribution = ({ strategy }) => {
         const filteredData = jsonData.Sheet1.filter(
           (item) => item.Strategy === strategy
         );
-        console.log(filteredData);
+        // console.log(filteredData);
 
         const totals = filteredData.reduce(
           (acc, item) => {
@@ -162,18 +164,21 @@ const HoldingDistribution = ({ strategy }) => {
   return (
     <div className="flex flex-col gap-4 bg-[#fafafa] p-36 justify-center ">
       <div className="flex flex-col justify-between  text-start pb-0 items-start gap-2">
-        <h2 className="md:text-lg sm:text-3xl font-bold text-[#151E28] mb-2">
+        <Heading
+          level={2}
+          className="md:text-lg sm:text-3xl font-bold text-[#151E28] mb-2"
+        >
           Holding Distribution
-        </h2>
-        <p className="text-base sm:md:text-lg text-black">
+        </Heading>
+        <Text className="text-base sm:md:text-lg text-black">
           Our {strategyName} Strategy's asset allocation.
-        </p>
+        </Text>
         <div className="text-start">
           <HighchartsReact highcharts={Highcharts} options={chartOptions} />
         </div>
       </div>
       <div className="border p-10 ">
-        <h1 className="md:text-lg mb-10">Our Stock Holdings</h1>
+        <Heading className="md:text-lg mb-10">Our Stock Holdings</Heading>
         <div className="relative text-center flex items-center justify-center bg-red-600/20  ">
           <table className="border-collapse w-full blur-sm   ">
             <thead>
@@ -205,11 +210,7 @@ const HoldingDistribution = ({ strategy }) => {
           <div className="grid grid-cols-1 gap-4">
             <div className="absolute top-0 left-0 w-full h-full bg-white bg-opacity-30 flex flex-col justify-center items-center">
               <div className="w-full">Sign Up to see view our holdings</div>
-              <Link to={"https://dashboard.qodeinvest.com"}>
-                <button className="bg-red-600 text-white font-bold py-2 px-4 rounded">
-                  Sign Up
-                </button>
-              </Link>
+              <Button to="https://dashboard.qodeinvest.com">Sign Up</Button>
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ import StrategyComponent from "../components/Strategy";
 export const quantMomentumFundData = {
   title: "Qode Momentum Fund",
   description:
-    "<p class='mb-4 sophia-pro-font '>Buy high sell higher.</p> <p class='minion-pro-font'> This strategy invests in 30 businesses whose stock price has grown significantly and sells it before they start falling. Principle - The stock price tells the story before the actual story unfolds.</p>",
+    "<Text class='mb-4  '>Buy high sell higher.</Text> <Text class=''> This strategy invests in 30 businesses whose stock price has grown significantly and sells it before they start falling. Principle - The stock price tells the story before the actual story unfolds.</Text>",
   strategyCode: "QMF",
   strategySlug: "quant-growth-momentum",
   pptLink: "/path-to-your-ppt-file.pptx",

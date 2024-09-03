@@ -1,19 +1,24 @@
 import React from "react";
 import QuantInvesting101Process from "../../assets/QuantInvesting101_2.png"; // Placeholder image path
+import Heading from "../../components/common/Heading";
+import Text from "../../components/common/Text";
 
 const HowItWorks = () => {
   return (
     <div className="bg-white p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="md:text-lg  text-gray-800 mb-8 text-center">
+        <Heading
+          level={1}
+          className="md:text-lg  text-gray-800 mb-8 text-center"
+        >
           How Quantitative Investing Works
-        </h1>
+        </Heading>
 
-        <p className="text-md text-gray-700 mb-8 text-center">
+        <Text className="text-md text-gray-700 mb-8 text-center">
           Quantitative investing involves using mathematical models to make
           investment decisions. Let's break down the typical steps involved in
           the quant investing process:
-        </p>
+        </Text>
 
         {/* <div className="mb-12">
           <img
@@ -25,9 +30,9 @@ const HowItWorks = () => {
 
         <div className="space-y-8">
           <div className="bg-gray-100 rounded-lg p-6 shadow-sm">
-            <h3 className="md:text-lg  text-gray-800 mb-4">
+            <Heading level={3} className="md:text-lg  text-gray-800 mb-4">
               Steps in the Quant Investing Process
-            </h3>
+            </Heading>
             <ul className="space-y-3">
               <li className="flex items-center">
                 <span className="text-blue-500 mr-2">■</span>
@@ -49,9 +54,9 @@ const HowItWorks = () => {
           </div>
 
           <div className="bg-gray-100 rounded-lg p-6 shadow-sm">
-            <h3 className="md:text-lg  text-gray-800 mb-4">
+            <Heading level={3} className="md:text-lg  text-gray-800 mb-4">
               Key Considerations
-            </h3>
+            </Heading>
             <ul className="space-y-3">
               <li className="flex items-center">
                 <span className="text-purple-500 mr-2">●</span>

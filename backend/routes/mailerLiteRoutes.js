@@ -6,7 +6,7 @@ module.exports = (mailerlite) => {
 
     router.post('/subscribe', async (req, res) => {
         try {
-            console.log('Request body:', req.body);
+            // console.log('Request body:', req.body);
             const { email } = req.body;
             if (!email) {
                 return res.status(400).json({ message: 'Email is required' });
@@ -22,7 +22,7 @@ module.exports = (mailerlite) => {
                 const text = 'Hello,\n\nThank you for subscribing to the Qode Newsletter! We are excited to have you on board.\n\nBest regards,\nThe Qode Team';
                 try {
                     await sendNewsletterMail(email, subject, text);
-                    console.log('Confirmation email sent successfully');
+                    // console.log('Confirmation email sent successfully');
                 } catch (error) {
                     console.error('Error sending confirmation email:', error);
                 }

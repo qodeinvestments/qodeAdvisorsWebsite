@@ -7,7 +7,7 @@ const config = {
   theme: {
     extend: {
       spacing: {
-        9: "2.25rem", // 36px
+        'section': '6rem', // Adjust this value as needed
       },
       padding: {
         page: "1rem 2rem", // 16px 32px
@@ -33,7 +33,6 @@ const config = {
         "6xl": ["3.75rem", { lineHeight: "4rem" }],  // 60px
         "7xl": ["4.5rem", { lineHeight: "1" }],      // 72px
       },
-
       screens: {
         "3xl": "2560px",
         "4k": "3840px",

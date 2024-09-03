@@ -30,8 +30,8 @@ const useStrategyData = (strategy) => {
   }, [strategy]);
 
   const calculateReturns = (period) => {
-    // console.log("strategy data: ", data);
-    // console.log("strategy: ", strategy);
+    // // console.log("strategy data: ", data);
+    // // console.log("strategy: ", strategy);
     if (!data || data.length < 2) return "N/A";
 
     const latestData = data[data.length - 1];

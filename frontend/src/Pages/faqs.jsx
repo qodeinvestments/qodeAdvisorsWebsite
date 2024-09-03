@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Heading from "../components/common/Heading";
+import Text from "../components/common/Text";
 
 const FAQItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,9 +11,12 @@ const FAQItem = ({ question, answer }) => {
         className="flex justify-between items-center p-3 sm:p-4 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <h3 className="text-base sophia-pro-font font-medium sm:text-md md:text-lg text-[#151E28] pr-4">
+        <Heading
+          level={3}
+          className="text-base  font-medium sm:text-md md:text-lg text-[#151E28] pr-4"
+        >
           {question}
-        </h3>
+        </Heading>
         <span
           className={`text-[#151E28] md:text-lg sm:md:text-lg transition-transform duration-300 ${
             isOpen ? "transform rotate-180" : ""
@@ -22,9 +27,7 @@ const FAQItem = ({ question, answer }) => {
       </div>
       {isOpen && (
         <div className="p-3 sm:p-4 bg-[#fafafa]">
-          <p className="minion-pro-font text-black text-sm sm:text-md">
-            {answer}
-          </p>
+          <Text className=" text-black text-sm sm:text-md">{answer}</Text>
         </div>
       )}
     </div>
@@ -68,9 +71,11 @@ const FAQs = () => {
   ];
 
   return (
-    <div className=" minion-pro-font text-gray-900 min-h-screen">
+    <div className="  text-gray-900 min-h-screen">
       <div className=" text-black  px-4 sm:px-6 lg:px-8 mt-44 text-center">
-        <h1 className="text-3xl font-black sophia-pro-font mb-4">FAQ's</h1>
+        <Heading level={1} className="text-3xl font-black  mb-4">
+          FAQ's
+        </Heading>
       </div>
 
       <div className="max-w-5xl mx-auto py-12 px-4 sm:px-6 lg:px-8">

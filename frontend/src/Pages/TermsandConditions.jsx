@@ -1,15 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Container } from "../components";
+import Heading from "../components/common/Heading";
+import Text from "../components/common/Text";
 
 const TermsnConditions = () => {
   return (
     <Container>
       <div className="p-24">
-        <h1 className=" mb-6 sophia-pro-font text-start text-4xl font-black">
+        <Heading level={1} className=" mb-6  text-start text-4xl font-black">
           Terms & Conditions
-        </h1>
-        <p className="minion-pro-font md:text-lg">
+        </Heading>
+        <Text className=" md:text-lg">
           By accessing and using the website of Qode Advisors LLP (hereinafter
           referred to as "Qode"), including any of its web pages, you signify
           your agreement to these Terms and Conditions. It is important that you
@@ -23,13 +25,13 @@ const TermsnConditions = () => {
             qodeinvest.com
           </a>
           , and it reflects our dedication to protecting your privacy.
-        </p>
+        </Text>
         <div className="flex flex-col mt-24 items-center justify-start ">
           <div className="text-start max-w-4xl ">
-            <h2 className="text-2xl font-semibold  mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold  mb-6 ">
               Use of Information and Materials:
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               The content provided on Qode's website is for general
               informational purposes only and should not be considered as
               financial advice or a recommendation to invest. The website
@@ -39,35 +41,35 @@ const TermsnConditions = () => {
               principal. Past performance is not indicative of future results.
               Users are advised to seek independent financial advice before
               making any investment decisions.
-            </p>
+            </Text>
 
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Copyright and Intellectual Property:
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               All content on Qode's website, including text, graphics, logos,
               and images, is the property of Qode Advisors LLPor its content
               suppliers and is protected by copyright and other intellectual
               property laws. Unauthorized use, reproduction, or distribution of
               any material from this website is strictly prohibited.
-            </p>
+            </Text>
 
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               No Warranties:
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               Qode makes no warranties or representations about the accuracy,
               completeness, or suitability of the information on its website.
               All content is provided "as is" without any warranty of any kind.
               Qode, its affiliates, and their respective officers, directors,
               employees, or agents will not be liable for any damages arising
               from the use of this website.
-            </p>
+            </Text>
 
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Exclusion of Liability:
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               Qode will not be liable for any damages or losses arising from the
               use of this website, including but not limited to direct,
               indirect, incidental, punitive, and consequential damages. This
@@ -75,34 +77,34 @@ const TermsnConditions = () => {
               information provided, any transactions conducted through the
               website, and unauthorized access or alteration of your
               transmissions or data.
-            </p>
+            </Text>
 
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Governing Law:
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               You have the right to access, update, and correct your personal
               information. We encourage you to keep your information accurate
               and up-to-date by using the features available on our website.
               Please be aware that disclosing confidential information obtained
               through our services to third parties without our consent may
               constitute a breach of this policy.
-            </p>
+            </Text>
 
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Privacy and Security:
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               These Terms and Conditions are governed by the laws of India. Any
               disputes arising out of or in connection with this website are to
               be submitted to the exclusive jurisdiction of the courts in
               Mumbai, India.
-            </p>
+            </Text>
 
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Hyperlinks:
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               This website may contain links to other websites. Qode is not
               responsible for the content or privacy practices of these external
               sites. Users are advised to read the privacy policy of external
@@ -117,23 +119,23 @@ const TermsnConditions = () => {
               any time. Any such changes will be posted on this page. Your
               continued use of the website following the posting of changes to
               these terms will mean you accept those changes.
-            </p>
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            </Text>
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Amendments
-            </h2>
-            <p className="mb-12 minion-pro-font md:text-lg">
+            </Heading>
+            <Text className="mb-12  md:text-lg">
               Qode reserves the right to amend these Terms and Conditions at any
               time. Any such changes will be posted on this page. Your continued
               use of the website following the posting of changes to these terms
               will mean you accept those changes.
-            </p>
-            <h2 className="text-2xl font-semibold mt-24 mb-6 sophia-pro-font">
+            </Text>
+            <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Contact Information:
-            </h2>
-            <p className=" minion-pro-font  md:text-lg">
+            </Heading>
+            <Text className="   md:text-lg">
               If you have any questions or concerns about these Terms and
               Conditions, please contact us at connect@qodeinvest.com.
-            </p>
+            </Text>
           </div>
         </div>
       </div>

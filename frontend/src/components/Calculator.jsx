@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine } from "@fortawesome/free-solid-svg-icons";
+import Heading from "./common/Heading";
+import Text from "./common/Text";
 
 const Calculator = ({ strategy }) => {
   const [startOfMonthData, setStartOfMonthData] = useState([]);
@@ -9,7 +11,7 @@ const Calculator = ({ strategy }) => {
   const [investmentPeriod, setInvestmentPeriod] = useState(1);
   const [futureInvestmentValue, setFutureInvestmentValue] = useState(0);
   const [data, setData] = useState([]);
-  console.log(strategy);
+  // console.log(strategy);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -21,7 +23,7 @@ const Calculator = ({ strategy }) => {
           strategy = "momentum";
         }
         const strategyData = jsonData[strategy];
-        console.log(jsonData);
+        // console.log(jsonData);
 
         if (!strategyData) {
           console.error(`No data found for strategy: ${strategy}`);
@@ -29,13 +31,13 @@ const Calculator = ({ strategy }) => {
         }
 
         setData(strategyData);
-        console.log("data", strategyData);
+        // console.log("data", strategyData);
 
         if (strategyData && strategyData.length > 0) {
           const periodStartDate = new Date(
             strategyData[strategyData.length - 1].Date
           );
-          console.log(periodStartDate);
+          // console.log(periodStartDate);
           periodStartDate.setFullYear(
             periodStartDate.getFullYear() - investmentPeriod
           );
@@ -94,10 +96,10 @@ const Calculator = ({ strategy }) => {
         const shares = investmentAmount / strategyValue;
         const currentPrice = data[data.length - 1]["Total Portfolio NAV"];
         const futureValue = shares * currentPrice;
-        console.log("Future value:", futureValue);
+        // console.log("Future value:", futureValue);
         setFutureInvestmentValue(futureValue.toFixed(2));
       } else {
-        console.log("No exact match for investment date found in data.");
+        // console.log("No exact match for investment date found in data.");
         setFutureInvestmentValue(0);
       }
     } else {
@@ -167,15 +169,15 @@ const Calculator = ({ strategy }) => {
   return (
     <>
       <div className="py-8 ">
-        <h1 className="md:text-xl font-bold mb-4 sm:mb-14">
+        <Heading level={1} className="md:text-xl font-bold mb-4 sm:mb-14">
           Returns Calculator
-        </h1>
+        </Heading>
 
         <div className="space-y-10">
           <div className="flex flex-col sm:flex-row gap-20  justify-between items-center">
-            <p className="text-md sm:text-md mb-2 sm:mb-0 w-full ">
+            <Text className="text-md sm:text-md mb-2 sm:mb-0 w-full ">
               Investment Amount (₹)
-            </p>
+            </Text>
             <input
               type="number"
               name="investmentamount"
@@ -187,9 +189,9 @@ const Calculator = ({ strategy }) => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-10  justify-between items-center">
-            <p className="text-md sm:text-md mb-2 sm:mb-0 w-full sm:w-3/5  ">
+            <Text className="text-md sm:text-md mb-2 sm:mb-0 w-full sm:w-3/5  ">
               Investment Frequency
-            </p>
+            </Text>
             <div className="flex flex-row justify-between space-x-2 w-full  ">
               {["Monthly", "One-time"].map((freq) => (
                 <button
@@ -210,9 +212,9 @@ const Calculator = ({ strategy }) => {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-between items-center">
-            <p className="text-md sm:text-md mb-2 sm:mb-0 w-full sm:w-1/2">
+            <Text className="text-md sm:text-md mb-2 sm:mb-0 w-full sm:w-1/2">
               Investment Period (Years)
-            </p>
+            </Text>
             <div className="w-2/3  h-12">
               <div className="flex flex-row h-full w-full relative bg-transparent border ">
                 <button
@@ -241,24 +243,24 @@ const Calculator = ({ strategy }) => {
           </div>
         </div>
 
-        <div className="text-center mt-20 minion-pro-font px-3 sm:px-5   ">
-          {/* <p className="mb-3 text-base sm:text-md text-black">
+        <div className="text-center mt-20  px-3 sm:px-5   ">
+          {/* <Text className="mb-3 text-base sm:text-md text-black">
             If you had invested {formatInvestmentPeriod()}, <br /> your
             investments would be worth
-          </p> */}
-          <p className="md:text-xl sophia-pro-font mt-10  font-bold">
+          </Text> */}
+          <Text className="md:text-xl  mt-10  font-bold">
             ₹{numberWithCommas(futureInvestmentValue)}
-          </p>
-          <p className="text-md sm:text-md text-black  ">
+          </Text>
+          <Text className="text-md sm:text-md text-black  ">
             Total Amount Invested: ₹
             {numberWithCommas(calculateTotalInvestment())}
-          </p>
+          </Text>
         </div>
       </div>
-      <p className="text-base minion-pro-font sm:text-md text-center my-8  sm:mt-4 ">
+      <Text className="text-base  sm:text-md text-center my-8  sm:mt-4 ">
         Figures are based on historical returns and do not guarantee future
         results.*
-      </p>
+      </Text>
     </>
   );
 };

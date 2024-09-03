@@ -3,11 +3,12 @@ import { useParams } from "react-router-dom";
 import { Container } from "../components";
 import Calculator from "../components/Calculator";
 import { strategies } from "../config/strategies";
+import Heading from "../components/common/Heading";
 
 const StrategyCalculator = () => {
   const { strategyID } = useParams();
   const strategy = strategies.find((s) => s.id === strategyID);
-  console.log(strategy);
+  // console.log(strategy);
   const getStrategyKey = (strategy) => {
     switch (strategy) {
       case "Quant Growth Momentum":
@@ -33,7 +34,9 @@ const StrategyCalculator = () => {
 
   return (
     <Container>
-      <h1 className="md:text-lg  my-8">{strategyKey} Calculators</h1>
+      <Heading level={1} className="md:text-lg  my-8">
+        {strategyKey} Calculators
+      </Heading>
       <Calculator strategy={strategyKey} />
     </Container>
   );

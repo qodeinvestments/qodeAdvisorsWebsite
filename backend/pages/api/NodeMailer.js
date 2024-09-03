@@ -16,7 +16,7 @@ const mailerlite = new MailerLite({
 
 app.post('/api/mailerlite/subscribe', async (req, res) => {
     try {
-        console.log('Request body:', req.body);
+        // console.log('Request body:', req.body);
         const { email } = req.body;
         if (!email) {
             return res.status(400).json({ message: 'Email is required' });
@@ -28,7 +28,7 @@ app.post('/api/mailerlite/subscribe', async (req, res) => {
         };
         x
         const response = await mailerlite.subscribers.createOrUpdate(params);
-        console.log('MailerLite response data:', response.data); // Log only the data part
+        // console.log('MailerLite response data:', response.data); // Log only the data part
         res.status(200).json({ message: 'Subscription successful', data: response.data });
     } catch (error) {
         console.error('Error:', error.message); // Log only the error message
@@ -44,5 +44,5 @@ app.post('/api/mailerlite/subscribe', async (req, res) => {
 
 
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    // console.log(`Server is running on port ${port}`);
 });

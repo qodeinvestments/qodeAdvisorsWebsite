@@ -1,5 +1,5 @@
 const fetchStrategyData = async (strategy, timeRange, startDate, endDate) => {
-  console.log(timeRange);
+  // console.log(timeRange);
   try {
     // Replace this URL with your actual localhost URL
     const response = await fetch(

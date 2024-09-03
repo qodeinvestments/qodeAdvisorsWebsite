@@ -1,4 +1,7 @@
 import React from "react";
+import Button from "../components/common/Button";
+import Heading from "../components/common/Heading";
+import Text from "../components/common/Text";
 
 const BookAMeet = () => {
   const calendlyZoomLink = "https://calendly.com/tech-qodeinvest/30min";
@@ -6,52 +9,52 @@ const BookAMeet = () => {
     "https://calendly.com/tech-qodeinvest/physical-meeting";
 
   return (
-    <div className="min-h-1/2 bg-white flex items-center sophia-pro-font justify-center font-sans">
+    <div className="min-h-1/2 bg-white flex items-center  justify-center font-sans">
       <div className="w-full  px-6 py-3 text-center">
-        <h1 className="text-4xl  mb-20 text-black font-black tracking-tight">
+        <Heading
+          level={1}
+          className="text-4xl  mb-20 text-black font-black tracking-tight"
+        >
           Schedule a Meeting
-        </h1>
-        {/* <p className="md:text-lg mb-12 text-gray-700">
+        </Heading>
+        {/* <Text className="md:text-lg mb-12 text-gray-700">
           Choose how you'd like to connect with us
-        </p> */}
+        </Text> */}
 
         <div className="flex flex-col items-center justify-center  gap-5 mb-8">
-          <p className="text-2xl font-bold sophia-pro-font">
+          <Text className="text-2xl font-bold ">
             In Mumbai? <br />{" "}
-            <span className="minion-pro-font font-normal text-md">
+            <span className=" font-normal text-md">
               We'll be happy to meet you in person
             </span>
-          </p>
+          </Text>
 
-          <a
+          <Button
             href={calendlyOfficeLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="py-4 w-1/2 bg-red-600 text-white text-md rounded-none hover:bg-white hover:text-black     transition duration-300"
+            className="w-1/2 "
           >
             Book Office Visit
-          </a>
-          <p className="text-2xl font-bold sophia-pro-font mt-10">
+          </Button>
+          <Text className="text-2xl font-bold  mt-10">
             Outside Mumbai? <br />
-            <span className="minion-pro-font font-normal text-md">
-              {" "}
-              Let's get on a call.
-            </span>
-          </p>
-          <a
+            <span className=" font-normal text-md"> Let's get on a call.</span>
+          </Text>
+          <Button
             href={calendlyZoomLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="py-4 w-1/2 bg-red-600 text-white text-md rounded-none hover:bg-white hover:text-black    transition duration-300"
+            className="w-1/2  "
           >
             Schedule Zoom Call
-          </a>
+          </Button>
         </div>
 
-        {/* <p className="text-sm text-gray-600">
+        {/* <Text className="text-sm text-gray-600">
           Click on your preferred option to be directed to our Calendly
           scheduling page.
-        </p> */}
+        </Text> */}
       </div>
     </div>
   );

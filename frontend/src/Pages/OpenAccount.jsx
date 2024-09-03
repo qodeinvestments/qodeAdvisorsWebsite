@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Heading from "../components/common/Heading";
 
 const OpenAccount = () => {
   const [step, setStep] = useState(1);
@@ -24,7 +25,7 @@ const OpenAccount = () => {
   const prevStep = () => setStep(step - 1);
 
   const submitForm = () => {
-    console.log("Form submitted", formData);
+    // console.log("Form submitted", formData);
     // Handle form submission here
   };
 
@@ -56,7 +57,9 @@ const OpenAccount = () => {
         >
           {step === 1 && (
             <>
-              <h1 className="md:text-lg  mb-16">Let's start with your name</h1>
+              <Heading level={1} className="md:text-lg  mb-16">
+                Let's start with your name
+              </Heading>
               <div className="w-full max-w-3xl mb-16">
                 <label htmlFor="firstName" className="block md:text-lg mb-4">
                   1. Enter Your First Name
@@ -87,7 +90,9 @@ const OpenAccount = () => {
           )}
           {step === 2 && (
             <>
-              <h1 className="md:text-lg  mb-16">Your identification details</h1>
+              <Heading level={1} className="md:text-lg  mb-16">
+                Your identification details
+              </Heading>
               <div className="w-full max-w-3xl mb-16">
                 <label htmlFor="uidNo" className="block md:text-lg mb-4">
                   3. Enter Your UID Number
@@ -118,7 +123,9 @@ const OpenAccount = () => {
           )}
           {step === 3 && (
             <>
-              <h1 className="md:text-lg  mb-16">Upload your documents</h1>
+              <Heading level={1} className="md:text-lg  mb-16">
+                Upload your documents
+              </Heading>
               <div className="w-full max-w-3xl mb-16">
                 <label htmlFor="eSign" className="block md:text-lg mb-4">
                   5. Upload Your E-Sign
@@ -185,11 +192,7 @@ const OpenAccount = () => {
     );
   };
 
-  return (
-    <div className="h-screen overflow-hidden sophia-pro-font">
-      {renderStep()}
-    </div>
-  );
+  return <div className="h-screen overflow-hidden ">{renderStep()}</div>;
 };
 
 export default OpenAccount;

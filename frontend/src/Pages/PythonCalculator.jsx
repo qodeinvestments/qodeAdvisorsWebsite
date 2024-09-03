@@ -184,7 +184,7 @@ function PythonCalculator() {
     try {
       console.log(formData);
       const response = await axios.post(
-        "http://127.0.0.1:5000/calculate_portfolio",
+        "http://139.5.190.184:5080/calculate_portfolio",
         formData
       );
       const data = response.data;

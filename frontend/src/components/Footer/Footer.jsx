@@ -108,7 +108,12 @@ const Footer = () => {
             <List
               className="text-base sm:text-md text-white"
               itemClassName="hover:text-red-500"
-              items={[<CustomLink to="/faq">FAQs</CustomLink>]}
+              items={[
+                <CustomLink to="/faq">FAQs</CustomLink>,
+                <CustomLink to="/python-calculator">
+                  Portfolio Visualizer
+                </CustomLink>,
+              ]}
             />
           </div>
         </div>

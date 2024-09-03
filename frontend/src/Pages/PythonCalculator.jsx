@@ -476,7 +476,9 @@ function PythonCalculator() {
           {resultData?.cagrData && (
             <CAGRBarChart cagrData={resultData.cagrData} />
           )}
-          <MaxPeakToPeakTable data={resultData?.peak_to_peak_data || []} />
+          {resultData?.peak_to_peak_data && (
+            <MaxPeakToPeakTable data={resultData?.peak_to_peak_data || []} />
+          )}
         </>
       )}
     </div>

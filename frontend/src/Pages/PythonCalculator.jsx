@@ -184,7 +184,7 @@ function PythonCalculator() {
     try {
       console.log(formData);
       const response = await axios.post(
-        "https://139.5.190.184:5080/calculate_portfolio",
+        "https://calculator.qodeinvest.com:5080/calculate_portfolio",
         formData
       );
       const data = response.data;

@@ -5,6 +5,8 @@ import { Table } from "antd";
 
 function MonthlyPLTable({ data }) {
   // Check if data is available and not empty
+  console.log(data);
+
   if (!data || data.length === 0) {
     return <p className="text-center text-red-500">No data available</p>;
   }
@@ -12,7 +14,7 @@ function MonthlyPLTable({ data }) {
   // Format the data to include years and monthly PL values
   const formattedData = data.map((entry, index) => ({
     key: index, // Unique key for each row
-    year: 2016 + index, // Assuming the years start from 2016
+    year: entry.Year, // Assuming the years start from 2016
     ...entry,
   }));
 

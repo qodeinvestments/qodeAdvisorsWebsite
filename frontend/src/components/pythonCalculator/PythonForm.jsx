@@ -19,11 +19,11 @@ const STRATEGIES = [
   { label: "Qode Low Vol", value: "Qode Low Vol" },
   { label: "Cash 7%", value: "Cash 7%" },
   { label: "Gold Bees", value: "Gold Bees" },
-  { label: "BN_Acc", value: "BN_Acc" },
-  { label: "NF_Acc", value: "NF_Acc" },
-  { label: "FN_Acc", value: "FN_Acc" },
-  { label: "Long Options", value: "Long_Options" },
-  { label: "Psar", value: "Psar" },
+  //   { label: "BN_Acc", value: "BN_Acc" },
+  //   { label: "NF_Acc", value: "NF_Acc" },
+  //   { label: "FN_Acc", value: "FN_Acc" },
+  //   { label: "Long Options", value: "Long_Options" },
+  //   { label: "Psar", value: "Psar" },
 ];
 
 const DEBTFUNDS = [
@@ -40,12 +40,12 @@ const DEBTFUNDS = [
   { label: "QGF", value: "QGF" },
   { label: "Qode Low Vol", value: "Qode Low Vol" },
   { label: "Cash 7%", value: "Cash 7%" },
-  { label: "Gold Bees", value: "Gold Bees" },
-  { label: "BN_Acc", value: "BN_Acc" },
-  { label: "NF_Acc", value: "NF_Acc" },
-  { label: "FN_Acc", value: "FN_Acc" },
-  { label: "Long Options", value: "Long_Options" },
-  { label: "Psar", value: "Psar" },
+  //   { label: "Gold Bees", value: "Gold Bees" },
+  //   { label: "BN_Acc", value: "BN_Acc" },
+  //   { label: "NF_Acc", value: "NF_Acc" },
+  //   { label: "FN_Acc", value: "FN_Acc" },
+  //   { label: "Long Options", value: "Long_Options" },
+  //   { label: "Psar", value: "Psar" },
 ];
 
 function StyledPortfolioCalculatorForm({ onSubmit, loading }) {

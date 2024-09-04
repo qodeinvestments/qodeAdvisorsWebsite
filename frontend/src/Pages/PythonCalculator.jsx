@@ -67,7 +67,10 @@ const DEBTFUNDS = [
   { label: "Descrip_4(Long Options)", value: "Long_Options" },
   { label: "Descrip_4(Psar)", value: "Psar" },
 ];
-
+const API_URL =
+  process.env.NODE_ENV === "production"
+    ? process.env.REACT_APP_PROD_API_URL
+    : process.env.REACT_APP_DEV_API_URL;
 function PythonCalculator() {
   const [formData, setFormData] = useState({
     start_date: "",
@@ -78,19 +81,139 @@ function PythonCalculator() {
     selected_systems: [],
     selected_debtfunds: [],
   });
+  // console.log("Current environment:", process.env.NODE_ENV);
 
   const [resultData, setResultData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [chartOptions, setChartOptions] = useState({
-    chart: { type: "line" },
-    title: { text: "Equity Curve" },
+    title: {
+      text: "Equity Curve",
+    },
     xAxis: {
       type: "datetime",
-      labels: { format: "{value:%d-%m-%Y}" },
+      labels: {
+        formatter: function () {
+          const date = new Date(this.value);
+          return `${date.toLocaleString("default", { month: "short" })} ${date.getFullYear()}`;
+        },
+      },
     },
-    yAxis: { title: { text: "Value" } },
-    series: [{ name: "NAV", data: [] }],
+    yAxis: [
+      {
+        title: {
+          text: "Value",
+        },
+        height: "60%",
+        min: 0,
+        tickAmount: 10,
+      },
+      {
+        title: {
+          text: "Drawdown (%)",
+        },
+        opposite: false,
+        top: "60%",
+        height: "40%",
+      },
+    ],
+    series: [
+      {
+        name: "NAV",
+        data: [],
+        color: "#9ddd55",
+        lineWidth: 1,
+        marker: {
+          enabled: false,
+        },
+        type: "line",
+        yAxis: 0,
+      },
+      {
+        name: "Drawdown",
+        data: [],
+        color: "rgba(250, 65, 65, 1)",
+        lineWidth: 2,
+        marker: {
+          enabled: false,
+        },
+        fillColor: {
+          linearGradient: {
+            x1: 0,
+            y1: 0,
+            x2: 0,
+            y2: 1,
+          },
+          stops: [
+            [0, "rgba(250, 65, 65, 0.2)"],
+            [1, "rgba(250, 65, 65, 0.9)"],
+          ],
+        },
+        type: "area",
+        yAxis: 1,
+        threshold: 0,
+      },
+    ],
+    chart: {
+      height: 800,
+      backgroundColor: "none",
+      zoomType: "x",
+    },
+    tooltip: {
+      shared: true,
+    },
+    legend: {
+      enabled: false,
+    },
+    credits: {
+      enabled: false,
+    },
+    exporting: {
+      enabled: true,
+    },
+    plotOptions: {
+      area: {
+        marker: {
+          radius: 2,
+        },
+        lineWidth: 1,
+        states: {
+          hover: {
+            lineWidth: 1,
+          },
+        },
+        threshold: null,
+      },
+    },
+    navigation: {
+      buttonOptions: {
+        enabled: true,
+      },
+    },
   });
+  // Update the chart options with the data
+  const updateChartOptions = (chartData, drawdownData) => {
+    return {
+      ...chartOptions,
+      xAxis: {
+        ...chartOptions.xAxis,
+        tickPositions: [
+          0,
+          Math.floor(chartData.length / 2),
+          chartData.length - 1,
+        ],
+      },
+      series: [
+        {
+          ...chartOptions.series[0],
+          data: chartData,
+        },
+        {
+          ...chartOptions.series[1],
+          data: drawdownData,
+        },
+      ],
+    };
+  };
 
   const handleInputChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -184,13 +307,14 @@ function PythonCalculator() {
     try {
       console.log(formData);
       const response = await axios.post(
-        "https://calculator.qodeinvest.com:5080/calculate_portfolio",
+        `${API_URL}/calculate_portfolio`,
         formData
       );
       const data = response.data;
       setResultData(data);
       console.log(data);
-      if (data && data.equity_curve_data) {
+
+      if (data && data.equity_curve_data && data.drawdown_data) {
         const chartData = data.equity_curve_data.map((point) => {
           const [day, month, year] = point.Date.split("-");
           const date = Date.UTC(
@@ -201,14 +325,23 @@ function PythonCalculator() {
           return [date, point.NAV];
         });
 
-        setChartOptions((prev) => ({
-          ...prev,
-          series: [{ name: "NAV", data: chartData }],
-        }));
+        const drawdownData = data.drawdown_data.map((point) => {
+          const [day, month, year] = point.Date.split("-");
+          const date = Date.UTC(
+            parseInt(year),
+            parseInt(month) - 1,
+            parseInt(day)
+          );
+          return [date, point.Drawdown];
+        });
+
+        setChartOptions(updateChartOptions(chartData, drawdownData));
+      } else {
+        console.error("Missing required data in the response");
       }
     } catch (error) {
-      console.error("Error:", error.response?.data || error.message);
-      message.error("Failed to fetch data. Please try again later.");
+      console.error("Error fetching or processing data:", error);
+      message.error("An error occurred while processing your request.");
     } finally {
       setLoading(false);
     }

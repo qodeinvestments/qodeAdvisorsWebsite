@@ -5,7 +5,7 @@ import { InfoCircleOutlined } from "@ant-design/icons";
 const { RangePicker } = DatePicker;
 
 const STRATEGIES = [
-  { label: "Select All Systems", value: "all" },
+  //   { label: "Select All Systems", value: "all" },
   { label: "VAM", value: "VAM" },
   { label: "VAM + SL", value: "VAM + SL" },
   { label: "SF", value: "SF" },
@@ -27,7 +27,7 @@ const STRATEGIES = [
 ];
 
 const DEBTFUNDS = [
-  { label: "Select All Systems", value: "all" },
+  //   { label: "Select All Systems", value: "all" },
   { label: "VAM", value: "VAM" },
   { label: "VAM + SL", value: "VAM + SL" },
   { label: "SF", value: "SF" },
@@ -224,7 +224,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading }) {
           <h3 className="font-medium text-gray-700">{system.system}</h3>
           <div className="flex gap-4">
             <Input
-              type="number"
+              type="decimal"
               placeholder="Weightage"
               value={system.weightage}
               onChange={(e) =>
@@ -240,7 +240,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading }) {
               suffix="%"
             />
             <Input
-              type="number"
+              type="decimal"
               placeholder="Leverage"
               value={system.leverage}
               onChange={(e) =>

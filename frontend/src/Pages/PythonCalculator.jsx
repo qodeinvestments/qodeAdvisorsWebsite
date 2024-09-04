@@ -54,8 +54,7 @@ function PythonCalculator() {
         opposite: false,
         top: "60%",
         height: "40%",
-        left: "5%",
-        tickAmount: 0,
+        left: "7%",
       },
     ],
     series: [

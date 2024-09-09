@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Button, DatePicker, Input, Radio, Select, Spin, message } from "antd";
+import { Button, DatePicker, Input, Radio, Select, message } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
 
 const { RangePicker } = DatePicker;
 
 const STRATEGIES = [
-  //   { label: "Select All Systems", value: "all" },
   { label: "VAM", value: "VAM" },
   { label: "VAM + SL", value: "VAM + SL" },
   { label: "SF", value: "SF" },
@@ -19,15 +18,9 @@ const STRATEGIES = [
   { label: "Qode Low Vol", value: "Qode Low Vol" },
   { label: "Cash 7%", value: "Cash 7%" },
   { label: "Gold Bees", value: "Gold Bees" },
-  //   { label: "BN_Acc", value: "BN_Acc" },
-  //   { label: "NF_Acc", value: "NF_Acc" },
-  //   { label: "FN_Acc", value: "FN_Acc" },
-  //   { label: "Long Options", value: "Long_Options" },
-  //   { label: "Psar", value: "Psar" },
 ];
 
 const DEBTFUNDS = [
-  //   { label: "Select All Systems", value: "all" },
   { label: "VAM", value: "VAM" },
   { label: "VAM + SL", value: "VAM + SL" },
   { label: "SF", value: "SF" },
@@ -40,15 +33,9 @@ const DEBTFUNDS = [
   { label: "QGF", value: "QGF" },
   { label: "Qode Low Vol", value: "Qode Low Vol" },
   { label: "Cash 7%", value: "Cash 7%" },
-  //   { label: "Gold Bees", value: "Gold Bees" },
-  //   { label: "BN_Acc", value: "BN_Acc" },
-  //   { label: "NF_Acc", value: "NF_Acc" },
-  //   { label: "FN_Acc", value: "FN_Acc" },
-  //   { label: "Long Options", value: "Long_Options" },
-  //   { label: "Psar", value: "Psar" },
 ];
 
-function StyledPortfolioCalculatorForm({ onSubmit, loading }) {
+function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
   const [formData, setFormData] = useState({
     start_date: "",
     end_date: "",
@@ -58,6 +45,15 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading }) {
     selected_systems: [],
     selected_debtfunds: [],
   });
+  console.log(columns);
+
+  const columnList = columns.map((column) => ({
+    label: column.trim(), // Removing any trailing spaces
+    value: column.trim(),
+    isJsonColumn: true,
+  }));
+
+  const combinedStrategies = [...STRATEGIES, ...columnList];
 
   const handleInputChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -69,6 +65,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading }) {
       system: value,
       weightage: equalWeightage,
       leverage: 1,
+      column: "", // Add a column field for each system
     }));
     setFormData((prev) => ({ ...prev, selected_systems: updatedSystems }));
   };
@@ -76,7 +73,6 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading }) {
   const handleSystemInputChange = (index, field, value) => {
     setFormData((prev) => {
       const updatedSystems = [...prev.selected_systems];
-      // Convert weightage to a number using parseFloat
       updatedSystems[index] = {
         ...updatedSystems[index],
         [field]: field === "weightage" ? parseFloat(value) : value,
@@ -98,7 +94,6 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading }) {
   const handleDebtFundInputChange = (index, field, value) => {
     setFormData((prev) => {
       const updatedDebtFunds = [...prev.selected_debtfunds];
-      // Convert weightage to a number using parseFloat
       updatedDebtFunds[index] = {
         ...updatedDebtFunds[index],
         [field]: field === "weightage" ? parseFloat(value) : value,
@@ -106,13 +101,13 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading }) {
       return { ...prev, selected_debtfunds: updatedDebtFunds };
     });
   };
+
   const calculateEqualWeightage = (count) => {
     if (count === 0) return 0;
     return (100 / count).toFixed(2);
   };
 
   const handleSubmit = (e) => {
-    console.log(formData);
     e.preventDefault();
     if (
       !formData.start_date ||
@@ -211,11 +206,21 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading }) {
         <Select
           mode="multiple"
           style={{ width: "100%" }}
-          options={STRATEGIES}
+          options={combinedStrategies}
           value={formData.selected_systems.map((s) => s.system)}
           onChange={handleSystemChange}
           className="w-full"
           placeholder="Choose strategies"
+          optionRender={(option) => (
+            <span
+              style={{
+                color: option.data.isJsonColumn ? "#1890ff" : "inherit",
+                fontWeight: option.data.isJsonColumn ? "bold" : "normal",
+              }}
+            >
+              {option.data.isJsonColumn ? `📊 ${option.label}` : option.label}
+            </span>
+          )}
         />
       </div>
 
@@ -228,13 +233,9 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading }) {
               placeholder="Weightage"
               value={system.weightage}
               onChange={(e) =>
-                handleSystemInputChange(
-                  index,
-                  "weightage",
-                  e.target.value // This will be parsed to float in the handler
-                )
+                handleSystemInputChange(index, "weightage", e.target.value)
               }
-              className="w-1/2"
+              className="w-1/3"
               min={0}
               max={100}
               suffix="%"
@@ -247,16 +248,26 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading }) {
                 handleSystemInputChange(
                   index,
                   "leverage",
-                  parseFloat(e.target.value) // Direct conversion here
+                  parseFloat(e.target.value)
                 )
               }
-              className="w-1/2"
+              className="w-1/3"
               min={0}
               step={0.1}
+            />
+            <Select
+              className="w-1/3"
+              placeholder="Select column"
+              value={system.column}
+              onChange={(value) =>
+                handleSystemInputChange(index, "column", value)
+              }
+              options={columns.map((col) => ({ label: col, value: col }))}
             />
           </div>
         </div>
       ))}
+
       <div className="space-y-2">
         <label className="block text-sm font-medium text-gray-700">
           Select Debt Funds
@@ -314,7 +325,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading }) {
       <Button
         type="primary"
         htmlType="submit"
-        className="w-full h-10 text-lg"
+        className="w-full h-10"
         loading={loading}
       >
         Calculate Portfolio

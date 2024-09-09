@@ -121,9 +121,7 @@ function MonthlyPLTable({ data }) {
 
   return (
     <div className="my-8 p-4 bg-white shadow-md rounded-lg">
-      <h3 className="text-lg font-bold text-center mb-4">
-        Monthly PL Table (%)
-      </h3>
+      <h3 className=" font-bold text-center mb-4">Monthly PL Table (%)</h3>
       <Table
         dataSource={formattedData}
         columns={columns}

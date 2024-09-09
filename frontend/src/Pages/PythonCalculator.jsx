@@ -1,21 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {
-  Button,
-  DatePicker,
-  Input,
-  Radio,
-  Table,
-  Select,
-  Spin,
-  message,
-} from "antd";
+import { Table, Spin, message } from "antd";
 import HighchartsReact from "highcharts-react-official";
 import Highcharts from "highcharts";
 import MonthlyPLTable from "../components/pythonCalculator/MonthlyPLTable";
 import CAGRBarChart from "../components/pythonCalculator/CagrBarChart";
 import MaxPeakToPeakTable from "../components/pythonCalculator/PeakToPeak";
 import StyledPortfolioCalculatorForm from "../components/pythonCalculator/PythonForm";
+import FileUpload from "../components/pythonCalculator/FileUpload";
 
 const API_URL =
   import.meta.env.MODE === "production"
@@ -25,6 +17,12 @@ const API_URL =
 function PythonCalculator() {
   const [resultData, setResultData] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [columns, setColumns] = useState([]); // State to hold columns from uploaded Excel
+
+  const handleFileUpload = (uploadedColumns) => {
+    setColumns(uploadedColumns);
+  };
+
   const [chartOptions, setChartOptions] = useState({
     title: {
       text: "Equity Curve",
@@ -131,6 +129,7 @@ function PythonCalculator() {
       },
     },
   });
+
   const updateChartOptions = (chartData, drawdownData) => {
     return {
       ...chartOptions,
@@ -220,7 +219,7 @@ function PythonCalculator() {
 
     return (
       <div className="metrics-container my-6 p-6 bg-white rounded-lg shadow-lg">
-        <h3 className="text-xl font-semibold mb-4 text-gray-800 text-center">
+        <h3 className=" font-semibold mb-4 text-gray-800 text-center">
           Performance Metrics
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -230,7 +229,7 @@ function PythonCalculator() {
               className="bg-gray-50 p-4 rounded-md shadow-sm flex flex-col items-center justify-center border border-gray-200"
             >
               <p className="text-gray-500 text-sm">{metric.key}</p>
-              <p className="text-lg font-bold text-gray-700">
+              <p className=" font-bold text-gray-700">
                 {metric.value !== null ? metric.value : "N/A"}
               </p>
             </div>
@@ -272,7 +271,7 @@ function PythonCalculator() {
 
     return (
       <div className="drawdowns-table my-6 p-4 bg-white rounded shadow">
-        <h3 className="text-lg font-semibold mb-4">Top 10 Worst Drawdowns</h3>
+        <h3 className=" font-semibold mb-4">Top 10 Worst Drawdowns</h3>
         <Table
           dataSource={resultData.top_10_worst_drawdowns}
           columns={columns}
@@ -286,13 +285,15 @@ function PythonCalculator() {
 
   return (
     <div className="space-y-6 my-12 mt-20 max-w-6xl mx-auto px-4">
+      <FileUpload onColumnsUpdate={handleFileUpload} />
       <StyledPortfolioCalculatorForm
         onSubmit={handleSubmit}
         loading={loading}
+        columns={columns}
       />
 
       {loading ? (
-        <div className="flex justify-center py-10">
+        <div className="flex justify-center py-4">
           <Spin size="large" />
         </div>
       ) : (

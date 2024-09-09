@@ -285,6 +285,29 @@ function PythonCalculator() {
 
   return (
     <div className="space-y-6 my-12 mt-20 max-w-6xl mx-auto px-4">
+      <div
+        className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4"
+        role="alert"
+      >
+        <p className="font-bold">Upload Requirements</p>
+        <p>Please ensure your file meets the following criteria:</p>
+        <ul className="list-disc pl-5">
+          <li>Only CSV file formats are supported.</li>
+          <li>
+            Daily series must include two columns:
+            <ul className="list-decimal pl-5">
+              <li>
+                First column for the date (Supported formats: MM/dd/yyyy,
+                yyyy-MM-dd).
+              </li>
+              <li>
+                Second column for daily return or index value (Formats:
+                percentages like 2.5% or decimals like 0.025).
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
       <FileUpload onColumnsUpdate={handleFileUpload} />
       <StyledPortfolioCalculatorForm
         onSubmit={handleSubmit}

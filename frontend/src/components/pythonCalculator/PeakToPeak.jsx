@@ -23,7 +23,7 @@ const MaxPeakToPeakTable = ({ data }) => {
 
   return (
     <div className="my-8 p-4 bg-white rounded-lg shadow-lg">
-      <h3 className="text-lg font-semibold mb-4 text-gray-800 text-center">
+      <h3 className=" font-semibold mb-4 text-gray-800 text-center">
         Max Peak to Peak Data
       </h3>
       <Table

@@ -297,13 +297,9 @@ function PythonCalculator() {
             Daily series must include two columns:
             <ul className="list-decimal pl-5">
               <li>
-                First column for the date (Supported formats: MM/dd/yyyy,
-                yyyy-MM-dd).
+                First column for the date (Supported formats: dd/mm/yyyy).
               </li>
-              <li>
-                Second column for daily return or index value (Formats:
-                percentages like 2.5% or decimals like 0.025).
-              </li>
+              <li>Second column for daily return or index value</li>
             </ul>
           </li>
         </ul>

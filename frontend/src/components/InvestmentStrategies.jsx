@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import quantGrowth from "../assets/quantGrowth.png";
 import quantGrowthImg from "../assets/whiteCode.png";
 import quantMomentumImg from "../assets/banner.png";
@@ -19,18 +19,18 @@ const InvestmentStrategies = () => {
   return (
     <>
       <div className="flex justify-center flex-col md:flex-row">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-4 lg:gap-5">
           <div className="text-center md:text-left">
             <Heading
               level={2}
-              className="text-md sm:text-lg md:text-xl lg:text-2xl font-bold mt-4 md:mt-6 lg:mt-8 text-dark"
+              className="text-body sm:text-subheading md:text-heading lg:text-2xl font-bold mt-2 md:mt-3 lg:mt-4 text-dark"
             >
               Strategies
             </Heading>
-            <Text className="my-2 text-sm sm:text-md md:text-lg">
+            <Text className="my-1 text-xs sm:text-body">
               View all our strategies.{" "}
-              <CustomLink to={"/strategies"} className="text-red-600">
-                <span className="text-red-600">
+              <CustomLink to={"/strategies"} className="text-brown">
+                <span className="text-brown">
                   Here &nbsp; <FontAwesomeIcon icon={faArrowRight} />
                 </span>
               </CustomLink>
@@ -41,50 +41,48 @@ const InvestmentStrategies = () => {
             to={"/strategies/quant-growth-fund"}
             className="text-black"
           >
-            <div className="bg-white hover:shadow-xl transition-all px-6 sm:px-8 md:px-10 lg:px-14 py-8 sm:py-10 md:py-12 lg:py-16 h-[180px] sm:h-[200px] md:h-[220px] group overflow-hidden relative">
+            <div className="bg-white hover:shadow-xl transition-all px-3 sm:px-4 md:px-5 lg:px-6 py-4 sm:py-5 md:py-6 lg:py-8 h-[180px] sm:h-[200px] md:h-[220px] group overflow-hidden relative">
               <div className="transition-all duration-300 transform group-hover:-translate-y-5">
                 <Heading
                   level={3}
-                  className="font-bold mb-2 sm:mb-3 md:mb-4 text-md sm:text-lg md:text-xl"
+                  className="font-bold mb-1 sm:mb-2 md:mb-3 text-body sm:text-subheading md:text-heading"
                 >
                   Qode Growth Fund
                 </Heading>
-                <Text className="text-sm sm:text-md md:text-lg">
-                  <span className="text-xs sm:text-sm md:text-base">
+                <Text className="text-xs sm:text-body md:text-subheading">
+                  <span className="text-xs sm:text-xs md:text-base">
                     Invest in quality business. Get quality results.
                   </span>
                 </Text>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 md:px-10 lg:px-14 py-3 sm:py-4 md:py-6 lg:py-8 transition-all duration-300 opacity-0 group-hover:opacity-100">
-                <span className="relative z-10 text-red-600">
+              <div className="absolute bottom-0 left-0 right-0 px-3 sm:px-4 md:px-5 lg:px-6 py-1 sm:py-2 md:py-3 lg:py-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
+                <span className="relative z-10 text-brown">
                   Explore <FontAwesomeIcon icon={faArrowRight} />
                 </span>
               </div>
             </div>
           </CustomLink>
 
-          {/* Repeat the same pattern for the other two Link components */}
-
           <CustomLink
             to={"/strategies/quant-growth-momentum"}
             className="text-black"
           >
-            <div className="bg-white hover:shadow-xl transition-all px-6 sm:px-8 md:px-10 lg:px-14 py-8 sm:py-10 md:py-12 lg:py-16 h-[180px] sm:h-[200px] md:h-[220px] group overflow-hidden relative">
+            <div className="bg-white hover:shadow-xl transition-all px-3 sm:px-4 md:px-5 lg:px-6 py-4 sm:py-5 md:py-6 lg:py-8 h-[180px] sm:h-[200px] md:h-[220px] group overflow-hidden relative">
               <div className="transition-all duration-300 transform group-hover:-translate-y-5">
                 <Heading
                   level={3}
-                  className="font-bold mb-2 sm:mb-3 md:mb-4 text-md sm:text-lg md:text-xl"
+                  className="font-bold mb-1 sm:mb-2 md:mb-3 text-body sm:text-subheading md:text-heading"
                 >
                   Qode Momentum Fund
                 </Heading>
-                <Text className="text-sm sm:text-md md:text-lg">
-                  <span className="text-xs sm:text-sm md:text-base">
+                <Text className="text-xs sm:text-body md:text-subheading">
+                  <span className="text-xs sm:text-xs md:text-base">
                     Buy high sell higher
                   </span>
                 </Text>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 md:px-10 lg:px-14 py-3 sm:py-4 md:py-6 lg:py-8 transition-all duration-300 opacity-0 group-hover:opacity-100">
-                <span className="relative z-10 text-red-600">
+              <div className="absolute bottom-0 left-0 right-0 px-3 sm:px-4 md:px-5 lg:px-6 py-1 sm:py-2 md:py-3 lg:py-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
+                <span className="relative z-10 text-brown">
                   Explore <FontAwesomeIcon icon={faArrowRight} />
                 </span>
               </div>
@@ -95,22 +93,22 @@ const InvestmentStrategies = () => {
             to={"/strategies/low-vol-momentum"}
             className="text-black"
           >
-            <div className="bg-white hover:shadow-xl transition-all px-6 sm:px-8 md:px-10 lg:px-14 py-8 sm:py-10 md:py-12 lg:py-16 h-[180px] sm:h-[200px] md:h-[220px] group overflow-hidden relative">
+            <div className="bg-white hover:shadow-xl transition-all px-3 sm:px-4 md:px-5 lg:px-6 py-4 sm:py-5 md:py-6 lg:py-8 h-[180px] sm:h-[200px] md:h-[220px] group overflow-hidden relative">
               <div className="transition-all duration-300 transform group-hover:-translate-y-5">
                 <Heading
                   level={3}
-                  className="font-bold mb-2 sm:mb-3 md:mb-4 text-md sm:text-lg md:text-xl"
+                  className="font-bold mb-1 sm:mb-2 md:mb-3 text-body sm:text-subheading md:text-heading"
                 >
                   Steady Fund
                 </Heading>
-                <Text className="text-sm sm:text-md md:text-lg">
-                  <span className="text-xs sm:text-sm md:text-base">
+                <Text className="text-xs sm:text-body md:text-subheading">
+                  <span className="text-xs sm:text-xs md:text-base">
                     Qode Low Volatility Fund
                   </span>
                 </Text>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 px-6 sm:px-8 md:px-10 lg:px-14 py-3 sm:py-4 md:py-6 lg:py-8 transition-all duration-300 opacity-0 group-hover:opacity-100">
-                <span className="relative z-10 text-red-600">
+              <div className="absolute bottom-0 left-0 right-0 px-3 sm:px-4 md:px-5 lg:px-6 py-1 sm:py-2 md:py-3 lg:py-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
+                <span className="relative z-10 text-brown">
                   Explore <FontAwesomeIcon icon={faArrowRight} />
                 </span>
               </div>

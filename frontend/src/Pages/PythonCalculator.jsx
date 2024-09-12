@@ -228,7 +228,7 @@ function PythonCalculator() {
               key={index}
               className="bg-gray-50 p-4 rounded-md shadow-sm flex flex-col items-center justify-center border border-gray-200"
             >
-              <p className="text-gray-500 text-sm">{metric.key}</p>
+              <p className="text-gray-500 text-xs">{metric.key}</p>
               <p className=" font-bold text-gray-700">
                 {metric.value !== null ? metric.value : "N/A"}
               </p>

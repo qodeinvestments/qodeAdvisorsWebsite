@@ -162,8 +162,8 @@ const PerformanceChart = ({ strategy }) => {
         {
           name: strategy,
           data: strategyValues,
-          color: "#9ddd55",
-          lineWidth: 1,
+          color: "#d1a47b",
+          lineWidth: 2,
           marker: { enabled: false },
           type: "line",
         },
@@ -210,9 +210,9 @@ const PerformanceChart = ({ strategy }) => {
                 (range) => (
                   <button
                     onClick={() => handleTimeRangeChange(range)}
-                    className={`px-2 sm:px-3 md:px-4 sophia-pro-font py-1 md:py-2 border text-xs sm:text-sm ${
+                    className={`px-2 sm:px-3 md:px-4 playfair-display-font py-1 md:py-2 border text-xs sm:text-xs ${
                       activeButton === range
-                        ? "bg-red-600 text-white"
+                        ? "bg-beige text-white"
                         : "bg-white text-black"
                     }`}
                   >
@@ -223,24 +223,24 @@ const PerformanceChart = ({ strategy }) => {
             </div>
 
             {/* Date Inputs and CAGR */}
-            <div className="flex flex-col sm:flex-row sophia-pro-font items-center justify-between gap-4">
+            <div className="flex flex-col sm:flex-row playfair-display-font items-center justify-between gap-4">
               <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
                 <input
                   type="date"
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="border px-3 py-2 text-sm w-full sm:w-auto"
+                  className="border px-3 py-2 text-xs w-full sm:w-auto"
                 />
                 <input
                   type="date"
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="border px-3 py-2 text-sm w-full sm:w-auto"
+                  className="border px-3 py-2 text-xs w-full sm:w-auto"
                 />
               </div>
               <div className="text-center sm:text-right mt-4 sm:mt-0">
                 <Text className="text-2xl sm:text-3xl md:text-4xl text-gray-800">
                   {strategyCagr}
                 </Text>
-                <Text className="text-xs sm:text-sm text-gray-600">
+                <Text className="text-xs sm:text-xs text-gray-600">
                   {timeRange} CAGR
                 </Text>
               </div>

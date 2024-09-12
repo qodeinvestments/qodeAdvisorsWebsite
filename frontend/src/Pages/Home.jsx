@@ -135,7 +135,7 @@ const Home = () => {
                     <Heading level={2} className="text-2xl font-semibold mb-6">
                       Qode Weekly Insights
                     </Heading>
-                    <Text className="md:text-lg text-gray-600">
+                    <Text className="md:text-subheading text-gray-600">
                       Join thousands of investors receiving our data-driven
                       market insights every week
                     </Text>

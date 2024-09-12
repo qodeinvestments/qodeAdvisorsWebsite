@@ -1,5 +1,5 @@
-import Header from "./Header/Header";
-import Footer from "./Footer/Footer";
+import Header from "./Layout/Header";
+import Footer from "./Layout/Footer";
 import Banner from "./Banner";
 import Container from "./container/Container";
 import WhatWeDo from "./WhatWeDo";

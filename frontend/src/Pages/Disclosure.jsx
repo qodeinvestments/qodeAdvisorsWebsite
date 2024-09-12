@@ -33,49 +33,49 @@ const Disclosure = () => {
             and review any of the documents listed below.
           </Text> */}
           <div className="grid grid-cols-2 gap-20">
-            <div className="bg-[#fafafa] flex p-20 gap-20">
+            <div className="bg-lightBeige flex p-20 gap-20">
               <div>
                 <Heading level={1} className="text-2xl font-extrabold ">
                   PMS Disclosure Document
                 </Heading>
-                <button className="bg-red-600 py-2 px-6 text-white font-bold  mt-10">
+                <button className="bg-beige py-2 px-6 text-white font-bold  mt-10">
                   Download
                 </button>
               </div>
             </div>
-            <div className="bg-[#fafafa] flex p-20 gap-20">
+            <div className="bg-lightBeige flex p-20 gap-20">
               <div>
                 <Heading level={1} className="text-2xl font-extrabold ">
                   Investor Charter: Portfolio Manager
                 </Heading>
-                <button className="bg-red-600 py-2 px-6 text-white font-bold  mt-10">
+                <button className="bg-beige py-2 px-6 text-white font-bold  mt-10">
                   Download
                 </button>
               </div>
             </div>
-            <div className="bg-[#fafafa] flex p-20 gap-20">
+            <div className="bg-lightBeige flex p-20 gap-20">
               <div>
                 <Heading level={1} className="text-2xl font-extrabold ">
                   Financial Information
                 </Heading>
-                <button className="bg-red-600 py-2 px-6 text-white font-bold  mt-10">
+                <button className="bg-beige py-2 px-6 text-white font-bold  mt-10">
                   Download
                 </button>
               </div>
             </div>
-            <div className="bg-[#fafafa] flex p-20 gap-20">
+            <div className="bg-lightBeige flex p-20 gap-20">
               <div>
                 <Heading level={1} className="text-2xl font-extrabold ">
                   Complaint Resolution
                 </Heading>
-                <button className="bg-red-600 py-2 px-6 text-white font-bold  mt-10">
+                <button className="bg-beige py-2 px-6 text-white font-bold  mt-10">
                   Download
                 </button>
               </div>
             </div>
           </div>
 
-          <div className=" md:text-lg space-y-10 mt-10">
+          <div className=" md:text-subheading space-y-10 mt-10">
             <Text>
               For general queries and updates, write to support@qodeinvest.com
             </Text>
@@ -86,7 +86,7 @@ const Disclosure = () => {
             </Text>
             <Text>
               Visit the{" "}
-              <a className="text-red-500" href="https://scores.sebi.gov.in/">
+              <a className="text-brown" href="https://scores.sebi.gov.in/">
                 SCORES
               </a>
               &nbsp; website.

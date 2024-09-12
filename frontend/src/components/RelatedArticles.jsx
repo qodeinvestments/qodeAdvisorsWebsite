@@ -76,12 +76,12 @@ const RelatedArticles = ({ strategySlug, limit = 3 }) => {
   }
 
   if (error) {
-    return <div className="text-red-600">{error}</div>;
+    return <div className="text-brown">{error}</div>;
   }
 
   if (posts.length === 0) {
     return (
-      <div className="md:text-lg text-center my-20">
+      <div className="md:text-subheading text-center my-20">
         No related articles found.
       </div>
     );
@@ -92,11 +92,11 @@ const RelatedArticles = ({ strategySlug, limit = 3 }) => {
       <div className="py-10">
         <Heading
           level={2}
-          className="md:text-lg inter-font  text-[#151E28] mb-6"
+          className="md:text-subheading inter-font  text-[#151E28] mb-6"
         >
           Related Articles
         </Heading>
-        {/* <p className="md:text-lg">
+        {/* <p className="md:text-subheading">
           Check out our latest blog posts on investing and portfolio management.
         </p> */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

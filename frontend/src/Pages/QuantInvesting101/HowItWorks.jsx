@@ -9,12 +9,12 @@ const HowItWorks = () => {
       <div className="max-w-4xl mx-auto">
         <Heading
           level={1}
-          className="md:text-lg  text-gray-800 mb-8 text-center"
+          className="md:text-subheading  text-gray-800 mb-8 text-center"
         >
           How Quantitative Investing Works
         </Heading>
 
-        <Text className="text-md text-gray-700 mb-8 text-center">
+        <Text className="text-body text-gray-700 mb-8 text-center">
           Quantitative investing involves using mathematical models to make
           investment decisions. Let's break down the typical steps involved in
           the quant investing process:
@@ -30,7 +30,10 @@ const HowItWorks = () => {
 
         <div className="space-y-8">
           <div className="bg-gray-100 rounded-lg p-6 shadow-sm">
-            <Heading level={3} className="md:text-lg  text-gray-800 mb-4">
+            <Heading
+              level={3}
+              className="md:text-subheading  text-gray-800 mb-4"
+            >
               Steps in the Quant Investing Process
             </Heading>
             <ul className="space-y-3">
@@ -47,14 +50,17 @@ const HowItWorks = () => {
                 <span>Backtesting strategies with historical data</span>
               </li>
               <li className="flex items-center">
-                <span className="text-red-600 mr-2">■</span>
+                <span className="text-brown mr-2">■</span>
                 <span>Implementing the strategies in live trading</span>
               </li>
             </ul>
           </div>
 
           <div className="bg-gray-100 rounded-lg p-6 shadow-sm">
-            <Heading level={3} className="md:text-lg  text-gray-800 mb-4">
+            <Heading
+              level={3}
+              className="md:text-subheading  text-gray-800 mb-4"
+            >
               Key Considerations
             </Heading>
             <ul className="space-y-3">

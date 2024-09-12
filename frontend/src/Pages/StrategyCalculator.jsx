@@ -34,7 +34,7 @@ const StrategyCalculator = () => {
 
   return (
     <Container>
-      <Heading level={1} className="md:text-lg  my-8">
+      <Heading level={1} className="md:text-subheading  my-8">
         {strategyKey} Calculators
       </Heading>
       <Calculator strategy={strategyKey} />

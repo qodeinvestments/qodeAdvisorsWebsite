@@ -14,8 +14,8 @@ const Button = ({
   target,
   rel,
 }) => {
-  const baseClassName = "sophia-pro-font text-white transition-colors";
-  const defaultClassName = `${baseClassName} bg-red-600 hover:bg-red-500 py-2 px-4`;
+  const baseClassName = "dm-sans-font transition-colors";
+  const defaultClassName = `${baseClassName} bg-beige text-white hover:bg-opacity-90 py-2 px-4`;
   const fullClassName = `${defaultClassName} ${className}`;
 
   const content = isLoading ? (

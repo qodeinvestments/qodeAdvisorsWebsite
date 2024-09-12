@@ -8,7 +8,7 @@ function MonthlyPLTable({ data }) {
   console.log(data);
 
   if (!data || data.length === 0) {
-    return <p className="text-center text-red-500">No data available</p>;
+    return <p className="text-center text-brown">No data available</p>;
   }
 
   // Format the data to include years and monthly PL values

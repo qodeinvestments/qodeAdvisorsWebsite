@@ -130,7 +130,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       </h2>
 
       <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-xs font-medium text-gray-700">
           Investment Period
         </label>
         <RangePicker
@@ -150,7 +150,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       </div>
 
       <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-xs font-medium text-gray-700">
           Investment Amount
         </label>
         <Input
@@ -166,7 +166,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       </div>
 
       <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-xs font-medium text-gray-700">
           Cash Percentage
         </label>
         <Input
@@ -183,7 +183,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       </div>
 
       <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-xs font-medium text-gray-700">
           Rebalance Frequency
         </label>
         <Radio.Group
@@ -200,7 +200,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       </div>
 
       <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-xs font-medium text-gray-700">
           Select System Groups
         </label>
         <Select
@@ -269,7 +269,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       ))}
 
       <div className="space-y-2">
-        <label className="block text-sm font-medium text-gray-700">
+        <label className="block text-xs font-medium text-gray-700">
           Select Debt Funds
         </label>
         <Select
@@ -331,7 +331,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         Calculate Portfolio
       </Button>
 
-      <div className="text-sm text-gray-500 flex items-center mt-4">
+      <div className="text-xs text-gray-500 flex items-center mt-4">
         <InfoCircleOutlined className="mr-2" />
         <span>
           Fill in all required fields to calculate your portfolio performance.

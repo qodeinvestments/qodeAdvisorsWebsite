@@ -1,7 +1,7 @@
 import React from "react";
 
 const Text = ({ children, className = "", ...props }) => (
-  <p className={`minion-pro-font ${className}`} {...props}>
+  <p className={`dm-sans-font text-body ${className}`} {...props}>
     {children}
   </p>
 );

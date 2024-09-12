@@ -23,17 +23,17 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   return (
     <CustomLink
       to={slug}
-      className="mb-16 sm:mb-20 p-10 sm:p-14 pb-16 sm:pb-20 relative bg-[#fafafa] hover:bg-white hover:shadow-xl group transition duration-300"
+      className="mb-16 sm:mb-20 p-10 sm:p-14 pb-16 sm:pb-20 relative bg-lightBeige  hover:bg-white hover:shadow-xl group transition duration-300"
     >
       <div className="transition-all duration-500 transform group-hover:-translate-y-4">
         <Heading
           level={1}
-          className="text-xl sm:text-2xl font-black  mt-4 sm:mt-6"
+          className="text-heading sm:text-2xl font-black  mt-4 sm:mt-6"
         >
           {name}
         </Heading>
         <Text
-          className="text-sm sm:text-md leading-[2rem] sm:leading-[2.5rem]"
+          className="text-xs sm:text-body leading-[2rem] sm:leading-[2.5rem]"
           dangerouslySetInnerHTML={{ __html: description }}
         ></Text>
       </div>
@@ -43,7 +43,7 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
             to={"/strategies/quant-growth-momentum"}
             className="text-black"
           >
-            <span className="relative z-10 text-red-600">
+            <span className="relative z-10 text-brown">
               Explore <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </CustomLink>
@@ -203,10 +203,10 @@ const Strategies = () => {
   return (
     <Container>
       <div className="mx-auto">
-        <Heading className="text-xl sm:text-xl md:text-xl lg:text-5xl  mt-10 sm:mt-16 md:mt-20 font-black mb-6 md:mb-4 ">
+        <Heading className="text-heading sm:text-heading  mt-10 sm:mt-16 md:mt-20 font-black mb-6 md:mb-4 ">
           All Strategies
         </Heading>
-        <Text className="text-md sm:text-xl md:text-xl lg:text-xl  font-thin mb-8 md:mb-20 ">
+        <Text className="text-body sm:text-subheading   font-thin mb-8 md:mb-20 ">
           One of these strategies will help you in reaching your financial goal
           based on how much risk you’re willing to take.
         </Text>
@@ -222,7 +222,7 @@ const Strategies = () => {
           ))}
 
           <div className="text-center mt-8 md:mt-10">
-            <Text className="my-4 text-xl md:text-xl lg:text-xl">
+            <Text className="my-4 text-subheading">
               Not sure which strategy is right for you? <br /> Sign Up to track
               our live portfolio.
             </Text>

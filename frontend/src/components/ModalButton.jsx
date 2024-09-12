@@ -13,7 +13,7 @@ const ModalButton = () => {
   };
   return (
     <div className="text-center mt-10">
-      <Text className=" md:text-lg">
+      <Text className=" md:text-subheading">
         Do you want to speak to fund manager before investing?
       </Text>
       <Button onClick={openModal} className="mt-5">

@@ -54,11 +54,11 @@ const FAQSection = () => {
                 className="w-full text-left p-4 focus:outline-none flex justify-between items-center"
                 onClick={() => toggleAccordion(index)}
               >
-                <span className="md:text-lg">{faq.question}</span>
+                <span className="md:text-subheading">{faq.question}</span>
                 <span className="">{openAccordion === index ? "v" : "^"}</span>
               </button>
               {openAccordion === index && (
-                <div className="p-4 md:text-lg border-t border-black">
+                <div className="p-4 md:text-subheading border-t border-black">
                   <Text>{faq.answer}</Text>
                 </div>
               )}

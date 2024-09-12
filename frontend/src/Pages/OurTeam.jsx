@@ -61,7 +61,10 @@ const OurTeam = () => {
   return (
     <Container>
       <div className="container  mx-auto py-8  mt-16">
-        <Heading level={2} className="md:text-lg inter-font  text-center mb-6">
+        <Heading
+          level={2}
+          className="md:text-subheading inter-font  text-center mb-6"
+        >
           Our Team
         </Heading>
         <Text className="text-center text-gray-400 mb-12">
@@ -95,14 +98,14 @@ const TeamMemberCard = ({ member }) => {
             <Heading level={3} className="">
               {member.name}
             </Heading>
-            <span className="text-gray-400 text-sm ">{member.designation}</span>
+            <span className="text-gray-400 text-xs ">{member.designation}</span>
           </div>
           <div className="flex gap-2 flex-row-reverse">
             <a
               href={member.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 transition-colors text-md"
+              className="text-blue-600 hover:text-blue-800 transition-colors text-body"
             >
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
@@ -110,7 +113,7 @@ const TeamMemberCard = ({ member }) => {
               href={`mailto:${member.email}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-800 transition-colors text-md"
+              className="text-gray-600 hover:text-gray-800 transition-colors text-body"
             >
               <FontAwesomeIcon icon={faEnvelope} />
             </a>

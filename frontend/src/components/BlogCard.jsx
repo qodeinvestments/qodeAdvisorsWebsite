@@ -42,15 +42,15 @@ function BlogCard({
           )}
           <div className="transition-all duration-500 transform group-hover:-translate-y-5 flex flex-col h-full">
             <div className="mb-auto">
-              <span className="text-primary-dark text-sm">Blog</span>
+              <span className="text-primary-dark text-xs">Blog</span>
               <Heading
                 level={3}
-                className="md:text-lg text-black group-hover:text-red-600 font-bold  mb-2 relative overflow-hidden text-ellipsis"
+                className="md:text-subheading text-black group-hover:text-brown font-bold  mb-2 relative overflow-hidden text-ellipsis"
               >
                 {title}
               </Heading>
             </div>
-            <Text className="text-md line-clamp-5 my-4">{excerpt}</Text>
+            <Text className="text-body line-clamp-5 my-4">{excerpt}</Text>
             <div className="flex items-center justify-between mt-4">
               {primary_author && (
                 <div className="flex items-center">
@@ -61,17 +61,17 @@ function BlogCard({
                       className="w-8 h-8 rounded-full mr-2"
                     />
                   )}
-                  <span className="text-sm">{primary_author.name}</span>
+                  <span className="text-xs">{primary_author.name}</span>
                 </div>
               )}
               <div className="flex items-center">
                 <FontAwesomeIcon icon={faClock} className="mr-1" />
-                <span className="text-sm">{reading_time} min read</span>
+                <span className="text-xs">{reading_time} min read</span>
               </div>
             </div>
           </div>
           <div className="absolute bottom-0 left-0 right-0 px-6 py-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
-            <CustomLink to={`/blogs/${slug}`} className="text-red-600">
+            <CustomLink to={`/blogs/${slug}`} className="text-brown">
               Continue Reading <FontAwesomeIcon icon={faArrowRight} />
             </CustomLink>
           </div>

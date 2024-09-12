@@ -5,12 +5,15 @@ import Text from "../../components/common/Text";
 const BenefitsAndRisk = () => {
   return (
     <div className=" mx-auto p-6 bg-white shadow-md rounded-lg">
-      <Heading level={1} className="text-center md:text-lg  text-gray-800">
+      <Heading
+        level={1}
+        className="text-center md:text-subheading  text-gray-800"
+      >
         Quantitative Investment: Benefits and Risks
       </Heading>
 
       <div className="mt-6 p-4 bg-white rounded-lg shadow-sm border-l-4 border-gray-500">
-        <Heading level={2} className="md:text-lg  text-gray-600">
+        <Heading level={2} className="md:text-subheading  text-gray-600">
           Introduction
         </Heading>
         <Text>
@@ -21,7 +24,7 @@ const BenefitsAndRisk = () => {
       </div>
 
       <div className="mt-4 p-4 bg-white rounded-lg shadow-sm border-l-4 border-gray-500">
-        <Heading level={2} className="md:text-lg  text-gray-600">
+        <Heading level={2} className="md:text-subheading  text-gray-600">
           Benefits
         </Heading>
         <ul className="list-disc pl-5 space-y-2">
@@ -44,7 +47,7 @@ const BenefitsAndRisk = () => {
       </div>
 
       <div className="mt-4 p-4 bg-white rounded-lg shadow-sm border-l-4 border-gray-500">
-        <Heading level={2} className="md:text-lg  text-gray-600">
+        <Heading level={2} className="md:text-subheading  text-gray-600">
           Risks
         </Heading>
         <ul className="list-disc pl-5 space-y-2">
@@ -68,7 +71,7 @@ const BenefitsAndRisk = () => {
       </div>
 
       <div className="mt-4 p-4 bg-gray-100 rounded-lg shadow-sm border-l-4 border-gray-500">
-        <Heading level={2} className="md:text-lg  text-gray-600">
+        <Heading level={2} className="md:text-subheading  text-gray-600">
           Conclusion
         </Heading>
         <Text>

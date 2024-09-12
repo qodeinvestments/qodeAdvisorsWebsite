@@ -8,25 +8,16 @@ import GrayContainer from "./container/GrayContainer";
 import Button from "./common/Button";
 import Heading from "./common/Heading";
 import Text from "./common/Text";
+
 const FundManagers = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const managers = [
-    // {
-    //   name: "Rishabh Nahar",
-    //   position: "Fund Manager",
-    //   image: rishabh, // Replace with actual image path
-    // },
     {
       name: "Karan Salecha",
       position: "Fund Manager",
-      image: karan, // Replace with actual image path
+      image: karan,
     },
-    // {
-    //   name: "Kavan Sejpal",
-    //   position: "Fund Manager",
-    //   image: kavan, // Replace with actual image path
-    // },
   ];
 
   const openModal = () => {
@@ -38,21 +29,20 @@ const FundManagers = () => {
   };
 
   return (
-    <div className="">
+    <div className="flex flex-col items-center">
       <Heading
         level={2}
-        className="md:text-2xl font-black my-6 md:my-10 text-center"
+        className="text-heading font-black mt-3 mb-3 text-center"
       >
-        Do you want to speak to fund manager before investing?
+        Do you want to speak to a fund manager before investing?
       </Heading>
-      <div className="flex flex-col md:flex-row  mx-auto p-5  justify-around items-center">
+      <div className="flex flex-col md:flex-row justify-center items-center gap-3">
         {managers.map((manager, index) => (
           <div
             key={index}
-            className="flex flex-col  md:flex-row items-center  justify-center w-full mb-8 md:mb-0"
+            className="flex flex-col md:flex-row items-center gap-2"
           >
-            {/* Image */}
-            <div className="flex-shrink-0 mb-4 md:mb-0">
+            <div className="flex-shrink-0">
               <img
                 src={manager.image}
                 alt={manager.name}
@@ -60,15 +50,14 @@ const FundManagers = () => {
               />
             </div>
 
-            {/* Name, Designation, and Button */}
-            <div className="flex flex-col items-center md:items-start md:ml-10">
+            <div className="flex flex-col items-center md:items-start">
               <Heading
                 level={3}
-                className="md:text-lg  font-bold  text-center md:text-left"
+                className="text-body font-bold text-center md:text-left"
               >
                 {manager.name}
               </Heading>
-              <Text className="text-black md:text-lg  mb-4 text-center md:text-left">
+              <Text className="text-black text-body mb-1 text-center md:text-left">
                 {manager.position}
               </Text>
               <Button onClick={openModal}>Schedule A Call</Button>

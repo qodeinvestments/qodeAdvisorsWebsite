@@ -1,4 +1,4 @@
-import colors from "tailwindcss/colors";
+// tailwind.config.js
 import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 
 /** @type {import('tailwindcss').Config} */
@@ -6,37 +6,50 @@ const config = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      spacing: {
-        'section': '6rem', // Adjust this value as needed
-      },
-      padding: {
-        page: "1rem 2rem", // 16px 32px
-      },
       colors: {
         primary: {
-          DEFAULT: "#808080", // Gray
-          light: "#A9A9A9", // Lighter shade of gray
-          dark: "#000", // Darker shade of gray
+          DEFAULT: "#945c39",
         },
+        text: {
+          DEFAULT: "#000000",
+          secondary: "#4A4A4A",
+        },
+        lightBeige: "#fee9d6",
+        beige: "#d1a47b",
+        brown: "#945c39",
+        white: "#ffffff",
+        black: "#000000",
       },
       fontSize: {
-        xs: ["0.75rem", { lineHeight: "1rem" }],    // 12px
-        sm: ["0.875rem", { lineHeight: "1.25rem" }], // 14px
-        md: ["1rem", { lineHeight: "1.5rem" }],      // 16px
-        base: ["1.125rem", { lineHeight: "1.75rem" }], // 18px
-        lg: ["1.15rem", { lineHeight: "1.75rem" }],  // 20px
-        xl: ["1.25rem", { lineHeight: "2rem" }],      // 24px
-        "2xl": ["1.75rem", { lineHeight: "2.25rem" }], // 28px
-        "3xl": ["2rem", { lineHeight: "2.5rem" }],   // 32px
-        "4xl": ["2.5rem", { lineHeight: "3rem" }],   // 40px
-        "5xl": ["3rem", { lineHeight: "3.5rem" }],   // 48px
-        "6xl": ["3.75rem", { lineHeight: "4rem" }],  // 60px
-        "7xl": ["4.5rem", { lineHeight: "1" }],      // 72px
+        // Font sizes with line height calculated as 1.3 times the body font size
+        body: ["16px", { lineHeight: "20.8px" }],       // Body text
+        subheading: ["26px", { lineHeight: "33.8px" }], // 26px * 1.3
+        heading: ["41px", { lineHeight: "53.3px" }],    // 41px * 1.3
+        xs: ["14px", { lineHeight: "18.2px" }],         // 14px * 1.3
       },
-      screens: {
-        "3xl": "2560px",
-        "4k": "3840px",
+      fontFamily: {
+        heading: ['"Playfair Display"', "serif"],
+        body: ['"DM Sans"', "sans-serif"],
       },
+      fontWeight: {
+        heading: "600",
+        subheading: "500",
+        body: "400",
+      },
+      // spacing: {
+      //   // Define spacing based on 1.3 times the body font size (16px * 1.3 = 20.8px)
+      //   '1': '20.8px',  // 1x spacing
+      //   '2': '41.6px',  // 2x spacing
+      //   '3': '62.4px',  // 3x spacing
+      //   '4': '83.2px',  // 4x spacing
+      //   '5': '104px',   // 5x spacing
+      //   '6': '124.8px', // 6x spacing
+      //   '8': '166.4px', // 8x spacing
+      //   '10': '208px',  // 10x spacing
+      //   '12': '249.6px',// 12x spacing
+      //   '16': '332.8px',// 16x spacing
+      //   '20': '416px',  // 20x spacing
+      // },
     },
   },
   plugins: [addVariablesForColors],

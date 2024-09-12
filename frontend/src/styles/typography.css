@@ -1,0 +1,15 @@
+/* src/styles/typography.css */
+@layer utilities {
+    .heading-1 {
+      @apply font-heading font-heading text-heading text-primary;
+    }
+    .heading-2 {
+      @apply font-heading font-heading text-subheading text-primary;
+    }
+    .body-text {
+      @apply font-body font-body text-body text-text;
+    }
+    .body-text-secondary {
+      @apply font-body font-body text-body text-text-secondary;
+    }
+  }

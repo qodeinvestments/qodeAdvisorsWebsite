@@ -13,7 +13,10 @@ const OurFocus = () => {
           <Text className="uppercase text-[12px] inter-font tracking-widest  text-gray-400">
             Our Focus
           </Text>
-          <Heading level={2} className="md:text-lg text-primary-dark   mt-4">
+          <Heading
+            level={2}
+            className="md:text-subheading text-primary-dark   mt-4"
+          >
             We are <span className="text-primary-dark ">committed</span> to make
             financial <br /> investment more reliable
           </Heading>
@@ -28,7 +31,7 @@ const OurFocus = () => {
                 <img src={data} alt="" />
               </div>
               {/* Card Title */}
-              <Heading level={3} className="text-md   mt-4">
+              <Heading level={3} className="text-body   mt-4">
                 Data and technology driven
               </Heading>
               {/* Card Content */}
@@ -48,7 +51,7 @@ const OurFocus = () => {
                 <img src={quant} alt="" />
               </div>
               {/* Card Title */}
-              <Heading level={3} className="text-md   mt-4">
+              <Heading level={3} className="text-body   mt-4">
                 Quant Model
               </Heading>
               {/* Card Content */}
@@ -61,7 +64,7 @@ const OurFocus = () => {
             </div>
           </div>
 
-          <Text className="relative top-48 md:text-lg">
+          <Text className="relative top-48 md:text-subheading">
             Find out more about{" "}
             <a href="">
               <span className="arrow-link  cursor-pointer ">

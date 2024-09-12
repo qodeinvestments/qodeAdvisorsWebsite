@@ -12,15 +12,15 @@ const QuantInvesting101 = () => {
             <ul className="space-y-3 ">
               <li>
                 <div className="nav-link-container">
-                  <Text className="text-sm ">Introduction</Text>
+                  <Text className="text-xs ">Introduction</Text>
                   <ul className=" mt-4 space-y-3">
                     <li className="nav-link-ladder">
                       <NavLink
                         to="introduction/what-is-quant-investing"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-primary-dark dot  rounded-md px-2 py-1"
-                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
+                            ? "  text-xs text-primary-dark dot  rounded-md px-2 py-1"
+                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-xs"
                         }
                       >
                         What is Quant Investing
@@ -37,8 +37,8 @@ const QuantInvesting101 = () => {
                         to="introduction/how-it-works"
                         className={({ isActive }) =>
                           isActive
-                            ? " text-sm text-primary-dark dot  rounded-md px-2 py-1"
-                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
+                            ? " text-xs text-primary-dark dot  rounded-md px-2 py-1"
+                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-xs"
                         }
                       >
                         How it Works
@@ -49,8 +49,8 @@ const QuantInvesting101 = () => {
                         to="introduction/benefits-and-risks"
                         className={({ isActive }) =>
                           isActive
-                            ? " text-sm text-primary-dark dot  rounded-md px-2 py-1"
-                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
+                            ? " text-xs text-primary-dark dot  rounded-md px-2 py-1"
+                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-xs"
                         }
                       >
                         Benefits and Risks
@@ -61,15 +61,15 @@ const QuantInvesting101 = () => {
               </li>
               <li>
                 <div className="nav-link-container">
-                  <Text className="text-sm ">Quantitative Strategies </Text>
+                  <Text className="text-xs ">Quantitative Strategies </Text>
                   <ul className=" mt-4 space-y-3">
                     <li className="nav-link-ladder">
                       <NavLink
                         to="quantitative-strategies/trend-following"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-primary-dark dot  rounded-md px-2 py-1"
-                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
+                            ? "  text-xs text-primary-dark dot  rounded-md px-2 py-1"
+                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-xs"
                         }
                       >
                         Trend Following
@@ -80,8 +80,8 @@ const QuantInvesting101 = () => {
                         to="quantitative-strategies/mean-reversion"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-primary-dark dot  rounded-md px-2 py-1"
-                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
+                            ? "  text-xs text-primary-dark dot  rounded-md px-2 py-1"
+                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-xs"
                         }
                       >
                         Mean Reversion
@@ -92,8 +92,8 @@ const QuantInvesting101 = () => {
                         to="quantitative-strategies/statistical-arbitrage"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-primary-dark dot  rounded-md px-2 py-1"
-                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
+                            ? "  text-xs text-primary-dark dot  rounded-md px-2 py-1"
+                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-xs"
                         }
                       >
                         Statistical Arbitrage
@@ -104,15 +104,15 @@ const QuantInvesting101 = () => {
               </li>
               <li>
                 <div className="nav-link-container">
-                  <Text className="text-sm ">Data and Tools</Text>
+                  <Text className="text-xs ">Data and Tools</Text>
                   <ul className=" mt-4 space-y-3">
                     <li className="nav-link-ladder">
                       <NavLink
                         to="data-and-tools/data-sources"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-primary-dark dot  rounded-md px-2 py-1"
-                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
+                            ? "  text-xs text-primary-dark dot  rounded-md px-2 py-1"
+                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-xs"
                         }
                       >
                         Data Sources
@@ -123,8 +123,8 @@ const QuantInvesting101 = () => {
                         to="data-and-tools/backtesting"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-primary-dark dot  rounded-md px-2 py-1"
-                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
+                            ? "  text-xs text-primary-dark dot  rounded-md px-2 py-1"
+                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-xs"
                         }
                       >
                         Backtesting
@@ -135,8 +135,8 @@ const QuantInvesting101 = () => {
                         to="data-and-tools/programming-languages"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-primary-dark dot  rounded-md px-2 py-1"
-                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
+                            ? "  text-xs text-primary-dark dot  rounded-md px-2 py-1"
+                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-xs"
                         }
                       >
                         Programming Languages
@@ -147,15 +147,15 @@ const QuantInvesting101 = () => {
               </li>
               <li>
                 <div className="nav-link-container">
-                  <Text className="text-sm ">Portfolio Management</Text>
+                  <Text className="text-xs ">Portfolio Management</Text>
                   <ul className=" mt-4 space-y-3">
                     <li className="nav-link-ladder">
                       <NavLink
                         to="portfolio-management/risk-management"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-primary-dark dot  rounded-md px-2 py-1"
-                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-sm"
+                            ? "  text-xs text-primary-dark dot  rounded-md px-2 py-1"
+                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 rounded-md px-2 py-1 text-xs"
                         }
                       >
                         Risk Management
@@ -166,8 +166,8 @@ const QuantInvesting101 = () => {
                         to="portfolio-management/position-sizing"
                         className={({ isActive }) =>
                           isActive
-                            ? "  text-sm text-primary-dark dot  rounded-md px-2 py-1"
-                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 px-2 py-1 text-sm rounded-m"
+                            ? "  text-xs text-primary-dark dot  rounded-md px-2 py-1"
+                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 px-2 py-1 text-xs rounded-m"
                         }
                       >
                         Position Sizing
@@ -178,8 +178,8 @@ const QuantInvesting101 = () => {
                         to="portfolio-management/position-sizings"
                         className={({ isActive }) =>
                           isActive
-                            ? " text-sm text-primary-dark dot  rounded-md px-2 py-1"
-                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 px-2 py-1 text-sm rounded-m"
+                            ? " text-xs text-primary-dark dot  rounded-md px-2 py-1"
+                            : "text-gray-500  hover:text-gray-800 hover:bg-gray-100 px-2 py-1 text-xs rounded-m"
                         }
                       >
                         Position Sizings

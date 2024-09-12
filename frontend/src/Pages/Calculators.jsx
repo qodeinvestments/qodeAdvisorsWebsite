@@ -12,10 +12,10 @@ const StrategyTile = ({ title, link, description }) => (
     to={link}
     className="bg-white hover:bg-gray-300 transition-colors duration-300 p-6 rounded-lg shadow-md text-center"
   >
-    <Heading level={3} className="md:text-lg  text-gray-800">
+    <Heading level={3} className="md:text-subheading  text-gray-800">
       {title}
     </Heading>
-    <Text className="mt-2 text-gray-600 text-sm">{description}</Text>
+    <Text className="mt-2 text-gray-600 text-xs">{description}</Text>
   </CustomLink>
 );
 
@@ -24,10 +24,10 @@ const Calculators = () => {
     <div className="bg-white  min-h-screen">
       <div className="bg-gray-100 text-center text-black py-44">
         <Container>
-          <Heading level={1} className="md:text-lg  mb-4">
+          <Heading level={1} className="md:text-subheading  mb-4">
             Strategy Calculators
           </Heading>
-          <Text className="md:text-lg">
+          <Text className="md:text-subheading">
             Explore and calculate returns for various investment strategies
           </Text>
         </Container>
@@ -35,7 +35,7 @@ const Calculators = () => {
 
       <Container>
         <div className="my-12">
-          <Heading level={2} className="md:text-lg  text-gray-700 mb-6">
+          <Heading level={2} className="md:text-subheading  text-gray-700 mb-6">
             Choose a Strategy
           </Heading>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

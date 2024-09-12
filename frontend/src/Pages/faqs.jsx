@@ -13,12 +13,12 @@ const FAQItem = ({ question, answer }) => {
       >
         <Heading
           level={3}
-          className="text-base  font-medium sm:text-md md:text-lg text-[#151E28] pr-4"
+          className="text-base  font-medium sm:text-body md:text-subheading text-[#151E28] pr-4"
         >
           {question}
         </Heading>
         <span
-          className={`text-[#151E28] md:text-lg sm:md:text-lg transition-transform duration-300 ${
+          className={`text-[#151E28] md:text-subheading sm:md:text-subheading transition-transform duration-300 ${
             isOpen ? "transform rotate-180" : ""
           }`}
         >
@@ -27,7 +27,7 @@ const FAQItem = ({ question, answer }) => {
       </div>
       {isOpen && (
         <div className="p-3 sm:p-4 bg-[#fafafa]">
-          <Text className=" text-black text-sm sm:text-md">{answer}</Text>
+          <Text className=" text-black text-xs sm:text-body">{answer}</Text>
         </div>
       )}
     </div>

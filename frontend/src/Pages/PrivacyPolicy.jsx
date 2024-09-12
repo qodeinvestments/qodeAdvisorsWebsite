@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
         <Heading level={1} className="mb-6  text-start text-4xl font-black">
           Privacy Policy
         </Heading>
-        <Text className="   md:text-lg">
+        <Text className="   md:text-subheading">
           At Qode Advisors LLP("Qode"), we prioritize the privacy and security
           of our clients' personal, financial, and transactional information.
           Our commitment to safeguarding your privacy is integral to our
@@ -20,7 +20,7 @@ const PrivacyPolicy = () => {
           use, protect, and share information obtained through our website
           <a
             href="https://qodeinvest.com"
-            className="text-red-500 hover:text-red-700"
+            className="text-brown hover:text-brown"
           >
             {" "}
             qodeinvest.com
@@ -32,7 +32,7 @@ const PrivacyPolicy = () => {
             <Heading level={2} className="text-2xl font-semibold  mb-6 ">
               Information Collection and Use
             </Heading>
-            <Text className="mb-12  md:text-lg">
+            <Text className="mb-12  md:text-subheading">
               Qode collects personal information such as your name, address,
               email address, phone number, birth date, PAN, Aadhaar, occupation,
               income, risk profile, nominee details, investment details, and
@@ -47,7 +47,7 @@ const PrivacyPolicy = () => {
             <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Sharing and Disclosure of Information
             </Heading>
-            <Text className="mb-12  md:text-lg">
+            <Text className="mb-12  md:text-subheading">
               Qode may share your personal information with third parties,
               including custodians like ICICI Bank, KYC and KRA centers, CRM
               systems, auditors, and other service providers, to add value and
@@ -60,7 +60,7 @@ const PrivacyPolicy = () => {
             <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Protection of Information
             </Heading>
-            <Text className="mb-12  md:text-lg">
+            <Text className="mb-12  md:text-subheading">
               We are committed to protecting your information with the same
               degree of care that we apply to our own confidential information.
               This includes taking all reasonable steps to prevent unauthorized
@@ -73,7 +73,7 @@ const PrivacyPolicy = () => {
             <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Cookies and Web Analytics
             </Heading>
-            <Text className="mb-12  md:text-lg">
+            <Text className="mb-12  md:text-subheading">
               Our website uses cookies and Google Analytics to enhance your
               browsing experience, remember your preferences, and improve site
               navigation. These cookies do not collect personal sensitive
@@ -85,7 +85,7 @@ const PrivacyPolicy = () => {
             <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Your Rights and Responsibilities
             </Heading>
-            <Text className="mb-12  md:text-lg">
+            <Text className="mb-12  md:text-subheading">
               You have the right to access, update, and correct your personal
               information. We encourage you to keep your information accurate
               and up-to-date by using the features available on our website.
@@ -97,7 +97,7 @@ const PrivacyPolicy = () => {
             <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Changes to the Privacy Policy
             </Heading>
-            <Text className="mb-12  md:text-lg">
+            <Text className="mb-12  md:text-subheading">
               Qode reserves the right to update or modify this Privacy Policy at
               any time without prior notice. We encourage you to review this
               policy periodically to stay informed about how we are protecting
@@ -107,12 +107,12 @@ const PrivacyPolicy = () => {
             <Heading level={2} className="text-2xl font-semibold mt-24 mb-6 ">
               Contact Us
             </Heading>
-            <Text className="  md:text-lg">
+            <Text className="  md:text-subheading">
               If you have any questions or concerns about this Privacy Policy or
               our privacy practices, please contact us through our website{" "}
               <a
                 href="https://qodeinvest.com"
-                className="text-red-500 hover:text-red-700"
+                className="text-brown hover:text-brown"
               >
                 qodeinvest.com
               </a>

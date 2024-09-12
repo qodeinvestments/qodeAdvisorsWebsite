@@ -29,7 +29,7 @@ const ContactUs = () => {
         <Heading level={1} className="text-4xl pt-20  ">
           Contact Us
         </Heading>
-        {/* <p className="max-w-3xl mx-auto md:text-lg mb-16">
+        {/* <p className="max-w-3xl mx-auto md:text-subheading mb-16">
           We're here to help. Reach out to us with any questions or inquiries.
         </Text> */}
       </div>
@@ -38,12 +38,12 @@ const ContactUs = () => {
           <div className="max-w-7xl mx-auto ">
             <div className="grid grid-cols-1 md:grid-cols-1 gap-16">
               {/* <div className="bg-white rounded-lg shadow-md p-8">
-                <h2 className="md:text-lg  mb-6">Send us a message</h2>
+                <h2 className="md:text-subheading  mb-6">Send us a message</h2>
                 <form onSubmit={handleSubmit}>
                   <div className="mb-4">
                     <label
                       htmlFor="name"
-                      className="block text-sm  text-gray-700 mb-1"
+                      className="block text-xs  text-gray-700 mb-1"
                     >
                       Name
                     </label>
@@ -60,7 +60,7 @@ const ContactUs = () => {
                   <div className="mb-4">
                     <label
                       htmlFor="email"
-                      className="block text-sm  text-gray-700 mb-1"
+                      className="block text-xs  text-gray-700 mb-1"
                     >
                       Email
                     </label>
@@ -77,7 +77,7 @@ const ContactUs = () => {
                   <div className="mb-4">
                     <label
                       htmlFor="subject"
-                      className="block text-sm  text-gray-700 mb-1"
+                      className="block text-xs  text-gray-700 mb-1"
                     >
                       Subject
                     </label>
@@ -94,7 +94,7 @@ const ContactUs = () => {
                   <div className="mb-4">
                     <label
                       htmlFor="message"
-                      className="block text-sm  text-gray-700 mb-1"
+                      className="block text-xs  text-gray-700 mb-1"
                     >
                       Message
                     </label>
@@ -122,7 +122,7 @@ const ContactUs = () => {
                   <div className="flex gap-44 items-start justify-start   mx-auto">
                     <div>
                       <div className="mb-4">
-                        <Heading level={3} className="text-xl  mb-2">
+                        <Heading level={3} className="text-heading  mb-2">
                           Address
                         </Heading>
                         <Text>
@@ -136,7 +136,7 @@ const ContactUs = () => {
                         <Text>India</Text>
                       </div>
                       <div className="mb-4">
-                        <Heading level={3} className="text-xl   mb-2">
+                        <Heading level={3} className="text-heading   mb-2">
                           Phone
                         </Heading>
                         <Text>
@@ -149,7 +149,7 @@ const ContactUs = () => {
                         </Text>
                       </div>
                       <div>
-                        <Heading level={3} className="text-xl  mb-2">
+                        <Heading level={3} className="text-heading  mb-2">
                           Email
                         </Heading>
                         <Text>
@@ -164,7 +164,7 @@ const ContactUs = () => {
                     </div>
 
                     <div className="  ">
-                      <Heading level={2} className="text-xl  mb-6">
+                      <Heading level={2} className="text-heading  mb-6">
                         Our Location
                       </Heading>
                       <div className=" h-60    bg-red-50 ">

@@ -167,7 +167,7 @@ const TrailingReturns = ({ strategy }) => {
 
   return (
     <div className=" overflow-x-auto">
-      <Heading level={2} className="md:text-lg  my-4">
+      <Heading level={2} className="md:text-subheading  my-4">
         Trailing Returns
       </Heading>
       <table className="w-full min-w-[640px]">

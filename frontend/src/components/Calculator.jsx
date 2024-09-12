@@ -169,13 +169,13 @@ const Calculator = ({ strategy }) => {
   return (
     <>
       <div className="py-8 ">
-        <Heading level={1} className="md:text-xl font-bold mb-4 sm:mb-14">
+        <Heading level={1} className="md:text-heading font-bold mb-4 sm:mb-14">
           Returns Calculator
         </Heading>
 
         <div className="space-y-10">
           <div className="flex flex-col sm:flex-row gap-20  justify-between items-center">
-            <Text className="text-md sm:text-md mb-2 sm:mb-0 w-full ">
+            <Text className="text-body sm:text-body mb-2 sm:mb-0 w-full ">
               Investment Amount (₹)
             </Text>
             <input
@@ -189,7 +189,7 @@ const Calculator = ({ strategy }) => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-10  justify-between items-center">
-            <Text className="text-md sm:text-md mb-2 sm:mb-0 w-full sm:w-3/5  ">
+            <Text className="text-body sm:text-body mb-2 sm:mb-0 w-full sm:w-3/5  ">
               Investment Frequency
             </Text>
             <div className="flex flex-row justify-between space-x-2 w-full  ">
@@ -198,7 +198,7 @@ const Calculator = ({ strategy }) => {
                   key={freq}
                   className={`h-12 py-2 px-2 border text-center flex-grow ${
                     investmentFrequency === freq.toLowerCase()
-                      ? "bg-red-600 text-white"
+                      ? "bg-beige text-white"
                       : "bg-white text-black"
                   }`}
                   onClick={() =>
@@ -212,7 +212,7 @@ const Calculator = ({ strategy }) => {
           </div>
 
           <div className="flex flex-col sm:flex-row justify-between items-center">
-            <Text className="text-md sm:text-md mb-2 sm:mb-0 w-full sm:w-1/2">
+            <Text className="text-body sm:text-body mb-2 sm:mb-0 w-full sm:w-1/2">
               Investment Period (Years)
             </Text>
             <div className="w-2/3  h-12">
@@ -226,7 +226,7 @@ const Calculator = ({ strategy }) => {
                 </button>
                 <input
                   type="number"
-                  className="outline-none focus:outline-none text-center w-1/2 bg-white text-md hover:text-black focus:text-black md:text-base cursor-default flex items-center text-gray-700"
+                  className="outline-none focus:outline-none text-center w-1/2 bg-white text-body hover:text-black focus:text-black md:text-base cursor-default flex items-center text-gray-700"
                   name="custom-input-number"
                   value={investmentPeriod}
                   readOnly
@@ -244,20 +244,20 @@ const Calculator = ({ strategy }) => {
         </div>
 
         <div className="text-center mt-20  px-3 sm:px-5   ">
-          {/* <Text className="mb-3 text-base sm:text-md text-black">
+          {/* <Text className="mb-3 text-base sm:text-body text-black">
             If you had invested {formatInvestmentPeriod()}, <br /> your
             investments would be worth
           </Text> */}
-          <Text className="md:text-xl  mt-10  font-bold">
+          <Text className="md:text-heading  mt-10  font-bold">
             ₹{numberWithCommas(futureInvestmentValue)}
           </Text>
-          <Text className="text-md sm:text-md text-black  ">
+          <Text className="text-body sm:text-body text-black  ">
             Total Amount Invested: ₹
             {numberWithCommas(calculateTotalInvestment())}
           </Text>
         </div>
       </div>
-      <Text className="text-base  sm:text-md text-center my-8  sm:mt-4 ">
+      <Text className="text-base  sm:text-body text-center my-8  sm:mt-4 ">
         Figures are based on historical returns and do not guarantee future
         results.*
       </Text>

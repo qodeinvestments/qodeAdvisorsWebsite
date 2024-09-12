@@ -63,7 +63,7 @@ const AboutUs = () => {
         <Heading level={2} className="text-4xl  font-bold text-center mb-6">
           About Qode
         </Heading>
-        <Text className="text-center   mb-12 max-w-2xl md:text-lg mx-auto">
+        <Text className="text-center   mb-12 max-w-2xl md:text-subheading mx-auto">
           At Qode, we offer rigorous data-driven investment strategies geared to
           build long term wealth. Experience transparent, low-cost portfolio
           management tailored to free up your time for life's important moments.
@@ -73,7 +73,7 @@ const AboutUs = () => {
           <Heading level={3} className="  font-semibold text-4xl mb-6">
             Why Choose Qode?
           </Heading>
-          <ul className="list-decimal md:text-lg  list-inside space-y-2">
+          <ul className="list-decimal md:text-subheading  list-inside space-y-2">
             {/* <li>Innovative financial technology solutions</li>
             <li>Expert team of developers, analysts, and fund managers</li> */}
             <li>Data-driven decision-making processes</li>
@@ -88,7 +88,7 @@ const AboutUs = () => {
         >
           Our Team
         </Heading>
-        <Text className="text-center text-black md:text-lg mb-12 max-w-3xl mx-auto">
+        <Text className="text-center text-black md:text-subheading mb-12 max-w-3xl mx-auto">
           We at Qode are dedicated to growing your money and optimizing your
           financial future. Using innovative strategies and our extensive
           expertise, we effectively manage investments to maximize returns and
@@ -106,24 +106,24 @@ const AboutUs = () => {
           <Heading level={2} level={2} className="text-2xl font-bold text-center mb-8">Our Services</Heading>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <Heading level={3} className="text-xl font-semibold mb-6">Financial Analysis</Heading>
-              <Text className="text-black md:text-lg">
+              <Heading level={3} className="text-heading font-semibold mb-6">Financial Analysis</Heading>
+              <Text className="text-black md:text-subheading">
                 In-depth analysis of market trends and investment opportunities
                 to guide your financial decisions.
               </Text>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <Heading level={3} className="text-xl font-semibold mb-6">
+              <Heading level={3} className="text-heading font-semibold mb-6">
                 Portfolio Management
               </Heading>
-              <Text className="text-black md:text-lg">
+              <Text className="text-black md:text-subheading">
                 Expert management of your investment portfolio to optimize
                 returns and minimize risks.
               </Text>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <Heading level={3} className="text-xl font-semibold mb-6">FinTech Solutions</Heading>
-              <Text className="text-black md:text-lg">
+              <Heading level={3} className="text-heading font-semibold mb-6">FinTech Solutions</Heading>
+              <Text className="text-black md:text-subheading">
                 Cutting-edge financial technology tools to streamline your
                 business operations and financial processes.
               </Text>
@@ -145,14 +145,14 @@ const TeamMemberCard = ({ member }) => {
             <Heading level={3} className="">
               {member.name}
             </Heading>
-            <span className="text-gray-400 text-sm ">{member.designation}</span>
+            <span className="text-gray-400 text-xs ">{member.designation}</span>
           </div>
           <div className="flex gap-2 flex-row-reverse">
             <a
               href={member.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 transition-colors text-md"
+              className="text-blue-600 hover:text-blue-800 transition-colors text-body"
             >
               <FontAwesomeIcon icon={faLinkedin} />
             </a>
@@ -160,7 +160,7 @@ const TeamMemberCard = ({ member }) => {
               href={`mailto:${member.email}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black md:text-lg hover:text-gray-800 transition-colors text-md"
+              className="text-black md:text-subheading hover:text-gray-800 transition-colors text-body"
             >
               <FontAwesomeIcon icon={faEnvelope} />
             </a>

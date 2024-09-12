@@ -17,14 +17,14 @@ const BookAMeet = () => {
         >
           Schedule a Meeting
         </Heading>
-        {/* <Text className="md:text-lg mb-12 text-gray-700">
+        {/* <Text className="md:text-subheading mb-12 text-gray-700">
           Choose how you'd like to connect with us
         </Text> */}
 
         <div className="flex flex-col items-center justify-center  gap-5 mb-8">
           <Text className="text-2xl font-bold ">
             In Mumbai? <br />{" "}
-            <span className=" font-normal text-md">
+            <span className=" font-normal text-body">
               We'll be happy to meet you in person
             </span>
           </Text>
@@ -39,7 +39,10 @@ const BookAMeet = () => {
           </Button>
           <Text className="text-2xl font-bold  mt-10">
             Outside Mumbai? <br />
-            <span className=" font-normal text-md"> Let's get on a call.</span>
+            <span className=" font-normal text-body">
+              {" "}
+              Let's get on a call.
+            </span>
           </Text>
           <Button
             href={calendlyZoomLink}
@@ -51,7 +54,7 @@ const BookAMeet = () => {
           </Button>
         </div>
 
-        {/* <Text className="text-sm text-gray-600">
+        {/* <Text className="text-xs text-gray-600">
           Click on your preferred option to be directed to our Calendly
           scheduling page.
         </Text> */}

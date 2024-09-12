@@ -5,7 +5,7 @@ const CustomLink = ({ to, children, className = "", ...props }) => {
   return (
     <Link
       to={to}
-      className={`custom-link sophia-pro-font ${className}`}
+      className={`dm-sans-font text-body hover:text-primary transition-colors ${className}`}
       {...props}
     >
       {children}

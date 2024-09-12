@@ -7,7 +7,6 @@ import Heading from "./common/Heading";
 import Text from "./common/Text";
 
 const Banner = () => {
-  // ... previous state and useEffect code ...
   const [currentText, setCurrentText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [index, setIndex] = useState(0);
@@ -56,7 +55,7 @@ const Banner = () => {
         >
           <Heading
             level={1}
-            className="text-2xl sm:text-2xl md:text-3xl lg:text-7xl text-gray-900 mb-4 sm:mb-6"
+            className="text-2xl sm:text-2xl md:text-3xl lg:text-7xl text-brown mb-4 sm:mb-6"
           >
             The best investments are <br />
             <div className="h-[1.2em] sm:h-[1.4em] md:h-[1.2em] lg:h-[1.5em] mb-4 sm:mb-6">
@@ -64,7 +63,6 @@ const Banner = () => {
             </div>
           </Heading>
         </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -72,19 +70,19 @@ const Banner = () => {
         >
           <Heading
             level={2}
-            className="text-2xl sm:text-xl md:text-2xl lg:text-4xl text-gray-900 mb-4 sm:mb-6 md:mb-8"
+            className="text-2xl sm:text-heading md:text-2xl lg:text-4xl text-brown mb-4 sm:mb-6 md:mb-8"
           ></Heading>
         </motion.div>
-
-        <div className="flex flex-col md:flex-row  items-center md:items-start mt-8 sm:mt-10 md:mt-16 lg:mt-20 gap-4 sm:gap-6 md:gap-14">
+        {/* // Example adjustments in the Banner component */}
+        <div className="flex flex-col md:flex-row items-center md:items-start mt-4 md:mt-6 gap-2 md:gap-3">
           <hr
             style={{
               color: "#cccccc",
               backgroundColor: "#cccccc",
             }}
-            className="flex-grow max-w-[4rem] w-12 sm:w-16 md:w-32 mt-2 mb-4 md:mb-0"
+            className="flex-grow max-w-[4rem] w-12 sm:w-16 md:w-32 mt-1 mb-2 md:mb-0"
           />
-          <Text className="text-sm sm:text-md text-black max-w-xs sm:max-w-sm">
+          <Text className="text-xs sm:text-body text-black max-w-xs sm:max-w-sm">
             We manage wealth for Individuals, Families & Businesses. To help you
             build wealth in the long term, we've made data-driven investment
             strategies.

@@ -23,7 +23,7 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   return (
     <CustomLink
       to={slug}
-      className="mb-1 p-2 relative border-brown border hover:bg-white hover:shadow-xl group transition duration-300"
+      className="mb-1 p-2 relative border-brown border hover:bg-white group transition duration-300"
     >
       <div className="transition-all duration-500 transform group-hover:-translate-y-2">
         <Heading

@@ -55,12 +55,12 @@ const Banner = () => {
           className="space-y-2"
         >
           <Heading level={1} className="text-heading text-brown mb-2">
-            WE STARTED WITH GROWING OUR'S & OUR FAMILY BUSINESS WEALTH IN THE
-            STOCK MARKET
+            We started with growing our's & our family business wealth in the
+            stock market
           </Heading>
           <Text className="border border-brown p-2">
-            WE WANTED TO GROW OUR 1OCR TO 80CR WITHIN 10 YEARS WITH THE HIGHEST
-            PROBABLITY. HOW WE DID IT?
+            We wanted to grow our 1O cr to 80cr within 10 years with the highest
+            probability. How we did it?
           </Text>
         </motion.div>
       </div>

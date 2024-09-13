@@ -90,9 +90,9 @@ const Strategies = () => {
           All Strategies
         </Heading>
         <Text className="text-body my-1">
-          ONE OF THESE OR 4 COMBINATION OF THESE STRATEGIES WILL HELP YOU REACH
-          YOUR FINANCIAL GOAL WITH THE HIGHEST PROBABILITY (BASED ON HOW MUCH
-          RISK YOU'RE WILLING TO TAKE)
+          One of these or 4 combination of these strategies will help you reach
+          your financial goal with the highest probability (based on how much
+          risk you're willing to take)
         </Text>
         <div className="flex flex-col space-y-1">
           {strategies.map((strategy) => (
@@ -108,22 +108,22 @@ const Strategies = () => {
         <Section gray className="p-0">
           <div className="mt-1">
             <Heading className="text-heading">
-              MAKING MONEY IN THE STOCK MARKET IS SIMPLE IF YOU FOLLOW THESE
-              RULES
+              Making money in the stock market is simple if you follow these
+              rules
             </Heading>
-            <Text>SIMPLE NOT EASY</Text>
+            <Text>Simple not easy </Text>
             <List
               className="list-disc space-y-1 mt-1"
               items={[
-                <Text className="text-subheading">DON'T LOOSE MONEY EVER</Text>,
+                <Text className="text-subheading">Don't lose money ever</Text>,
                 <Text className="text-subheading">
-                  NEVER YAKE DECISION BASED ON EMOTION
+                  Never take decisions based on emotion
                 </Text>,
                 <Text className="text-subheading">
-                  INCREASE YOUR ODDS OF WINNING IN THE LONG TERM
+                  Increase your odds of winning in the long term
                 </Text>,
                 <Text className="text-subheading">
-                  DON'T TRY TO BE SMART, JUST DON'T BE STUPID
+                  Don't try to be smart, just don't be stupid
                 </Text>,
               ]}
             ></List>

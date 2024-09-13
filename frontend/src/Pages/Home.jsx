@@ -77,8 +77,8 @@ const Home = () => {
       <Section className="bg-black">
         <SectionContent>
           <Heading className="text-subheading font-subheading">
-            AND NOW SINCE THE PAST 7 YEARS WE HAVE BEEN MANAGING & GROWING
-            WEALTH OF HIGH NETWORTH INDIVIDUALS, THEIR FAMILIES & BUSINESSES
+            And now since the past 7 years we have been managing & growing
+            wealth of high networth individuals, their families & businesses
           </Heading>
           <Button className="mt-1">Start Investing With Qode</Button>
         </SectionContent>
@@ -92,11 +92,11 @@ const Home = () => {
       <Section withBorder={true}>
         <SectionContent>
           <Heading className="text-heading">
-            PICKING THE RIGHT PORTFOLIO MANAGEMENT SERVICE IS LIKE PICKING THE
-            RIGHT STOCK
+            Picking the right portfolio management service is like picking the
+            right stock
           </Heading>
           <Text className="text-subheading">
-            HOW DO YOU KNOW IF YOU HAVE PICKED THE RIGHT ONE
+            How do you know if you have picked the right one
           </Text>
         </SectionContent>
       </Section>

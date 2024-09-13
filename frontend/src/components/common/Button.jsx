@@ -15,13 +15,13 @@ const Button = ({
   rel,
 }) => {
   const baseClassName = "dm-sans-font transition-colors";
-  const defaultClassName = `${baseClassName} bg-beige text-white hover:bg-opacity-90 py-2 px-4`;
+  const defaultClassName = `${baseClassName} bg-beige text-white hover:bg-opacity-90 py-1.5 px-4 text-sm`;
   const fullClassName = `${defaultClassName} ${className}`;
 
   const content = isLoading ? (
     <>
       <svg
-        className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+        className="animate-spin -ml-1 mr-3 h-4 w-4 text-white"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"

@@ -30,11 +30,8 @@ const FundManagers = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <Heading
-        level={2}
-        className="text-heading font-black mt-3 mb-3 text-center"
-      >
-        Do you want to speak to a fund manager before investing?
+      <Heading level={2} className="text-heading  mt-3 mb-3 text-center">
+        Do you want to speak to a fund manager to know more before investing?
       </Heading>
       <div className="flex flex-col md:flex-row justify-center items-center gap-3">
         {managers.map((manager, index) => (

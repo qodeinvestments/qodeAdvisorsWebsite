@@ -1,51 +1,13 @@
-import React, { useEffect, useState } from "react";
-import {
-  Banner,
-  Container,
-  WhatWeDo,
-  InvestmentProcess,
-  Blogs,
-  InvestmentStrategies,
-  OurFocus,
-  GrayContainer,
-} from "../components/index";
-import { BackgroundBeams } from "../components/ui/background-beams";
-import ChartComponent from "../components/Charts/LightWeightChart";
-import Section from "../components/container/Section";
+import React, { useState } from "react";
+import { Banner, Blogs, InvestmentStrategies } from "../components/index";
 import FundManagers from "../components/FundManagers";
-import FAQSection from "../components/FAQ";
-import MailerLite from "mailerlite-api-v2-node";
-import process from "process";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import SectionContent from "../components/container/SectionContent";
 import Button from "../components/common/Button";
 import Text from "../components/common/Text";
 import Heading from "../components/common/Heading";
-const chartData = [
-  { time: "2022-01-01", value: 100 },
-  { time: "2022-01-02", value: 110 },
-  { time: "2022-01-03", value: 115 },
-  { time: "2022-01-04", value: 130 },
-  { time: "2022-01-05", value: 120 },
-];
-
-const chartColors = {
-  backgroundColor: "white",
-  lineColor: "#2962FF",
-  textColor: "black",
-  areaTopColor: "#2962FF",
-  areaBottomColor: "rgba(41, 98, 255, 0.28)",
-};
-
-const benefits = [
-  "In-depth market trend analysis",
-  "Exclusive quantitative research insights",
-  "Emerging investment opportunities",
-  "Expert commentary on global finance",
-  "Financial literacy content",
-  "Invitations to exclusive events",
-];
+import Section from "../components/container/Section";
+import SectionContent from "../components/container/SectionContent";
 
 const Home = () => {
   const [email, setEmail] = useState("");
@@ -105,85 +67,109 @@ const Home = () => {
   };
 
   return (
-    <>
-      <Section>
+    <div className="max-w-7xl mx-auto font-body text-body">
+      <Section withBorder={true} className="mt-5">
         <SectionContent>
           <Banner />
         </SectionContent>
       </Section>
-      <Section gray>
-        <InvestmentStrategies />
-      </Section>
-      {/* </GrayContainer> */}
-      <Section>
+
+      <Section className="bg-black">
         <SectionContent>
-          <FundManagers />
+          <Heading className="text-subheading font-subheading">
+            AND NOW SINCE THE PAST 7 YEARS WE HAVE BEEN MANAGING & GROWING
+            WEALTH OF HIGH NETWORTH INDIVIDUALS, THEIR FAMILIES & BUSINESSES
+          </Heading>
+          <Button className="mt-1">Start Investing With Qode</Button>
         </SectionContent>
       </Section>
-      {/* <FAQSection /> */}
 
-      <Section gray>
-        <Blogs />
-      </Section>
-      <Section>
+      <Section gray withBorder={true}>
         <SectionContent>
-          <div className=" text-gray-900 ">
-            <div className="max-w-7xl mx-auto">
-              <div className="overflow-hidden">
-                <div className="md:flex items-center justify-center">
-                  <div className="md:w-1/2 p-8">
-                    <Heading level={2} className="text-2xl font-semibold mb-6">
-                      Qode Weekly Insights
-                    </Heading>
-                    <Text className="md:text-subheading text-gray-600">
-                      Join thousands of investors receiving our data-driven
-                      market insights every week
-                    </Text>
+          <InvestmentStrategies />
+        </SectionContent>
+      </Section>
+      <Section withBorder={true}>
+        <SectionContent>
+          <Heading className="text-heading">
+            PICKING THE RIGHT PORTFOLIO MANAGEMENT SERVICE IS LIKE PICKING THE
+            RIGHT STOCK
+          </Heading>
+          <Text className="text-subheading">
+            HOW DO YOU KNOW IF YOU HAVE PICKED THE RIGHT ONE
+          </Text>
+        </SectionContent>
+      </Section>
+
+      <Section className="bg-black">
+        {/* <SectionContent> */}
+        <FundManagers />
+        {/* </SectionContent> */}
+      </Section>
+
+      {/* <Section gray withBorder={true} innerBorder={true}>
+        <SectionContent>
+          <Blogs />
+        </SectionContent>
+      </Section> */}
+
+      <Section withBorder={true} innerBorder={true}>
+        <SectionContent>
+          <div className="text-text">
+            <div className="md:flex items-center justify-center">
+              <div className="md:w-1/2 p-2">
+                <Heading
+                  level={2}
+                  className="text-subheading font-heading mb-2"
+                >
+                  Qode Weekly Insights
+                </Heading>
+                <Text className="text-body text-text-secondary">
+                  Join thousands of investors receiving our data-driven market
+                  insights every week
+                </Text>
+              </div>
+              <div className="md:w-1/2 p-2">
+                <form onSubmit={handleSubmit}>
+                  <div className="mb-2">
+                    <input
+                      type="email"
+                      id="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Your Best Email"
+                      required
+                      className="w-full px-2 py-1 border border-beige focus:outline-none focus:ring-2 focus:ring-brown"
+                    />
                   </div>
-                  <div className="md:w-1/2 p-8">
-                    <form onSubmit={handleSubmit}>
-                      <div className="mb-4">
-                        <input
-                          type="email"
-                          id="email"
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
-                          placeholder="Your Best Email"
-                          required
-                          className="w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400"
-                        />
-                      </div>
-                      <Button
-                        className="w-full"
-                        type="submit"
-                        disabled={isSubmitting}
-                        isLoading={isSubmitting}
-                      >
-                        Subscribe Now
-                      </Button>
-                    </form>
-                  </div>
-                </div>
+                  <Button
+                    className="w-full"
+                    type="submit"
+                    disabled={isSubmitting}
+                    isLoading={isSubmitting}
+                  >
+                    Subscribe Now
+                  </Button>
+                </form>
               </div>
             </div>
-            <ToastContainer
-              position="bottom-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
-            />
           </div>
         </SectionContent>
       </Section>
 
-      {/* <OurFocus /> */}
-    </>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+    </div>
   );
 };
 

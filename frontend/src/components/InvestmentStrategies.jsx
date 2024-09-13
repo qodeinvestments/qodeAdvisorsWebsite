@@ -27,7 +27,7 @@ const InvestmentStrategies = () => {
         </div>
 
         <CustomLink to={"/strategies/quant-growth-fund"} className="text-black">
-          <div className="bg-white border border-brown hover:shadow-xl transition-all p-1 md:p-2 group overflow-hidden relative">
+          <div className="bg-white border border-brown  transition-all p-1 md:p-2 group overflow-hidden relative">
             <div className="transition-all duration-300 transform group-hover:-translate-y-2">
               <Heading
                 level={3}
@@ -51,7 +51,7 @@ const InvestmentStrategies = () => {
           to={"/strategies/quant-growth-momentum"}
           className="text-black"
         >
-          <div className="bg-white border border-brown hover:shadow-xl transition-all p-1 md:p-2 group overflow-hidden relative">
+          <div className="bg-white border border-brown  transition-all p-1 md:p-2 group overflow-hidden relative">
             <div className="transition-all duration-300 transform group-hover:-translate-y-2">
               <Heading
                 level={3}
@@ -70,7 +70,7 @@ const InvestmentStrategies = () => {
         </CustomLink>
 
         <CustomLink to={"/strategies/low-vol-momentum"} className="text-black">
-          <div className="bg-white border border-brown hover:shadow-xl transition-all p-1 md:p-2 group overflow-hidden relative">
+          <div className="bg-white border border-brown  transition-all p-1 md:p-2 group overflow-hidden relative">
             <div className="transition-all duration-300 transform group-hover:-translate-y-2">
               <Heading
                 level={3}

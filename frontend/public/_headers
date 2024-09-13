@@ -1,0 +1,3 @@
+# Set MIME type for JavaScript files served from the dist folder
+/assets/*  # Vite usually outputs JS files to /assets in the dist folder
+  Content-Type: text/javascript

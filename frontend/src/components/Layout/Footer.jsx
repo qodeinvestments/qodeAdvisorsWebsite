@@ -9,42 +9,40 @@ import {
 import logo from "../../assets/companyLogo/Qode.png";
 import { Link } from "react-router-dom";
 import Text from "../common/Text";
-import Heading from "../common/Heading";
 import CustomLink from "../common/CustomLink";
 import List from "../common/List";
+import Heading from "../common/Heading";
+import Section from "../container/Section";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#000] relative  py-16 sm:py-24 md:py-28">
-      <div className="max-w-7xl mx-auto px-4 sm:px-2 lg:px-8">
-        <div className="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
+    <footer className="bg-lightBeige ">
+      <div className="py-7 max-w-[1386px] mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-start ">
           <div className="text-center sm:text-left col-span-1 sm:col-span-2 md:col-span-1">
-            <Heading
-              level={2}
-              className="md: sm:md:  playfair-display-font font-bold text-brown mb-4"
-            >
+            <Heading className="  text-subheading text-brown mb-4">
               Qode Advisors LLP
             </Heading>
-            <Text className="text-base sm:text-body max-w-xs mx-auto sm:mx-0 text-white">
+            <Text className="text-base sm:text-body max-w-xs mx-auto sm:mx-0 text-black">
               2nd Floor, Tree Building, Raghuvanshi Mills Compound, Gandhi
               Nagar, Upper Worli, Lower Parel, Mumbai, Maharashtra 400013
             </Text>
-            <div className="mt-4 text-base sm:text-body text-white">
-              <Text className="mb-2">
-                PMS No: <span className="font-semibold">INP000008914</span>
+            <div className="mt-1 text-base sm:text-body text-black">
+              <Text className="mb-1">
+                PMS No: <span className="">INP000008914</span>
               </Text>
-              <Text className="mb-2">
+              <Text className="mb-1">
                 Email:{" "}
                 <a
                   href="mailto:contact@qodeinvestments.com"
-                  className="hover:text-brown"
+                  className="hover:text-black"
                 >
-                  contact@qodeinvest.com
+                  rishabh@qodeinvest.com
                 </a>
               </Text>
               <Text>
                 Mobile:{" "}
-                <a href="tel:+919876543210" className="hover:text-brown">
+                <a href="tel:+919876543210" className="hover:text-black">
                   +91 99201 11053
                 </a>
               </Text>
@@ -52,15 +50,12 @@ const Footer = () => {
           </div>
 
           <div>
-            <Heading
-              level={3}
-              className="md: sm:md:  font-semibold text-brown mb-4"
-            >
+            <Heading className="text-brown text-subheading mb-4">
               Company
             </Heading>
             <List
-              className="text-base sm:text-body text-white"
-              itemClassName="mb-2 hover:text-brown"
+              className="text-base sm:text-body text-black"
+              itemClassName="mb-1 hover:text-black"
               items={[
                 <CustomLink to="/about-us">About Us</CustomLink>,
                 <CustomLink to="/contact-us">Contact Us</CustomLink>,
@@ -74,15 +69,12 @@ const Footer = () => {
           </div>
 
           <div>
-            <Heading
-              level={3}
-              className="md: sm:md:  font-semibold text-brown mb-4"
-            >
+            <Heading className="text-brown  text-subheading mb-4">
               Strategies
             </Heading>
             <List
-              className="text-base sm:text-body text-white"
-              itemClassName="mb-2 hover:text-brown"
+              className="text-base sm:text-body text-black"
+              itemClassName="mb-1 hover:text-black"
               items={[
                 <CustomLink to="/strategies/quant-growth-fund">
                   Qode Growth Fund
@@ -98,15 +90,12 @@ const Footer = () => {
           </div>
 
           <div>
-            <Heading
-              level={3}
-              className="md: sm:md:  font-semibold text-brown mb-4"
-            >
+            <Heading className=" text-brown text-subheading mb-4">
               Resources
             </Heading>
             <List
-              className="text-base sm:text-body text-white"
-              itemClassName="hover:text-brown"
+              className="text-base sm:text-body text-black"
+              itemClassName="hover:text-black"
               items={[
                 <CustomLink to="/faq">FAQs</CustomLink>,
                 <CustomLink to="/python-calculator">
@@ -116,9 +105,9 @@ const Footer = () => {
             />
           </div>
         </div>
-
-        <div className="border-t border-gray-200 pt-8">
-          <Text className="text-base sm:text-body text-white text-center">
+        <hr className=" border-brown mt-5" />
+        <div className="border-b border-gray-200 mt-1">
+          <Text className="text-base sm:text-body text-black text-center">
             &copy; {new Date().getFullYear()} Qode Advisors LLP. All rights
             reserved.
           </Text>

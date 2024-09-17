@@ -46,7 +46,7 @@ const Banner = () => {
   }, [currentText, isTyping, index]);
 
   return (
-    <div className="flex justify-start  overflow-hidden">
+    <div className="flex justify-start overflow-hidden">
       <div className="text-start">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -54,14 +54,35 @@ const Banner = () => {
           transition={{ duration: 0.8 }}
           className="space-y-2"
         >
-          <Heading level={1} className="text-heading text-brown mb-2">
+          <Heading level={1} className="text-heading  text-brown mb-4">
             We started with growing our's & our family business wealth in the
             stock market
           </Heading>
-          <Text className="border border-brown p-2">
-            We wanted to grow our 1O cr to 80cr within 10 years with the highest
-            probability. How we did it?
-          </Text>
+          <div className="group">
+            <div className="flex justify-between border items-center border-brown transition-all duration-300 hover:bg-lightBeige hover:shadow-xl p-2">
+              <Text className="flex-1">
+                We wanted to grow our{" "}
+                <strong className="text-beige group-hover:text-brown">
+                  ₹10 CR to ₹80 CR within 10 years{" "}
+                </strong>
+                with the highest probability. Read to know how we did it.
+              </Text>
+              <div className="text-right font-black group-hover:text-brown">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 100 100"
+                  width="52"
+                  height="52"
+                  className="ml-4"
+                >
+                  <path
+                    d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </div>

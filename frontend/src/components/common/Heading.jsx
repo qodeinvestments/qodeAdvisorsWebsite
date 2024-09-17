@@ -4,7 +4,7 @@ const Heading = ({ level = 1, children, className = "", ...props }) => {
   const Tag = `h${level}`;
   return (
     <Tag
-      className={`font-heading playfair-font-display  font-semibold text-brown ${className}`}
+      className={`font-heading playfair-font-display text-heading font-semibold  ${className}`}
       {...props}
     >
       {children}

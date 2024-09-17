@@ -45,15 +45,15 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
     selected_systems: [],
     selected_debtfunds: [],
   });
-  console.log(columns);
 
   const columnList = columns.map((column) => ({
-    label: column.trim(), // Removing any trailing spaces
+    label: column.trim(),
     value: column.trim(),
     isJsonColumn: true,
   }));
 
   const combinedStrategies = [...STRATEGIES, ...columnList];
+  const combinedDebtFunds = [...DEBTFUNDS, ...columnList];
 
   const handleInputChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -65,7 +65,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       system: value,
       weightage: equalWeightage,
       leverage: 1,
-      column: "", // Add a column field for each system
+      column: "",
     }));
     setFormData((prev) => ({ ...prev, selected_systems: updatedSystems }));
   };
@@ -87,6 +87,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       debtfund: value,
       weightage: equalWeightage,
       leverage: 1,
+      column: "",
     }));
     setFormData((prev) => ({ ...prev, selected_debtfunds: updatedDebtFunds }));
   };
@@ -129,6 +130,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         Portfolio Calculator
       </h2>
 
+      {/* ... (previous form fields remain unchanged) ... */}
       <div className="space-y-2">
         <label className="block text-xs font-medium text-gray-700">
           Investment Period
@@ -275,11 +277,21 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         <Select
           mode="multiple"
           style={{ width: "100%" }}
-          options={DEBTFUNDS}
+          options={combinedDebtFunds}
           value={formData.selected_debtfunds.map((s) => s.debtfund)}
           onChange={handleDebtFundChange}
           className="w-full"
           placeholder="Choose debt funds"
+          optionRender={(option) => (
+            <span
+              style={{
+                color: option.data.isJsonColumn ? "#1890ff" : "inherit",
+                fontWeight: option.data.isJsonColumn ? "bold" : "normal",
+              }}
+            >
+              {option.data.isJsonColumn ? `📊 ${option.label}` : option.label}
+            </span>
+          )}
         />
       </div>
 
@@ -298,7 +310,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
                   parseFloat(e.target.value)
                 )
               }
-              className="w-1/2"
+              className="w-1/3"
               min={0}
               max={100}
               suffix="%"
@@ -314,9 +326,18 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
                   parseFloat(e.target.value)
                 )
               }
-              className="w-1/2"
+              className="w-1/3"
               min={0}
               step={0.1}
+            />
+            <Select
+              className="w-1/3"
+              placeholder="Select column"
+              value={debtfund.column}
+              onChange={(value) =>
+                handleDebtFundInputChange(index, "column", value)
+              }
+              options={columns.map((col) => ({ label: col, value: col }))}
             />
           </div>
         </div>

@@ -11,8 +11,11 @@ import StrategyComponent from "../components/Strategy";
 const QuantGrowthFund = () => {
   const strategyData = {
     title: "Qode Growth Fund",
+    tagLine: "Invest in quality business. Get quality results.",
     description:
-      "<Text class='mb-4  '>Invest in quality business. Get quality results.</Text> <Text class=''>This strategy invests in 30 Quality businesses. (Quality Business - A company that generates a high return on invested capital). Principle - In the long run the stock price always matches the business performance.</Text>",
+      "This strategy invests in 30 Quality businesses. (Quality Business - A company that generates a high return on invested capital). ",
+    principle:
+      "Principle - In the long run the stock price always reflects the business performance.",
     strategyCode: "QGF",
     strategySlug: "quant-growth-fund",
     pptLink: "/Quant Growth Fund Feb.pdf",

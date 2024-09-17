@@ -1,7 +1,9 @@
 import React from "react";
 import { Container } from "../components";
-import Heading from "../components/common/Heading";
 import Text from "../components/common/Text";
+import Heading from "../components/common/Heading";
+import Section from "../components/container/Section";
+import Button from "../components/common/Button";
 
 const Disclosure = () => {
   const pdfs = [
@@ -17,84 +19,173 @@ const Disclosure = () => {
   ];
 
   return (
-    <Container>
-      <div className="flex flex-col  items-center justify-center min-h-screen ">
-        <div className="bg-white  p-8 rounded-lg  mx-auto mt-10">
-          <Heading
-            level={1}
-            className="font-black mt-20  text-4xl text-start mb-10"
-          >
-            Disclosure
-          </Heading>
-          {/* <Text className="text-start  text-2xl mb-6">
-            Welcome to our disclosure section. Here you can find all the
-            necessary documents and reports regarding our company's performance,
-            financial health, and sustainability efforts. Feel free to download
-            and review any of the documents listed below.
-          </Text> */}
-          <div className="grid grid-cols-2 gap-20">
-            <div className="bg-lightBeige flex p-20 gap-20">
-              <div>
-                <Heading level={1} className="text-2xl font-extrabold ">
-                  PMS Disclosure Document
-                </Heading>
-                <button className="bg-beige py-2 px-6 text-white font-bold  mt-10">
-                  Download
-                </button>
-              </div>
+    <Section className="mt-9" withBorder padding="extralarge">
+      <Heading className="text-brown mb-5">Disclosure</Heading>
+
+      <div className="grid grid-cols-1 gap-2">
+        <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+          <div className="flex justify-between items-center">
+            <div>
+              <Text className="text-subheading font-subheading">
+                Disclosure document
+              </Text>
             </div>
-            <div className="bg-lightBeige flex p-20 gap-20">
-              <div>
-                <Heading level={1} className="text-2xl font-extrabold ">
-                  Investor Charter: Portfolio Manager
-                </Heading>
-                <button className="bg-beige py-2 px-6 text-white font-bold  mt-10">
-                  Download
-                </button>
-              </div>
-            </div>
-            <div className="bg-lightBeige flex p-20 gap-20">
-              <div>
-                <Heading level={1} className="text-2xl font-extrabold ">
-                  Financial Information
-                </Heading>
-                <button className="bg-beige py-2 px-6 text-white font-bold  mt-10">
-                  Download
-                </button>
-              </div>
-            </div>
-            <div className="bg-lightBeige flex p-20 gap-20">
-              <div>
-                <Heading level={1} className="text-2xl font-extrabold ">
-                  Complaint Resolution
-                </Heading>
-                <button className="bg-beige py-2 px-6 text-white font-bold  mt-10">
-                  Download
-                </button>
-              </div>
+            <div className="flex items-center space-x-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100"
+                width="44"
+                height="44"
+                fill="currentColor"
+              >
+                <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
+              </svg>
             </div>
           </div>
+        </div>
 
-          <div className=" md:text-subheading space-y-10 mt-10">
-            <Text>
-              For general queries and updates, write to support@qodeinvest.com
-            </Text>
-            <Text>
-              To register a formal complaint with us, write to
-              pmscompliance@qodeinvest.com with your name, registered mobile
-              number, PAN Card and nature of complaint.
-            </Text>
-            <Text>
-              Visit the{" "}
-              <a className="text-brown" href="https://scores.sebi.gov.in/">
-                SCORES
-              </a>
-              &nbsp; website.
-            </Text>
+        <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+          <div className="flex justify-between items-center">
+            <div>
+              <Text className="text-subheading font-subheading">
+                Prevention of money laundering
+              </Text>
+            </div>
+            <div className="flex items-center space-x-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100"
+                width="44"
+                height="44"
+                fill="currentColor"
+              >
+                <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+          <div className="flex justify-between items-center">
+            <div>
+              <Text className="text-subheading font-subheading">
+                Conflict of interest policy
+              </Text>
+            </div>
+            <div className="flex items-center space-x-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100"
+                width="44"
+                height="44"
+                fill="currentColor"
+              >
+                <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+          <div className="flex justify-between items-center">
+            <div>
+              <Text className="text-subheading font-subheading">
+                Investor charter
+              </Text>
+            </div>
+            <div className="flex items-center space-x-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100"
+                width="44"
+                height="44"
+                fill="currentColor"
+              >
+                <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+          <div className="flex justify-between items-center">
+            <div>
+              <Text className="text-subheading font-subheading">
+                Investor complaints (monthly)
+              </Text>
+            </div>
+            <div className="flex items-center space-x-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100"
+                width="44"
+                height="44"
+                fill="currentColor"
+              >
+                <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+          <div className="flex justify-between items-center">
+            <div>
+              <Text className="text-subheading font-subheading">
+                Code of conduct
+              </Text>
+            </div>
+            <div className="flex items-center space-x-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100"
+                width="44"
+                height="44"
+                fill="currentColor"
+              >
+                <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
+              </svg>
+            </div>
           </div>
         </div>
       </div>
-    </Container>
+
+      <div className=" mt-3">
+        <Text className="text-body font-body">
+          For general queries and updates, write to{" "}
+          <a
+            href="mailto:rishabh@qodeinvest.com"
+            className="text-brown font-bold"
+          >
+            rishabh@qodeinvest.com
+          </a>
+          .
+        </Text>
+        <Text className="text-body font-body">
+          To register a formal complaint with us, write to{" "}
+          <a
+            href="mailto:rishabh@qodeinvest.com"
+            className="text-brown font-bold"
+          >
+            rishabh@qodeinvest.com
+          </a>{" "}
+          with your name, registered mobile number, PAN Card, and nature of the
+          complaint.
+        </Text>
+        <Text className="text-body font-body">
+          Visit the{" "}
+          <a
+            className="text-brown font-bold hover:text-brown"
+            href="https://scores.sebi.gov.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SCORES
+          </a>{" "}
+          website for more information.
+        </Text>
+      </div>
+    </Section>
   );
 };
 

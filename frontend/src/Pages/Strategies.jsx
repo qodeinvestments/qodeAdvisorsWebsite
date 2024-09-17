@@ -23,30 +23,26 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   return (
     <CustomLink
       to={slug}
-      className="mb-1 p-2 relative border-brown border hover:bg-white group transition duration-300"
+      className="p-3 relative border-brown border transition-all justify-between items-center  flex duration-500 hover:bg-beige hover:border-none hover:shadow-xl group"
     >
-      <div className="transition-all duration-500 transform group-hover:-translate-y-2">
-        <Heading
-          level={1}
-          className="text-heading sm:text-subheading font-black mb-1"
-        >
-          {name}
-        </Heading>
+      <div className="text-black">
+        <Text className="text-subheading font-subheading">{name}</Text>
         <Text
-          className="text-xs sm:text-body mb-1"
+          className="text-xs sm:text-body "
           dangerouslySetInnerHTML={{ __html: description }}
         ></Text>
-        <Text className="text-subheading mb-1">3Y CAGR</Text>
-        <Text>24%</Text>
       </div>
-      <div className="flex justify-between items-end gap-1 sm:gap-1">
-        <div className="absolute bottom-0 left-0 right-0 px-1 sm:px-1 py-1 sm:py-1 transition-all duration-300 opacity-0 group-hover:opacity-100">
-          <CustomLink to={`/strategies/${slug}`} className="text-black">
-            <span className="relative z-10 text-brown">
-              Explore <FontAwesomeIcon icon={faArrowRight} />
-            </span>
-          </CustomLink>
-        </div>
+      <div className="text-black">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 100 100"
+          width="44"
+          height="44"
+          fill="currentColor"
+          className="ml-2"
+        >
+          <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
+        </svg>
       </div>
     </CustomLink>
   );
@@ -84,59 +80,70 @@ const Strategies = () => {
   ];
 
   return (
-    <Container>
-      <div className="mx-auto">
-        <Heading className="text-heading text-center mt-1 font-black">
-          All Strategies
-        </Heading>
-        <Text className="text-body my-1">
-          One of these or 4 combination of these strategies will help you reach
-          your financial goal with the highest probability (based on how much
-          risk you're willing to take)
-        </Text>
-        <div className="flex flex-col space-y-1">
-          {strategies.map((strategy) => (
-            <StrategyCard
-              key={strategy.id}
-              strategy={strategy.id}
-              name={strategy.name}
-              description={strategy.description}
-              slug={strategy.slug}
-            />
-          ))}
-        </div>
-        <Section gray className="p-0">
-          <div className="mt-1">
-            <Heading className="text-heading">
-              Making money in the stock market is simple if you follow these
-              rules
-            </Heading>
-            <Text>Simple not easy </Text>
-            <List
-              className="list-disc space-y-1 mt-1"
-              items={[
-                <Text className="text-subheading">Don't lose money ever</Text>,
-                <Text className="text-subheading">
-                  Never take decisions based on emotion
-                </Text>,
-                <Text className="text-subheading">
-                  Increase your odds of winning in the long term
-                </Text>,
-                <Text className="text-subheading">
-                  Don't try to be smart, just don't be stupid
-                </Text>,
-              ]}
-            ></List>
+    <>
+      <Section className="mt-9" withBorder padding="extralarge">
+        <div className="mx-auto">
+          <Heading className="text-heading text-brown text-center font-heading">
+            All Strategies
+          </Heading>
+          <Text className=" text-center mt-1 mb-5">
+            One of these or a combination of these strategies will help you
+            reach your financial goal with the highest probability <br /> (based
+            on how much risk you're willing to take)
+          </Text>
+          <div className="flex flex-col gap-2">
+            {strategies.map((strategy) => (
+              <StrategyCard
+                key={strategy.id}
+                strategy={strategy.id}
+                name={strategy.name}
+                description={strategy.description}
+                slug={strategy.slug}
+              />
+            ))}
           </div>
-        </Section>
 
-        {isModalOpen && (
-          <Modal onClose={closeModal}>
-            <BookAMeet />
-          </Modal>
-        )}
-      </div>
-    </Container>
+          {isModalOpen && (
+            <Modal onClose={closeModal}>
+              <BookAMeet />
+            </Modal>
+          )}
+        </div>
+      </Section>
+      {/* <Section
+        className="max-w-[1386px] bg-lightBeige mx-auto"
+        fullWidth={false}
+        // gray
+        padding="extralarge"
+      >
+        <div className="mt-1">
+          <Heading className="text-semiheading text-center text-brown">
+            Making money in the stock market is <br /> simple if you follow
+            these rules
+          </Heading>
+          <Text className="text-subheading text-center mb-4 font-subheading">
+            Simple but not easy{" "}
+          </Text>
+          <List
+            className=" space-y-1 text-center mt-1"
+            items={[
+              <Text className="text-body font-body">
+                Don't lose money ever
+              </Text>,
+              <Text className="text-body font-body">
+                Never take decisions based on emotion
+              </Text>,
+              <Text className="text-body font-body">
+                Increase your odds of winning in the long term
+              </Text>,
+              <Text className="text-body font-body">
+                Don't try to be smart, just don't be stupid
+              </Text>,
+            ]}
+          ></List>
+        </div>
+      </Section> */}
+    </>
   );
 };
 

@@ -3,17 +3,18 @@ import Button from "../components/common/Button";
 import Heading from "../components/common/Heading";
 import Text from "../components/common/Text";
 
-const BookAMeet = () => {
+const GrowMoney = () => {
   const calendlyZoomLink = "https://calendly.com/tech-qodeinvest/30min";
   const calendlyOfficeLink =
     "https://calendly.com/tech-qodeinvest/physical-meeting";
 
   return (
-    <div className=" bg-black flex p-7 items-center justify-center z-50  font-body">
+    <div className=" bg-black flex  p-7 items-center justify-center z-50  font-body">
       <div className=" text-center">
-        <Heading className="text-semiheading  text-beige font-heading mb-2">
-          Schedule a Meeting
-        </Heading>
+        <Text className="text-subheading  text-beige font-heading mb-2">
+          Schedule a meeting with the fund manager to discuss the financial
+          goals and how you can reach there.
+        </Text>
 
         <div className="flex flex-col items-center text-lightBeige justify-center gap-5  ">
           <div>
@@ -34,7 +35,7 @@ const BookAMeet = () => {
             </Button>
           </div>
           <div>
-            <Text className=" mb-2">
+            <Text className=" mb-1">
               Outside Mumbai? <br />
               <span className="font-normal text-body">
                 Let's get on a call.
@@ -56,4 +57,4 @@ const BookAMeet = () => {
   );
 };
 
-export default BookAMeet;
+export default GrowMoney;

@@ -30,11 +30,12 @@ const FundManagers = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <Heading level={2} className="text-heading  mt-3 mb-3 text-center">
-        Do you want to speak to a fund manager to know more before investing?
+      <Heading className="text-semiheading text-beige   mb-4 text-center">
+        Do you want to speak to a fund manager to <br /> know more before
+        investing?
       </Heading>
-      <div className="flex flex-col md:flex-row justify-center items-center gap-3">
-        {managers.map((manager, index) => (
+      <div className="flex flex-col justify-center items-center gap-3">
+        {/* {managers.map((manager, index) => (
           <div
             key={index}
             className="flex flex-col md:flex-row items-center gap-2"
@@ -48,19 +49,25 @@ const FundManagers = () => {
             </div>
 
             <div className="flex flex-col items-center md:items-start">
-              <Heading
+              <Text
                 level={3}
-                className="text-body font-bold text-center md:text-left"
+                className="text-subheading text-beige font-bold text-center md:text-left"
               >
                 {manager.name}
-              </Heading>
-              <Text className="text-black text-body mb-1 text-center md:text-left">
+              </Text>
+              <Text className="text-beige text-body mb-1 text-center md:text-left">
                 {manager.position}
               </Text>
               <Button onClick={openModal}>Schedule A Call</Button>
             </div>
           </div>
-        ))}
+        ))} */}
+        <Text className="text-subheading mt-1 text-beige">
+          Schedule a meeting with our fund manager.
+        </Text>
+        <Button className="bg-beige" onClick={openModal}>
+          Schedule A Call
+        </Button>
       </div>
 
       {isModalOpen && (

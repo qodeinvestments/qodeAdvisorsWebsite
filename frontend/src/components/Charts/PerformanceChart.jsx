@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import { Tabs, TabsBody, TabPanel } from "@material-tailwind/react";
+import {
+  Tabs,
+  TabsBody,
+  TabPanel,
+  ButtonGroup,
+} from "@material-tailwind/react";
 import Calculator from "../Calculator";
 import fetchStrategyData from "../api/getData";
 import HoldingDistribution from "./HoldingDistribution";
@@ -12,6 +17,7 @@ import Container from "../container/Container";
 import Section from "../container/Section";
 import Button from "../common/Button";
 import Text from "../common/Text";
+import Heading from "../common/Heading";
 const PerformanceChart = ({ strategy }) => {
   const [chartOptions, setChartOptions] = useState(null);
   const [timeRange, setTimeRange] = useState("ALL");
@@ -200,54 +206,50 @@ const PerformanceChart = ({ strategy }) => {
   }, []);
 
   return (
-    <div className="flex flex-col xl:flex-row justify-center gap-4">
-      <div className="w-full xl:w-2/3">
+    <div className="flex flex-col justify-center gap-4">
+      {" "}
+      {/* Adjusted gap spacing */}
+      <div className="w-full p-7 border border-brown">
         <Tabs value="chart1">
-          <div className="flex flex-col gap-4">
-            {/* Time Range Buttons */}
-            <div className="flex flex-wrap justify-center xl:justify-start gap-2">
-              {["YTD", "1M", "3M", "6M", "1Y", "3Y", "5Y", "ALL"].map(
-                (range) => (
-                  <button
-                    onClick={() => handleTimeRangeChange(range)}
-                    className={`px-2 sm:px-3 md:px-4 playfair-display-font py-1 md:py-2 border text-xs sm:text-xs ${
-                      activeButton === range
-                        ? "bg-beige text-white"
-                        : "bg-white text-black"
-                    }`}
-                  >
-                    {range}
-                  </button>
-                )
-              )}
+          {" "}
+          {/* Adjusted gap spacing */}
+          {/* Time Range Buttons */}
+          <div className="flex justify-between items-center">
+            <div className="flex flex-wrap   gap-18">
+              {["1M", "6M", "1Y", "3Y", "5Y", "ALL"].map((range) => (
+                <Button
+                  onClick={() => handleTimeRangeChange(range)}
+                  className={` text-xs border border-brown ${
+                    activeButton === range
+                      ? "bg-beige border-none text-white"
+                      : "bg-white text-black"
+                  }`}
+                >
+                  {range}
+                </Button>
+              ))}
+              {/* Adjusted gap spacing */}
+              <input
+                type="date"
+                onChange={(e) => setStartDate(e.target.value)}
+                className="border px-1 w-full sm:w-auto"
+              />
+              {/* <input
+              type="date"
+              onChange={(e) => setEndDate(e.target.value)}
+              className="border px-1 w-full sm:w-auto"
+            /> */}
             </div>
-
-            {/* Date Inputs and CAGR */}
-            <div className="flex flex-col sm:flex-row playfair-display-font items-center justify-between gap-4">
-              <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
-                <input
-                  type="date"
-                  onChange={(e) => setStartDate(e.target.value)}
-                  className="border px-3 py-2 text-xs w-full sm:w-auto"
-                />
-                <input
-                  type="date"
-                  onChange={(e) => setEndDate(e.target.value)}
-                  className="border px-3 py-2 text-xs w-full sm:w-auto"
-                />
-              </div>
-              <div className="text-center sm:text-right mt-4 sm:mt-0">
-                <Text className="text-2xl sm:text-3xl md:text-4xl text-gray-800">
-                  {strategyCagr}
-                </Text>
-                <Text className="text-xs sm:text-xs text-gray-600">
-                  {timeRange} CAGR
-                </Text>
-              </div>
+            <div className="text-center sm:text-right mt-1 sm:mt-0">
+              <Text className="text-subheading font-subheading text-gray-800">
+                {strategyCagr}
+                <span className="text-xs ml-1">{timeRange} return</span>
+              </Text>
             </div>
           </div>
-
-          <TabsBody className="mt-6">
+          <TabsBody className="mt-3">
+            {" "}
+            {/* Adjusted margin */}
             <TabPanel className="p-0" key="chart1" value="chart1">
               {chartOptions && (
                 <HighchartsReact
@@ -259,10 +261,19 @@ const PerformanceChart = ({ strategy }) => {
           </TabsBody>
         </Tabs>
       </div>
-
-      <div className="w-full xl:w-1/3">
-        <div className="bg-white border p-4">
+      <div className="w-full flex gap-4">
+        {" "}
+        {/* Adjusted margin */}
+        <div className=" p-6  bg-white border border-brown w-3/5">
+          {" "}
+          {/* Adjusted padding */}
           <Calculator strategy={strategy} />
+        </div>
+        <div className="bg-black p-6 w-2/5">
+          <Heading className="text-beige text-semiheading mb-4">
+            Do you want to see the live portfolio performance?
+          </Heading>
+          <Button className="bg-beige text-black">Sign Up</Button>
         </div>
       </div>
     </div>

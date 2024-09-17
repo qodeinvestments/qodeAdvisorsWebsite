@@ -15,7 +15,17 @@ const Button = ({
   rel,
 }) => {
   const baseClassName = "dm-sans-font transition-colors";
-  const defaultClassName = `${baseClassName} bg-beige text-white hover:bg-opacity-90 py-1.5 px-4 text-sm`;
+
+  // Check for padding classes in className prop
+  const hasPadding =
+    /\bp-\d+|\bpy-\d+|\bpx-\d+|\bpt-\d+|\bpb-\d+|\bpl-\d+|\bpr-\d+/.test(
+      className
+    );
+
+  // Default padding if no padding classes are explicitly provided
+  const defaultPadding = hasPadding ? "" : "py-18 px-1";
+
+  const defaultClassName = `${baseClassName} hover:bg-opacity-90 ${defaultPadding} text-body`;
   const fullClassName = `${defaultClassName} ${className}`;
 
   const content = isLoading ? (

@@ -8,10 +8,13 @@ import Text from "../components/common/Text";
 import Heading from "../components/common/Heading";
 import Section from "../components/container/Section";
 import SectionContent from "../components/container/SectionContent";
+import Modal from "../components/Modal";
+import GrowMoney from "./GrowMoney";
 
 const Home = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,42 +69,65 @@ const Home = () => {
     }
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className="max-w-7xl mx-auto font-body text-body">
-      <Section withBorder={true} className="mt-5">
+    <div>
+      <Section padding="extralarge" withBorder={true} className="mt-9">
         <SectionContent>
           <Banner />
         </SectionContent>
       </Section>
 
-      <Section className="bg-black">
-        <SectionContent>
-          <Heading className="text-subheading font-subheading">
-            And now since the past 7 years we have been managing & growing
-            wealth of high networth individuals, their families & businesses
-          </Heading>
-          <Button className="mt-1">Start Investing With Qode</Button>
+      <Section
+        padding="extralarge"
+        fullWidth={false}
+        className="bg-black max-w-[1386px] mx-auto"
+      >
+        <SectionContent className="text-center">
+          <Text className="text-subheading text-beige mb-4 font-subheading">
+            For the past seven years, we have been managing and growing the{" "}
+            <br />
+            wealth of high-net-worth individuals, their families, and
+            businesses.
+          </Text>
+          <Button onClick={openModal} className="mt-1 bg-beige text-black">
+            Grow your money with Qode
+          </Button>
         </SectionContent>
       </Section>
 
-      <Section gray withBorder={true}>
+      <Section
+        padding="extralarge"
+        className="max-w-[1386px] bg-lightBeige mx-auto"
+        fullWidth={false}
+      >
         <SectionContent>
           <InvestmentStrategies />
         </SectionContent>
       </Section>
-      <Section withBorder={true}>
+      {/* <Section padding="extralarge" className="text-center" withBorder={true}>
         <SectionContent>
-          <Heading className="text-heading">
-            Picking the right portfolio management service is like picking the
-            right stock
+          <Heading className="text-semiheading text-brown mb-4">
+            Picking the right Portfolio Management Service (PMS) <br /> is like
+            picking the right stock
           </Heading>
-          <Text className="text-subheading">
-            How do you know if you have picked the right one
+          <Text className="mb-1 text-subheading">
+            How do you know if you have picked the right one?
           </Text>
+          <Button className="bg-beige text-black  px-3 py-18">
+            Things to consider to pick the right PMS
+          </Button>
         </SectionContent>
-      </Section>
+      </Section> */}
 
-      <Section className="bg-black">
+      <Section padding="extralarge" className="bg-black max-w-[1386px] mx-auto">
         {/* <SectionContent> */}
         <FundManagers />
         {/* </SectionContent> */}
@@ -113,23 +139,17 @@ const Home = () => {
         </SectionContent>
       </Section> */}
 
-      <Section withBorder={true} innerBorder={true}>
+      <Section padding="extralarge" withBorder={true}>
         <SectionContent>
-          <div className="text-text">
-            <div className="md:flex items-center justify-center">
-              <div className="md:w-1/2 p-2">
-                <Heading
-                  level={2}
-                  className="text-subheading font-heading mb-2"
-                >
-                  Qode Weekly Insights
-                </Heading>
-                <Text className="text-body text-text-secondary">
-                  Join thousands of investors receiving our data-driven market
-                  insights every week
+          <div className="">
+            <div className="md:flex flex-col items-center text-center gap-2 justify-center">
+              <div className="md:w-1/2 ">
+                <Text className="text-subheading text-black">
+                  Subscribe to know more about our investment strategies, style
+                  and principles.
                 </Text>
               </div>
-              <div className="md:w-1/2 p-2">
+              <div className="md:w-1/2 ">
                 <form onSubmit={handleSubmit}>
                   <div className="mb-2">
                     <input
@@ -137,19 +157,21 @@ const Home = () => {
                       id="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Your Best Email"
+                      placeholder="Email Address"
                       required
-                      className="w-full px-2 py-1 border border-beige focus:outline-none focus:ring-2 focus:ring-brown"
+                      className="w-full px-2 py-18 border border-beige focus:outline-none focus:ring-2 focus:ring-brown"
                     />
                   </div>
-                  <Button
-                    className="w-full"
-                    type="submit"
-                    disabled={isSubmitting}
-                    isLoading={isSubmitting}
-                  >
-                    Subscribe Now
-                  </Button>
+                  <div className="">
+                    <Button
+                      className="  bg-beige text-black"
+                      type="submit"
+                      disabled={isSubmitting}
+                      isLoading={isSubmitting}
+                    >
+                      Subscribe
+                    </Button>
+                  </div>
                 </form>
               </div>
             </div>
@@ -169,6 +191,11 @@ const Home = () => {
         pauseOnHover
         theme="light"
       />
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <GrowMoney />
+        </Modal>
+      )}
     </div>
   );
 };

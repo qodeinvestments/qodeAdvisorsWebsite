@@ -21,14 +21,13 @@ const BlogDetails = () => {
     const fetchPost = async () => {
       try {
         const response = await axios.get(
-          `https://blogs.qodeinvest.com/ghost/api/content/posts/slug/${slug}/?key=${key}&include=authors`
+          `https://blogs.qodeinvest.com/ghost/api/v3/content/posts/slug/${slug}/?key=${key}&include=authors`
         );
         setPost(response.data.posts[0]);
       } catch (error) {
         console.error("Error fetching post:", error);
       }
     };
-
     fetchPost();
   }, [slug, key]);
 
@@ -46,7 +45,7 @@ const BlogDetails = () => {
   }
 
   return (
-    <div className="mx-auto px-4 py-12 ">
+    <div className="mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto p-8">
         <div className="mt-20 mb-2 text-center">
           <Text className="text-primary">
@@ -57,7 +56,6 @@ const BlogDetails = () => {
         <Heading level={1} className="text-4xl mb-12">
           {post.title}
         </Heading>
-
         {post.feature_image && (
           <img
             src={post.feature_image}
@@ -65,12 +63,10 @@ const BlogDetails = () => {
             className="w-full object-cover h-auto mb-8"
           />
         )}
-
         <div
-          className="post-content  leading-relaxed my-5"
+          className="post-content leading-relaxed my-5"
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
-
         {post.primary_author && (
           <div className="flex items-center mt-8 bg-gray-200 p-4 rounded-lg">
             {post.primary_author.profile_image && (
@@ -88,8 +84,24 @@ const BlogDetails = () => {
             </div>
           </div>
         )}
-
-        {/* Subscribe and social media section remains unchanged */}
+        {/* Subscribe and social media section */}
+        <div className="mt-8">
+          <Text className="font-bold mb-2">Share this post:</Text>
+          <div className="flex space-x-4">
+            <a href="#" className="text-blue-600 hover:text-blue-800">
+              <FontAwesomeIcon icon={faFacebookF} />
+            </a>
+            <a href="#" className="text-blue-400 hover:text-blue-600">
+              <FontAwesomeIcon icon={faTwitter} />
+            </a>
+            <a href="#" className="text-blue-800 hover:text-blue-900">
+              <FontAwesomeIcon icon={faLinkedinIn} />
+            </a>
+            <a href="#" className="text-orange-600 hover:text-orange-700">
+              <FontAwesomeIcon icon={faRss} />
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );

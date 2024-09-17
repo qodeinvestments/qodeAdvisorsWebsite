@@ -18,31 +18,38 @@ import CustomLink from "./common/CustomLink";
 const InvestmentStrategies = () => {
   return (
     <div className="flex flex-col justify-center">
-      <div className="grid grid-cols-1 gap-1 md:gap-2 lg:gap-3">
-        <div className="text-center md:text-left">
-          <Text className="text-xs sm:text-body">
-            WE'VE MADE DATA-DRIVEN STRATEGIES THAT HAVE THE HIGHEST PROBABILITY
-            OF REACHING YOUR FINANCIAL GOAL OVER THE LONG TERM
-          </Text>
-        </div>
-
+      <Heading className="text-center text-brown">Strategies</Heading>
+      <div className="text-center">
+        <Text className="mt-1 mb-5">
+          We've created data-driven strategies that have the highest probability{" "}
+          <br /> of helping you reach your financial goals over the long term.
+        </Text>
+      </div>
+      <div className="grid grid-cols-1 gap-1 md:gap-2 lg:gap-2">
         <CustomLink to={"/strategies/quant-growth-fund"} className="text-black">
-          <div className="bg-white border border-brown  transition-all p-1 md:p-2 group overflow-hidden relative">
-            <div className="transition-all duration-300 transform group-hover:-translate-y-2">
-              <Heading
-                level={3}
-                className="font-bold mb-1 sm:mb-2 text-body sm:text-subheading"
-              >
-                Qode Growth Fund
-              </Heading>
-              <Text className="text-xs sm:text-body">
-                Invest in quality business. Get quality results.
-              </Text>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 px-2 py-1 md:py-2 transition-all duration-300 opacity-0 group-hover:opacity-100">
-              <span className="relative z-10 text-brown">
-                Explore <FontAwesomeIcon icon={faArrowRight} />
-              </span>
+          <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-white hover:border-none hover:shadow-xl">
+            <div className="flex justify-between items-center">
+              <div>
+                <Text level={3} className="text-subheading font-subheading">
+                  Qode Growth Fund
+                </Text>
+                <Text className="text-body">
+                  Invest in quality business. Get quality results.
+                </Text>
+              </div>
+              <div className="text-right">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 100 100"
+                  width="44"
+                  height="44"
+                >
+                  <path
+                    d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
         </CustomLink>
@@ -51,41 +58,53 @@ const InvestmentStrategies = () => {
           to={"/strategies/quant-growth-momentum"}
           className="text-black"
         >
-          <div className="bg-white border border-brown  transition-all p-1 md:p-2 group overflow-hidden relative">
-            <div className="transition-all duration-300 transform group-hover:-translate-y-2">
-              <Heading
-                level={3}
-                className="font-bold mb-1 sm:mb-2 text-body sm:text-subheading"
-              >
-                Qode Momentum Fund
-              </Heading>
-              <Text className="text-xs sm:text-body">Buy high sell higher</Text>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 px-2 py-1 md:py-2 transition-all duration-300 opacity-0 group-hover:opacity-100">
-              <span className="relative z-10 text-brown">
-                Explore <FontAwesomeIcon icon={faArrowRight} />
-              </span>
+          <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-white hover:border-none hover:shadow-xl">
+            <div className="flex justify-between items-center">
+              <div>
+                <Text level={3} className="text-subheading font-subheading">
+                  Qode Momentum Fund
+                </Text>
+                <Text className="text-body">Buy high sell higher</Text>
+              </div>
+              <div className="text-right">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 100 100"
+                  width="44"
+                  height="44"
+                >
+                  <path
+                    d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
         </CustomLink>
 
         <CustomLink to={"/strategies/low-vol-momentum"} className="text-black">
-          <div className="bg-white border border-brown  transition-all p-1 md:p-2 group overflow-hidden relative">
-            <div className="transition-all duration-300 transform group-hover:-translate-y-2">
-              <Heading
-                level={3}
-                className="font-bold mb-1 sm:mb-2 text-body sm:text-subheading"
-              >
-                Steady Fund
-              </Heading>
-              <Text className="text-xs sm:text-body">
-                Qode Low Volatility Fund
-              </Text>
-            </div>
-            <div className="absolute bottom-0 left-0 right-0 px-2 py-1 md:py-2 transition-all duration-300 opacity-0 group-hover:opacity-100">
-              <span className="relative z-10 text-brown">
-                Explore <FontAwesomeIcon icon={faArrowRight} />
-              </span>
+          <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-white hover:border-none hover:shadow-xl">
+            <div className="flex justify-between items-center">
+              <div>
+                <Text level={3} className="text-subheading font-subheading">
+                  Steady Fund
+                </Text>
+                <Text className="text-body">Qode Low Volatility Fund</Text>
+              </div>
+              <div className="text-right">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 100 100"
+                  width="44"
+                  height="44"
+                >
+                  <path
+                    d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
         </CustomLink>

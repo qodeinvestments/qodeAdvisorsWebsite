@@ -221,7 +221,7 @@ const PerformanceChart = ({ strategy }) => {
                   onClick={() => handleTimeRangeChange(range)}
                   className={` text-xs border border-brown ${
                     activeButton === range
-                      ? "bg-beige border-none text-white"
+                      ? "bg-beige border-none text-black"
                       : "bg-white text-black"
                   }`}
                 >
@@ -269,9 +269,9 @@ const PerformanceChart = ({ strategy }) => {
           {/* Adjusted padding */}
           <Calculator strategy={strategy} />
         </div>
-        <div className="bg-black p-6 w-2/5">
+        <div className="bg-black text-center flex justify-center items-center flex-col p-6 w-2/5">
           <Heading className="text-beige text-semiheading mb-4">
-            Do you want to see the live portfolio performance?
+            Want to track the Live portfolio performance?
           </Heading>
           <Button className="bg-beige text-black">Sign Up</Button>
         </div>

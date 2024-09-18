@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { message } from "antd";
-
+import Button from "../common/Button";
 const API_URL =
   import.meta.env.MODE === "production"
     ? import.meta.env.VITE_PROD_API_URL
@@ -77,22 +77,24 @@ function FileUpload({ onColumnsUpdate, onFileSelect }) {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md max-w-md mx-auto my-6">
+    <div className="bg-white p-6 border border-brown shadow-md max-w-[631px] mx-auto my-2">
       <input
         type="file"
         accept=".csv"
         onChange={handleFileChange}
-        className="block w-full text-xs text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+        className="block w-full text-body text-gray-900 border border-brown  cursor-pointer bg-white focus:outline-none file:mr-4 file:py-1 file:px-4 file: file:border-0 file:text-body file:font-body file:bg- file:text-black file:bg-beige hover:file:bg-lightBeige"
       />
-      <button
-        onClick={handleFileUpload}
-        className={`mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition-colors duration-300 ${
-          loading ? "cursor-not-allowed opacity-50" : ""
-        }`}
-        disabled={loading}
-      >
-        {loading ? "Uploading..." : "Upload File"}
-      </button>
+      <div className="text-center mt-4">
+        <Button
+          onClick={handleFileUpload}
+          className={`transition-colors bg-beige text-black duration-300 ${
+            loading ? "cursor-not-allowed opacity-50" : ""
+          }`}
+          disabled={loading}
+        >
+          {loading ? "Uploading..." : "Upload File"}
+        </Button>
+      </div>
     </div>
   );
 }

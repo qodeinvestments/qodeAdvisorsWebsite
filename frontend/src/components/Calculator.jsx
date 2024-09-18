@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 import Heading from "./common/Heading";
 import Text from "./common/Text";
+import Button from "./common/Button";
 
 const Calculator = ({ strategy }) => {
   const [startOfMonthData, setStartOfMonthData] = useState([]);
@@ -170,18 +171,14 @@ const Calculator = ({ strategy }) => {
     <>
       {/* Padding adjusted to match your scale */}
       <Heading className="text-semiheading text-brown font-heading mb-2 sm:mb-2">
-        {" "}
         {/* Margin adjusted */}
         Returns Calculator
       </Heading>
       <div className="space-y-2">
-        {" "}
         {/* Vertical spacing adjusted */}
         <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
-          {" "}
           {/* Spacing adjusted */}
-          <Text className="text-body sm:text-body mb-1 sm:mb-0 w-full">
-            {" "}
+          <Text className="text-body sm:text-body mb-1 sm:mb-0 w-3/5">
             {/* Margin adjusted */}
             Investment Amount (₹)
           </Text>
@@ -195,22 +192,19 @@ const Calculator = ({ strategy }) => {
           />
         </div>
         <div className="flex flex-col sm:flex-row gap-3 justify-between items-center">
-          {" "}
           {/* Spacing adjusted */}
           <Text className="text-body sm:text-body mb-1 sm:mb-0 w-full sm:w-3/5">
-            {" "}
             {/* Margin adjusted */}
             Investment Frequency
           </Text>
           <div className="flex flex-row justify-between space-x-2 w-full">
-            {" "}
             {/* Spacing adjusted */}
             {["Monthly", "One-time"].map((freq) => (
-              <button
+              <Button
                 key={freq}
-                className={`h-4 py-1 px-1 border text-center flex-grow ${
+                className={`border border-brown text-center flex-grow ${
                   investmentFrequency === freq.toLowerCase()
-                    ? "bg-beige text-white"
+                    ? "bg-beige border-none text-black"
                     : "bg-white text-black"
                 }`}
                 onClick={() =>
@@ -218,62 +212,56 @@ const Calculator = ({ strategy }) => {
                 }
               >
                 {freq}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row justify-between items-center">
-          <Text className="text-body sm:text-body mb-1 sm:mb-0 w-full sm:w-1/2">
-            {" "}
+        <div className="flex flex-col sm:flex-row gap-3 justify-between items-center">
+          {/* Adjusted gap to match the frequency section */}
+          <Text className="text-body sm:text-body mb-1 sm:mb-0 w-full sm:w-3/5">
             {/* Margin adjusted */}
             Investment Period (Years)
           </Text>
-          <div className="w-2/3 h-4">
-            {" "}
-            {/* Height adjusted */}
-            <div className="flex flex-row h-full w-full relative bg-transparent border">
-              <button
-                data-action="decrement"
-                className="text-gray-600 h-full w-1/4 cursor-pointer outline-none"
-                onClick={() => handleInvestmentPeriodChange("decrement")}
-              >
-                <span className="m-auto text-2xl font-thin">−</span>
-              </button>
-              <input
-                type="number"
-                className="outline-none focus:outline-none text-center w-1/2 bg-white text-body hover:text-black focus:text-black md:text-base cursor-default flex items-center text-gray-700"
-                name="custom-input-number"
-                value={investmentPeriod}
-                readOnly
-              />
-              <button
-                data-action="increment"
-                className="text-gray-600 h-full w-1/4 cursor-pointer"
-                onClick={() => handleInvestmentPeriodChange("increment")}
-              >
-                <span className="m-auto text-2xl font-thin">+</span>
-              </button>
-            </div>
+          <div className="flex flex-row w-full h-[53px] border border-brown  overflow-hidden">
+            {/* Single border around the entire increment/decrement section */}
+            <Button
+              data-action="decrement"
+              className="text-gray-600 h-full w-1/4 cursor-pointer outline-none flex items-center justify-center"
+              onClick={() => handleInvestmentPeriodChange("decrement")}
+            >
+              <span className="text-body font-thin">−</span>
+            </Button>
+            <input
+              type="number"
+              className="outline-none focus:outline-none text-center w-1/2 bg-white text-body hover:text-black focus:text-black text-body cursor-default flex items-center text-gray-700"
+              name="custom-input-number"
+              value={investmentPeriod}
+              readOnly
+            />
+            <Button
+              data-action="increment"
+              className="text-gray-600 h-full w-1/4 cursor-pointer flex items-center justify-center"
+              onClick={() => handleInvestmentPeriodChange("increment")}
+            >
+              <span className="text-body font-thin">+</span>
+            </Button>
           </div>
         </div>
       </div>
-      <div className="text-center mt-5 px-1 sm:px-2">
-        {" "}
+      <div className="text-center mt-4 px-1 sm:px-2">
         {/* Margin and padding adjusted */}
         {/* Commented out section preserved */}
         <Text className="md:text-subheading mt-2 font-subheading">
-          {" "}
           {/* Margin adjusted */}₹{numberWithCommas(futureInvestmentValue)}
         </Text>
-        <Text className="text-body sm:text-body text-black">
-          Total Amount Invested: ₹{numberWithCommas(calculateTotalInvestment())}
+        <Text className="text-body text-black">
+          Invested: ₹{numberWithCommas(calculateTotalInvestment())}
         </Text>
       </div>
-      <Text className="text-base sm:text-body text-center my-2 sm:mt-1">
-        {" "}
+      <Text className="text-body text-center  sm:mt-1">
         {/* Margin adjusted */}
-        Figures are based on historical returns and do not guarantee future
-        results.*
+        Figures are based on historical returns and backtest. <br /> They do not
+        guarantee future results.*
       </Text>
     </>
   );

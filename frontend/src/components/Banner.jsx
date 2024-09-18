@@ -59,7 +59,7 @@ const Banner = () => {
             stock market
           </Heading>
           <div className="group">
-            <div className="flex justify-between border items-center border-brown transition-all duration-300 hover:bg-lightBeige hover:shadow-xl p-2">
+            <div className="flex justify-between border items-center border-brown transition-all duration-300 hover:bg-beige hover:shadow-xl p-2">
               <Text className="flex-1">
                 We wanted to grow our{" "}
                 <strong className="text-beige group-hover:text-brown">

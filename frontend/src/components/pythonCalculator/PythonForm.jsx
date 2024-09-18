@@ -108,7 +108,9 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
   return (
     <Section withBorder padding="extralarge">
       <form onSubmit={handleSubmit} className="space-y-6  max-w-7xl mx-auto">
-        <Heading className="text-semiheading ">Portfolio</Heading>
+        {/* <Heading className="text-semiheading font-subheading text-brown ">
+          Portfolio
+        </Heading> */}
 
         <div className="space-y-2">
           <label className="block text-body font-body text-black">

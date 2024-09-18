@@ -308,7 +308,7 @@ function PythonCalculator() {
   return (
     <Section withBorder padding="extralarge" className="mt-9">
       <Heading className="text-heading text-brown text-center mb-4 font-heading">
-        Portfolio Visualizer
+        Portfolio
       </Heading>
       <div className="">
         <Section withBorder padding="normal">

@@ -253,10 +253,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         </div>
 
         {formData.selected_systems.map((system, index) => (
-          <div
-            key={index}
-            className="space-y-2 p-4 border border-brown rounded-md"
-          >
+          <div key={index} className="space-y-2 p-4 border border-brown ">
             <h3 className="font-body text-black">{system.system}</h3>
             <div className="flex gap-4">
               <Input
@@ -315,7 +312,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         </div>
 
         {formData.selected_debtfunds.map((debtfund, index) => (
-          <div key={index} className="space-y-2 p-4 bg-gray-50 rounded-md">
+          <div key={index} className="space-y-2 p-4 bg-gray-50 ">
             <h3 className="font-body text-black">{debtfund.debtfund}</h3>
             <div className="flex gap-4">
               <Input

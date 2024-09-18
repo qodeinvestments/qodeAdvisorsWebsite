@@ -10,6 +10,8 @@ import neha from "../assets/team/Neha HS.png";
 import sakshi from "../assets/team/Sakshi HS.png";
 import { Container } from "../components";
 import Text from "../components/common/Text";
+import Section from "../components/container/Section";
+import Heading from "../components/common/Heading";
 
 const AboutUs = () => {
   const teamMembers = [
@@ -58,111 +60,73 @@ const AboutUs = () => {
   ];
 
   return (
-    <Container>
-      <div className="container  mx-auto py-8 mt-16">
-        <Heading level={2} className="text-4xl  font-bold text-center mb-6">
-          About Qode
-        </Heading>
-        <Text className="text-center   mb-12 max-w-2xl md:text-subheading mx-auto">
-          At Qode, we offer rigorous data-driven investment strategies geared to
-          build long term wealth. Experience transparent, low-cost portfolio
-          management tailored to free up your time for life's important moments.
-        </Text>
+    <Section withBorder padding="extralarge" className="mt-9">
+      <Heading className="text-heading text-brown font-heading text-center mb-4">
+        About Qode
+      </Heading>
+      <Text className="text-subheading font-subheading">Our Story</Text>
+      <Text className="text-start text-body font-body mb-4">
+        Our founders (Karan, Kavan & Rishabh) started with investing their own
+        money in the stock market using Quant models. When they started
+        consistently outperforming the market average, they started investing
+        their family business reserve capital & grew it significantly. Over the
+        years they realised - Hey, we’re good at this why not help others grow
+        their wealth as well. So, they launched their quant strategy - Quant
+        Growth Fund with SRE (Another Fund manager). It’s been 6 years now since
+        the scheme is live. Its absolute return is - Which means if you had
+        invested 1CR when the scheme when it started then you would’ve made -
+        Seeing this they decided to start their own PMS and launch more schemes
+        for different investors with different financial goals and risk appetite
+        fund and to make a business out this. Business to help Investors grow
+        their money in the long term with high certainty.
+      </Text>
+      <Heading className="text-semiheading font-semibold text-center mb-2">
+        Our Team
+      </Heading>
 
-        <div className="max-w-4xl bg-[#fafafa] p-14 mt-24 text-center mx-auto rounded-lg mb-16">
-          <Heading level={3} className="  font-semibold text-4xl mb-6">
-            Why Choose Qode?
-          </Heading>
-          <ul className="list-decimal md:text-subheading  list-inside space-y-2">
-            {/* <li>Innovative financial technology solutions</li>
-            <li>Expert team of developers, analysts, and fund managers</li> */}
-            <li>Data-driven decision-making processes</li>
-            <li>Tailored strategies for optimal financial growth</li>
-            <li>Commitment to security and risk management</li>
-          </ul>
-        </div>
-
-        <Heading
-          level={2}
-          className=" mt-24 text-4xl  font-bold text-center mb-6"
-        >
-          Our Team
-        </Heading>
-        <Text className="text-center text-black md:text-subheading mb-12 max-w-3xl mx-auto">
-          We at Qode are dedicated to growing your money and optimizing your
-          financial future. Using innovative strategies and our extensive
-          expertise, we effectively manage investments to maximize returns and
-          minimize risks, ensuring comprehensive financial growth and security.
-        </Text>
-        <div className="grid max-w-4xl mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
-            <TeamMemberCard key={index} member={member} />
-          ))}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {teamMembers.map((member, index) => (
+          <TeamMemberCard key={index} member={member} />
+        ))}
       </div>
-      {/* 
-      <div className="bg-gray-100 py-16 mt-16">
-        <div className="container mx-auto">
-          <Heading level={2} level={2} className="text-2xl font-bold text-center mb-8">Our Services</Heading>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <Heading level={3} className="text-heading font-semibold mb-6">Financial Analysis</Heading>
-              <Text className="text-black md:text-subheading">
-                In-depth analysis of market trends and investment opportunities
-                to guide your financial decisions.
-              </Text>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <Heading level={3} className="text-heading font-semibold mb-6">
-                Portfolio Management
-              </Heading>
-              <Text className="text-black md:text-subheading">
-                Expert management of your investment portfolio to optimize
-                returns and minimize risks.
-              </Text>
-            </div>
-            <div className="bg-white p-6 rounded-lg shadow-md">
-              <Heading level={3} className="text-heading font-semibold mb-6">FinTech Solutions</Heading>
-              <Text className="text-black md:text-subheading">
-                Cutting-edge financial technology tools to streamline your
-                business operations and financial processes.
-              </Text>
-            </div>
-          </div>
-        </div>
-      </div> */}
-    </Container>
+    </Section>
   );
 };
 
 const TeamMemberCard = ({ member }) => {
   return (
-    <div className="bg-white w-66 mx-auto shadow-md   rounded-lg overflow-hidden">
-      <img src={member.image} alt={member.name} className="object-cover" />
-      <div className="p-2">
-        <div className="flex justify-between mb-1 items-start">
+    <div className="bg-white w-full overflow-hidden border border-brown rounded-sm">
+      <img
+        src={member.image}
+        alt={member.name}
+        className="w-full h-60 object-cover"
+      />
+      <div className="p-1">
+        <div className="flex justify-between items-start mb-18">
           <div>
-            <Heading level={3} className="">
+            <Text className="text-2xl font-subheading text-brown">
               {member.name}
-            </Heading>
-            <span className="text-gray-400 text-xs ">{member.designation}</span>
+            </Text>
+            <span className="text-xs text-text-secondary">
+              {member.designation}
+            </span>
           </div>
-          <div className="flex gap-2 flex-row-reverse">
+          <div className="flex gap-18 flex-row-reverse">
             <a
               href={member.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 transition-colors text-body"
+              className="text-brown hover:text-beige transition-colors"
             >
-              <FontAwesomeIcon icon={faLinkedin} />
+              <FontAwesomeIcon icon={faLinkedin} className="text-1xl" />
             </a>
             <a
               href={`mailto:${member.email}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-black md:text-subheading hover:text-gray-800 transition-colors text-body"
+              className="text-brown hover:text-beige transition-colors"
             >
-              <FontAwesomeIcon icon={faEnvelope} />
+              <FontAwesomeIcon icon={faEnvelope} className="text-1xl" />
             </a>
           </div>
         </div>

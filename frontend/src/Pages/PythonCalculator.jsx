@@ -11,6 +11,7 @@ import FileUpload from "../components/pythonCalculator/FileUpload";
 import Section from "../components/container/Section";
 import Heading from "../components/common/Heading";
 import "../components/components.css";
+import Text from "../components/common/Text";
 const API_URL =
   import.meta.env.MODE === "production"
     ? import.meta.env.VITE_PROD_API_URL
@@ -310,69 +311,64 @@ function PythonCalculator() {
       <Heading className="text-heading text-brown text-center mb-4 font-heading">
         Portfolio
       </Heading>
-      <div className="">
-        <Section withBorder padding="normal">
-          <FileUpload onColumnsUpdate={handleFileUpload} />
-          <div
-            className=" border bg-lightBeige p-4 text-body  font-body"
-            role="alert"
-          >
-            <p className="text-subheading font-subheading mb-1">
-              Upload Requirements
-            </p>
-            <p className="mb-18">
-              Please ensure your file meets the following criteria:
-            </p>
-            <ul className="list-disc pl-5">
-              <li>Only CSV file formats are supported.</li>
+      <div
+        className=" border border-brown text-black p-4 text-body  font-body"
+        role="alert"
+      >
+        <p className="text-subheading font-subheading mb-1">
+          Upload Requirements
+        </p>
+        <p className="mb-18">
+          Please ensure your file meets the following criteria:
+        </p>
+        <ul className="list-disc pl-5">
+          <li>Only CSV file formats are supported.</li>
+          <li>
+            Daily series must include two columns:
+            <ul className="list-decimal pl-5">
               <li>
-                Daily series must include two columns:
-                <ul className="list-decimal pl-5">
-                  <li>
-                    First column for the date (Supported formats: dd/mm/yyyy).
-                  </li>
-                  <li>Second column for daily return or index value</li>
-                </ul>
+                First column for the date (Supported formats: dd/mm/yyyy).
               </li>
+              <li>Second column for daily return or index value</li>
             </ul>
-          </div>
-        </Section>
+          </li>
+        </ul>
+      </div>
+      <Text className="text-subheading mt-5 mb-2 font-subheading">Dataset</Text>
 
-        <StyledPortfolioCalculatorForm
-          onSubmit={handleSubmit}
-          loading={loading}
-          columns={columns}
-        />
+      <FileUpload onColumnsUpdate={handleFileUpload} />
 
-        {loading ? (
-          <div className="flex justify-center py-4">
-            <Spin size="large" />
-          </div>
-        ) : (
-          <>
-            {resultData && (
-              <>
-                {/* <Button type="primary" onClick={handleDownloadExcel} className="mb-4">
+      <StyledPortfolioCalculatorForm
+        onSubmit={handleSubmit}
+        loading={loading}
+        columns={columns}
+      />
+
+      {loading ? (
+        <div className="flex justify-center py-4">
+          <Spin size="large" />
+        </div>
+      ) : (
+        <>
+          {resultData && (
+            <>
+              {/* <Button type="primary" onClick={handleDownloadExcel} className="mb-4">
                 Download Excel
               </Button> */}
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  options={chartOptions}
-                />
-              </>
-            )}
-            {renderMetrics()}
-            {renderDrawdownsTable()}
-            <MonthlyPLTable data={resultData?.monthly_pl_table || []} />
-            {resultData?.cagrData && (
-              <CAGRBarChart cagrData={resultData.cagrData} />
-            )}
-            {resultData?.peak_to_peak_data && (
-              <MaxPeakToPeakTable data={resultData?.peak_to_peak_data || []} />
-            )}
-          </>
-        )}
-      </div>
+              <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+            </>
+          )}
+          {renderMetrics()}
+          {renderDrawdownsTable()}
+          <MonthlyPLTable data={resultData?.monthly_pl_table || []} />
+          {resultData?.cagrData && (
+            <CAGRBarChart cagrData={resultData.cagrData} />
+          )}
+          {resultData?.peak_to_peak_data && (
+            <MaxPeakToPeakTable data={resultData?.peak_to_peak_data || []} />
+          )}
+        </>
+      )}
     </Section>
   );
 }

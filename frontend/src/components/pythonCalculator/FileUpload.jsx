@@ -77,18 +77,20 @@ function FileUpload({ onColumnsUpdate, onFileSelect }) {
   };
 
   return (
-    <div className="bg-white p-6 border border-brown shadow-md max-w-[631px] mx-auto my-2">
-      <input
-        type="file"
-        accept=".csv"
-        onChange={handleFileChange}
-        className="block w-full text-body text-gray-900 border border-brown  cursor-pointer bg-white focus:outline-none file:mr-4 file:py-1 file:px-4 file: file:border-0 file:text-body file:font-body file:bg- file:text-black file:bg-beige hover:file:bg-lightBeige"
-      />
-      <div className="text-center mt-4">
+    <div className="bg-white  flex items-center space-x-4 mx-auto mb-4">
+      <div className="flex-grow">
+        <input
+          type="file"
+          accept=".csv"
+          onChange={handleFileChange}
+          className="block w-full text-body text-gray-900 border border-brown  cursor-pointer bg-white focus:outline-none file:mr-4 file:py-18 file:px-4 file:border-0 file:text-body file:font-body file:bg-beige file:text-black hover:file:bg-lightBeige"
+        />
+      </div>
+      <div>
         <Button
           onClick={handleFileUpload}
-          className={`transition-colors bg-beige text-black duration-300 ${
-            loading ? "cursor-not-allowed opacity-50" : ""
+          className={`bg-beige hover:bg-lightBeige  transition-colors duration-300 ${
+            loading ? "opacity-50 cursor-not-allowed" : ""
           }`}
           disabled={loading}
         >

@@ -106,267 +106,265 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
   };
 
   return (
-    <Section withBorder padding="extralarge">
-      <form onSubmit={handleSubmit} className="space-y-6  max-w-7xl mx-auto">
-        {/* <Heading className="text-semiheading font-subheading text-brown ">
+    <form onSubmit={handleSubmit} className="space-y-6  max-w-7xl mx-auto">
+      {/* <Heading className="text-semiheading font-subheading text-brown ">
           Portfolio
         </Heading> */}
 
-        <div className="space-y-2">
-          <label className="block text-body font-body text-black">
-            Investment Period
-          </label>
-          <RangePicker
-            format="DD-MM-YYYY"
-            onChange={(dates) => {
-              handleInputChange(
-                "start_date",
-                dates ? dates[0].format("DD-MM-YYYY") : ""
-              );
-              handleInputChange(
-                "end_date",
-                dates ? dates[1].format("DD-MM-YYYY") : ""
-              );
-            }}
-            className="w-full border-brown border rounded-none p-18"
-          />
-        </div>
+      <div className="space-y-2">
+        <label className="block text-subheading font-subheading text-black">
+          Investment Period
+        </label>
+        <RangePicker
+          format="DD-MM-YYYY"
+          onChange={(dates) => {
+            handleInputChange(
+              "start_date",
+              dates ? dates[0].format("DD-MM-YYYY") : ""
+            );
+            handleInputChange(
+              "end_date",
+              dates ? dates[1].format("DD-MM-YYYY") : ""
+            );
+          }}
+          className="w-full border-brown border rounded-none p-18"
+        />
+      </div>
 
-        <div className="space-y-2">
-          <label className="block text-body font-body text-black">
-            Investment Amount
-          </label>
-          <Input
-            type="decimal"
-            value={formData.invest_amount}
-            onChange={(e) =>
-              handleInputChange("invest_amount", parseFloat(e.target.value))
-            }
-            className="w-full border-brown border rounded-none p-18"
-            min={0}
-            prefix="₹"
-          />
-        </div>
+      <div className="space-y-2">
+        <label className="block text-subheading font-subheading text-black">
+          Investment Amount
+        </label>
+        <Input
+          type="decimal"
+          value={formData.invest_amount}
+          onChange={(e) =>
+            handleInputChange("invest_amount", parseFloat(e.target.value))
+          }
+          className="w-full border-brown border rounded-none p-18"
+          min={0}
+          prefix="₹"
+        />
+      </div>
 
-        <div className="space-y-2">
-          <label className="block text-body font-body text-black">
-            Cash Percentage
-          </label>
-          <Input
-            type="decimal"
-            value={formData.cash_percent}
-            onChange={(e) =>
-              handleInputChange("cash_percent", parseFloat(e.target.value))
-            }
-            className="w-full border-brown border rounded-none p-18"
-            min={0}
-            max={100}
-            suffix="%"
-          />
-        </div>
+      <div className="space-y-2">
+        <label className="block text-subheading font-subheading text-black">
+          Cash Percentage
+        </label>
+        <Input
+          type="decimal"
+          value={formData.cash_percent}
+          onChange={(e) =>
+            handleInputChange("cash_percent", parseFloat(e.target.value))
+          }
+          className="w-full border-brown border rounded-none p-18"
+          min={0}
+          max={100}
+          suffix="%"
+        />
+      </div>
 
-        <div className="space-y-2">
-          <label className="block text-body font-body text-black">
-            Rebalance Frequency
-          </label>
-          <Radio.Group
-            onChange={(e) => handleInputChange("frequency", e.target.value)}
-            value={formData.frequency}
-            className="flex flex-wrap gap-4"
+      <div className="space-y-2">
+        <label className="block text-subheading font-subheading text-black">
+          Rebalance Frequency
+        </label>
+        <Radio.Group
+          onChange={(e) => handleInputChange("frequency", e.target.value)}
+          value={formData.frequency}
+          className="flex flex-wrap gap-4"
+        >
+          <Radio.Button
+            className={`border border-brown rounded-none ${
+              formData.frequency === "no"
+                ? "bg-brown text-white"
+                : "bg-lightbeige text-black"
+            }`}
+            value="no"
           >
-            <Radio.Button
-              className={`border border-brown rounded-none ${
-                formData.frequency === "no"
-                  ? "bg-brown text-white"
-                  : "bg-lightbeige text-black"
-              }`}
-              value="no"
-            >
-              No Rebalance
-            </Radio.Button>
-            <Radio.Button
-              className={`border border-brown rounded-none ${
-                formData.frequency === "daily"
-                  ? "bg-brown text-white"
-                  : "bg-lightbeige text-black"
-              }`}
-              value="daily"
-            >
-              Daily
-            </Radio.Button>
-            <Radio.Button
-              className={`border border-brown rounded-none ${
-                formData.frequency === "weekly"
-                  ? "bg-brown text-white"
-                  : "bg-lightbeige text-black"
-              }`}
-              value="weekly"
-            >
-              Weekly
-            </Radio.Button>
-            <Radio.Button
-              className={`border border-brown rounded-none ${
-                formData.frequency === "monthly"
-                  ? "bg-brown text-white"
-                  : "bg-lightbeige text-black"
-              }`}
-              value="monthly"
-            >
-              Monthly
-            </Radio.Button>
-            <Radio.Button
-              className={`border border-brown rounded-none ${
-                formData.frequency === "yearly"
-                  ? "bg-brown text-white"
-                  : "bg-lightbeige text-black"
-              }`}
-              value="yearly"
-            >
-              Yearly
-            </Radio.Button>
-          </Radio.Group>
-        </div>
-
-        <div className="space-y-2">
-          <label className="block text-body font-body text-black">
-            Select System Groups
-          </label>
-          <Select
-            mode="multiple"
-            style={{ width: "100%" }}
-            options={combinedStrategies}
-            value={formData.selected_systems.map((s) => s.system)}
-            onChange={handleSystemChange}
-            className="w-full border-brown border rounded-none "
-            placeholder="Choose strategies"
-            optionRender={(option) => (
-              <span
-                style={{
-                  color: option.data.isJsonColumn ? "#1890ff" : "inherit",
-                  fontWeight: option.data.isJsonColumn ? "bold" : "normal",
-                }}
-              >
-                {option.data.isJsonColumn ? `📊 ${option.label}` : option.label}
-              </span>
-            )}
-          />
-        </div>
-
-        {formData.selected_systems.map((system, index) => (
-          <div key={index} className="space-y-2 p-4 border border-brown ">
-            <h3 className="font-body text-black">{system.system}</h3>
-            <div className="flex gap-4">
-              <Input
-                type="decimal"
-                placeholder="Weightage"
-                value={system.weightage}
-                onChange={(e) =>
-                  handleSystemInputChange(index, "weightage", e.target.value)
-                }
-                className="w-1/3"
-                min={0}
-                max={100}
-                suffix="%"
-              />
-              <Input
-                type="decimal"
-                placeholder="Leverage"
-                value={system.leverage}
-                onChange={(e) =>
-                  handleSystemInputChange(
-                    index,
-                    "leverage",
-                    parseFloat(e.target.value)
-                  )
-                }
-                className="w-1/3"
-                min={0}
-                step={0.1}
-              />
-              <Select
-                className="w-1/3"
-                placeholder="Select column"
-                value={system.column}
-                onChange={(value) =>
-                  handleSystemInputChange(index, "column", value)
-                }
-                options={columns.map((col) => ({ label: col, value: col }))}
-              />
-            </div>
-          </div>
-        ))}
-
-        <div className="space-y-2">
-          <label className="block text-body font-body text-black">
-            Select Debt Funds
-          </label>
-          <Select
-            mode="multiple"
-            style={{ width: "100%" }}
-            options={DEBTFUNDS}
-            value={formData.selected_debtfunds.map((s) => s.debtfund)}
-            onChange={handleDebtFundChange}
-            className="w-full border-brown border rounded-none"
-            placeholder="Choose debt funds"
-          />
-        </div>
-
-        {formData.selected_debtfunds.map((debtfund, index) => (
-          <div key={index} className="space-y-2 p-4 bg-gray-50 ">
-            <h3 className="font-body text-black">{debtfund.debtfund}</h3>
-            <div className="flex gap-4">
-              <Input
-                type="decimal"
-                placeholder="Weightage"
-                value={debtfund.weightage}
-                onChange={(e) =>
-                  handleDebtFundInputChange(
-                    index,
-                    "weightage",
-                    parseFloat(e.target.value)
-                  )
-                }
-                className="w-1/2"
-                min={0}
-                max={100}
-                suffix="%"
-              />
-              <Input
-                type="decimal"
-                placeholder="Leverage"
-                value={debtfund.leverage}
-                onChange={(e) =>
-                  handleDebtFundInputChange(
-                    index,
-                    "leverage",
-                    parseFloat(e.target.value)
-                  )
-                }
-                className="w-1/2"
-                min={0}
-                step={0.1}
-              />
-            </div>
-          </div>
-        ))}
-        <div className="text-center">
-          <Button
-            htmlType="submit"
-            className=" border-none bg-brown text-black px-3 py-1 text-body rounded-none h-2"
-            loading={loading}
+            No Rebalance
+          </Radio.Button>
+          <Radio.Button
+            className={`border border-brown rounded-none ${
+              formData.frequency === "daily"
+                ? "bg-brown text-white"
+                : "bg-lightbeige text-black"
+            }`}
+            value="daily"
           >
-            Calculate Portfolio
-          </Button>
-        </div>
+            Daily
+          </Radio.Button>
+          <Radio.Button
+            className={`border border-brown rounded-none ${
+              formData.frequency === "weekly"
+                ? "bg-brown text-white"
+                : "bg-lightbeige text-black"
+            }`}
+            value="weekly"
+          >
+            Weekly
+          </Radio.Button>
+          <Radio.Button
+            className={`border border-brown rounded-none ${
+              formData.frequency === "monthly"
+                ? "bg-brown text-white"
+                : "bg-lightbeige text-black"
+            }`}
+            value="monthly"
+          >
+            Monthly
+          </Radio.Button>
+          <Radio.Button
+            className={`border border-brown rounded-none ${
+              formData.frequency === "yearly"
+                ? "bg-brown text-white"
+                : "bg-lightbeige text-black"
+            }`}
+            value="yearly"
+          >
+            Yearly
+          </Radio.Button>
+        </Radio.Group>
+      </div>
 
-        <div className="text-body text-gray-500 flex items-center mt-4">
-          <InfoCircleOutlined className="mr-2" />
-          <span>
-            Fill in all required fields to calculate your portfolio performance.
-          </span>
+      <div className="space-y-2">
+        <label className="block text-subheading font-subheading text-black">
+          Select System Groups
+        </label>
+        <Select
+          mode="multiple"
+          style={{ width: "100%" }}
+          options={combinedStrategies}
+          value={formData.selected_systems.map((s) => s.system)}
+          onChange={handleSystemChange}
+          className="w-full border-brown border rounded-none "
+          placeholder="Choose strategies"
+          optionRender={(option) => (
+            <span
+              style={{
+                color: option.data.isJsonColumn ? "#1890ff" : "inherit",
+                fontWeight: option.data.isJsonColumn ? "bold" : "normal",
+              }}
+            >
+              {option.data.isJsonColumn ? `📊 ${option.label}` : option.label}
+            </span>
+          )}
+        />
+      </div>
+
+      {formData.selected_systems.map((system, index) => (
+        <div key={index} className="space-y-2 p-4 border border-brown ">
+          <h3 className="font-body text-black">{system.system}</h3>
+          <div className="flex gap-4">
+            <Input
+              type="decimal"
+              placeholder="Weightage"
+              value={system.weightage}
+              onChange={(e) =>
+                handleSystemInputChange(index, "weightage", e.target.value)
+              }
+              className="w-1/3"
+              min={0}
+              max={100}
+              suffix="%"
+            />
+            <Input
+              type="decimal"
+              placeholder="Leverage"
+              value={system.leverage}
+              onChange={(e) =>
+                handleSystemInputChange(
+                  index,
+                  "leverage",
+                  parseFloat(e.target.value)
+                )
+              }
+              className="w-1/3"
+              min={0}
+              step={0.1}
+            />
+            <Select
+              className="w-1/3"
+              placeholder="Select column"
+              value={system.column}
+              onChange={(value) =>
+                handleSystemInputChange(index, "column", value)
+              }
+              options={columns.map((col) => ({ label: col, value: col }))}
+            />
+          </div>
         </div>
-      </form>
-    </Section>
+      ))}
+
+      <div className="space-y-2">
+        <label className="block text-subheading font-subheading text-black">
+          Select Debt Funds
+        </label>
+        <Select
+          mode="multiple"
+          style={{ width: "100%" }}
+          options={DEBTFUNDS}
+          value={formData.selected_debtfunds.map((s) => s.debtfund)}
+          onChange={handleDebtFundChange}
+          className="w-full border-brown border rounded-none"
+          placeholder="Choose debt funds"
+        />
+      </div>
+
+      {formData.selected_debtfunds.map((debtfund, index) => (
+        <div key={index} className="space-y-2 p-4 bg-gray-50 ">
+          <h3 className="font-body text-black">{debtfund.debtfund}</h3>
+          <div className="flex gap-4">
+            <Input
+              type="decimal"
+              placeholder="Weightage"
+              value={debtfund.weightage}
+              onChange={(e) =>
+                handleDebtFundInputChange(
+                  index,
+                  "weightage",
+                  parseFloat(e.target.value)
+                )
+              }
+              className="w-1/2"
+              min={0}
+              max={100}
+              suffix="%"
+            />
+            <Input
+              type="decimal"
+              placeholder="Leverage"
+              value={debtfund.leverage}
+              onChange={(e) =>
+                handleDebtFundInputChange(
+                  index,
+                  "leverage",
+                  parseFloat(e.target.value)
+                )
+              }
+              className="w-1/2"
+              min={0}
+              step={0.1}
+            />
+          </div>
+        </div>
+      ))}
+      <div className="text-center">
+        <Button
+          htmlType="submit"
+          className=" border-none bg-brown text-lightBeige  px-3 py-1 text-body rounded-none h-2"
+          loading={loading}
+        >
+          Calculate Portfolio
+        </Button>
+      </div>
+
+      <div className="text-body text-gray-500 flex items-center mt-4">
+        <InfoCircleOutlined className="mr-2" />
+        <span>
+          Fill in all required fields to calculate your portfolio performance.
+        </span>
+      </div>
+    </form>
   );
 }
 

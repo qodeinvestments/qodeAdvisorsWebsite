@@ -11,6 +11,7 @@ import axios from "axios";
 import { Header } from "../components";
 import Heading from "../components/common/Heading";
 import Text from "../components/common/Text";
+import Section from "../components/container/Section";
 
 const BlogDetails = () => {
   const { slug } = useParams();
@@ -45,65 +46,58 @@ const BlogDetails = () => {
   }
 
   return (
-    <div className="mx-auto px-4 py-12">
-      <div className="max-w-4xl mx-auto p-8">
-        <div className="mt-20 mb-2 text-center">
-          <Text className="text-primary">
-            {formatDate(post.published_at)} &#x2022; {post.reading_time} min
-            read
-          </Text>
-        </div>
-        <Heading level={1} className="text-4xl mb-12">
-          {post.title}
-        </Heading>
-        {post.feature_image && (
-          <img
-            src={post.feature_image}
-            alt={post.title}
-            className="w-full object-cover h-auto mb-8"
-          />
-        )}
-        <div
-          className="post-content leading-relaxed my-5"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
-        {post.primary_author && (
-          <div className="flex items-center mt-8 bg-gray-200 p-4 rounded-lg">
-            {post.primary_author.profile_image && (
-              <img
-                src={post.primary_author.profile_image}
-                alt={post.primary_author.name}
-                className="w-16 h-16 rounded-full object-cover mr-4"
-              />
-            )}
-            <div>
-              <Text className="">{post.primary_author.name}</Text>
-              {post.primary_author.bio && (
-                <Text>{post.primary_author.bio}</Text>
-              )}
-            </div>
-          </div>
-        )}
-        {/* Subscribe and social media section */}
-        <div className="mt-8">
-          <Text className="font-bold mb-2">Share this post:</Text>
-          <div className="flex space-x-4">
-            <a href="#" className="text-blue-600 hover:text-blue-800">
-              <FontAwesomeIcon icon={faFacebookF} />
-            </a>
-            <a href="#" className="text-blue-400 hover:text-blue-600">
-              <FontAwesomeIcon icon={faTwitter} />
-            </a>
-            <a href="#" className="text-blue-800 hover:text-blue-900">
-              <FontAwesomeIcon icon={faLinkedinIn} />
-            </a>
-            <a href="#" className="text-orange-600 hover:text-orange-700">
-              <FontAwesomeIcon icon={faRss} />
-            </a>
-          </div>
-        </div>
+    <Section withBorder padding="extralarge" className="mt-9">
+      <div className="text-center">
+        <Text className="text-primary">
+          {formatDate(post.published_at)} &#x2022; {post.reading_time} min read
+        </Text>
       </div>
-    </div>
+      <Heading className="text-heading font-heading">{post.title}</Heading>
+      {post.feature_image && (
+        <img
+          src={post.feature_image}
+          alt={post.title}
+          className="w-full object-cover h-auto mb-4"
+        />
+      )}
+      <Text
+        className="post-content text-body font-body leading-relaxed "
+        dangerouslySetInnerHTML={{ __html: post.html }}
+      />
+      {/* {post.primary_author && (
+        <div className="flex items-center mt-4 bg-gray-200 p-4 rounded-lg">
+          {post.primary_author.profile_image && (
+            <img
+              src={post.primary_author.profile_image}
+              alt={post.primary_author.name}
+              className="w-16 h-16 rounded-full object-cover mr-4"
+            />
+          )}
+          <div>
+            <Text className="">{post.primary_author.name}</Text>
+            {post.primary_author.bio && <Text>{post.primary_author.bio}</Text>}
+          </div>
+        </div>
+      )} */}
+      {/* Subscribe and social media section */}
+      {/* <div className="mt-8">
+        <Text className="font-bold mb-2">Share this post:</Text>
+        <div className="flex space-x-4">
+          <a href="#" className="text-blue-600 hover:text-blue-800">
+            <FontAwesomeIcon icon={faFacebookF} />
+          </a>
+          <a href="#" className="text-blue-400 hover:text-blue-600">
+            <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          <a href="#" className="text-blue-800 hover:text-blue-900">
+            <FontAwesomeIcon icon={faLinkedinIn} />
+          </a>
+          <a href="#" className="text-orange-600 hover:text-orange-700">
+            <FontAwesomeIcon icon={faRss} />
+          </a>
+        </div> */}
+      {/* </div> */}
+    </Section>
   );
 };
 

@@ -5,6 +5,7 @@ import { BackgroundSVG } from "./ui/Background-SVG";
 import Container from "./container/Container";
 import Heading from "./common/Heading";
 import Text from "./common/Text";
+import CustomLink from "./common/CustomLink";
 
 const Banner = () => {
   const [currentText, setCurrentText] = useState("");
@@ -59,7 +60,12 @@ const Banner = () => {
             stock market
           </Heading>
           <div className="group">
-            <div className="flex justify-between border items-center border-brown transition-all duration-300 hover:bg-beige hover:shadow-xl p-2">
+            <CustomLink
+              to={
+                "/blogs/we-wanted-to-grow-our-10cr-to-80cr-within-10-years-with-the-highest-probability-how-did-we-do-it"
+              }
+              className="flex justify-between border items-center border-brown transition-all duration-300 hover:bg-beige hover:shadow-xl p-2"
+            >
               <Text className="flex-1">
                 We wanted to grow our{" "}
                 <strong className="text-beige group-hover:text-brown">
@@ -81,7 +87,7 @@ const Banner = () => {
                   />
                 </svg>
               </div>
-            </div>
+            </CustomLink>
           </div>
         </motion.div>
       </div>

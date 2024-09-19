@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, DatePicker, Input, Radio, Select, message } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import Section from "../container/Section";
 import Heading from "../common/Heading";
-
+import axios from "axios";
+import moment from "moment/moment";
 const { RangePicker } = DatePicker;
-
+const API_URL =
+  import.meta.env.MODE === "production"
+    ? import.meta.env.VITE_PROD_API_URL
+    : import.meta.env.VITE_DEV_API_URL;
 const STRATEGIES = [
   { label: "QGFLong", value: "QGFLong" },
   { label: "Shortflat", value: "Shortflat" },
@@ -31,6 +35,35 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
     selected_debtfunds: [],
   });
   console.log(columns);
+
+  const [dateRange, setDateRange] = useState({ minDate: null, maxDate: null });
+  const [rangePickerValue, setRangePickerValue] = useState([null, null]);
+  useEffect(() => {
+    const fetchDateRange = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/get_date_range`);
+
+        const { min_date, max_date } = response.data;
+
+        const minDate = moment(min_date, "DD-MM-YYYY");
+        const maxDate = moment(max_date, "DD-MM-YYYY");
+
+        setDateRange({ minDate, maxDate });
+        setRangePickerValue([minDate, maxDate]);
+
+        setFormData((prev) => ({
+          ...prev,
+          start_date: min_date,
+          end_date: max_date,
+        }));
+      } catch (error) {
+        console.error("Error fetching date range:", error);
+        message.error("Failed to fetch date range.");
+      }
+    };
+
+    fetchDateRange();
+  }, []);
 
   const columnList = columns.map((column) => ({
     label: column.trim(), // Removing any trailing spaces
@@ -106,10 +139,121 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6  max-w-7xl mx-auto">
+    <form onSubmit={handleSubmit} className="space-y-4  max-w-7xl mx-auto">
       {/* <Heading className="text-semiheading font-subheading text-brown ">
           Portfolio
         </Heading> */}
+      <div className="space-y-2">
+        <label className="block text-subheading font-subheading text-black">
+          Choose strategies
+        </label>
+        <Select
+          mode="multiple"
+          style={{ width: "100%" }}
+          options={combinedStrategies}
+          value={formData.selected_systems.map((s) => s.system)}
+          onChange={handleSystemChange}
+          className="w-full border-brown border rounded-none "
+          placeholder="Choose strategies"
+          optionRender={(option) => (
+            <span
+              style={{
+                color: option.data.isJsonColumn ? "#1890ff" : "inherit",
+                fontWeight: option.data.isJsonColumn ? "bold" : "normal",
+              }}
+            >
+              {option.data.isJsonColumn ? `📊 ${option.label}` : option.label}
+            </span>
+          )}
+        />
+      </div>
+      {formData.selected_systems.map((system, index) => (
+        <div key={index} className="space-y-18 p-2 border border-brown ">
+          <h3 className="font-body text-black">{system.system}</h3>
+          <div className="flex gap-4">
+            <Input
+              type="decimal"
+              placeholder="Weightage"
+              value={system.weightage}
+              onChange={(e) =>
+                handleSystemInputChange(index, "weightage", e.target.value)
+              }
+              className="w-1/2"
+              min={0}
+              max={100}
+              suffix="%"
+            />
+            <Input
+              type="decimal"
+              placeholder="Leverage"
+              value={system.leverage}
+              onChange={(e) =>
+                handleSystemInputChange(
+                  index,
+                  "leverage",
+                  parseFloat(e.target.value)
+                )
+              }
+              className="w-1/2"
+              min={0}
+              step={0.1}
+            />
+          </div>
+        </div>
+      ))}
+
+      <div className="space-y-2">
+        <label className="block text-subheading font-subheading text-black">
+          Choose Debt Funds
+        </label>
+        <Select
+          mode="multiple"
+          style={{ width: "100%" }}
+          options={DEBTFUNDS}
+          value={formData.selected_debtfunds.map((s) => s.debtfund)}
+          onChange={handleDebtFundChange}
+          className="w-full border-brown border rounded-none"
+          placeholder="Choose debt funds"
+        />
+      </div>
+      {formData.selected_debtfunds.map((debtfund, index) => (
+        <div key={index} className="space-y-2 p-4 bg-lightBeige ">
+          <h3 className="font-body text-black">{debtfund.debtfund}</h3>
+          <div className="flex gap-4">
+            <Input
+              type="decimal"
+              placeholder="Weightage"
+              value={debtfund.weightage}
+              onChange={(e) =>
+                handleDebtFundInputChange(
+                  index,
+                  "weightage",
+                  parseFloat(e.target.value)
+                )
+              }
+              className="w-1/2"
+              min={0}
+              max={100}
+              suffix="%"
+            />
+            <Input
+              type="decimal"
+              placeholder="Leverage"
+              value={debtfund.leverage}
+              onChange={(e) =>
+                handleDebtFundInputChange(
+                  index,
+                  "leverage",
+                  parseFloat(e.target.value)
+                )
+              }
+              className="w-1/2 "
+              min={0}
+              step={0.1}
+            />
+          </div>
+        </div>
+      ))}
 
       <div className="space-y-2">
         <label className="block text-subheading font-subheading text-black">
@@ -126,11 +270,15 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
               "end_date",
               dates ? dates[1].format("DD-MM-YYYY") : ""
             );
+            setRangePickerValue(dates); // Update the selected value in state
           }}
+          disabledDate={(current) =>
+            (dateRange.minDate && current < dateRange.minDate) ||
+            (dateRange.maxDate && current > dateRange.maxDate)
+          }
           className="w-full border-brown border rounded-none p-18"
         />
       </div>
-
       <div className="space-y-2">
         <label className="block text-subheading font-subheading text-black">
           Investment Amount
@@ -174,7 +322,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           className="flex flex-wrap gap-4"
         >
           <Radio.Button
-            className={`border border-brown rounded-none ${
+            className={`border border-brown hover:border-brown hover:text-black border-l-2 rounded-none ${
               formData.frequency === "no"
                 ? "bg-brown text-white"
                 : "bg-lightbeige text-black"
@@ -226,128 +374,6 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         </Radio.Group>
       </div>
 
-      <div className="space-y-2">
-        <label className="block text-subheading font-subheading text-black">
-          Select System Groups
-        </label>
-        <Select
-          mode="multiple"
-          style={{ width: "100%" }}
-          options={combinedStrategies}
-          value={formData.selected_systems.map((s) => s.system)}
-          onChange={handleSystemChange}
-          className="w-full border-brown border rounded-none "
-          placeholder="Choose strategies"
-          optionRender={(option) => (
-            <span
-              style={{
-                color: option.data.isJsonColumn ? "#1890ff" : "inherit",
-                fontWeight: option.data.isJsonColumn ? "bold" : "normal",
-              }}
-            >
-              {option.data.isJsonColumn ? `📊 ${option.label}` : option.label}
-            </span>
-          )}
-        />
-      </div>
-
-      {formData.selected_systems.map((system, index) => (
-        <div key={index} className="space-y-2 p-4 border border-brown ">
-          <h3 className="font-body text-black">{system.system}</h3>
-          <div className="flex gap-4">
-            <Input
-              type="decimal"
-              placeholder="Weightage"
-              value={system.weightage}
-              onChange={(e) =>
-                handleSystemInputChange(index, "weightage", e.target.value)
-              }
-              className="w-1/3"
-              min={0}
-              max={100}
-              suffix="%"
-            />
-            <Input
-              type="decimal"
-              placeholder="Leverage"
-              value={system.leverage}
-              onChange={(e) =>
-                handleSystemInputChange(
-                  index,
-                  "leverage",
-                  parseFloat(e.target.value)
-                )
-              }
-              className="w-1/3"
-              min={0}
-              step={0.1}
-            />
-            <Select
-              className="w-1/3"
-              placeholder="Select column"
-              value={system.column}
-              onChange={(value) =>
-                handleSystemInputChange(index, "column", value)
-              }
-              options={columns.map((col) => ({ label: col, value: col }))}
-            />
-          </div>
-        </div>
-      ))}
-
-      <div className="space-y-2">
-        <label className="block text-subheading font-subheading text-black">
-          Select Debt Funds
-        </label>
-        <Select
-          mode="multiple"
-          style={{ width: "100%" }}
-          options={DEBTFUNDS}
-          value={formData.selected_debtfunds.map((s) => s.debtfund)}
-          onChange={handleDebtFundChange}
-          className="w-full border-brown border rounded-none"
-          placeholder="Choose debt funds"
-        />
-      </div>
-
-      {formData.selected_debtfunds.map((debtfund, index) => (
-        <div key={index} className="space-y-2 p-4 bg-gray-50 ">
-          <h3 className="font-body text-black">{debtfund.debtfund}</h3>
-          <div className="flex gap-4">
-            <Input
-              type="decimal"
-              placeholder="Weightage"
-              value={debtfund.weightage}
-              onChange={(e) =>
-                handleDebtFundInputChange(
-                  index,
-                  "weightage",
-                  parseFloat(e.target.value)
-                )
-              }
-              className="w-1/2"
-              min={0}
-              max={100}
-              suffix="%"
-            />
-            <Input
-              type="decimal"
-              placeholder="Leverage"
-              value={debtfund.leverage}
-              onChange={(e) =>
-                handleDebtFundInputChange(
-                  index,
-                  "leverage",
-                  parseFloat(e.target.value)
-                )
-              }
-              className="w-1/2"
-              min={0}
-              step={0.1}
-            />
-          </div>
-        </div>
-      ))}
       <div className="text-center">
         <Button
           htmlType="submit"

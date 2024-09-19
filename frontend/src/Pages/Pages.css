@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
 /* Styles for main link containers */
 .nav-link-container, .nav-link-ladder {
   position: relative;
@@ -54,9 +56,9 @@
 
 /* Main content container */
 .post-content {
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
-  color: #333;
+  font-family: "DM Sans", sans-serif;
+  font-size: 16px;
+  line-height: 21px;
 }
 
 /* Headings */
@@ -68,21 +70,24 @@
   line-height: 1.2;
 }
 
-.post-content h1 { font-size: 2.5em; }
-.post-content h2 { font-size: 2em; }
-.post-content h3 { font-size: 1.75em; }
-.post-content h4 { font-size: 1.5em; }
-.post-content h5 { font-size: 1.25em; }
-.post-content h6 { font-size: 1em; }
+.gh-content > * + * {
+  margin-bottom: 0;
+  margin-top: calc(1.6em * var(--content-spacing-multiplier, 1));
+}
 
+.post-content h1 { font-size: 67px;line-height: 78px;font-family: "Playfair Display", serif;color: #945c39; }
+.post-content h2 { font-size: 42px;line-height: 65px; }
+.post-content h3 { font-size: 26px;line-height: 35px; }
+.post-content h4 { font-size: 16px;line-height: 21px; }
 /* Paragraphs */
 .post-content p {
-  margin-bottom: 1em;
+  font-size: 16px;
+  line-height: 21px;
 }
 
 /* Links */
 .post-content a {
-  color: #0066cc;
+  color: #d1a47b;
   text-decoration: none;
 }
 
@@ -97,7 +102,7 @@
 }
 
 .post-content li {
-  list-style: disc;
+  list-style: decimal;
   margin-bottom: 0.5em;
 }
 

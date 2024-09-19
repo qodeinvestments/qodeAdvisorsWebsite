@@ -16,75 +16,80 @@ import Heading from "../components/common/Heading";
 const AboutUs = () => {
   const teamMembers = [
     {
-      name: "Rishabh Nahar",
-      designation: "Quantitative Research Analyst",
-      linkedin: "https://www.linkedin.com/in/johndoe",
-      image: rishabh,
-      email: "johndoe@example.com",
+      name: "Karan Salecha",
+      designation: "Principal Officer, COO",
+      linkedin: "https://www.linkedin.com/in/karan-salecha-181309a7/",
+      image: karan,
+      email: "karan@qodeinvest.com",
     },
     {
-      name: "Karan Salecha",
-      designation: "Algorthmic Trader",
-      linkedin: "https://www.linkedin.com/in/janesmith",
-      image: karan,
-      email: "janesmith@example.com",
+      name: "Rishabh Nahar",
+      designation: "Fund Manager, CEO",
+      linkedin: "https://www.linkedin.com/in/rishabhnahar",
+      image: rishabh,
+      email: "rishabh@qodeinvest.com",
     },
     {
       name: "Kavan Sejpal",
-      designation: "Proprietry Trader",
-      linkedin: "https://www.linkedin.com/in/johndoe",
-      email: "johndoe@example.com",
+      designation: "Founding Partner, Proprietary Trader",
+      linkedin: "https://www.linkedin.com/in/kavan-sejpal-760a2b23/",
+      email: "kavan@swancapital.in",
       image: kavan,
     },
     {
-      name: "Vidhi",
-      designation: "CTO",
-      linkedin: "https://www.linkedin.com/in/janesmith",
-      email: "janesmith@example.com",
+      name: "Vidhi Chheda",
+      designation: "Partner, Head of Quant Research",
+      linkedin: "https://www.linkedin.com/in/vidhi-chheda-770600101/",
+      email: "vidhi.chheda@qodeinvest.com",
       image: vidhi,
     },
     {
-      name: "Neha",
-      designation: "CEO",
-      linkedin: "https://www.linkedin.com/in/johndoe",
-      email: "johndoe@example.com",
+      name: "Neha Bader",
+      designation: "Quantitative Analyst",
+      linkedin: "https://www.linkedin.com/in/neha-bader-a8395578/",
+      email: "neha@swancapital.in",
       image: neha,
     },
     {
       name: "Sakshi",
-      designation: "CTO",
-      linkedin: "https://www.linkedin.com/in/janesmith",
-      email: "janesmith@example.com",
+      designation: "Quantitative Research Analyst",
+      linkedin: "https://www.linkedin.com/in/sakshi-chheda/",
+      email: "sakshi.chheda@swancapital.in",
       image: sakshi,
     },
   ];
 
   return (
     <Section withBorder padding="extralarge" className="mt-9">
-      <Heading className="text-heading text-brown font-heading text-center mb-4">
+      <Heading className="text-heading text-brown font-heading text-center mb-3">
         About Qode
       </Heading>
-      <Text className="text-subheading font-subheading">Our Story</Text>
-      <Text className="text-start text-body font-body mb-4">
+      <Heading className="text-semiheading text-center mb-1 text-brown font-semiheading">
+        Our Story
+      </Heading>
+      <Text className="text-center text-body font-body mb-7">
         Our founders (Karan, Kavan & Rishabh) started with investing their own
-        money in the stock market using Quant models. When they started
+        money in the stock market using Quant models. <br /> When they started
         consistently outperforming the market average, they started investing
-        their family business reserve capital & grew it significantly. Over the
-        years they realised - Hey, we’re good at this why not help others grow
-        their wealth as well. So, they launched their quant strategy - Quant
-        Growth Fund with SRE (Another Fund manager). It’s been 6 years now since
-        the scheme is live. Its absolute return is - Which means if you had
-        invested 1CR when the scheme when it started then you would’ve made -
-        Seeing this they decided to start their own PMS and launch more schemes
-        for different investors with different financial goals and risk appetite
-        fund and to make a business out this. Business to help Investors grow
-        their money in the long term with high certainty.
+        their family business reserve capital & grew it significantly. <br />
+        <br /> Over the years they realised - Hey, we’re good at this why not
+        help others grow their wealth as well. <br />
+        <br /> So, they launched their quant strategy - Quant Growth Fund with
+        SRE (Another Fund manager). It’s been 6 years now since the scheme is
+        live. <br /> Its absolute return is - Which means if you had invested
+        1CR when the scheme when it started then you would’ve made - <br />
+        <br /> Seeing this they decided to start their own PMS and launch more
+        schemes for different investors with different financial goals <br />
+        and risk appetite fund and to make a business out this. <br />
+        <br />
+        Business to help Investors grow their money in the long term
+        with high certainty.
       </Text>
-      <Heading className="text-semiheading font-semibold text-center mb-2">
+      <Heading className="text-semiheading font-semibold text-center mb-3 text-brown">
         Our Team
       </Heading>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {teamMembers.map((member, index) => (
           <TeamMemberCard key={index} member={member} />
         ))}
@@ -99,7 +104,7 @@ const TeamMemberCard = ({ member }) => {
       <img
         src={member.image}
         alt={member.name}
-        className="w-full h-60 object-cover"
+        className="w-full h-[287px] object-cover"
       />
       <div className="p-1">
         <div className="flex justify-between items-start mb-18">

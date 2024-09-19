@@ -36,7 +36,7 @@ const ContactUs = () => {
           <div className="md:w-1/2">
             <div className="bg-white">
               <div className="text-left">
-                <div className="border border-brown p-4 mb-4">
+                <div className=" mb-4">
                   <Text className="text-subheading font-subheading mb-2">
                     Address
                   </Text>

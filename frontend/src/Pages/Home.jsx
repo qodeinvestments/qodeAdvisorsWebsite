@@ -79,13 +79,34 @@ const Home = () => {
 
   return (
     <div>
-      <Section padding="extralarge" withBorder={true} className="sm:mt-9 mt-8">
-        <SectionContent>
-          <Banner />
+      <Section
+        padding="extralarge"
+        fullWidth={false}
+        className="bg-black max-w-[93%] mt-9 sm:max-w-[1386px] mx-auto"
+      >
+        <SectionContent className="text-center">
+          <Heading className="sm:text-semiheading text-mobileSemiHeading text-beige sm:mb-4 font-semiheading">
+            We manage and grow long term wealth for high-net-worth individuals,
+            their families, and businesses.
+          </Heading>
+          <div className="flex gap-6 justify-center items-center sm:flex-row flex-col">
+            <Button
+              onClick={openModal}
+              className="sm:mt-1 mt-3 bg-beige text-black"
+            >
+              Grow your money with Qode
+            </Button>
+            {/* <Button
+              to={"/strategies"}
+              className="sm:mt-1 mt-3 border-beige border hover:bg-beige hover:text-black duration-300 transition text-body font-body text-beige"
+            >
+              Strategies
+            </Button> */}
+          </div>
         </SectionContent>
       </Section>
 
-      <Section
+      {/* <Section
         padding="extralarge"
         fullWidth={false}
         className="bg-black max-w-[93%] sm:max-w-[1386px] mx-auto"
@@ -104,7 +125,7 @@ const Home = () => {
             Grow your money with Qode
           </Button>
         </SectionContent>
-      </Section>
+      </Section> */}
 
       <Section
         padding="extralarge"

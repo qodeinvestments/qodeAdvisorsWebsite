@@ -11,6 +11,10 @@ const Header = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -33,6 +37,7 @@ const Header = () => {
             <Link
               to="/"
               className="text-beige playfair-display-font text-[35px] sm:text-3xl font-bold"
+              onClick={closeMobileMenu} // Close menu on logo click
             >
               Qode
             </Link>
@@ -105,13 +110,14 @@ const Header = () => {
                   <CustomLink
                     to="/blogs"
                     className="block px-4 py-2 text-body hover:text-black text-black border-b border-brown hover:bg-beige"
+                    onClick={closeMobileMenu} // Close menu when link is clicked
                   >
                     Blogs
                   </CustomLink>
                   <CustomLink
                     to="/strategies"
                     className="block px-4 py-2 text-body hover:text-black text-black border-b border-brown hover:bg-beige"
-                    onClick={toggleMobileMenu}
+                    onClick={closeMobileMenu} // Close menu when link is clicked
                   >
                     Strategies
                   </CustomLink>
@@ -120,7 +126,7 @@ const Header = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block px-4 py-2 text-body hover:bg-black hover:text-lightBeige transition"
-                    onClick={toggleMobileMenu}
+                    onClick={closeMobileMenu} // Close menu when link is clicked
                   >
                     Dashboard
                   </a>

@@ -30,6 +30,7 @@ const StrategyComponent = ({ strategyData }) => {
     strategyCode,
     steps,
     faqItems,
+    blogUrl,
   } = strategyData;
 
   const openModal = () => {
@@ -41,12 +42,12 @@ const StrategyComponent = ({ strategyData }) => {
   };
 
   return (
-    <div className="mx-auto mt-9">
+    <div className="mx-auto sm:mt-9 mt-8">
       <Section className="mb-4" withBorder padding="extralarge">
         <Heading className="font-bold mb-1 text-brown text-center">
           <span className="block">{title}</span>
         </Heading>
-        <Text className="text-center text-subheading font-subheading mb-3">
+        <Text className="text-center sm:text-subheading text-mobileSubHeading font-subheading mb-3">
           {tagLine}
         </Text>
         <Text className="text-center dm-sans-font text-body">
@@ -73,16 +74,18 @@ const StrategyComponent = ({ strategyData }) => {
 
       <Section withBorder padding="extralarge">
         <SectionContent>
-          <Text className="text-subheading font-subheading text-center mb-4 ">
-            How this Strategy works & <br /> how was it made to get the expected
-            returns with highest certainty.
+          <Text className="sm:text-subheading text-mobileSubHeading font-subheading text-center mb-4 ">
+            How this Strategy works & <br className="sm:visible hidden" /> how
+            was it made to get the expected returns with highest certainty.
           </Text>
           <CustomLink
-            // to={slug}
-            className="p-3 relative border-brown border transition-all justify-between items-center  flex duration-500 hover:bg-beige hover:border-none hover:shadow-xl group"
+            to={`/blogs${blogUrl}`}
+            className="p-2 relative border-brown border transition-all justify-between items-center  flex duration-500 hover:bg-beige hover:border-none hover:shadow-xl group"
           >
             <div className="text-black">
-              <Text className="text-subheading font-subheading">Read here</Text>
+              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
+                Read here
+              </Text>
             </div>
             <div className="text-black">
               <svg
@@ -107,12 +110,12 @@ const StrategyComponent = ({ strategyData }) => {
                 <div className="flex items-center justify-center w-3 sm:h-3 rounded-full bg-gray-200 mb-4">
                   <FontAwesomeIcon
                     icon={step.icon}
-                    className="text-subheading sm:text-subheading text-[#151E28]"
+                    className="sm:text-subheading text-mobileSubHeadingsm:sm:text-subheading text-mobileSubHeadingtext-[#151E28]"
                   />
                 </div>
                 <Heading
                   level={3}
-                  className="text-subheading sm:text-subheading font-bold text-[#151E28] mb-2"
+                  className="sm:text-subheading text-mobileSubHeadingsm:sm:text-subheading text-mobileSubHeadingfont-bold text-[#151E28] mb-2"
                 >
                   {step.title}
                 </Heading>
@@ -125,13 +128,16 @@ const StrategyComponent = ({ strategyData }) => {
         </SectionContent>
       </Section>
 
-      <Section padding="extralarge" className="bg-black max-w-[1386px] mx-auto">
+      <Section
+        padding="extralarge"
+        className="bg-black max-w-[93%] sm:max-w-[1386px] mx-auto"
+      >
         {/* <SectionContent> */}
-        <Heading className="text-semiheading text-beige   mb-4 text-center">
+        <Heading className="sm:text-semiheading text-mobileSemiHeading text-beige   mb-4 text-center">
           Need help deciding which strategy would be best for you to reach
           financial goal?
         </Heading>
-        <Text className="text-subheading mb-3 text-center text-beige">
+        <Text className="sm:text-subheading text-mobileSubHeading mb-3 text-center text-beige">
           Our fund manager would be happy to help you.
         </Text>
         <div className="text-center">
@@ -151,21 +157,24 @@ const StrategyComponent = ({ strategyData }) => {
       </Section> */}
 
       <Section padding="extralarge" withBorder>
-        <Heading className="text-semiheading font-semiheading text-brown text-center mb-4 ">
+        <Heading className="sm:text-semiheading text-mobileSemiHeading font-semiheading text-brown text-center mb-4 ">
           FAQ's
         </Heading>
         <div className="space-y-2 sm:space-y-3 mx-auto">
           {faqItems.map((item, index) => (
-            <div key={index} className="bg-white border border-brown">
+            <div
+              key={index}
+              className="bg-white border p-1 sm:p-0 py-0 border-brown"
+            >
               <div
-                className="flex justify-between items-center  sm:px-2 py-2 cursor-pointer"
+                className="flex gap-0.5 justify-between items-center  sm:px-2 py-2 cursor-pointer"
                 onClick={() => handleAccordionToggle(index)}
               >
-                <Text className="text-subheading font-subheading pr-4">
+                <Text className="sm:text-subheading text-mobileSubHeading font-subheading sm:pr-4">
                   {item.question}
                 </Text>
                 <span
-                  className={`text-[#151E28] text-subheading sm:text-subheading transition-transform duration-300 ${
+                  className={`text-[#151E28] sm:text-subheading text-mobileSubHeadingsm:sm:text-subheading text-mobileSubHeadingtransition-transform duration-300 ${
                     activeIndex === index ? "transform rotate-180" : ""
                   }`}
                 >

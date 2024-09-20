@@ -13,10 +13,11 @@ const LowVolMomentum = () => {
     title: "Qode Low Volatility Fund",
     tagLine: "Slow but Steady.",
     description:
-      "his strategy invests in the 30 most stable stocks in the market. This strategy outperforms the Index with considerably lower risk.",
+      "This strategy invests in the 30 most stable stocks in the market. This strategy outperforms the Index with considerably lower risk.",
     strategyCode: "LVF",
     strategySlug: "low-vol-momentum",
     pptLink: "/Quant Growth Fund Feb.pdf",
+    blogUrl: "/qode-low-risk",
     whitePaperLink: "", // Add the white paper link when available
     steps: [
       {

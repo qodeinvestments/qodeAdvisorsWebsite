@@ -40,7 +40,7 @@ const BlogDetails = () => {
 
   return (
     <Section withBorder padding="extralarge" className="mt-9">
-      <div className="max-w-[1066px] mx-auto">
+      <div className="max-w-[820px] mx-auto">
         <div className="text-center mb-18">
           <Text className="text-primary font-body text-body">
             {formatDate(post.published_at)} &#x2022; {post.reading_time} min
@@ -54,7 +54,7 @@ const BlogDetails = () => {
           <img
             src={post.feature_image}
             alt={post.title}
-            className="w-full object-cover h-auto mb-8 rounded-lg"
+            className="w-full object-cover h-auto sm:mb-8 mb-5  rounded-lg"
           />
         )}
         <div
@@ -71,7 +71,7 @@ const BlogDetails = () => {
               />
             )}
             <div>
-              <Text className="font-heading text-subheading text-brown">
+              <Text className="font-heading sm:text-subheading text-mobileSubHeadingtext-brown">
                 {post.primary_author.name}
               </Text>
               {post.primary_author.bio && (

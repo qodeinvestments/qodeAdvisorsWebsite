@@ -30,9 +30,9 @@ const FundManagers = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <Heading className="text-semiheading text-beige   mb-4 text-center">
-        Do you want to speak to a fund manager to <br /> know more before
-        investing?
+      <Heading className="sm:text-semiheading text-mobileSemiHeading text-beige   mb-4 text-center">
+        Do you want to speak to a fund manager to{" "}
+        <br className="sm:visible hidden" /> know more before investing?
       </Heading>
       <div className="flex flex-col justify-center items-center gap-3">
         {/* {managers.map((manager, index) => (
@@ -51,7 +51,7 @@ const FundManagers = () => {
             <div className="flex flex-col items-center md:items-start">
               <Text
                 level={3}
-                className="text-subheading text-beige font-bold text-center md:text-left"
+                className="sm:text-subheading text-mobileSubHeadingtext-beige font-bold text-center md:text-left"
               >
                 {manager.name}
               </Text>
@@ -62,7 +62,7 @@ const FundManagers = () => {
             </div>
           </div>
         ))} */}
-        <Text className="text-subheading mt-1 text-beige">
+        <Text className="sm:text-subheading text-mobileSubHeadingmt-1 text-center sm:text-start text-beige">
           Schedule a meeting with our fund manager.
         </Text>
         <Button className="bg-beige" onClick={openModal}>

@@ -15,10 +15,11 @@ const OurFocus = () => {
           </Text>
           <Heading
             level={2}
-            className="md:text-subheading text-primary-dark   mt-4"
+            className="md:sm:text-subheading text-mobileSubHeadingtext-primary-dark   mt-4"
           >
             We are <span className="text-primary-dark ">committed</span> to make
-            financial <br /> investment more reliable
+            financial <br className="sm:visible hidden" /> investment more
+            reliable
           </Heading>
 
           {/* Card Container */}

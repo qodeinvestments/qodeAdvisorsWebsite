@@ -7,7 +7,7 @@ import Section from "../components/container/Section";
 
 const TermsnConditions = () => {
   return (
-    <Section className="mt-9" withBorder padding="extralarge">
+    <Section className="mt-8 sm:mt-9" withBorder padding="extralarge">
       <Heading className="text-brown mb-18">Terms & Conditions</Heading>
       <Text className="text-body">
         By accessing & using the website of Qode Advisors LLP (hereinafter
@@ -27,7 +27,7 @@ const TermsnConditions = () => {
 
       <div className="flex flex-col mt-5 items-center justify-start">
         <div className="text-start">
-          <Text className="mb-18 text-subheading font-subheading">
+          <Text className="mb-18 sm:text-subheading text-mobileSubHeading font-subheading">
             Use of Information & materials:
           </Text>
           <Text className="mb-4 md:text-body">
@@ -41,7 +41,7 @@ const TermsnConditions = () => {
             advice before making any investment decisions.
           </Text>
 
-          <Text className="mt-5 mb-18 text-subheading font-subheading">
+          <Text className="mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading">
             Copyright & Intellectual property:
           </Text>
           <Text className="mb-4 md:text-body">
@@ -52,7 +52,7 @@ const TermsnConditions = () => {
             material from this website is strictly prohibited.
           </Text>
 
-          <Text className="mt-5 mb-18 text-subheading font-subheading">
+          <Text className="mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading">
             No warranties:
           </Text>
           <Text className="mb-4 md:text-body">
@@ -64,7 +64,7 @@ const TermsnConditions = () => {
             this website.
           </Text>
 
-          <Text className="mt-5 mb-18 text-subheading font-subheading">
+          <Text className="mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading">
             Exclusion of liability:
           </Text>
           <Text className="mb-4 md:text-body">
@@ -76,7 +76,7 @@ const TermsnConditions = () => {
             unauthorized access or alteration of your transmissions or data.
           </Text>
 
-          <Text className="mt-5 mb-18 text-subheading font-subheading">
+          <Text className="mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading">
             Governing law:
           </Text>
           <Text className="mb-4 md:text-body">
@@ -86,7 +86,7 @@ const TermsnConditions = () => {
             India.
           </Text>
 
-          <Text className="mt-5 mb-18 text-subheading font-subheading">
+          <Text className="mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading">
             Privacy & security:
           </Text>
           <Text className="mb-4 md:text-body">
@@ -95,7 +95,7 @@ const TermsnConditions = () => {
             information.
           </Text>
 
-          <Text className="mt-5 mb-18 text-subheading font-subheading">
+          <Text className="mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading">
             Hyperlinks:
           </Text>
           <Text className="mb-4 md:text-body">
@@ -116,7 +116,7 @@ const TermsnConditions = () => {
             will mean you accept those changes.
           </Text>
 
-          <Text className="mt-5 mb-18 text-subheading font-subheading">
+          <Text className="mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading">
             Amendments:
           </Text>
           <Text className="mb-4 md:text-body">
@@ -126,7 +126,7 @@ const TermsnConditions = () => {
             will mean you accept those changes.
           </Text>
 
-          <Text className="mt-5 mb-18 text-subheading font-subheading">
+          <Text className="mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading">
             Contact Information:
           </Text>
           <Text className="md:text-body">

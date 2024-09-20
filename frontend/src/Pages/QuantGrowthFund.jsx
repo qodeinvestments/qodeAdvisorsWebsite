@@ -19,6 +19,7 @@ const QuantGrowthFund = () => {
     strategyCode: "QGF",
     strategySlug: "quant-growth-fund",
     pptLink: "/Quant Growth Fund Feb.pdf",
+    blogUrl: "/qode-growth-fund",
     whitePaperLink: "", // Add the white paper link when available
     steps: [
       {

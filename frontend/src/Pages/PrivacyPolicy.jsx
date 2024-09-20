@@ -7,7 +7,7 @@ import Section from "../components/container/Section";
 
 const PrivacyPolicy = () => {
   return (
-    <Section className="mt-9" withBorder padding="extralarge">
+    <Section className="sm:mt-9 mt-8" withBorder padding="extralarge">
       <Heading className=" text-brown mb-18">Privacy policy</Heading>
       <Text className="text-body">
         At Qode Advisors LLP (Qode), we prioritize the privacy and security of
@@ -28,7 +28,7 @@ const PrivacyPolicy = () => {
 
       <div className="flex flex-col mt-5 items-center justify-start">
         <div className="text-start">
-          <Text className="mb-18 text-subheading font-subheading">
+          <Text className="mb-18 sm:text-subheading text-mobileSubHeading font-subheading">
             Information collection & use
           </Text>
           <Text className="mb-4  md:text-body">
@@ -43,7 +43,7 @@ const PrivacyPolicy = () => {
             services.
           </Text>
 
-          <Text className="  mt-5 mb-18 text-subheading font-subheading ">
+          <Text className="  mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading ">
             Sharing and disclosure of Information
           </Text>
           <Text className="mb-4  md:text-body">
@@ -56,7 +56,7 @@ const PrivacyPolicy = () => {
             required by law.
           </Text>
 
-          <Text className="  mt-5 mb-18 text-subheading font-subheading ">
+          <Text className="  mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading ">
             Protection of Information
           </Text>
           <Text className="mb-4  md:text-body">
@@ -69,7 +69,7 @@ const PrivacyPolicy = () => {
             carefully and change periodically.
           </Text>
 
-          <Text className="  mt-5 mb-18 text-subheading font-subheading ">
+          <Text className="  mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading ">
             Cookies and web analytics
           </Text>
           <Text className="mb-4  md:text-body">
@@ -81,7 +81,7 @@ const PrivacyPolicy = () => {
             these cookies through your web browser settings.
           </Text>
 
-          <Text className="  mt-5 mb-18 text-subheading font-subheading ">
+          <Text className="  mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading ">
             Your rights and responsibilities
           </Text>
           <Text className="mb-4  md:text-body">
@@ -93,7 +93,7 @@ const PrivacyPolicy = () => {
             breach of this policy.
           </Text>
 
-          <Text className="  mt-5 mb-18 text-subheading font-subheading ">
+          <Text className="  mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading ">
             Changes to the privacy policy
           </Text>
           <Text className="mb-4  md:text-body">
@@ -103,7 +103,7 @@ const PrivacyPolicy = () => {
             your information.
           </Text>
 
-          <Text className="  mt-5 mb-18 text-subheading font-subheading ">
+          <Text className="  mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading ">
             Contact us
           </Text>
           <Text className="  md:text-body">

@@ -81,7 +81,7 @@ const RelatedArticles = ({ strategySlug, limit = 3 }) => {
 
   if (posts.length === 0) {
     return (
-      <div className="md:text-subheading text-center my-20">
+      <div className="md:sm:text-subheading text-mobileSubHeadingtext-center my-20">
         No related articles found.
       </div>
     );
@@ -92,7 +92,7 @@ const RelatedArticles = ({ strategySlug, limit = 3 }) => {
       <div className="py-10">
         <Heading
           level={2}
-          className="md:text-subheading inter-font  text-[#151E28] mb-6"
+          className="md:sm:text-subheading text-mobileSubHeadinginter-font  text-[#151E28] mb-6"
         >
           Related Articles
         </Heading>

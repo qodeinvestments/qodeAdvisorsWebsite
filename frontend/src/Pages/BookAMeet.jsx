@@ -9,16 +9,16 @@ const BookAMeet = () => {
     "https://calendly.com/tech-qodeinvest/physical-meeting";
 
   return (
-    <div className=" bg-black flex p-7 items-center justify-center z-50  font-body">
+    <div className=" bg-black flex sm:p-7 p-2 items-center justify-center z-50  font-body">
       <div className=" text-center">
-        <Heading className="text-semiheading  text-beige font-heading mb-2">
+        <Heading className="sm:text-semiheading text-mobileSemiHeading  text-beige font-heading mb-2">
           Schedule a Meeting
         </Heading>
 
         <div className="flex flex-col items-center text-lightBeige justify-center gap-5  ">
           <div>
             <Text className="mb-2">
-              In Mumbai? <br />{" "}
+              In Mumbai? <br className="sm:visible hidden" />{" "}
               <span className=" text-body">
                 We'll be happy to meet you in person
               </span>
@@ -35,7 +35,7 @@ const BookAMeet = () => {
           </div>
           <div>
             <Text className=" mb-2">
-              Outside Mumbai? <br />
+              Outside Mumbai? <br className="sm:visible hidden" />
               <span className="font-normal text-body">
                 Let's get on a call.
               </span>

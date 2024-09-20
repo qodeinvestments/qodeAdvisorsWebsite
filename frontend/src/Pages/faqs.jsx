@@ -13,12 +13,12 @@ const FAQItem = ({ question, answer }) => {
       >
         <Heading
           level={3}
-          className="text-base  font-medium sm:text-body md:text-subheading text-[#151E28] pr-4"
+          className="text-base  font-medium sm:text-body md:sm:text-subheading text-mobileSubHeadingtext-[#151E28] pr-4"
         >
           {question}
         </Heading>
         <span
-          className={`text-[#151E28] md:text-subheading sm:md:text-subheading transition-transform duration-300 ${
+          className={`text-[#151E28] md:sm:text-subheading text-mobileSubHeadingsm:md:sm:text-subheading text-mobileSubHeadingtransition-transform duration-300 ${
             isOpen ? "transform rotate-180" : ""
           }`}
         >

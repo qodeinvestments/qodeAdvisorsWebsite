@@ -1,24 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Button from "../common/Button";
 import CustomLink from "../common/CustomLink";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
-    <header className="border-b fixed w-full bg-white z-20 top-0 text-black shadow-sm">
+    <header className="border-b fixed w-full px-18 sm:px-0 bg-white z-20 top-0 text-black shadow-sm">
       <div className="mx-auto max-w-[1386px]">
         <div className="flex justify-between items-center h-6">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link
               to="/"
-              className="text-beige playfair-display-font text-3xl font-bold"
+              className="text-beige playfair-display-font text-[35px] sm:text-3xl font-bold"
             >
               Qode
             </Link>
@@ -26,19 +40,18 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-5">
-            {/* <CustomLink
+            <CustomLink
               to="/blogs"
               className="text-body hover:text-primary transition duration-300"
             >
               Blogs
-            </CustomLink> */}
+            </CustomLink>
             <CustomLink
               to="/strategies"
               className="text-body hover:text-primary transition duration-300"
             >
               Strategies
             </CustomLink>
-
             <Button
               href="https://dashboard.qodeinvest.com/"
               target="_blank"
@@ -50,13 +63,13 @@ const Header = () => {
           </nav>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden relative" ref={dropdownRef}>
             <button
               onClick={toggleMobileMenu}
-              className="text-black hover:text-primary focus:outline-none"
+              className="text-brown focus:outline-none"
             >
               <svg
-                className="h-5 w-5"
+                className="h-2 w-2"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -78,40 +91,30 @@ const Header = () => {
                 )}
               </svg>
             </button>
+
+            {/* Mobile Navigation Dropdown */}
+            {isMobileMenuOpen && (
+              <div className="absolute right-0 border border-brown w-44 shadow-xl bg-white z-10">
+                <CustomLink
+                  to="/strategies"
+                  className="block px-4 py-2 text-body hover:text-black text-black border-b border-brown hover:bg-beige"
+                  onClick={toggleMobileMenu}
+                >
+                  Strategies
+                </CustomLink>
+                <a
+                  href="https://dashboard.qodeinvest.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block px-4 py-2 text-body   hover:bg-black hover:text-lightBeige transition"
+                  onClick={toggleMobileMenu}
+                >
+                  Dashboard
+                </a>
+              </div>
+            )}
           </div>
         </div>
-
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <CustomLink
-                to="/blogs"
-                className="block text-body hover:bg-lightBeige hover:text-primary px-3 py-2 rounded-md"
-                onClick={toggleMobileMenu}
-              >
-                Blogs
-              </CustomLink>
-              <CustomLink
-                to="/strategies"
-                className="block text-body hover:bg-lightBeige hover:text-primary px-3 py-2 rounded-md"
-                onClick={toggleMobileMenu}
-              >
-                Strategies
-              </CustomLink>
-
-              <a
-                href="https://dashboard.qodeinvest.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-body hover:bg-lightBeige hover:text-primary px-3 py-2 rounded-md"
-                onClick={toggleMobileMenu}
-              >
-                Dashboard
-              </a>
-            </div>
-          </div>
-        )}
       </div>
     </header>
   );

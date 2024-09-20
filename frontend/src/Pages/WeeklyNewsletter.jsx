@@ -40,11 +40,14 @@ const WeeklyNewsletter = () => {
     <div className="bg-gray-100  text-gray-900 min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="my-10">
-          <Heading level={1} className="md:text-subheading mb-4   text-center">
+          <Heading
+            level={1}
+            className="md:sm:text-subheading text-mobileSubHeadingmb-4   text-center"
+          >
             Qode Weekly Insights
           </Heading>
           <div className="text-center mb-12">
-            <Text className="md:text-subheading text-gray-700 mb-2">
+            <Text className="md:sm:text-subheading text-mobileSubHeadingtext-gray-700 mb-2">
               Harness the power of quantitative analysis for smarter investing
             </Text>
             <Text className="text-body text-gray-600">
@@ -56,7 +59,10 @@ const WeeklyNewsletter = () => {
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="md:flex">
             <div className="md:w-1/2 p-8 bg-beige text-white">
-              <Heading level={2} className="md:text-subheading  mb-6">
+              <Heading
+                level={2}
+                className="md:sm:text-subheading text-mobileSubHeading  mb-6"
+              >
                 Stay Ahead of the Markets
               </Heading>
               <ul className="space-y-4">
@@ -81,7 +87,10 @@ const WeeklyNewsletter = () => {
               </ul>
             </div>
             <div className="md:w-1/2 p-8">
-              <Heading level={2} className="md:text-subheading  mb-6">
+              <Heading
+                level={2}
+                className="md:sm:text-subheading text-mobileSubHeading  mb-6"
+              >
                 Subscribe to Our Newsletter
               </Heading>
               {!subscribed ? (
@@ -124,7 +133,7 @@ const WeeklyNewsletter = () => {
         </div>
 
         {/* <div className="mt-16">
-          <Heading level={2} className="md:text-subheading  mb-6 text-center">What Our Subscribers Say</Heading>
+          <Heading level={2} className="md:sm:text-subheading text-mobileSubHeading  mb-6 text-center">What Our Subscribers Say</Heading>
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {

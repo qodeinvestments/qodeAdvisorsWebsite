@@ -308,14 +308,14 @@ function PythonCalculator() {
 
   return (
     <Section withBorder padding="extralarge" className="mt-9">
-      <Heading className="text-heading text-brown text-center mb-4 font-heading">
+      <Heading className="text-mobileHeading sm:text-heading text-brown text-center mb-4 font-heading">
         Portfolio
       </Heading>
       <div
         className=" border border-brown text-black p-4 text-body  font-body"
         role="alert"
       >
-        <p className="text-subheading font-subheading mb-1">
+        <p className="sm:text-subheading text-mobileSubHeading font-subheading mb-1">
           Upload Requirements
         </p>
         <p className="mb-18">
@@ -334,7 +334,9 @@ function PythonCalculator() {
           </li>
         </ul>
       </div>
-      <Text className="text-subheading mt-5 mb-2 font-subheading">Dataset</Text>
+      <Text className="sm:text-subheading text-mobileSubHeadingmt-5 mb-2 font-subheading">
+        Dataset
+      </Text>
 
       <FileUpload onColumnsUpdate={handleFileUpload} />
 

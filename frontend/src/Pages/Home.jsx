@@ -79,7 +79,7 @@ const Home = () => {
 
   return (
     <div>
-      <Section padding="extralarge" withBorder={true} className="mt-9">
+      <Section padding="extralarge" withBorder={true} className="sm:mt-9 mt-8">
         <SectionContent>
           <Banner />
         </SectionContent>
@@ -88,16 +88,19 @@ const Home = () => {
       <Section
         padding="extralarge"
         fullWidth={false}
-        className="bg-black max-w-[1386px] mx-auto"
+        className="bg-black max-w-[93%] sm:max-w-[1386px] mx-auto"
       >
         <SectionContent className="text-center">
-          <Text className="text-subheading text-beige mb-4 font-subheading">
+          <Text className="sm:text-subheading text-mobileSubHeading text-beige sm:mb-4 font-subheading">
             For the past seven years, we have been managing and growing the{" "}
-            <br />
+            <br className="sm:visible hidden" />
             wealth of high-net-worth individuals, their families, and
             businesses.
           </Text>
-          <Button onClick={openModal} className="mt-1 bg-beige text-black">
+          <Button
+            onClick={openModal}
+            className="sm:mt-1 mt-3 bg-beige text-black"
+          >
             Grow your money with Qode
           </Button>
         </SectionContent>
@@ -105,7 +108,7 @@ const Home = () => {
 
       <Section
         padding="extralarge"
-        className="max-w-[1386px] bg-lightBeige mx-auto"
+        className="max-w-[93%] sm:max-w-[1386px] bg-lightBeige mx-auto"
         fullWidth={false}
       >
         <SectionContent>
@@ -114,8 +117,8 @@ const Home = () => {
       </Section>
       {/* <Section padding="extralarge" className="text-center" withBorder={true}>
         <SectionContent>
-          <Heading className="text-semiheading text-brown mb-4">
-            Picking the right Portfolio Management Service (PMS) <br /> is like
+          <Heading className="sm:text-semiheading text-mobileSemiHeading text-brown mb-4">
+            Picking the right Portfolio Management Service (PMS)  <br className="sm:visible hidden" /> is like
             picking the right stock
           </Heading>
           <Text className="mb-1 text-subheading">
@@ -127,7 +130,10 @@ const Home = () => {
         </SectionContent>
       </Section> */}
 
-      <Section padding="extralarge" className="bg-black max-w-[1386px] mx-auto">
+      <Section
+        padding="extralarge"
+        className="bg-black max-w-[93%] sm:max-w-[1386px] mx-auto"
+      >
         {/* <SectionContent> */}
         <FundManagers />
         {/* </SectionContent> */}
@@ -144,7 +150,7 @@ const Home = () => {
           <div className="">
             <div className="md:flex flex-col items-center text-center gap-2 justify-center">
               <div className="md:w-1/2 ">
-                <Text className="text-subheading text-black">
+                <Text className="sm:text-subheading text-mobileSubHeading text-black mb-3">
                   Subscribe to know more about our investment strategies, style
                   and principles.
                 </Text>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useStrategyData from "../components/hooks/strategyCagr";
 import { Container } from "../components";
@@ -13,6 +13,7 @@ import Button from "../components/common/Button";
 import CustomLink from "../components/common/CustomLink";
 import List from "../components/common/List";
 import Section from "../components/container/Section";
+import { motion } from "framer-motion";
 
 const StrategyCard = ({ strategy, name, description, slug }) => {
   const { loading, error, calculateReturns } = useStrategyData(strategy);
@@ -23,16 +24,18 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   return (
     <CustomLink
       to={slug}
-      className="p-3 relative border-brown border transition-all justify-between items-center  flex duration-500 hover:bg-beige hover:border-none hover:shadow-xl group"
+      className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row  flex duration-500 bg-lightBeige hover:border hover:border-brown hover:bg-white hover:shadow-xl group"
     >
       <div className="text-black">
-        <Text className="text-subheading font-subheading">{name}</Text>
+        <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
+          {name}
+        </Text>
         <Text
-          className="text-xs sm:text-body "
+          className="text-body "
           dangerouslySetInnerHTML={{ __html: description }}
         ></Text>
       </div>
-      <div className="text-black">
+      <div className="text-black self-end sm:self-center ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 100 100"
@@ -50,6 +53,46 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
 
 const Strategies = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentText, setCurrentText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+  const [index, setIndex] = useState(0);
+
+  const typingSpeed = 130;
+  const deletingSpeed = 55;
+  const delayBetweenTexts = 1500;
+  const textArray = [
+    "driven by data.",
+    "objective.",
+    "emotion-free.",
+    "carried out by Qode.",
+  ];
+
+  useEffect(() => {
+    let timeout;
+    if (isTyping) {
+      if (currentText.length < textArray[index].length) {
+        timeout = setTimeout(() => {
+          setCurrentText(textArray[index].slice(0, currentText.length + 1));
+        }, typingSpeed);
+      } else {
+        timeout = setTimeout(() => {
+          setIsTyping(false);
+        }, delayBetweenTexts);
+      }
+    } else {
+      if (currentText.length > 0) {
+        timeout = setTimeout(() => {
+          setCurrentText(currentText.slice(0, -1));
+        }, deletingSpeed);
+      } else {
+        setIsTyping(true);
+        setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [currentText, isTyping, index]);
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
@@ -81,17 +124,29 @@ const Strategies = () => {
 
   return (
     <>
-      <Section className="mt-9" withBorder padding="extralarge">
+      {/* <Section
+        withBorder
+        padding="extralarge"
+        className="mt-9 mb-1 text-center"
+      >
+        <Heading className="text-semiheading font-semibold text-brown ">
+          The best investments are <br />
+          <div className=" ">
+            {currentText} <span className="animate-blink">|</span>
+          </div>
+        </Heading>
+      </Section> */}
+      <Section className="sm:mt-9 mt-8" withBorder padding="extralarge">
         <div className="mx-auto">
-          <Heading className="text-heading text-brown text-center font-heading">
-            All Strategies
+          <Heading className="text-mobileHeading sm:text-heading text-brown text-center font-heading">
+            Our Strategies
           </Heading>
-          <Text className=" text-center mt-1 mb-5">
+          <Text className=" text-body font-body text-center sm:mt-1 mt-3 mb-5">
             One of these or a combination of these strategies will help you
             reach your financial goal with the highest probability <br /> (based
             on how much risk you're willing to take)
           </Text>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             {strategies.map((strategy) => (
               <StrategyCard
                 key={strategy.id}
@@ -110,39 +165,6 @@ const Strategies = () => {
           )}
         </div>
       </Section>
-      {/* <Section
-        className="max-w-[1386px] bg-lightBeige mx-auto"
-        fullWidth={false}
-        // gray
-        padding="extralarge"
-      >
-        <div className="mt-1">
-          <Heading className="text-semiheading text-center text-brown">
-            Making money in the stock market is <br /> simple if you follow
-            these rules
-          </Heading>
-          <Text className="text-subheading text-center mb-4 font-subheading">
-            Simple but not easy{" "}
-          </Text>
-          <List
-            className=" space-y-1 text-center mt-1"
-            items={[
-              <Text className="text-body font-body">
-                Don't lose money ever
-              </Text>,
-              <Text className="text-body font-body">
-                Never take decisions based on emotion
-              </Text>,
-              <Text className="text-body font-body">
-                Increase your odds of winning in the long term
-              </Text>,
-              <Text className="text-body font-body">
-                Don't try to be smart, just don't be stupid
-              </Text>,
-            ]}
-          ></List>
-        </div>
-      </Section> */}
     </>
   );
 };

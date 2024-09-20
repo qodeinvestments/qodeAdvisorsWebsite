@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, {
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+  useRef,
+} from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import {
@@ -25,20 +31,36 @@ const PerformanceChart = ({ strategy }) => {
   const [endDate, setEndDate] = useState(null);
   const [activeButton, setActiveButton] = useState("ALL");
   const [filteredData, setFilteredData] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isCustomDateOpen, setIsCustomDateOpen] = useState(false);
+  const customDateRef = useRef(null);
+  const customButtonRef = useRef(null);
 
   const loadData = useCallback(async () => {
+    setIsLoading(true);
+    setError(null);
     try {
       const data = await fetchStrategyData(
         strategy,
         timeRange,
-        startDate,
-        endDate
+        timeRange === "Custom" ? startDate : null,
+        timeRange === "Custom" ? endDate : null
       );
+      console.log("Fetched data:", data);
+      if (!data || data.length === 0) {
+        throw new Error("No data received from API");
+      }
       const chartData = prepareChartData(data, strategy);
+      console.log("Prepared chart data:", chartData);
       updateChartOptions(chartData);
       setFilteredData(data);
     } catch (error) {
       console.error("Error loading data: ", error);
+      setError(error.message);
+    } finally {
+      setIsLoading(false);
     }
   }, [strategy, timeRange, startDate, endDate]);
 
@@ -46,8 +68,22 @@ const PerformanceChart = ({ strategy }) => {
     loadData();
   }, [loadData]);
 
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const calculateCAGR = useCallback(
-    (data, timeRange = "3Y", portfolioType = "total_portfolio_nav") => {
+    (data, timeRange = "ALL", portfolioType = "total_portfolio_nav") => {
       const parseDate = (dateString) => new Date(dateString);
 
       const sortedData = [...data].sort(
@@ -60,33 +96,38 @@ const PerformanceChart = ({ strategy }) => {
       const latestDate = parseDate(latestData.date);
       let startDate = new Date(latestDate);
 
-      switch (timeRange) {
-        case "1M":
-          startDate.setMonth(startDate.getMonth() - 1);
-          break;
-        case "3M":
-          startDate.setMonth(startDate.getMonth() - 3);
-          break;
-        case "6M":
-          startDate.setMonth(startDate.getMonth() - 6);
-          break;
-        case "1Y":
-          startDate.setFullYear(startDate.getFullYear() - 1);
-          break;
-        case "3Y":
-          startDate.setFullYear(startDate.getFullYear() - 3);
-          break;
-        case "5Y":
-          startDate.setFullYear(startDate.getFullYear() - 5);
-          break;
-        case "ALL":
-          startDate = parseDate(sortedData[0].date);
-          break;
-        case "YTD":
-          startDate.setMonth(0, 1);
-          break;
-        default:
-          return "Invalid time range";
+      if (timeRange === "Custom") {
+        // For custom date range, use the provided start and end dates
+        startDate = parseDate(sortedData[0].date);
+      } else {
+        switch (timeRange) {
+          case "1M":
+            startDate.setMonth(startDate.getMonth() - 1);
+            break;
+          case "3M":
+            startDate.setMonth(startDate.getMonth() - 3);
+            break;
+          case "6M":
+            startDate.setMonth(startDate.getMonth() - 6);
+            break;
+          case "1Y":
+            startDate.setFullYear(startDate.getFullYear() - 1);
+            break;
+          case "3Y":
+            startDate.setFullYear(startDate.getFullYear() - 3);
+            break;
+          case "5Y":
+            startDate.setFullYear(startDate.getFullYear() - 5);
+            break;
+          case "ALL":
+            startDate = parseDate(sortedData[0].date);
+            break;
+          case "YTD":
+            startDate.setMonth(0, 1);
+            break;
+          default:
+            return "Invalid time range";
+        }
       }
 
       const startIndex = sortedData.findIndex(
@@ -102,6 +143,9 @@ const PerformanceChart = ({ strategy }) => {
       const years =
         (latestDate - parseDate(sortedData[startIndex].date)) /
         (365 * 24 * 60 * 60 * 1000);
+
+      if (years <= 0) return "Invalid date range";
+
       const cagr = (Math.pow(endValue / startValue, 1 / years) - 1) * 100;
 
       return cagr.toFixed(2) + "%";
@@ -120,6 +164,8 @@ const PerformanceChart = ({ strategy }) => {
     const initialNiftyValue = parseFloat(
       data[0]["Nifty 50"] || data[0]["nifty"]
     );
+    console.log(data);
+
     return data.map((item) => ({
       date: item.date,
       strategyValue:
@@ -132,6 +178,7 @@ const PerformanceChart = ({ strategy }) => {
 
   const updateChartOptions = (data) => {
     const dates = data.map((item) => item.date);
+
     const strategyValues = data.map((item) => Math.trunc(item.strategyValue));
     const niftyValues = data.map((item) => Math.trunc(item.niftyValue));
 
@@ -157,6 +204,7 @@ const PerformanceChart = ({ strategy }) => {
           },
         },
         tickPositions: [0, Math.floor(dates.length / 2), dates.length - 1],
+        // gridLineWidth: isMobile ? 0 : 1,
       },
       yAxis: [
         {
@@ -183,14 +231,31 @@ const PerformanceChart = ({ strategy }) => {
         },
       ],
       chart: {
-        height: 520,
+        height: isMobile ? 300 : 520,
         backgroundColor: "none",
         zoomType: "x",
+        marginLeft: isMobile ? 0 : 40,
+        marginRight: isMobile ? 0 : 40,
       },
-      tooltip: { shared: true },
+      tooltip: {
+        shared: true,
+        outside: isMobile,
+      },
       legend: { enabled: false },
       credits: { enabled: false },
-      exporting: { enabled: true },
+      exporting: { enabled: !isMobile },
+      plotOptions: {
+        series: {
+          animation: {
+            duration: 2000,
+          },
+          states: {
+            hover: {
+              enabled: !isMobile,
+            },
+          },
+        },
+      },
     };
 
     setChartOptions(options);
@@ -199,51 +264,155 @@ const PerformanceChart = ({ strategy }) => {
   const handleTimeRangeChange = useCallback((range) => {
     setTimeRange(range);
     setActiveButton(range);
-    if (range !== "ALL") {
+    if (range !== "ALL" && range !== "Custom") {
       setStartDate(null);
       setEndDate(null);
     }
+    if (range === "YTD") {
+      const currentDate = new Date();
+      setStartDate(
+        new Date(currentDate.getFullYear(), 0, 1).toISOString().split("T")[0]
+      );
+      setEndDate(currentDate.toISOString().split("T")[0]);
+    }
+    setIsCustomDateOpen(false);
   }, []);
+
+  const handleCustomDateClick = () => {
+    setIsCustomDateOpen(!isCustomDateOpen);
+  };
+
+  const handleCustomDateSubmit = () => {
+    if (startDate && endDate) {
+      setTimeRange("Custom");
+      setActiveButton("Custom");
+      setIsCustomDateOpen(false);
+      loadData();
+    } else {
+      alert("Please select both start and end dates.");
+    }
+  };
+
+  const renderDateRangeButtons = () => {
+    const ranges = ["1M", "6M", "1Y", "3Y", "5Y", "ALL"];
+    return (
+      <>
+        {ranges.map((range) => (
+          <Button
+            key={range}
+            onClick={() => handleTimeRangeChange(range)}
+            className={`text-xs border border-brown ${
+              activeButton === range
+                ? "bg-beige border-none text-black"
+                : "bg-white text-black"
+            }`}
+          >
+            {range}
+          </Button>
+        ))}
+        <div className="relative" ref={customButtonRef}>
+          <Button
+            onClick={handleCustomDateClick}
+            className={`text-xs border border-brown ${
+              activeButton === "Custom"
+                ? "bg-beige border-none text-black"
+                : "bg-white text-black"
+            }`}
+          >
+            Custom
+          </Button>
+          {isCustomDateOpen && (
+            <div
+              ref={customDateRef}
+              className="absolute right-0 mt-18 sm:p-4 p-1 bg-white border border-brown shadow-lg z-50"
+              style={{
+                top: "100%",
+                minWidth: "200px",
+              }}
+            >
+              <div className="flex flex-col gap-18 sm:flex-row sm:gap-1">
+                <div className="w-full">
+                  <label
+                    htmlFor="start-date"
+                    className="block text-body font-medium text-gray-700"
+                  >
+                    Start Date
+                  </label>
+                  <input
+                    type="date"
+                    id="start-date"
+                    value={startDate || ""}
+                    onChange={(e) => {
+                      setStartDate(e.target.value);
+                      setTimeRange("Custom");
+                      setActiveButton("Custom");
+                    }}
+                    className="mt-18 block w-full border border-brown shadow-sm p-18"
+                  />
+                </div>
+                <div className="w-full">
+                  <label
+                    htmlFor="end-date"
+                    className="block text-body font-medium text-gray-700"
+                  >
+                    End Date
+                  </label>
+                  <input
+                    type="date"
+                    id="end-date"
+                    value={endDate || ""}
+                    onChange={(e) => {
+                      setEndDate(e.target.value);
+                      setTimeRange("Custom");
+                      setActiveButton("Custom");
+                    }}
+                    className="mt-18 block w-full border border-brown shadow-sm p-18"
+                  />
+                </div>
+              </div>
+              {/* <Button
+      onClick={handleCustomDateSubmit}
+      className="bg-beige text-black mt-4 w-full"
+    >
+      Apply
+    </Button> */}
+            </div>
+          )}
+        </div>
+      </>
+    );
+  };
 
   return (
     <div className="flex flex-col justify-center gap-4">
       {" "}
       {/* Adjusted gap spacing */}
-      <div className="w-full p-7 border border-brown">
+      <div className="w-full sm:p-7 p-2 border border-brown">
         <Tabs value="chart1">
           {" "}
           {/* Adjusted gap spacing */}
           {/* Time Range Buttons */}
-          <div className="flex justify-between items-center">
-            <div className="flex flex-wrap   gap-18">
-              {["1M", "6M", "1Y", "3Y", "5Y", "ALL"].map((range) => (
-                <Button
-                  onClick={() => handleTimeRangeChange(range)}
-                  className={` text-xs border border-brown ${
-                    activeButton === range
-                      ? "bg-beige border-none text-black"
-                      : "bg-white text-black"
-                  }`}
-                >
-                  {range}
-                </Button>
-              ))}
+          <div className="flex justify-between flex-col sm:flex-row items-center">
+            <div className="flex flex-wrap  justify-center items-center   gap-18">
+              {renderDateRangeButtons()}
               {/* Adjusted gap spacing */}
-              <input
+              {/* <input
                 type="date"
                 onChange={(e) => setStartDate(e.target.value)}
-                className="border px-1 w-full sm:w-auto"
-              />
+                className="border p-[10px] w-full sm:w-auto"
+              /> */}
               {/* <input
               type="date"
               onChange={(e) => setEndDate(e.target.value)}
               className="border px-1 w-full sm:w-auto"
             /> */}
             </div>
-            <div className="text-center sm:text-right mt-1 sm:mt-0">
-              <Text className="text-subheading font-subheading text-gray-800">
+            <div className="text-center sm:text-right mt-3 sm:mt-0">
+              <Text className="sm:text-semiheading text-semiheading font-subheading text-brown">
                 {strategyCagr}
-                <span className="text-xs ml-1">{timeRange} return</span>
+                <span className="text-body ml-1 text-black">
+                  {timeRange} return
+                </span>
               </Text>
             </div>
           </div>
@@ -261,19 +430,25 @@ const PerformanceChart = ({ strategy }) => {
           </TabsBody>
         </Tabs>
       </div>
-      <div className="w-full flex gap-4">
+      <div className="w-full flex sm:flex-row flex-col gap-4">
         {" "}
         {/* Adjusted margin */}
-        <div className=" p-6  bg-white border border-brown w-3/5">
+        <div className=" sm:p-6 p-3  bg-white border border-brown sm:w-3/5">
           {" "}
           {/* Adjusted padding */}
           <Calculator strategy={strategy} />
         </div>
-        <div className="bg-black text-center flex justify-center items-center flex-col p-6 w-2/5">
-          <Heading className="text-beige text-semiheading mb-4">
+        <div className="bg-black text-center flex justify-center items-center flex-col p-6 sm:w-2/5">
+          <Heading className="text-beige sm:text-semiheading text-mobileSemiHeading mb-4">
             Want to track the Live portfolio performance?
           </Heading>
-          <Button className="bg-beige text-black">Sign Up</Button>
+          <Button
+            to={"https://dashboard.qodeinvest.com/"}
+            target="_blank"
+            className="bg-beige text-black"
+          >
+            Sign Up
+          </Button>
         </div>
       </div>
     </div>

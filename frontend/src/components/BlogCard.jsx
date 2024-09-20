@@ -29,10 +29,10 @@ function BlogCard({
       initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="overflow-hidden transition-transform duration-75  max-w-[400px] hover:scale-105 flex flex-col"
+      className="overflow-hidden transition-all border border-brown duration-75  max-w-[485px] p-1 hover:bg-lightBeige    hover:scale-105 flex flex-col"
     >
       <CustomLink to={`/blogs/${slug}`} className="block flex-grow">
-        <div className="p-6 h-full group overflow-hidden relative flex flex-col">
+        <div className="p-2 h-full group overflow-hidden  relative flex flex-col">
           {feature_image && (
             <img
               src={feature_image}
@@ -40,17 +40,13 @@ function BlogCard({
               className="w-full h-48 object-cover mb-4"
             />
           )}
-          <div className="transition-all duration-500 transform group-hover:-translate-y-5 flex flex-col h-full">
+          <div className="transition-all  flex flex-col h-full">
             <div className="mb-auto">
-              <span className="text-primary-dark text-xs">Blog</span>
-              <Heading
-                level={3}
-                className="md:text-subheading text-black group-hover:text-brown font-bold  mb-2 relative overflow-hidden text-ellipsis"
-              >
+              <Heading className="md:sm:text-subheading text-mobileSubHeading text-brown font-bold  mb-2 relative overflow-hidden text-ellipsis">
                 {title}
               </Heading>
             </div>
-            <Text className="text-body line-clamp-5 my-4">{excerpt}</Text>
+            <Text className="text-body line-clamp-6   ">{excerpt}</Text>
             <div className="flex items-center justify-between mt-4">
               {primary_author && (
                 <div className="flex items-center">
@@ -64,20 +60,34 @@ function BlogCard({
                   <span className="text-xs">{primary_author.name}</span>
                 </div>
               )}
-              <div className="flex items-center">
-                <FontAwesomeIcon icon={faClock} className="mr-1" />
-                <span className="text-xs">{reading_time} min read</span>
+              <div className="flex items-center justify-between w-full ">
+                <div className="group-hover:text-brown">
+                  <FontAwesomeIcon icon={faClock} className="mr-1" />
+                  <span className="text-xs">{reading_time} min read</span>
+                </div>
+                <div className="self-end sm:text-right group-hover:text-black ">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 100 100"
+                    width="44"
+                    height="44"
+                  >
+                    <path
+                      d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </div>
               </div>
             </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 px-6 py-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
+          {/* <div className="absolute bottom-0 left-0 right-0 px-6 py-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
             <CustomLink to={`/blogs/${slug}`} className="text-brown">
               Continue Reading <FontAwesomeIcon icon={faArrowRight} />
             </CustomLink>
-          </div>
+          </div> */}
         </div>
       </CustomLink>
-      <hr className="w-full" />
     </motion.div>
   );
 }

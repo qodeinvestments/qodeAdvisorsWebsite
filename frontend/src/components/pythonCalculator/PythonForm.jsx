@@ -140,11 +140,11 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4  max-w-7xl mx-auto">
-      {/* <Heading className="text-semiheading font-subheading text-brown ">
+      {/* <Heading className="sm:text-semiheading text-mobileSemiHeading font-subheading text-brown ">
           Portfolio
         </Heading> */}
       <div className="space-y-2">
-        <label className="block text-subheading font-subheading text-black">
+        <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Choose strategies
         </label>
         <Select
@@ -203,7 +203,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       ))}
 
       <div className="space-y-2">
-        <label className="block text-subheading font-subheading text-black">
+        <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Choose Debt Funds
         </label>
         <Select
@@ -256,7 +256,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       ))}
 
       <div className="space-y-2">
-        <label className="block text-subheading font-subheading text-black">
+        <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Investment Period
         </label>
         <RangePicker
@@ -280,7 +280,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         />
       </div>
       <div className="space-y-2">
-        <label className="block text-subheading font-subheading text-black">
+        <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Investment Amount
         </label>
         <Input
@@ -296,7 +296,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       </div>
 
       <div className="space-y-2">
-        <label className="block text-subheading font-subheading text-black">
+        <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Cash Percentage
         </label>
         <Input
@@ -313,7 +313,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       </div>
 
       <div className="space-y-2">
-        <label className="block text-subheading font-subheading text-black">
+        <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Rebalance Frequency
         </label>
         <Radio.Group

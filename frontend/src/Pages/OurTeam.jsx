@@ -63,7 +63,7 @@ const OurTeam = () => {
       <div className="container  mx-auto py-8  mt-16">
         <Heading
           level={2}
-          className="md:text-subheading inter-font  text-center mb-6"
+          className="md:sm:text-subheading text-mobileSubHeadinginter-font  text-center mb-6"
         >
           Our Team
         </Heading>

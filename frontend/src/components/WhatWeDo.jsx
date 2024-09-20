@@ -8,7 +8,10 @@ import Heading from "./common/Heading";
 const WhatWeDo = () => {
   return (
     <div className="text-center inter-font mt-10">
-      <Heading level={2} className="md:text-subheading  ">
+      <Heading
+        level={2}
+        className="md:sm:text-subheading text-mobileSubHeading  "
+      >
         What we do?
       </Heading>
       <Text className="text-gray-400 mt-4 md:text-subheading">
@@ -19,7 +22,7 @@ const WhatWeDo = () => {
           <div className="p-6 rounded-full">
             <img src={reliable} alt="Reliable" className="h-12 w-12" />
           </div>
-          <Text className="mt-4 text-gray-700  md:text-subheading ">
+          <Text className="mt-4 text-gray-700  md:sm:text-subheading text-mobileSubHeading ">
             Reliable
           </Text>
           <Text>Consistent Returns through data driven strategies</Text>
@@ -28,19 +31,20 @@ const WhatWeDo = () => {
           <div className="p-6 rounded-full">
             <img src={repeatable} alt="Repeatable" className="h-12 w-12" />
           </div>
-          <Text className="mt-4 text-gray-700  md:text-subheading ">
+          <Text className="mt-4 text-gray-700  md:sm:text-subheading text-mobileSubHeading ">
             Repeatable
           </Text>
           <Text>
             {" "}
-            Proven methods for continuous <br /> growth
+            Proven methods for continuous <br className="sm:visible hidden" />{" "}
+            growth
           </Text>
         </div>
         <div className="flex border rounded-lg w-1/3   flex-col text-center items-center p-4 shadow-md">
           <div className="p-6 rounded-full">
             <img src={analysis} alt="Emotion Free" className="h-12 w-12" />
           </div>
-          <Text className="mt-4 text-gray-700  md:text-subheading ">
+          <Text className="mt-4 text-gray-700  md:sm:text-subheading text-mobileSubHeading ">
             Emotion Free
           </Text>
           <Text>Objective investments, devoid of emotional bias</Text>

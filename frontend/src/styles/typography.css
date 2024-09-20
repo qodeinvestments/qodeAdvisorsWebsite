@@ -1,10 +1,10 @@
 /* src/styles/typography.css */
 @layer utilities {
     .heading-1 {
-      @apply font-heading font-heading text-heading text-primary;
+      @apply font-heading font-heading text-mobileHeading sm:text-heading ;
     }
     .heading-2 {
-      @apply font-heading font-heading text-subheading text-primary;
+      @apply font-heading font-heading sm:text-subheading text-mobileSubHeading ;
     }
     .body-text {
       @apply font-body font-body text-body text-text;

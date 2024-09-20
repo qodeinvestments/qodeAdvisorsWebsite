@@ -19,14 +19,14 @@ const Disclosure = () => {
   ];
 
   return (
-    <Section className="mt-9" withBorder padding="extralarge">
+    <Section className="sm:mt-9 mt-8" withBorder padding="extralarge">
       <Heading className="text-brown mb-5">Disclosure</Heading>
 
       <div className="grid grid-cols-1 gap-2">
         <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
-              <Text className="text-subheading font-subheading">
+              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
                 Disclosure document
               </Text>
             </div>
@@ -47,7 +47,7 @@ const Disclosure = () => {
         <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
-              <Text className="text-subheading font-subheading">
+              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
                 Prevention of money laundering
               </Text>
             </div>
@@ -68,7 +68,7 @@ const Disclosure = () => {
         <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
-              <Text className="text-subheading font-subheading">
+              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
                 Conflict of interest policy
               </Text>
             </div>
@@ -89,7 +89,7 @@ const Disclosure = () => {
         <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
-              <Text className="text-subheading font-subheading">
+              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
                 Investor charter
               </Text>
             </div>
@@ -110,7 +110,7 @@ const Disclosure = () => {
         <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
-              <Text className="text-subheading font-subheading">
+              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
                 Investor complaints (monthly)
               </Text>
             </div>
@@ -131,7 +131,7 @@ const Disclosure = () => {
         <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
-              <Text className="text-subheading font-subheading">
+              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
                 Code of conduct
               </Text>
             </div>
@@ -172,6 +172,7 @@ const Disclosure = () => {
           with your name, registered mobile number, PAN Card, and nature of the
           complaint.
         </Text>
+        <br className="visible sm:hidden" />
         <Text className="text-body font-body">
           Visit the{" "}
           <a

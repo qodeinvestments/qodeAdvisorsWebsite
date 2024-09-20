@@ -170,15 +170,15 @@ const Calculator = ({ strategy }) => {
   return (
     <>
       {/* Padding adjusted to match your scale */}
-      <Heading className="text-semiheading text-brown font-heading mb-2 sm:mb-2">
+      <Heading className="sm:text-semiheading  text-mobileSemiHeading text-brown font-heading mb-2 sm:mb-2">
         {/* Margin adjusted */}
         Returns Calculator
       </Heading>
-      <div className="space-y-2">
+      <div className="space-y-4">
         {/* Vertical spacing adjusted */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:gap-4 justify-between items-center">
           {/* Spacing adjusted */}
-          <Text className="text-body sm:text-body mb-1 sm:mb-0 w-3/5">
+          <Text className="text-body sm:text-body mb-1 sm:mb-0 w-full sm:w-3/5">
             {/* Margin adjusted */}
             Investment Amount (₹)
           </Text>
@@ -191,7 +191,7 @@ const Calculator = ({ strategy }) => {
             className="w-full h-2 py-2 px-2 border text-start"
           />
         </div>
-        <div className="flex flex-col sm:flex-row gap-3 justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           {/* Spacing adjusted */}
           <Text className="text-body sm:text-body mb-1 sm:mb-0 w-full sm:w-3/5">
             {/* Margin adjusted */}
@@ -216,7 +216,7 @@ const Calculator = ({ strategy }) => {
             ))}
           </div>
         </div>
-        <div className="flex flex-col sm:flex-row gap-3 justify-between items-center">
+        <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
           {/* Adjusted gap to match the frequency section */}
           <Text className="text-body sm:text-body mb-1 sm:mb-0 w-full sm:w-3/5">
             {/* Margin adjusted */}
@@ -233,7 +233,7 @@ const Calculator = ({ strategy }) => {
             </Button>
             <input
               type="number"
-              className="outline-none focus:outline-none text-center w-1/2 bg-white text-body hover:text-black focus:text-black text-body cursor-default flex items-center text-gray-700"
+              className="outline-none focus:outline-none text-center w-1/2 bg-white  hover:text-black focus:text-black text-body cursor-default flex items-center text-gray-700"
               name="custom-input-number"
               value={investmentPeriod}
               readOnly
@@ -251,17 +251,18 @@ const Calculator = ({ strategy }) => {
       <div className="text-center mt-4 px-1 sm:px-2">
         {/* Margin and padding adjusted */}
         {/* Commented out section preserved */}
-        <Text className="md:text-subheading mt-2 font-subheading">
+        <Text className="md:sm:text-subheading text-mobileSubHeadingmt-2 font-subheading">
           {/* Margin adjusted */}₹{numberWithCommas(futureInvestmentValue)}
         </Text>
         <Text className="text-body text-black">
           Invested: ₹{numberWithCommas(calculateTotalInvestment())}
         </Text>
       </div>
-      <Text className="text-body text-center  sm:mt-1">
+      <Text className="text-body text-center  sm:sm:mt-1 mt-3">
         {/* Margin adjusted */}
-        Figures are based on historical returns and backtest. <br /> They do not
-        guarantee future results.*
+        Figures are based on historical returns and backtest.{" "}
+        <br className="sm:visible hidden" /> They do not guarantee future
+        results.*
       </Text>
     </>
   );

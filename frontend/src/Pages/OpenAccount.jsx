@@ -57,13 +57,16 @@ const OpenAccount = () => {
         >
           {step === 1 && (
             <>
-              <Heading level={1} className="md:text-subheading  mb-16">
+              <Heading
+                level={1}
+                className="md:sm:text-subheading text-mobileSubHeading  mb-16"
+              >
                 Let's start with your name
               </Heading>
               <div className="w-full max-w-3xl mb-16">
                 <label
                   htmlFor="firstName"
-                  className="block md:text-subheading mb-4"
+                  className="block md:sm:text-subheading text-mobileSubHeadingmb-4"
                 >
                   1. Enter Your First Name
                 </label>
@@ -73,13 +76,13 @@ const OpenAccount = () => {
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 md:text-subheading bg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
+                  className="w-full px-4 py-2 md:sm:text-subheading text-mobileSubHeadingbg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
                 />
               </div>
               <div className="w-full max-w-3xl mb-16">
                 <label
                   htmlFor="lastName"
-                  className="block md:text-subheading mb-4"
+                  className="block md:sm:text-subheading text-mobileSubHeadingmb-4"
                 >
                   2. Enter Your Last Name
                 </label>
@@ -89,20 +92,23 @@ const OpenAccount = () => {
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 md:text-subheading bg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
+                  className="w-full px-4 py-2 md:sm:text-subheading text-mobileSubHeadingbg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
                 />
               </div>
             </>
           )}
           {step === 2 && (
             <>
-              <Heading level={1} className="md:text-subheading  mb-16">
+              <Heading
+                level={1}
+                className="md:sm:text-subheading text-mobileSubHeading  mb-16"
+              >
                 Your identification details
               </Heading>
               <div className="w-full max-w-3xl mb-16">
                 <label
                   htmlFor="uidNo"
-                  className="block md:text-subheading mb-4"
+                  className="block md:sm:text-subheading text-mobileSubHeadingmb-4"
                 >
                   3. Enter Your UID Number
                 </label>
@@ -112,13 +118,13 @@ const OpenAccount = () => {
                   name="uidNo"
                   value={formData.uidNo}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 md:text-subheading bg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
+                  className="w-full px-4 py-2 md:sm:text-subheading text-mobileSubHeadingbg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
                 />
               </div>
               <div className="w-full max-w-3xl mb-16">
                 <label
                   htmlFor="panNumber"
-                  className="block md:text-subheading mb-4"
+                  className="block md:sm:text-subheading text-mobileSubHeadingmb-4"
                 >
                   4. Enter Your PAN Number
                 </label>
@@ -128,20 +134,23 @@ const OpenAccount = () => {
                   name="panNumber"
                   value={formData.panNumber}
                   onChange={handleInputChange}
-                  className="w-full px-4 py-2 md:text-subheading bg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
+                  className="w-full px-4 py-2 md:sm:text-subheading text-mobileSubHeadingbg-transparent border-b-2 border-black focus:outline-none focus:border-yellow-300 text-black"
                 />
               </div>
             </>
           )}
           {step === 3 && (
             <>
-              <Heading level={1} className="md:text-subheading  mb-16">
+              <Heading
+                level={1}
+                className="md:sm:text-subheading text-mobileSubHeading  mb-16"
+              >
                 Upload your documents
               </Heading>
               <div className="w-full max-w-3xl mb-16">
                 <label
                   htmlFor="eSign"
-                  className="block md:text-subheading mb-4"
+                  className="block md:sm:text-subheading text-mobileSubHeadingmb-4"
                 >
                   5. Upload Your E-Sign
                 </label>
@@ -150,7 +159,7 @@ const OpenAccount = () => {
                   type="file"
                   name="eSign"
                   onChange={handleInputChange}
-                  className="w-full md:text-subheading text-gray-500
+                  className="w-full md:sm:text-subheading text-mobileSubHeadingtext-gray-500
                     file:mr-4 file:py-2 file:px-4
                     file:rounded-full file:border-0
                     file:text-body file:
@@ -161,7 +170,7 @@ const OpenAccount = () => {
               <div className="w-full max-w-3xl mb-16">
                 <label
                   htmlFor="panCard"
-                  className="block md:text-subheading mb-4"
+                  className="block md:sm:text-subheading text-mobileSubHeadingmb-4"
                 >
                   6. Upload Your PAN Card
                 </label>
@@ -170,7 +179,7 @@ const OpenAccount = () => {
                   type="file"
                   name="panCard"
                   onChange={handleInputChange}
-                  className="w-full md:text-subheading text-gray-500
+                  className="w-full md:sm:text-subheading text-mobileSubHeadingtext-gray-500
                     file:mr-4 file:py-2 file:px-4
                     file:rounded-full file:border-0
                     file:text-body file:
@@ -184,7 +193,7 @@ const OpenAccount = () => {
             {step > 1 && (
               <button
                 onClick={prevStep}
-                className="px-8 py-3 rounded-full bg-beige text-white  md:text-subheading hover:bg-gray-200 transition duration-300"
+                className="px-8 py-3 rounded-full bg-beige text-white  md:sm:text-subheading text-mobileSubHeadinghover:bg-gray-200 transition duration-300"
               >
                 Back
               </button>
@@ -192,14 +201,14 @@ const OpenAccount = () => {
             {step < 3 ? (
               <button
                 onClick={nextStep}
-                className="px-8 py-3 rounded-full bg-beige text-white  md:text-subheading hover:bg-gray-200 transition duration-300 ml-auto"
+                className="px-8 py-3 rounded-full bg-beige text-white  md:sm:text-subheading text-mobileSubHeadinghover:bg-gray-200 transition duration-300 ml-auto"
               >
                 Next
               </button>
             ) : (
               <button
                 onClick={submitForm}
-                className="px-8 py-3 rounded-full bg-beige text-white  md:text-subheading transition duration-300 ml-auto"
+                className="px-8 py-3 rounded-full bg-beige text-white  md:sm:text-subheading text-mobileSubHeadingtransition duration-300 ml-auto"
               >
                 Submit
               </button>

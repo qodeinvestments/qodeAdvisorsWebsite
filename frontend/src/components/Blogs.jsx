@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Button from "./common/Button";
 import Heading from "./common/Heading";
+import Section from "./container/Section";
 
 const Blogs = () => {
   const [latestPosts, setLatestPosts] = useState([]);
@@ -39,14 +40,14 @@ const Blogs = () => {
   }
 
   return (
-    <>
+    <Section padding="extralarge">
       <Heading
         level={2}
-        className="text-3xl font-bold  text-center text-[#151E28] mb-8"
+        className="text-3xl font-bold  text-center text-[#151E28] sm:mb-8 mb-5 "
       >
         Related Blogs
       </Heading>
-      <div className="mb-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="sm:mb-8 mb-5  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {latestPosts.map((post) => (
           <BlogCard
             key={post.id}
@@ -64,7 +65,7 @@ const Blogs = () => {
       <div className="text-center">
         <Button to="/blogs">View All Blogs</Button>
       </div>
-    </>
+    </Section>
   );
 };
 

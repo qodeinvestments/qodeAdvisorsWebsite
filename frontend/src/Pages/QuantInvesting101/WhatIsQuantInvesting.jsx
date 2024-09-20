@@ -5,7 +5,7 @@ const WhatIsQuantInvesting = () => {
   return (
     <div className="bg-white  p-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="md:text-subheading  text-gray-800 mb-8">
+        <h1 className="md:sm:text-subheading text-mobileSubHeading  text-gray-800 sm:mb-8 mb-5 ">
           What is Quantitative Investing?
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -26,7 +26,7 @@ const WhatIsQuantInvesting = () => {
             <div className="bg-gray-100 rounded-lg p-4">
               <Heading
                 level={3}
-                className="md:text-subheading  text-gray-800 mb-2"
+                className="md:sm:text-subheading text-mobileSubHeading  text-gray-800 mb-2"
               >
                 Key Features
               </Heading>
@@ -40,7 +40,7 @@ const WhatIsQuantInvesting = () => {
             <div className="bg-gray-100 rounded-lg p-4">
               <Heading
                 level={3}
-                className="md:text-subheading  text-gray-800 mb-2"
+                className="md:sm:text-subheading text-mobileSubHeading  text-gray-800 mb-2"
               >
                 Benefits
               </Heading>

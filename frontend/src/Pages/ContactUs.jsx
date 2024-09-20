@@ -28,7 +28,7 @@ const ContactUs = () => {
     <>
       <Section withBorder padding="extralarge" className="mt-9">
         <div className="text-brown text-center">
-          <Heading className="text-heading font-heading mb-4">
+          <Heading className="text-mobileHeading sm:text-heading font-heading mb-4">
             Contact Us
           </Heading>
         </div>
@@ -37,7 +37,7 @@ const ContactUs = () => {
             <div className="bg-white">
               <div className="text-left">
                 <div className=" mb-4">
-                  <Text className="text-subheading font-subheading mb-2">
+                  <Text className="sm:text-subheading text-mobileSubHeading font-subheading mb-2">
                     Address
                   </Text>
                   <Text>
@@ -48,7 +48,7 @@ const ContactUs = () => {
                   <Text>India</Text>
                 </div>
                 <div className="mb-4">
-                  <Text className="text-subheading font-subheading mb-2">
+                  <Text className="sm:text-subheading text-mobileSubHeading font-subheading mb-2">
                     Phone
                   </Text>
                   <Text>
@@ -61,7 +61,7 @@ const ContactUs = () => {
                   </Text>
                 </div>
                 <div>
-                  <Text className="text-subheading font-subheading mb-2">
+                  <Text className="sm:text-subheading text-mobileSubHeading font-subheading mb-2">
                     Email
                   </Text>
                   <Text>

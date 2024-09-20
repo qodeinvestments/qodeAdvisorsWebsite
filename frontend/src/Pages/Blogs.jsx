@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
 import { Container } from "../components";
 import axios from "axios";
+import Section from "../components/container/Section";
+import Heading from "../components/common/Heading";
 
 // Dummy data for 9 blog posts
 // const dummyPosts = [
@@ -155,36 +157,34 @@ const Blogs = () => {
       });
   }, [key]);
   return (
-    <Container>
-      <div className=" p-14 mx-auto">
-        {/* <div className=" py-28 md:py-20"> */}
-        {/* <div className="flex flex-col"> */}
-        {/* <h1 className="text-primary-dark  text-4xl font-black mb-6 text-start">
-              Blogs
-            </h1> */}
-        {/* <p className="text-gray-600 text-body md:text-subheading text-start">
+    <Section withBorder padding="extralarge" className="mt-9">
+      {/* <div className=" py-28 md:py-20"> */}
+      {/* <div className="flex flex-col"> */}
+      <Heading className="text-center text-beige mb-4 text-heading font-heading">
+        Blogs
+      </Heading>
+      {/* <p className="text-gray-600 text-body md:sm:text-subheading text-mobileSubHeadingtext-start">
               Explore our collection of insightful articles and stay up-to-date
               with the latest trends and best practices in the industry.
             </p> */}
-        {/* </div> */}
-        {/* </div> */}
-        <div className=" mx-auto flex flex-wrap justify-center gap-44">
-          {blog.map((post) => (
-            <BlogCard
-              key={post.id}
-              html={post.html}
-              title={post.title}
-              excerpt={post.excerpt}
-              // feature_image={post.feature_image}
-              reading_time={post.reading_time}
-              slug={post.slug}
-              primary_author={post.primary_author}
-              published_at={post.published_at}
-            />
-          ))}
-        </div>
+      {/* </div> */}
+      {/* </div> */}
+      <div className=" mx-auto grid gap-2 grid-cols-3 ">
+        {blog.map((post) => (
+          <BlogCard
+            key={post.id}
+            html={post.html}
+            title={post.title}
+            excerpt={post.excerpt}
+            // feature_image={post.feature_image}
+            reading_time={post.reading_time}
+            slug={post.slug}
+            primary_author={post.primary_author}
+            published_at={post.published_at}
+          />
+        ))}
       </div>
-    </Container>
+    </Section>
   );
 };
 

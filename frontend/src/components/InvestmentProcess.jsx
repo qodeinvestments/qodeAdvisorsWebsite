@@ -7,7 +7,10 @@ const InvestmentProcess = () => {
   return (
     <div className="flex flex-col md:flex-row items-center  justify-between py-12 inter-font">
       <div className="md:w-1/2 p-4">
-        <Heading level={2} className="md:text-subheading  mb-4">
+        <Heading
+          level={2}
+          className="md:sm:text-subheading text-mobileSubHeading  mb-4"
+        >
           Investment Process
         </Heading>
         <Text className="text-gray-700 mb-4">

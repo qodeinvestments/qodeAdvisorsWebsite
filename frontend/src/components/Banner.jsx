@@ -55,7 +55,7 @@ const Banner = () => {
           transition={{ duration: 0.8 }}
           className="space-y-2"
         >
-          <Heading level={1} className="text-heading  text-brown mb-4">
+          <Heading className="text-mobileHeading sm:text-heading  text-brown sm:mb-4">
             We started with growing our's & our family business wealth in the
             stock market
           </Heading>
@@ -64,22 +64,21 @@ const Banner = () => {
               to={
                 "/blogs/we-wanted-to-grow-our-10cr-to-80cr-within-10-years-with-the-highest-probability-how-did-we-do-it"
               }
-              className="flex justify-between border items-center border-brown transition-all duration-300 hover:bg-beige hover:shadow-xl p-2"
+              className="flex flex-col sm:flex-row justify-between border items-center border-brown transition-all duration-300 hover:bg-beige text-black hover:shadow-xl p-1"
             >
-              <Text className="flex-1">
+              <Text className="flex-1 group-hover:text-black ">
                 We wanted to grow our{" "}
-                <strong className="text-beige group-hover:text-brown">
+                <strong className="text-beige group-hover:text-black">
                   ₹10 CR to ₹80 CR within 10 years{" "}
                 </strong>
                 with the highest probability. Read to know how we did it.
               </Text>
-              <div className="text-right font-black group-hover:text-brown">
+              <div className=" self-end  text-right font-black group-hover:text-black">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
                   width="52"
                   height="52"
-                  className="ml-4"
                 >
                   <path
                     d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"

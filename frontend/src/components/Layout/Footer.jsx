@@ -16,22 +16,22 @@ import Section from "../container/Section";
 
 const Footer = () => {
   return (
-    <footer className="bg-lightBeige ">
-      <div className="py-7 max-w-[1386px] mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start ">
-          <div className="text-center sm:text-left col-span-1 sm:col-span-2 md:col-span-1">
-            <Heading className="  text-subheading text-brown mb-4">
+    <footer className="bg-lightBeige">
+      <div className="py-5 px-2 sm:px-0 sm:max-w-[1386px] mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-start space-y-2 sm:space-y-0">
+          <div className="text-center m-auto mb-4 sm:mb-0 sm:text-left col-span-1 sm:col-span-2 md:col-span-1">
+            <Heading className="sm:text-subheading text-mobileSubHeadingtext text-brown mb-2">
               Qode Advisors LLP
             </Heading>
-            <Text className="text-base sm:text-body max-w-xs mx-auto sm:mx-0 text-black">
+            <Text className="text-body sm:text-body max-w-xs mx-auto sm:mx-0 text-black">
               2nd Floor, Tree Building, Raghuvanshi Mills Compound, Gandhi
               Nagar, Upper Worli, Lower Parel, Mumbai, Maharashtra 400013
             </Text>
-            <div className="mt-1 text-base sm:text-body text-black">
-              <Text className="mb-1">
-                PMS No: <span className="">INP000008914</span>
+            <div className="mt-1 text-body sm:text-body text-black">
+              <Text className="mb-18">
+                PMS No: <span>INP000008914</span>
               </Text>
-              <Text className="mb-1">
+              <Text className="mb-18">
                 Email:{" "}
                 <a
                   href="mailto:contact@qodeinvestments.com"
@@ -50,12 +50,12 @@ const Footer = () => {
           </div>
 
           <div>
-            <Heading className="text-brown text-subheading mb-4">
+            <Heading className="sm:text-subheading text-mobileSubHeading text text-brown mb-2">
               Company
             </Heading>
             <List
-              className="text-base sm:text-body text-black"
-              itemClassName="mb-1 hover:text-black"
+              className="text-body sm:text-body text-black"
+              itemClassName="mb-18 hover:text-black"
               items={[
                 <CustomLink to="/about-us">About Us</CustomLink>,
                 <CustomLink to="/contact-us">Contact Us</CustomLink>,
@@ -69,12 +69,12 @@ const Footer = () => {
           </div>
 
           <div>
-            <Heading className="text-brown  text-subheading mb-4">
+            <Heading className="sm:text-subheading text-mobileSubHeading text text-brown mb-2">
               Strategies
             </Heading>
             <List
-              className="text-base sm:text-body text-black"
-              itemClassName="mb-1 hover:text-black"
+              className="text-body sm:text-body text-black"
+              itemClassName="mb-18 hover:text-black"
               items={[
                 <CustomLink to="/strategies/quant-growth-fund">
                   Qode Growth Fund
@@ -90,14 +90,14 @@ const Footer = () => {
           </div>
 
           <div>
-            <Heading className=" text-brown text-subheading mb-4">
+            <Heading className="sm:text-subheading text-mobileSubHeading text text-brown mb-2">
               Resources
             </Heading>
             <List
-              className="text-base sm:text-body text-black"
-              itemClassName="hover:text-black"
+              className="text-body sm:text-body text-black"
+              itemClassName="mb-18 hover:text-black"
               items={[
-                <CustomLink to="/faq">FAQs</CustomLink>,
+                // <CustomLink to="/faq">FAQs</CustomLink>,
                 <CustomLink to="/python-calculator">
                   Portfolio Visualizer
                 </CustomLink>,
@@ -105,9 +105,9 @@ const Footer = () => {
             />
           </div>
         </div>
-        <hr className=" border-brown mt-5" />
-        <div className="border-b border-gray-200 mt-1">
-          <Text className="text-base sm:text-body text-black text-center">
+        <hr className="border-brown mt-4" />
+        <div className="mt-4">
+          <Text className="text-body sm:text-body text-black text-center">
             &copy; {new Date().getFullYear()} Qode Advisors LLP. All rights
             reserved.
           </Text>

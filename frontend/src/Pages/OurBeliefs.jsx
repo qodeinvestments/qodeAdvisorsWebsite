@@ -24,7 +24,10 @@ const OurBeliefsAndValues = () => {
         animate="animate"
         variants={fadeIn}
       >
-        <Heading level={1} className="md:text-subheading  mb-4">
+        <Heading
+          level={1}
+          className="md:sm:text-subheading text-mobileSubHeading  mb-4"
+        >
           Our Beliefs and Values
         </Heading>
         <Text className="max-w-3xl mx-auto md:text-subheading">
@@ -41,7 +44,10 @@ const OurBeliefsAndValues = () => {
             initial="initial"
             animate="animate"
           >
-            <Heading level={2} className="md:text-subheading  mb-4">
+            <Heading
+              level={2}
+              className="md:sm:text-subheading text-mobileSubHeading  mb-4"
+            >
               Our Belief and Mission
             </Heading>
             <Text>
@@ -59,7 +65,10 @@ const OurBeliefsAndValues = () => {
             initial="initial"
             animate="animate"
           >
-            <Heading level={2} className="md:text-subheading  mb-4">
+            <Heading
+              level={2}
+              className="md:sm:text-subheading text-mobileSubHeading  mb-4"
+            >
               Transparency
             </Heading>
             <Text>
@@ -74,7 +83,10 @@ const OurBeliefsAndValues = () => {
             initial="initial"
             animate="animate"
           >
-            <Heading level={2} className="md:text-subheading  mb-4">
+            <Heading
+              level={2}
+              className="md:sm:text-subheading text-mobileSubHeading  mb-4"
+            >
               Fundamental Research
             </Heading>
             <Text>
@@ -90,7 +102,10 @@ const OurBeliefsAndValues = () => {
             initial="initial"
             animate="animate"
           >
-            <Heading level={2} className="md:text-subheading  mb-4">
+            <Heading
+              level={2}
+              className="md:sm:text-subheading text-mobileSubHeading  mb-4"
+            >
               Distinctive Investing Approach
             </Heading>
             <Text>
@@ -110,7 +125,10 @@ const OurBeliefsAndValues = () => {
                 <div
                   className={`bg-white p-8 rounded-lg transition-opacity duration-1000 `}
                 >
-                  <Heading level={2} className="md:text-subheading  mb-4">
+                  <Heading
+                    level={2}
+                    className="md:sm:text-subheading text-mobileSubHeading  mb-4"
+                  >
                     Long-term View
                   </Heading>
                   <Text className="mb-4">

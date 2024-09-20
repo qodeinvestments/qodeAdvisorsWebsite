@@ -20,24 +20,25 @@ const InvestmentStrategies = () => {
     <div className="flex flex-col justify-center">
       <Heading className="text-center text-brown">Strategies</Heading>
       <div className="text-center">
-        <Text className="mt-1 mb-5">
+        <Text className="sm:mt-1 mt-3 mb-5">
           We've created data-driven strategies that have the highest probability{" "}
-          <br /> of helping you reach your financial goals over the long term.
+          <br className="sm:visible hidden" /> of helping you reach your
+          financial goals over the long term.
         </Text>
       </div>
       <div className="grid grid-cols-1 gap-1 md:gap-2 lg:gap-2">
         <CustomLink to={"/strategies/quant-growth-fund"} className="text-black">
           <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-white hover:border-none hover:shadow-xl">
-            <div className="flex justify-between items-center">
+            <div className="flex sm:flex-row flex-col justify-between sm:items-center">
               <div>
-                <Text level={3} className="text-subheading font-subheading">
+                <Text className="sm:text-subheading text-mobileSubHeading  font-subheading">
                   Qode Growth Fund
                 </Text>
                 <Text className="text-body">
                   Invest in quality business. Get quality results.
                 </Text>
               </div>
-              <div className="text-right">
+              <div className="self-end sm:text-right">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
@@ -59,14 +60,14 @@ const InvestmentStrategies = () => {
           className="text-black"
         >
           <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-white hover:border-none hover:shadow-xl">
-            <div className="flex justify-between items-center">
+            <div className="flex sm:flex-row flex-col justify-between sm:items-center">
               <div>
-                <Text level={3} className="text-subheading font-subheading">
+                <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
                   Qode Momentum Fund
                 </Text>
                 <Text className="text-body">Buy high sell higher</Text>
               </div>
-              <div className="text-right">
+              <div className="self-end sm:text-right">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
@@ -85,14 +86,14 @@ const InvestmentStrategies = () => {
 
         <CustomLink to={"/strategies/low-vol-momentum"} className="text-black">
           <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-white hover:border-none hover:shadow-xl">
-            <div className="flex justify-between items-center">
+            <div className="flex sm:flex-row flex-col justify-between sm:items-center">
               <div>
-                <Text level={3} className="text-subheading font-subheading">
+                <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
                   Steady Fund
                 </Text>
                 <Text className="text-body">Qode Low Volatility Fund</Text>
               </div>
-              <div className="text-right">
+              <div className="self-end sm:text-right">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"

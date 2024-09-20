@@ -166,11 +166,11 @@ const HoldingDistribution = ({ strategy }) => {
       <div className="flex flex-col justify-between  text-start pb-0 items-start gap-2">
         <Heading
           level={2}
-          className="md:text-subheading sm:text-3xl font-bold text-[#151E28] mb-2"
+          className="md:sm:text-subheading text-mobileSubHeadingsm:text-3xl font-bold text-[#151E28] mb-2"
         >
           Holding Distribution
         </Heading>
-        <Text className="text-base sm:md:text-subheading text-black">
+        <Text className="text-base sm:md:sm:text-subheading text-mobileSubHeadingtext-black">
           Our {strategyName} Strategy's asset allocation.
         </Text>
         <div className="text-start">
@@ -178,7 +178,7 @@ const HoldingDistribution = ({ strategy }) => {
         </div>
       </div>
       <div className="border p-10 ">
-        <Heading className="md:text-subheading mb-10">
+        <Heading className="md:sm:text-subheading text-mobileSubHeadingmb-10">
           Our Stock Holdings
         </Heading>
         <div className="relative text-center flex items-center justify-center bg-beige/20  ">

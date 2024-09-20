@@ -63,12 +63,12 @@ const StrategyComponent = ({ strategyData }) => {
       <Section>
         <Heading
           level={2}
-          className="text-subheading sm:text-heading font-bold mb-1 text-primary text-center"
+          className="sm:text-subheading text-mobileSubHeadingsm:text-mobileHeading sm:text-heading font-bold mb-1 text-primary text-center"
         >
           <span className="block">{title}</span>
         </Heading>
         <div
-          className="text-center font-body text-subheading lg:px-3"
+          className="text-center font-body sm:text-subheading text-mobileSubHeadinglg:px-3"
           dangerouslySetInnerHTML={{ __html: description }}
         ></div>
       </Section>
@@ -120,7 +120,10 @@ const StrategyComponent = ({ strategyData }) => {
 
       <Section className="bg-lightBeige">
         <div className="text-center">
-          <Heading level={2} className="text-heading font-bold mb-2 text-brown">
+          <Heading
+            level={2}
+            className="text-mobileHeading sm:text-heading font-bold mb-2 text-brown"
+          >
             Not sure which strategy is right for you?
           </Heading>
           <Text className="text-body mb-3 text-black">
@@ -134,7 +137,7 @@ const StrategyComponent = ({ strategyData }) => {
         <SectionContent>
           <Heading
             level={2}
-            className="text-subheading sm:text-heading font-black text-black text-center mb-2 sm:mb-4"
+            className="sm:text-subheading text-mobileSubHeadingsm:text-mobileHeading sm:text-heading font-black text-black text-center mb-2 sm:mb-4"
           >
             How Our Strategy Works
           </Heading>
@@ -148,12 +151,12 @@ const StrategyComponent = ({ strategyData }) => {
                 <div className="flex items-center justify-center w-12 h-12 rounded-full bg-beige mb-2">
                   <FontAwesomeIcon
                     icon={step.icon}
-                    className="text-subheading text-brown"
+                    className="sm:text-subheading text-mobileSubHeadingtext-brown"
                   />
                 </div>
                 <Heading
                   level={3}
-                  className="text-subheading font-bold text-brown mb-1"
+                  className="sm:text-subheading text-mobileSubHeadingfont-bold text-brown mb-1"
                 >
                   {step.title}
                 </Heading>
@@ -177,7 +180,7 @@ const StrategyComponent = ({ strategyData }) => {
       <Section>
         <Heading
           level={2}
-          className="text-subheading sm:text-heading font-black text-black text-center mb-2 sm:mb-4"
+          className="sm:text-subheading text-mobileSubHeadingsm:text-mobileHeading sm:text-heading font-black text-black text-center mb-2 sm:mb-4"
         >
           FAQ's
         </Heading>
@@ -190,12 +193,12 @@ const StrategyComponent = ({ strategyData }) => {
               >
                 <Heading
                   level={3}
-                  className="text-body font-medium sm:text-subheading text-black pr-2"
+                  className="text-body font-medium sm:sm:text-subheading text-mobileSubHeadingtext-black pr-2"
                 >
                   {item.question}
                 </Heading>
                 <span
-                  className={`text-black text-subheading transition-transform duration-300 ${
+                  className={`text-black sm:text-subheading text-mobileSubHeadingtransition-transform duration-300 ${
                     activeIndex === index ? "transform rotate-180" : ""
                   }`}
                 >

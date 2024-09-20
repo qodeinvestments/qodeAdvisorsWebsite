@@ -7,7 +7,9 @@ const ErrorPage = () => {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="text-center">
         <h1 className="text-9xl  text-gray-300">404</h1>
-        <p className="md:text-subheading  text-gray-700 mt-4">Page Not Found</p>
+        <p className="md:sm:text-subheading text-mobileSubHeading  text-gray-700 mt-4">
+          Page Not Found
+        </p>
         <p className="text-body text-gray-500 mt-2">
           Sorry, the page you're looking for doesn't exist.
         </p>

@@ -18,8 +18,8 @@ import { motion } from "framer-motion";
 const StrategyCard = ({ strategy, name, description, slug }) => {
   const { loading, error, calculateReturns } = useStrategyData(strategy);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  // if (loading) return <div>Loading...</div>;
+  // if (error) return <div>Error: {error}</div>;
 
   return (
     <CustomLink

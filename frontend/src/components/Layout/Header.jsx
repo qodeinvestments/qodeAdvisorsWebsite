@@ -92,26 +92,40 @@ const Header = () => {
               </svg>
             </button>
 
-            {/* Mobile Navigation Dropdown */}
+            {/* Full-screen backdrop */}
             {isMobileMenuOpen && (
-              <div className="absolute right-0 border border-brown w-44 shadow-xl bg-white z-10">
-                <CustomLink
-                  to="/strategies"
-                  className="block px-4 py-2 text-body hover:text-black text-black border-b border-brown hover:bg-beige"
+              <>
+                <div
+                  className="fixed inset-0 bg-black bg-opacity-50 z-20"
                   onClick={toggleMobileMenu}
-                >
-                  Strategies
-                </CustomLink>
-                <a
-                  href="https://dashboard.qodeinvest.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block px-4 py-2 text-body   hover:bg-black hover:text-lightBeige transition"
-                  onClick={toggleMobileMenu}
-                >
-                  Dashboard
-                </a>
-              </div>
+                ></div>
+
+                {/* Mobile Navigation Dropdown */}
+                <div className="absolute right-0 border border-brown w-44 shadow-xl bg-white z-20">
+                  <CustomLink
+                    to="/blogs"
+                    className="block px-4 py-2 text-body hover:text-black text-black border-b border-brown hover:bg-beige"
+                  >
+                    Blogs
+                  </CustomLink>
+                  <CustomLink
+                    to="/strategies"
+                    className="block px-4 py-2 text-body hover:text-black text-black border-b border-brown hover:bg-beige"
+                    onClick={toggleMobileMenu}
+                  >
+                    Strategies
+                  </CustomLink>
+                  <a
+                    href="https://dashboard.qodeinvest.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-4 py-2 text-body hover:bg-black hover:text-lightBeige transition"
+                    onClick={toggleMobileMenu}
+                  >
+                    Dashboard
+                  </a>
+                </div>
+              </>
             )}
           </div>
         </div>

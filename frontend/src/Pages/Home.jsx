@@ -85,7 +85,7 @@ const Home = () => {
         className="bg-black max-w-[93%] mt-9 sm:max-w-[1386px] mx-auto"
       >
         <SectionContent className="text-center">
-          <Heading className="sm:text-semiheading text-mobileSemiHeading text-beige sm:mb-4 font-semiheading">
+          <Heading className="sm:text-semiheading text-mobileSemiHeading text-beige sm:mb-4 ">
             We manage and grow long term wealth for high-net-worth individuals,
             their families, and businesses.
           </Heading>

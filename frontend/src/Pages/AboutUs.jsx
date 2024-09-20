@@ -43,20 +43,20 @@ const AboutUs = () => {
       email: "vidhi.chheda@qodeinvest.com",
       image: vidhi,
     },
-    {
-      name: "Neha Bader",
-      designation: "Quantitative Analyst",
-      linkedin: "https://www.linkedin.com/in/neha-bader-a8395578/",
-      email: "neha@swancapital.in",
-      image: neha,
-    },
-    {
-      name: "Sakshi",
-      designation: "Quantitative Research Analyst",
-      linkedin: "https://www.linkedin.com/in/sakshi-chheda/",
-      email: "sakshi.chheda@swancapital.in",
-      image: sakshi,
-    },
+    // {
+    //   name: "Neha Bader",
+    //   designation: "Quantitative Analyst",
+    //   linkedin: "https://www.linkedin.com/in/neha-bader-a8395578/",
+    //   email: "neha@swancapital.in",
+    //   image: neha,
+    // },
+    // {
+    //   name: "Sakshi",
+    //   designation: "Quantitative Research Analyst",
+    //   linkedin: "https://www.linkedin.com/in/sakshi-chheda/",
+    //   email: "sakshi.chheda@swancapital.in",
+    //   image: sakshi,
+    // },
   ];
 
   return (

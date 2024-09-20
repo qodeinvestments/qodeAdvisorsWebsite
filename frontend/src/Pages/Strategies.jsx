@@ -24,7 +24,7 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   return (
     <CustomLink
       to={slug}
-      className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row  flex duration-500 bg-white border border-brown hover:bg-beige hover:shadow-xl group"
+      className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row  flex duration-500 bg-lightBeige text-white border  hover:bg-beige hover:shadow-xl group"
     >
       <div className="text-black">
         <Text className="sm:text-subheading text-mobileSubHeading font-subheading">

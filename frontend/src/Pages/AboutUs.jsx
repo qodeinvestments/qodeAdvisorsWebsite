@@ -69,26 +69,19 @@ const AboutUs = () => {
       </Heading>
       <Text className="text-center text-body font-body mb-7">
         Our founders (Karan, Kavan & Rishabh) started with investing their own
-        money in the stock market using Quant models.{" "}
-        <br className="sm:visible hidden" /> When they started consistently
-        outperforming the market average, they started investing their family
-        business reserve capital & grew it significantly.{" "}
-        <br className="sm:visible hidden" />
-        <br className="sm:visible hidden" /> Over the years they realised - Hey,
-        we’re good at this why not help others grow their wealth as well.{" "}
-        <br className="sm:visible hidden" />
-        <br className="sm:visible hidden" /> So, they launched their quant
-        strategy - Quant Growth Fund with SRE (Another Fund manager). It’s been
-        6 years now since the scheme is live.{" "}
-        <br className="sm:visible hidden" /> Its absolute return is - Which
-        means if you had invested 1CR when the scheme when it started then you
-        would’ve made - <br className="sm:visible hidden" />
-        <br className="sm:visible hidden" /> Seeing this they decided to start
-        their own PMS and launch more schemes for different investors with
-        different financial goals <br className="sm:visible hidden" />
-        and risk appetite fund and to make a business out this.{" "}
-        <br className="sm:visible hidden" />
-        <br className="sm:visible hidden" />
+        money in the stock market using Quant models. <br /> When they started
+        consistently outperforming the market average, they started investing
+        their family business reserve capital & grew it significantly. <br />
+        <br /> Over the years they realised - Hey, we’re good at this why not
+        help others grow their wealth as well. <br />
+        <br /> So, they launched their quant strategy - Quant Growth Fund with
+        SRE (Another Fund manager). It’s been 6 years now since the scheme is
+        live. <br /> Its absolute return is - Which means if you had invested
+        1CR when the scheme when it started then you would’ve made - <br />
+        <br /> Seeing this they decided to start their own PMS and launch more
+        schemes for different investors with different financial goals <br />
+        and risk appetite fund and to make a business out this. <br />
+        <br />
         Business to help Investors grow their money in the long term
         with high certainty.
       </Text>

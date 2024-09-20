@@ -85,7 +85,6 @@ const PerformanceChart = ({ strategy }) => {
   const calculateCAGR = useCallback(
     (data, timeRange = "ALL", portfolioType = "total_portfolio_nav") => {
       const parseDate = (dateString) => new Date(dateString);
-
       const sortedData = [...data].sort(
         (a, b) => parseDate(a.date) - parseDate(b.date)
       );
@@ -97,7 +96,6 @@ const PerformanceChart = ({ strategy }) => {
       let startDate = new Date(latestDate);
 
       if (timeRange === "Custom") {
-        // For custom date range, use the provided start and end dates
         startDate = parseDate(sortedData[0].date);
       } else {
         switch (timeRange) {
@@ -140,14 +138,21 @@ const PerformanceChart = ({ strategy }) => {
 
       if (isNaN(startValue) || isNaN(endValue)) return "N/A";
 
-      const years =
+      const days =
         (latestDate - parseDate(sortedData[startIndex].date)) /
-        (365 * 24 * 60 * 60 * 1000);
+        (24 * 60 * 60 * 1000);
+      const years = days / 365;
 
       if (years <= 0) return "Invalid date range";
 
-      const cagr = (Math.pow(endValue / startValue, 1 / years) - 1) * 100;
+      // For periods less than a year, use simple return
+      if (years < 1) {
+        const simpleReturn = ((endValue - startValue) / startValue) * 100;
+        return simpleReturn.toFixed(2) + "%";
+      }
 
+      // For periods of a year or more, use CAGR
+      const cagr = (Math.pow(endValue / startValue, 1 / years) - 1) * 100;
       return cagr.toFixed(2) + "%";
     },
     []

@@ -75,15 +75,11 @@ const AboutUs = () => {
         <br /> Over the years they realised - Hey, we’re good at this why not
         help others grow their wealth as well. <br />
         <br /> So, they launched their quant strategy - Quant Growth Fund with
-        SRE (Another Fund manager). It’s been 6 years now since the scheme is
-        live. <br /> Its absolute return is - Which means if you had invested
-        1CR when the scheme when it started then you would’ve made - <br />
-        <br /> Seeing this they decided to start their own PMS and launch more
-        schemes for different investors with different financial goals <br />
-        and risk appetite fund and to make a business out this. <br />
-        <br />
-        Business to help Investors grow their money in the long term
-        with high certainty.
+        another Fund manager. It’s been 5 years, and our CAGR is{" "}
+        <strong>35.1%</strong>. <br /> And compared to all the PMS's 5Y CAGR we
+        stand 4th. <br /> <br /> Seeing this they decided to start their own PMS
+        and launch more schemes for different investors with different financial
+        goals and risk appetite.
       </Text>
       <Heading className="sm:text-semiheading text-mobileSemiHeading font-semibold text-center mb-3 text-brown">
         Our Team

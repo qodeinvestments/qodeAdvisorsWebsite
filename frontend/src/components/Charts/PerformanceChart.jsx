@@ -82,6 +82,18 @@ const PerformanceChart = ({ strategy }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (isCustomDateOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Cleanup to restore scroll behavior when component unmounts
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isCustomDateOpen]);
   const calculateCAGR = useCallback(
     (data, timeRange = "ALL", portfolioType = "total_portfolio_nav") => {
       const parseDate = (dateString) => new Date(dateString);

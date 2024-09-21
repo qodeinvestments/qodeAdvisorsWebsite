@@ -160,7 +160,7 @@ const Blogs = () => {
     <Section withBorder padding="extralarge" className="mt-9">
       {/* <div className=" py-28 md:py-20"> */}
       {/* <div className="flex flex-col"> */}
-      <Heading className="text-center text-beige mb-4 text-heading font-heading">
+      <Heading className="text-center text-brown mb-4 text-heading font-heading">
         Blogs
       </Heading>
       {/* <p className="text-gray-600 text-body md:sm:text-subheading text-mobileSubHeadingtext-start">
@@ -169,7 +169,7 @@ const Blogs = () => {
             </p> */}
       {/* </div> */}
       {/* </div> */}
-      <div className=" mx-auto grid gap-2 grid-cols-3 ">
+      <div className=" mx-auto grid gap-2 sm:grid-cols-3 ">
         {blog.map((post) => (
           <BlogCard
             key={post.id}

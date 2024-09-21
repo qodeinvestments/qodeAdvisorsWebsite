@@ -24,7 +24,7 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   return (
     <CustomLink
       to={slug}
-      className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row  flex duration-500 bg-lightBeige text-white border  hover:bg-beige hover:shadow-xl group"
+      className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row  flex duration-500 bg-lightBeige hover:border hover:border-brown hover:bg-white hover:shadow-xl group"
     >
       <div className="text-black">
         <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
@@ -51,7 +51,7 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   );
 };
 
-const Strategies = () => {
+const Strategies_copy = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentText, setCurrentText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
@@ -146,7 +146,7 @@ const Strategies = () => {
             reach your financial goal with the highest probability <br /> (based
             on how much risk you're willing to take)
           </Text>
-          <div className="flex flex-col gap-3">
+          <div className="grid grid-cols-2 gap-3">
             {strategies.map((strategy) => (
               <StrategyCard
                 key={strategy.id}
@@ -169,4 +169,4 @@ const Strategies = () => {
   );
 };
 
-export default Strategies;
+export default Strategies_copy;

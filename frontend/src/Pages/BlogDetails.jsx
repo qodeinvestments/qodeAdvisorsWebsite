@@ -39,15 +39,15 @@ const BlogDetails = () => {
   }
 
   return (
-    <Section withBorder padding="extralarge" className="mt-9">
-      <div className="max-w-[820px] mx-auto">
+    <Section withBorder padding="small" className="mt-9">
+      <div className="sm:max-w-[820px] mx-auto">
         <div className="text-center mb-18">
           <Text className="text-primary font-body text-body">
             {formatDate(post.published_at)} &#x2022; {post.reading_time} min
             read
           </Text>
         </div>
-        <Heading className="text-3xl font-heading text-brown mb-6 text-center">
+        <Heading className="text-mobileHeading sm:text-heading font-heading text-brown mb-6 text-center">
           {post.title}
         </Heading>
         {post.feature_image && (

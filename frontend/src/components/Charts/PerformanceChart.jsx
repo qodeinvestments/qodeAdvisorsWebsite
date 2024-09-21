@@ -82,10 +82,21 @@ const PerformanceChart = ({ strategy }) => {
     };
   }, []);
 
+  useEffect(() => {
+    if (isCustomDateOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    // Cleanup to restore scroll behavior when component unmounts
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isCustomDateOpen]);
   const calculateCAGR = useCallback(
     (data, timeRange = "ALL", portfolioType = "total_portfolio_nav") => {
       const parseDate = (dateString) => new Date(dateString);
-
       const sortedData = [...data].sort(
         (a, b) => parseDate(a.date) - parseDate(b.date)
       );
@@ -97,7 +108,6 @@ const PerformanceChart = ({ strategy }) => {
       let startDate = new Date(latestDate);
 
       if (timeRange === "Custom") {
-        // For custom date range, use the provided start and end dates
         startDate = parseDate(sortedData[0].date);
       } else {
         switch (timeRange) {
@@ -140,14 +150,21 @@ const PerformanceChart = ({ strategy }) => {
 
       if (isNaN(startValue) || isNaN(endValue)) return "N/A";
 
-      const years =
+      const days =
         (latestDate - parseDate(sortedData[startIndex].date)) /
-        (365 * 24 * 60 * 60 * 1000);
+        (24 * 60 * 60 * 1000);
+      const years = days / 365;
 
       if (years <= 0) return "Invalid date range";
 
-      const cagr = (Math.pow(endValue / startValue, 1 / years) - 1) * 100;
+      // For periods less than a year, use simple return
+      if (years < 1) {
+        const simpleReturn = ((endValue - startValue) / startValue) * 100;
+        return simpleReturn.toFixed(2) + "%";
+      }
 
+      // For periods of a year or more, use CAGR
+      const cagr = (Math.pow(endValue / startValue, 1 / years) - 1) * 100;
       return cagr.toFixed(2) + "%";
     },
     []
@@ -198,13 +215,10 @@ const PerformanceChart = ({ strategy }) => {
         labels: {
           formatter: function () {
             const date = new Date(this.value);
-            return `${date.toLocaleString("default", {
-              month: "short",
-            })} ${date.getFullYear()}`;
+            return `${date.getFullYear()}`;
           },
         },
         tickPositions: [0, Math.floor(dates.length / 2), dates.length - 1],
-        // gridLineWidth: isMobile ? 0 : 1,
       },
       yAxis: [
         {
@@ -217,16 +231,32 @@ const PerformanceChart = ({ strategy }) => {
           name: strategy,
           data: strategyValues,
           color: "#d1a47b",
-          lineWidth: 2,
-          marker: { enabled: false },
+          lineWidth: 1,
+          marker: {
+            enabled: false, // Marker disabled by default
+            states: {
+              hover: {
+                enabled: true, // Marker enabled on hover
+                radius: 5, // You can adjust the radius of the marker on hover
+              },
+            },
+          },
           type: "line",
         },
         {
           name: "Nifty 50",
           data: niftyValues,
           color: "#000",
-          lineWidth: 2,
-          marker: { enabled: false },
+          lineWidth: 1,
+          marker: {
+            enabled: false, // Marker disabled by default
+            states: {
+              hover: {
+                enabled: true, // Marker enabled on hover
+                radius: 5, // Adjust radius
+              },
+            },
+          },
           type: "line",
         },
       ],
@@ -241,7 +271,7 @@ const PerformanceChart = ({ strategy }) => {
         shared: true,
         outside: isMobile,
       },
-      legend: { enabled: false },
+      legend: { enabled: true },
       credits: { enabled: false },
       exporting: { enabled: !isMobile },
       plotOptions: {
@@ -251,7 +281,8 @@ const PerformanceChart = ({ strategy }) => {
           },
           states: {
             hover: {
-              enabled: !isMobile,
+              enabled: true, // Enable hover state on series
+              lineWidthPlus: 1, // Optional: make the line thicker on hover
             },
           },
         },
@@ -324,58 +355,53 @@ const PerformanceChart = ({ strategy }) => {
           {isCustomDateOpen && (
             <div
               ref={customDateRef}
-              className="absolute right-0 mt-18 sm:p-4 p-1 bg-white border border-brown shadow-lg z-50"
+              className="fixed left-1/2 transform -translate-x-1/2 mt-18 p-2 sm:p-4 bg-white border border-brown shadow-lg z-50"
               style={{
-                top: "100%",
-                minWidth: "200px",
+                top: `${customButtonRef.current?.getBoundingClientRect().bottom}px`,
+                minWidth: "280px",
+                maxWidth: "90vw",
               }}
             >
-              <div className="flex flex-col gap-18 sm:flex-row sm:gap-1">
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
                 <div className="w-full">
                   <label
                     htmlFor="start-date"
-                    className="block text-body font-medium text-gray-700"
+                    className="block text-sm font-medium text-brown"
                   >
                     Start Date
                   </label>
                   <input
                     type="date"
                     id="start-date"
-                    value={startDate || ""}
+                    value={startDate}
                     onChange={(e) => {
                       setStartDate(e.target.value);
                       setTimeRange("Custom");
                       setActiveButton("Custom");
                     }}
-                    className="mt-18 block w-full border border-brown shadow-sm p-18"
+                    className="mt-1 block w-full border border-brown shadow-sm p-18"
                   />
                 </div>
                 <div className="w-full">
                   <label
                     htmlFor="end-date"
-                    className="block text-body font-medium text-gray-700"
+                    className="block text-sm font-medium text-brown"
                   >
                     End Date
                   </label>
                   <input
                     type="date"
                     id="end-date"
-                    value={endDate || ""}
+                    value={endDate}
                     onChange={(e) => {
                       setEndDate(e.target.value);
                       setTimeRange("Custom");
                       setActiveButton("Custom");
                     }}
-                    className="mt-18 block w-full border border-brown shadow-sm p-18"
+                    className="mt-1 block w-full border border-brown shadow-sm p-18"
                   />
                 </div>
               </div>
-              {/* <Button
-      onClick={handleCustomDateSubmit}
-      className="bg-beige text-black mt-4 w-full"
-    >
-      Apply
-    </Button> */}
             </div>
           )}
         </div>
@@ -418,6 +444,11 @@ const PerformanceChart = ({ strategy }) => {
           </div>
           <TabsBody className="mt-3">
             {" "}
+            {startDate && (
+              <Text className="text-center text-xs mb-3">
+                Showing data from {startDate} to {endDate}
+              </Text>
+            )}
             {/* Adjusted margin */}
             <TabPanel className="p-0" key="chart1" value="chart1">
               {chartOptions && (

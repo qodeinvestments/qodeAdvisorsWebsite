@@ -28,7 +28,7 @@ const InvestmentStrategies = () => {
       </div>
       <div className="grid grid-cols-1 gap-1 md:gap-2 lg:gap-2">
         <CustomLink to={"/strategies/quant-growth-fund"} className="text-black">
-          <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-white hover:border-none hover:shadow-xl">
+          <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige bg-white hover:border-none hover:shadow-xl">
             <div className="flex sm:flex-row flex-col justify-between sm:items-center">
               <div>
                 <Text className="sm:text-subheading text-mobileSubHeading  font-subheading">
@@ -59,7 +59,7 @@ const InvestmentStrategies = () => {
           to={"/strategies/quant-growth-momentum"}
           className="text-black"
         >
-          <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-white hover:border-none hover:shadow-xl">
+          <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige bg-white hover:border-none hover:shadow-xl">
             <div className="flex sm:flex-row flex-col justify-between sm:items-center">
               <div>
                 <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
@@ -85,7 +85,7 @@ const InvestmentStrategies = () => {
         </CustomLink>
 
         <CustomLink to={"/strategies/low-vol-momentum"} className="text-black">
-          <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-white hover:border-none hover:shadow-xl">
+          <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige bg-white hover:border-none hover:shadow-xl">
             <div className="flex sm:flex-row flex-col justify-between sm:items-center">
               <div>
                 <Text className="sm:text-subheading text-mobileSubHeading font-subheading">

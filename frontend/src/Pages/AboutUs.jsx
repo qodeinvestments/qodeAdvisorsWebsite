@@ -60,7 +60,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <Section withBorder padding="extralarge" className="mt-9">
+    <Section padding="extralarge" className="mt-9">
       <Heading className="text-mobileHeading sm:text-heading text-brown font-heading text-center mb-3">
         About Qode
       </Heading>
@@ -96,7 +96,7 @@ const AboutUs = () => {
 
 const TeamMemberCard = ({ member }) => {
   return (
-    <div className="bg-white w-full overflow-hidden border border-brown rounded-sm">
+    <div className="bg-white w-full overflow-hidden  rounded-sm">
       <img
         src={member.image}
         alt={member.name}

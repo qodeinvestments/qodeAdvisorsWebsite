@@ -39,6 +39,7 @@ import Disclosure from "./Pages/Disclosure.jsx";
 import AboutUs from "./Pages/AboutUs.jsx";
 import PythonCalculator from "./Pages/PythonCalculator.jsx";
 import Strategies_copy from "./Pages/Strategies_copy.jsx";
+import Home1 from "./Pages/Home1.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/home",
+        element: <Home1 />,
       },
       {
         path: "/strategies",

@@ -7,7 +7,7 @@ import Section from "../components/container/Section";
 
 const PrivacyPolicy = () => {
   return (
-    <Section className="sm:mt-9 mt-8" withBorder padding="extralarge">
+    <Section className="sm:mt-9 mt-8" padding="extralarge">
       <Heading className=" text-brown mb-18">Privacy policy</Heading>
       <Text className="text-body">
         At Qode Advisors LLP (Qode), we prioritize the privacy and security of

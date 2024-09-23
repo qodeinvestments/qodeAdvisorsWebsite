@@ -69,11 +69,9 @@ const Footer = () => {
           </div>
 
           <div>
-            <CustomLink to={"/strategies-copy"}>
-              <Heading className="sm:text-subheading text-mobileSubHeading text text-brown mb-2">
-                Strategies
-              </Heading>
-            </CustomLink>
+            <Heading className="sm:text-subheading text-mobileSubHeading text text-brown mb-2">
+              Strategies
+            </Heading>
             <List
               className="text-body sm:text-body text-black"
               itemClassName="mb-18 hover:text-black"

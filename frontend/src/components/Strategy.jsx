@@ -43,7 +43,7 @@ const StrategyComponent = ({ strategyData }) => {
 
   return (
     <div className="mx-auto sm:mt-9 mt-8">
-      <Section className="mb-4" withBorder padding="extralarge">
+      <Section className="mb-4" padding="extralarge">
         <Heading className="font-bold mb-1 text-brown text-center">
           <span className="block">{title}</span>
         </Heading>
@@ -72,7 +72,7 @@ const StrategyComponent = ({ strategyData }) => {
         </div>
       </Section> */}
 
-      <Section withBorder padding="extralarge">
+      <Section padding="extralarge">
         <SectionContent>
           <Text className="sm:text-subheading text-mobileSubHeading font-subheading text-center mb-4 ">
             How this Strategy works & <br className="sm:visible hidden" /> how
@@ -110,12 +110,12 @@ const StrategyComponent = ({ strategyData }) => {
                 <div className="flex items-center justify-center w-3 sm:h-3 rounded-full bg-gray-200 mb-4">
                   <FontAwesomeIcon
                     icon={step.icon}
-                    className="sm:text-subheading text-mobileSubHeadingsm:sm:text-subheading text-mobileSubHeadingtext-[#151E28]"
+                    className="sm:text-subheading text-mobileSubHeadingsm:sm:text-subheading text-mobileSubHeadingtext-brown"
                   />
                 </div>
                 <Heading
                   level={3}
-                  className="sm:text-subheading text-mobileSubHeadingsm:sm:text-subheading text-mobileSubHeadingfont-bold text-[#151E28] mb-2"
+                  className="sm:text-subheading text-mobileSubHeadingsm:sm:text-subheading text-mobileSubHeadingfont-bold text-brown mb-2"
                 >
                   {step.title}
                 </Heading>
@@ -156,7 +156,7 @@ const StrategyComponent = ({ strategyData }) => {
         <Blogs />
       </Section> */}
 
-      <Section padding="extralarge" withBorder>
+      <Section padding="extralarge">
         <Heading className="sm:text-semiheading text-mobileSemiHeading font-semiheading text-brown text-center mb-4 ">
           FAQ's
         </Heading>
@@ -174,7 +174,7 @@ const StrategyComponent = ({ strategyData }) => {
                   {item.question}
                 </Text>
                 <span
-                  className={`text-[#151E28] sm:text-subheading text-mobileSubHeadingsm:sm:text-subheading text-mobileSubHeadingtransition-transform duration-300 ${
+                  className={`text-brown sm:text-subheading text-mobileSubHeadingsm:sm:text-subheading text-mobileSubHeadingtransition-transform duration-300 ${
                     activeIndex === index ? "transform rotate-180" : ""
                   }`}
                 >

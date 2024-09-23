@@ -183,7 +183,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         />
       </div>
       {formData.selected_systems.map((system, index) => (
-        <div key={index} className="space-y-18 p-2 border border-brown ">
+        <div key={index} className="space-y-18 p-2  ">
           <h3 className="font-body text-black">{system.system}</h3>
           <div className="flex gap-4">
             <Input
@@ -306,7 +306,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           className="flex flex-wrap gap-4"
         >
           <Radio.Button
-            className={`border border-brown hover:border-brown hover:text-black border-l-2 rounded-none ${
+            className={` hover:border-brown hover:text-black border-l-2 rounded-none ${
               formData.frequency === "no"
                 ? "bg-brown text-white"
                 : "bg-lightbeige text-black"
@@ -316,7 +316,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
             No Rebalance
           </Radio.Button>
           <Radio.Button
-            className={`border border-brown rounded-none ${
+            className={` rounded-none ${
               formData.frequency === "daily"
                 ? "bg-brown text-white"
                 : "bg-lightbeige text-black"
@@ -326,7 +326,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
             Daily
           </Radio.Button>
           <Radio.Button
-            className={`border border-brown rounded-none ${
+            className={` rounded-none ${
               formData.frequency === "weekly"
                 ? "bg-brown text-white"
                 : "bg-lightbeige text-black"
@@ -336,7 +336,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
             Weekly
           </Radio.Button>
           <Radio.Button
-            className={`border border-brown rounded-none ${
+            className={` rounded-none ${
               formData.frequency === "monthly"
                 ? "bg-brown text-white"
                 : "bg-lightbeige text-black"
@@ -346,7 +346,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
             Monthly
           </Radio.Button>
           <Radio.Button
-            className={`border border-brown rounded-none ${
+            className={` rounded-none ${
               formData.frequency === "yearly"
                 ? "bg-brown text-white"
                 : "bg-lightbeige text-black"

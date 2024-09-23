@@ -19,11 +19,11 @@ const Disclosure = () => {
   ];
 
   return (
-    <Section className="sm:mt-9 mt-8" withBorder padding="extralarge">
+    <Section className="sm:mt-9 mt-4" padding="extralarge">
       <Heading className="text-brown mb-5">Disclosure</Heading>
 
       <div className="grid grid-cols-1 gap-2">
-        <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+        <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
               <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
@@ -44,7 +44,7 @@ const Disclosure = () => {
           </div>
         </div>
 
-        <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+        <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
               <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
@@ -65,7 +65,7 @@ const Disclosure = () => {
           </div>
         </div>
 
-        <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+        <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
               <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
@@ -86,7 +86,7 @@ const Disclosure = () => {
           </div>
         </div>
 
-        <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+        <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
               <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
@@ -107,7 +107,7 @@ const Disclosure = () => {
           </div>
         </div>
 
-        <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+        <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
               <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
@@ -128,7 +128,7 @@ const Disclosure = () => {
           </div>
         </div>
 
-        <div className="border border-brown p-1 md:p-3 transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+        <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
               <Text className="sm:text-subheading text-mobileSubHeading font-subheading">

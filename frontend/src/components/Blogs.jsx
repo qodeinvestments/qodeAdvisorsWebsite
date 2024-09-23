@@ -40,14 +40,11 @@ const Blogs = () => {
   }
 
   return (
-    <Section padding="extralarge">
-      <Heading
-        level={2}
-        className="text-3xl font-bold  text-center text-[#151E28] sm:mb-8 mb-5 "
-      >
-        Related Blogs
+    <>
+      <Heading className="text-heading italic font-bold  text-center text-beige sm:mb-2 mb-5 ">
+        Blogs
       </Heading>
-      <div className="sm:mb-8 mb-5  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
         {latestPosts.map((post) => (
           <BlogCard
             key={post.id}
@@ -62,10 +59,7 @@ const Blogs = () => {
           />
         ))}
       </div>
-      <div className="text-center">
-        <Button to="/blogs">View All Blogs</Button>
-      </div>
-    </Section>
+    </>
   );
 };
 

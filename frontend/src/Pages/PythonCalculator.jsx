@@ -307,14 +307,11 @@ function PythonCalculator() {
   };
 
   return (
-    <Section withBorder padding="extralarge" className="mt-9">
+    <Section padding="extralarge" className="mt-9">
       <Heading className="text-mobileHeading sm:text-heading text-brown text-center mb-4 font-heading">
         Portfolio
       </Heading>
-      <div
-        className=" border border-brown text-black p-4 text-body  font-body"
-        role="alert"
-      >
+      <div className="  text-black p-4 text-body  font-body" role="alert">
         <p className="sm:text-subheading text-mobileSubHeading font-subheading mb-1">
           Upload Requirements
         </p>

@@ -7,14 +7,12 @@ const Section = ({
   gray = false,
   className = "",
   containerClassName = "",
-  withBorder = false,
   innerBorder = false,
   padding = "", // Prop for padding
   fullWidth = false, // New prop for width
 }) => {
   const BaseComponent = gray ? GrayContainer : "div";
-  const borderClass = withBorder ? "border border-brown" : "";
-  const innerBorderClass = innerBorder ? "border border-brown" : "";
+  const innerBorderClass = innerBorder ? "" : "";
 
   // Define padding classes
   const paddingClasses = {
@@ -35,12 +33,12 @@ const Section = ({
   const hasMarginBottom = /mb-\d+/.test(className);
 
   // Default margin bottom class if not explicitly defined
-  const defaultMarginBottom = hasMarginBottom ? "" : "sm:mb-8 mb-5 ";
+  const defaultMarginBottom = hasMarginBottom ? "" : "sm:mb-5 mb-5 ";
 
   return (
     <BaseComponent className={`${className}`}>
       <Container
-        className={`${widthClass} mx-auto ${defaultMarginBottom} ${paddingClass} ${borderClass} ${containerClassName}`}
+        className={`${widthClass} mx-auto ${defaultMarginBottom} ${paddingClass} ${containerClassName}`}
       >
         <div className={`${innerBorderClass}`}>{children}</div>
       </Container>

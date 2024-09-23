@@ -8,7 +8,7 @@ import GrayContainer from "./container/GrayContainer";
 import Button from "./common/Button";
 import Heading from "./common/Heading";
 import Text from "./common/Text";
-
+import founders from "../assets/founders.jpg";
 const FundManagers = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -16,7 +16,8 @@ const FundManagers = () => {
     {
       name: "Karan Salecha",
       position: "Fund Manager",
-      image: karan,
+      image:
+        "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png",
     },
   ];
 
@@ -29,47 +30,37 @@ const FundManagers = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <Heading className="sm:text-semiheading text-mobileSemiHeading text-beige   mb-4 text-center">
-        Do you want to speak to a fund manager to{" "}
-        <br className="sm:visible hidden" /> know more before investing?
-      </Heading>
-      <div className="flex flex-col justify-center items-center gap-3">
-        {/* {managers.map((manager, index) => (
-          <div
-            key={index}
-            className="flex flex-col md:flex-row items-center gap-2"
-          >
-            <div className="flex-shrink-0">
-              <img
-                src={manager.image}
-                alt={manager.name}
-                className="w-32 h-32 md:w-52 md:h-52 rounded-full object-cover"
-              />
-            </div>
+    <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-4 justify-between">
+      {/* Left Section */}
+      <div className="md:w-1/2 w-full text-start">
+        <Heading className="sm:text-semiheading italic text-mobileSemiHeading text-beige mb-4">
+          Do you want to speak to a fund manager to know more before investing?
+        </Heading>
 
-            <div className="flex flex-col items-center md:items-start">
-              <Text
-                level={3}
-                className="sm:text-subheading text-mobileSubHeadingtext-beige font-bold text-center md:text-left"
-              >
-                {manager.name}
-              </Text>
-              <Text className="text-beige text-body mb-1 text-center md:text-left">
-                {manager.position}
-              </Text>
-              <Button onClick={openModal}>Schedule A Call</Button>
-            </div>
-          </div>
-        ))} */}
-        <Text className="sm:text-subheading text-mobileSubHeadingmt-1 text-center sm:text-start text-beige">
+        <Text className="sm:text-body text-body mt-1 text-center md:text-start text-beige mb-4">
           Schedule a meeting with our fund manager.
         </Text>
-        <Button className="bg-beige" onClick={openModal}>
+
+        <Button
+          className="bg-beige shadow-md text-black hover:bg-lightBrown transition duration-300"
+          onClick={openModal}
+        >
           Schedule A Call
         </Button>
       </div>
 
+      {/* Right Section: Image or Fund Managers */}
+      <div className="md:w-1/2 w-full flex justify-center md:justify-end">
+        <div className="flex-shrink-0">
+          <img
+            src={founders}
+            alt="Founders"
+            className="w-full max-w-xs md:max-w-lg object-cover"
+          />
+        </div>
+      </div>
+
+      {/* Modal */}
       {isModalOpen && (
         <Modal onClose={closeModal}>
           <BookAMeet />

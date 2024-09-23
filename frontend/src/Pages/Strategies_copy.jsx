@@ -125,7 +125,7 @@ const Strategies_copy = () => {
   return (
     <>
       {/* <Section
-        withBorder
+        
         padding="extralarge"
         className="mt-9 mb-1 text-center"
       >
@@ -136,7 +136,7 @@ const Strategies_copy = () => {
           </div>
         </Heading>
       </Section> */}
-      <Section className="sm:mt-9 mt-8" withBorder padding="extralarge">
+      <Section className="sm:mt-9 mt-8" padding="extralarge">
         <div className="mx-auto">
           <Heading className="text-mobileHeading sm:text-heading text-brown text-center font-heading">
             Our Strategies

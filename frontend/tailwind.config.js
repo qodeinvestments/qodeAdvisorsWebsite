@@ -29,10 +29,10 @@ const config = {
       },
       fontSize: {
         // Font sizes with line height calculated as 1.3 times the body font size
-        body: ["16px", { lineHeight: "21px" }],       // Body text
+        body: ["17px", { lineHeight: "21px" }],       // Body text
         subheading: ["26px", { lineHeight: "35px" }], // 26px * 1.3
         semiheading: ["42px", { lineHeight: "65px" }], // 42px * 1.3
-        heading: ["67px", { lineHeight: "78px" }],    // 67px * 1.3
+        heading: ["42px", { lineHeight: "60px" }],    // 67px * 1.3
         mobileHeading: ["35px", { lineHeight: "46px" }],
         mobileSemiHeading: ["27px", { lineHeight: "40px" }],
         mobileSubHeading: ["21px", { lineHeight: "27px" }],
@@ -47,8 +47,9 @@ const config = {
         body: ['"DM Sans"', "sans-serif"],
       },
       fontWeight: {
-        heading: "600", //Semi bold
+        heading: "500", //Semi bold
         subheading: "500", //medium
+        semibold: "500",
         body: "400", //normal
       },
       spacing: {

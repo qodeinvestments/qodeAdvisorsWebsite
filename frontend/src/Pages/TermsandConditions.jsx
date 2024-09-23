@@ -7,7 +7,7 @@ import Section from "../components/container/Section";
 
 const TermsnConditions = () => {
   return (
-    <Section className="mt-8 sm:mt-9" withBorder padding="extralarge">
+    <Section className="mt-8 sm:mt-9" padding="extralarge">
       <Heading className="text-brown mb-18">Terms & Conditions</Heading>
       <Text className="text-body">
         By accessing & using the website of Qode Advisors LLP (hereinafter

@@ -24,7 +24,7 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   return (
     <CustomLink
       to={slug}
-      className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row border border-brown flex duration-500 bg-white text-white hover:border-none  hover:bg-beige hover:shadow-xl group"
+      className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row  flex duration-500 bg-white text-white hover:border-none  hover:bg-beige hover:shadow-xl group"
     >
       <div className="text-black">
         <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
@@ -124,11 +124,7 @@ const Strategies = () => {
 
   return (
     <>
-      <Section
-        withBorder
-        padding="extralarge"
-        className="mt-9 mb-1 text-center"
-      >
+      <Section padding="extralarge" className="mt-9 mb-1 text-center">
         <Heading className="text-semiheading font-semibold text-brown ">
           The best investments are <br />
           <div className=" ">

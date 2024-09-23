@@ -119,16 +119,16 @@ const Home = () => {
 
   return (
     <div>
-      <Section
+      {/* <Section fullWidth={false} className="w-full"> */}
+      <Banner />
+      {/* </Section> */}
+      {/* <Section
         padding="extralarge"
         fullWidth={false}
         className="bg-black max-w-[93%] mt-9 sm:max-w-[1386px] mx-auto"
       >
         <SectionContent className="text-center">
-          <Heading className="sm:text-semiheading text-mobileSemiHeading text-beige sm:mb-4 ">
-            We manage and grow long term wealth for high-net-worth individuals,
-            their families, and businesses.
-          </Heading>
+          
           <div className="flex gap-6 justify-center items-center sm:flex-row flex-col">
             <Button
               onClick={openModal}
@@ -136,24 +136,24 @@ const Home = () => {
             >
               Grow your money with Qode
             </Button>
-            {/* <Button
+            <Button
               to={"/strategies"}
               className="sm:mt-1 mt-3 border-beige border hover:bg-beige hover:text-black duration-300 transition text-body font-body text-beige"
             >
               Strategies
-            </Button> */}
+            </Button>
           </div>
         </SectionContent>
-      </Section>
+      </Section> */}
 
-      <Section withBorder padding="extralarge" className="text-center">
+      {/* <Section padding="extralarge" className="text-center">
         <Heading className="text-semiheading font-semibold text-brown ">
           The best investments are <br />
           <div className=" ">
             {currentText} <span className="animate-blink">|</span>
           </div>
         </Heading>
-      </Section>
+      </Section> */}
 
       {/* <Section
         padding="extralarge"
@@ -178,7 +178,7 @@ const Home = () => {
 
       <Section
         padding="extralarge"
-        className="max-w-[93%] sm:max-w-[1386px] bg-lightBeige mx-auto"
+        className="max-w-[93%] mt-5 sm:max-w-[1386px] bg-lightBeige mx-auto"
         fullWidth={false}
       >
         <SectionContent>
@@ -201,58 +201,52 @@ const Home = () => {
       </Section> */}
 
       <Section
-        padding="extralarge"
-        className="bg-black max-w-[93%] sm:max-w-[1386px] mx-auto"
+        padding="normal"
+        className=" max-w-[93%] sm:max-w-[1386px] mx-auto"
       >
         {/* <SectionContent> */}
         <FundManagers />
         {/* </SectionContent> */}
       </Section>
 
-      {/* <Section gray withBorder={true} innerBorder={true}>
-        <SectionContent>
-          <Blogs />
-        </SectionContent>
-      </Section> */}
+      <Section padding="none">
+        <Blogs />
+      </Section>
 
-      <Section padding="extralarge" withBorder={true}>
-        <SectionContent>
-          <div className="">
-            <div className="md:flex flex-col items-center text-center gap-2 justify-center">
-              <div className="md:w-1/2 ">
-                <Text className="sm:text-subheading text-mobileSubHeading text-black mb-3">
-                  Subscribe to know more about our investment strategies, style
-                  and principles.
-                </Text>
-              </div>
-              <div className="md:w-1/2 ">
-                <form onSubmit={handleSubmit}>
-                  <div className="mb-2">
-                    <input
-                      type="email"
-                      id="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Email Address"
-                      required
-                      className="w-full px-2 py-18 border border-beige focus:outline-none focus:ring-2 focus:ring-brown"
-                    />
-                  </div>
-                  <div className="">
-                    <Button
-                      className="  bg-beige text-black"
-                      type="submit"
-                      disabled={isSubmitting}
-                      isLoading={isSubmitting}
-                    >
-                      Subscribe
-                    </Button>
-                  </div>
-                </form>
-              </div>
-            </div>
+      <Section padding="small" className="mb-6">
+        <div className="md:flex flex-col items-center text-center gap-2 justify-center">
+          <div className="md:w-1/2 ">
+            <Text className="sm:text-subheading text-mobileSubHeading text-black mb-3">
+              Subscribe to know more about our investment strategies, style and
+              principles.
+            </Text>
           </div>
-        </SectionContent>
+          <div className="md:w-1/2 ">
+            <form onSubmit={handleSubmit}>
+              <div className="mb-2">
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Email Address"
+                  required
+                  className="w-full px-2 py-18 border border-beige focus:outline-none focus:ring-2 focus:ring-brown"
+                />
+              </div>
+              <div className="">
+                <Button
+                  className="  bg-beige text-black"
+                  type="submit"
+                  disabled={isSubmitting}
+                  isLoading={isSubmitting}
+                >
+                  Subscribe
+                </Button>
+              </div>
+            </form>
+          </div>
+        </div>
       </Section>
 
       <ToastContainer

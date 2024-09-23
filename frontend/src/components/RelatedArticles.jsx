@@ -92,7 +92,7 @@ const RelatedArticles = ({ strategySlug, limit = 3 }) => {
       <div className="py-10">
         <Heading
           level={2}
-          className="md:sm:text-subheading text-mobileSubHeadinginter-font  text-[#151E28] mb-6"
+          className="md:sm:text-subheading text-mobileSubHeadinginter-font  text-brown mb-6"
         >
           Related Articles
         </Heading>

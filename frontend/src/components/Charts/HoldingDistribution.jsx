@@ -166,7 +166,7 @@ const HoldingDistribution = ({ strategy }) => {
       <div className="flex flex-col justify-between  text-start pb-0 items-start gap-2">
         <Heading
           level={2}
-          className="md:sm:text-subheading text-mobileSubHeadingsm:text-3xl font-bold text-[#151E28] mb-2"
+          className="md:sm:text-subheading text-mobileSubHeadingsm:text-3xl font-bold text-brown mb-2"
         >
           Holding Distribution
         </Heading>

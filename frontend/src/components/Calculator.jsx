@@ -202,7 +202,7 @@ const Calculator = ({ strategy }) => {
             {["Monthly", "One-time"].map((freq) => (
               <Button
                 key={freq}
-                className={`border border-brown text-center flex-grow ${
+                className={` text-center flex-grow ${
                   investmentFrequency === freq.toLowerCase()
                     ? "bg-beige border-none text-black"
                     : "bg-white text-black"
@@ -222,7 +222,7 @@ const Calculator = ({ strategy }) => {
             {/* Margin adjusted */}
             Investment Period (Years)
           </Text>
-          <div className="flex flex-row w-full h-[53px] border border-brown  overflow-hidden">
+          <div className="flex flex-row w-full h-[53px]   overflow-hidden">
             {/* Single border around the entire increment/decrement section */}
             <Button
               data-action="decrement"

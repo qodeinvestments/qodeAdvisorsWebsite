@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import Button from "../common/Button";
 import CustomLink from "../common/CustomLink";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef(null);
+  const location = useLocation();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -16,6 +17,15 @@ const Header = () => {
   };
 
   useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 750);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsMobileMenuOpen(false);
@@ -23,101 +33,125 @@ const Header = () => {
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const isHomePage = location.pathname === "/";
+
   return (
-    <header className="border-b fixed w-full px-18 sm:px-0 bg-white z-20 top-0 text-black shadow-sm">
-      <div className="mx-auto max-w-[1386px]">
-        <div className="flex justify-between items-center h-6">
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link
-              to="/"
-              className="text-beige playfair-display-font text-[35px] sm:text-3xl font-bold"
-              onClick={closeMobileMenu} // Close menu on logo click
-            >
-              Qode
-            </Link>
-          </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-5">
-            <CustomLink
-              to="/blogs"
-              className="text-body hover:text-primary transition duration-300"
-            >
-              Blogs
-            </CustomLink>
-            <CustomLink
-              to="/strategies"
-              className="text-body hover:text-primary transition duration-300"
-            >
-              Strategies
-            </CustomLink>
-            <Button
-              href="https://dashboard.qodeinvest.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-black text-lightBeige hover:bg-opacity-90 transition duration-300"
-            >
-              Dashboard
-            </Button>
-          </nav>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden relative" ref={dropdownRef}>
-            <button
-              onClick={toggleMobileMenu}
-              className="text-brown focus:outline-none"
-            >
-              <svg
-                className="h-2 w-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+    <header
+      className={`fixed left-1/2 transform -translate-x-1/2 w-[1386px] z-20 transition-all duration-300 ${
+        isHomePage
+          ? isScrolled
+            ? "bg-white top-0 bg-opacity-100 shadow-lg"
+            : "bg-black opacity-70 top-2 backdrop-blur-md"
+          : "bg-white top-0 bg-opacity-100 shadow-lg"
+      }`}
+    >
+      <div className="mx-auto ">
+        <div className="shadow-lg py-18 px-4">
+          <div className="flex items-center justify-between z-50 w-full">
+            {/* Left Navigation */}
+            <nav className="hidden md:flex items-center space-x-5">
+              <CustomLink
+                to="/blogs"
+                className={`text-body transition duration-300 ${
+                  isHomePage && !isScrolled ? "text-beige" : "text-beige"
+                }`}
               >
-                {isMobileMenuOpen ? (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                ) : (
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                )}
-              </svg>
-            </button>
+                Blogs
+              </CustomLink>
+              <CustomLink
+                to="/strategies"
+                className={`text-body transition duration-300 ${
+                  isHomePage && !isScrolled ? "text-beige" : "text-beige"
+                }`}
+              >
+                Strategies
+              </CustomLink>
+            </nav>
 
-            {/* Full-screen backdrop */}
-            {isMobileMenuOpen && (
-              <>
-                <div
-                  className="fixed inset-0 bg-black bg-opacity-50 z-20"
-                  onClick={toggleMobileMenu}
-                ></div>
+            {/* Logo (Centered) */}
+            <div className="flex-shrink-0 mx-auto">
+              <Link
+                to="/"
+                className={`playfair-display-font text-[24px] sm:text-[32px] font-bold ${
+                  isHomePage && !isScrolled ? "text-beige" : "text-beige"
+                }`}
+                onClick={closeMobileMenu}
+              >
+                Qode
+              </Link>
+            </div>
 
-                {/* Mobile Navigation Dropdown */}
-                <div className="absolute right-0 border border-brown w-44 shadow-xl bg-white z-20">
+            {/* Right Navigation */}
+            <nav className="hidden md:flex items-center space-x-5">
+              <CustomLink
+                to="/about-us"
+                className={`text-body transition duration-300 ${
+                  isHomePage && !isScrolled ? "text-beige" : "text-beige"
+                }`}
+              >
+                About us
+              </CustomLink>
+              <Link
+                to={"https://dashboard.qodeinvest.com/"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-body transition duration-300 ${
+                  isHomePage && !isScrolled ? "text-beige" : "text-beige"
+                }`}
+              >
+                Dashboard
+              </Link>
+            </nav>
+
+            {/* Mobile menu button */}
+            <div className="md:hidden relative" ref={dropdownRef}>
+              <button
+                onClick={toggleMobileMenu}
+                className={`focus:outline-none ${
+                  isHomePage && !isScrolled ? "text-beige" : "text-black"
+                }`}
+              >
+                <svg
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  {isMobileMenuOpen ? (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  ) : (
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  )}
+                </svg>
+              </button>
+
+              {/* Mobile Navigation Dropdown */}
+              {isMobileMenuOpen && (
+                <div className="absolute right-0 mt-4 w-48 rounded-2xl shadow-lg bg-white bg-opacity-90 backdrop-blur-md z-30 overflow-hidden">
                   <CustomLink
                     to="/blogs"
-                    className="block px-4 py-2 text-body hover:text-black text-black border-b border-brown hover:bg-beige"
-                    onClick={closeMobileMenu} // Close menu when link is clicked
+                    className="block px-4 py-2 text-body hover:text-black text-black hover:bg-beige hover:bg-opacity-50"
+                    onClick={closeMobileMenu}
                   >
                     Blogs
                   </CustomLink>
                   <CustomLink
                     to="/strategies"
-                    className="block px-4 py-2 text-body hover:text-black text-black border-b border-brown hover:bg-beige"
-                    onClick={closeMobileMenu} // Close menu when link is clicked
+                    className="block px-4 py-2 text-body hover:text-black text-black hover:bg-beige hover:bg-opacity-50"
+                    onClick={closeMobileMenu}
                   >
                     Strategies
                   </CustomLink>
@@ -126,13 +160,13 @@ const Header = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block px-4 py-2 text-body hover:bg-black hover:text-lightBeige transition"
-                    onClick={closeMobileMenu} // Close menu when link is clicked
+                    onClick={closeMobileMenu}
                   >
                     Dashboard
                   </a>
                 </div>
-              </>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </div>

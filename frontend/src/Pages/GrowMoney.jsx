@@ -9,7 +9,7 @@ const GrowMoney = () => {
     "https://calendly.com/tech-qodeinvest/physical-meeting";
 
   return (
-    <div className=" bg-black flex  sm:p-7 p-2 items-center justify-center z-50  font-body">
+    <div className=" bg-black bg-opacity-10 backdrop-blur-md flex  sm:p-7 p-2 items-center justify-center z-50  font-body">
       <div className=" text-center">
         <Text className="sm:text-subheading text-mobileSubHeading  text-beige font-heading mb-2">
           Schedule a meeting with the fund manager to discuss the financial

@@ -13,6 +13,7 @@ const Button = ({
   isLoading = false,
   target,
   rel,
+  isGlassmorphism = false, // New prop for conditional glassmorphism
 }) => {
   const baseClassName = "dm-sans-font transition-colors";
 
@@ -25,7 +26,12 @@ const Button = ({
   // Default padding if no padding classes are explicitly provided
   const defaultPadding = hasPadding ? "" : "py-18 px-1";
 
-  const defaultClassName = `${baseClassName} hover:bg-opacity-90 ${defaultPadding} text-body`;
+  // Conditionally apply Glassmorphism styles if isGlassmorphism is true
+  const glassmorphismStyles = isGlassmorphism
+    ? "bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-30 shadow-lg"
+    : "";
+
+  const defaultClassName = `${baseClassName} hover:bg-opacity-90 ${defaultPadding} text-body ${glassmorphismStyles}`;
   const fullClassName = `${defaultClassName} ${className}`;
 
   const content = isLoading ? (

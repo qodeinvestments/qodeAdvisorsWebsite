@@ -332,7 +332,7 @@ const PerformanceChart = ({ strategy }) => {
           <Button
             key={range}
             onClick={() => handleTimeRangeChange(range)}
-            className={`text-xs border border-brown ${
+            className={`text-xs  ${
               activeButton === range
                 ? "bg-beige border-none text-black"
                 : "bg-white text-black"
@@ -344,7 +344,7 @@ const PerformanceChart = ({ strategy }) => {
         <div className="relative" ref={customButtonRef}>
           <Button
             onClick={handleCustomDateClick}
-            className={`text-xs border border-brown ${
+            className={`text-xs  ${
               activeButton === "Custom"
                 ? "bg-beige border-none text-black"
                 : "bg-white text-black"
@@ -355,7 +355,7 @@ const PerformanceChart = ({ strategy }) => {
           {isCustomDateOpen && (
             <div
               ref={customDateRef}
-              className="fixed left-1/2 transform -translate-x-1/2 mt-18 p-2 sm:p-4 bg-white border border-brown shadow-lg z-50"
+              className="fixed left-1/2 transform -translate-x-1/2 mt-18 p-2 sm:p-4 bg-white  shadow-lg z-50"
               style={{
                 top: `${customButtonRef.current?.getBoundingClientRect().bottom}px`,
                 minWidth: "280px",
@@ -379,7 +379,7 @@ const PerformanceChart = ({ strategy }) => {
                       setTimeRange("Custom");
                       setActiveButton("Custom");
                     }}
-                    className="mt-1 block w-full border border-brown shadow-sm p-18"
+                    className="mt-1 block w-full  shadow-sm p-18"
                   />
                 </div>
                 <div className="w-full">
@@ -398,7 +398,7 @@ const PerformanceChart = ({ strategy }) => {
                       setTimeRange("Custom");
                       setActiveButton("Custom");
                     }}
-                    className="mt-1 block w-full border border-brown shadow-sm p-18"
+                    className="mt-1 block w-full  shadow-sm p-18"
                   />
                 </div>
               </div>
@@ -413,7 +413,7 @@ const PerformanceChart = ({ strategy }) => {
     <div className="flex flex-col justify-center gap-4">
       {" "}
       {/* Adjusted gap spacing */}
-      <div className="w-full sm:p-7 p-2 border border-brown">
+      <div className="w-full sm:p-7 p-2 ">
         <Tabs value="chart1">
           {" "}
           {/* Adjusted gap spacing */}
@@ -464,7 +464,7 @@ const PerformanceChart = ({ strategy }) => {
       <div className="w-full flex sm:flex-row flex-col gap-4">
         {" "}
         {/* Adjusted margin */}
-        <div className=" sm:p-6 p-3  bg-white border border-brown sm:w-3/5">
+        <div className=" sm:p-6 p-3  bg-white  sm:w-3/5">
           {" "}
           {/* Adjusted padding */}
           <Calculator strategy={strategy} />

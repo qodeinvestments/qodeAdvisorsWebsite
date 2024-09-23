@@ -39,7 +39,7 @@ const BlogDetails = () => {
   }
 
   return (
-    <Section withBorder padding="small" className="mt-9">
+    <Section padding="small" className="mt-9">
       <div className="sm:max-w-[820px] mx-auto">
         <div className="text-center mb-18">
           <Text className="text-primary font-body text-body">

@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Button, DatePicker, Input, Radio, Select, message } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
-import Section from "../container/Section";
-import Heading from "../common/Heading";
 import axios from "axios";
 import moment from "moment/moment";
+
 const { RangePicker } = DatePicker;
+
 const API_URL =
   import.meta.env.MODE === "production"
     ? import.meta.env.VITE_PROD_API_URL
     : import.meta.env.VITE_DEV_API_URL;
+
 const STRATEGIES = [
   { label: "QGFLong", value: "QGFLong" },
   { label: "Shortflat", value: "Shortflat" },
@@ -28,29 +29,25 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
   const [formData, setFormData] = useState({
     start_date: "",
     end_date: "",
-    invest_amount: 0,
-    cash_percent: 0,
+    invest_amount: "",
+    cash_percent: "",
     frequency: "daily",
     selected_systems: [],
     selected_debtfunds: [],
   });
-  console.log(columns);
 
   const [dateRange, setDateRange] = useState({ minDate: null, maxDate: null });
   const [rangePickerValue, setRangePickerValue] = useState([null, null]);
+
   useEffect(() => {
     const fetchDateRange = async () => {
       try {
         const response = await axios.get(`${API_URL}/get_date_range`);
-
         const { min_date, max_date } = response.data;
-
         const minDate = moment(min_date, "DD-MM-YYYY");
         const maxDate = moment(max_date, "DD-MM-YYYY");
-
         setDateRange({ minDate, maxDate });
         setRangePickerValue([minDate, maxDate]);
-
         setFormData((prev) => ({
           ...prev,
           start_date: min_date,
@@ -66,7 +63,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
   }, []);
 
   const columnList = columns.map((column) => ({
-    label: column.trim(), // Removing any trailing spaces
+    label: column.trim(),
     value: column.trim(),
     isJsonColumn: true,
   }));
@@ -82,8 +79,8 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
     const updatedSystems = selectedValues.map((value) => ({
       system: value,
       weightage: equalWeightage,
-      leverage: 1,
-      column: "", // Add a column field for each system
+      leverage: "1",
+      column: "",
     }));
     setFormData((prev) => ({ ...prev, selected_systems: updatedSystems }));
   };
@@ -93,7 +90,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       const updatedSystems = [...prev.selected_systems];
       updatedSystems[index] = {
         ...updatedSystems[index],
-        [field]: field === "weightage" ? parseFloat(value) : value,
+        [field]: value,
       };
       return { ...prev, selected_systems: updatedSystems };
     });
@@ -104,7 +101,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
     const updatedDebtFunds = selectedValues.map((value) => ({
       debtfund: value,
       weightage: equalWeightage,
-      leverage: 1,
+      leverage: "1",
     }));
     setFormData((prev) => ({ ...prev, selected_debtfunds: updatedDebtFunds }));
   };
@@ -114,14 +111,14 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       const updatedDebtFunds = [...prev.selected_debtfunds];
       updatedDebtFunds[index] = {
         ...updatedDebtFunds[index],
-        [field]: field === "weightage" ? parseFloat(value) : value,
+        [field]: value,
       };
       return { ...prev, selected_debtfunds: updatedDebtFunds };
     });
   };
 
   const calculateEqualWeightage = (count) => {
-    if (count === 0) return 0;
+    if (count === 0) return "";
     return (100 / count).toFixed(2);
   };
 
@@ -130,19 +127,37 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
     if (
       !formData.start_date ||
       !formData.end_date ||
-      formData.invest_amount <= 0
+      !formData.invest_amount ||
+      parseFloat(formData.invest_amount) <= 0
     ) {
       message.error("Please fill in all required fields correctly.");
       return;
     }
-    onSubmit(formData);
+
+    // Convert string values to numbers before submitting
+    const submittedData = {
+      ...formData,
+      invest_amount: parseFloat(formData.invest_amount),
+      cash_percent: formData.cash_percent
+        ? parseFloat(formData.cash_percent)
+        : 0,
+      selected_systems: formData.selected_systems.map((system) => ({
+        ...system,
+        weightage: parseFloat(system.weightage) || 0,
+        leverage: parseFloat(system.leverage) || 1,
+      })),
+      selected_debtfunds: formData.selected_debtfunds.map((debtfund) => ({
+        ...debtfund,
+        weightage: parseFloat(debtfund.weightage) || 0,
+        leverage: parseFloat(debtfund.leverage) || 1,
+      })),
+    };
+
+    onSubmit(submittedData);
   };
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4  max-w-7xl mx-auto">
-      {/* <Heading className="sm:text-semiheading text-mobileSemiHeading font-subheading text-brown ">
-          Portfolio
-        </Heading> */}
       <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Choose strategies
@@ -172,36 +187,27 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           <h3 className="font-body text-black">{system.system}</h3>
           <div className="flex gap-4">
             <Input
-              type="decimal"
+              type="text"
               placeholder="Weightage"
               value={system.weightage}
               onChange={(e) =>
                 handleSystemInputChange(index, "weightage", e.target.value)
               }
               className="w-1/2"
-              min={0}
-              max={100}
               suffix="%"
             />
             <Input
-              type="decimal"
+              type="text"
               placeholder="Leverage"
               value={system.leverage}
               onChange={(e) =>
-                handleSystemInputChange(
-                  index,
-                  "leverage",
-                  parseFloat(e.target.value)
-                )
+                handleSystemInputChange(index, "leverage", e.target.value)
               }
               className="w-1/2"
-              min={0}
-              step={0.1}
             />
           </div>
         </div>
       ))}
-
       <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Choose Debt Funds
@@ -221,40 +227,27 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           <h3 className="font-body text-black">{debtfund.debtfund}</h3>
           <div className="flex gap-4">
             <Input
-              type="decimal"
+              type="text"
               placeholder="Weightage"
               value={debtfund.weightage}
               onChange={(e) =>
-                handleDebtFundInputChange(
-                  index,
-                  "weightage",
-                  parseFloat(e.target.value)
-                )
+                handleDebtFundInputChange(index, "weightage", e.target.value)
               }
               className="w-1/2"
-              min={0}
-              max={100}
               suffix="%"
             />
             <Input
-              type="decimal"
+              type="text"
               placeholder="Leverage"
               value={debtfund.leverage}
               onChange={(e) =>
-                handleDebtFundInputChange(
-                  index,
-                  "leverage",
-                  parseFloat(e.target.value)
-                )
+                handleDebtFundInputChange(index, "leverage", e.target.value)
               }
-              className="w-1/2 "
-              min={0}
-              step={0.1}
+              className="w-1/2"
             />
           </div>
         </div>
       ))}
-
       <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Investment Period
@@ -270,7 +263,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
               "end_date",
               dates ? dates[1].format("DD-MM-YYYY") : ""
             );
-            setRangePickerValue(dates); // Update the selected value in state
+            setRangePickerValue(dates);
           }}
           disabledDate={(current) =>
             (dateRange.minDate && current < dateRange.minDate) ||
@@ -284,34 +277,25 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           Investment Amount
         </label>
         <Input
-          type="decimal"
+          type="text"
           value={formData.invest_amount}
-          onChange={(e) =>
-            handleInputChange("invest_amount", parseFloat(e.target.value))
-          }
+          onChange={(e) => handleInputChange("invest_amount", e.target.value)}
           className="w-full border-brown border rounded-none p-18"
-          min={0}
           prefix="₹"
         />
       </div>
-
       <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Cash Percentage
         </label>
         <Input
-          type="decimal"
+          type="text"
           value={formData.cash_percent}
-          onChange={(e) =>
-            handleInputChange("cash_percent", parseFloat(e.target.value))
-          }
+          onChange={(e) => handleInputChange("cash_percent", e.target.value)}
           className="w-full border-brown border rounded-none p-18"
-          min={0}
-          max={100}
           suffix="%"
         />
       </div>
-
       <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Rebalance Frequency
@@ -373,7 +357,6 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           </Radio.Button>
         </Radio.Group>
       </div>
-
       <div className="text-center">
         <Button
           htmlType="submit"
@@ -383,7 +366,6 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           Calculate Portfolio
         </Button>
       </div>
-
       <div className="text-body text-gray-500 flex items-center mt-4">
         <InfoCircleOutlined className="mr-2" />
         <span>

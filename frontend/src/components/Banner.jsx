@@ -55,7 +55,7 @@ const Banner = () => {
           transition={{ duration: 0.8 }}
           className="space-y-2"
         >
-          {/* <Heading className="text-mobileHeading sm:text-heading  text-brown sm:mb-4">
+          <Heading className="text-mobileHeading sm:text-heading  text-brown sm:mb-4">
             We started with growing our's & our family business wealth in the
             stock market
           </Heading>
@@ -87,7 +87,7 @@ const Banner = () => {
                 </svg>
               </div>
             </CustomLink>
-          </div> */}
+          </div>
         </motion.div>
       </div>
     </div>

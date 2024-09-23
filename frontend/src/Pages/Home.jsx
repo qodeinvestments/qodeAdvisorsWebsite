@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Banner, Blogs, InvestmentStrategies } from "../components/index";
 import FundManagers from "../components/FundManagers";
 import { Bounce, ToastContainer, toast } from "react-toastify";
@@ -77,6 +77,46 @@ const Home = () => {
     setIsModalOpen(false);
   };
 
+  const [currentText, setCurrentText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+  const [index, setIndex] = useState(0);
+
+  const typingSpeed = 130;
+  const deletingSpeed = 55;
+  const delayBetweenTexts = 1500;
+  const textArray = [
+    "driven by data.",
+    "objective.",
+    "emotion-free.",
+    "carried out by Qode.",
+  ];
+
+  useEffect(() => {
+    let timeout;
+    if (isTyping) {
+      if (currentText.length < textArray[index].length) {
+        timeout = setTimeout(() => {
+          setCurrentText(textArray[index].slice(0, currentText.length + 1));
+        }, typingSpeed);
+      } else {
+        timeout = setTimeout(() => {
+          setIsTyping(false);
+        }, delayBetweenTexts);
+      }
+    } else {
+      if (currentText.length > 0) {
+        timeout = setTimeout(() => {
+          setCurrentText(currentText.slice(0, -1));
+        }, deletingSpeed);
+      } else {
+        setIsTyping(true);
+        setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [currentText, isTyping, index]);
+
   return (
     <div>
       <Section
@@ -104,6 +144,15 @@ const Home = () => {
             </Button> */}
           </div>
         </SectionContent>
+      </Section>
+
+      <Section withBorder padding="extralarge" className="text-center">
+        <Heading className="text-semiheading font-semibold text-brown ">
+          The best investments are <br />
+          <div className=" ">
+            {currentText} <span className="animate-blink">|</span>
+          </div>
+        </Heading>
       </Section>
 
       {/* <Section

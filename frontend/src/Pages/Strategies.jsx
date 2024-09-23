@@ -24,7 +24,7 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   return (
     <CustomLink
       to={slug}
-      className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row  flex duration-500 bg-lightBeige text-white border  hover:bg-beige hover:shadow-xl group"
+      className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row border border-brown flex duration-500 bg-white text-white hover:border-none  hover:bg-beige hover:shadow-xl group"
     >
       <div className="text-black">
         <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
@@ -124,7 +124,7 @@ const Strategies = () => {
 
   return (
     <>
-      {/* <Section
+      <Section
         withBorder
         padding="extralarge"
         className="mt-9 mb-1 text-center"
@@ -135,8 +135,12 @@ const Strategies = () => {
             {currentText} <span className="animate-blink">|</span>
           </div>
         </Heading>
-      </Section> */}
-      <Section className="sm:mt-9 mt-8" withBorder padding="extralarge">
+      </Section>
+      <Section
+        className="sm:mt-5 bg-lightBeige sm:max-w-[1386px] mx-auto"
+        fullWidth={false}
+        padding="extralarge"
+      >
         <div className="mx-auto">
           <Heading className="text-mobileHeading sm:text-heading text-brown text-center font-heading">
             Our Strategies

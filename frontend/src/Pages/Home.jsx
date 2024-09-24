@@ -117,8 +117,8 @@ const Home = () => {
     <div>
       <Banner />
 
-      <Section padding="extralarge" className="my-5 text-center">
-        <Heading isItalic className="text-heading font-heading  text-brown ">
+      <Section padding="none" className="my-7 text-center">
+        <Heading className="text-semiheading font-heading  text-brown ">
           The best investments are <br />
           <div className=" ">
             {currentText} <span className="animate-blink">|</span>

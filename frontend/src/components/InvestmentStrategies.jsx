@@ -19,7 +19,7 @@ const InvestmentStrategies = () => {
   return (
     <div>
       <div className="flex flex-col sm:flex-row justify-between w-full">
-        <Heading className="text-center sm:text-left text-brown italic">
+        <Heading className="text-center text-heading sm:text-left text-brown italic">
           Strategies
         </Heading>
         <div className="text-center sm:text-start sm:w-1/2">
@@ -39,9 +39,9 @@ const InvestmentStrategies = () => {
           <div className="p-2 transition-all duration-300 hover:bg-beige bg-lightBeige border border-brown hover:shadow-2xl h-[250px] relative">
             <div className="flex flex-col justify-between h-full">
               <div>
-                <Text className="text-subheading font-semibold mb-2">
+                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading text-brown font-bold  mb-2 relative overflow-hidden text-ellipsis">
                   Qode Growth Fund
-                </Text>
+                </Heading>
                 <Text className="text-body">
                   Invest in quality business. Get quality results.
                 </Text>
@@ -71,9 +71,9 @@ const InvestmentStrategies = () => {
           <div className="p-2 transition-all duration-300 hover:bg-beige bg-lightBeige border border-brown hover:shadow-2xl h-[250px] relative">
             <div className="flex flex-col justify-between h-full">
               <div>
-                <Text className="text-subheading font-semibold mb-2">
+                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading text-brown font-bold  mb-2 relative overflow-hidden text-ellipsis">
                   Qode Momentum Fund
-                </Text>
+                </Heading>
                 <Text className="text-body">Buy high sell higher</Text>
               </div>
               <div className="absolute bottom-1 right-1 sm:bottom-4 sm:right-4">
@@ -101,9 +101,9 @@ const InvestmentStrategies = () => {
           <div className="p-2 transition-all duration-300 hover:bg-beige bg-lightBeige border border-brown hover:shadow-2xl h-[250px] relative">
             <div className="flex flex-col justify-between h-full">
               <div>
-                <Text className="text-subheading font-semibold mb-2">
+                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading text-brown font-bold  mb-2 relative overflow-hidden text-ellipsis">
                   Steady Fund
-                </Text>
+                </Heading>
                 <Text className="text-body">Qode Low Volatility Fund</Text>
               </div>
               <div className="absolute bottom-1 right-1 sm:bottom-4 sm:right-4">

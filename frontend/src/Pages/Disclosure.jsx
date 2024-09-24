@@ -28,9 +28,9 @@ const Disclosure = () => {
         <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
-              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
+              <Heading className="sm:text-subheading text-brown text-mobileSubHeading font-subheading">
                 Disclosure document
-              </Text>
+              </Heading>
             </div>
             <div className="flex items-center space-x-2">
               <svg
@@ -49,9 +49,9 @@ const Disclosure = () => {
         <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
-              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
+              <Heading className="sm:text-subheading text-brown text-mobileSubHeading font-subheading">
                 Prevention of money laundering
-              </Text>
+              </Heading>
             </div>
             <div className="flex items-center space-x-2">
               <svg
@@ -70,9 +70,9 @@ const Disclosure = () => {
         <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
-              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
+              <Heading className="sm:text-subheading text-brown text-mobileSubHeading font-subheading">
                 Conflict of interest policy
-              </Text>
+              </Heading>
             </div>
             <div className="flex items-center space-x-2">
               <svg
@@ -91,9 +91,9 @@ const Disclosure = () => {
         <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
-              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
+              <Heading className="sm:text-subheading text-brown text-mobileSubHeading font-subheading">
                 Investor charter
-              </Text>
+              </Heading>
             </div>
             <div className="flex items-center space-x-2">
               <svg
@@ -112,9 +112,9 @@ const Disclosure = () => {
         <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
-              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
+              <Heading className="sm:text-subheading text-brown text-mobileSubHeading font-subheading">
                 Investor complaints (monthly)
-              </Text>
+              </Heading>
             </div>
             <div className="flex items-center space-x-2">
               <svg
@@ -133,9 +133,9 @@ const Disclosure = () => {
         <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
           <div className="flex justify-between items-center">
             <div>
-              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
+              <Heading className="sm:text-subheading text-brown text-mobileSubHeading font-subheading">
                 Code of conduct
-              </Text>
+              </Heading>
             </div>
             <div className="flex items-center space-x-2">
               <svg

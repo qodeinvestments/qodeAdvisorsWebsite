@@ -63,11 +63,8 @@ const AboutUs = () => {
     <Section padding="extralarge" className="mt-5">
       <Heading
         isItalic
-        className="text-mobileHeading sm:text-heading text-brown font-heading text-center mb-3"
+        className="sm:text-semiheading text-mobileSemiHeading text-center mb-1 text-brown font-semiheading"
       >
-        About Us
-      </Heading>
-      <Heading className="sm:text-semiheading text-mobileSemiHeading text-center mb-1 text-brown font-semiheading">
         Our Story
       </Heading>
       <Text className="text-center text-body font-body mb-7">
@@ -84,7 +81,10 @@ const AboutUs = () => {
         and launch more schemes for different investors with different financial
         goals and risk appetite.
       </Text>
-      <Heading className="sm:text-semiheading text-mobileSemiHeading font-semibold text-center mb-3 text-brown">
+      <Heading
+        isItalic
+        className="sm:text-semiheading text-mobileSemiHeading font-semibold text-center mb-3 text-brown"
+      >
         Our Team
       </Heading>
 

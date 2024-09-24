@@ -472,7 +472,7 @@ const PerformanceChart = ({ strategy }) => {
           <Calculator strategy={strategy} />
         </div>
         <div
-          className="relative bg-left bg-cover flex justify-start items-start flex-col p-6 sm:w-1/2"
+          className="relative  bg-cover flex justify-start items-start flex-col sm:p-6 p-2 sm:w-1/2"
           style={{ backgroundImage: `url(${image})` }}
         >
           {/* Black overlay */}

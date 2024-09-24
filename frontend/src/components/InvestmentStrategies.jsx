@@ -18,23 +18,26 @@ import CustomLink from "./common/CustomLink";
 const InvestmentStrategies = () => {
   return (
     <div>
-      <div className="flex flex-col sm:flex-row justify-between w-full ">
-        <Heading className="text-center text-brown italic">Strategies</Heading>
-        <div className=" text-center sm:text-start sm:w-1/2">
-          <Text className="sm:mt-1 mt-3 mb-5 ">
+      <div className="flex flex-col sm:flex-row justify-between w-full">
+        <Heading className="text-center sm:text-left text-brown italic">
+          Strategies
+        </Heading>
+        <div className="text-center sm:text-start sm:w-1/2">
+          <Text className="sm:mt-1 mt-3 mb-5">
             We've created data-driven strategies that have the highest
-            probability <br className="sm:visible hidden" /> of helping you
-            reach your financial goals over the long term.
+            probability
+            <br className="hidden sm:block" /> of helping you reach your
+            financial goals over the long term.
           </Text>
         </div>
       </div>
-      <div className="flex gap-2 flex-col sm:flex-row  justify-between">
+      <div className="flex flex-col sm:flex-row gap-4 justify-between">
         <CustomLink
           to={"/strategies/quant-growth-fund"}
-          className="text-black w-full md:w-1/3"
+          className="text-black w-full sm:w-1/3"
         >
-          <div className="p-2 transition-all duration-300 hover:bg-beige bg-lightBeige border border-brown hover:shadow-2xl ">
-            <div className="flex flex-col justify-between h-[200px]">
+          <div className="p-2 transition-all duration-300 hover:bg-beige bg-lightBeige border border-brown hover:shadow-2xl h-[250px] relative">
+            <div className="flex flex-col justify-between h-full">
               <div>
                 <Text className="text-subheading font-semibold mb-2">
                   Qode Growth Fund
@@ -43,12 +46,13 @@ const InvestmentStrategies = () => {
                   Invest in quality business. Get quality results.
                 </Text>
               </div>
-              <div className="mt-5 self-end">
+              <div className="absolute bottom-1 right-1 sm:bottom-4 sm:right-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
                   width="44"
                   height="44"
+                  className="mx-auto sm:mx-0"
                 >
                   <path
                     d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"
@@ -62,22 +66,23 @@ const InvestmentStrategies = () => {
 
         <CustomLink
           to={"/strategies/quant-growth-momentum"}
-          className="text-black w-full md:w-1/3"
+          className="text-black w-full sm:w-1/3"
         >
-          <div className="p-2 transition-all duration-300 hover:bg-beige bg-lightBeige border border-brown hover:shadow-2xl ">
-            <div className="flex flex-col justify-between h-[200px]">
+          <div className="p-2 transition-all duration-300 hover:bg-beige bg-lightBeige border border-brown hover:shadow-2xl h-[250px] relative">
+            <div className="flex flex-col justify-between h-full">
               <div>
                 <Text className="text-subheading font-semibold mb-2">
                   Qode Momentum Fund
                 </Text>
                 <Text className="text-body">Buy high sell higher</Text>
               </div>
-              <div className="mt-6 self-end">
+              <div className="absolute bottom-1 right-1 sm:bottom-4 sm:right-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
                   width="44"
                   height="44"
+                  className="mx-auto sm:mx-0"
                 >
                   <path
                     d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"
@@ -91,22 +96,23 @@ const InvestmentStrategies = () => {
 
         <CustomLink
           to={"/strategies/low-vol-momentum"}
-          className="text-black w-full md:w-1/3"
+          className="text-black w-full sm:w-1/3"
         >
-          <div className="p-2 transition-all duration-300 hover:bg-beige bg-lightBeige border border-brown hover:shadow-2xl ">
-            <div className="flex flex-col justify-between h-[200px]">
+          <div className="p-2 transition-all duration-300 hover:bg-beige bg-lightBeige border border-brown hover:shadow-2xl h-[250px] relative">
+            <div className="flex flex-col justify-between h-full">
               <div>
                 <Text className="text-subheading font-semibold mb-2">
                   Steady Fund
                 </Text>
                 <Text className="text-body">Qode Low Volatility Fund</Text>
               </div>
-              <div className="mt-6 self-end">
+              <div className="absolute bottom-1 right-1 sm:bottom-4 sm:right-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
                   width="44"
                   height="44"
+                  className="mx-auto sm:mx-0"
                 >
                   <path
                     d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"

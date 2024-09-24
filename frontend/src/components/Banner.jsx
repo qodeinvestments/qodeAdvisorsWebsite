@@ -61,7 +61,7 @@ const Banner = () => {
 
   return (
     <div
-      className="relative flex justify-center items-center overflow-hidden h-screen bg-cover bg-center"
+      className="relative px-18 sm:px-0 flex justify-center items-center overflow-hidden h-screen bg-cover bg-center"
       style={{
         backgroundImage: `url(${banImageNew})`,
       }}

@@ -30,25 +30,27 @@ const FundManagers = ({ text }) => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-4 justify-between">
+    <div className="flex flex-col md:flex-row items-center md:items-start gap-2  md:gap-4 justify-between w-full">
       {/* Left Section */}
-      <div className="md:w-1/2 w-full text-start">
-        <Heading className="sm:text-semiheading italic text-mobileSemiHeading text-beige mb-4">
+      <div className="md:w-1/2 w-full text-start sm:px-4 ">
+        <Heading className="text-mobileSemiHeading md:text-semiheading italic text-beige mb-4 text-center md:text-start">
           {text
             ? text
             : "Do you want to speak to a fund manager to know more before investing?"}
         </Heading>
 
-        <Text className="sm:text-body text-body mt-1 text-center md:text-start text-beige mb-2">
+        <Text className="text-body mt-1 text-center md:text-start text-beige mb-2">
           Schedule a meeting with our fund manager.
         </Text>
 
-        <Button
-          className="bg-beige shadow-md text-black hover:bg-lightBrown transition duration-300"
-          onClick={openModal}
-        >
-          Schedule A Call
-        </Button>
+        <div className="flex justify-center md:justify-start">
+          <Button
+            className="bg-beige shadow-md text-black hover:bg-lightBrown transition duration-300"
+            onClick={openModal}
+          >
+            Schedule A Call
+          </Button>
+        </div>
       </div>
 
       {/* Right Section: Image or Fund Managers */}

@@ -124,14 +124,14 @@ const Strategies = () => {
 
   return (
     <>
-      {/* <Section padding="extralarge" className="mt-9 mb-1 text-center">
+      <Section padding="extralarge" className="mt-9 mb-1 text-center">
         <Heading className="text-semiheading font-semibold text-brown ">
           The best investments are <br />
           <div className=" ">
             {currentText} <span className="animate-blink">|</span>
           </div>
         </Heading>
-      </Section> */}
+      </Section>
       <Section
         className="sm:mt-5  sm:max-w-[1386px] mx-auto"
         fullWidth={false}

@@ -18,9 +18,9 @@ const Section = ({
   const paddingClasses = {
     none: "p-0",
     small: "p-2",
-    normal: "p-4",
-    large: "p-5",
-    extralarge: "sm:p-7 p-3 py-5 sm:py-7",
+    normal: "p-2 sm:p-4",
+    large: "p-2 sm:p-5",
+    extralarge: "sm:p-7 p-2 py-5 sm:py-7",
   };
 
   const paddingClass = paddingClasses[padding] || "";

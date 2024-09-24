@@ -49,7 +49,7 @@ const Header = () => {
       }`}
     >
       <div className="mx-auto">
-        <div className="shadow-lg py-1 sm:py-18 px-4">
+        <div className="shadow-lg py-1 sm:py-18 sm:px-4 px-18">
           <div className="flex items-center justify-between z-50 w-full">
             {/* Left Navigation */}
             <nav className="hidden md:flex items-center space-x-5">
@@ -107,7 +107,7 @@ const Header = () => {
             </nav>
 
             {/* Mobile menu button */}
-            <div className="md:hidden relative" ref={dropdownRef}>
+            <div className="md:hidden relative z-50" ref={dropdownRef}>
               <button
                 onClick={toggleMobileMenu}
                 className={`focus:outline-none ${
@@ -139,39 +139,56 @@ const Header = () => {
               </button>
 
               {/* Mobile Navigation Dropdown */}
+              {/* Mobile Navigation Dropdown */}
               {isMobileMenuOpen && (
-                <div className="absolute right-0 mt-18 w-48 shadow-lg bg-black bg-opacity-100 backdrop-blur-xs z-30 overflow-hidden">
-                  <CustomLink
-                    to="/blogs"
-                    className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:bg-opacity-50"
+                <>
+                  {/* Backdrop */}
+                  <div
+                    className="fixed inset-0 h-[100vh] bg-black bg-opacity-70 z-40" // Ensure z-index is higher than other elements
                     onClick={closeMobileMenu}
-                  >
-                    Blogs
-                  </CustomLink>
-                  <CustomLink
-                    to="/strategies"
-                    className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:bg-opacity-50"
-                    onClick={closeMobileMenu}
-                  >
-                    Strategies
-                  </CustomLink>
-                  <CustomLink
-                    to="/about-us"
-                    className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:bg-opacity-50"
-                    onClick={closeMobileMenu}
-                  >
-                    About us
-                  </CustomLink>
-                  <a
-                    href="https://dashboard.qodeinvest.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block px-4 py-2 text-body hover:bg-beige text-beige transition"
-                    onClick={closeMobileMenu}
-                  >
-                    Dashboard
-                  </a>
-                </div>
+                    style={{
+                      position: "fixed",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                    }}
+                  ></div>
+
+                  {/* Dropdown Menu */}
+                  <div className="absolute right-0 w-48 shadow-lg bg-black  z-50 overflow-hidden">
+                    <CustomLink
+                      to="/blogs"
+                      className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:bg-opacity-50"
+                      onClick={closeMobileMenu}
+                    >
+                      Blogs
+                    </CustomLink>
+                    <CustomLink
+                      to="/strategies"
+                      className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:bg-opacity-50"
+                      onClick={closeMobileMenu}
+                    >
+                      Strategies
+                    </CustomLink>
+                    <CustomLink
+                      to="/about-us"
+                      className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:bg-opacity-50"
+                      onClick={closeMobileMenu}
+                    >
+                      About us
+                    </CustomLink>
+                    <a
+                      href="https://dashboard.qodeinvest.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 text-body hover:bg-beige text-beige transition"
+                      onClick={closeMobileMenu}
+                    >
+                      Dashboard
+                    </a>
+                  </div>
+                </>
               )}
             </div>
           </div>

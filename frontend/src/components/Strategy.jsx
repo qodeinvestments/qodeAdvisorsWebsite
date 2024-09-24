@@ -131,7 +131,7 @@ const StrategyComponent = ({ strategyData }) => {
         <Blogs />
       </Section> */}
 
-      <Section padding="extralarge">
+      <Section padding="normal">
         <Heading className="sm:text-semiheading text-mobileSemiHeading font-semiheading text-brown text-center mb-4 ">
           FAQ's
         </Heading>

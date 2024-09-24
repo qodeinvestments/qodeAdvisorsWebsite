@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Banner, Blogs, InvestmentStrategies } from "../components/index";
 import FundManagers from "../components/FundManagers";
 import { Bounce, ToastContainer, toast } from "react-toastify";
@@ -11,13 +11,51 @@ import SectionContent from "../components/container/SectionContent";
 import Modal from "../components/Modal";
 import GrowMoney from "./GrowMoney";
 import { Parallax } from "react-parallax"; // Import Parallax component
-
 import principle from "../assets/principle.jpg"; // Ensure the correct path
 
 const Home = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentText, setCurrentText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
+  const [index, setIndex] = useState(0);
+
+  const typingSpeed = 130;
+  const deletingSpeed = 55;
+  const delayBetweenTexts = 1500;
+  const textArray = [
+    "driven by data.",
+    "objective.",
+    "emotion-free.",
+    "carried out by Qode.",
+  ];
+
+  useEffect(() => {
+    let timeout;
+    if (isTyping) {
+      if (currentText.length < textArray[index].length) {
+        timeout = setTimeout(() => {
+          setCurrentText(textArray[index].slice(0, currentText.length + 1));
+        }, typingSpeed);
+      } else {
+        timeout = setTimeout(() => {
+          setIsTyping(false);
+        }, delayBetweenTexts);
+      }
+    } else {
+      if (currentText.length > 0) {
+        timeout = setTimeout(() => {
+          setCurrentText(currentText.slice(0, -1));
+        }, deletingSpeed);
+      } else {
+        setIsTyping(true);
+        setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [currentText, isTyping, index]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,14 +117,21 @@ const Home = () => {
     <div>
       <Banner />
 
+      <Section padding="extralarge" className="my-5 text-center">
+        <Heading isItalic className="text-heading font-heading  text-brown ">
+          The best investments are <br />
+          <div className=" ">
+            {currentText} <span className="animate-blink">|</span>
+          </div>
+        </Heading>
+      </Section>
+
       <Section
         padding="extralarge"
         className="max-w-[93%] mt-5 sm:max-w-[1386px] bg-lightBeige mx-auto"
         fullWidth={false}
       >
-        <SectionContent>
-          <InvestmentStrategies />
-        </SectionContent>
+        <InvestmentStrategies />
       </Section>
 
       <Section
@@ -96,7 +141,7 @@ const Home = () => {
         <FundManagers />
       </Section>
 
-      <Section padding="none">
+      <Section padding="extralarge">
         <Blogs />
       </Section>
 
@@ -122,7 +167,7 @@ const Home = () => {
               <Button
                 href={"/blogs/qodes-principles-of-investing"}
                 isGlassmorphism={true}
-                className="bg-beige text-lightBeige"
+                className="bg-beige text-lightBeige hover:text-black"
               >
                 Know More
               </Button>

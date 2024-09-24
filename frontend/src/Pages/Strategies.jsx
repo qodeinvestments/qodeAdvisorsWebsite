@@ -21,34 +21,70 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   // if (loading) return <div>Loading...</div>;
   // if (error) return <div>Error: {error}</div>;
 
-  return (
-    <CustomLink
-      to={slug}
-      className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row border border-brown flex duration-500 bg-white text-white hover:border-none  hover:bg-beige hover:shadow-xl group"
-    >
-      <div className="text-black">
-        <Heading className="sm:text-subheading text-brown mb-18 text-mobileSubHeading font-subheading">
-          {name}
-        </Heading>
-        <Text
-          className="text-body "
-          dangerouslySetInnerHTML={{ __html: description }}
-        ></Text>
-      </div>
-      <div className="text-black self-end sm:self-center ">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 100 100"
-          width="44"
-          height="44"
-          fill="currentColor"
-          className="ml-2"
+  const renderCustomLink = () => {
+    if (name === "Qode Future Horizon") {
+      return (
+        <CustomLink
+          to={`/blogs/${slug}`}
+          className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row border border-brown flex duration-500 bg-white text-white hover:border-none hover:bg-beige hover:shadow-xl group"
         >
-          <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
-        </svg>
-      </div>
-    </CustomLink>
-  );
+          <div className="text-black">
+            <Heading className="sm:text-subheading text-brown mb-18 text-mobileSubHeading font-subheading">
+              {name}
+            </Heading>
+            <Text
+              className="text-body"
+              dangerouslySetInnerHTML={{ __html: description }}
+            ></Text>
+          </div>
+          <div className="text-black self-end sm:self-center ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 100 100"
+              width="44"
+              height="44"
+              fill="currentColor"
+              className="ml-2"
+            >
+              <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
+            </svg>
+          </div>
+        </CustomLink>
+      );
+    } else {
+      // Default CustomLink for other names
+      return (
+        <CustomLink
+          to={slug}
+          className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row border border-brown flex duration-500 bg-white text-grey hover:border-none hover:bg-lightGrey hover:shadow-xl group"
+        >
+          <div className="text-black">
+            <Heading className="sm:text-subheading text-brown mb-18 text-mobileSubHeading font-subheading">
+              {name}
+            </Heading>
+            <Text
+              className="text-body"
+              dangerouslySetInnerHTML={{ __html: description }}
+            ></Text>
+          </div>
+          <div className="text-black self-end sm:self-center ">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 100 100"
+              width="44"
+              height="44"
+              fill="currentColor"
+              className="ml-2"
+            >
+              <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
+            </svg>
+          </div>
+        </CustomLink>
+      );
+    }
+  };
+
+  return renderCustomLink();
 };
 
 const Strategies = () => {
@@ -60,12 +96,7 @@ const Strategies = () => {
   const typingSpeed = 130;
   const deletingSpeed = 55;
   const delayBetweenTexts = 1500;
-  const textArray = [
-    "driven by data.",
-    "objective.",
-    "emotion-free.",
-    "carried out by Qode.",
-  ];
+  const textArray = ["driven by data.", "objective.", "emotion-free."];
 
   useEffect(() => {
     let timeout;
@@ -119,6 +150,13 @@ const Strategies = () => {
       name: "Qode Low Volatility Fund",
       slug: "low-vol-momentum",
       description: "<Text class='mb-1'>Slow but Steady.</Text>",
+    },
+    {
+      id: "futureHorizon",
+      name: "Qode Future Horizon",
+      slug: "qode-active-fund",
+      description:
+        "<Text class='mb-1'>Discovering Growth Potential, Unlocking Value.</Text>",
     },
   ];
 

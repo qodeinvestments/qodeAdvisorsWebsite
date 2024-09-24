@@ -157,10 +157,13 @@ const Blogs = () => {
       });
   }, [key]);
   return (
-    <Section padding="extralarge" className="mt-9">
+    <Section padding="extralarge" className="mt-5">
       {/* <div className=" py-28 md:py-20"> */}
       {/* <div className="flex flex-col"> */}
-      <Heading className="text-center text-brown mb-4 text-heading font-heading">
+      <Heading
+        isItalic
+        className="text-center text-brown mb-4 text-heading font-heading"
+      >
         Blogs
       </Heading>
       {/* <p className="text-gray-600 text-body md:sm:text-subheading text-mobileSubHeadingtext-start">

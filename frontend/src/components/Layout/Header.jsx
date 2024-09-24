@@ -40,16 +40,16 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed left-1/2 transform -translate-x-1/2 w-[1386px] z-20 transition-all duration-300 ${
+      className={`fixed z-20 transition-all duration-300 w-full sm:w-[1386px] sm:left-1/2 sm:-translate-x-1/2 ${
         isHomePage
           ? isScrolled
             ? "bg-white top-0 bg-opacity-100 shadow-lg"
-            : "bg-black opacity-70 top-2 backdrop-blur-md"
+            : "bg-black opacity-70 sm:top-2 backdrop-blur-md"
           : "bg-white top-0 bg-opacity-100 shadow-lg"
       }`}
     >
-      <div className="mx-auto ">
-        <div className="shadow-lg py-18 px-4">
+      <div className="mx-auto">
+        <div className="shadow-lg py-1 sm:py-18 px-4">
           <div className="flex items-center justify-between z-50 w-full">
             {/* Left Navigation */}
             <nav className="hidden md:flex items-center space-x-5">
@@ -72,7 +72,7 @@ const Header = () => {
             </nav>
 
             {/* Logo (Centered) */}
-            <div className="flex-shrink-0 mx-auto">
+            <div className="flex-shrink-0 sm:mx-auto">
               <Link
                 to="/"
                 className={`playfair-display-font text-[24px] sm:text-[32px] font-bold ${
@@ -115,7 +115,7 @@ const Header = () => {
                 }`}
               >
                 <svg
-                  className="h-6 w-6"
+                  className="h-2 w-2"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -140,26 +140,33 @@ const Header = () => {
 
               {/* Mobile Navigation Dropdown */}
               {isMobileMenuOpen && (
-                <div className="absolute right-0 mt-4 w-48 rounded-2xl shadow-lg bg-white bg-opacity-90 backdrop-blur-md z-30 overflow-hidden">
+                <div className="absolute right-0 mt-18 w-48 shadow-lg bg-black bg-opacity-100 backdrop-blur-xs z-30 overflow-hidden">
                   <CustomLink
                     to="/blogs"
-                    className="block px-4 py-2 text-body hover:text-black text-black hover:bg-beige hover:bg-opacity-50"
+                    className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:bg-opacity-50"
                     onClick={closeMobileMenu}
                   >
                     Blogs
                   </CustomLink>
                   <CustomLink
                     to="/strategies"
-                    className="block px-4 py-2 text-body hover:text-black text-black hover:bg-beige hover:bg-opacity-50"
+                    className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:bg-opacity-50"
                     onClick={closeMobileMenu}
                   >
                     Strategies
+                  </CustomLink>
+                  <CustomLink
+                    to="/about-us"
+                    className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:bg-opacity-50"
+                    onClick={closeMobileMenu}
+                  >
+                    About us
                   </CustomLink>
                   <a
                     href="https://dashboard.qodeinvest.com/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block px-4 py-2 text-body hover:bg-black hover:text-lightBeige transition"
+                    className="block px-4 py-2 text-body hover:bg-beige text-beige transition"
                     onClick={closeMobileMenu}
                   >
                     Dashboard

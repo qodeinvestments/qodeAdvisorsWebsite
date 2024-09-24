@@ -9,7 +9,7 @@ import Button from "./common/Button";
 import Heading from "./common/Heading";
 import Text from "./common/Text";
 import founders from "../assets/founders.jpg";
-const FundManagers = () => {
+const FundManagers = ({ text }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const managers = [
@@ -34,10 +34,12 @@ const FundManagers = () => {
       {/* Left Section */}
       <div className="md:w-1/2 w-full text-start">
         <Heading className="sm:text-semiheading italic text-mobileSemiHeading text-beige mb-4">
-          Do you want to speak to a fund manager to know more before investing?
+          {text
+            ? text
+            : "Do you want to speak to a fund manager to know more before investing?"}
         </Heading>
 
-        <Text className="sm:text-body text-body mt-1 text-center md:text-start text-beige mb-4">
+        <Text className="sm:text-body text-body mt-1 text-center md:text-start text-beige mb-2">
           Schedule a meeting with our fund manager.
         </Text>
 

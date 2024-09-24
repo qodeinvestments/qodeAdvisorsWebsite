@@ -7,8 +7,10 @@ import Section from "../components/container/Section";
 
 const TermsnConditions = () => {
   return (
-    <Section className="mt-8 sm:mt-9" padding="extralarge">
-      <Heading className="text-brown mb-18">Terms & Conditions</Heading>
+    <Section className="mt-8 sm:mt-5" padding="extralarge">
+      <Heading isItalic className="text-brown mb-18">
+        Terms & Conditions
+      </Heading>
       <Text className="text-body">
         By accessing & using the website of Qode Advisors LLP (hereinafter
         referred to as "Qode"), including any of its web pages, you signify your

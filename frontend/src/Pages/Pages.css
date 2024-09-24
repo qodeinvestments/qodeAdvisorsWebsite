@@ -109,7 +109,7 @@
 }
 
 .post-content li {
-  list-style: decimal;
+  list-style: disc;
   margin-bottom: 0.5em;
 }
 
@@ -216,3 +216,16 @@
 
 
 }
+
+
+.parallax-background {
+  background-image: url('../assets/principle.jpg'); /* Path to the image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 485px; /* Set the height */
+  position: relative;
+  overflow: hidden;
+}
+
+

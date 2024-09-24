@@ -60,9 +60,12 @@ const AboutUs = () => {
   ];
 
   return (
-    <Section padding="extralarge" className="mt-9">
-      <Heading className="text-mobileHeading sm:text-heading text-brown font-heading text-center mb-3">
-        About Qode
+    <Section padding="extralarge" className="mt-5">
+      <Heading
+        isItalic
+        className="text-mobileHeading sm:text-heading text-brown font-heading text-center mb-3"
+      >
+        About Us
       </Heading>
       <Heading className="sm:text-semiheading text-mobileSemiHeading text-center mb-1 text-brown font-semiheading">
         Our Story

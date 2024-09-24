@@ -24,6 +24,8 @@ import Section from "../container/Section";
 import Button from "../common/Button";
 import Text from "../common/Text";
 import Heading from "../common/Heading";
+
+import image from "../../assets/livePerformance.jpg";
 const PerformanceChart = ({ strategy }) => {
   const [chartOptions, setChartOptions] = useState(null);
   const [timeRange, setTimeRange] = useState("ALL");
@@ -334,8 +336,8 @@ const PerformanceChart = ({ strategy }) => {
             onClick={() => handleTimeRangeChange(range)}
             className={`text-xs  ${
               activeButton === range
-                ? "bg-beige border-none text-black"
-                : "bg-white text-black"
+                ? "bg-beige  text-black"
+                : "bg-white border border-brown text-black"
             }`}
           >
             {range}
@@ -347,7 +349,7 @@ const PerformanceChart = ({ strategy }) => {
             className={`text-xs  ${
               activeButton === "Custom"
                 ? "bg-beige border-none text-black"
-                : "bg-white text-black"
+                : "bg-white border border-brown text-black"
             }`}
           >
             Custom
@@ -410,7 +412,7 @@ const PerformanceChart = ({ strategy }) => {
   };
 
   return (
-    <div className="flex flex-col justify-center gap-4">
+    <div className="flex flex-col justify-center ">
       {" "}
       {/* Adjusted gap spacing */}
       <div className="w-full sm:p-7 p-2 ">
@@ -464,22 +466,35 @@ const PerformanceChart = ({ strategy }) => {
       <div className="w-full flex sm:flex-row flex-col gap-4">
         {" "}
         {/* Adjusted margin */}
-        <div className=" sm:p-6 p-3  bg-white  sm:w-3/5">
+        <div className=" sm:p-6 p-3 border border-brown bg-white  sm:w-3/6">
           {" "}
           {/* Adjusted padding */}
           <Calculator strategy={strategy} />
         </div>
-        <div className="bg-black text-center flex justify-center items-center flex-col p-6 sm:w-2/5">
-          <Heading className="text-beige sm:text-semiheading text-mobileSemiHeading mb-4">
-            Want to track the Live portfolio performance?
-          </Heading>
-          <Button
-            to={"https://dashboard.qodeinvest.com/"}
-            target="_blank"
-            className="bg-beige text-black"
-          >
-            Sign Up
-          </Button>
+        <div
+          className="relative bg-left bg-cover flex justify-start items-start flex-col p-6 sm:w-1/2"
+          style={{ backgroundImage: `url(${image})` }}
+        >
+          {/* Black overlay */}
+          <div className="absolute inset-0 bg-black opacity-20"></div>
+
+          {/* Content that sits on top of the background and overlay */}
+          <div className="relative z-10 text-start backdrop-blur-md bg-black bg-opacity-30 p-4 ">
+            <Heading
+              isItalic
+              className="text-lightBeige sm:text-semiheading text-mobileSemiHeading mb-4"
+            >
+              Want to track the live portfolio performance?
+            </Heading>
+            <Button
+              to={"https://dashboard.qodeinvest.com/"}
+              target="_blank"
+              isGlassmorphism
+              className="text-lightBeige hover:text-black"
+            >
+              Sign Up
+            </Button>
+          </div>
         </div>
       </div>
     </div>

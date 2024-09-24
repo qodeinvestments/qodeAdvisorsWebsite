@@ -170,7 +170,10 @@ const Calculator = ({ strategy }) => {
   return (
     <>
       {/* Padding adjusted to match your scale */}
-      <Heading className="sm:text-semiheading  text-mobileSemiHeading text-brown font-heading mb-2 sm:mb-2">
+      <Heading
+        isItalic
+        className="sm:text-semiheading text-mobileSemiHeading text-brown font-heading mb-2 sm:mb-2"
+      >
         {/* Margin adjusted */}
         Returns Calculator
       </Heading>
@@ -188,7 +191,7 @@ const Calculator = ({ strategy }) => {
             placeholder="1000"
             value={investmentAmount}
             onChange={handleInvestmentAmountChange}
-            className="w-full h-2 py-2 px-2 border text-start"
+            className="w-full h-2 py-2 px-2 border border-brown text-start"
           />
         </div>
         <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
@@ -204,8 +207,8 @@ const Calculator = ({ strategy }) => {
                 key={freq}
                 className={` text-center flex-grow ${
                   investmentFrequency === freq.toLowerCase()
-                    ? "bg-beige border-none text-black"
-                    : "bg-white text-black"
+                    ? "bg-beige  text-black"
+                    : "bg-white border border-brown text-black"
                 }`}
                 onClick={() =>
                   handleInvestmentFrequencyChange(freq.toLowerCase())
@@ -222,14 +225,14 @@ const Calculator = ({ strategy }) => {
             {/* Margin adjusted */}
             Investment Period (Years)
           </Text>
-          <div className="flex flex-row w-full h-[53px]   overflow-hidden">
+          <div className="flex flex-row w-full h-[53px] border border-brown  overflow-hidden">
             {/* Single border around the entire increment/decrement section */}
             <Button
               data-action="decrement"
-              className="text-gray-600 h-full w-1/4 cursor-pointer outline-none flex items-center justify-center"
+              className="text-brown h-full w-1/4 cursor-pointer outline-none flex items-center justify-center"
               onClick={() => handleInvestmentPeriodChange("decrement")}
             >
-              <span className="text-body font-thin">−</span>
+              <span className="text-body">−</span>
             </Button>
             <input
               type="number"
@@ -240,10 +243,10 @@ const Calculator = ({ strategy }) => {
             />
             <Button
               data-action="increment"
-              className="text-gray-600 h-full w-1/4 cursor-pointer flex items-center justify-center"
+              className="text-brown h-full w-1/4 cursor-pointer flex items-center justify-center"
               onClick={() => handleInvestmentPeriodChange("increment")}
             >
-              <span className="text-body font-thin">+</span>
+              <span className="text-body">+</span>
             </Button>
           </div>
         </div>
@@ -251,14 +254,14 @@ const Calculator = ({ strategy }) => {
       <div className="text-center mt-4 px-1 sm:px-2">
         {/* Margin and padding adjusted */}
         {/* Commented out section preserved */}
-        <Text className="md:sm:text-subheading text-mobileSubHeadingmt-2 font-subheading">
+        <Text className="md:sm:text-subheading text-brown text-mobileSubHeadingmt-2 font-subheading">
           {/* Margin adjusted */}₹{numberWithCommas(futureInvestmentValue)}
         </Text>
         <Text className="text-body text-black">
           Invested: ₹{numberWithCommas(calculateTotalInvestment())}
         </Text>
       </div>
-      <Text className="text-body text-center  sm:sm:mt-1 mt-3">
+      <Text className="text-sm text-center  sm:sm:mt-1 mt-3">
         {/* Margin adjusted */}
         Figures are based on historical returns and backtest.{" "}
         <br className="sm:visible hidden" /> They do not guarantee future

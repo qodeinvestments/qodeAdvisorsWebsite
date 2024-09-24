@@ -18,9 +18,9 @@ import CustomLink from "./common/CustomLink";
 const InvestmentStrategies = () => {
   return (
     <div>
-      <div className="flex justify-between w-full ">
+      <div className="flex flex-col sm:flex-row justify-between w-full ">
         <Heading className="text-center text-brown italic">Strategies</Heading>
-        <div className="text-start w-1/2">
+        <div className=" text-center sm:text-start sm:w-1/2">
           <Text className="sm:mt-1 mt-3 mb-5 ">
             We've created data-driven strategies that have the highest
             probability <br className="sm:visible hidden" /> of helping you
@@ -28,7 +28,7 @@ const InvestmentStrategies = () => {
           </Text>
         </div>
       </div>
-      <div className="flex gap-2  justify-between">
+      <div className="flex gap-2 flex-col sm:flex-row  justify-between">
         <CustomLink
           to={"/strategies/quant-growth-fund"}
           className="text-black w-full md:w-1/3"

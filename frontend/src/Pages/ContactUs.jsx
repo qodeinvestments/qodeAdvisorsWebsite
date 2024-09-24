@@ -26,9 +26,12 @@ const ContactUs = () => {
 
   return (
     <>
-      <Section padding="extralarge" className="mt-9">
+      <Section padding="extralarge" className="mt-5">
         <div className="text-brown text-center">
-          <Heading className="text-mobileHeading sm:text-heading font-heading mb-4">
+          <Heading
+            isItalic
+            className="text-mobileHeading sm:text-heading font-heading mb-4"
+          >
             Contact Us
           </Heading>
         </div>

@@ -19,8 +19,10 @@ const Disclosure = () => {
   ];
 
   return (
-    <Section className="sm:mt-9 mt-4" padding="extralarge">
-      <Heading className="text-brown mb-5">Disclosure</Heading>
+    <Section className="sm:mt-5 mt-4" padding="extralarge">
+      <Heading isItalic className="text-brown mb-5">
+        Disclosure
+      </Heading>
 
       <div className="grid grid-cols-1 gap-2">
         <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">

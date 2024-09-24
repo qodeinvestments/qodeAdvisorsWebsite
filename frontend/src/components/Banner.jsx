@@ -78,8 +78,8 @@ const Banner = () => {
         >
           <SectionContent className="text-center max-w-[1066px] m-auto text-lightBeige ">
             <Heading className="sm:text-semiheading italic text-mobileSemiHeading font-subheading mb-8 ">
-              We manage and grow long-term wealth for high-net-worth
-              individuals, their families, and businesses.
+              We manage and grow wealth for high-net-worth individuals, their
+              families, and businesses.
             </Heading>
             <Button
               isGlassmorphism={true}

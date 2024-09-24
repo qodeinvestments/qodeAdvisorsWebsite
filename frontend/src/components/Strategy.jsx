@@ -42,8 +42,8 @@ const StrategyComponent = ({ strategyData }) => {
   };
 
   return (
-    <div className="mx-auto sm:mt-9 mt-8">
-      <Section className="mb-4" padding="extralarge">
+    <div className="mx-auto sm:mt-5 mt-8">
+      <Section className="mb-18 " padding="normal">
         <Heading className="font-bold mb-1 text-brown text-center">
           <span className="block">{title}</span>
         </Heading>
@@ -55,8 +55,7 @@ const StrategyComponent = ({ strategyData }) => {
         </Text>
         {principle && <Text className="text-center">{principle}</Text>}
       </Section>
-
-      <Section className="mb-4">
+      <Section className="mb-4 ">
         <PerformanceChart strategy={strategyCode} />
       </Section>
 
@@ -100,43 +99,14 @@ const StrategyComponent = ({ strategyData }) => {
               </svg>
             </div>
           </CustomLink>
-          {/* <Text className="text-center text-gray-600 px-2 text-body">
-            Understand the step-by-step process we use to identify promising
-            investment opportunities and manage your portfolio.
-          </Text>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
-            {steps.map((step, index) => (
-              <div key={index} className="bg-[#fafafa] p-4 sm:p-2">
-                <div className="flex items-center justify-center w-3 sm:h-3 rounded-full bg-gray-200 mb-4">
-                  <FontAwesomeIcon
-                    icon={step.icon}
-                    className="sm:text-subheading text-mobileSubHeadingsm:sm:text-subheading text-mobileSubHeadingtext-brown"
-                  />
-                </div>
-                <Heading
-                  level={3}
-                  className="sm:text-subheading text-mobileSubHeadingsm:sm:text-subheading text-mobileSubHeadingfont-bold text-brown mb-2"
-                >
-                  {step.title}
-                </Heading>
-                <Text className="text-gray-600 text-base sm:text-body">
-                  {step.description}
-                </Text>
-              </div>
-            ))}
-          </div> */}
         </SectionContent>
       </Section>
 
-      <Section
+      {/* <Section
         padding="extralarge"
         className="bg-black max-w-[93%] sm:max-w-[1386px] mx-auto"
       >
-        {/* <SectionContent> */}
-        <Heading className="sm:text-semiheading text-mobileSemiHeading text-beige   mb-4 text-center">
-          Need help deciding which strategy would be best for you to reach
-          financial goal?
-        </Heading>
+        <Heading className="sm:text-semiheading text-mobileSemiHeading text-beige   mb-4 text-center"></Heading>
         <Text className="sm:text-subheading text-mobileSubHeading mb-3 text-center text-beige">
           Our fund manager would be happy to help you.
         </Text>
@@ -145,9 +115,14 @@ const StrategyComponent = ({ strategyData }) => {
             Schedule A Call
           </Button>
         </div>
-        {/* </SectionContent> */}
+      </Section> */}
+      <Section>
+        <FundManagers
+          text={
+            "Need help deciding which strategy would be best for you to reach financial goal?"
+          }
+        />
       </Section>
-
       {/* <Section>
         <ModalButton />
       </Section>
@@ -182,7 +157,7 @@ const StrategyComponent = ({ strategyData }) => {
                 </span>
               </div>
               {activeIndex === index && (
-                <div className=" pb-2 sm:px-3 bg-[#fafafa] text-black font-body text-body">
+                <div className=" pb-2 sm:px-3  text-black font-body text-body">
                   {item.answer}
                 </div>
               )}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Banner, Blogs, InvestmentStrategies } from "../components/index";
 import FundManagers from "../components/FundManagers";
 import { Bounce, ToastContainer, toast } from "react-toastify";
@@ -10,6 +10,9 @@ import Section from "../components/container/Section";
 import SectionContent from "../components/container/SectionContent";
 import Modal from "../components/Modal";
 import GrowMoney from "./GrowMoney";
+import { Parallax } from "react-parallax"; // Import Parallax component
+
+import principle from "../assets/principle.jpg"; // Ensure the correct path
 
 const Home = () => {
   const [email, setEmail] = useState("");
@@ -69,112 +72,12 @@ const Home = () => {
     }
   };
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const [currentText, setCurrentText] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
-  const [index, setIndex] = useState(0);
-
-  const typingSpeed = 130;
-  const deletingSpeed = 55;
-  const delayBetweenTexts = 1500;
-  const textArray = [
-    "driven by data.",
-    "objective.",
-    "emotion-free.",
-    "carried out by Qode.",
-  ];
-
-  useEffect(() => {
-    let timeout;
-    if (isTyping) {
-      if (currentText.length < textArray[index].length) {
-        timeout = setTimeout(() => {
-          setCurrentText(textArray[index].slice(0, currentText.length + 1));
-        }, typingSpeed);
-      } else {
-        timeout = setTimeout(() => {
-          setIsTyping(false);
-        }, delayBetweenTexts);
-      }
-    } else {
-      if (currentText.length > 0) {
-        timeout = setTimeout(() => {
-          setCurrentText(currentText.slice(0, -1));
-        }, deletingSpeed);
-      } else {
-        setIsTyping(true);
-        setIndex((prevIndex) => (prevIndex + 1) % textArray.length);
-      }
-    }
-
-    return () => clearTimeout(timeout);
-  }, [currentText, isTyping, index]);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <div>
-      {/* <Section fullWidth={false} className="w-full"> */}
       <Banner />
-      {/* </Section> */}
-      {/* <Section
-        padding="extralarge"
-        fullWidth={false}
-        className="bg-black max-w-[93%] mt-9 sm:max-w-[1386px] mx-auto"
-      >
-        <SectionContent className="text-center">
-          
-          <div className="flex gap-6 justify-center items-center sm:flex-row flex-col">
-            <Button
-              onClick={openModal}
-              className="sm:mt-1 mt-3 bg-beige text-black"
-            >
-              Grow your money with Qode
-            </Button>
-            <Button
-              to={"/strategies"}
-              className="sm:mt-1 mt-3 border-beige border hover:bg-beige hover:text-black duration-300 transition text-body font-body text-beige"
-            >
-              Strategies
-            </Button>
-          </div>
-        </SectionContent>
-      </Section> */}
-
-      {/* <Section padding="extralarge" className="text-center">
-        <Heading className="text-semiheading font-semibold text-brown ">
-          The best investments are <br />
-          <div className=" ">
-            {currentText} <span className="animate-blink">|</span>
-          </div>
-        </Heading>
-      </Section> */}
-
-      {/* <Section
-        padding="extralarge"
-        fullWidth={false}
-        className="bg-black max-w-[93%] sm:max-w-[1386px] mx-auto"
-      >
-        <SectionContent className="text-center">
-          <Text className="sm:text-subheading text-mobileSubHeading text-beige sm:mb-4 font-subheading">
-            For the past seven years, we have been managing and growing the{" "}
-            <br className="sm:visible hidden" />
-            wealth of high-net-worth individuals, their families, and
-            businesses.
-          </Text>
-          <Button
-            onClick={openModal}
-            className="sm:mt-1 mt-3 bg-beige text-black"
-          >
-            Grow your money with Qode
-          </Button>
-        </SectionContent>
-      </Section> */}
 
       <Section
         padding="extralarge"
@@ -185,43 +88,58 @@ const Home = () => {
           <InvestmentStrategies />
         </SectionContent>
       </Section>
-      {/* <Section padding="extralarge" className="text-center" withBorder={true}>
-        <SectionContent>
-          <Heading className="sm:text-semiheading text-mobileSemiHeading text-brown mb-4">
-            Picking the right Portfolio Management Service (PMS)  <br className="sm:visible hidden" /> is like
-            picking the right stock
-          </Heading>
-          <Text className="mb-1 text-subheading">
-            How do you know if you have picked the right one?
-          </Text>
-          <Button className="bg-beige text-black  px-3 py-18">
-            Things to consider to pick the right PMS
-          </Button>
-        </SectionContent>
-      </Section> */}
 
       <Section
         padding="normal"
-        className=" max-w-[93%] sm:max-w-[1386px] mx-auto"
+        className="max-w-[93%] sm:max-w-[1386px] mx-auto"
       >
-        {/* <SectionContent> */}
         <FundManagers />
-        {/* </SectionContent> */}
       </Section>
 
       <Section padding="none">
         <Blogs />
       </Section>
 
+      {/* Parallax Section */}
+      <Parallax className="my-7" bgImage={principle} strength={200}>
+        <div
+          className="relative w-full min-h-[631px] bg-fixed bg-center bg-cover flex items-center justify-center"
+          style={{ backgroundImage: `url(${principle})` }}
+        >
+          <div className="absolute inset-0 bg-black opacity-35"></div>
+
+          {/* Content centered within the image */}
+          <div className="relative z-10 w-full max-w-[93%] sm:max-w-[1386px] mx-auto flex items-center justify-end">
+            <div className="w-[820px]  text-start p-4  backdrop-filter backdrop-blur-sm bg-white bg-opacity-5 shadow-2xl overflow-auto">
+              <Heading className="text-heading font-heading text-lightBeige italic mb-18">
+                Our Investing Principles
+              </Heading>
+              <Text className="text-lightBeige text-body mb-4">
+                At Qode Investments, we embrace a data-driven, disciplined
+                approach to investing. We see things for what they are and
+                ignore all the noise.
+              </Text>
+              <Button
+                href={"/blogs/qodes-principles-of-investing"}
+                isGlassmorphism={true}
+                className="bg-beige text-lightBeige"
+              >
+                Know More
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Parallax>
+
       <Section padding="small" className="mb-6">
         <div className="md:flex flex-col items-center text-center gap-2 justify-center">
-          <div className="md:w-1/2 ">
+          <div className="md:w-1/2">
             <Text className="sm:text-subheading text-mobileSubHeading text-black mb-3">
               Subscribe to know more about our investment strategies, style and
               principles.
             </Text>
           </div>
-          <div className="md:w-1/2 ">
+          <div className="md:w-1/2">
             <form onSubmit={handleSubmit}>
               <div className="mb-2">
                 <input
@@ -234,9 +152,9 @@ const Home = () => {
                   className="w-full px-2 py-18 border border-beige focus:outline-none focus:ring-2 focus:ring-brown"
                 />
               </div>
-              <div className="">
+              <div>
                 <Button
-                  className="  bg-beige text-black"
+                  className="bg-beige text-black"
                   type="submit"
                   disabled={isSubmitting}
                   isLoading={isSubmitting}

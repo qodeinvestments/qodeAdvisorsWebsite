@@ -3,9 +3,8 @@ import Button from "../components/common/Button";
 import Text from "../components/common/Text";
 
 const GrowMoney = () => {
-  const calendlyZoomLink = "https://calendly.com/tech-qodeinvest/30min";
-  const calendlyOfficeLink =
-    "https://calendly.com/tech-qodeinvest/physical-meeting";
+  const VITE_ZOOM_URL = import.meta.env.VITE_ZOOM_URL;
+  const VITE_INPERSON_URL = import.meta.env.VITE_INPERSON_URL;
 
   return (
     <div className="bg-black bg-opacity-10 backdrop-blur-md flex flex-col sm:p-7 p-18 items-center justify-center z-50 font-body">
@@ -27,7 +26,7 @@ const GrowMoney = () => {
             </Text>
 
             <Button
-              href={calendlyOfficeLink}
+              href={VITE_ZOOM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto text-sm sm:text-body bg-beige text-black"
@@ -46,7 +45,7 @@ const GrowMoney = () => {
             </Text>
 
             <Button
-              href={calendlyZoomLink}
+              href={VITE_INPERSON_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full text-sm sm:text-body sm:w-auto bg-beige text-black"

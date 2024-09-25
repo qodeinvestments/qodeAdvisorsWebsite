@@ -4,9 +4,8 @@ import Heading from "../components/common/Heading";
 import Text from "../components/common/Text";
 
 const BookAMeet = () => {
-  const calendlyZoomLink = "https://calendly.com/tech-qodeinvest/30min";
-  const calendlyOfficeLink =
-    "https://calendly.com/tech-qodeinvest/physical-meeting";
+  const VITE_ZOOM_URL = import.meta.env.VITE_ZOOM_URL;
+  const VITE_INPERSON_URL = import.meta.env.VITE_INPERSON_URL;
 
   return (
     <div className="relative bg-black bg-opacity-60 backdrop-blur-md flex sm:p-7 p-2 items-center justify-center z-50 font-body  shadow-lg">
@@ -28,7 +27,7 @@ const BookAMeet = () => {
             </Text>
 
             <Button
-              href={calendlyOfficeLink}
+              href={VITE_ZOOM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-beige text-black"
@@ -45,7 +44,7 @@ const BookAMeet = () => {
             </Text>
 
             <Button
-              href={calendlyZoomLink}
+              href={VITE_INPERSON_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-beige text-black"

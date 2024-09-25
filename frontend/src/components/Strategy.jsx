@@ -13,6 +13,7 @@ import CustomLink from "./common/CustomLink";
 import FundManagers from "./FundManagers";
 import Modal from "./Modal";
 import BookAMeet from "../Pages/BookAMeet";
+import { Helmet } from "react-helmet";
 
 const StrategyComponent = ({ strategyData }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -43,6 +44,18 @@ const StrategyComponent = ({ strategyData }) => {
 
   return (
     <div className="mx-auto sm:mt-5 mt-8">
+      <Helmet>
+        <title>{title} - Strategy Overview | Qode Investments</title>
+        <meta
+          name="description"
+          content={`Learn more about the ${title} strategy at Qode Investments. ${description}`}
+        />
+        <meta
+          name="keywords"
+          content={`${title}, ${tagLine}, investment strategy, Qode Investments`}
+        />
+        <meta name="author" content="Qode Investments" />
+      </Helmet>
       <Section className="mb-18 " padding="normal">
         <Heading className="font-bold mb-1 text-brown text-center">
           <span className="block">{title}</span>

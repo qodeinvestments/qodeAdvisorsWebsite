@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Banner, Blogs, InvestmentStrategies } from "../components/index";
 import FundManagers from "../components/FundManagers";
+import { Helmet } from "react-helmet"; // Import Helmet
+
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "../components/common/Button";
@@ -115,6 +117,20 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>
+          Qode Investments - Grow Your Wealth with Data-Driven Strategies
+        </title>
+        <meta
+          name="description"
+          content="At Qode Investments, we help individuals grow their wealth using data-driven investment strategies with a proven track record. Learn more about our investing principles and strategies."
+        />
+        <meta
+          name="keywords"
+          content="Qode Investments, data-driven investment, wealth management, quant models, stock market, investment strategies"
+        />
+        <meta name="author" content="Qode Investments" />
+      </Helmet>
       <Banner />
 
       <Section padding="none" className="my-7 text-center">

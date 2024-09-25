@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet"; // Import Helmet
 import useStrategyData from "../components/hooks/strategyCagr";
 import { Container } from "../components";
 import BookAMeet from "./BookAMeet";
@@ -162,6 +163,18 @@ const Strategies = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Qode Strategies - Discover Investment Approaches</title>
+        <meta
+          name="description"
+          content="Explore Qode's data-driven strategies, including Growth, Momentum, and Low Volatility Funds. Find the right approach to meet your financial goals."
+        />
+        <meta
+          name="keywords"
+          content="investment strategies, Qode Growth Fund, Momentum Fund, Low Volatility Fund, data-driven investment, financial goals"
+        />
+        <meta name="author" content="Qode Investments" />
+      </Helmet>
       <Section className="mt-9 text-center">
         <Text className="text-subheading font-semibold text-brown ">
           The best investments are <br />

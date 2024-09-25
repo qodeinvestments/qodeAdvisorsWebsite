@@ -12,6 +12,7 @@ import { Container } from "../components";
 import Text from "../components/common/Text";
 import Section from "../components/container/Section";
 import Heading from "../components/common/Heading";
+import { Helmet } from "react-helmet";
 
 const AboutUs = () => {
   const teamMembers = [
@@ -60,40 +61,54 @@ const AboutUs = () => {
   ];
 
   return (
-    <Section padding="extralarge" className="mt-5">
-      <Heading
-        isItalic
-        className="sm:text-semiheading text-mobileSemiHeading text-center mb-1 text-brown font-semiheading"
-      >
-        Our Story
-      </Heading>
-      <Text className="text-center text-body font-body mb-7">
-        Our founders (Karan, Kavan & Rishabh) started with investing their own
-        money in the stock market using Quant models. <br /> When they started
-        consistently outperforming the market average, they started investing
-        their family business reserve capital & grew it significantly. <br />
-        <br /> Over the years they realised - Hey, we’re good at this why not
-        help others grow their wealth as well. <br />
-        <br /> So, they launched their quant strategy - Quant Growth Fund with
-        another Fund manager. It’s been 5 years, and our CAGR is{" "}
-        <strong>35.1%</strong>. <br /> And compared to all the PMS's 5Y CAGR we
-        stand 4th. <br /> <br /> Seeing this they decided to start their own PMS
-        and launch more schemes for different investors with different financial
-        goals and risk appetite.
-      </Text>
-      <Heading
-        isItalic
-        className="sm:text-semiheading text-mobileSemiHeading font-semibold text-center mb-3 text-brown"
-      >
-        Our Team
-      </Heading>
+    <>
+      <Helmet>
+        <title>About Us - Meet the Qode Investments Team</title>
+        <meta
+          name="description"
+          content="Learn about Qode Investments, our founders Karan, Rishabh, and Kavan, and meet the team that helps clients achieve their financial goals through data-driven strategies."
+        />
+        <meta
+          name="keywords"
+          content="Qode Investments, About Us, Karan Salecha, Rishabh Nahar, Kavan Sejpal, Vidhi Chheda, Fund Managers, Quantitative Investment Team"
+        />
+        <meta name="author" content="Qode Investments" />
+      </Helmet>
+      <Section padding="extralarge" className="mt-5">
+        <Heading
+          isItalic
+          className="sm:text-semiheading text-mobileSemiHeading text-center mb-1 text-brown font-semiheading"
+        >
+          Our Story
+        </Heading>
+        <Text className="text-center text-body font-body mb-7">
+          Our founders (Karan, Kavan & Rishabh) started with investing their own
+          money in the stock market using Quant models. <br /> When they started
+          consistently outperforming the market average, they started investing
+          their family business reserve capital & grew it significantly. <br />
+          <br /> Over the years they realised - Hey, we’re good at this why not
+          help others grow their wealth as well. <br />
+          <br /> So, they launched their quant strategy - Quant Growth Fund with
+          another Fund manager. It’s been 5 years, and our CAGR is{" "}
+          <strong>35.1%</strong>. <br /> And compared to all the PMS's 5Y CAGR
+          we stand 4th. <br /> <br /> Seeing this they decided to start their
+          own PMS and launch more schemes for different investors with different
+          financial goals and risk appetite.
+        </Text>
+        <Heading
+          isItalic
+          className="sm:text-semiheading text-mobileSemiHeading font-semibold text-center mb-3 text-brown"
+        >
+          Our Team
+        </Heading>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {teamMembers.map((member, index) => (
-          <TeamMemberCard key={index} member={member} />
-        ))}
-      </div>
-    </Section>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {teamMembers.map((member, index) => (
+            <TeamMemberCard key={index} member={member} />
+          ))}
+        </div>
+      </Section>
+    </>
   );
 };
 

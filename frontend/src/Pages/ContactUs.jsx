@@ -3,6 +3,7 @@ import { Container, GrayContainer } from "../components";
 import Heading from "../components/common/Heading";
 import Text from "../components/common/Text";
 import Section from "../components/container/Section";
+import { Helmet } from "react-helmet";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -26,6 +27,18 @@ const ContactUs = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Contact Us - Qode Investments</title>
+        <meta
+          name="description"
+          content="Contact Qode Investments for inquiries, support, or further information. Find our address, phone number, and email or send us a direct message."
+        />
+        <meta
+          name="keywords"
+          content="Qode Investments, Contact Us, address, phone number, email, get in touch"
+        />
+        <meta name="author" content="Qode Investments" />
+      </Helmet>
       <Section padding="extralarge" className="mt-5">
         <div className="text-brown text-center">
           <Heading

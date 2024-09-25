@@ -163,12 +163,12 @@ const Strategies = () => {
   return (
     <>
       <Section className="mt-9 text-center">
-        <Heading className="text-semiheading font-semibold text-brown ">
+        <Text className="text-subheading font-semibold text-brown ">
           The best investments are <br />
           <div className=" ">
             {currentText} <span className="animate-blink">|</span>
           </div>
-        </Heading>
+        </Text>
       </Section>
       <Section
         className="  sm:max-w-[1386px] mx-auto"

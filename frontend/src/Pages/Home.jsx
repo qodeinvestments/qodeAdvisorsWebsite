@@ -118,12 +118,12 @@ const Home = () => {
       <Banner />
 
       <Section padding="none" className="my-7 text-center">
-        <Heading className="text-semiheading font-heading  text-brown ">
+        <Text className="text-subheading font-heading  text-brown ">
           The best investments are <br />
           <div className=" ">
             {currentText} <span className="animate-blink">|</span>
           </div>
-        </Heading>
+        </Text>
       </Section>
 
       <Section

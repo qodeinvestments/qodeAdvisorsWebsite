@@ -71,11 +71,11 @@ const router = createBrowserRouter([
         element: <OpenAccount />,
       },
       {
-        path: "/strategies/quant-growth-momentum",
+        path: "/strategies/qode-velocity-fund",
         element: <MomentumTabs />,
       },
       {
-        path: "/strategies/low-vol-momentum",
+        path: "/strategies/qode-all-weather",
         element: <LowVolMomentum />,
       },
       {

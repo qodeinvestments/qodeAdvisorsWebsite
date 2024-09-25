@@ -92,7 +92,7 @@ const Header = () => {
                   isHomePage && !isScrolled ? "text-beige" : "text-beige"
                 }`}
               >
-                About us
+                About Us
               </CustomLink>
               <Link
                 to={"https://dashboard.qodeinvest.com/"}
@@ -182,7 +182,7 @@ const Header = () => {
                       href="https://dashboard.qodeinvest.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block px-4 py-2 text-body hover:bg-beige text-beige transition"
+                      className="block px-4 py-2 dm-sans-font text-body hover:bg-beige text-beige transition"
                       onClick={closeMobileMenu}
                     >
                       Dashboard

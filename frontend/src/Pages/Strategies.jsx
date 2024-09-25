@@ -57,7 +57,7 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
       return (
         <CustomLink
           to={slug}
-          className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row border border-brown flex duration-500 bg-white text-grey hover:border-none hover:bg-lightGrey hover:shadow-xl group"
+          className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row border border-brown flex duration-500 bg-white text-white hover:border-none hover:bg-beige hover:shadow-xl group"
         >
           <div className="text-black">
             <Heading className="sm:text-subheading text-brown mb-18 text-mobileSubHeading font-subheading">
@@ -142,20 +142,20 @@ const Strategies = () => {
     },
     {
       id: "momentum",
-      name: "Qode Momentum Fund",
-      slug: "quant-growth-momentum",
+      name: "Qode Velocity Fund",
+      slug: "qode-velocity-fund",
       description: "<Text class='mb-1'>Buy high sell higher.</Text> ",
     },
     {
       id: "lowvol",
-      name: "Qode Low Volatility Fund",
-      slug: "low-vol-momentum",
+      name: "Qode All Weather",
+      slug: "qode-all-weather",
       description: "<Text class='mb-1'>Slow but Steady.</Text>",
     },
     {
       id: "futureHorizon",
       name: "Qode Future Horizon",
-      slug: "qode-active-fund",
+      slug: "qode-future-horizon",
       description:
         "<Text class='mb-1'>Discovering Growth Potential, Unlocking Value.</Text>",
     },

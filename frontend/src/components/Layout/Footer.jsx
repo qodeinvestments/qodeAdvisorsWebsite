@@ -79,11 +79,14 @@ const Footer = () => {
                 <CustomLink to="/strategies/quant-growth-fund">
                   Qode Growth Fund
                 </CustomLink>,
-                <CustomLink to="/strategies/quant-growth-momentum">
-                  Qode Momentum Fund
+                <CustomLink to="/strategies/qode-velocity-fund">
+                  Qode Velocity Fund
                 </CustomLink>,
-                <CustomLink to="/strategies/low-vol-momentum">
-                  Qode Low Volatility Fund
+                <CustomLink to="/strategies/qode-all-weather">
+                  Qode All Weather
+                </CustomLink>,
+                <CustomLink to="/blogs/qode-future-horizon">
+                  Qode Future Horizon
                 </CustomLink>,
               ]}
             />

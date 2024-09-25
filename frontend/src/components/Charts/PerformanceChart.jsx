@@ -439,7 +439,9 @@ const PerformanceChart = ({ strategy }) => {
               <Text className="sm:text-semiheading text-semiheading font-subheading text-brown">
                 {strategyCagr}
                 <span className="text-body ml-1 text-black">
-                  {timeRange} return
+                  {["1Y", "1M", "6M"].includes(timeRange)
+                    ? timeRange + " return"
+                    : timeRange + " CAGR"}
                 </span>
               </Text>
             </div>

@@ -7,14 +7,14 @@ import {
 import StrategyComponent from "../components/Strategy";
 
 export const quantMomentumFundData = {
-  title: "Qode Momentum Fund",
+  title: "Qode Velocity Fund",
   tagLine: "Buy high sell higher.",
   description:
     "This strategy invests in 30 businesses whose stock price has grown significantly and sells it before they start falling",
   principle:
     "Principle - The stock price tells the story before the actual story unfolds.</Text>",
   strategyCode: "QMF",
-  strategySlug: "quant-growth-momentum",
+  strategySlug: "qode-velocity-fund",
   pptLink: "/path-to-your-ppt-file.pptx",
   blogUrl: "/qode-momentum",
   whitePaperLink: "",

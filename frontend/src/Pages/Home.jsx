@@ -152,17 +152,17 @@ const Home = () => {
 
       <Section
         padding="normal"
-        className="max-w-[93%] sm:max-w-[1386px] mx-auto"
+        className="max-w-[93%] mb-0 sm:max-w-[1386px] mx-auto"
       >
         <FundManagers />
       </Section>
 
-      <Section padding="extralarge">
+      <Section padding="normal">
         <Blogs />
       </Section>
 
       {/* Parallax Section */}
-      <Parallax className="my-7" bgImage={principle} strength={200}>
+      <Parallax className="my-5" bgImage={principle} strength={200}>
         <div
           className="relative w-full min-h-[631px] bg-fixed bg-center bg-cover flex items-center justify-center"
           style={{ backgroundImage: `url(${principle})` }}
@@ -192,7 +192,7 @@ const Home = () => {
         </div>
       </Parallax>
 
-      <Section padding="small" className="mb-6">
+      <Section padding="normal" className="mb-6">
         <div className="md:flex flex-col items-center text-center gap-2 justify-center">
           <div className="md:w-1/2">
             <Text className="sm:text-subheading text-mobileSubHeading text-black mb-3">

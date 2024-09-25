@@ -110,14 +110,14 @@ const Strategies_copy = () => {
     },
     {
       id: "momentum",
-      name: "Qode Momentum Fund",
-      slug: "quant-growth-momentum",
+      name: "Qode Velocity Fund",
+      slug: "qode-velocity-fund",
       description: "<Text class='mb-1'>Buy high sell higher.</Text> ",
     },
     {
       id: "lowvol",
-      name: "Qode Low Volatility Fund",
-      slug: "low-vol-momentum",
+      name: "Qode All Weather",
+      slug: "qode-all-weather",
       description: "<Text class='mb-1'>Slow but Steady.</Text>",
     },
   ];

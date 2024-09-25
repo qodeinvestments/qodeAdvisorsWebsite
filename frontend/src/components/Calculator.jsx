@@ -4,6 +4,7 @@ import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 import Heading from "./common/Heading";
 import Text from "./common/Text";
 import Button from "./common/Button";
+import fetchStrategyData from "./api/getData";
 
 const Calculator = ({ strategy }) => {
   const [startOfMonthData, setStartOfMonthData] = useState([]);
@@ -12,19 +13,18 @@ const Calculator = ({ strategy }) => {
   const [investmentPeriod, setInvestmentPeriod] = useState(1);
   const [futureInvestmentValue, setFutureInvestmentValue] = useState(0);
   const [data, setData] = useState([]);
-  // console.log(strategy);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/data/mainData.json");
-        const jsonData = await response.json();
-
-        // Assuming strategy is something like "momentum", "qgf", or "lowvol"
-        if ((strategy = "qgm")) {
+        // Handle the strategy alias here if needed
+        if (strategy === "qgm") {
           strategy = "momentum";
         }
-        const strategyData = jsonData[strategy];
-        // console.log(jsonData);
+
+        // Use the new fetchStrategyData function
+        const strategyData = await fetchStrategyData(strategy, "ALL");
+        console.log(strategyData);
 
         if (!strategyData) {
           console.error(`No data found for strategy: ${strategy}`);
@@ -32,19 +32,18 @@ const Calculator = ({ strategy }) => {
         }
 
         setData(strategyData);
-        // console.log("data", strategyData);
 
         if (strategyData && strategyData.length > 0) {
           const periodStartDate = new Date(
-            strategyData[strategyData.length - 1].Date
+            strategyData[strategyData.length - 1].date
           );
-          // console.log(periodStartDate);
+
           periodStartDate.setFullYear(
             periodStartDate.getFullYear() - investmentPeriod
           );
 
           const filteredData = strategyData.filter((entry) => {
-            const date = new Date(entry.Date);
+            const date = new Date(entry.date);
             return (
               !isNaN(date.getTime()) &&
               date.getDate() === 1 &&
@@ -63,44 +62,31 @@ const Calculator = ({ strategy }) => {
   }, [investmentPeriod, strategy]);
 
   useEffect(() => {
-    if (startOfMonthData.length > 0) {
+    if (data.length > 0) {
       calculatePresentInvestmentValue();
     }
-  }, [
-    investmentAmount,
-    investmentFrequency,
-    investmentPeriod,
-    startOfMonthData,
-    strategy,
-  ]);
+  }, [investmentAmount, investmentFrequency, investmentPeriod, data, strategy]);
 
   const calculatePresentInvestmentValue = () => {
     if (investmentFrequency === "one-time") {
-      const investmentDate = new Date(data[data.length - 1].Date);
-      investmentDate.setFullYear(
-        investmentDate.getFullYear() - investmentPeriod
-      );
+      const currentDate = new Date(data[data.length - 1].date);
+      const investmentDate = new Date(currentDate);
+      investmentDate.setFullYear(currentDate.getFullYear() - investmentPeriod);
 
-      const investmentDateFormatted =
-        (investmentDate.getMonth() + 1).toString().padStart(2, "0") +
-        "/" +
-        investmentDate.getDate().toString().padStart(2, "0") +
-        "/" +
-        investmentDate.getFullYear();
-
-      const investmentEntry = data.find(
-        (entry) => entry.Date === investmentDateFormatted
-      );
+      const investmentEntry = data.find((entry) => {
+        const entryDate = new Date(entry.date);
+        return entryDate >= investmentDate;
+      });
 
       if (investmentEntry) {
-        const strategyValue = investmentEntry["Total Portfolio NAV"];
+        const strategyValue = parseFloat(investmentEntry.total_portfolio_nav);
         const shares = investmentAmount / strategyValue;
-        const currentPrice = data[data.length - 1]["Total Portfolio NAV"];
+        const currentPrice = parseFloat(
+          data[data.length - 1].total_portfolio_nav
+        );
         const futureValue = shares * currentPrice;
-        // console.log("Future value:", futureValue);
         setFutureInvestmentValue(futureValue.toFixed(2));
       } else {
-        // console.log("No exact match for investment date found in data.");
         setFutureInvestmentValue(0);
       }
     } else {
@@ -110,12 +96,12 @@ const Calculator = ({ strategy }) => {
           : investmentPeriod;
       let totalShares = 0;
       for (let i = 0; i < months && i < startOfMonthData.length; i++) {
-        const strategyValue = startOfMonthData[i]["Total Portfolio NAV"];
+        const strategyValue = startOfMonthData[i]["total_portfolio_nav"];
         const shares = investmentAmount / strategyValue;
         totalShares += shares;
       }
       const finalPrice =
-        totalShares * data[data.length - 1]["Total Portfolio NAV"];
+        totalShares * data[data.length - 1]["total_portfolio_nav"];
       setFutureInvestmentValue(finalPrice.toFixed(2));
     }
   };
@@ -169,20 +155,15 @@ const Calculator = ({ strategy }) => {
 
   return (
     <>
-      {/* Padding adjusted to match your scale */}
       <Heading
         isItalic
         className="sm:text-semiheading text-mobileSemiHeading text-brown font-heading mb-2 sm:mb-2"
       >
-        {/* Margin adjusted */}
         Returns Calculator
       </Heading>
       <div className="space-y-4">
-        {/* Vertical spacing adjusted */}
         <div className="flex flex-col sm:flex-row sm:gap-4 justify-between items-center">
-          {/* Spacing adjusted */}
           <Text className="text-body sm:text-body mb-1 sm:mb-0 w-full sm:w-3/5">
-            {/* Margin adjusted */}
             Investment Amount (₹)
           </Text>
           <input
@@ -195,13 +176,10 @@ const Calculator = ({ strategy }) => {
           />
         </div>
         <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
-          {/* Spacing adjusted */}
           <Text className="text-body sm:text-body mb-1 sm:mb-0 w-full sm:w-3/5">
-            {/* Margin adjusted */}
             Investment Frequency
           </Text>
           <div className="flex flex-row justify-between space-x-2 w-full">
-            {/* Spacing adjusted */}
             {["Monthly", "One-time"].map((freq) => (
               <Button
                 key={freq}
@@ -220,13 +198,10 @@ const Calculator = ({ strategy }) => {
           </div>
         </div>
         <div className="flex flex-col sm:flex-row sm:gap-3 justify-between items-center">
-          {/* Adjusted gap to match the frequency section */}
           <Text className="text-body sm:text-body mb-1 sm:mb-0 w-full sm:w-3/5">
-            {/* Margin adjusted */}
             Investment Period (Years)
           </Text>
           <div className="flex flex-row w-full h-[53px] border border-brown  overflow-hidden">
-            {/* Single border around the entire increment/decrement section */}
             <Button
               data-action="decrement"
               className="text-brown h-full w-1/4 cursor-pointer outline-none flex items-center justify-center"
@@ -252,17 +227,14 @@ const Calculator = ({ strategy }) => {
         </div>
       </div>
       <div className="text-center mt-4 px-1 sm:px-2">
-        {/* Margin and padding adjusted */}
-        {/* Commented out section preserved */}
         <Text className="md:sm:text-subheading text-brown text-mobileSubHeadingmt-2 font-subheading">
-          {/* Margin adjusted */}₹{numberWithCommas(futureInvestmentValue)}
+          ₹{numberWithCommas(futureInvestmentValue)}
         </Text>
         <Text className="text-body text-black">
           Invested: ₹{numberWithCommas(calculateTotalInvestment())}
         </Text>
       </div>
       <Text className="text-sm text-center  sm:sm:mt-1 mt-3">
-        {/* Margin adjusted */}
         Figures are based on historical returns and backtest.{" "}
         <br className="sm:visible hidden" /> They do not guarantee future
         results.*

@@ -69,7 +69,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
   }));
 
   const combinedStrategies = [...STRATEGIES, ...columnList];
-
+  const combinedDebtFunds = [...DEBTFUNDS, ...columnList];
   const handleInputChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -215,7 +215,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         <Select
           mode="multiple"
           style={{ width: "100%" }}
-          options={DEBTFUNDS}
+          options={combinedDebtFunds}
           value={formData.selected_debtfunds.map((s) => s.debtfund)}
           onChange={handleDebtFundChange}
           className="w-full border-brown border rounded-none"

@@ -10,7 +10,7 @@ const Heading = ({
   const Tag = `h${level}`;
   return (
     <Tag
-      className={`font-heading playfair-font-display text-mobileHeading sm:text-heading font-semibold ${
+      className={`font-heading playfair-font-display capitalise text-mobileHeading sm:text-heading font-semibold ${
         isItalic ? "italic" : ""
       } ${className}`}
       {...props}

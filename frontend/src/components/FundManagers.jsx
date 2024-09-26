@@ -33,7 +33,7 @@ const FundManagers = ({ text }) => {
     <div className="flex flex-col md:flex-row items-center md:items-start gap-2  md:gap-4 justify-between w-full">
       {/* Left Section */}
       <div className="md:w-1/2 w-full text-start sm:px-4 ">
-        <Heading className="text-mobileSemiHeading md:text-semiheading italic text-beige mb-4 text-center md:text-start">
+        <Heading className="text-mobileSemiHeading md:text-semiheading italic text-brown mb-4 text-center md:text-start">
           {text
             ? text
             : "Do you want to speak to a fund manager to know more before investing?"}
@@ -45,7 +45,7 @@ const FundManagers = ({ text }) => {
 
         <div className="flex justify-center md:justify-start">
           <Button
-            className="bg-beige shadow-md text-black hover:bg-lightBrown transition duration-300"
+            className="bg-beige shadow-md  hover:bg-lightBrown transition duration-300"
             onClick={openModal}
           >
             Schedule A Call

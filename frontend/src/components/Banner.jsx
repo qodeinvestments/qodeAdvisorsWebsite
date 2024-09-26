@@ -75,7 +75,7 @@ const Banner = () => {
           <Button
             isGlassmorphism={true}
             onClick={openModal}
-            className="sm:mt-1 mt-3 text-lightBeige hover:bg-black hover:bg-opacity-45 hover:text-white border border-beige"
+            className="sm:mt-1 mt-3 border border-beige"
           >
             Grow your money with Qode
           </Button>

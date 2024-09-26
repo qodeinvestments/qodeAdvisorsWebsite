@@ -183,7 +183,6 @@ const Home = () => {
               <Button
                 href={"/blogs/qodes-principles-of-investing"}
                 isGlassmorphism={true}
-                className="bg-beige text-lightBeige hover:text-black"
               >
                 Know More
               </Button>

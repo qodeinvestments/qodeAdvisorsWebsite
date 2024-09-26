@@ -29,10 +29,10 @@ function BlogCard({
       initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="overflow-hidden transition-all  duration-75  max-w-[485px] sm:p-1 hover:bg-lightBeige hover:scale-105 flex flex-col"
+      className="overflow-hidden transition-all  duration-75  max-w-[485px] group sm:p-3 hover:bg-lightBeige hover:scale-105 flex flex-col"
     >
       <CustomLink to={`/blogs/${slug}`} className="block flex-grow">
-        <div className="p-18 sm:p-2 h-full group overflow-hidden  relative flex flex-col">
+        <div className="h-full group overflow-hidden  relative flex flex-col">
           {feature_image && (
             <img
               src={feature_image}
@@ -42,7 +42,7 @@ function BlogCard({
           )}
           <div className="transition-all  flex flex-col h-full">
             <div className="mb-auto">
-              <Heading className="md:sm:text-subheading text-mobileSubHeading text-brown font-bold  mb-2 relative overflow-hidden text-ellipsis">
+              <Heading className="md:sm:text-subheading text-mobileSubHeading text-brown group-hover:text-black font-bold  mb-2 relative overflow-hidden text-ellipsis">
                 {title}
               </Heading>
             </div>
@@ -60,11 +60,11 @@ function BlogCard({
                   <span className="text-xs">{primary_author.name}</span>
                 </div>
               )}
-              <div className="flex items-center justify-between w-full ">
-                <div className="group-hover:text-brown">
+              <div className="flex items-center justify-end  w-full ">
+                {/* <div className="group-hover:text-black">
                   <FontAwesomeIcon icon={faClock} className="mr-1" />
                   <span className="text-xs">{reading_time} min read</span>
-                </div>
+                </div> */}
                 <div className="self-end sm:text-right group-hover:text-black ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +86,7 @@ function BlogCard({
               Continue Reading <FontAwesomeIcon icon={faArrowRight} />
             </CustomLink>
           </div> */}
-          <hr className="my-2" />
+          <hr className="mt-2" />
         </div>
       </CustomLink>
     </motion.div>

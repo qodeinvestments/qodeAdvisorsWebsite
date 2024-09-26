@@ -33,7 +33,7 @@ const TermsnConditions = () => {
           amended from time to time at Qode's sole discretion
           <a
             href="https://qodeinvest.com"
-            className="text-brown hover:text-brown"
+            className="text-brown hover:text-black"
           >
             {" "}
             qodeinvest.com
@@ -123,7 +123,7 @@ const TermsnConditions = () => {
               sites before disclosing any personal information on
               <a
                 href="https://qodeinvest.com"
-                className="text-brown hover:text-brown"
+                className="text-brown hover:text-black"
               >
                 {" "}
                 qodeinvest.com

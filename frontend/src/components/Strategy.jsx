@@ -92,7 +92,7 @@ const StrategyComponent = ({ strategyData }) => {
           </Text>
           <CustomLink
             to={`/blogs${blogUrl}`}
-            className="p-2 relative border-brown border transition-all justify-between items-center  flex duration-500 hover:bg-beige hover:border-none hover:shadow-xl group"
+            className="p-2 relative border-brown border transition-all justify-between items-center  flex duration-500 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl group"
           >
             <div className="text-black">
               <Text className="sm:text-subheading text-mobileSubHeading font-subheading">

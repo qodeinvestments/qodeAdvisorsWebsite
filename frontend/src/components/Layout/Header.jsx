@@ -52,7 +52,7 @@ const Header = () => {
         <div className="shadow-lg py-1 sm:py-18 sm:px-4 px-18">
           <div className="flex items-center justify-between z-50 w-full">
             {/* Left Navigation */}
-            <nav className="hidden md:flex items-center space-x-5">
+            <nav className="hidden md:flex items-center space-x-6">
               <CustomLink
                 to="/blogs"
                 className={`text-body transition duration-300 ${
@@ -85,7 +85,7 @@ const Header = () => {
             </div>
 
             {/* Right Navigation */}
-            <nav className="hidden md:flex items-center space-x-5">
+            <nav className="hidden md:flex items-center space-x-4">
               <CustomLink
                 to="/about-us"
                 className={`text-body transition duration-300 ${
@@ -159,21 +159,21 @@ const Header = () => {
                   <div className="absolute right-0 w-48 shadow-lg bg-black  z-50 overflow-hidden">
                     <CustomLink
                       to="/blogs"
-                      className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:bg-opacity-50"
+                      className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
                       onClick={closeMobileMenu}
                     >
                       Blogs
                     </CustomLink>
                     <CustomLink
                       to="/strategies"
-                      className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:bg-opacity-50"
+                      className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
                       onClick={closeMobileMenu}
                     >
                       Strategies
                     </CustomLink>
                     <CustomLink
                       to="/about-us"
-                      className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:bg-opacity-50"
+                      className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
                       onClick={closeMobileMenu}
                     >
                       About us
@@ -182,7 +182,7 @@ const Header = () => {
                       href="https://dashboard.qodeinvest.com/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block px-4 py-2 dm-sans-font text-body hover:bg-beige text-beige transition"
+                      className="block px-4 py-2 dm-sans-font text-body hover:bg-beige hover:text-black text-beige transition"
                       onClick={closeMobileMenu}
                     >
                       Dashboard

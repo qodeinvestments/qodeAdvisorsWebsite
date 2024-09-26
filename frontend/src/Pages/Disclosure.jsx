@@ -39,10 +39,10 @@ const Disclosure = () => {
         </Heading>
 
         <div className="grid grid-cols-1 gap-2">
-          <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-3 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
-                <Heading className="sm:text-subheading text-brown text-mobileSubHeading font-subheading">
+                <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
                   Disclosure document
                 </Heading>
               </div>
@@ -60,10 +60,10 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-3 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
-                <Heading className="sm:text-subheading text-brown text-mobileSubHeading font-subheading">
+                <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
                   Prevention of money laundering
                 </Heading>
               </div>
@@ -81,10 +81,10 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-3 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
-                <Heading className="sm:text-subheading text-brown text-mobileSubHeading font-subheading">
+                <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
                   Conflict of interest policy
                 </Heading>
               </div>
@@ -102,10 +102,10 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-3 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
-                <Heading className="sm:text-subheading text-brown text-mobileSubHeading font-subheading">
+                <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
                   Investor charter
                 </Heading>
               </div>
@@ -123,10 +123,10 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-3 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
-                <Heading className="sm:text-subheading text-brown text-mobileSubHeading font-subheading">
+                <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
                   Investor complaints (monthly)
                 </Heading>
               </div>
@@ -144,10 +144,10 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-3 border border-brown transition-all duration-300 hover:bg-beige hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-3 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
-                <Heading className="sm:text-subheading text-brown text-mobileSubHeading font-subheading">
+                <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
                   Code of conduct
                 </Heading>
               </div>
@@ -192,7 +192,7 @@ const Disclosure = () => {
           <Text className="text-body font-body">
             Visit the{" "}
             <a
-              className="text-brown font-bold hover:text-brown"
+              className="text-brown font-bold hover:text-black"
               href="https://scores.sebi.gov.in/"
               target="_blank"
               rel="noopener noreferrer"

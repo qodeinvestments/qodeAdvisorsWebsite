@@ -27,10 +27,10 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
       return (
         <CustomLink
           to={`/blogs/${slug}`}
-          className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row border border-brown flex duration-500 bg-white text-white hover:border-none hover:bg-beige hover:shadow-xl group"
+          className="p-3 relative  transition-all group justify-between items-center flex-col sm:flex-row border border-brown flex duration-500 bg-white text-white hover:border-none hover:bg-beige hover:text-black hover:shadow-xl group"
         >
           <div className="text-black">
-            <Heading className="sm:text-subheading text-brown mb-18 text-mobileSubHeading font-subheading">
+            <Heading className="sm:text-subheading text-brown group-hover:text-black mb-18 text-mobileSubHeading font-subheading">
               {name}
             </Heading>
             <Text
@@ -57,10 +57,10 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
       return (
         <CustomLink
           to={slug}
-          className="p-3 relative  transition-all justify-between items-center flex-col sm:flex-row border border-brown flex duration-500 bg-white text-white hover:border-none hover:bg-beige hover:shadow-xl group"
+          className="p-3 relative  transition-all group justify-between items-start flex-col sm:flex-row border border-brown flex duration-500 bg-white text-white hover:border-none hover:bg-beige hover:text-black hover:shadow-xl group"
         >
           <div className="text-black">
-            <Heading className="sm:text-subheading text-brown mb-18 text-mobileSubHeading font-subheading">
+            <Heading className="sm:text-subheading text-brown group-hover:text-black mb-18 text-mobileSubHeading font-subheading">
               {name}
             </Heading>
             <Text

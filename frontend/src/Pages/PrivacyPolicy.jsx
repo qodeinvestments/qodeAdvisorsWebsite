@@ -34,7 +34,7 @@ const PrivacyPolicy = () => {
           use, protect, and share information obtained through our website
           <a
             href="https://qodeinvest.com"
-            className="text-brown hover:text-brown"
+            className="text-brown hover:text-black"
           >
             {" "}
             qodeinvest.com
@@ -127,7 +127,7 @@ const PrivacyPolicy = () => {
               our privacy practices, please contact us through our website{" "}
               <a
                 href="https://qodeinvest.com"
-                className="text-brown hover:text-brown"
+                className="text-brown hover:text-black"
               >
                 qodeinvest.com
               </a>

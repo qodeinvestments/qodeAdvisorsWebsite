@@ -18,8 +18,8 @@ import CustomLink from "./common/CustomLink";
 const InvestmentStrategies = () => {
   return (
     <div>
-      <div className="flex  sm:flex-row justify-between w-full">
-        <Heading className="text-center text-heading sm:text-left text-brown italic">
+      <div className="flex flex-col sm:flex-row justify-between w-full">
+        <Heading className="text-center text-heading sm:text-left group-hover:text-black text-brown italic">
           Strategies
         </Heading>
         <div className="text-center sm:text-start sm:w-1/2">
@@ -31,22 +31,22 @@ const InvestmentStrategies = () => {
           </Text>
         </div>
       </div>
-      <div className=" grid grid-cols-2 gap-4 justify-between">
+      <div className=" grid sm:grid-cols-2 gap-4 justify-between">
         <CustomLink
           to={"/strategies/quant-growth-fund"}
-          className="text-black w-full "
+          className="text-black w-full group"
         >
-          <div className="p-2 transition-all duration-300 hover:bg-beige bg-lightBeige border border-brown hover:shadow-2xl  relative">
+          <div className="p-2 transition-all duration-300 hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl  relative">
             <div className="flex  justify-between items-center h-full">
               <div>
-                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading text-brown font-bold  mb-1 relative overflow-hidden text-ellipsis">
+                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold  mb-1 relative overflow-hidden text-ellipsis">
                   Qode Growth Fund
                 </Heading>
                 <Text className="text-body">
                   Invest in quality business. Get quality results.
                 </Text>
               </div>
-              <div className="">
+              <div className="absolute top-0 right-0 sm:p-18">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
@@ -66,17 +66,17 @@ const InvestmentStrategies = () => {
 
         <CustomLink
           to={"/strategies/qode-velocity-fund"}
-          className="text-black w-full "
+          className="text-black w-full group"
         >
-          <div className="p-2 transition-all duration-300 hover:bg-beige bg-lightBeige border border-brown hover:shadow-2xl  relative">
+          <div className="p-2 transition-all duration-300 hover:bg-beige group-hover:text-black bg-lightBeige border  border-brown hover:shadow-2xl group relative">
             <div className="flex  justify-between items-center h-full">
               <div>
-                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading text-brown font-bold  mb-1 relative overflow-hidden text-ellipsis">
+                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold  mb-1 relative overflow-hidden text-ellipsis">
                   Qode Velocity Fund
                 </Heading>
                 <Text className="text-body">Buy high sell higher</Text>
               </div>
-              <div className="">
+              <div className="absolute top-0 right-0 sm:p-18">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
@@ -96,17 +96,17 @@ const InvestmentStrategies = () => {
 
         <CustomLink
           to={"/strategies/qode-all-weather"}
-          className="text-black w-full "
+          className="text-black w-full group"
         >
-          <div className="p-2 transition-all duration-300 hover:bg-beige bg-lightBeige border border-brown hover:shadow-2xl  relative">
+          <div className="p-2 transition-all duration-300 hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl  relative">
             <div className="flex  justify-between items-center h-full">
               <div>
-                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading text-brown font-bold  mb-1 relative overflow-hidden text-ellipsis">
+                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold  mb-1 relative overflow-hidden text-ellipsis">
                   Qode All Weather
                 </Heading>
                 <Text className="text-body">Slow but Steady.</Text>
               </div>
-              <div className="">
+              <div className="absolute top-0 right-0 sm:p-18">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
@@ -126,19 +126,19 @@ const InvestmentStrategies = () => {
 
         <CustomLink
           to={"/blogs/qode-future-horizon"}
-          className="text-black w-full "
+          className="text-black w-full group"
         >
-          <div className="p-2 transition-all duration-300 hover:bg-beige bg-lightBeige border border-brown hover:shadow-2xl  relative">
+          <div className="p-2 transition-all duration-300 hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl  relative">
             <div className="flex  justify-between items-center h-full">
               <div>
-                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading text-brown font-bold  mb-1 relative overflow-hidden text-ellipsis">
+                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold  mb-1 relative overflow-hidden text-ellipsis">
                   Qode Future Horizon
                 </Heading>
                 <Text className="text-body">
                   Discovering Growth Potential, Unlocking Value .
                 </Text>
               </div>
-              <div className="">
+              <div className="absolute top-0 right-0 sm:p-18">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"

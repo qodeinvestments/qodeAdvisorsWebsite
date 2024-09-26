@@ -15,12 +15,6 @@ import {
 } from "@material-tailwind/react";
 import Calculator from "../Calculator";
 import fetchStrategyData from "../api/getData";
-import HoldingDistribution from "./HoldingDistribution";
-import Modal from "../Modal";
-import BookAMeet from "../../Pages/BookAMeet";
-import { Link } from "react-router-dom";
-import Container from "../container/Container";
-import Section from "../container/Section";
 import Button from "../common/Button";
 import Text from "../common/Text";
 import Heading from "../common/Heading";
@@ -418,22 +412,9 @@ const PerformanceChart = ({ strategy }) => {
       <div className="w-full sm:p-7 p-2 ">
         <Tabs value="chart1">
           {" "}
-          {/* Adjusted gap spacing */}
-          {/* Time Range Buttons */}
           <div className="flex justify-between flex-col sm:flex-row items-center">
             <div className="flex flex-wrap  justify-center items-center   gap-18">
               {renderDateRangeButtons()}
-              {/* Adjusted gap spacing */}
-              {/* <input
-                type="date"
-                onChange={(e) => setStartDate(e.target.value)}
-                className="border p-[10px] w-full sm:w-auto"
-              /> */}
-              {/* <input
-              type="date"
-              onChange={(e) => setEndDate(e.target.value)}
-              className="border px-1 w-full sm:w-auto"
-            /> */}
             </div>
             <div className="text-center sm:text-right mt-3 sm:mt-0">
               <Text className="sm:text-semiheading text-semiheading font-subheading text-brown">

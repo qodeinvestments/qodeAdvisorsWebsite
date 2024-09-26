@@ -15,8 +15,7 @@ const Button = ({
   rel,
   isGlassmorphism = false, // New prop for conditional glassmorphism
 }) => {
-  const baseClassName =
-    "dm-sans-font transition-colors hover:text-black text-brown";
+  const baseClassName = "dm-sans-font transition-colors text-black";
 
   // Check for padding classes in className prop
   const hasPadding =

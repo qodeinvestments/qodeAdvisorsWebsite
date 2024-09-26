@@ -220,6 +220,16 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           onChange={handleDebtFundChange}
           className="w-full border-brown border rounded-none"
           placeholder="Choose debt funds"
+          optionRender={(option) => (
+            <span
+              style={{
+                color: option.data.isJsonColumn ? "#1890ff" : "inherit",
+                fontWeight: option.data.isJsonColumn ? "bold" : "normal",
+              }}
+            >
+              {option.data.isJsonColumn ? `📊 ${option.label}` : option.label}
+            </span>
+          )}
         />
       </div>
       {formData.selected_debtfunds.map((debtfund, index) => (

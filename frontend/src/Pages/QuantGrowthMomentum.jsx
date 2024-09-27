@@ -12,7 +12,7 @@ export const quantMomentumFundData = {
   description:
     "This strategy invests in 30 businesses whose stock price has grown significantly and sells it before they start falling",
   principle:
-    "Principle - The stock price tells the story before the actual story unfolds.</Text>",
+    "Principle - The stock price tells the story before the actual story unfolds.",
   strategyCode: "QMF",
   strategySlug: "qode-velocity-fund",
   pptLink: "/path-to-your-ppt-file.pptx",

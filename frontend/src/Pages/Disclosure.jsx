@@ -34,12 +34,12 @@ const Disclosure = () => {
         <meta name="author" content="Qode Investments" />
       </Helmet>
       <Section className="sm:mt-5 mt-4" padding="extralarge">
-        <Heading isItalic className="text-brown mb-5">
+        <Heading isItalic className="text-brown text-center mb-5">
           Disclosure
         </Heading>
 
         <div className="grid grid-cols-1 gap-2">
-          <div className=" p-1 md:p-2 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-3 cursor-pointer border border-brown transition-all group duration-300 hover:bg-beige hover:text-black capitalize hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
                 <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
@@ -60,7 +60,7 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-2 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-3 cursor-pointer border border-brown transition-all group duration-300 hover:bg-beige hover:text-black capitalize hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
                 <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
@@ -81,7 +81,7 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-2 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-3 cursor-pointer border border-brown transition-all group duration-300 hover:bg-beige hover:text-black capitalize hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
                 <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
@@ -102,7 +102,7 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-2 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-3 cursor-pointer border border-brown transition-all group duration-300 hover:bg-beige hover:text-black capitalize hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
                 <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
@@ -123,7 +123,7 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-2 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-3 cursor-pointer border border-brown transition-all group duration-300 hover:bg-beige hover:text-black capitalize hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
                 <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
@@ -144,7 +144,7 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-2 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-3 cursor-pointer border border-brown transition-all group duration-300 hover:bg-beige hover:text-black capitalize hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
                 <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">

@@ -96,7 +96,7 @@ const StrategyComponent = ({ strategyData }) => {
           >
             <div className="text-black">
               <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
-                Read here
+                Read Here
               </Text>
             </div>
             <div className="text-black">

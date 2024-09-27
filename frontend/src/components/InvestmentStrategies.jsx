@@ -46,7 +46,7 @@ const InvestmentStrategies = () => {
                   Invest in quality business. Get quality results.
                 </Text>
               </div>
-              <div className="absolute top-0 right-0 sm:p-18">
+              <div className="sm:top-18 absolute top-0 right-0  sm:p-18">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
@@ -76,7 +76,7 @@ const InvestmentStrategies = () => {
                 </Heading>
                 <Text className="text-body">Buy high sell higher</Text>
               </div>
-              <div className="absolute top-0 right-0 sm:p-18">
+              <div className="sm:top-[16px] absolute top-0 right-0 sm:p-18">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
@@ -106,7 +106,7 @@ const InvestmentStrategies = () => {
                 </Heading>
                 <Text className="text-body">Slow but Steady.</Text>
               </div>
-              <div className="absolute top-0 right-0 sm:p-18">
+              <div className="sm:top-18 absolute top-0 right-0 sm:p-18">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
@@ -138,7 +138,7 @@ const InvestmentStrategies = () => {
                   Discovering Growth Potential, Unlocking Value .
                 </Text>
               </div>
-              <div className="absolute top-0 right-0 sm:p-18">
+              <div className="sm:top-18 absolute top-0 right-0 sm:p-18">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"

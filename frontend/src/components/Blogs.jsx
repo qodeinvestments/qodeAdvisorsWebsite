@@ -60,7 +60,7 @@ const Blogs = () => {
         ))}
       </div>
       <div className="text-center">
-        <Button>All Blogs</Button>
+        <Button to={"/blogs"}>All Blogs</Button>
       </div>
     </>
   );

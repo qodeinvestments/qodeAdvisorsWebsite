@@ -179,7 +179,7 @@ const Header = () => {
                       About us
                     </CustomLink>
                     <CustomLink
-                      href="https://dashboard.qodeinvest.com/"
+                      to="https://dashboard.qodeinvest.com/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block px-4 py-2 dm-sans-font text-body hover:bg-beige hover:text-black text-beige transition"

@@ -36,7 +36,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
     selected_debtfunds: [],
   });
 
-  const [dateRange, setDateRange] = useState({ minDate: null, maxDate: null });
+  // const [dateRange, setDateRange] = useState({ minDate: null, maxDate: null });
   const [rangePickerValue, setRangePickerValue] = useState([null, null]);
 
   useEffect(() => {
@@ -276,10 +276,6 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
             );
             setRangePickerValue(dates);
           }}
-          disabledDate={(current) =>
-            (dateRange.minDate && current < dateRange.minDate) ||
-            (dateRange.maxDate && current > dateRange.maxDate)
-          }
           className="w-full border-brown border rounded-none p-18"
         />
       </div>

@@ -378,7 +378,7 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
                       setTimeRange("Custom");
                       setActiveButton("Custom");
                     }}
-                    className="mt-1 block w-full  shadow-sm p-18"
+                    className="mt-1 block w-full border border-brown shadow-sm p-18"
                   />
                 </div>
                 <div className="w-full">
@@ -397,7 +397,7 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
                       setTimeRange("Custom");
                       setActiveButton("Custom");
                     }}
-                    className="mt-1 block w-full  shadow-sm p-18"
+                    className="mt-1 block w-full border border-brown shadow-sm p-18"
                   />
                 </div>
               </div>

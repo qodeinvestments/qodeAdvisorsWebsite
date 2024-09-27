@@ -39,7 +39,7 @@ const Disclosure = () => {
         </Heading>
 
         <div className="grid grid-cols-1 gap-2">
-          <div className=" p-1 md:p-3 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-2 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
                 <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
@@ -60,7 +60,7 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-3 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-2 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
                 <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
@@ -81,7 +81,7 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-3 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-2 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
                 <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
@@ -102,7 +102,7 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-3 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-2 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
                 <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
@@ -123,7 +123,7 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-3 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-2 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
                 <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
@@ -144,7 +144,7 @@ const Disclosure = () => {
             </div>
           </div>
 
-          <div className=" p-1 md:p-3 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
+          <div className=" p-1 md:p-2 border border-brown transition-all group duration-300 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl">
             <div className="flex justify-between items-center">
               <div>
                 <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">

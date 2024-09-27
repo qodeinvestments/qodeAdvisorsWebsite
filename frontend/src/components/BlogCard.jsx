@@ -29,7 +29,7 @@ function BlogCard({
       initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="overflow-hidden transition-all  duration-75  max-w-[485px] group p-1 sm:p-3 hover:bg-lightBeige hover:scale-105 flex flex-col"
+      className="overflow-hidden transition-all  duration-75  max-w-[485px] group p-1  sm:p-3 hover:bg-lightBeige hover:scale-105 flex flex-col"
     >
       <CustomLink to={`/blogs/${slug}`} className="block flex-grow">
         <div className="h-full group overflow-hidden  relative flex flex-col">

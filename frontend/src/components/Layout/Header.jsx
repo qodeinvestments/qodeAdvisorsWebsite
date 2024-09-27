@@ -52,7 +52,7 @@ const Header = () => {
         <div className="shadow-lg py-1 sm:py-18 sm:px-4 px-18">
           <div className="flex items-center justify-between z-50 w-full">
             {/* Left Navigation */}
-            <nav className="hidden md:flex items-center space-x-6">
+            <nav className="hidden md:flex items-center space-x-6 flex-1">
               <CustomLink
                 to="/blogs"
                 className={`text-body transition duration-300 ${
@@ -72,7 +72,7 @@ const Header = () => {
             </nav>
 
             {/* Logo (Centered) */}
-            <div className="flex-shrink-0 sm:mx-auto">
+            <div className="flex-shrink-0">
               <Link
                 to="/"
                 className={`playfair-display-font text-[24px] sm:text-[32px] font-bold ${
@@ -85,10 +85,10 @@ const Header = () => {
             </div>
 
             {/* Right Navigation */}
-            <nav className="hidden md:flex items-center space-x-4">
+            <nav className="hidden md:flex items-center space-x-6 flex-1 justify-end">
               <CustomLink
                 to="/about-us"
-                className={`text-body mr-3 transition duration-300 ${
+                className={`text-body transition duration-300 ${
                   isHomePage && !isScrolled ? "text-beige" : "text-beige"
                 }`}
               >
@@ -107,7 +107,7 @@ const Header = () => {
             </nav>
 
             {/* Mobile menu button */}
-            <div className="md:hidden relative z-50" ref={dropdownRef}>
+            <div className="md:hidden relative z-50">
               <button
                 onClick={toggleMobileMenu}
                 className={`focus:outline-none ${
@@ -139,12 +139,11 @@ const Header = () => {
               </button>
 
               {/* Mobile Navigation Dropdown */}
-              {/* Mobile Navigation Dropdown */}
               {isMobileMenuOpen && (
                 <>
                   {/* Backdrop */}
                   <div
-                    className="fixed inset-0 h-[100vh] bg-black bg-opacity-70 z-40" // Ensure z-index is higher than other elements
+                    className="fixed inset-0 h-[100vh] bg-black bg-opacity-70 z-40"
                     onClick={closeMobileMenu}
                     style={{
                       position: "fixed",
@@ -156,24 +155,24 @@ const Header = () => {
                   ></div>
 
                   {/* Dropdown Menu */}
-                  <div className="absolute right-0 w-48 shadow-lg bg-black  z-50 overflow-hidden">
+                  <div className="absolute right-0 w-48 shadow-lg bg-black z-50 overflow-hidden">
                     <CustomLink
                       to="/blogs"
-                      className="block px-4 py-2 text-body  text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
+                      className="block px-4 py-2 text-body text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
                       onClick={closeMobileMenu}
                     >
                       Blogs
                     </CustomLink>
                     <CustomLink
                       to="/strategies"
-                      className="block px-4 py-2 text-body  text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
+                      className="block px-4 py-2 text-body text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
                       onClick={closeMobileMenu}
                     >
                       Strategies
                     </CustomLink>
                     <CustomLink
                       to="/about-us"
-                      className="block px-4 py-2 text-body  text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
+                      className="block px-4 py-2 text-body text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
                       onClick={closeMobileMenu}
                     >
                       About us

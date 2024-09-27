@@ -32,18 +32,91 @@ const AboutUs = () => {
     },
     {
       name: "Kavan Sejpal",
-      designation: "Founding Partner, Proprietary Trader",
+      designation: "Fund Manager",
       linkedin: "https://www.linkedin.com/in/kavan-sejpal-760a2b23/",
       email: "kavan@swancapital.in",
       image: kavan,
     },
     {
+      name: "Gaurav Didwania",
+      designation: "Fund Manager",
+      linkedin: "https://www.linkedin.com/in/gaurav-didwania-234bbb37/",
+      email: "gaurav.didwania@swancapital.in",
+      image:
+        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+    },
+    {
       name: "Vidhi Chheda",
-      designation: "Partner, Head of Quant Research",
+      designation: "Senior Quant Analyst",
       linkedin: "https://www.linkedin.com/in/vidhi-chheda-770600101/",
       email: "vidhi.chheda@qodeinvest.com",
       image: vidhi,
     },
+    {
+      name: "Purnanand Kulkarni",
+      designation: "Senior Research Analyst",
+      linkedin: "https://www.linkedin.com/in/purnanandkulkarni/",
+      email: "",
+      image:
+        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+    },
+    {
+      name: "Pratik Tandel",
+      designation: "Research Analyst",
+      linkedin: "https://www.linkedin.com/in/pratiktandel2205/",
+      email: "pratik.tandel@qodeinvest.com",
+      image:
+        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+    },
+    {
+      name: "Sanket Shinde",
+      designation: "Frontend Developer",
+      linkedin: "https://www.linkedin.com/in/sanket-shinde-71904b1b6/",
+      email: "tech@qodeinvest.com",
+      image:
+        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+    },
+    {
+      name: "Harshal Pokle",
+      designation: "Content Strategist, Graphic Designer",
+      linkedin: "https://www.linkedin.com/in/harshalpokle/",
+      email: "harshal.pokle@qodeinvest.com",
+      image:
+        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+    },
+    {
+      name: "Kinjal Babariya",
+      designation: "Operations Analyst",
+      linkedin: "https://www.linkedin.com/in/kinjal-babariya/",
+      email: "harshal.pokle@qodeinvest.com",
+      image:
+        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+    },
+    {
+      name: "Shrikant Rakte",
+      designation: "Manager",
+      // linkedin: "https://www.linkedin.com/in/vidhi-chheda-770600101/",
+      // email: "harshal.pokle@qodeinvest.com",
+      image:
+        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+    },
+    {
+      name: "Uttam More",
+      designation: "Office Boy, Runner",
+      // linkedin: "https://www.linkedin.com/in/vidhi-chheda-770600101/",
+      // email: "harshal.pokle@qodeinvest.com",
+      image:
+        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+    },
+    {
+      name: "Kruti Dave",
+      designation: "Accounts",
+      linkedin: "https://www.linkedin.com/in/kruti-dave-201419185/",
+      email: "harshal.pokle@qodeinvest.com",
+      image:
+        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+    },
+
     // {
     //   name: "Neha Bader",
     //   designation: "Quantitative Analyst",
@@ -130,24 +203,26 @@ const TeamMemberCard = ({ member }) => {
               {member.designation}
             </span>
           </div>
-          <div className="flex gap-18 flex-row-reverse">
-            <a
-              href={member.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brown hover:text-beige transition-colors"
-            >
-              <FontAwesomeIcon icon={faLinkedin} className="text-1xl" />
-            </a>
-            <a
-              href={`mailto:${member.email}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brown hover:text-beige transition-colors"
-            >
-              <FontAwesomeIcon icon={faEnvelope} className="text-1xl" />
-            </a>
-          </div>
+          {member.linkedin && member.email && (
+            <div className="flex gap-18 flex-row-reverse">
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brown hover:text-beige transition-colors"
+              >
+                <FontAwesomeIcon icon={faLinkedin} className="text-1xl" />
+              </a>
+              <a
+                href={`mailto:${member.email}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-brown hover:text-beige transition-colors"
+              >
+                <FontAwesomeIcon icon={faEnvelope} className="text-1xl" />
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ export const quantMomentumFundData = {
   strategyCode: "QMF",
   strategySlug: "qode-velocity-fund",
   pptLink: "/path-to-your-ppt-file.pptx",
-  blogUrl: "/qode-momentum",
+  blogUrl: "/qode-velocity-fund",
   whitePaperLink: "",
   steps: [
     {

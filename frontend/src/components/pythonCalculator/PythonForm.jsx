@@ -70,6 +70,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
 
   const combinedStrategies = [...STRATEGIES, ...columnList];
   const combinedDebtFunds = [...DEBTFUNDS, ...columnList];
+
   const handleInputChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };

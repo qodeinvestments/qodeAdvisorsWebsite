@@ -39,16 +39,12 @@ const FundManagers = ({ text }) => {
             : "Do you want to speak to a fund manager to know more before investing?"}
         </Heading>
 
-        <Text className="text-body mt-1 text-center md:text-start text-beige mb-2">
-          Schedule a meeting with our fund manager.
-        </Text>
-
         <div className="flex justify-center md:justify-start">
           <Button
             className="bg-beige shadow-md  hover:bg-lightBrown transition duration-300"
             onClick={openModal}
           >
-            Schedule A Call
+            Schedule A Meeting
           </Button>
         </div>
       </div>

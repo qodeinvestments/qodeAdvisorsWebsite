@@ -1,5 +1,17 @@
+import { useEffect } from "react";
+
 const Modal = ({ children, onClose }) => {
   // This function will be called when the backdrop is clicked
+  useEffect(() => {
+    // Add class to body to prevent scrolling
+    document.body.style.overflow = "hidden";
+
+    // Clean up: re-enable scrolling when modal is closed
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []); // Empty dependency array ensures this runs only on mount and unmount
+
   const handleBackdropClick = (e) => {
     // If the click is on the backdrop (not on the modal itself), close the modal
     if (e.target === e.currentTarget) {

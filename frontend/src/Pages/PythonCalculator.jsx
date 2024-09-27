@@ -174,7 +174,6 @@ function PythonCalculator() {
       );
       const data = response.data;
       setResultData(data);
-      console.log(data);
 
       if (data && data.equity_curve_data && data.drawdown_data) {
         const chartData = data.equity_curve_data.map((point) => {
@@ -324,14 +323,14 @@ function PythonCalculator() {
             Daily series must include two columns:
             <ul className="list-decimal pl-5">
               <li>
-                First column for the date (Supported formats: dd/mm/yyyy).
+                First column for the date (Supported formats: DD/MM/YYYY).
               </li>
               <li>Second column for daily return or index value</li>
             </ul>
           </li>
         </ul>
       </div>
-      <Text className="sm:text-subheading text-mobileSubHeadingmt-5 mb-2 font-subheading">
+      <Text className="sm:text-subheading text-mobileSubHeading mt-5 mb-2 font-subheading">
         Dataset
       </Text>
 

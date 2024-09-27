@@ -20,7 +20,10 @@ import Text from "../common/Text";
 import Heading from "../common/Heading";
 
 import image from "../../assets/livePerformance.jpg";
-const PerformanceChart = ({ strategy }) => {
+import CustomLink from "../common/CustomLink";
+import SectionContent from "../container/SectionContent";
+import Section from "../container/Section";
+const PerformanceChart = ({ strategy, blogUrl }) => {
   const [chartOptions, setChartOptions] = useState(null);
   const [timeRange, setTimeRange] = useState("ALL");
   const [startDate, setStartDate] = useState(null);
@@ -446,6 +449,37 @@ const PerformanceChart = ({ strategy }) => {
           </TabsBody>
         </Tabs>
       </div>
+      <Section padding="large" className="text-center">
+        <Text className="sm:text-subheading text-mobileSubHeading font-subheading text-center mb-4 ">
+          How this Strategy works & <br className="sm:visible hidden" /> how was
+          it made to get the expected returns with highest certainty.
+        </Text>
+        <CustomLink
+          to={`/blogs${blogUrl}`}
+          className="p-2 relative border-brown border transition-all justify-between items-center  flex duration-500 hover:bg-beige hover:text-black  hover:shadow-xl group"
+        >
+          <div className="text-black">
+            <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
+              Read Here
+            </Text>
+          </div>
+          <div className="text-black">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 100 100"
+              width="44"
+              height="44"
+              fill="currentColor"
+              className="ml-2"
+            >
+              <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
+            </svg>
+          </div>
+        </CustomLink>
+        {/* <Button className="" to={`/blogs${blogUrl}`}>
+          Read Here
+        </Button> */}
+      </Section>
       <div className="w-full flex sm:flex-row flex-col gap-4">
         {" "}
         {/* Adjusted margin */}

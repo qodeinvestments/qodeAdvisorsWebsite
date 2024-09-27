@@ -31,7 +31,7 @@ const Button = ({
     ? "bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-30 text-lightBeige hover:text-black shadow-lg"
     : "";
 
-  const defaultClassName = `${baseClassName} hover:bg-opacity-90 ${defaultPadding} text-body ${glassmorphismStyles}`;
+  const defaultClassName = `${baseClassName} hover:bg-opacity-90 bg-beige ${defaultPadding} text-body ${glassmorphismStyles}`;
   const fullClassName = `${defaultClassName} ${className}`;
 
   const content = isLoading ? (

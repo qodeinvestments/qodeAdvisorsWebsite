@@ -77,13 +77,13 @@ function FileUpload({ onColumnsUpdate, onFileSelect }) {
   };
 
   return (
-    <div className="bg-white  flex items-center space-x-4 mx-auto mb-4">
+    <div className="bg-white border border-brown flex items-center space-x-4 mx-auto mb-4">
       <div className="flex-grow">
         <input
           type="file"
           accept=".csv"
           onChange={handleFileChange}
-          className="block w-full text-body text-gray-900   cursor-pointer bg-white focus:outline-none file:mr-4 file:py-18 file:px-4 file:border-0 file:text-body file:font-body file:bg-beige file:text-black hover:file:bg-lightBeige"
+          className="block w-full text-body text-gray-900 cursor-pointer bg-white focus:outline-none file:mr-4 file:py-18 file:px-4 file:border-0 file:text-body file:font-body file:bg-beige file:text-black hover:file:bg-lightBeige"
         />
       </div>
       <div>

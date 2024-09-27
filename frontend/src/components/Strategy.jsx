@@ -68,8 +68,9 @@ const StrategyComponent = ({ strategyData }) => {
         </Text>
         {principle && <Text className="text-center">{principle}</Text>}
       </Section>
+
       <Section className="mb-4 ">
-        <PerformanceChart strategy={strategyCode} />
+        <PerformanceChart strategy={strategyCode} blogUrl={blogUrl} />
       </Section>
 
       {/* <Section gray padding="normal">
@@ -83,37 +84,6 @@ const StrategyComponent = ({ strategyData }) => {
           <Button to="https://dashboard.qodeinvest.com">Sign Up</Button>
         </div>
       </Section> */}
-
-      <Section padding="extralarge">
-        <SectionContent>
-          <Text className="sm:text-subheading text-mobileSubHeading font-subheading text-center mb-4 ">
-            How this Strategy works & <br className="sm:visible hidden" /> how
-            was it made to get the expected returns with highest certainty.
-          </Text>
-          <CustomLink
-            to={`/blogs${blogUrl}`}
-            className="p-2 relative border-brown border transition-all justify-between items-center  flex duration-500 hover:bg-beige hover:text-black hover:border-none hover:shadow-xl group"
-          >
-            <div className="text-black">
-              <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
-                Read Here
-              </Text>
-            </div>
-            <div className="text-black">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 100 100"
-                width="44"
-                height="44"
-                fill="currentColor"
-                className="ml-2"
-              >
-                <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
-              </svg>
-            </div>
-          </CustomLink>
-        </SectionContent>
-      </Section>
 
       {/* <Section
         padding="extralarge"
@@ -129,7 +99,7 @@ const StrategyComponent = ({ strategyData }) => {
           </Button>
         </div>
       </Section> */}
-      <Section>
+      <Section padding="large">
         <FundManagers
           text={
             "Need help deciding which strategy would be best for you to reach financial goal?"
@@ -144,7 +114,7 @@ const StrategyComponent = ({ strategyData }) => {
         <Blogs />
       </Section> */}
 
-      <Section padding="normal">
+      {/* <Section padding="normal">
         <Heading className="sm:text-semiheading text-mobileSemiHeading font-semiheading text-brown text-center mb-4 ">
           FAQ's
         </Heading>
@@ -177,7 +147,7 @@ const StrategyComponent = ({ strategyData }) => {
             </div>
           ))}
         </div>
-      </Section>
+      </Section> */}
       {isModalOpen && (
         <Modal onClose={closeModal}>
           <BookAMeet />

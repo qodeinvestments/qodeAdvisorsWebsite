@@ -176,9 +176,9 @@ const Home = () => {
                 Our Investing Principles
               </Heading>
               <Text className="text-lightBeige text-body mb-4">
-                At Qode Investments, we embrace a data-driven, disciplined
-                approach to investing. We see things for what they are and
-                ignore all the noise.
+                At Qode, we embrace a data-driven, disciplined approach to
+                investing. We see things for what they are and ignore all the
+                noise.
               </Text>
               <Button
                 href={"/blogs/qodes-principles-of-investing"}

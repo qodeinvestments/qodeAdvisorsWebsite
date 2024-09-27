@@ -86,7 +86,7 @@ function BlogCard({
               Continue Reading <FontAwesomeIcon icon={faArrowRight} />
             </CustomLink>
           </div> */}
-          <hr className="mt-2 border-t border-brown" />
+          <hr className="mt-2 border-t group-hover:border-beige border-lightBeige" />
         </div>
       </CustomLink>
     </motion.div>

@@ -59,6 +59,9 @@ const Blogs = () => {
           />
         ))}
       </div>
+      <div className="text-center">
+        <Button>All Blogs</Button>
+      </div>
     </>
   );
 };

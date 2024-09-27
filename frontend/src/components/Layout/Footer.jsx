@@ -37,7 +37,7 @@ const Footer = () => {
                   href="mailto:contact@qodeinvestments.com"
                   className="hover:text-black"
                 >
-                  rishabh@qodeinvest.com
+                  operations@qodeinvest.com
                 </a>
               </Text>
               <Text>

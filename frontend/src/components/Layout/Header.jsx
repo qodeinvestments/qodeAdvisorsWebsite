@@ -88,22 +88,22 @@ const Header = () => {
             <nav className="hidden md:flex items-center space-x-4">
               <CustomLink
                 to="/about-us"
-                className={`text-body transition duration-300 ${
+                className={`text-body mr-3 transition duration-300 ${
                   isHomePage && !isScrolled ? "text-beige" : "text-beige"
                 }`}
               >
                 About Us
               </CustomLink>
-              <Link
+              <CustomLink
                 to={"https://dashboard.qodeinvest.com/"}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-body transition duration-300 ${
+                className={`text-body font-body transition duration-300 ${
                   isHomePage && !isScrolled ? "text-beige" : "text-beige"
                 }`}
               >
                 Dashboard
-              </Link>
+              </CustomLink>
             </nav>
 
             {/* Mobile menu button */}
@@ -159,26 +159,26 @@ const Header = () => {
                   <div className="absolute right-0 w-48 shadow-lg bg-black  z-50 overflow-hidden">
                     <CustomLink
                       to="/blogs"
-                      className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
+                      className="block px-4 py-2 text-body  text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
                       onClick={closeMobileMenu}
                     >
                       Blogs
                     </CustomLink>
                     <CustomLink
                       to="/strategies"
-                      className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
+                      className="block px-4 py-2 text-body  text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
                       onClick={closeMobileMenu}
                     >
                       Strategies
                     </CustomLink>
                     <CustomLink
                       to="/about-us"
-                      className="block px-4 py-2 text-body hover:text-beige text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
+                      className="block px-4 py-2 text-body  text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
                       onClick={closeMobileMenu}
                     >
                       About us
                     </CustomLink>
-                    <a
+                    <CustomLink
                       href="https://dashboard.qodeinvest.com/"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -186,7 +186,7 @@ const Header = () => {
                       onClick={closeMobileMenu}
                     >
                       Dashboard
-                    </a>
+                    </CustomLink>
                   </div>
                 </>
               )}

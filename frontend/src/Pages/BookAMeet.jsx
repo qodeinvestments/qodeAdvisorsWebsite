@@ -4,7 +4,7 @@ import Heading from "../components/common/Heading";
 import Text from "../components/common/Text";
 
 const BookAMeet = () => {
-  const VITE_ZOOM_URL = import.meta.env.VITE_ZOOM_URL;
+  const VITE_GOOGLE_MEET_URL = import.meta.env.VITE_GOOGLE_MEET_URL;
   const VITE_INPERSON_URL = import.meta.env.VITE_INPERSON_URL;
 
   return (

@@ -3,7 +3,7 @@ import Button from "../components/common/Button";
 import Text from "../components/common/Text";
 
 const GrowMoney = () => {
-  const VITE_GOOGLE_MEET_URL = import.meta.env.VITE_ZOOM_URL;
+  const VITE_GOOGLE_MEET_URL = import.meta.env.VITE_GOOGLE_MEET_URL;
   const VITE_INPERSON_URL = import.meta.env.VITE_INPERSON_URL;
 
   return (
@@ -35,12 +35,12 @@ const GrowMoney = () => {
             <Text className="mb-1 text-sm sm:text-body">Outside Mumbai?</Text>
 
             <Button
-              href={VITE_ZOOM_URL}
+              href={VITE_GOOGLE_MEET_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full text-sm sm:text-body sm:w-auto bg-beige text-black"
             >
-              Schedule Zoom Call
+              Schedule a Call
             </Button>
           </div>
         </div>

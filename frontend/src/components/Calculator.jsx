@@ -12,6 +12,7 @@ const Calculator = ({ strategy }) => {
   const [investmentFrequency, setInvestmentFrequency] = useState("monthly");
   const [investmentPeriod, setInvestmentPeriod] = useState(1);
   const [futureInvestmentValue, setFutureInvestmentValue] = useState(0);
+  const [maxInvestmentPeriod, setMaxInvestmentPeriod] = useState(Infinity);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -24,7 +25,6 @@ const Calculator = ({ strategy }) => {
 
         // Use the new fetchStrategyData function
         const strategyData = await fetchStrategyData(strategy, "ALL");
-        console.log(strategyData);
 
         if (!strategyData) {
           console.error(`No data found for strategy: ${strategy}`);
@@ -34,6 +34,12 @@ const Calculator = ({ strategy }) => {
         setData(strategyData);
 
         if (strategyData && strategyData.length > 0) {
+          const oldestDate = new Date(strategyData[0].date);
+          const newestDate = new Date(
+            strategyData[strategyData.length - 1].date
+          );
+          const maxYears = newestDate.getFullYear() - oldestDate.getFullYear();
+          setMaxInvestmentPeriod(maxYears);
           const periodStartDate = new Date(
             strategyData[strategyData.length - 1].date
           );
@@ -115,9 +121,13 @@ const Calculator = ({ strategy }) => {
   };
 
   const handleInvestmentPeriodChange = (action) => {
-    setInvestmentPeriod((prev) =>
-      action === "increment" ? prev + 1 : Math.max(1, prev - 1)
-    );
+    setInvestmentPeriod((prev) => {
+      if (action === "increment") {
+        return Math.min(prev + 1, maxInvestmentPeriod);
+      } else {
+        return Math.max(1, prev - 1);
+      }
+    });
   };
 
   function numberWithCommas(x) {
@@ -218,8 +228,13 @@ const Calculator = ({ strategy }) => {
             />
             <Button
               data-action="increment"
-              className="text-brown h-full w-1/4 cursor-pointer flex items-center justify-center"
+              className={`text-brown h-full w-1/4 cursor-pointer flex items-center justify-center ${
+                investmentPeriod >= maxInvestmentPeriod
+                  ? "opacity-50 cursor-not-allowed"
+                  : ""
+              }`}
               onClick={() => handleInvestmentPeriodChange("increment")}
+              disabled={investmentPeriod >= maxInvestmentPeriod}
             >
               <span className="text-body">+</span>
             </Button>

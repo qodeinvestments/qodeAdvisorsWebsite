@@ -150,7 +150,8 @@ const Strategies = () => {
       id: "lowvol",
       name: "Qode All Weather",
       slug: "qode-all-weather",
-      description: "<Text class='mb-1'>Slow but Steady.</Text>",
+      description:
+        "<Text class='mb-1'>Lower Risk need not necessarily mean lower returns.</Text>",
     },
     {
       id: "futureHorizon",

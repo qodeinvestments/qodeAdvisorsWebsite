@@ -40,19 +40,23 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed z-20 transition-all duration-300 w-full sm:w-[1386px] sm:left-1/2 sm:-translate-x-1/2 ${
-        isHomePage
-          ? isScrolled
-            ? "bg-white top-0 bg-opacity-100 shadow-lg"
-            : "bg-black opacity-70 sm:top-2 backdrop-blur-md"
-          : "bg-white top-0 bg-opacity-100 shadow-lg"
-      }`}
+      className={`fixed z-20 transition-all duration-300 w-full 
+        md:w-[700px] md:left-1/2 md:-translate-x-1/2 
+        lg:w-[950px] 
+        xl:w-[1386px] 
+        max-w-full ${
+          isHomePage
+            ? isScrolled
+              ? "bg-white top-0 bg-opacity-100 shadow-lg"
+              : "bg-black opacity-70 sm:top-2 backdrop-blur-md"
+            : "bg-white top-0 bg-opacity-100 shadow-lg"
+        }`}
     >
       <div className="mx-auto">
         <div className="shadow-lg py-1 sm:py-18 sm:px-4 px-18">
           <div className="flex items-center justify-between z-50 w-full">
-            {/* Left Navigation */}
-            <nav className="hidden md:flex items-center space-x-6 flex-1">
+            {/* Left Navigation (hidden on md and below) */}
+            <nav className="hidden lg:flex items-center space-x-6 flex-1">
               <CustomLink
                 to="/blogs"
                 className={`text-body transition duration-300 ${
@@ -84,8 +88,8 @@ const Header = () => {
               </Link>
             </div>
 
-            {/* Right Navigation */}
-            <nav className="hidden md:flex items-center space-x-6 flex-1 justify-end">
+            {/* Right Navigation (hidden on md and below) */}
+            <nav className="hidden lg:flex items-center space-x-6 flex-1 justify-end">
               <CustomLink
                 to="/about-us"
                 className={`text-body transition duration-300 ${
@@ -106,8 +110,8 @@ const Header = () => {
               </CustomLink>
             </nav>
 
-            {/* Mobile menu button */}
-            <div className="md:hidden relative z-50">
+            {/* Hamburger menu button (visible on lg and below) */}
+            <div className="lg:hidden relative z-50">
               <button
                 onClick={toggleMobileMenu}
                 className={`focus:outline-none ${

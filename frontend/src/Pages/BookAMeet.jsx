@@ -22,7 +22,7 @@ const BookAMeet = () => {
             <Text className="mb-2">In Mumbai?</Text>
 
             <Button
-              href={VITE_ZOOM_URL}
+              href={VITE_GOOGLE_MEET_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-beige text-black"
@@ -39,7 +39,7 @@ const BookAMeet = () => {
               rel="noopener noreferrer"
               className="bg-beige text-black"
             >
-              Schedule Zoom Call
+              Schedule a Call
             </Button>
           </div>
         </div>

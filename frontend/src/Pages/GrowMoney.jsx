@@ -3,7 +3,7 @@ import Button from "../components/common/Button";
 import Text from "../components/common/Text";
 
 const GrowMoney = () => {
-  const VITE_ZOOM_URL = import.meta.env.VITE_ZOOM_URL;
+  const VITE_GOOGLE_MEET_URL = import.meta.env.VITE_ZOOM_URL;
   const VITE_INPERSON_URL = import.meta.env.VITE_INPERSON_URL;
 
   return (
@@ -21,7 +21,7 @@ const GrowMoney = () => {
             <Text className="mb-2 text-sm sm:text-body">In Mumbai?</Text>
 
             <Button
-              href={VITE_ZOOM_URL}
+              href={VITE_INPERSON_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto text-sm sm:text-body bg-beige text-black"
@@ -35,7 +35,7 @@ const GrowMoney = () => {
             <Text className="mb-1 text-sm sm:text-body">Outside Mumbai?</Text>
 
             <Button
-              href={VITE_INPERSON_URL}
+              href={VITE_ZOOM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full text-sm sm:text-body sm:w-auto bg-beige text-black"

@@ -31,22 +31,25 @@ const InvestmentStrategies = () => {
           </Text>
         </div>
       </div>
-      <div className=" grid sm:grid-cols-2 gap-4 justify-between">
+
+      <div className="grid sm:grid-cols-2 gap-4 justify-between">
+        {/* Qode Growth Fund */}
         <CustomLink
           to={"/strategies/quant-growth-fund"}
           className="text-black w-full group"
         >
-          <div className="p-2 transition-all duration-300 hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl  relative">
-            <div className="flex  justify-between items-center h-full">
+          <div className="p-2 transition-all duration-300 hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl relative">
+            <div className="flex sm:flex-row flex-col justify-between items-start  h-full">
               <div>
-                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold  mb-1 relative overflow-hidden text-ellipsis">
+                <Heading className="font-heading playfair-font-display sm:text-heading md:sm:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold mb-1 relative overflow-hidden text-ellipsis">
                   Qode Growth Fund
                 </Heading>
                 <Text className="text-body">
                   Invest in quality business. Get quality results.
                 </Text>
               </div>
-              <div className="sm:top-18 absolute top-0 right-0  sm:p-18">
+              {/* SVG Wrapper */}
+              <div className="absolute sm:static top-0 right-0 flex items-center sm:ml-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
@@ -64,19 +67,21 @@ const InvestmentStrategies = () => {
           </div>
         </CustomLink>
 
+        {/* Qode Velocity Fund */}
         <CustomLink
           to={"/strategies/qode-velocity-fund"}
           className="text-black w-full group"
         >
-          <div className="p-2 transition-all duration-300 hover:bg-beige group-hover:text-black bg-lightBeige border  border-brown hover:shadow-2xl group relative">
-            <div className="flex  justify-between items-center h-full">
+          <div className="p-2 transition-all duration-300 hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl relative">
+            <div className="flex sm:flex-row flex-col justify-between items-start  h-full">
               <div>
-                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold  mb-1 relative overflow-hidden text-ellipsis">
+                <Heading className="font-heading playfair-font-display sm:text-heading md:sm:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold mb-1 relative overflow-hidden text-ellipsis">
                   Qode Velocity Fund
                 </Heading>
-                <Text className="text-body">Buy high sell higher</Text>
+                <Text className="text-body">Buy high sell higher.</Text>
               </div>
-              <div className="sm:top-[16px] absolute top-0 right-0 sm:p-18">
+              {/* SVG Wrapper */}
+              <div className="absolute sm:static top-0 right-0 flex items-center sm:ml-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
@@ -94,19 +99,23 @@ const InvestmentStrategies = () => {
           </div>
         </CustomLink>
 
+        {/* Qode All Weather */}
         <CustomLink
           to={"/strategies/qode-all-weather"}
           className="text-black w-full group"
         >
-          <div className="p-2 transition-all duration-300 hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl  relative">
-            <div className="flex  justify-between items-center h-full">
+          <div className="p-2 transition-all duration-300 hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl relative">
+            <div className="flex sm:flex-row flex-col justify-between items-start  h-full">
               <div>
-                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold  mb-1 relative overflow-hidden text-ellipsis">
+                <Heading className="font-heading playfair-font-display sm:text-heading md:sm:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold mb-1 relative overflow-hidden text-ellipsis">
                   Qode All Weather
                 </Heading>
-                <Text className="text-body">Slow but Steady.</Text>
+                <Text className="text-body">
+                  Lower Risk need not necessarily mean lower returns.
+                </Text>
               </div>
-              <div className="sm:top-18 absolute top-0 right-0 sm:p-18">
+              {/* SVG Wrapper */}
+              <div className="absolute sm:static top-0 right-0 flex items-center sm:ml-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"
@@ -124,21 +133,23 @@ const InvestmentStrategies = () => {
           </div>
         </CustomLink>
 
+        {/* Qode Future Horizon */}
         <CustomLink
           to={"/blogs/qode-future-horizon"}
           className="text-black w-full group"
         >
-          <div className="p-2 transition-all duration-300 hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl  relative">
-            <div className="flex  justify-between items-center h-full">
+          <div className="p-2 transition-all duration-300 hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl relative">
+            <div className="flex sm:flex-row flex-col justify-between items-start  h-full">
               <div>
-                <Heading className="font-heading playfair-font-display  sm:text-heading   md:sm:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold  mb-1 relative overflow-hidden text-ellipsis">
+                <Heading className="font-heading playfair-font-display sm:text-heading md:sm:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold mb-1 relative overflow-hidden text-ellipsis">
                   Qode Future Horizon
                 </Heading>
                 <Text className="text-body">
-                  Discovering Growth Potential, Unlocking Value .
+                  Fusing data and insight to add an edge.
                 </Text>
               </div>
-              <div className="sm:top-18 absolute top-0 right-0 sm:p-18">
+              {/* SVG Wrapper */}
+              <div className="absolute sm:static top-0 right-0 flex items-center sm:ml-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 100 100"

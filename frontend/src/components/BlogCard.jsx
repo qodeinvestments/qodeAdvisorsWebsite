@@ -46,8 +46,10 @@ function BlogCard({
                 {title}
               </Heading>
             </div>
-            <Text className="text-body line-clamp-6   ">{excerpt}</Text>
-            <div className="flex items-center justify-between mt-4">
+            <Text className="text-body font-body line-clamp-6   ">
+              {excerpt}
+            </Text>
+            <div className="flex items-center justify-between mt-2">
               {primary_author && (
                 <div className="flex items-center">
                   {primary_author.profile_image && (

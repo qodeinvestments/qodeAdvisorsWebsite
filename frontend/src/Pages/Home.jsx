@@ -184,7 +184,7 @@ const Home = () => {
                 href={"/blogs/qodes-principles-of-investing"}
                 isGlassmorphism={true}
               >
-                Know More
+                Know How
               </Button>
             </div>
           </div>

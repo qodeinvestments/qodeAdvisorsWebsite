@@ -18,12 +18,7 @@ const GrowMoney = () => {
         <div className="flex flex-col items-center text-lightBeige justify-center gap-4 sm:gap-5 p-2">
           {/* Office Visit Section */}
           <div className="w-full">
-            <Text className="mb-2 text-sm sm:text-body">
-              In Mumbai? <br className="sm:visible hidden" />
-              <span className="font-normal text-body">
-                We’ll be happy to meet you in person.
-              </span>
-            </Text>
+            <Text className="mb-2 text-sm sm:text-body">In Mumbai?</Text>
 
             <Button
               href={VITE_ZOOM_URL}
@@ -37,12 +32,7 @@ const GrowMoney = () => {
 
           {/* Zoom Call Section */}
           <div className="w-full">
-            <Text className="mb-1 text-sm sm:text-body">
-              Outside Mumbai? <br className="sm:visible hidden" />
-              <span className="font-normal text-body">
-                Let’s get on a call.
-              </span>
-            </Text>
+            <Text className="mb-1 text-sm sm:text-body">Outside Mumbai?</Text>
 
             <Button
               href={VITE_INPERSON_URL}

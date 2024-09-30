@@ -29,7 +29,7 @@ const config = {
       },
       fontSize: {
         // Font sizes with line height calculated as 1.3 times the body font size
-        body: ["17px", { lineHeight: "21px" }],       // Body text
+        body: ["16px", { lineHeight: "21px" }],       // Body text
         subheading: ["26px", { lineHeight: "35px" }], // 26px * 1.3
         semiheading: ["42px", { lineHeight: "65px" }], // 42px * 1.3
         heading: ["42px", { lineHeight: "60px" }],    // 67px * 1.3

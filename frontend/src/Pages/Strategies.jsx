@@ -157,7 +157,7 @@ const Strategies = () => {
       name: "Qode Future Horizon",
       slug: "qode-future-horizon",
       description:
-        "<Text class='mb-1'>Discovering Growth Potential, Unlocking Value.</Text>",
+        "<Text class='mb-1'>Fusing data and insight to add an edge.</Text>",
     },
   ];
 

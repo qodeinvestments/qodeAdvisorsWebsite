@@ -420,7 +420,7 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
               {renderDateRangeButtons()}
             </div>
             <div className="text-center sm:text-right mt-3 sm:mt-0">
-              <Text className="sm:text-semiheading text-semiheading font-subheading text-brown">
+              <Text className="sm:text-semiheading text-semiheading font-subheading text-beige">
                 {strategyCagr}
                 <span className="text-body ml-1 text-black">
                   {["1Y", "1M", "6M"].includes(timeRange)

@@ -59,7 +59,7 @@ const Blogs = () => {
           />
         ))}
       </div>
-      <div className="text-center">
+      <div className="text-center mt-3">
         <Button to={"/blogs"}>All Blogs</Button>
       </div>
     </>

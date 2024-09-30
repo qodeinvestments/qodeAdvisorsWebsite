@@ -11,7 +11,7 @@ import StrategyComponent from "../components/Strategy";
 const LowVolMomentum = () => {
   const strategyData = {
     title: "Qode All Weather",
-    tagLine: "Slow but Steady.",
+    tagLine: "Lower Risk need not necessarily mean lower returns.",
     description:
       "This strategy invests in the 30 most stable stocks in the market. This strategy outperforms the Index with considerably lower risk.",
     strategyCode: "LVF",

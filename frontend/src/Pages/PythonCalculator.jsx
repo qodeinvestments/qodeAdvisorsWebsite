@@ -306,7 +306,7 @@ function PythonCalculator() {
   };
 
   return (
-    <Section padding="extralarge" className="mt-9">
+    <Section padding="extralarge" className="mt-5">
       <Heading className="text-mobileHeading sm:text-heading text-brown text-center mb-4 font-heading">
         Portfolio
       </Heading>

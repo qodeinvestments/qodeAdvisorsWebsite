@@ -36,7 +36,7 @@ const FundManagers = ({ text }) => {
         <Heading className="text-mobileSemiHeading md:text-semiheading italic text-brown mb-4 text-center md:text-start">
           {text
             ? text
-            : "Do you want to speak to a fund manager to know more before investing?"}
+            : "Want to speak to the our fund manager before investing?"}
         </Heading>
 
         <div className="flex justify-center md:justify-start">

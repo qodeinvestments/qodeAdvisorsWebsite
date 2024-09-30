@@ -43,7 +43,7 @@ const StrategyComponent = ({ strategyData }) => {
   };
 
   return (
-    <div className="mx-auto sm:mt-5 mt-8">
+    <>
       <Helmet>
         <title>{title} - Strategy Overview | Qode Investments</title>
         <meta
@@ -56,24 +56,25 @@ const StrategyComponent = ({ strategyData }) => {
         />
         <meta name="author" content="Qode Investments" />
       </Helmet>
-      <Section className="mb-18 " padding="normal">
-        <Heading className="font-bold mb-1 text-brown text-center">
-          <span className="block">{title}</span>
-        </Heading>
-        <Text className="text-center sm:text-subheading text-mobileSubHeading font-subheading mb-3">
-          {tagLine}
-        </Text>
-        <Text className="text-center dm-sans-font text-body">
-          {description}
-        </Text>
-        {principle && <Text className="text-center">{principle}</Text>}
-      </Section>
+      <div className="mx-auto sm:mt-5 mt-8">
+        <Section className="mb-18 " padding="extralarge">
+          <Heading className="font-bold mb-1 text-brown text-center">
+            <span className="block">{title}</span>
+          </Heading>
+          <Text className="text-center sm:text-subheading text-mobileSubHeading font-subheading mb-3">
+            {tagLine}
+          </Text>
+          <Text className="text-center dm-sans-font text-body">
+            {description}
+          </Text>
+          {principle && <Text className="text-center">{principle}</Text>}
+        </Section>
 
-      <Section className="mb-4 ">
-        <PerformanceChart strategy={strategyCode} blogUrl={blogUrl} />
-      </Section>
+        <Section className="mb-4 ">
+          <PerformanceChart strategy={strategyCode} blogUrl={blogUrl} />
+        </Section>
 
-      {/* <Section gray padding="normal">
+        {/* <Section gray padding="normal">
         <div className="text-center">
           <Heading className=" font-bold mb-4 text-brown">
             Not sure which strategy is right for you?
@@ -85,7 +86,7 @@ const StrategyComponent = ({ strategyData }) => {
         </div>
       </Section> */}
 
-      {/* <Section
+        {/* <Section
         padding="extralarge"
         className="bg-black max-w-[93%] sm:max-w-[1386px] mx-auto"
       >
@@ -99,14 +100,14 @@ const StrategyComponent = ({ strategyData }) => {
           </Button>
         </div>
       </Section> */}
-      <Section padding="large">
-        <FundManagers
-          text={
-            "Need help deciding which strategy would be best for you to reach financial goal?"
-          }
-        />
-      </Section>
-      {/* <Section>
+        <Section padding="large">
+          <FundManagers
+            text={
+              "Need help deciding which strategy would be best for reaching your financial goal?"
+            }
+          />
+        </Section>
+        {/* <Section>
         <ModalButton />
       </Section>
 
@@ -114,7 +115,7 @@ const StrategyComponent = ({ strategyData }) => {
         <Blogs />
       </Section> */}
 
-      {/* <Section padding="normal">
+        {/* <Section padding="normal">
         <Heading className="sm:text-semiheading text-mobileSemiHeading font-semiheading text-brown text-center mb-4 ">
           FAQ's
         </Heading>
@@ -148,12 +149,13 @@ const StrategyComponent = ({ strategyData }) => {
           ))}
         </div>
       </Section> */}
-      {isModalOpen && (
-        <Modal onClose={closeModal}>
-          <BookAMeet />
-        </Modal>
-      )}
-    </div>
+        {isModalOpen && (
+          <Modal onClose={closeModal}>
+            <BookAMeet />
+          </Modal>
+        )}
+      </div>
+    </>
   );
 };
 

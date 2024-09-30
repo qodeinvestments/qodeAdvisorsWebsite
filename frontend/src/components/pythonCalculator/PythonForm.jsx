@@ -6,11 +6,6 @@ import moment from "moment/moment";
 
 const { RangePicker } = DatePicker;
 
-const API_URL =
-  import.meta.env.MODE === "production"
-    ? import.meta.env.VITE_PROD_API_URL
-    : import.meta.env.VITE_DEV_API_URL;
-
 const STRATEGIES = [
   { label: "QGFLong", value: "QGFLong" },
   { label: "Shortflat", value: "Shortflat" },
@@ -35,32 +30,6 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
     selected_systems: [],
     selected_debtfunds: [],
   });
-
-  // const [dateRange, setDateRange] = useState({ minDate: null, maxDate: null });
-  const [rangePickerValue, setRangePickerValue] = useState([null, null]);
-
-  useEffect(() => {
-    const fetchDateRange = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/get_date_range`);
-        const { min_date, max_date } = response.data;
-        const minDate = moment(min_date, "DD-MM-YYYY");
-        const maxDate = moment(max_date, "DD-MM-YYYY");
-        setDateRange({ minDate, maxDate });
-        setRangePickerValue([minDate, maxDate]);
-        setFormData((prev) => ({
-          ...prev,
-          start_date: min_date,
-          end_date: max_date,
-        }));
-      } catch (error) {
-        console.error("Error fetching date range:", error);
-        message.error("Failed to fetch date range.");
-      }
-    };
-
-    fetchDateRange();
-  }, []);
 
   const columnList = columns.map((column) => ({
     label: column.trim(),
@@ -274,7 +243,6 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
               "end_date",
               dates ? dates[1].format("DD-MM-YYYY") : ""
             );
-            setRangePickerValue(dates);
           }}
           className="w-full border-brown border rounded-none p-18"
         />

@@ -23,28 +23,19 @@ import image from "../../assets/livePerformance.jpg";
 import CustomLink from "../common/CustomLink";
 import SectionContent from "../container/SectionContent";
 import Section from "../container/Section";
-import useCustomTimeRange from "../hooks/useCustomTimeRange";
-import useMobileWidth from "../hooks/useMobileWidth";
 const PerformanceChart = ({ strategy, blogUrl }) => {
   const [chartOptions, setChartOptions] = useState(null);
+  const [timeRange, setTimeRange] = useState("ALL");
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [activeButton, setActiveButton] = useState("ALL");
   const [filteredData, setFilteredData] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isCustomDateOpen, setIsCustomDateOpen] = useState(false);
   const customDateRef = useRef(null);
   const customButtonRef = useRef(null);
-
-  const {
-    timeRange,
-    startDate,
-    endDate,
-    activeButton,
-    isCustomDateOpen,
-    setCustomDateRange,
-    handleCustomDateClick,
-    handleTimeRangeChange,
-  } = useCustomTimeRange();
-
-  const { isMobile } = useMobileWidth();
 
   const loadData = useCallback(async () => {
     setIsLoading(true);
@@ -73,6 +64,16 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
   useEffect(() => {
     loadData();
   }, [loadData]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   useEffect(() => {
     if (isCustomDateOpen) {
@@ -285,6 +286,38 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
     setChartOptions(options);
   };
 
+  const handleTimeRangeChange = useCallback((range) => {
+    setTimeRange(range);
+    setActiveButton(range);
+    if (range !== "ALL" && range !== "Custom") {
+      setStartDate(null);
+      setEndDate(null);
+    }
+    if (range === "YTD") {
+      const currentDate = new Date();
+      setStartDate(
+        new Date(currentDate.getFullYear(), 0, 1).toISOString().split("T")[0]
+      );
+      setEndDate(currentDate.toISOString().split("T")[0]);
+    }
+    setIsCustomDateOpen(false);
+  }, []);
+
+  const handleCustomDateClick = () => {
+    setIsCustomDateOpen(!isCustomDateOpen);
+  };
+
+  const handleCustomDateSubmit = () => {
+    if (startDate && endDate) {
+      setTimeRange("Custom");
+      setActiveButton("Custom");
+      setIsCustomDateOpen(false);
+      loadData();
+    } else {
+      alert("Please select both start and end dates.");
+    }
+  };
+
   const renderDateRangeButtons = () => {
     const ranges = ["1M", "6M", "1Y", "3Y", "5Y", "ALL"];
     return (
@@ -293,9 +326,9 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
           <Button
             key={range}
             onClick={() => handleTimeRangeChange(range)}
-            className={`text-xs ${
+            className={`text-xs  ${
               activeButton === range
-                ? "bg-beige text-black"
+                ? "bg-beige  text-black"
                 : "bg-white border border-brown text-black"
             }`}
           >
@@ -305,7 +338,7 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
         <div className="relative" ref={customButtonRef}>
           <Button
             onClick={handleCustomDateClick}
-            className={`text-xs ${
+            className={`text-xs  ${
               activeButton === "Custom"
                 ? "bg-beige border-none text-black"
                 : "bg-white border border-brown text-black"
@@ -316,7 +349,7 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
           {isCustomDateOpen && (
             <div
               ref={customDateRef}
-              className="fixed left-1/2 transform -translate-x-1/2 mt-18 p-2 sm:p-4 bg-white shadow-lg z-50"
+              className="fixed left-1/2 transform -translate-x-1/2 mt-18 p-2 sm:p-4 bg-white  shadow-lg z-50"
               style={{
                 top: `${customButtonRef.current?.getBoundingClientRect().bottom}px`,
                 minWidth: "280px",
@@ -336,8 +369,9 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
                     id="start-date"
                     value={startDate}
                     onChange={(e) => {
-                      const newStartDate = e.target.value;
-                      setCustomDateRange(newStartDate, endDate); // Call the custom setter
+                      setStartDate(e.target.value);
+                      setTimeRange("Custom");
+                      setActiveButton("Custom");
                     }}
                     className="mt-1 block w-full border border-brown shadow-sm p-18"
                   />
@@ -354,8 +388,9 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
                     id="end-date"
                     value={endDate}
                     onChange={(e) => {
-                      const newEndDate = e.target.value;
-                      setCustomDateRange(startDate, newEndDate); // Call the custom setter
+                      setEndDate(e.target.value);
+                      setTimeRange("Custom");
+                      setActiveButton("Custom");
                     }}
                     className="mt-1 block w-full border border-brown shadow-sm p-18"
                   />

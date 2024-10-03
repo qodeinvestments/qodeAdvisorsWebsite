@@ -30,18 +30,19 @@ const FundManagers = ({ text }) => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row items-center md:items-start gap-2  md:gap-4 justify-between w-full">
-      {/* Left Section */}
-      <div className="md:w-1/2 w-full text-start sm:px-4 ">
-        <Heading className="text-mobileSemiHeading md:text-semiheading italic text-brown mb-4 text-center md:text-start">
-          {text
-            ? text
-            : "Want to speak to the our fund manager before investing?"}
-        </Heading>
-
-        <div className="flex justify-center md:justify-start">
+    <div className="flex flex-col-reverse md:flex-row-reverse items-center md:items-start   md:gap-4 justify-between w-full">
+      {/* Right Section: Image or Fund Managers */}
+      <div className="md:w-1/2 w-full flex flex-col justify-center md:justify-end">
+        <div className="flex-shrink-0">
+          <img
+            src={founders}
+            alt="Founders"
+            className="w-full max-w-xs md:max-w-lg object-cover"
+          />
+        </div>
+        <div className="flex sm:hidden mt-2 justify-center md:justify-start">
           <Button
-            className="bg-beige shadow-md  hover:bg-lightBrown transition duration-300"
+            className="bg-beige shadow-md hover:bg-lightBrown transition duration-300"
             onClick={openModal}
           >
             Schedule A Meeting
@@ -49,14 +50,21 @@ const FundManagers = ({ text }) => {
         </div>
       </div>
 
-      {/* Right Section: Image or Fund Managers */}
-      <div className="md:w-1/2 w-full flex justify-center md:justify-end">
-        <div className="flex-shrink-0">
-          <img
-            src={founders}
-            alt="Founders"
-            className="w-full max-w-xs md:max-w-lg object-cover"
-          />
+      {/* Left Section */}
+      <div className="md:w-1/2 w-full text-start sm:px-4 ">
+        <Heading className="text-mobileSemiHeading md:text-semiheading italic text-brown mb-2 text-center md:text-start">
+          {text
+            ? text
+            : "Want to speak to the our fund manager before investing?"}
+        </Heading>
+
+        <div className="sm:flex hidden justify-center md:justify-start">
+          <Button
+            className="bg-beige shadow-md hover:bg-lightBrown transition duration-300"
+            onClick={openModal}
+          >
+            Schedule A Meeting
+          </Button>
         </div>
       </div>
 

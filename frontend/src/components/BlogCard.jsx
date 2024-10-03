@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Text from "./common/Text";
 import Heading from "./common/Heading";
 import CustomLink from "./common/CustomLink";
+import { Link } from "react-router-dom";
 function BlogCard({
   html,
   title,
@@ -29,26 +30,28 @@ function BlogCard({
       initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="overflow-hidden transition-all  duration-75  max-w-[485px] group p-1  sm:p-3 hover:bg-lightBeige hover:scale-105 flex flex-col"
+      className="overflow-hidden transition-all duration-75 max-w-[485px] group p-1 sm:p-3 hover:bg-lightBeige hover:scale-105 flex flex-col h-full"
     >
-      <CustomLink to={`/blogs/${slug}`} className="block flex-grow">
-        <div className="h-full group overflow-hidden  relative flex flex-col">
+      <Link to={`/blogs/${slug}`} className="block flex-grow">
+        <div className="h-full group overflow-hidden relative flex flex-col">
           {feature_image && (
-            <img
-              src={feature_image}
-              alt={title}
-              className="w-full h-48 object-cover mb-4"
-            />
+            <div className="h-48 mb-4">
+              <img
+                src={feature_image}
+                alt={title}
+                className="w-full h-full object-cover"
+              />
+            </div>
           )}
-          <div className="transition-all  flex flex-col h-full">
-            <div className="mb-auto">
-              <Heading className="md:sm:text-subheading text-mobileSubHeading text-brown group-hover:text-black font-bold  mb-2 relative overflow-hidden text-ellipsis">
+          <div className="flex flex-col flex-grow">
+            <div className="h-full mb-2 overflow-hidden">
+              <Heading className="md:text-subheading text-mobileSubHeading text-brown group-hover:text-black font-bold">
                 {title}
               </Heading>
             </div>
-            <Text className="text-body font-body line-clamp-6   ">
-              {excerpt}
-            </Text>
+            <div className="flex-grow">
+              <p className="text-body font-body line-clamp-3">{excerpt}</p>
+            </div>
             <div className="flex items-center justify-between mt-2">
               {primary_author && (
                 <div className="flex items-center">
@@ -62,35 +65,26 @@ function BlogCard({
                   <span className="text-xs">{primary_author.name}</span>
                 </div>
               )}
-              <div className="flex items-center justify-end  w-full ">
-                {/* <div className="group-hover:text-black">
-                  <FontAwesomeIcon icon={faClock} className="mr-1" />
-                  <span className="text-xs">{reading_time} min read</span>
-                </div> */}
-                <div className="self-end sm:text-right group-hover:text-black ">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 100 100"
-                    width="44"
-                    height="44"
-                  >
-                    <path
-                      d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </div>
-              </div>
             </div>
           </div>
-          {/* <div className="absolute bottom-0 left-0 right-0 px-6 py-4 transition-all duration-300 opacity-0 group-hover:opacity-100">
-            <CustomLink to={`/blogs/${slug}`} className="text-brown">
-              Continue Reading <FontAwesomeIcon icon={faArrowRight} />
-            </CustomLink>
-          </div> */}
+          <div className="mt-2 flex justify-end items-center">
+            <div className="group-hover:text-black">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100"
+                width="44"
+                height="44"
+              >
+                <path
+                  d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"
+                  fill="currentColor"
+                />
+              </svg>
+            </div>
+          </div>
           <hr className="mt-2 border-t group-hover:border-beige border-lightBeige" />
         </div>
-      </CustomLink>
+      </Link>
     </motion.div>
   );
 }

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet"; // Import Helmet
-import useStrategyData from "../components/hooks/strategyCagr";
 import { Container } from "../components";
 import BookAMeet from "./BookAMeet";
 import Modal from "../components/Modal";
@@ -17,8 +16,6 @@ import Section from "../components/container/Section";
 import { motion } from "framer-motion";
 
 const StrategyCard = ({ strategy, name, description, slug }) => {
-  const { loading, error, calculateReturns } = useStrategyData(strategy);
-
   // if (loading) return <div>Loading...</div>;
   // if (error) return <div>Error: {error}</div>;
 
@@ -144,14 +141,15 @@ const Strategies = () => {
       id: "momentum",
       name: "Qode Velocity Fund",
       slug: "qode-velocity-fund",
-      description: "<Text class='mb-1'>Buy high sell higher.</Text> ",
+      description:
+        "<Text class='mb-1'>Ride the wave. Buy high sell higher</Text> ",
     },
     {
       id: "lowvol",
       name: "Qode All Weather",
       slug: "qode-all-weather",
       description:
-        "<Text class='mb-1'>Lower Risk need not necessarily mean lower returns.</Text>",
+        "<Text class='mb-1'>Lower Risk does not mean lower returns.</Text>",
     },
     {
       id: "futureHorizon",

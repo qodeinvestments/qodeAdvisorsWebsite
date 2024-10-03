@@ -143,7 +143,7 @@ const Home = () => {
       </Section>
 
       <Section
-        padding="extralarge"
+        padding="normal"
         className="max-w-[93%] mt-5 sm:max-w-[1386px] bg-lightBeige mx-auto"
         fullWidth={false}
       >
@@ -152,7 +152,7 @@ const Home = () => {
 
       <Section
         padding="normal"
-        className="max-w-[93%] mb-0 sm:max-w-[1386px] mx-auto"
+        className="max-w-[93%] mb-4 sm:mb-0 sm:max-w-[1386px] mx-auto"
       >
         <FundManagers />
       </Section>
@@ -162,10 +162,13 @@ const Home = () => {
       </Section>
 
       {/* Parallax Section */}
-      <Parallax className="my-5" bgImage={principle} strength={200}>
+      <Parallax className="mb-6 mt-7" bgImage={principle} strength={200}>
         <div
-          className="relative w-full min-h-[631px] bg-fixed bg-center bg-cover flex items-center justify-center"
-          style={{ backgroundImage: `url(${principle})` }}
+          className="relative w-full min-h-[485px] bg-fixed bg-right sm:bg-center bg-cover flex items-center justify-center"
+          style={{
+            backgroundImage: `url(${principle})`,
+            backgroundPosition: "65% 20%",
+          }}
         >
           <div className="absolute inset-0 bg-black opacity-35"></div>
 
@@ -176,8 +179,7 @@ const Home = () => {
                 Our Investing Principles
               </Heading>
               <Text className="text-lightBeige text-body mb-4">
-                At Qode, we embrace a data-driven, disciplined approach to
-                investing. We see things for what they are and ignore all the
+                At Qode, we see things for what they are and ignore all the
                 noise.
               </Text>
               <Button

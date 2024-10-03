@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartLine } from "@fortawesome/free-solid-svg-icons";
 import Heading from "./common/Heading";
 import Text from "./common/Text";
 import Button from "./common/Button";
-import fetchStrategyData from "./api/getData";
+import useFetchStrategyData from "./hooks/useFetchStrategyData";
 
 const Calculator = ({ strategy }) => {
   const [startOfMonthData, setStartOfMonthData] = useState([]);
@@ -13,25 +11,20 @@ const Calculator = ({ strategy }) => {
   const [investmentPeriod, setInvestmentPeriod] = useState(1);
   const [futureInvestmentValue, setFutureInvestmentValue] = useState(0);
   const [maxInvestmentPeriod, setMaxInvestmentPeriod] = useState(Infinity);
-  const [data, setData] = useState([]);
-
+  // const [data, setData] = useState([]);
+  const { data, isLoading, error } = useFetchStrategyData(strategy);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Handle the strategy alias here if needed
         if (strategy === "qgm") {
           strategy = "momentum";
         }
-
-        // Use the new fetchStrategyData function
-        const strategyData = await fetchStrategyData(strategy, "ALL");
 
         if (!strategyData) {
           console.error(`No data found for strategy: ${strategy}`);
           return;
         }
-
-        setData(strategyData);
+        const strategyData = data;
 
         if (strategyData && strategyData.length > 0) {
           const oldestDate = new Date(strategyData[0].date);

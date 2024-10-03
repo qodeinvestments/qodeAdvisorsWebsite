@@ -79,7 +79,7 @@ const BlogDetails = () => {
             <meta property="og:type" content="article" />
           </Helmet>
 
-          <Section padding="small" className="mt-9">
+          <Section padding="none" className="mt-9 p-18">
             <div className="sm:max-w-[820px] mx-auto">
               <div className="text-center mb-18">
                 <Text className="text-primary font-body text-body">

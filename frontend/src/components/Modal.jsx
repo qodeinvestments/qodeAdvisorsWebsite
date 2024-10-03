@@ -30,7 +30,7 @@ const Modal = ({ children, onClose }) => {
       >
         {/* Close button */}
         <button
-          className="absolute -top-3 -right-2 sm:top-3 sm:right-4 text-body sm:text-subheading m-4 text-white z-30 hover:text-gray-700"
+          className="absolute -top-3 -right-2 sm:top-3 sm:right-4 text-body sm:text-subheading m-4 text-beige z-30 hover:text-gray-700"
           onClick={onClose}
         >
           &times;

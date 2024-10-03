@@ -1,38 +1,26 @@
-import React, {
-  useState,
-  useEffect,
-  useMemo,
-  useCallback,
-  useRef,
-} from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-import {
-  Tabs,
-  TabsBody,
-  TabPanel,
-  ButtonGroup,
-} from "@material-tailwind/react";
+import { Tabs, TabsBody, TabPanel, Spinner } from "@material-tailwind/react";
 import Calculator from "../Calculator";
-import fetchStrategyData from "../api/getData";
 import Button from "../common/Button";
 import Text from "../common/Text";
 import Heading from "../common/Heading";
-
 import image from "../../assets/livePerformance.jpg";
 import CustomLink from "../common/CustomLink";
-import SectionContent from "../container/SectionContent";
 import Section from "../container/Section";
 import useCustomTimeRange from "../hooks/useCustomTimeRange";
 import useMobileWidth from "../hooks/useMobileWidth";
+import useChartData from "../hooks/useChartOptions";
+import useCalculateCagr from "../hooks/useCalculateCagr";
+import useFetchStrategyData from "../hooks/useFetchStrategyData";
+import filterDataByCustomRange from "../utils/filterDataByTimeRange";
 const PerformanceChart = ({ strategy, blogUrl }) => {
-  const [chartOptions, setChartOptions] = useState(null);
   const [filteredData, setFilteredData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const customDateRef = useRef(null);
   const customButtonRef = useRef(null);
-
   const {
     timeRange,
     startDate,
@@ -46,33 +34,48 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
 
   const { isMobile } = useMobileWidth();
 
-  const loadData = useCallback(async () => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const data = await fetchStrategyData(
-        strategy,
+  const { chartOptions, prepareChartData, updateChartOptions } = useChartData(
+    strategy,
+    isMobile
+  );
+
+  const { calculateCAGR } = useCalculateCagr();
+
+  const { data, isLoading, error } = useFetchStrategyData(strategy);
+  if (error) {
+    console.error(error);
+    return null;
+  }
+
+  const filterData = useMemo(() => {
+    if (!isLoading && data.length > 0) {
+      const latestDate = data.reduce((latest, current) => {
+        const currentDate = new Date(current.date);
+        return currentDate > new Date(latest.date) ? current : latest;
+      }, data[0]);
+
+      const filteredData = filterDataByCustomRange(
+        data,
         timeRange,
-        timeRange === "Custom" ? startDate : null,
-        timeRange === "Custom" ? endDate : null
+        startDate,
+        endDate,
+        latestDate.date
       );
-      if (!data || data.length === 0) {
-        throw new Error("No data received from API");
-      }
-      const chartData = prepareChartData(data, strategy);
-      updateChartOptions(chartData);
-      setFilteredData(data);
-    } catch (error) {
-      console.error("Error loading data: ", error);
-      setError(error.message);
-    } finally {
-      setIsLoading(false);
+
+      return filteredData;
     }
-  }, [strategy, timeRange, startDate, endDate]);
+    return [];
+  }, [data, isLoading, timeRange, startDate, endDate]);
 
   useEffect(() => {
-    loadData();
-  }, [loadData]);
+    if (filterData.length > 0) {
+      const chartData = prepareChartData(filterData, strategy);
+      setLoading(true);
+      updateChartOptions(chartData);
+      setLoading(false);
+      setFilteredData(filterData);
+    }
+  }, [filterData, strategy, prepareChartData, updateChartOptions]);
 
   useEffect(() => {
     if (isCustomDateOpen) {
@@ -81,209 +84,15 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
       document.body.style.overflow = "auto";
     }
 
-    // Cleanup to restore scroll behavior when component unmounts
     return () => {
       document.body.style.overflow = "auto";
     };
   }, [isCustomDateOpen]);
 
-  const calculateCAGR = useCallback(
-    (data, timeRange = "ALL", portfolioType = "total_portfolio_nav") => {
-      const parseDate = (dateString) => new Date(dateString);
-      const sortedData = [...data].sort(
-        (a, b) => parseDate(a.date) - parseDate(b.date)
-      );
-
-      if (sortedData.length < 2) return "Loading...";
-
-      const latestData = sortedData[sortedData.length - 1];
-      const latestDate = parseDate(latestData.date);
-      let startDate = new Date(latestDate);
-
-      if (timeRange === "Custom") {
-        startDate = parseDate(sortedData[0].date);
-      } else {
-        switch (timeRange) {
-          case "1M":
-            startDate.setMonth(startDate.getMonth() - 1);
-            break;
-          case "3M":
-            startDate.setMonth(startDate.getMonth() - 3);
-            break;
-          case "6M":
-            startDate.setMonth(startDate.getMonth() - 6);
-            break;
-          case "1Y":
-            startDate.setFullYear(startDate.getFullYear() - 1);
-            break;
-          case "3Y":
-            startDate.setFullYear(startDate.getFullYear() - 3);
-            break;
-          case "5Y":
-            startDate.setFullYear(startDate.getFullYear() - 5);
-            break;
-          case "ALL":
-            startDate = parseDate(sortedData[0].date);
-            break;
-          case "YTD":
-            startDate.setMonth(0, 1);
-            break;
-          default:
-            return "Invalid time range";
-        }
-      }
-
-      const startIndex = sortedData.findIndex(
-        (d) => parseDate(d.date) >= startDate
-      );
-      if (startIndex === -1) return "N/A";
-
-      const startValue = parseFloat(sortedData[startIndex][portfolioType]);
-      const endValue = parseFloat(latestData[portfolioType]);
-
-      if (isNaN(startValue) || isNaN(endValue)) return "N/A";
-
-      const days =
-        (latestDate - parseDate(sortedData[startIndex].date)) /
-        (24 * 60 * 60 * 1000);
-      const years = days / 365;
-
-      if (years <= 0) return "Invalid date range";
-
-      // For periods less than a year, use simple return
-      if (years < 1) {
-        const simpleReturn = ((endValue - startValue) / startValue) * 100;
-        return simpleReturn.toFixed(2) + "%";
-      }
-
-      // For periods of a year or more, use CAGR
-      const cagr = (Math.pow(endValue / startValue, 1 / years) - 1) * 100;
-      return cagr.toFixed(2) + "%";
-    },
-    []
-  );
-
   const strategyCagr = useMemo(
     () => calculateCAGR(filteredData, timeRange, "total_portfolio_nav"),
     [calculateCAGR, filteredData, timeRange]
   );
-
-  const prepareChartData = useCallback((data, strategy) => {
-    const strategyKey = "total_portfolio_nav";
-    const initialStrategyValue = parseFloat(data[0][strategyKey]);
-    const initialNiftyValue = parseFloat(
-      data[0]["Nifty 50"] || data[0]["nifty"]
-    );
-    console.log(data);
-
-    return data.map((item) => ({
-      date: item.date,
-      strategyValue:
-        (parseFloat(item[strategyKey]) / initialStrategyValue) * 100,
-      niftyValue:
-        (parseFloat(item["Nifty 50"] || item["nifty"]) / initialNiftyValue) *
-        100,
-    }));
-  }, []);
-
-  const updateChartOptions = (data) => {
-    const dates = data.map((item) => item.date);
-
-    const strategyValues = data.map((item) => Math.trunc(item.strategyValue));
-    const niftyValues = data.map((item) => Math.trunc(item.niftyValue));
-
-    let maxStrategyValue = 0;
-    const drawdown = data.map((item) => {
-      const value = item.strategyValue;
-      const dd =
-        maxStrategyValue > value ? (value / maxStrategyValue - 1) * 100 : 0;
-      maxStrategyValue = Math.max(maxStrategyValue, value);
-      return Math.trunc(dd);
-    });
-
-    const options = {
-      title: "",
-      xAxis: {
-        categories: dates,
-        labels: {
-          formatter: function () {
-            const date = new Date(this.value);
-            return `${date.getFullYear()}`;
-          },
-        },
-        tickPositions: [0, Math.floor(dates.length / 2), dates.length - 1],
-      },
-      yAxis: [
-        {
-          title: { text: "" },
-          height: "100%",
-        },
-      ],
-      series: [
-        {
-          name: strategy,
-          data: strategyValues,
-          color: "#d1a47b",
-          lineWidth: 1,
-          marker: {
-            enabled: false, // Marker disabled by default
-            states: {
-              hover: {
-                enabled: true, // Marker enabled on hover
-                radius: 5, // You can adjust the radius of the marker on hover
-              },
-            },
-          },
-          type: "line",
-        },
-        {
-          name: "Nifty 50",
-          data: niftyValues,
-          color: "#000",
-          lineWidth: 1,
-          marker: {
-            enabled: false, // Marker disabled by default
-            states: {
-              hover: {
-                enabled: true, // Marker enabled on hover
-                radius: 5, // Adjust radius
-              },
-            },
-          },
-          type: "line",
-        },
-      ],
-      chart: {
-        height: isMobile ? 300 : 520,
-        backgroundColor: "none",
-        zoomType: "x",
-        marginLeft: isMobile ? 0 : 40,
-        marginRight: isMobile ? 0 : 40,
-      },
-      tooltip: {
-        shared: true,
-        outside: isMobile,
-      },
-      legend: { enabled: true },
-      credits: { enabled: false },
-      exporting: { enabled: !isMobile },
-      plotOptions: {
-        series: {
-          animation: {
-            duration: 2000,
-          },
-          states: {
-            hover: {
-              enabled: true, // Enable hover state on series
-              lineWidthPlus: 1, // Optional: make the line thicker on hover
-            },
-          },
-        },
-      },
-    };
-
-    setChartOptions(options);
-  };
 
   const renderDateRangeButtons = () => {
     const ranges = ["1M", "6M", "1Y", "3Y", "5Y", "ALL"];
@@ -399,11 +208,15 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
             )}
             {/* Adjusted margin */}
             <TabPanel className="p-0" key="chart1" value="chart1">
-              {chartOptions && (
-                <HighchartsReact
-                  highcharts={Highcharts}
-                  options={chartOptions}
-                />
+              {loading ? (
+                <Spinner className="mx-auto text-brown flex justify-center items-center" />
+              ) : (
+                chartOptions && (
+                  <HighchartsReact
+                    highcharts={Highcharts}
+                    options={chartOptions}
+                  />
+                )
               )}
             </TabPanel>
           </TabsBody>
@@ -440,40 +253,6 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
           Read Here
         </Button> */}
       </Section>
-      <div className="w-full flex sm:flex-row flex-col gap-4">
-        {" "}
-        {/* Adjusted margin */}
-        <div className=" sm:p-6 p-3 border border-brown bg-white  sm:w-3/6">
-          {" "}
-          {/* Adjusted padding */}
-          <Calculator strategy={strategy} />
-        </div>
-        <div
-          className="relative  bg-cover flex justify-start items-start flex-col sm:p-6 p-2 sm:w-1/2"
-          style={{ backgroundImage: `url(${image})` }}
-        >
-          {/* Black overlay */}
-          <div className="absolute inset-0 bg-black opacity-20"></div>
-
-          {/* Content that sits on top of the background and overlay */}
-          <div className="relative z-10 text-start backdrop-blur-md bg-black bg-opacity-30 p-4 ">
-            <Heading
-              isItalic
-              className="text-lightBeige sm:text-semiheading text-mobileSemiHeading mb-4"
-            >
-              Want to track the live portfolio performance?
-            </Heading>
-            <Button
-              to={"https://dashboard.qodeinvest.com/"}
-              target="_blank"
-              isGlassmorphism
-              className="text-lightBeige hover:text-black"
-            >
-              Sign Up
-            </Button>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };

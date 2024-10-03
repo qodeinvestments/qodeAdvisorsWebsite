@@ -14,6 +14,8 @@ import FundManagers from "./FundManagers";
 import Modal from "./Modal";
 import BookAMeet from "../Pages/BookAMeet";
 import { Helmet } from "react-helmet";
+import Calculator from "./Calculator";
+import image from "../assets/livePerformance.jpg";
 
 const StrategyComponent = ({ strategyData }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -72,6 +74,42 @@ const StrategyComponent = ({ strategyData }) => {
 
         <Section className="mb-4 ">
           <PerformanceChart strategy={strategyCode} blogUrl={blogUrl} />
+        </Section>
+        <Section className="mb-4">
+          <div className="w-full flex sm:flex-row flex-col gap-4">
+            {" "}
+            {/* Adjusted margin */}
+            <div className=" sm:p-6 p-3 border border-brown bg-white  sm:w-3/6">
+              {" "}
+              {/* Adjusted padding */}
+              <Calculator strategy={strategyCode} />
+            </div>
+            <div
+              className="relative  bg-cover flex justify-start items-start flex-col sm:p-6 p-2 sm:w-1/2"
+              style={{ backgroundImage: `url(${image})` }}
+            >
+              {/* Black overlay */}
+              <div className="absolute inset-0 bg-black opacity-20"></div>
+
+              {/* Content that sits on top of the background and overlay */}
+              <div className="relative z-10 text-start backdrop-blur-md bg-black bg-opacity-30 p-4 ">
+                <Heading
+                  isItalic
+                  className="text-lightBeige sm:text-semiheading text-mobileSemiHeading mb-4"
+                >
+                  Want to track the live portfolio performance?
+                </Heading>
+                <Button
+                  to={"https://dashboard.qodeinvest.com/"}
+                  target="_blank"
+                  isGlassmorphism
+                  className="text-lightBeige hover:text-black"
+                >
+                  Sign Up
+                </Button>
+              </div>
+            </div>
+          </div>
         </Section>
 
         {/* <Section gray padding="normal">

@@ -8,7 +8,7 @@ import StrategyComponent from "../components/Strategy";
 
 export const quantMomentumFundData = {
   title: "Qode Velocity Fund",
-  tagLine: "Buy high sell higher.",
+  tagLine: "Ride the wave. Buy high sell higher",
   description:
     "This strategy invests in 30 businesses whose stock price has grown significantly and sells it before they start falling",
   principle:

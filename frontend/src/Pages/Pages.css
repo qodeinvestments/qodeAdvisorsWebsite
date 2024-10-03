@@ -162,11 +162,23 @@
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1em;
+  overflow-x: auto;
+  display: block; /* Ensures the table behaves properly with overflow */
 }
 
+/* Table cells */
 .post-content th, .post-content td {
   border: 1px solid #ddd;
   padding: 0.5em;
+}
+
+/* Scrolling for small screens */
+@media screen and (max-width: 768px) {
+  .post-content table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap; /* Prevents table content from wrapping */
+  }
 }
 
 .post-content th {

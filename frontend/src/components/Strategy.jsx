@@ -17,14 +17,9 @@ import { Helmet } from "react-helmet";
 import Calculator from "./Calculator";
 import image from "../assets/livePerformance.jpg";
 import TrailingReturns from "./TrailingReturns";
-
+import useFetchStrategyData from "./hooks/useFetchStrategyData";
 const StrategyComponent = ({ strategyData }) => {
-  const [activeIndex, setActiveIndex] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleAccordionToggle = (index) => {
-    setActiveIndex(activeIndex === index ? null : index);
-  };
 
   const {
     title,
@@ -37,13 +32,11 @@ const StrategyComponent = ({ strategyData }) => {
     blogUrl,
   } = strategyData;
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
   const closeModal = () => {
     setIsModalOpen(false);
   };
+
+  const { data, isLoading, error } = useFetchStrategyData(strategyCode);
 
   return (
     <>
@@ -74,11 +67,23 @@ const StrategyComponent = ({ strategyData }) => {
         </Section>
 
         <Section padding="none">
-          <TrailingReturns strategy={strategyCode} />
+          <TrailingReturns
+            data={data}
+            isLoading={isLoading}
+            error={error}
+            strategy={strategyCode}
+          />
         </Section>
         <Section padding="large" className="mb-4 ">
-          <PerformanceChart strategy={strategyCode} blogUrl={blogUrl} />
+          <PerformanceChart
+            data={data}
+            strategy={strategyCode}
+            blogUrl={blogUrl}
+            error={error}
+            isLoading={isLoading}
+          />
         </Section>
+
         <Section className="mb-4">
           <div className="w-full flex sm:flex-row flex-col gap-4">
             {" "}
@@ -86,7 +91,7 @@ const StrategyComponent = ({ strategyData }) => {
             <div className=" sm:p-6 p-3 border border-brown bg-white  sm:w-3/6">
               {" "}
               {/* Adjusted padding */}
-              <Calculator strategy={strategyCode} />
+              <Calculator data={data} strategy={strategyCode} />
             </div>
             <div
               className="relative  bg-cover flex justify-start items-start flex-col sm:p-6 p-2 sm:w-1/2"
@@ -116,32 +121,6 @@ const StrategyComponent = ({ strategyData }) => {
           </div>
         </Section>
 
-        {/* <Section gray padding="normal">
-        <div className="text-center">
-          <Heading className=" font-bold mb-4 text-brown">
-            Not sure which strategy is right for you?
-          </Heading>
-          <Text className="text-body mb-6 text-black">
-            Sign Up to track our live portfolio.
-          </Text>
-          <Button to="https://dashboard.qodeinvest.com">Sign Up</Button>
-        </div>
-      </Section> */}
-
-        {/* <Section
-        padding="extralarge"
-        className="bg-black max-w-[93%] sm:max-w-[1386px] mx-auto"
-      >
-        <Heading className="sm:text-semiheading text-mobileSemiHeading text-beige   mb-4 text-center"></Heading>
-        <Text className="sm:text-subheading text-mobileSubHeading mb-3 text-center text-beige">
-          Our fund manager would be happy to help you.
-        </Text>
-        <div className="text-center">
-          <Button className="bg-beige" onClick={openModal}>
-            Schedule A Call
-          </Button>
-        </div>
-      </Section> */}
         <Section padding="large">
           <FundManagers
             text={
@@ -149,48 +128,6 @@ const StrategyComponent = ({ strategyData }) => {
             }
           />
         </Section>
-        {/* <Section>
-        <ModalButton />
-      </Section>
-
-      <Section gray padding="normal">
-        <Blogs />
-      </Section> */}
-
-        {/* <Section padding="normal">
-        <Heading className="sm:text-semiheading text-mobileSemiHeading font-semiheading text-brown text-center mb-4 ">
-          FAQ's
-        </Heading>
-        <div className="space-y-2 sm:space-y-3 mx-auto">
-          {faqItems.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white border p-1 sm:p-0 py-0 border-brown"
-            >
-              <div
-                className="flex gap-0.5 justify-between items-center  sm:px-2 py-2 cursor-pointer"
-                onClick={() => handleAccordionToggle(index)}
-              >
-                <Text className="sm:text-subheading text-mobileSubHeading font-subheading sm:pr-4">
-                  {item.question}
-                </Text>
-                <span
-                  className={`text-brown sm:text-subheading text-mobileSubHeadingsm:sm:text-subheading text-mobileSubHeadingtransition-transform duration-300 ${
-                    activeIndex === index ? "transform rotate-180" : ""
-                  }`}
-                >
-                  &#8744;
-                </span>
-              </div>
-              {activeIndex === index && (
-                <div className=" pb-2 sm:px-3  text-black font-body text-body">
-                  {item.answer}
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-      </Section> */}
         {isModalOpen && (
           <Modal onClose={closeModal}>
             <BookAMeet />

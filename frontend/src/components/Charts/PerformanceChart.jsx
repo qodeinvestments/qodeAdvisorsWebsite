@@ -2,20 +2,18 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import { Tabs, TabsBody, TabPanel, Spinner } from "@material-tailwind/react";
-import Calculator from "../Calculator";
 import Button from "../common/Button";
 import Text from "../common/Text";
-import Heading from "../common/Heading";
-import image from "../../assets/livePerformance.jpg";
 import CustomLink from "../common/CustomLink";
 import Section from "../container/Section";
 import useCustomTimeRange from "../hooks/useCustomTimeRange";
 import useMobileWidth from "../hooks/useMobileWidth";
 import useChartData from "../hooks/useChartOptions";
 import useCalculateCagr from "../hooks/useCalculateCagr";
-import useFetchStrategyData from "../hooks/useFetchStrategyData";
 import filterDataByCustomRange from "../utils/filterDataByTimeRange";
-const PerformanceChart = ({ strategy, blogUrl }) => {
+import boost from "highcharts/modules/boost";
+boost(Highcharts);
+const PerformanceChart = ({ data, strategy, blogUrl, error, isLoading }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -41,7 +39,7 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
 
   const { calculateCAGR } = useCalculateCagr();
 
-  const { data, isLoading, error } = useFetchStrategyData(strategy);
+  // const { data, isLoading, error } = useFetchStrategyData(strategy);
   if (error) {
     console.error(error);
     return null;
@@ -149,6 +147,8 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
                       setCustomDateRange(newStartDate, endDate); // Call the custom setter
                     }}
                     className="mt-1 block w-full border border-brown shadow-sm p-18"
+                    aria-label="Start Date" // Provides an accessible label for screen readers
+                    aria-required="true" // Indicates that this field is required (if applicable)
                   />
                 </div>
                 <div className="w-full">
@@ -167,6 +167,8 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
                       setCustomDateRange(startDate, newEndDate); // Call the custom setter
                     }}
                     className="mt-1 block w-full border border-brown shadow-sm p-18"
+                    aria-label="End Date" // Provides an accessible label for screen readers
+                    aria-required="true" // Indicates that this field is required (if applicable)
                   />
                 </div>
               </div>

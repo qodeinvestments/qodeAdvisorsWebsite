@@ -1,5 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
-import filterDataByTimeRange from "../utils/filterDataByTimeRange";
+import { useEffect, useState } from "react";
 
 const useFetchStrategyData = (strategy) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -23,6 +22,7 @@ const useFetchStrategyData = (strategy) => {
     };
     fetchStrategyData();
   }, [strategy]);
+
   console.log(data);
 
   return { data, isLoading, error };

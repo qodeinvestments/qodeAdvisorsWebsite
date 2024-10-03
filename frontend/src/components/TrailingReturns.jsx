@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Heading from "./common/Heading";
-import useFetchStrategyData from "./hooks/useFetchStrategyData";
 import Text from "./common/Text";
 
-const TrailingReturns = ({ strategy }) => {
-  const { data, isLoading, error } = useFetchStrategyData(strategy);
+const TrailingReturns = ({ strategy, isLoading, error, data }) => {
   const [returns, setReturns] = useState({
     "10D": {},
     "1W": {},
@@ -22,7 +20,7 @@ const TrailingReturns = ({ strategy }) => {
   });
 
   useEffect(() => {
-    if (data.length > 0) {
+    if (data && data.length > 0) {
       calculateReturns(data);
       calculateDrawdowns(data);
     }
@@ -66,9 +64,9 @@ const TrailingReturns = ({ strategy }) => {
             parseFloat(endValues.total_portfolio_nav),
             period
           ),
-          "Nifty 50": calculateReturn(
-            parseFloat(startValues.nifty),
-            parseFloat(endValues.nifty),
+          [startValues.benchmark]: calculateReturn(
+            parseFloat(startValues.benchmark_values),
+            parseFloat(endValues.benchmark_values),
             period
           ),
         };
@@ -88,7 +86,8 @@ const TrailingReturns = ({ strategy }) => {
   };
 
   const calculateDrawdowns = (data) => {
-    const strategies = [strategy, "Nifty 50"];
+    const benchmark = data[0]?.benchmark || "Default Benchmark";
+    const strategies = [strategy, benchmark];
     const calculatedDrawdowns = {
       latest: {},
       lowest: {},
@@ -96,22 +95,20 @@ const TrailingReturns = ({ strategy }) => {
 
     strategies.forEach((strat) => {
       const values = data.map((item) =>
-        parseFloat(strat === strategy ? item.total_portfolio_nav : item.nifty)
+        parseFloat(
+          strat === strategy ? item.total_portfolio_nav : item.benchmark_values
+        )
       );
 
       let peaks = [values[0]];
       let drawdowns = [0];
 
-      // Calculate running peaks and drawdowns
       for (let i = 1; i < values.length; i++) {
         peaks[i] = Math.max(peaks[i - 1], values[i]);
         drawdowns[i] = ((values[i] - peaks[i]) / peaks[i]) * 100;
       }
 
-      // Latest drawdown is the last drawdown
       calculatedDrawdowns.latest[strat] = drawdowns[drawdowns.length - 1];
-
-      // Maximum drawdown is the lowest (most negative) drawdown
       calculatedDrawdowns.lowest[strat] = Math.min(...drawdowns);
     });
 
@@ -121,17 +118,11 @@ const TrailingReturns = ({ strategy }) => {
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
-  let strategyCode;
-  if (strategy === "QMF") {
-    strategyCode = "QVF";
-  } else if (strategy === "LVF") {
-    strategyCode = "QAW";
-  } else {
-    strategyCode = "QGF";
-  }
+  const benchmark = data[0]?.benchmark || "Default Benchmark";
 
-  const strategies = [strategyCode, "Nifty 50"];
+  const strategies = [strategy, benchmark];
   const periods = ["10D", "1W", "1M", "3M", "6M", "1Y", "3Y", "5Y", "YTD"];
+
   return (
     <div className="overflow-x-auto sm:p-4 p-1">
       <Heading

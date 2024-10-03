@@ -14,7 +14,7 @@ const LowVolMomentum = () => {
     tagLine: "Lower Risk does not mean lower returns.",
     description:
       "This strategy invests in the 30 most stable stocks in the market. This strategy outperforms the Index with considerably lower risk.",
-    strategyCode: "LVF",
+    strategyCode: "QAW",
     strategySlug: "qode-all-weather",
     pptLink: "/Quant Growth Fund Feb.pdf",
     blogUrl: "/qode-low-risk",

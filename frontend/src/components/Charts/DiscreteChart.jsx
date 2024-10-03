@@ -41,7 +41,8 @@ const DiscreteChart = ({ strategy }) => {
               ? (nextItem[strategyKey] / item[strategyKey] - 1) * 100
               : 0;
             const niftyPercentage = nextItem
-              ? (nextItem["Nifty 50"] / item["Nifty 50"] - 1) * 100
+              ? (nextItem["benchmark_values"] / item["benchmark_values"] - 1) *
+                100
               : 0;
 
             return {
@@ -61,7 +62,8 @@ const DiscreteChart = ({ strategy }) => {
           const momentumPercentage =
             (lastData[strategy] / firstData[strategy] - 1) * 100;
           const niftyPercentage =
-            (lastData["Nifty 50"] / firstData["Nifty 50"] - 1) * 100;
+            (lastData["benchmark_values"] / firstData["benchmark_values"] - 1) *
+            100;
 
           chartData.push({
             name: currentYear.toString(),

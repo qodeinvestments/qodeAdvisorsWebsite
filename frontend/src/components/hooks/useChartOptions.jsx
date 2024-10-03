@@ -8,7 +8,7 @@ const useChartData = (strategy, isMobile) => {
     const strategyKey = "total_portfolio_nav";
     const initialStrategyValue = parseFloat(data[0][strategyKey]);
     const initialNiftyValue = parseFloat(
-      data[0]["Nifty 50"] || data[0]["nifty"]
+      data[0]["benchmark_values"] || data[0]["benchmark_values"]
     );
 
     return data.map((item) => ({
@@ -16,8 +16,10 @@ const useChartData = (strategy, isMobile) => {
       strategyValue:
         (parseFloat(item[strategyKey]) / initialStrategyValue) * 100,
       niftyValue:
-        (parseFloat(item["Nifty 50"] || item["nifty"]) / initialNiftyValue) *
+        (parseFloat(item["benchmark_values"] || item["benchmark_values"]) /
+          initialNiftyValue) *
         100,
+      benchmark: item.benchmark,
     }));
   }, []);
 
@@ -26,6 +28,7 @@ const useChartData = (strategy, isMobile) => {
       const dates = data.map((item) => item.date);
       const strategyValues = data.map((item) => Math.trunc(item.strategyValue));
       const niftyValues = data.map((item) => Math.trunc(item.niftyValue));
+      const benchmarkName = data[0].benchmark;
       let maxStrategyValue = 0;
       const drawdown = data.map((item) => {
         const value = item.strategyValue;
@@ -72,7 +75,7 @@ const useChartData = (strategy, isMobile) => {
             animation: { duration: 2000 }, // Explicitly define animation duration
           },
           {
-            name: "Nifty 50",
+            name: benchmarkName,
             data: niftyValues,
             color: "#000",
             lineWidth: 1,

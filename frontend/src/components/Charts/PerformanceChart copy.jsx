@@ -173,16 +173,16 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
     const strategyKey = "total_portfolio_nav";
     const initialStrategyValue = parseFloat(data[0][strategyKey]);
     const initialNiftyValue = parseFloat(
-      data[0]["Nifty 50"] || data[0]["nifty"]
+      data[0]["benchmark_values"] || data[0]["benchmark_values"]
     );
-    console.log(data);
 
     return data.map((item) => ({
       date: item.date,
       strategyValue:
         (parseFloat(item[strategyKey]) / initialStrategyValue) * 100,
       niftyValue:
-        (parseFloat(item["Nifty 50"] || item["nifty"]) / initialNiftyValue) *
+        (parseFloat(item["benchmark_values"] || item["benchmark_values"]) /
+          initialNiftyValue) *
         100,
     }));
   }, []);

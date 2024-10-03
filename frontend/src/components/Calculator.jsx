@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import Heading from "./common/Heading";
 import Text from "./common/Text";
 import Button from "./common/Button";
-import useFetchStrategyData from "./hooks/useFetchStrategyData";
 
-const Calculator = ({ strategy }) => {
+const Calculator = ({ data, strategy }) => {
   const [startOfMonthData, setStartOfMonthData] = useState([]);
   const [investmentAmount, setInvestmentAmount] = useState(1000);
   const [investmentFrequency, setInvestmentFrequency] = useState("monthly");
@@ -12,19 +11,14 @@ const Calculator = ({ strategy }) => {
   const [futureInvestmentValue, setFutureInvestmentValue] = useState(0);
   const [maxInvestmentPeriod, setMaxInvestmentPeriod] = useState(Infinity);
   // const [data, setData] = useState([]);
-  const { data, isLoading, error } = useFetchStrategyData(strategy);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if (strategy === "qgm") {
-          strategy = "momentum";
-        }
-
+        const strategyData = data;
         if (!strategyData) {
           console.error(`No data found for strategy: ${strategy}`);
           return;
         }
-        const strategyData = data;
 
         if (strategyData && strategyData.length > 0) {
           const oldestDate = new Date(strategyData[0].date);

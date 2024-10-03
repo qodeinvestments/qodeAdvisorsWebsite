@@ -16,6 +16,7 @@ import BookAMeet from "../Pages/BookAMeet";
 import { Helmet } from "react-helmet";
 import Calculator from "./Calculator";
 import image from "../assets/livePerformance.jpg";
+import TrailingReturns from "./TrailingReturns";
 
 const StrategyComponent = ({ strategyData }) => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -58,8 +59,8 @@ const StrategyComponent = ({ strategyData }) => {
         />
         <meta name="author" content="Qode Investments" />
       </Helmet>
-      <div className="mx-auto sm:mt-5 mt-8">
-        <Section className="mb-18 " padding="extralarge">
+      <div className="mx-auto sm:mt-8 mt-8">
+        <Section padding="normal">
           <Heading className="font-bold mb-1 text-brown text-center">
             <span className="block">{title}</span>
           </Heading>
@@ -72,7 +73,10 @@ const StrategyComponent = ({ strategyData }) => {
           {principle && <Text className="text-center">{principle}</Text>}
         </Section>
 
-        <Section className="mb-4 ">
+        <Section padding="none">
+          <TrailingReturns strategy={strategyCode} />
+        </Section>
+        <Section padding="large" className="mb-4 ">
           <PerformanceChart strategy={strategyCode} blogUrl={blogUrl} />
         </Section>
         <Section className="mb-4">

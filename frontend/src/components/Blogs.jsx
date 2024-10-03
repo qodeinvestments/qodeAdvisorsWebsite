@@ -44,7 +44,7 @@ const Blogs = () => {
       <Heading className="text-heading italic font-bold  text-center text-brown sm:mb-2 mb-2 ">
         Blogs
       </Heading>
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-3">
         {latestPosts.map((post) => (
           <BlogCard
             key={post.id}
@@ -59,7 +59,7 @@ const Blogs = () => {
           />
         ))}
       </div>
-      <div className="text-center mt-3">
+      <div className="text-center relative top-1">
         <Button to={"/blogs"}>All Blogs</Button>
       </div>
     </>

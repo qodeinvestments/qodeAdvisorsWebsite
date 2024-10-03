@@ -181,7 +181,7 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
     <div className="flex flex-col justify-center ">
       {" "}
       {/* Adjusted gap spacing */}
-      <div className="w-full sm:p-7 p-2 ">
+      <div className="w-full ">
         <Tabs value="chart1">
           {" "}
           <div className="flex justify-between flex-col sm:flex-row items-center">

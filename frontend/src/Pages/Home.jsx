@@ -157,7 +157,7 @@ const Home = () => {
         <FundManagers />
       </Section>
 
-      <Section padding="normal">
+      <Section padding="normal" className="mt-1">
         <Blogs />
       </Section>
 

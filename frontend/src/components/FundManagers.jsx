@@ -30,7 +30,7 @@ const FundManagers = ({ text }) => {
   };
 
   return (
-    <div className="flex flex-col-reverse md:flex-row-reverse items-center md:items-start   md:gap-4 justify-between w-full">
+    <div className="flex flex-col-reverse md:flex-row-reverse items-center md:items-center   md:gap-4 justify-between w-full">
       {/* Right Section: Image or Fund Managers */}
       <div className="md:w-1/2 w-full flex flex-col justify-center md:justify-end">
         <div className="flex-shrink-0">

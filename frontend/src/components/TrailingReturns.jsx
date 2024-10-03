@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Heading from "./common/Heading";
+import useFetchStrategyData from "./hooks/useFetchStrategyData";
+import Text from "./common/Text";
 
 const TrailingReturns = ({ strategy }) => {
+  const { data, isLoading, error } = useFetchStrategyData(strategy);
   const [returns, setReturns] = useState({
     "10D": {},
     "1W": {},
@@ -19,49 +22,15 @@ const TrailingReturns = ({ strategy }) => {
   });
 
   useEffect(() => {
-    fetchData();
-  }, [strategy]);
-
-  const getStrategyKey = (strategy) => {
-    switch (strategy) {
-      case "Momentum":
-        return "Vol Adjusted Momentum";
-      case "Naive Momentum":
-        return "Naive Momentum";
-      case "Nifty 50":
-        return "Nifty 50";
-      case "QGF":
-        return "QGF";
-      case "Short Flat":
-        return "Short Flat";
-      case "QGF + Short Flat":
-        return "QGF + Short Flat";
-      default:
-        throw new Error(`Invalid strategy: ${strategy}`);
+    if (data.length > 0) {
+      calculateReturns(data);
+      calculateDrawdowns(data);
     }
-  };
-
-  const fetchData = async () => {
-    try {
-      const response = await fetch("/data/test2.json");
-      if (!response.ok) {
-        throw new Error("Failed to fetch data");
-      }
-      const jsonData = await response.json();
-      if (!jsonData.Sheet1) {
-        throw new Error("No data found in the JSON response");
-      }
-
-      calculateReturns(jsonData.Sheet1);
-      calculateDrawdowns(jsonData.Sheet1);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+  }, [data]);
 
   const calculateReturns = (data) => {
-    const sortedData = data.sort((a, b) => new Date(a.Date) - new Date(b.Date));
-    const latestDate = new Date(sortedData[sortedData.length - 1].Date);
+    const sortedData = data.sort((a, b) => new Date(a.date) - new Date(b.date));
+    const latestDate = new Date(sortedData[sortedData.length - 1].date);
 
     const periods = {
       "10D": 10,
@@ -72,21 +41,17 @@ const TrailingReturns = ({ strategy }) => {
       "1Y": 365,
       "3Y": 3 * 365,
       "5Y": 5 * 365,
-      YTD:
-        latestDate.getFullYear() === new Date().getFullYear()
-          ? (latestDate - new Date(latestDate.getFullYear(), 0, 1)) /
-            (1000 * 60 * 60 * 24)
-          : (new Date(latestDate.getFullYear(), 11, 31) -
-              new Date(latestDate.getFullYear(), 0, 1)) /
-            (1000 * 60 * 60 * 24),
+      YTD: Math.floor(
+        (latestDate - new Date(latestDate.getFullYear(), 0, 1)) /
+          (1000 * 60 * 60 * 24)
+      ),
     };
 
     const calculatedReturns = {};
-    const strategyKey = getStrategyKey(strategy);
 
     for (const [period, days] of Object.entries(periods)) {
       const startIndex = sortedData.findIndex((item) => {
-        const itemDate = new Date(item.Date);
+        const itemDate = new Date(item.date);
         const diffDays = (latestDate - itemDate) / (1000 * 60 * 60 * 24);
         return diffDays <= days;
       });
@@ -96,14 +61,14 @@ const TrailingReturns = ({ strategy }) => {
         const endValues = sortedData[sortedData.length - 1];
 
         calculatedReturns[period] = {
-          [strategyKey]: calculateReturn(
-            startValues[strategyKey],
-            endValues[strategyKey],
+          [strategy]: calculateReturn(
+            parseFloat(startValues.total_portfolio_nav),
+            parseFloat(endValues.total_portfolio_nav),
             period
           ),
           "Nifty 50": calculateReturn(
-            startValues["Nifty 50"],
-            endValues["Nifty 50"],
+            parseFloat(startValues.nifty),
+            parseFloat(endValues.nifty),
             period
           ),
         };
@@ -123,104 +88,118 @@ const TrailingReturns = ({ strategy }) => {
   };
 
   const calculateDrawdowns = (data) => {
-    const strategies = [getStrategyKey(strategy), "Nifty 50"];
-    const drawdowns = {
+    const strategies = [strategy, "Nifty 50"];
+    const calculatedDrawdowns = {
       latest: {},
       lowest: {},
     };
 
     strategies.forEach((strat) => {
-      let peak = data[0][strat];
-      let lowestDrawdown = 0;
-      let latestPeak = data[0][strat];
-      const lastValue = data[data.length - 1][strat];
+      const values = data.map((item) =>
+        parseFloat(strat === strategy ? item.total_portfolio_nav : item.nifty)
+      );
 
-      data.forEach((item) => {
-        const value = item[strat];
+      let peaks = [values[0]];
+      let drawdowns = [0];
 
-        if (value > peak) {
-          peak = value;
-        }
+      // Calculate running peaks and drawdowns
+      for (let i = 1; i < values.length; i++) {
+        peaks[i] = Math.max(peaks[i - 1], values[i]);
+        drawdowns[i] = ((values[i] - peaks[i]) / peaks[i]) * 100;
+      }
 
-        const drawdown = ((value - peak) / peak) * 100;
+      // Latest drawdown is the last drawdown
+      calculatedDrawdowns.latest[strat] = drawdowns[drawdowns.length - 1];
 
-        if (drawdown < lowestDrawdown) {
-          lowestDrawdown = drawdown;
-        }
-
-        if (value > latestPeak) {
-          latestPeak = value;
-        }
-      });
-
-      const latestDrawdown = ((lastValue - latestPeak) / latestPeak) * 100;
-
-      drawdowns.latest[strat] = latestDrawdown;
-      drawdowns.lowest[strat] = lowestDrawdown;
+      // Maximum drawdown is the lowest (most negative) drawdown
+      calculatedDrawdowns.lowest[strat] = Math.min(...drawdowns);
     });
 
-    setDrawdowns(drawdowns);
+    setDrawdowns(calculatedDrawdowns);
   };
 
-  const strategies = [getStrategyKey(strategy), "Nifty 50"];
-  const periods = ["10D", "1W", "1M", "3M", "6M", "1Y", "3Y", "5Y", "YTD"];
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
+  let strategyCode;
+  if (strategy === "QMF") {
+    strategyCode = "QVF";
+  } else if (strategy === "LVF") {
+    strategyCode = "QAW";
+  } else {
+    strategyCode = "QGF";
+  }
+
+  const strategies = [strategyCode, "Nifty 50"];
+  const periods = ["10D", "1W", "1M", "3M", "6M", "1Y", "3Y", "5Y", "YTD"];
   return (
-    <div className=" overflow-x-auto">
+    <div className="overflow-x-auto sm:p-4 p-1">
       <Heading
-        level={2}
-        className="md:sm:text-subheading text-mobileSubHeading  my-4"
+        isItalic
+        className="sm:text-subheading text-mobileSubHeading font-subheading text-beige mb-18"
       >
         Trailing Returns
       </Heading>
-      <table className="w-full min-w-[640px]">
-        <thead>
-          <tr style={tableHeaderStyle} className="border-b-2 border-gray-200">
-            <th className="p-2 text-left">Strategy</th>
-            {periods.map((period) => (
-              <th key={period} className="p-2 text-left">
-                {period}
+      <Text className="text-body font-body text-black mb-4">
+        Trailing returns are annualised returns from the specified period till
+        today.
+      </Text>
+      <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-brown scrollbar-track-black">
+        <table className="w-full min-w-[640px]">
+          <thead>
+            <tr className="border text-body font-body p-3 border-brown">
+              <th className="p-1 font-body text-body border-r border-brown text-left text-black">
+                Strategy
               </th>
-            ))}
-            <th className="p-2 text-left border-l-2 border-gray-100">DD</th>
-            <th className="p-2 text-left border-l-2 border-gray-100">MDD</th>
-          </tr>
-        </thead>
-        <tbody>
-          {strategies.map((strat) => (
-            <tr
-              style={tableCellStyle}
-              key={strat}
-              className="border-b border-gray-100"
-            >
-              <td className="p-2 ">{strat}</td>
               {periods.map((period) => (
-                <td style={tableCellStyle} key={period} className="p-2">
-                  {returns[period] && returns[period][strat]
-                    ? `${returns[period][strat].toFixed(1)}%`
+                <th
+                  key={period}
+                  className="p-2 font-body text-left text-body text-black"
+                >
+                  {period}
+                </th>
+              ))}
+              <th className="p-1 text-center border-l border-brown font-body text-body text-black">
+                DD
+              </th>
+              <th className="p-1 text-center border-l border-brown font-body text-body text-black">
+                MDD
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {strategies.map((strat) => (
+              <tr
+                key={strat}
+                className="border border-brown text-black text-left"
+              >
+                <td className="p-1 border-r border-brown">{strat}</td>
+                {periods.map((period) => (
+                  <td key={period} className="p-1 text-black">
+                    {returns[period] && returns[period][strat]
+                      ? `${returns[period][strat].toFixed(1)}%`
+                      : "0%"}
+                  </td>
+                ))}
+                <td className="p-1 border-l text-center text-black border-brown">
+                  {drawdowns.latest[strat]
+                    ? `${drawdowns.latest[strat].toFixed(1)}%`
                     : "0%"}
                 </td>
-              ))}
-              <td
-                style={tableCellStyle}
-                className="p-2 border-l-2 border-gray-100"
-              >
-                {drawdowns.latest[strat]
-                  ? `${drawdowns.latest[strat].toFixed(1)}%`
-                  : "0%"}
-              </td>
-              <td
-                style={tableCellStyle}
-                className="p-2 border-l-2 border-gray-100"
-              >
-                {drawdowns.lowest[strat]
-                  ? `${drawdowns.lowest[strat].toFixed(1)}%`
-                  : "0%"}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+                <td className="p-1 border-l text-center text-black border-brown">
+                  {drawdowns.lowest[strat]
+                    ? `${drawdowns.lowest[strat].toFixed(1)}%`
+                    : "0%"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <Text className="text-beige text-body font-body mt-1">
+        *MDD(Maximum Drawdown) is how much money an investment loses from its
+        highest point to its lowest point before it starts going up again.
+      </Text>
     </div>
   );
 };

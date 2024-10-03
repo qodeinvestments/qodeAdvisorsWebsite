@@ -10,92 +10,109 @@ const Calculator = ({ data, strategy }) => {
   const [investmentPeriod, setInvestmentPeriod] = useState(1);
   const [futureInvestmentValue, setFutureInvestmentValue] = useState(0);
   const [maxInvestmentPeriod, setMaxInvestmentPeriod] = useState(Infinity);
-  // const [data, setData] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const strategyData = data;
-        if (!strategyData) {
-          console.error(`No data found for strategy: ${strategy}`);
-          return;
-        }
-
-        if (strategyData && strategyData.length > 0) {
-          const oldestDate = new Date(strategyData[0].date);
-          const newestDate = new Date(
-            strategyData[strategyData.length - 1].date
-          );
-          const maxYears = newestDate.getFullYear() - oldestDate.getFullYear();
-          setMaxInvestmentPeriod(maxYears);
-          const periodStartDate = new Date(
-            strategyData[strategyData.length - 1].date
-          );
-
-          periodStartDate.setFullYear(
-            periodStartDate.getFullYear() - investmentPeriod
-          );
-
-          const filteredData = strategyData.filter((entry) => {
-            const date = new Date(entry.date);
-            return (
-              !isNaN(date.getTime()) &&
-              date.getDate() === 1 &&
-              date >= periodStartDate
-            );
-          });
-
-          setStartOfMonthData(filteredData);
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, [investmentPeriod, strategy]);
 
   useEffect(() => {
-    if (data.length > 0) {
+    if (data && data.length > 0) {
+      const oldestDate = new Date(data[0].date);
+      const newestDate = new Date(data[data.length - 1].date);
+      const maxYears = newestDate.getFullYear() - oldestDate.getFullYear();
+      setMaxInvestmentPeriod(maxYears);
+
+      updateStartOfMonthData();
+    }
+  }, [data, investmentPeriod]);
+
+  useEffect(() => {
+    if (data && data.length > 0) {
       calculatePresentInvestmentValue();
     }
-  }, [investmentAmount, investmentFrequency, investmentPeriod, data, strategy]);
+  }, [
+    investmentAmount,
+    investmentFrequency,
+    investmentPeriod,
+    data,
+    startOfMonthData,
+  ]);
+
+  const updateStartOfMonthData = () => {
+    if (!data || data.length === 0) return;
+
+    const periodStartDate = new Date(data[data.length - 1].date);
+    periodStartDate.setFullYear(
+      periodStartDate.getFullYear() - investmentPeriod
+    );
+
+    const filteredData = data.filter((entry) => {
+      const date = new Date(entry.date);
+      return (
+        !isNaN(date.getTime()) &&
+        date.getDate() === 1 &&
+        date >= periodStartDate
+      );
+    });
+
+    setStartOfMonthData(filteredData);
+  };
+
+  const safeParseFloat = (value) => {
+    const parsed = parseFloat(value);
+    return isNaN(parsed) ? 0 : parsed;
+  };
 
   const calculatePresentInvestmentValue = () => {
-    if (investmentFrequency === "one-time") {
-      const currentDate = new Date(data[data.length - 1].date);
-      const investmentDate = new Date(currentDate);
-      investmentDate.setFullYear(currentDate.getFullYear() - investmentPeriod);
+    if (!data || data.length === 0) {
+      console.error("Insufficient data for calculation");
+      setFutureInvestmentValue(0);
+      return;
+    }
 
-      const investmentEntry = data.find((entry) => {
-        const entryDate = new Date(entry.date);
-        return entryDate >= investmentDate;
-      });
-
-      if (investmentEntry) {
-        const strategyValue = parseFloat(investmentEntry.total_portfolio_nav);
-        const shares = investmentAmount / strategyValue;
-        const currentPrice = parseFloat(
-          data[data.length - 1].total_portfolio_nav
+    try {
+      if (investmentFrequency === "one-time") {
+        const currentDate = new Date(data[data.length - 1].date);
+        const investmentDate = new Date(currentDate);
+        investmentDate.setFullYear(
+          currentDate.getFullYear() - investmentPeriod
         );
-        const futureValue = shares * currentPrice;
-        setFutureInvestmentValue(futureValue.toFixed(2));
+
+        const investmentEntry = data.find((entry) => {
+          const entryDate = new Date(entry.date);
+          return entryDate && entryDate >= investmentDate;
+        });
+
+        if (investmentEntry) {
+          const strategyValue = safeParseFloat(
+            investmentEntry.total_portfolio_nav
+          );
+          const shares = investmentAmount / strategyValue;
+          const currentPrice = safeParseFloat(
+            data[data.length - 1].total_portfolio_nav
+          );
+          const futureValue = shares * currentPrice;
+          setFutureInvestmentValue(futureValue);
+        } else {
+          setFutureInvestmentValue(0);
+        }
       } else {
-        setFutureInvestmentValue(0);
+        const months =
+          investmentFrequency === "monthly"
+            ? investmentPeriod * 12
+            : investmentPeriod;
+        let totalShares = 0;
+        for (let i = 0; i < months && i < startOfMonthData.length; i++) {
+          const strategyValue = safeParseFloat(
+            startOfMonthData[i].total_portfolio_nav
+          );
+          const shares = investmentAmount / strategyValue;
+          totalShares += shares;
+        }
+        const finalPrice =
+          totalShares *
+          safeParseFloat(data[data.length - 1].total_portfolio_nav);
+        setFutureInvestmentValue(finalPrice);
       }
-    } else {
-      const months =
-        investmentFrequency === "monthly"
-          ? investmentPeriod * 12
-          : investmentPeriod;
-      let totalShares = 0;
-      for (let i = 0; i < months && i < startOfMonthData.length; i++) {
-        const strategyValue = startOfMonthData[i]["total_portfolio_nav"];
-        const shares = investmentAmount / strategyValue;
-        totalShares += shares;
-      }
-      const finalPrice =
-        totalShares * data[data.length - 1]["total_portfolio_nav"];
-      setFutureInvestmentValue(finalPrice.toFixed(2));
+    } catch (error) {
+      console.error("Error in calculation:", error);
+      setFutureInvestmentValue(0);
     }
   };
 
@@ -118,19 +135,13 @@ const Calculator = ({ data, strategy }) => {
   };
 
   function numberWithCommas(x) {
-    const num = parseInt(x).toString();
-    let lastThree = num.substring(num.length - 3);
-    const otherNumbers = num.substring(0, num.length - 3);
-    if (otherNumbers !== "") lastThree = "," + lastThree;
-    return otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+    return x.toFixed().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   const formatInvestmentPeriod = () => {
     switch (investmentFrequency) {
       case "monthly":
         return `₹${investmentAmount} every month for ${investmentPeriod} years`;
-      case "yearly":
-        return `₹${investmentAmount} every year for ${investmentPeriod} years`;
       case "one-time":
         return `₹${investmentAmount} ${investmentPeriod} years ago`;
       default:
@@ -141,9 +152,7 @@ const Calculator = ({ data, strategy }) => {
   const calculateTotalInvestment = () => {
     let periods = 0;
     if (investmentFrequency === "monthly") {
-      periods = investmentPeriod * 12; // 12 months per year
-    } else if (investmentFrequency === "yearly") {
-      periods = investmentPeriod;
+      periods = investmentPeriod * 12;
     } else if (investmentFrequency === "one-time") {
       periods = 1;
     }
@@ -180,9 +189,9 @@ const Calculator = ({ data, strategy }) => {
             {["Monthly", "One-time"].map((freq) => (
               <Button
                 key={freq}
-                className={` text-center flex-grow ${
+                className={`text-center flex-grow ${
                   investmentFrequency === freq.toLowerCase()
-                    ? "bg-beige  text-black"
+                    ? "bg-beige text-black"
                     : "bg-white border border-brown text-black"
                 }`}
                 onClick={() =>
@@ -198,7 +207,7 @@ const Calculator = ({ data, strategy }) => {
           <Text className="text-body sm:text-body mb-1 sm:mb-0 w-full sm:w-3/5">
             Investment Period (Years)
           </Text>
-          <div className="flex flex-row w-full h-[53px] border border-brown  overflow-hidden">
+          <div className="flex flex-row w-full h-[53px] border border-brown overflow-hidden">
             <Button
               data-action="decrement"
               className="text-brown h-full w-1/4 cursor-pointer outline-none flex items-center justify-center"
@@ -208,7 +217,7 @@ const Calculator = ({ data, strategy }) => {
             </Button>
             <input
               type="number"
-              className="outline-none focus:outline-none text-center w-1/2 bg-white  hover:text-black focus:text-black text-body cursor-default flex items-center text-gray-700"
+              className="outline-none focus:outline-none text-center w-1/2 bg-white hover:text-black focus:text-black text-body cursor-default flex items-center text-gray-700"
               name="custom-input-number"
               value={investmentPeriod}
               readOnly
@@ -236,7 +245,7 @@ const Calculator = ({ data, strategy }) => {
           Invested: ₹{numberWithCommas(calculateTotalInvestment())}
         </Text>
       </div>
-      <Text className="text-sm text-center  sm:sm:mt-1 mt-3">
+      <Text className="text-sm text-center sm:sm:mt-1 mt-3">
         Figures are based on historical returns and backtest.{" "}
         <br className="sm:visible hidden" /> They do not guarantee future
         results.*

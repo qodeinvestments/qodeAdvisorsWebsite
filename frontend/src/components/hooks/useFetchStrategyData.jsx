@@ -23,8 +23,6 @@ const useFetchStrategyData = (strategy) => {
     fetchStrategyData();
   }, [strategy]);
 
-  console.log(data);
-
   return { data, isLoading, error };
 };
 export default useFetchStrategyData;

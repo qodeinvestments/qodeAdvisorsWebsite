@@ -1,4 +1,3 @@
-
 module.exports = (sequelize, DataTypes) => {
   const Strategy = sequelize.define(
     "strategy",
@@ -20,9 +19,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
       },
-      nifty: {
+      benchmark_values: { // This replaces the 'nifty' column
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
+      },
+      benchmark: { // This is the new 'benchmark' column
+        type: DataTypes.STRING,
+        allowNull: true, // Assuming it's nullable; adjust if needed
       },
       date: {
         type: DataTypes.DATE,
@@ -30,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       },
     },
     {
-      timestamps: false, // Add this line
+      timestamps: false, // Keeps the model without 'createdAt' and 'updatedAt'
     }
   );
 

@@ -135,49 +135,51 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
         Trailing returns are annualised returns from the specified period till
         today.
       </Text>
-      <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-brown scrollbar-track-black">
-        <table className="w-full min-w-[640px]">
+      <div className="relative overflow-x-auto scrollbar-thin scrollbar-thumb-brown scrollbar-track-black">
+        <table className="w-full min-w-[640px] border-collapse">
           <thead>
-            <tr className="border text-body font-body p-3 border-brown">
-              <th className="p-1 font-body text-body border-r border-brown text-left text-black">
+            <tr className="text-body font-body p-3">
+              <th className="sticky -left-18 z-10 p-1 font-body text-body text-left text-black bg-white border border-brown">
                 Strategy
               </th>
               {periods.map((period) => (
                 <th
                   key={period}
-                  className="p-2 font-body text-left text-body text-black"
+                  className="p-2 font-body text-left text-body text-black border border-brown"
                 >
                   {period}
                 </th>
               ))}
-              <th className="p-1 text-center border-l border-brown font-body text-body text-black">
+              <th className="p-1 text-center font-body text-body text-black border border-brown">
                 DD
               </th>
-              <th className="p-1 text-center border-l border-brown font-body text-body text-black">
+              <th className="p-1 text-center font-body text-body text-black border border-brown">
                 MDD
               </th>
             </tr>
           </thead>
           <tbody>
             {strategies.map((strat) => (
-              <tr
-                key={strat}
-                className="border border-brown text-black text-left"
-              >
-                <td className="p-1 border-r border-brown">{strat}</td>
+              <tr key={strat} className="text-black text-left">
+                <td className="sticky -left-18 z-10 p-1 bg-white border border-brown">
+                  {strat}
+                </td>
                 {periods.map((period) => (
-                  <td key={period} className="p-1 text-black">
+                  <td
+                    key={period}
+                    className="p-1 text-black border border-brown"
+                  >
                     {returns[period] && returns[period][strat]
                       ? `${returns[period][strat].toFixed(1)}%`
                       : "0%"}
                   </td>
                 ))}
-                <td className="p-1 border-l text-center text-black border-brown">
+                <td className="p-1 text-center text-black border border-brown">
                   {drawdowns.latest[strat]
                     ? `${drawdowns.latest[strat].toFixed(1)}%`
                     : "0%"}
                 </td>
-                <td className="p-1 border-l text-center text-black border-brown">
+                <td className="p-1 text-center text-black border border-brown">
                   {drawdowns.lowest[strat]
                     ? `${drawdowns.lowest[strat].toFixed(1)}%`
                     : "0%"}

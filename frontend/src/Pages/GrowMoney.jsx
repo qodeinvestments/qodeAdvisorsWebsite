@@ -7,7 +7,7 @@ const GrowMoney = () => {
   const VITE_INPERSON_URL = import.meta.env.VITE_INPERSON_URL;
 
   return (
-    <div className="bg-black bg-opacity-10 backdrop-blur-md flex flex-col sm:p-7 p-2 items-center justify-center z-50 font-body">
+    <div className="bg-black bg-opacity-10 backdrop-blur-md flex flex-col sm:p-7 p-3 items-center justify-center z-50 font-body">
       <div className="text-center w-full">
         {/* Heading Section */}
         <Text className="sm:text-subheading text-mobileSubHeading text-beige font-heading mb-2 px-2">

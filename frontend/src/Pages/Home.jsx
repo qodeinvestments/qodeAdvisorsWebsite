@@ -143,7 +143,7 @@ const Home = () => {
       </Section>
 
       <Section
-        padding="normal"
+        padding="extralarge"
         className="max-w-[93%] mt-5 sm:max-w-[1386px] bg-lightBeige mx-auto"
         fullWidth={false}
       >

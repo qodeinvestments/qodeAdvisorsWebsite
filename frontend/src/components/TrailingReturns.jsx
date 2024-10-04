@@ -135,78 +135,69 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
         Trailing returns are annualised returns from the specified period till
         today.
       </Text>
-      <div className="relative overflow-x-auto scrollbar-thin scrollbar-thumb-brown scrollbar-track-black">
-        <table className="w-full min-w-[640px] border-collapse">
-          <thead>
-            <tr className="text-body font-body p-3">
-              <th className="sticky -left-18 z-10 p-1 font-body text-body text-left text-black bg-white border border-brown">
-                Strategy
-              </th>
-              {periods.map((period) => (
-                <th
-                  key={period}
-                  className="p-2 font-body text-left text-body text-black border border-brown"
-                >
-                  {period}
+      <div className="relative overflow-x-auto scrollbar-thin scrollbar-thumb-brown scrollbar-track-black border-l md:border-none border-brown">
+        <div className="w-full min-w-[640px]">
+          <table className="w-full border-collapse table-fixed">
+            <thead>
+              <tr className="text-body font-body">
+                <th className="sticky left-0 z-10 p-1 font-body text-start text-body  text-black sm:bg-white bg-lightBeige border border-brown border-l-0 sm:border-l w-32">
+                  Strategy
                 </th>
-              ))}
-              <th className="p-1 text-center font-body text-body text-black border border-brown">
-                DD
-              </th>
-              <th className="p-1 text-center font-body text-body text-black border border-brown">
-                MDD
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {strategies.map((strat) => (
-              <tr key={strat} className="text-black text-left">
-                <td className="sticky -left-18 z-10 p-1 bg-white border border-brown">
-                  {strat}
-                </td>
                 {periods.map((period) => (
-                  <td
+                  <th
                     key={period}
-                    className="p-1 text-black border border-brown"
+                    className="p-2 font-body text-center text-body text-black border border-brown w-24"
                   >
-                    {returns[period] && returns[period][strat]
-                      ? `${returns[period][strat].toFixed(1)}%`
+                    {period}
+                  </th>
+                ))}
+                <th className="p-1 text-center font-body text-body text-black border border-brown w-20">
+                  DD
+                </th>
+                <th className="p-1 text-center font-body text-body text-black border border-brown w-20">
+                  MDD
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {strategies.map((strat) => (
+                <tr key={strat} className="text-black text-center">
+                  <td className="sticky left-0 z-10 p-1 sm:bg-white bg-lightBeige border border-brown border-l-0 sm:border-l text-start w-32">
+                    {strat}
+                  </td>
+                  {periods.map((period) => (
+                    <td
+                      key={period}
+                      className="p-1 text-black border border-brown w-24"
+                    >
+                      {returns[period] && returns[period][strat]
+                        ? `${returns[period][strat].toFixed(1)}%`
+                        : "0%"}
+                    </td>
+                  ))}
+                  <td className="p-1 text-center text-black border border-brown w-20">
+                    {drawdowns.latest[strat]
+                      ? `${drawdowns.latest[strat].toFixed(1)}%`
                       : "0%"}
                   </td>
-                ))}
-                <td className="p-1 text-center text-black border border-brown">
-                  {drawdowns.latest[strat]
-                    ? `${drawdowns.latest[strat].toFixed(1)}%`
-                    : "0%"}
-                </td>
-                <td className="p-1 text-center text-black border border-brown">
-                  {drawdowns.lowest[strat]
-                    ? `${drawdowns.lowest[strat].toFixed(1)}%`
-                    : "0%"}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                  <td className="p-1 text-center text-black border border-brown w-20">
+                    {drawdowns.lowest[strat]
+                      ? `${drawdowns.lowest[strat].toFixed(1)}%`
+                      : "0%"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
+
       <Text className="text-beige text-body font-body mt-1">
         *MDD(Maximum Drawdown) is how much money an investment loses from its
         highest point to its lowest point before it starts going up again.
       </Text>
     </div>
   );
-};
-
-const tableHeaderStyle = {
-  backgroundColor: "#F9FAFB",
-  padding: "8px",
-  textAlign: "left",
-  fontSize: "14px",
-};
-
-const tableCellStyle = {
-  padding: "8px",
-  fontSize: "14px",
 };
 
 export default TrailingReturns;

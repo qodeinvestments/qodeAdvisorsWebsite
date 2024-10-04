@@ -127,7 +127,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
     <div className="overflow-x-auto sm:p-4 p-1">
       <Heading
         isItalic
-        className="sm:text-subheading text-mobileSubHeading font-subheading text-beige mb-18"
+        className="sm:text-subheading text-mobileSubHeading font-subheading text-brown mb-18"
       >
         Trailing Returns
       </Heading>

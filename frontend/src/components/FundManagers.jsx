@@ -30,9 +30,9 @@ const FundManagers = ({ text }) => {
   };
 
   return (
-    <div className="flex flex-col-reverse md:flex-row-reverse items-center md:items-center   md:gap-4 justify-between w-full">
+    <div className="flex flex-col-reverse md:flex-row-reverse items-center md:items-center  text-center md:gap-4 justify-between w-full">
       {/* Right Section: Image or Fund Managers */}
-      <div className="md:w-1/2 w-full flex flex-col justify-center md:justify-end">
+      {/* <div className="md:w-1/2 w-full flex flex-col justify-center md:justify-end">
         <div className="flex-shrink-0">
           <img
             src={founders}
@@ -48,17 +48,17 @@ const FundManagers = ({ text }) => {
             Schedule A Meeting
           </Button>
         </div>
-      </div>
+      </div> */}
 
       {/* Left Section */}
-      <div className="md:w-1/2 w-full text-start sm:px-4 ">
-        <Heading className="text-mobileSemiHeading md:text-semiheading italic text-brown mb-2 text-center md:text-start">
+      <div className=" w-full  sm:px-9 ">
+        <Heading className="text-mobileSemiHeading md:text-semiheading italic text-brown mb-2 text-center ">
           {text
             ? text
             : "Want to speak to the our fund manager before investing?"}
         </Heading>
 
-        <div className="sm:flex hidden justify-center md:justify-start">
+        <div className="sm:flex  justify-center md:justify-center">
           <Button
             className="bg-beige shadow-md hover:bg-lightBrown transition duration-300"
             onClick={openModal}

@@ -66,7 +66,7 @@ const StrategyComponent = ({ strategyData }) => {
           {principle && <Text className="text-center">{principle}</Text>}
         </Section>
 
-        <Section padding="none">
+        <Section>
           <TrailingReturns
             data={data}
             isLoading={isLoading}
@@ -74,7 +74,8 @@ const StrategyComponent = ({ strategyData }) => {
             strategy={strategyCode}
           />
         </Section>
-        <Section padding="large" className="mb-4 ">
+
+        <Section padding="normal" className="mb-2">
           <PerformanceChart
             data={data}
             strategy={strategyCode}
@@ -84,7 +85,7 @@ const StrategyComponent = ({ strategyData }) => {
           />
         </Section>
 
-        <Section className="mb-4">
+        <Section>
           <div className="w-full flex sm:flex-row flex-col gap-4">
             {" "}
             {/* Adjusted margin */}
@@ -121,7 +122,7 @@ const StrategyComponent = ({ strategyData }) => {
           </div>
         </Section>
 
-        <Section padding="large">
+        <Section padding="normal">
           <FundManagers
             text={
               "Need help deciding which strategy would be best for reaching your financial goal?"

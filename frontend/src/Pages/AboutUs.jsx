@@ -92,22 +92,22 @@ const AboutUs = () => {
     //   image:
     //     "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
     // },
-    {
-      name: "Shrikant Rakte",
-      designation: "Manager",
-      // linkedin: "https://www.linkedin.com/in/vidhi-chheda-770600101/",
-      // email: "harshal.pokle@qodeinvest.com",
-      image:
-        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
-    },
-    {
-      name: "Uttam More",
-      designation: "Office Boy, Runner",
-      // linkedin: "https://www.linkedin.com/in/vidhi-chheda-770600101/",
-      // email: "harshal.pokle@qodeinvest.com",
-      image:
-        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
-    },
+    // {
+    //   name: "Shrikant Rakte",
+    //   designation: "Manager",
+    //   // linkedin: "https://www.linkedin.com/in/vidhi-chheda-770600101/",
+    //   // email: "harshal.pokle@qodeinvest.com",
+    //   image:
+    //     "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+    // },
+    // {
+    //   name: "Uttam More",
+    //   designation: "Office Boy, Runner",
+    //   // linkedin: "https://www.linkedin.com/in/vidhi-chheda-770600101/",
+    //   // email: "harshal.pokle@qodeinvest.com",
+    //   image:
+    //     "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+    // },
     {
       name: "Kruti Dave",
       designation: "Accounts",
@@ -116,6 +116,14 @@ const AboutUs = () => {
       image:
         "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
     },
+    // {
+    //   name: "Vaibhav",
+    //   designation: "Operations",
+    //   linkedin: "https://www.linkedin.com/in/kruti-dave-201419185/",
+    //   email: "harshal.pokle@qodeinvest.com",
+    //   image:
+    //     "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+    // },
 
     // {
     //   name: "Neha Bader",

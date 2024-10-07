@@ -44,8 +44,8 @@ const Footer = () => {
               </Text>
               <Text>
                 Mobile:{" "}
-                <a href="tel:+919876543210" className="hover:text-black">
-                  +91 99201 11053
+                <a href="tel:+919820300088" className="hover:text-black">
+                  +91 98203 00088
                 </a>
               </Text>
             </div>

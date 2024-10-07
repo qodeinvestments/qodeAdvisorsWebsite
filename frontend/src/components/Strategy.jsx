@@ -16,6 +16,7 @@ import BookAMeet from "../Pages/BookAMeet";
 import { Helmet } from "react-helmet";
 import Calculator from "./Calculator";
 import image from "../assets/livePerformance.jpg";
+import mobileImage from "../assets/livePerformanceMobile.jpg";
 import TrailingReturns from "./TrailingReturns";
 import useFetchStrategyData from "./hooks/useFetchStrategyData";
 const StrategyComponent = ({ strategyData }) => {
@@ -62,7 +63,8 @@ const StrategyComponent = ({ strategyData }) => {
           </Text>
           <Text className="text-center dm-sans-font text-body">
             {description}
-          </Text>
+          </Text>{" "}
+          <br />
           {principle && <Text className="text-center">{principle}</Text>}
         </Section>
 
@@ -95,8 +97,12 @@ const StrategyComponent = ({ strategyData }) => {
               <Calculator data={data} strategy={strategyCode} />
             </div>
             <div
-              className="relative  bg-cover flex justify-start items-start flex-col sm:p-6 p-2 sm:w-1/2"
-              style={{ backgroundImage: `url(${image})` }}
+              className="relative bg-cover flex justify-start items-start flex-col sm:p-6 p-2 sm:w-1/2"
+              style={{
+                backgroundImage: `url(${image})`,
+                minHeight: "490px",
+                backgroundPosition: "70% 10%",
+              }}
             >
               {/* Black overlay */}
               <div className="absolute inset-0 bg-black opacity-20"></div>

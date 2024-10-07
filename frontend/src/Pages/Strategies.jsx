@@ -20,66 +20,34 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   // if (error) return <div>Error: {error}</div>;
 
   const renderCustomLink = () => {
-    if (name === "Qode Future Horizon") {
-      return (
-        <CustomLink
-          to={`/blogs/${slug}`}
-          className="p-3 relative  transition-all group justify-between items-center flex-col sm:flex-row border border-brown flex duration-500 bg-white text-white hover:bg-beige hover:text-black hover:shadow-xl group"
-        >
-          <div className="text-black">
-            <Heading className="sm:text-subheading text-brown group-hover:text-black mb-18 text-mobileSubHeading font-subheading">
-              {name}
-            </Heading>
-            <Text
-              className="text-body"
-              dangerouslySetInnerHTML={{ __html: description }}
-            ></Text>
-          </div>
-          <div className="text-black self-end sm:self-center ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 100 100"
-              width="44"
-              height="44"
-              fill="currentColor"
-              className="ml-2"
-            >
-              <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
-            </svg>
-          </div>
-        </CustomLink>
-      );
-    } else {
-      // Default CustomLink for other names
-      return (
-        <CustomLink
-          to={slug}
-          className="p-3 relative  transition-all group justify-between items-start flex-col sm:flex-row border border-brown flex duration-500 bg-white text-white hover:bg-beige hover:text-black hover:shadow-xl group"
-        >
-          <div className="text-black">
-            <Heading className="sm:text-subheading text-brown group-hover:text-black mb-18 text-mobileSubHeading font-subheading">
-              {name}
-            </Heading>
-            <Text
-              className="text-body"
-              dangerouslySetInnerHTML={{ __html: description }}
-            ></Text>
-          </div>
-          <div className="text-black self-end sm:self-center ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 100 100"
-              width="44"
-              height="44"
-              fill="currentColor"
-              className="ml-2"
-            >
-              <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
-            </svg>
-          </div>
-        </CustomLink>
-      );
-    }
+    return (
+      <CustomLink
+        to={name === "Qode Future Horizon" ? `/blogs/${slug}` : slug}
+        className="p-3 relative h-[170px] sm:h-auto transition-all group justify-between items-start flex-col sm:flex-row border border-brown flex duration-500 bg-white  hover:bg-beige hover:text-black hover:shadow-xl group"
+      >
+        <div className="text-black">
+          <Heading className="sm:text-subheading text-brown group-hover:text-black mb-18 text-mobileSubHeading font-subheading">
+            {name}
+          </Heading>
+          <Text
+            className="text-body"
+            dangerouslySetInnerHTML={{ __html: description }}
+          ></Text>
+        </div>
+        <div className="absolute sm:static bottom-1 right-18 sm:flex sm:items-center sm:justify-center sm:ml-4 sm:self-center">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 100 100"
+            width="44"
+            height="44"
+            fill="currentColor"
+            className="ml-2"
+          >
+            <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
+          </svg>
+        </div>
+      </CustomLink>
+    );
   };
 
   return renderCustomLink();
@@ -135,28 +103,28 @@ const Strategies = () => {
       name: "Qode Growth Fund",
       slug: "quant-growth-fund",
       description:
-        "<Text class='mb-1'>Invest in quality business. Get quality results.</Text>",
+        "<Text class='mb-1'>Invest in quality business.<br class='md:hidden' /> Get quality results.</Text>",
     },
     {
       id: "momentum",
       name: "Qode Velocity Fund",
       slug: "qode-velocity-fund",
       description:
-        "<Text class='mb-1'>Ride the wave. Buy high sell higher</Text> ",
+        "<Text class='mb-1'>Ride the wave.<br class='md:hidden' /> Buy high sell higher</Text> ",
     },
     {
       id: "lowvol",
       name: "Qode All Weather",
       slug: "qode-all-weather",
       description:
-        "<Text class='mb-1'>Lower Risk does not mean lower returns.</Text>",
+        "<Text class='mb-1'>Lower Risk does not  <br class='md:hidden' /> mean lower returns.</Text>",
     },
     {
       id: "futureHorizon",
       name: "Qode Future Horizon",
       slug: "qode-future-horizon",
       description:
-        "<Text class='mb-1'>Fusing data and insight to add an edge.</Text>",
+        "<Text class='mb-1'>Fusing data & insight<br class='md:hidden' />  to add an edge.</Text>",
     },
   ];
 

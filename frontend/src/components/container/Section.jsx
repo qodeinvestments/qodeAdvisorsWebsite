@@ -33,7 +33,7 @@ const Section = ({
   const hasMarginBottom = /mb-\d+/.test(className);
 
   // Default margin bottom class if not explicitly defined
-  const defaultMarginBottom = hasMarginBottom ? "" : "sm:mb-5 mb-5 ";
+  const defaultMarginBottom = hasMarginBottom ? "" : "sm:mb-5 mb-2 ";
 
   return (
     <BaseComponent className={`${className}`}>

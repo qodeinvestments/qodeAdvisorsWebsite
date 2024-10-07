@@ -53,7 +53,7 @@ const Header = () => {
         }`}
     >
       <div className="mx-auto">
-        <div className="shadow-lg py-1 sm:py-18 sm:px-4 px-18">
+        <div className="shadow-lg py-18 sm:py-18 sm:px-4 px-18">
           <div className="flex items-center justify-between z-50 w-full">
             {/* Left Navigation (hidden on md and below) */}
             <nav className="hidden lg:flex items-center space-x-6 flex-1">
@@ -111,7 +111,7 @@ const Header = () => {
             </nav>
 
             {/* Hamburger menu button (visible on lg and below) */}
-            <div className="lg:hidden relative z-50">
+            <div className="lg:hidden relative bottom-1/2 z-50">
               <button
                 onClick={toggleMobileMenu}
                 className={`focus:outline-none ${

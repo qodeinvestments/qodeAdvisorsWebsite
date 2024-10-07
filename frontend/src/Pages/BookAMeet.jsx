@@ -8,7 +8,7 @@ const BookAMeet = () => {
   const VITE_INPERSON_URL = import.meta.env.VITE_INPERSON_URL;
 
   return (
-    <div className="relative bg-black bg-opacity-60 backdrop-blur-md flex sm:p-7 p-2 items-center justify-center z-50 font-body  shadow-lg">
+    <div className="relative bg-black bg-opacity-60 backdrop-blur-md flex sm:p-7 p-2 py-4 items-center justify-center z-50 font-body  shadow-lg">
       <div className="relative z-10 text-center">
         <Heading
           isItalic

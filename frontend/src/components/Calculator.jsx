@@ -238,7 +238,7 @@ const Calculator = ({ data, strategy }) => {
         </div>
       </div>
       <div className="text-center mt-4 px-1 sm:px-2">
-        <Text className="md:sm:text-subheading text-brown text-mobileSubHeadingmt-2 font-subheading">
+        <Text className="text-subheading text-brown text-mobileSubHeadingmt-2 font-subheading">
           ₹{numberWithCommas(futureInvestmentValue)}
         </Text>
         <Text className="text-body text-black">

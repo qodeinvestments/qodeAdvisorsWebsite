@@ -223,7 +223,7 @@ const PerformanceChart = ({ data, strategy, blogUrl, error, isLoading }) => {
           </TabsBody>
         </Tabs>
       </div>
-      <Text className="sm:text-subheading text-mobileSubHeading font-subheading text-center my-2 ">
+      <Text className="sm:text-subheading text-mobileSubHeading font-subheading text-center my-2 mt-6 sm:mt-2 ">
         How this Strategy works & <br className="sm:visible hidden" /> how was
         it made to get the expected returns with highest certainty.
       </Text>

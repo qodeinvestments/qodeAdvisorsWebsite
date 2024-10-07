@@ -34,14 +34,14 @@ const AboutUs = () => {
       name: "Kavan Sejpal",
       designation: "Fund Manager",
       linkedin: "https://www.linkedin.com/in/kavan-sejpal-760a2b23/",
-      email: "kavan@swancapital.in",
+      email: "kavan@qodeinvest.com",
       image: kavan,
     },
     {
       name: "Gaurav Didwania",
       designation: "Fund Manager",
       linkedin: "https://www.linkedin.com/in/gaurav-didwania-234bbb37/",
-      email: "gaurav.didwania@swancapital.in",
+      email: "gaurav.didwania@qodeinvest.com",
       image:
         "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
     },
@@ -129,14 +129,14 @@ const AboutUs = () => {
     //   name: "Neha Bader",
     //   designation: "Quantitative Analyst",
     //   linkedin: "https://www.linkedin.com/in/neha-bader-a8395578/",
-    //   email: "neha@swancapital.in",
+    //   email: "neha@qodeinvest.com",
     //   image: neha,
     // },
     // {
     //   name: "Sakshi",
     //   designation: "Quantitative Research Analyst",
     //   linkedin: "https://www.linkedin.com/in/sakshi-chheda/",
-    //   email: "sakshi.chheda@swancapital.in",
+    //   email: "sakshi.chheda@qodeinvest.com",
     //   image: sakshi,
     // },
   ];
@@ -163,18 +163,24 @@ const AboutUs = () => {
           Our Story
         </Heading>
         <Text className="text-center text-body font-body mb-7">
-          Our founders (Karan, Kavan & Rishabh) started with investing their own
-          money in the stock market using Quant models. <br /> When they started
-          consistently outperforming the market average, they started investing
-          their family business reserve capital & grew it significantly. <br />
-          <br /> Over the years they realised - Hey, we’re good at this why not
-          help others grow their wealth as well. <br />
-          <br /> So, they launched their quant strategy - Quant Growth Fund with
-          another Fund manager. It’s been 5 years, and our CAGR is{" "}
-          <strong>35.1%</strong>. <br /> And compared to all the PMS's 5Y CAGR
-          we stand 4th. <br /> <br /> Seeing this they decided to start their
-          own PMS and launch more schemes for different investors with different
-          financial goals and risk appetite.
+          Our journey started when we (Karan, Kavan, and Rishabh) invested our
+          money in the stock market using quant models. We had a passion for
+          finance, and soon enough, we began consistently outperforming the
+          market averages. This success gave us the confidence to invest the
+          reserve capital from our family business. We grew the capital
+          significantly. <br />
+          <br /> As time passed, it became clear to us: we’re really good at
+          this. Why not use our expertise to help others grow their wealth too?
+          With this in mind, we launched our first quant strategy, "The Quant
+          Growth Fund", with another fund manager. It’s been five years since
+          then, and we’re proud to have achieved a CAGR of 35.1%. Compared to
+          the 5-year CAGR of all the PMS providers, we currently stand 4th.{" "}
+          <br />
+          <br /> This success sparked the next phase of our journey. We launched
+          our own PMS and created new schemes tailored for different types of
+          investors, each with their unique financial goals and varying risk
+          appetites. And that's exactly what we're doing now—expanding to help
+          others achieve financial growth through smart, data-driven strategies.
         </Text>
         <Heading
           isItalic

@@ -18,7 +18,7 @@ const Footer = () => {
   return (
     <footer className="bg-lightBeige">
       <div className="py-5 px-2 sm:px-0 sm:max-w-[1386px] mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-start space-y-2 sm:space-y-0">
+        <div className="flex flex-col md:flex-row justify-between  items-start space-y-2 sm:space-y-0">
           <div className="text-center mx-auto sm:mx-0 mb-4 sm:mb-0 sm:text-left col-span-1 sm:col-span-2 md:col-span-1">
             <Heading className="sm:text-subheading text-mobileSubHeadingtext text-brown mb-2">
               Qode Advisors LLP

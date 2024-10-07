@@ -210,7 +210,7 @@ const TeamMemberCard = ({ member }) => {
             <Text className="text-2xl font-subheading text-brown">
               {member.name}
             </Text>
-            <span className="text-xs text-text-secondary">
+            <span className="text-body text-text-secondary">
               {member.designation}
             </span>
           </div>

@@ -22,7 +22,7 @@ const BookAMeet = () => {
             <Text className="mb-2">In Mumbai?</Text>
 
             <Button
-              href={VITE_GOOGLE_MEET_URL}
+              href={VITE_INPERSON_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-beige text-black"
@@ -34,7 +34,7 @@ const BookAMeet = () => {
             <Text className="mb-2">Outside Mumbai?</Text>
 
             <Button
-              href={VITE_INPERSON_URL}
+              href={VITE_GOOGLE_MEET_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-beige text-black"

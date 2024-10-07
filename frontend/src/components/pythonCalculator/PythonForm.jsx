@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Button, DatePicker, Input, Radio, Select, message } from "antd";
+import { DatePicker, Input, Radio, Select, message } from "antd";
 import { InfoCircleOutlined } from "@ant-design/icons";
 import axios from "axios";
 import moment from "moment/moment";
+import Button from "../common/Button";
 
 const { RangePicker } = DatePicker;
 
@@ -127,7 +128,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4  max-w-7xl mx-auto">
+    <form onSubmit={handleSubmit} className="space-y-4 max-w-7xl mx-auto">
       <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Choose strategies
@@ -138,7 +139,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           options={combinedStrategies}
           value={formData.selected_systems.map((s) => s.system)}
           onChange={handleSystemChange}
-          className="w-full border-brown border rounded-none "
+          className="w-full border-brown border rounded-none"
           placeholder="Choose strategies"
           optionRender={(option) => (
             <span
@@ -153,9 +154,9 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         />
       </div>
       {formData.selected_systems.map((system, index) => (
-        <div key={index} className="space-y-18 p-2  ">
+        <div key={index} className="space-y-18 sm:p-2">
           <h3 className="font-body text-black">{system.system}</h3>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Input
               type="text"
               placeholder="Weightage"
@@ -163,7 +164,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
               onChange={(e) =>
                 handleSystemInputChange(index, "weightage", e.target.value)
               }
-              className="w-1/2"
+              className="w-full sm:w-1/2"
               suffix="%"
             />
             <Input
@@ -173,7 +174,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
               onChange={(e) =>
                 handleSystemInputChange(index, "leverage", e.target.value)
               }
-              className="w-1/2"
+              className="w-full sm:w-1/2"
             />
           </div>
         </div>
@@ -203,9 +204,9 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         />
       </div>
       {formData.selected_debtfunds.map((debtfund, index) => (
-        <div key={index} className="space-y-2 p-4 bg-lightBeige ">
+        <div key={index} className="space-y-2 sm:p-2 ">
           <h3 className="font-body text-black">{debtfund.debtfund}</h3>
-          <div className="flex gap-4">
+          <div className="flex flex-col sm:flex-row gap-4">
             <Input
               type="text"
               placeholder="Weightage"
@@ -213,7 +214,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
               onChange={(e) =>
                 handleDebtFundInputChange(index, "weightage", e.target.value)
               }
-              className="w-1/2"
+              className="w-full sm:w-1/2"
               suffix="%"
             />
             <Input
@@ -223,7 +224,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
               onChange={(e) =>
                 handleDebtFundInputChange(index, "leverage", e.target.value)
               }
-              className="w-1/2"
+              className="w-full sm:w-1/2"
             />
           </div>
         </div>
@@ -278,64 +279,29 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         <Radio.Group
           onChange={(e) => handleInputChange("frequency", e.target.value)}
           value={formData.frequency}
-          className="flex flex-wrap gap-4"
+          className="flex flex-wrap gap-1"
         >
-          <Radio.Button
-            className={` hover:border-brown hover:text-black border-l-2 rounded-none ${
-              formData.frequency === "no"
-                ? "bg-brown text-white"
-                : "bg-lightbeige text-black"
-            }`}
-            value="no"
-          >
-            No Rebalance
-          </Radio.Button>
-          <Radio.Button
-            className={` rounded-none ${
-              formData.frequency === "daily"
-                ? "bg-brown text-white"
-                : "bg-lightbeige text-black"
-            }`}
-            value="daily"
-          >
-            Daily
-          </Radio.Button>
-          <Radio.Button
-            className={` rounded-none ${
-              formData.frequency === "weekly"
-                ? "bg-brown text-white"
-                : "bg-lightbeige text-black"
-            }`}
-            value="weekly"
-          >
-            Weekly
-          </Radio.Button>
-          <Radio.Button
-            className={` rounded-none ${
-              formData.frequency === "monthly"
-                ? "bg-brown text-white"
-                : "bg-lightbeige text-black"
-            }`}
-            value="monthly"
-          >
-            Monthly
-          </Radio.Button>
-          <Radio.Button
-            className={` rounded-none ${
-              formData.frequency === "yearly"
-                ? "bg-brown text-white"
-                : "bg-lightbeige text-black"
-            }`}
-            value="yearly"
-          >
-            Yearly
-          </Radio.Button>
+          {["no", "daily", "weekly", "monthly", "yearly"].map((freq) => (
+            <Radio.Button
+              key={freq}
+              className={`flex-grow sm:flex-grow-0 text-center hover:border-brown hover:text-black border-l-2 rounded-none ${
+                formData.frequency === freq
+                  ? "bg-brown text-white"
+                  : "bg-lightbeige text-black"
+              }`}
+              value={freq}
+            >
+              {freq === "no"
+                ? "No Rebalance"
+                : freq.charAt(0).toUpperCase() + freq.slice(1)}
+            </Radio.Button>
+          ))}
         </Radio.Group>
       </div>
       <div className="text-center">
         <Button
-          htmlType="submit"
-          className=" border-none bg-brown text-lightBeige  px-3 py-1 text-body rounded-none h-2"
+          type="submit"
+          className="border-none bg-beige hover:bg-beige text-black px-3 py-1 text-body rounded-none "
           loading={loading}
         >
           Calculate Portfolio

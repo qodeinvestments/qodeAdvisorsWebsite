@@ -33,8 +33,8 @@ function MonthlyPLTable({ data }) {
   };
 
   return (
-    <div className="my-1 p-1 bg-white shadow-md ">
-      <h3 className="font-bold text-center mb-4">Monthly PL Table (%)</h3>
+    <>
+      <h3 className="font-bold text-center mb-2 mt-4">Monthly PL Table (%)</h3>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
@@ -62,7 +62,7 @@ function MonthlyPLTable({ data }) {
           </tbody>
         </table>
       </div>
-    </div>
+    </>
   );
 }
 

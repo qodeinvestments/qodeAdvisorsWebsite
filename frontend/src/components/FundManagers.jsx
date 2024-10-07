@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import Modal from "./Modal"; // You'll need to create this Modal component
 import BookAMeet from "../Pages/BookAMeet"; // Import the BookAMeet component
-import karan from "../assets/team/Karan HS.png";
-import kavan from "../assets/team/Kavan HS.png";
-import rishabh from "../assets/team/Rishabh Nahar HS 1.2.png";
+
 import GrayContainer from "./container/GrayContainer";
 import Button from "./common/Button";
 import Heading from "./common/Heading";

@@ -12,6 +12,7 @@ import Section from "../components/container/Section";
 import Heading from "../components/common/Heading";
 import "../components/components.css";
 import Text from "../components/common/Text";
+import useMobileWidth from "../components/hooks/useMobileWidth.jsx";
 const API_URL =
   import.meta.env.MODE === "production"
     ? import.meta.env.VITE_PROD_API_URL
@@ -25,6 +26,8 @@ function PythonCalculator() {
   const handleFileUpload = (uploadedColumns) => {
     setColumns(uploadedColumns);
   };
+
+  const { isMobile } = useMobileWidth();
 
   const [chartOptions, setChartOptions] = useState({
     title: {
@@ -62,18 +65,25 @@ function PythonCalculator() {
       {
         name: "NAV",
         data: [],
-        color: "#9ddd55",
+        color: "#d1a47b", // Updated color
         lineWidth: 1,
         marker: {
           enabled: false,
+          states: {
+            hover: {
+              enabled: true,
+              radius: 5,
+            },
+          },
         },
         type: "line",
         yAxis: 0,
+        animation: { duration: 2000 }, // Explicit animation duration
       },
       {
         name: "Drawdown",
         data: [],
-        color: "rgba(250, 65, 65, 1)",
+        color: "rgba(250, 65, 65, 1)", // Updated color
         lineWidth: 2,
         marker: {
           enabled: false,
@@ -86,33 +96,45 @@ function PythonCalculator() {
             y2: 1,
           },
           stops: [
-            [0, "rgba(250, 65, 65, 0.2)"],
-            [1, "rgba(250, 65, 65, 0.9)"],
+            [0, "rgba(0, 0, 0, 0.2)"], // Updated gradient color
+            [1, "rgba(0, 0, 0, 0.9)"], // Updated gradient color
           ],
         },
-        type: "area",
+        type: "line",
         yAxis: 1,
         threshold: 0,
+        animation: { duration: 2000 }, // Explicit animation duration
       },
     ],
     chart: {
-      height: 800,
+      height: isMobile ? 300 : 520, // Adjusted based on mobile
       backgroundColor: "none",
       zoomType: "x",
+      marginLeft: isMobile ? 0 : 40,
+      marginRight: isMobile ? 0 : 40,
     },
     tooltip: {
       shared: true,
     },
     legend: {
-      enabled: false,
+      enabled: true,
     },
     credits: {
       enabled: false,
     },
     exporting: {
-      enabled: true,
+      enabled: !isMobile,
     },
     plotOptions: {
+      series: {
+        animation: { duration: 2000 }, // Explicit animation duration for entire series
+        states: {
+          hover: {
+            enabled: true,
+            lineWidthPlus: 1,
+          },
+        },
+      },
       area: {
         marker: {
           radius: 2,
@@ -183,6 +205,7 @@ function PythonCalculator() {
             parseInt(month) - 1,
             parseInt(day)
           );
+
           return [date, point.NAV];
         });
 
@@ -240,24 +263,24 @@ function PythonCalculator() {
     ];
 
     return (
-      <div className=" my-6 p-6 bg-white  shadow-lg">
-        <h3 className=" font-semibold mb-4 text-gray-800 text-center">
+      <>
+        <h3 className="font-semibold mb-4 text-gray-800 text-center">
           Performance Metrics
         </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
           {metrics.map((metric, index) => (
             <div
               key={index}
-              className="bg-gray-50 p-4  shadow-sm flex flex-col items-center justify-center border border-gray-200"
+              className="bg-gray-50 p-4 shadow-sm flex flex-col items-center justify-center border border-gray-200"
             >
               <p className="text-gray-500 text-xs">{metric.key}</p>
-              <p className=" font-bold text-gray-700">
+              <p className="font-bold text-gray-700">
                 {metric.value !== null ? metric.value : "N/A"}
               </p>
             </div>
           ))}
         </div>
-      </div>
+      </>
     );
   };
 
@@ -271,37 +294,58 @@ function PythonCalculator() {
       );
     }
 
-    const columns = [
-      { title: "Drawdown", dataIndex: "Drawdown", key: "Drawdown" },
-      { title: "Peak Date", dataIndex: "Peak_Date", key: "Peak_Date" },
-      {
-        title: "Drawdown Date",
-        dataIndex: "Drawdown_Date",
-        key: "Drawdown_Date",
-      },
-      {
-        title: "Recovery Date",
-        dataIndex: "Recovery_Date",
-        key: "Recovery_Date",
-      },
-      {
-        title: "Days between Drawdown and Recovery Date",
-        dataIndex: "Days between Drawdown and Recovery Date",
-        key: "Days between Drawdown and Recovery Date",
-      },
-    ];
-
     return (
-      <div className="drawdowns-table my-6 p-4 bg-white  shadow">
-        <h3 className=" font-semibold mb-4">Top 10 Worst Drawdowns</h3>
-        <Table
-          dataSource={resultData.top_10_worst_drawdowns}
-          columns={columns}
-          pagination={false}
-          bordered
-          className="overflow-x-auto"
-        />
-      </div>
+      <>
+        <h3 className="font-semibold mb-2">Top 10 Worst Drawdowns</h3>
+        <div className="overflow-x-auto">
+          {" "}
+          {/* Makes table horizontally scrollable */}
+          <div className="overflow-x-auto">
+            <table className="min-w-full table-auto border-collapse border border-gray-300">
+              <thead>
+                <tr className="bg-gray-200">
+                  <th className="border border-gray-300 px-1 py-1 text-left">
+                    Drawdown
+                  </th>
+                  <th className="border border-gray-300 px-1 py-1 text-left">
+                    Peak Date
+                  </th>
+                  <th className="border border-gray-300 px-1 py-1 text-left">
+                    Drawdown Date
+                  </th>
+                  <th className="border border-gray-300 px-1 py-1 text-left">
+                    Recovery Date
+                  </th>
+                  <th className="border border-gray-300 px-1 py-1 text-left">
+                    Days between Drawdown and Recovery Date
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {resultData.top_10_worst_drawdowns.map((row, index) => (
+                  <tr key={index} className="hover:bg-gray-100">
+                    <td className="border border-gray-300 px-1 py-1">
+                      {row.Drawdown}
+                    </td>
+                    <td className="border border-gray-300 text-nowrap px-1 py-1">
+                      {row.Peak_Date}
+                    </td>
+                    <td className="border border-gray-300 text-nowrap px-1 py-1">
+                      {row.Drawdown_Date}
+                    </td>
+                    <td className="border border-gray-300 text-nowrap px-1 py-1">
+                      {row.Recovery_Date}
+                    </td>
+                    <td className="border border-gray-300 px-1 py-1">
+                      {row["Days between Drawdown and Recovery Date"]}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </>
     );
   };
 
@@ -310,18 +354,18 @@ function PythonCalculator() {
       <Heading className="text-mobileHeading sm:text-heading text-brown text-center mb-4 font-heading">
         Portfolio
       </Heading>
-      <div className="  text-black p-4 text-body  font-body" role="alert">
+      <div className="  text-black sm:p-4 text-body  font-body" role="alert">
         <p className="sm:text-subheading text-mobileSubHeading font-subheading mb-1">
           Upload Requirements
         </p>
         <p className="mb-18">
           Please ensure your file meets the following criteria:
         </p>
-        <ul className="list-disc pl-5">
+        <ul className="list-disc sm:pl-5 pl-2">
           <li>Only CSV file formats are supported.</li>
           <li>
             Daily series must include two columns:
-            <ul className="list-decimal pl-5">
+            <ul className="list-decimal sm:pl-5 pl-2">
               <li>
                 First column for the date (Supported formats: DD/MM/YYYY).
               </li>
@@ -353,7 +397,14 @@ function PythonCalculator() {
               {/* <Button type="primary" onClick={handleDownloadExcel} className="mb-4">
                 Download Excel
               </Button> */}
-              <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+              <div
+                className={`chart-container ${isMobile ? "mobile-chart" : "desktop-chart"}`}
+              >
+                <HighchartsReact
+                  highcharts={Highcharts}
+                  options={chartOptions}
+                />
+              </div>
             </>
           )}
           {renderMetrics()}

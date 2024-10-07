@@ -241,3 +241,17 @@
 }
 
 
+
+
+.chart-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.mobile-chart {
+  height: 400px; /* Same height as in chart options */
+}
+
+.desktop-chart {
+  height: 800px; /* Same height as in chart options */
+}

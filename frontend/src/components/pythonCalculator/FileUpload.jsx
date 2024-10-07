@@ -77,25 +77,27 @@ function FileUpload({ onColumnsUpdate, onFileSelect }) {
   };
 
   return (
-    <div className="bg-white border border-brown flex items-center space-x-4 mx-auto mb-4">
-      <div className="flex-grow">
-        <input
-          type="file"
-          accept=".csv"
-          onChange={handleFileChange}
-          className="block w-full text-body text-gray-900 cursor-pointer bg-white focus:outline-none file:mr-4 file:py-18 file:px-4 file:border-0 file:text-body file:font-body file:bg-beige file:text-black hover:file:bg-lightBeige"
-        />
-      </div>
-      <div>
-        <Button
-          onClick={handleFileUpload}
-          className={`bg-beige hover:bg-lightBeige  transition-colors duration-300 ${
-            loading ? "opacity-50 cursor-not-allowed" : ""
-          }`}
-          disabled={loading}
-        >
-          {loading ? "Uploading..." : "Upload File"}
-        </Button>
+    <div className="bg-white border border-brown mx-auto mb-4 max-w-7xl">
+      <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <div className="w-full sm:flex-grow border-b sm:border-none border-brown">
+          <input
+            type="file"
+            accept=".csv"
+            onChange={handleFileChange}
+            className="block w-full text-sm text-gray-900 cursor-pointer bg-white focus:outline-none file:mr-4 file:py-2 file:px-4 file:border-0 file:text-sm file:font-semibold file:bg-beige file:text-black hover:file:bg-lightBeige file:transition-colors file:duration-300"
+          />
+        </div>
+        <div className="w-full sm:w-auto">
+          <Button
+            onClick={handleFileUpload}
+            className={`w-full sm:w-auto bg-beige hover:bg-lightBeige text-black transition-colors duration-300 ${
+              loading ? "opacity-50 cursor-not-allowed" : ""
+            }`}
+            disabled={loading}
+          >
+            {loading ? "Uploading..." : "Upload File"}
+          </Button>
+        </div>
       </div>
     </div>
   );

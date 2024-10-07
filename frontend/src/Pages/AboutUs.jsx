@@ -2,13 +2,16 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import rishabh from "../assets/team/Rishabh Nahar HS 1.2.png";
-import karan from "../assets/team/Karan HS.png";
-import kavan from "../assets/team/Kavan HS.png";
-import vidhi from "../assets/team/Vidhi HS.png";
-import neha from "../assets/team/Neha HS.png";
-import sakshi from "../assets/team/Sakshi HS.png";
-import { Container } from "../components";
+import rishabh from "../assets/Team/Rishabh.jpg";
+import karan from "../assets/Team/Karan.jpg";
+import kavan from "../assets/Team/Kavan HS.png";
+import vidhi from "../assets/Team/Vidhi.jpg";
+import sanket from "../assets/Team/Sanket.jpg";
+import purnanand from "../assets/Team/Purnanand.jpg";
+import pratik from "../assets/Team/Pratik.jpg";
+import harshal from "../assets/Team/Harshal.jpg";
+import kruti from "../assets/Team/Kruti.jpg";
+import gaurav from "../assets/Team/Gaurav.jpg";
 import Text from "../components/common/Text";
 import Section from "../components/container/Section";
 import Heading from "../components/common/Heading";
@@ -42,8 +45,7 @@ const AboutUs = () => {
       designation: "Fund Manager",
       linkedin: "https://www.linkedin.com/in/gaurav-didwania-234bbb37/",
       email: "gaurav.didwania@qodeinvest.com",
-      image:
-        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+      image: gaurav,
     },
     {
       name: "Vidhi Chheda",
@@ -57,32 +59,28 @@ const AboutUs = () => {
       designation: "Senior Research Analyst",
       linkedin: "https://www.linkedin.com/in/purnanandkulkarni/",
       email: "",
-      image:
-        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+      image: purnanand,
     },
     {
       name: "Pratik Tandel",
       designation: "Research Analyst",
       linkedin: "https://www.linkedin.com/in/pratiktandel2205/",
       email: "pratik.tandel@qodeinvest.com",
-      image:
-        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+      image: pratik,
     },
     {
       name: "Sanket Shinde",
       designation: "Frontend Developer",
       linkedin: "https://www.linkedin.com/in/sanket-shinde-71904b1b6/",
       email: "tech@qodeinvest.com",
-      image:
-        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+      image: sanket,
     },
     {
       name: "Harshal Pokle",
       designation: "Content Strategist, Graphic Designer",
       linkedin: "https://www.linkedin.com/in/harshalpokle/",
       email: "harshal.pokle@qodeinvest.com",
-      image:
-        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+      image: harshal,
     },
     // {
     //   name: "Kinjal Babariya",
@@ -113,8 +111,7 @@ const AboutUs = () => {
       designation: "Accounts",
       linkedin: "https://www.linkedin.com/in/kruti-dave-201419185/",
       email: "harshal.pokle@qodeinvest.com",
-      image:
-        "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
+      image: kruti,
     },
     // {
     //   name: "Vaibhav",
@@ -201,11 +198,11 @@ const AboutUs = () => {
 
 const TeamMemberCard = ({ member }) => {
   return (
-    <div className="bg-white w-full overflow-hidden  rounded-sm">
+    <div className=" w-full border  border-lightGray   overflow-hidden">
       <img
         src={member.image}
         alt={member.name}
-        className="w-full h-[287px] object-cover"
+        className="w-full  object-cover"
       />
       <div className="p-1">
         <div className="flex justify-between items-start mb-18">

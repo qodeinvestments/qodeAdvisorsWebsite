@@ -23,6 +23,8 @@ const config = {
         brown: "#945c39",
         white: "#ffffff",
         black: "#000000",
+        lightGray: "#e2e2e2",
+        darkGray: "#807f7f"
       },
       borderWidth: {
         DEFAULT: '1px',

@@ -58,7 +58,7 @@ const AboutUs = () => {
       name: "Purnanand Kulkarni",
       designation: "Research Analyst",
       linkedin: "https://www.linkedin.com/in/purnanandkulkarni/",
-      email: "",
+      email: "purnanand.kulkarni@swancapital.in",
       image: purnanand,
     },
     {
@@ -108,7 +108,7 @@ const AboutUs = () => {
     // },
     {
       name: "Kruti Dave",
-      designation: "Sr Accountant",
+      designation: "Senior Accountant",
       linkedin: "https://www.linkedin.com/in/kruti-dave-201419185/",
       email: "harshal.pokle@qodeinvest.com",
       image: kruti,

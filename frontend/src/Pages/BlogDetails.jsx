@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Helmet } from "react-helmet"; // Import Helmet
+import React, { useEffect, useState, useRef } from "react";
+import { Helmet } from "react-helmet";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Heading from "../components/common/Heading";
@@ -10,7 +10,8 @@ import { Spinner } from "@material-tailwind/react";
 const BlogDetails = () => {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
-  const [loading, setLoading] = useState(true); // New loading state
+  const [loading, setLoading] = useState(true);
+  const contentRef = useRef(null);
 
   const key = import.meta.env.VITE_GHOST_BLOG_KEY;
 
@@ -30,6 +31,34 @@ const BlogDetails = () => {
     fetchPost();
   }, [slug, key]);
 
+  useEffect(() => {
+    if (post && contentRef.current) {
+      const iframes = contentRef.current.querySelectorAll("iframe");
+      iframes.forEach((iframe) => {
+        iframe.setAttribute("loading", "lazy");
+
+        // Add a placeholder while the iframe is loading
+        const placeholder = document.createElement("div");
+        placeholder.style.width = "100%";
+        placeholder.style.height = "400px"; // Adjust as needed
+        placeholder.style.backgroundColor = "#f0f0f0";
+        placeholder.style.display = "flex";
+        placeholder.style.justifyContent = "center";
+        placeholder.style.alignItems = "center";
+        placeholder.textContent = "Loading...";
+
+        iframe.parentNode.insertBefore(placeholder, iframe);
+
+        iframe.onload = () => {
+          placeholder.remove();
+          iframe.style.display = "block";
+        };
+
+        iframe.style.display = "none"; // Hide iframe until loaded
+      });
+    }
+  }, [post]);
+
   function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString("en-US", {
@@ -43,7 +72,6 @@ const BlogDetails = () => {
     <>
       {loading ? (
         <div className="flex justify-center items-center h-40 mt-20">
-          {/* You can replace this with a spinner or any preloader UI */}
           <Spinner />
         </div>
       ) : (
@@ -98,6 +126,7 @@ const BlogDetails = () => {
                 />
               )}
               <div
+                ref={contentRef}
                 className="post-content gh-content"
                 dangerouslySetInnerHTML={{ __html: post.html }}
               />

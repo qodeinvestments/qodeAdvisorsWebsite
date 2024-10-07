@@ -31,8 +31,10 @@ const Footer = () => {
               <Text className="mb-18">
                 PMS No: <span>INP000008914</span>
               </Text>
+              <br />
               <Text className="mb-18">
-                Email:{" "}
+                For Investor Onboarding and other queries contact us at
+                <br /> Email:{" "}
                 <a
                   href="mailto:contact@qodeinvestments.com"
                   className="hover:text-black"
@@ -63,7 +65,9 @@ const Footer = () => {
                 <CustomLink to="/terms-n-conditions">
                   Terms and Conditions
                 </CustomLink>,
-                <CustomLink to="/disclosure">Disclosure</CustomLink>,
+                <CustomLink to={"http://localhost:5173/python-calculator"}>
+                  Portfolio Visualizer
+                </CustomLink>,
               ]}
             />
           </div>
@@ -94,15 +98,21 @@ const Footer = () => {
 
           <div>
             <Heading className="sm:text-subheading text-mobileSubHeading text text-brown mb-2">
-              Resources
+              Support
             </Heading>
             <List
               className="text-body sm:text-body text-black"
               itemClassName="mb-18 hover:text-black"
               items={[
-                // <CustomLink to="/faq">FAQs</CustomLink>,
-                <CustomLink to="/python-calculator">
-                  Portfolio Visualizer
+                <CustomLink
+                  key="smart-odr"
+                  target="_blank"
+                  to={"https://smartodr.in/"}
+                >
+                  Smart ODR
+                </CustomLink>,
+                <CustomLink key="disclosure" to="/disclosure">
+                  Disclosure
                 </CustomLink>,
               ]}
             />

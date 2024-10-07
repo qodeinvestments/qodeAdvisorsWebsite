@@ -131,7 +131,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
     <form onSubmit={handleSubmit} className="space-y-4 max-w-7xl mx-auto">
       <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
-          Choose strategies
+          Choose strategies *
         </label>
         <Select
           mode="multiple"
@@ -157,6 +157,8 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         <div key={index} className="space-y-18 sm:p-2">
           <h3 className="font-body text-black">{system.system}</h3>
           <div className="flex flex-col sm:flex-row gap-4">
+            <label htmlFor="">Weightage</label>
+
             <Input
               type="text"
               placeholder="Weightage"
@@ -167,6 +169,8 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
               className="w-full sm:w-1/2"
               suffix="%"
             />
+            <label htmlFor="">Leverage</label>
+
             <Input
               type="text"
               placeholder="Leverage"
@@ -179,7 +183,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           </div>
         </div>
       ))}
-      <div className="space-y-2">
+      <div className="space-y-1">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Choose Debt Funds
         </label>
@@ -204,9 +208,10 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         />
       </div>
       {formData.selected_debtfunds.map((debtfund, index) => (
-        <div key={index} className="space-y-2 sm:p-2 ">
+        <div key={index} className="space-y-1 sm:p-2 ">
           <h3 className="font-body text-black">{debtfund.debtfund}</h3>
           <div className="flex flex-col sm:flex-row gap-4">
+            <label htmlFor="">Weightage</label>
             <Input
               type="text"
               placeholder="Weightage"
@@ -217,6 +222,8 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
               className="w-full sm:w-1/2"
               suffix="%"
             />
+            <label htmlFor="">Leverage</label>
+
             <Input
               type="text"
               placeholder="Leverage"
@@ -229,9 +236,9 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           </div>
         </div>
       ))}
-      <div className="space-y-2">
+      <div className="space-y-1">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
-          Investment Period
+          Investment Period *
         </label>
         <RangePicker
           format="DD-MM-YYYY"
@@ -250,7 +257,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       </div>
       <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
-          Investment Amount
+          Investment Amount *
         </label>
         <Input
           type="text"
@@ -274,7 +281,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
       </div>
       <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
-          Rebalance Frequency
+          Rebalance Frequency *
         </label>
         <Radio.Group
           onChange={(e) => handleInputChange("frequency", e.target.value)}

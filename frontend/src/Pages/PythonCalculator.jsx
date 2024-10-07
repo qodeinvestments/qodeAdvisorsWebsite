@@ -110,8 +110,8 @@ function PythonCalculator() {
       height: isMobile ? 300 : 520, // Adjusted based on mobile
       backgroundColor: "none",
       zoomType: "x",
-      marginLeft: isMobile ? 0 : 40,
-      marginRight: isMobile ? 0 : 40,
+      marginLeft: isMobile ? 0 : 50,
+      marginRight: isMobile ? 0 : 50,
     },
     tooltip: {
       shared: true,

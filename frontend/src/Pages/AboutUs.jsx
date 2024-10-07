@@ -56,7 +56,7 @@ const AboutUs = () => {
     },
     {
       name: "Purnanand Kulkarni",
-      designation: "Senior Research Analyst",
+      designation: "Research Analyst",
       linkedin: "https://www.linkedin.com/in/purnanandkulkarni/",
       email: "",
       image: purnanand,
@@ -77,7 +77,7 @@ const AboutUs = () => {
     },
     {
       name: "Harshal Pokle",
-      designation: "Content Strategist, Graphic Designer",
+      designation: "Brand Strategist",
       linkedin: "https://www.linkedin.com/in/harshalpokle/",
       email: "harshal.pokle@qodeinvest.com",
       image: harshal,
@@ -108,7 +108,7 @@ const AboutUs = () => {
     // },
     {
       name: "Kruti Dave",
-      designation: "Accounts",
+      designation: "Sr Accountant",
       linkedin: "https://www.linkedin.com/in/kruti-dave-201419185/",
       email: "harshal.pokle@qodeinvest.com",
       image: kruti,

@@ -207,7 +207,7 @@ const TeamMemberCard = ({ member }) => {
       <div className="p-1">
         <div className="flex justify-between items-start mb-18">
           <div>
-            <Text className="text-2xl font-subheading text-brown">
+            <Text className="text-subheading font-subheading text-brown">
               {member.name}
             </Text>
             <span className="text-body text-text-secondary">

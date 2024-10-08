@@ -223,13 +223,13 @@ const PerformanceChart = ({ data, strategy, blogUrl, error, isLoading }) => {
           </TabsBody>
         </Tabs>
       </div>
-      <Text className="sm:text-subheading text-mobileSubHeading font-subheading text-center my-2 mt-6 sm:mt-2 ">
+      <Text className="sm:text-subheading text-mobileSubHeading font-subheading text-center my-2 mt-6 sm:mt-3 ">
         How this Strategy works & <br className="sm:visible hidden" /> how was
         it made to get the expected returns with highest certainty.
       </Text>
       <CustomLink
         to={`/blogs${blogUrl}`}
-        className="p-1 mt border-brown border transition-all justify-between items-center  flex duration-500 hover:bg-beige hover:text-black  hover:shadow-xl group"
+        className="p-1  border-brown border transition-all justify-between items-center  flex duration-500 hover:bg-beige hover:text-black  hover:shadow-xl group"
       >
         <div className="text-black">
           <Text className="sm:text-subheading text-mobileSubHeading font-subheading">

@@ -109,8 +109,6 @@ const BlogDetails = () => {
           <link rel="preload" as="image" href={post.feature_image} />
         )}
         {/* Add preload for common resources */}
-        <link rel="preload" as="style" href="/path-to-your-main-css-file.css" />
-        <link rel="preload" as="script" href="/path-to-your-main-js-file.js" />
       </Helmet>
 
       {loading ? (

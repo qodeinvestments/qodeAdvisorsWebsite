@@ -229,7 +229,7 @@ const PerformanceChart = ({ data, strategy, blogUrl, error, isLoading }) => {
       </Text>
       <CustomLink
         to={`/blogs${blogUrl}`}
-        className="p-1  border-brown border transition-all justify-between items-center  flex duration-500 hover:bg-beige hover:text-black  hover:shadow-xl group"
+        className="p-1 mt border-brown border transition-all justify-between items-center  flex duration-500 hover:bg-beige hover:text-black  hover:shadow-xl group"
       >
         <div className="text-black">
           <Text className="sm:text-subheading text-mobileSubHeading font-subheading">

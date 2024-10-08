@@ -20,7 +20,7 @@ const ArrowIcon = () => (
 
 const StrategyCard = ({ title, description, link }) => (
   <Link to={link} className="text-black w-full group">
-    <div className="p-2 transition-all duration-300 h-[170px] hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl relative flex flex-col sm:h-full">
+    <div className="p-1 transition-all duration-300 h-[170px] hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl relative flex flex-col sm:h-full">
       <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center">
         <div className="">
           <Heading className="font-heading playfair-font-display sm:text-heading md:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold mb-1 relative overflow-hidden text-ellipsis">

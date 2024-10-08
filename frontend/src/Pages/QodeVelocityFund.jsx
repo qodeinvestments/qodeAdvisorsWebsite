@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import StrategyComponent from "../components/Strategy";
 
-export const quantMomentumFundData = {
+export const qodeVelocityFund = {
   title: "Qode Velocity Fund",
   tagLine: "Ride the wave. Buy high sell higher",
   description:
@@ -74,7 +74,7 @@ export const quantMomentumFundData = {
 // import StrategyComponent from "./StrategyComponent";
 // import { quantMomentumFundData } from "./quantMomentumFundData";
 const MomentumTabs = () => {
-  return <StrategyComponent strategyData={quantMomentumFundData} />;
+  return <StrategyComponent strategyData={qodeVelocityFund} />;
 };
 
 export default MomentumTabs;

@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Banner, Blogs, InvestmentStrategies } from "../components/index";
 import FundManagers from "../components/FundManagers";
 import { Helmet } from "react-helmet"; // Import Helmet
-
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "../components/common/Button";
 import Text from "../components/common/Text";
 import Heading from "../components/common/Heading";
 import Section from "../components/container/Section";
-import SectionContent from "../components/container/SectionContent";
 import Modal from "../components/Modal";
 import GrowMoney from "./GrowMoney";
 import { Parallax } from "react-parallax"; // Import Parallax component

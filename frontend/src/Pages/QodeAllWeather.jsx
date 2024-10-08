@@ -8,18 +8,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import StrategyComponent from "../components/Strategy";
 
-const QuantGrowthFund = () => {
+const QodeAllWeather = () => {
   const strategyData = {
-    title: "Qode Growth Fund",
-    tagLine: "Invest in quality business. Get quality results.",
+    title: "Qode All Weather",
+    tagLine: "Lower Risk does not mean lower returns.",
     description:
-      "This strategy invests in 30 Quality businesses. (Quality Business - A company that generates a high return on invested capital). ",
-    principle:
-      "Principle - In the long run the stock price always reflects the business performance.",
-    strategyCode: "QGF",
-    strategySlug: "quant-growth-fund",
+      "This strategy invests in the 30 most stable stocks in the market. This strategy outperforms the Index with considerably lower risk.",
+    strategyCode: "QAW",
+    strategySlug: "qode-all-weather",
     pptLink: "/Quant Growth Fund Feb.pdf",
-    blogUrl: "/qode-growth-fund",
+    blogUrl: "/qode-low-risk",
     whitePaperLink: "", // Add the white paper link when available
     steps: [
       {
@@ -82,4 +80,4 @@ const QuantGrowthFund = () => {
   return <StrategyComponent strategyData={strategyData} />;
 };
 
-export default QuantGrowthFund;
+export default QodeAllWeather;

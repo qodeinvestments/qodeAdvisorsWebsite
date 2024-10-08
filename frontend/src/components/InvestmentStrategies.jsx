@@ -41,7 +41,7 @@ const InvestmentStrategies = () => {
     {
       title: "Qode Growth Fund",
       description: "Invest in quality business. Get quality results.",
-      link: "/strategies/quant-growth-fund",
+      link: "/strategies/qode-growth-fund",
     },
     {
       title: "Qode Velocity Fund",

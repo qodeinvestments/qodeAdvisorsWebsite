@@ -87,7 +87,7 @@ const Footer = () => {
               className="text-body sm:text-body text-black"
               itemClassName="mb-18 hover:text-black"
               items={[
-                <CustomLink to="/strategies/quant-growth-fund">
+                <CustomLink to="/strategies/qode-growth-fund">
                   Qode Growth Fund
                 </CustomLink>,
                 <CustomLink to="/strategies/qode-velocity-fund">

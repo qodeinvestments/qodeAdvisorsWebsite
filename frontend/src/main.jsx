@@ -53,6 +53,10 @@ const router = createBrowserRouter([
         element: <QodeGrowthFund />,
       },
       {
+        path: "/strategies/qode-growth-fund",
+        element: <QodeGrowthFund />,
+      },
+      {
         path: "/privacy-policy",
         element: <PrivacyPolicy />,
       },

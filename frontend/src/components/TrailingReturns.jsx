@@ -115,7 +115,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
 
   if (isLoading)
     return (
-      <div className="text-center flex justify-center items-center">
+      <div className="text-start flex justify-center items-center">
         <Spinner className="text-brown" />
       </div>
     );
@@ -142,47 +142,47 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
           <table className="sm:w-full border-collapse table-fixed">
             <thead>
               <tr className="sm:text-body text-sm font-body">
-                <th className="sticky left-0 z-10 sm:p-1 p-18 font-body text-start sm:text-body text-sm text-black sm:bg-white bg-lightBeige border border-brown border-l-0 sm:border-l sm:w-32">
+                <th className="sticky left-0 z-10  p-18 font-body text-start sm:text-body text-sm text-black sm:bg-white bg-lightBeige border border-brown border-l-0 sm:border-l ">
                   Strategy
                 </th>
                 {periods.map((period) => (
                   <th
                     key={period}
-                    className="p-2 font-body text-center sm:text-body text-sm text-black border border-brown sm:w-24"
+                    className="p-18 font-body text-start sm:text-body text-sm text-black border border-brown "
                   >
                     {period}
                   </th>
                 ))}
-                <th className="sm:p-1 p-18 text-center font-body sm:text-body text-sm text-black border border-brown sm:w-20">
+                <th className=" p-18 text-start font-body sm:text-body text-sm text-black border border-brown ">
                   DD
                 </th>
-                <th className="sm:p-1 p-18 text-center font-body sm:text-body text-sm text-black border border-brown sm:w-20">
+                <th className=" p-18 text-start font-body sm:text-body text-sm text-black border border-brown ">
                   MDD
                 </th>
               </tr>
             </thead>
             <tbody>
               {strategies.map((strat) => (
-                <tr key={strat} className="text-black text-center">
-                  <td className="sticky left-0 z-10 sm:p-1 p-18 font-body sm:text-body text-sm sm:bg-white bg-lightBeige border border-brown border-l-0 sm:border-l text-start sm:w-32">
+                <tr key={strat} className="text-black text-start">
+                  <td className="sticky left-0 z-10  p-18 font-body sm:text-body text-sm sm:bg-white bg-lightBeige border border-brown border-l-0 sm:border-l text-start ">
                     {strat}
                   </td>
                   {periods.map((period) => (
                     <td
                       key={period}
-                      className="sm:p-1 p-18 text-black border font-body sm:text-body text-sm border-brown sm:w-24"
+                      className=" p-18 text-black border font-body sm:text-body text-sm border-brown "
                     >
                       {returns[period] && returns[period][strat]
                         ? returns[period][strat]
                         : "N/A"}
                     </td>
                   ))}
-                  <td className="sm:p-1 p-18 text-center font-body sm:text-body text-sm text-black border border-brown sm:w-20">
+                  <td className=" p-18 text-start font-body sm:text-body text-sm text-black border border-brown ">
                     {drawdowns.latest[strat]
                       ? `${drawdowns.latest[strat].toFixed(1)}%`
                       : "N/A"}
                   </td>
-                  <td className="sm:p-1 p-18 text-center text-black border border-brown sm:w-20">
+                  <td className=" p-18 text-start text-black border border-brown ">
                     {drawdowns.lowest[strat]
                       ? `${drawdowns.lowest[strat].toFixed(1)}%`
                       : "N/A"}

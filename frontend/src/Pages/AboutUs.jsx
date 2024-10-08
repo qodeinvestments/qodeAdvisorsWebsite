@@ -56,7 +56,7 @@ const AboutUs = () => {
     },
     {
       name: "Purnanand Kulkarni",
-      designation: "Research Analyst",
+      designation: "Quant Analyst",
       linkedin: "https://www.linkedin.com/in/purnanandkulkarni/",
       email: "purnanand.kulkarni@swancapital.in",
       image: purnanand,

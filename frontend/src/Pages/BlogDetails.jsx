@@ -97,12 +97,12 @@ const BlogDetails = () => {
   return (
     <>
       <Helmet>
-        <title>{post?.title || "Loading..."} - Qode Investments Blog</title>
+        <title>{post?.title || "Loading..."} - Qode Advisors LLP Blog</title>
         <meta
           name="description"
           content={
             post?.excerpt ||
-            "Read this insightful blog post from Qode Investments."
+            "Read this insightful blog post from Qode Advisors LLP."
           }
         />
         {post?.feature_image && (

@@ -42,16 +42,16 @@ const StrategyComponent = ({ strategyData }) => {
   return (
     <>
       <Helmet>
-        <title>{title} - Strategy Overview | Qode Investments</title>
+        <title>{title} - Strategy Overview | Qode Advisors LLP</title>
         <meta
           name="description"
-          content={`Learn more about the ${title} strategy at Qode Investments. ${description}`}
+          content={`Learn more about the ${title} strategy at Qode Advisors LLP. ${description}`}
         />
         <meta
           name="keywords"
-          content={`${title}, ${tagLine}, investment strategy, Qode Investments`}
+          content={`${title}, ${tagLine}, investment strategy, Qode Advisors LLP`}
         />
-        <meta name="author" content="Qode Investments" />
+        <meta name="author" content="Qode Advisors LLP" />
       </Helmet>
       <div className="mx-auto sm:mt-8 mt-8">
         <Section padding="normal">

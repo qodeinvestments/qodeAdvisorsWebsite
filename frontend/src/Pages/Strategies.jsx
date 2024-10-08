@@ -22,7 +22,7 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   const renderCustomLink = () => {
     return (
       <CustomLink
-        to={name === "Qode Future Horizon" ? `/blogs/${slug}` : slug}
+        to={name === "Qode Future Horizons" ? `/blogs/${slug}` : slug}
         className="p-3 relative h-[170px] sm:h-auto transition-all group justify-between items-start flex-col sm:flex-row border border-brown flex duration-500 bg-white  hover:bg-beige hover:text-black hover:shadow-xl group"
       >
         <div className="text-black">
@@ -121,7 +121,7 @@ const Strategies = () => {
     },
     {
       id: "futureHorizon",
-      name: "Qode Future Horizon",
+      name: "Qode Future Horizons",
       slug: "qode-future-horizon",
       description:
         "<Text class='mb-1'>Fusing data & insight<br class='md:hidden' />  to add an edge.</Text>",
@@ -131,7 +131,7 @@ const Strategies = () => {
   return (
     <>
       <Helmet>
-        <title>Qode Strategies - Discover Investment Approaches</title>
+        <title>Qode Advisors LLP - Discover Investment Approaches</title>
         <meta
           name="description"
           content="Explore Qode's data-driven strategies, including Growth, Momentum, and Low Volatility Funds. Find the right approach to meet your financial goals."
@@ -140,7 +140,7 @@ const Strategies = () => {
           name="keywords"
           content="investment strategies, Qode Growth Fund, Momentum Fund, Low Volatility Fund, data-driven investment, financial goals"
         />
-        <meta name="author" content="Qode Investments" />
+        <meta name="author" content="Qode Invest" />
       </Helmet>
       <Section className="mt-9 text-center">
         <Text className="text-subheading font-semibold text-brown ">

@@ -72,7 +72,7 @@ const Footer = () => {
                 <CustomLink to="/terms-n-conditions">
                   Terms and Conditions
                 </CustomLink>,
-                <CustomLink to={"http://localhost:5173/python-calculator"}>
+                <CustomLink to={"/python-calculator"}>
                   Portfolio Visualizer
                 </CustomLink>,
               ]}
@@ -97,7 +97,7 @@ const Footer = () => {
                   Qode All Weather
                 </CustomLink>,
                 <CustomLink to="/blogs/qode-future-horizon">
-                  Qode Future Horizon
+                  Qode Future Horizons
                 </CustomLink>,
               ]}
             />

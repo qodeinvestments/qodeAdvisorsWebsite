@@ -10,16 +10,16 @@ const PrivacyPolicy = () => {
   return (
     <>
       <Helmet>
-        <title>Privacy Policy - Qode Investments</title>
+        <title>Privacy Policy - Qode Advisors LLP</title>
         <meta
           name="description"
-          content="Learn about the privacy practices at Qode Investments, how we collect, use, and protect your personal information, and your rights and responsibilities."
+          content="Learn about the privacy practices at Qode Advisors LLP, how we collect, use, and protect your personal information, and your rights and responsibilities."
         />
         <meta
           name="keywords"
-          content="privacy policy, Qode Investments, personal information, data protection, cookies, web analytics"
+          content="privacy policy, Qode Advisors LLP, personal information, data protection, cookies, web analytics"
         />
-        <meta name="author" content="Qode Investments" />
+        <meta name="author" content="Qode Advisors LLP" />
       </Helmet>
       <Section className="sm:mt-5 mt-8" padding="extralarge">
         <Heading isItalic className=" text-brown mb-18">

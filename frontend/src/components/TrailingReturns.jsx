@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Heading from "./common/Heading";
 import Text from "./common/Text";
+import useCalculateCagr from "./hooks/useCalculateCagr";
+import { Spinner } from "@material-tailwind/react";
 
 const TrailingReturns = ({ strategy, isLoading, error, data }) => {
   const [returns, setReturns] = useState({
@@ -12,79 +14,74 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
     "1Y": {},
     "3Y": {},
     "5Y": {},
-    YTD: {},
+    "Since Inception": {}, // Changed from All to "Since Inception"
   });
   const [drawdowns, setDrawdowns] = useState({
     latest: {},
     lowest: {},
   });
 
+  const { calculateCAGR } = useCalculateCagr();
+
   useEffect(() => {
     if (data && data.length > 0) {
       calculateReturns(data);
       calculateDrawdowns(data);
     }
-  }, [data]);
+  }, [data, calculateCAGR]);
 
   const calculateReturns = (data) => {
-    const sortedData = data.sort((a, b) => new Date(a.date) - new Date(b.date));
-    const latestDate = new Date(sortedData[sortedData.length - 1].date);
-
     const periods = {
-      "10D": 10,
-      "1W": 7,
-      "1M": 30,
-      "3M": 91,
-      "6M": 182,
-      "1Y": 365,
-      "3Y": 3 * 365,
-      "5Y": 5 * 365,
-      YTD: Math.floor(
-        (latestDate - new Date(latestDate.getFullYear(), 0, 1)) /
-          (1000 * 60 * 60 * 24)
-      ),
+      "1Y": "1Y",
+      "3Y": "3Y",
+      "5Y": "5Y",
+      "Since Inception": "ALL", // Changed display text while keeping calculation logic
     };
 
     const calculatedReturns = {};
 
-    for (const [period, days] of Object.entries(periods)) {
-      const startIndex = sortedData.findIndex((item) => {
-        const itemDate = new Date(item.date);
-        const diffDays = (latestDate - itemDate) / (1000 * 60 * 60 * 24);
-        return diffDays <= days;
-      });
-
-      if (startIndex !== -1) {
-        const startValues = sortedData[startIndex];
-        const endValues = sortedData[sortedData.length - 1];
-
-        calculatedReturns[period] = {
-          [strategy]: calculateReturn(
-            parseFloat(startValues.total_portfolio_nav),
-            parseFloat(endValues.total_portfolio_nav),
-            period
-          ),
-          [startValues.benchmark]: calculateReturn(
-            parseFloat(startValues.benchmark_values),
-            parseFloat(endValues.benchmark_values),
-            period
-          ),
-        };
-      }
+    for (const [period, cagrPeriod] of Object.entries(periods)) {
+      calculatedReturns[period] = {
+        [strategy]: calculateCAGR(data, cagrPeriod, "total_portfolio_nav"),
+        [data[0].benchmark]: calculateCAGR(
+          data,
+          cagrPeriod,
+          "benchmark_values"
+        ),
+      };
     }
+
+    // Handle custom periods (10D and 1W)
+    const sortedData = [...data].sort(
+      (a, b) => new Date(a.date) - new Date(b.date)
+    );
+    const latestDate = new Date(sortedData[sortedData.length - 1].date);
+
+    ["10D", "1W"].forEach((period) => {
+      const days = period === "10D" ? 10 : 7;
+      const startDate = new Date(
+        latestDate.getTime() - days * 24 * 60 * 60 * 1000
+      );
+      const filteredData = sortedData.filter(
+        (item) => new Date(item.date) >= startDate
+      );
+
+      calculatedReturns[period] = {
+        [strategy]: calculateCAGR(
+          filteredData,
+          "Custom",
+          "total_portfolio_nav"
+        ),
+        [data[0].benchmark]: calculateCAGR(
+          filteredData,
+          "Custom",
+          "benchmark_values"
+        ),
+      };
+    });
 
     setReturns(calculatedReturns);
   };
-
-  const calculateReturn = (startValue, endValue, period) => {
-    if (period === "3Y" || period === "5Y") {
-      const timeRange = period === "3Y" ? 3 : 5;
-      return (Math.pow(endValue / startValue, 1 / timeRange) - 1) * 100;
-    } else {
-      return ((endValue - startValue) / startValue) * 100;
-    }
-  };
-
   const calculateDrawdowns = (data) => {
     const benchmark = data[0]?.benchmark || "Default Benchmark";
     const strategies = [strategy, benchmark];
@@ -114,47 +111,52 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
 
     setDrawdowns(calculatedDrawdowns);
   };
+  // Rest of the component remains the same until the return statement
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <div className="text-center flex justify-center items-center">
+        <Spinner className="text-brown" />
+      </div>
+    );
   if (error) return <div>Error: {error}</div>;
 
   const benchmark = data[0]?.benchmark || "Default Benchmark";
-
   const strategies = [strategy, benchmark];
-  const periods = ["10D", "1W", "1M", "3M", "6M", "1Y", "3Y", "5Y", "YTD"];
+  const periods = ["1Y", "3Y", "5Y", "Since Inception"]; // Updated display text
 
   return (
-    <div className="overflow-x-auto sm:p-4 p-1">
+    <div className="overflow-x-auto sm:p-4 p-18">
       <Heading
         isItalic
         className="sm:text-subheading text-mobileSubHeading font-subheading text-brown mb-18"
       >
         Trailing Returns
       </Heading>
-      <Text className="text-body font-body text-black mb-4">
+      <Text className="sm:text-body text-sm font-body text-black mb-4">
         Trailing returns are annualised returns from the specified period till
-        today.
+        today. "Since Inception" represents returns since the strategy began.
       </Text>
       <div className="relative overflow-x-auto scrollbar-thin scrollbar-thumb-brown scrollbar-track-black border-l md:border-none border-brown">
-        <div className="w-full min-w-[640px]">
-          <table className="w-full border-collapse table-fixed">
+        <div className="sm:w-full min-sm:w-[640px]">
+          <table className="sm:w-full border-collapse table-fixed">
             <thead>
-              <tr className="text-body font-body">
-                <th className="sticky left-0 z-10 p-1 font-body text-start text-body  text-black sm:bg-white bg-lightBeige border border-brown border-l-0 sm:border-l w-32">
+              <tr className="sm:text-body text-sm font-body">
+                <th className="sticky left-0 z-10 sm:p-1 p-18 font-body text-start sm:text-body text-sm text-black sm:bg-white bg-lightBeige border border-brown border-l-0 sm:border-l sm:w-32">
                   Strategy
                 </th>
                 {periods.map((period) => (
                   <th
                     key={period}
-                    className="p-2 font-body text-center text-body text-black border border-brown w-24"
+                    className="p-2 font-body text-center sm:text-body text-sm text-black border border-brown sm:w-24"
                   >
                     {period}
                   </th>
                 ))}
-                <th className="p-1 text-center font-body text-body text-black border border-brown w-20">
+                <th className="sm:p-1 p-18 text-center font-body sm:text-body text-sm text-black border border-brown sm:w-20">
                   DD
                 </th>
-                <th className="p-1 text-center font-body text-body text-black border border-brown w-20">
+                <th className="sm:p-1 p-18 text-center font-body sm:text-body text-sm text-black border border-brown sm:w-20">
                   MDD
                 </th>
               </tr>
@@ -162,28 +164,28 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
             <tbody>
               {strategies.map((strat) => (
                 <tr key={strat} className="text-black text-center">
-                  <td className="sticky left-0 z-10 p-1 sm:bg-white bg-lightBeige border border-brown border-l-0 sm:border-l text-start w-32">
+                  <td className="sticky left-0 z-10 sm:p-1 p-18 font-body sm:text-body text-sm sm:bg-white bg-lightBeige border border-brown border-l-0 sm:border-l text-start sm:w-32">
                     {strat}
                   </td>
                   {periods.map((period) => (
                     <td
                       key={period}
-                      className="p-1 text-black border border-brown w-24"
+                      className="sm:p-1 p-18 text-black border font-body sm:text-body text-sm border-brown sm:w-24"
                     >
                       {returns[period] && returns[period][strat]
-                        ? `${returns[period][strat].toFixed(1)}%`
-                        : "0%"}
+                        ? returns[period][strat]
+                        : "N/A"}
                     </td>
                   ))}
-                  <td className="p-1 text-center text-black border border-brown w-20">
+                  <td className="sm:p-1 p-18 text-center font-body sm:text-body text-sm text-black border border-brown sm:w-20">
                     {drawdowns.latest[strat]
                       ? `${drawdowns.latest[strat].toFixed(1)}%`
-                      : "0%"}
+                      : "N/A"}
                   </td>
-                  <td className="p-1 text-center text-black border border-brown w-20">
+                  <td className="sm:p-1 p-18 text-center text-black border border-brown sm:w-20">
                     {drawdowns.lowest[strat]
                       ? `${drawdowns.lowest[strat].toFixed(1)}%`
-                      : "0%"}
+                      : "N/A"}
                   </td>
                 </tr>
               ))}
@@ -192,7 +194,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
         </div>
       </div>
 
-      <Text className="text-beige text-body font-body mt-1">
+      <Text className="text-beige sm:text-body text-sm font-body mt-1">
         *MDD(Maximum Drawdown) is how much money an investment loses from its
         highest point to its lowest point before it starts going up again.
       </Text>

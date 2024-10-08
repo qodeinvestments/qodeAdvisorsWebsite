@@ -28,16 +28,16 @@ const ContactUs = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Us - Qode Investments</title>
+        <title>Contact Us - Qode Advisors LLP</title>
         <meta
           name="description"
-          content="Contact Qode Investments for inquiries, support, or further information. Find our address, phone number, and email or send us a direct message."
+          content="Contact Qode Advisors LLP for inquiries, support, or further information. Find our address, phone number, and email or send us a direct message."
         />
         <meta
           name="keywords"
-          content="Qode Investments, Contact Us, address, phone number, email, get in touch"
+          content="Qode Advisors LLP, Contact Us, address, phone number, email, get in touch"
         />
-        <meta name="author" content="Qode Investments" />
+        <meta name="author" content="Qode Advisors LLP" />
       </Helmet>
       <Section padding="extralarge" className="mt-5">
         <div className="text-brown text-center">

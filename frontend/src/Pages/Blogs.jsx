@@ -31,13 +31,13 @@ const Blogs = () => {
         <title>Qode Blogs - Insights on Data-Driven Investing</title>
         <meta
           name="description"
-          content="Read the latest blogs and insights from Qode Investments on data-driven investment strategies, market analysis, and wealth management tips."
+          content="Read the latest blogs and insights from Qode Advisors LLP on data-driven investment strategies, market analysis, and wealth management tips."
         />
         <meta
           name="keywords"
-          content="Qode Investments blogs, investment strategies, wealth management, market analysis, data-driven investing"
+          content="Qode Advisors LLP blogs, investment strategies, wealth management, market analysis, data-driven investing"
         />
-        <meta name="author" content="Qode Investments" />
+        <meta name="author" content="Qode Advisors LLP" />
       </Helmet>
       <Section padding="extralarge" className="mt-5">
         <Heading

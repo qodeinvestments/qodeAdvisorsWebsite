@@ -22,7 +22,7 @@ const Home = () => {
   const [currentText, setCurrentText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [index, setIndex] = useState(0);
-
+  const [isLoading, setIsLoading] = useState(false);
   const typingSpeed = 130;
   const deletingSpeed = 55;
   const delayBetweenTexts = 1500;
@@ -61,6 +61,7 @@ const Home = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     setIsSubmitting(true);
 
     try {
@@ -108,6 +109,7 @@ const Home = () => {
       });
       console.error("Error subscribing to newsletter:", error);
     } finally {
+      setIsLoading(false);
       setIsSubmitting(false);
     }
   };
@@ -119,17 +121,17 @@ const Home = () => {
     <div>
       <Helmet>
         <title>
-          Qode Investments - Grow Your Wealth with Data-Driven Strategies
+          Qode Advisors LLP - Grow Your Wealth with Data-Driven Strategies
         </title>
         <meta
           name="description"
-          content="At Qode Investments, we help individuals grow their wealth using data-driven investment strategies with a proven track record. Learn more about our investing principles and strategies."
+          content="At Qode Invest, we help individuals grow their wealth using data-driven investment strategies with a proven track record. Learn more about our investing principles and strategies."
         />
         <meta
           name="keywords"
-          content="Qode Investments, data-driven investment, wealth management, quant models, stock market, investment strategies"
+          content="Qode Invest, data-driven investment, wealth management, quant models, stock market, investment strategies"
         />
-        <meta name="author" content="Qode Investments" />
+        <meta name="author" content="Qode Invest" />
       </Helmet>
       <Banner />
 
@@ -216,12 +218,26 @@ const Home = () => {
               </div>
               <div>
                 <Button
-                  className="bg-beige text-black"
                   type="submit"
-                  disabled={isSubmitting}
-                  isLoading={isSubmitting}
+                  disabled={isLoading}
+                  className="bg-beige text-black"
+                  aria-busy={isLoading}
                 >
-                  Subscribe
+                  {isLoading ? (
+                    <>
+                      <span className="inline-flex items-center">
+                        Submitting
+                        <span className="dot-animation">
+                          <span className="dot">.</span>
+                          <span className="dot">.</span>
+                          <span className="dot">.</span>
+                        </span>
+                      </span>
+                      .
+                    </>
+                  ) : (
+                    "Submit"
+                  )}
                 </Button>
               </div>
             </form>

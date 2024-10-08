@@ -10,16 +10,16 @@ const TermsnConditions = () => {
   return (
     <>
       <Helmet>
-        <title>Terms & Conditions - Qode Investments</title>
+        <title>Terms & Conditions - Qode Advisors LLP</title>
         <meta
           name="description"
-          content="Read the Terms & Conditions for accessing and using Qode Investments' website, including intellectual property rights, exclusions of liability, and more."
+          content="Read the Terms & Conditions for accessing and using Qode Advisors LLP' website, including intellectual property rights, exclusions of liability, and more."
         />
         <meta
           name="keywords"
-          content="Terms & Conditions, Qode Investments, intellectual property, legal agreements, website terms, liabilities"
+          content="Terms & Conditions, Qode Advisors LLP, intellectual property, legal agreements, website terms, liabilities"
         />
-        <meta name="author" content="Qode Investments" />
+        <meta name="author" content="Qode Advisors LLP" />
       </Helmet>
       <Section className="mt-8 sm:mt-5" padding="extralarge">
         <Heading isItalic className="text-brown mb-18">

@@ -23,16 +23,16 @@ const Disclosure = () => {
   return (
     <>
       <Helmet>
-        <title>Disclosure - Qode Investments</title>
+        <title>Disclosure - Qode Advisors LLP</title>
         <meta
           name="description"
-          content="Access the latest disclosure documents, financial statements, and reports from Qode Investments. Download annual reports, sustainability reports, and more."
+          content="Access the latest disclosure documents, financial statements, and reports from Qode Invest. Download annual reports, sustainability reports, and more."
         />
         <meta
           name="keywords"
-          content="Qode Investments, Disclosure, Annual Report, Financial Statements, Sustainability Report, Investor Complaints, Code of Conduct"
+          content="Qode Advisors LLP, Disclosure, Annual Report, Financial Statements, Sustainability Report, Investor Complaints, Code of Conduct"
         />
-        <meta name="author" content="Qode Investments" />
+        <meta name="author" content="Qode Advisors LLP" />
       </Helmet>
       <Section className="sm:mt-5 mt-4" padding="extralarge">
         <Heading isItalic className="text-brown text-center mb-5">

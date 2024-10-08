@@ -6,7 +6,7 @@ import Heading from "../components/common/Heading";
 import Text from "../components/common/Text";
 import Section from "../components/container/Section";
 import { Spinner } from "@material-tailwind/react";
-
+import "./Pages.css";
 const BlogDetails = () => {
   const { slug } = useParams();
   const [post, setPost] = useState(null);

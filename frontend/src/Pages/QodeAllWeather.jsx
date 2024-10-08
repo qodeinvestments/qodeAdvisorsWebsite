@@ -17,7 +17,7 @@ const QodeAllWeather = () => {
     strategyCode: "QAW",
     strategySlug: "qode-all-weather",
     pptLink: "/Quant Growth Fund Feb.pdf",
-    blogUrl: "/qode-low-risk",
+    blogUrl: "/qode-all-weather",
     whitePaperLink: "", // Add the white paper link when available
     steps: [
       {

@@ -101,7 +101,7 @@ const Strategies = () => {
     {
       id: "qgf",
       name: "Qode Growth Fund",
-      slug: "quant-growth-fund",
+      slug: "qode-growth-fund",
       description:
         "<Text class='mb-1'>Invest in quality business.<br class='md:hidden' /> Get quality results.</Text>",
     },

@@ -179,7 +179,7 @@ const Header = () => {
                       className="block px-4 py-2 text-body text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"
                       onClick={closeMobileMenu}
                     >
-                      About us
+                      About Us
                     </CustomLink>
                     <CustomLink
                       to="https://dashboard.qodeinvest.com/"

@@ -10,8 +10,7 @@ import Heading from "../components/common/Heading";
 import Section from "../components/container/Section";
 import Modal from "../components/Modal";
 import GrowMoney from "./GrowMoney";
-import { Parallax } from "react-parallax"; // Import Parallax component
-import principle from "../assets/principle.jpg"; // Ensure the correct path
+import ParallaxSection from "../components/ParallexSection";
 
 const Home = () => {
   const [email, setEmail] = useState("");
@@ -162,7 +161,8 @@ const Home = () => {
       </Section>
 
       {/* Parallax Section */}
-      <Parallax className="mb-6 mt-7" bgImage={principle} strength={200}>
+      <ParallaxSection />
+      {/* <Parallax className="mb-6 mt-7" bgImage={principle} strength={200}>
         <div
           className="relative w-full min-h-[485px] bg-fixed bg-right sm:bg-center bg-cover flex items-center justify-center"
           style={{
@@ -172,7 +172,6 @@ const Home = () => {
         >
           <div className="absolute inset-0 bg-black opacity-35"></div>
 
-          {/* Content centered within the image */}
           <div className="relative z-10 w-full max-w-[93%] sm:max-w-[1386px] mx-auto flex items-center justify-end">
             <div className="w-[820px]  text-start p-4  backdrop-filter backdrop-blur-sm bg-white bg-opacity-5 shadow-2xl overflow-auto">
               <Heading className="text-heading font-heading text-lightBeige italic mb-18">
@@ -191,7 +190,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </Parallax>
+      </Parallax> */}
 
       <Section padding="normal" className="mb-6">
         <div className="md:flex flex-col items-center text-center gap-2 justify-center">

@@ -255,12 +255,12 @@ function PythonCalculator() {
     if (!resultData) return null;
 
     const metrics = [
-      { key: "CAR", value: resultData.car },
-      { key: "Max Drawdown", value: resultData.max_dd },
-      { key: "Avg Drawdown", value: resultData.avg_dd },
-      { key: "CAR/MDD", value: resultData.carbymdd },
-      { key: "Max Gain", value: resultData.max_gain },
-      { key: "Max Loss", value: resultData.max_loss },
+      { key: "CAGR", value: resultData.car.toFixed(2) + "%" },
+      { key: "Max Drawdown", value: resultData.max_dd.toFixed(2) + "%" },
+      { key: "Avg Drawdown", value: resultData.avg_dd.toFixed(2) + "%" },
+      { key: "CAR/MDD", value: resultData.carbymdd.toFixed(2) },
+      { key: "Max Gain / Day", value: resultData.max_gain.toFixed(2) + "%" },
+      { key: "Max Loss", value: resultData.max_loss.toFixed(2) + "%" },
     ];
 
     return (

@@ -4,7 +4,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import rishabh from "../assets/Team/Rishabh.jpg";
 import karan from "../assets/Team/Karan.jpg";
-import kavan from "../assets/Team/Kavan HS.png";
+import kavan from "../assets/Team/Kavan.jpg";
 import vidhi from "../assets/Team/Vidhi.jpg";
 import sanket from "../assets/Team/Sanket.jpg";
 import purnanand from "../assets/Team/Purnanand.jpg";

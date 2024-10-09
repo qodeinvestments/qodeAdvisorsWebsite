@@ -49,7 +49,7 @@ function PythonCalculator() {
         },
         height: "60%",
         min: 0,
-        tickAmount: 10,
+        tickAmount: 4,
       },
       {
         title: {
@@ -58,7 +58,7 @@ function PythonCalculator() {
         opposite: false,
         top: "60%",
         height: "40%",
-        left: "8%",
+        left: "6%",
       },
     ],
     series: [
@@ -195,6 +195,7 @@ function PythonCalculator() {
         formData
       );
       const data = response.data;
+      console.log(data);
       setResultData(data);
 
       if (data && data.equity_curve_data && data.drawdown_data) {
@@ -367,7 +368,7 @@ function PythonCalculator() {
             Daily series must include two columns:
             <ul className="list-decimal sm:pl-5 pl-2">
               <li>
-                First column for the date (Supported formats: DD/MM/YYYY).
+                First column for the date (Supported formats: DD-MM-YYYY).
               </li>
               <li>Second column for daily return or index value</li>
             </ul>

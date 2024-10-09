@@ -179,12 +179,12 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
                   ))}
                   <td className=" p-18 text-start font-body sm:text-body text-sm text-black border border-brown ">
                     {drawdowns.latest[strat]
-                      ? `${drawdowns.latest[strat].toFixed(1)}%`
+                      ? `${drawdowns.latest[strat].toFixed(2)}%`
                       : "N/A"}
                   </td>
                   <td className=" p-18 text-start text-black border border-brown ">
                     {drawdowns.lowest[strat]
-                      ? `${drawdowns.lowest[strat].toFixed(1)}%`
+                      ? `${drawdowns.lowest[strat].toFixed(2)}%`
                       : "N/A"}
                   </td>
                 </tr>

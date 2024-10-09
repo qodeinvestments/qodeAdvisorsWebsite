@@ -51,9 +51,7 @@ const FundManagers = ({ text }) => {
       {/* Left Section */}
       <div className=" w-full  sm:px-9 ">
         <Heading className="text-mobileSemiHeading md:text-semiheading italic text-brown mb-2 text-center ">
-          {text
-            ? text
-            : "Want to speak to the our fund manager before investing?"}
+          {text ? text : "Want to speak to our fund manager before investing?"}
         </Heading>
 
         <div className="sm:flex  justify-center md:justify-center">

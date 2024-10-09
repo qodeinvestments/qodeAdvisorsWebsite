@@ -399,7 +399,7 @@ function PythonCalculator() {
                 Download Excel
               </Button> */}
               <div
-                className={`chart-container ${isMobile ? "mobile-chart" : "desktop-chart"}`}
+                className={`chart-container ${isMobile ? "mobile-chart" : ""}`}
               >
                 <HighchartsReact
                   highcharts={Highcharts}

@@ -108,7 +108,7 @@ const StrategyComponent = ({ strategyData }) => {
               <div className="absolute inset-0 bg-black opacity-20"></div>
 
               {/* Content that sits on top of the background and overlay */}
-              <div className="relative z-10 text-start backdrop-blur-md bg-black bg-opacity-30 p-4 ">
+              <div className="relative z-10 text-start backdrop-blur-md bg-black bg-opacity-30 p-3 ">
                 <Heading
                   isItalic
                   className="text-lightBeige sm:text-semiheading text-mobileSemiHeading mb-4"

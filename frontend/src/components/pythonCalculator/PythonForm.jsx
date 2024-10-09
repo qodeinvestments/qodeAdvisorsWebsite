@@ -11,14 +11,20 @@ const STRATEGIES = [
   { label: "QGFLong", value: "QGFLong" },
   { label: "Shortflat", value: "Shortflat" },
   { label: "LongOpt", value: "LongOpt" },
-  { label: "Allweather", value: "Allweather" },
+  { label: "QGF+Derivatives", value: "QGF+Derivatives" },
+  { label: "QGF", value: "QGF" },
+  { label: "QAW", value: "QAW" },
+  { label: "QVF", value: "QVF" },
 ];
 
 const DEBTFUNDS = [
   { label: "QGFLong", value: "QGFLong" },
   { label: "Shortflat", value: "Shortflat" },
   { label: "LongOpt", value: "LongOpt" },
-  { label: "Allweather", value: "Allweather" },
+  { label: "QGF+Derivatives", value: "QGF+Derivatives" },
+  { label: "QGF", value: "QGF" },
+  { label: "QAW", value: "QAW" },
+  { label: "QVF", value: "QVF" },
 ];
 
 function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {

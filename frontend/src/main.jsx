@@ -19,6 +19,7 @@ import TermsnConditions from "./Pages/TermsandConditions.jsx";
 import Disclosure from "./Pages/Disclosure.jsx";
 import AboutUs from "./Pages/AboutUs.jsx";
 import PythonCalculator from "./Pages/PythonCalculator.jsx";
+import Tool from "./Pages/Tool.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -94,6 +95,10 @@ const router = createBrowserRouter([
       {
         path: "/blogs/:slug", // This route captures the postId parameter
         element: <BlogDetails />,
+      },
+      {
+        path: "/tool", // This route captures the postId parameter
+        element: <Tool />,
       },
     ],
   },

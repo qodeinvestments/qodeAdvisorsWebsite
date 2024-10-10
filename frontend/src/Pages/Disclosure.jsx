@@ -39,11 +39,7 @@ const Disclosure = () => {
           Disclosure
         </Heading>
         <div className="grid grid-cols-1 gap-2">
-          <CustomLink
-            to={"/documents/DisclosureDocument.pdf"}
-            target="_blank"
-            download
-          >
+          <CustomLink to={"/documents/Disclosure-Document.pdf"} target="_blank">
             <div className=" p-1 md:p-3 cursor-pointer border border-brown transition-all group duration-300 hover:bg-beige hover:text-black capitalize hover:shadow-xl">
               <div className="flex justify-between items-center">
                 <div>

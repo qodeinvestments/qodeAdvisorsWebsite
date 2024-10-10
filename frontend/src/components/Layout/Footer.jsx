@@ -72,7 +72,7 @@ const Footer = () => {
                 <CustomLink to="/terms-n-conditions">
                   Terms and Conditions
                 </CustomLink>,
-                <CustomLink to={"/python-calculator"}>
+                <CustomLink to={"/portfolio-visualiser"}>
                   Portfolio Visualizer
                 </CustomLink>,
               ]}

@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Button from "./common/Button";
 import Heading from "./common/Heading";
-import Section from "./container/Section";
 
 const Blogs = () => {
   const [latestPosts, setLatestPosts] = useState([]);

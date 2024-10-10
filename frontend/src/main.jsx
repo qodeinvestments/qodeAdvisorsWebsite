@@ -88,7 +88,7 @@ const router = createBrowserRouter([
         element: <Blogs />,
       },
       {
-        path: "/python-calculator",
+        path: "/portfolio-visualiser",
         element: <PythonCalculator />,
       },
       {

@@ -14,22 +14,19 @@ function FileUpload({ onColumnsUpdate, onFileSelect }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   useEffect(() => {
-    // Function to revert changes
-    const revertChanges = async () => {
+    const clearUserData = async () => {
       try {
-        await axios.post(`${API_URL}/revert_changes`);
+        await axios.post(`${API_URL}/clear_user_data`);
       } catch (error) {
-        setError(error);
+        console.error("Error clearing user data:", error);
       }
     };
 
-    // Add event listener for page unload
-    window.addEventListener("beforeunload", revertChanges);
+    window.addEventListener("beforeunload", clearUserData);
 
-    // Cleanup function
     return () => {
-      window.removeEventListener("beforeunload", revertChanges);
-      revertChanges(); // Revert changes when component unmounts
+      window.removeEventListener("beforeunload", clearUserData);
+      clearUserData();
     };
   }, []);
 
@@ -59,23 +56,22 @@ function FileUpload({ onColumnsUpdate, onFileSelect }) {
         headers: {
           "Content-Type": "multipart/form-data",
         },
+        withCredentials: true, // This is important for maintaining session cookies
       });
 
-      const columns = response.data.columns; // Assuming backend returns { columns: [...] }
-      onColumnsUpdate(columns); // Pass columns to the parent component
+      const columns = response.data.columns;
+      onColumnsUpdate(columns);
       message.success("File uploaded successfully!");
     } catch (error) {
-      // Extract error message from server response
       const errorMessage =
         error.response?.data?.message ||
         "Failed to upload file. Please try again.";
       console.error("Error uploading file:", error);
-      message.error(errorMessage); // Display the error message from server
+      message.error(errorMessage);
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <div className="bg-white border border-brown mx-auto mb-4 max-w-7xl">
       <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">

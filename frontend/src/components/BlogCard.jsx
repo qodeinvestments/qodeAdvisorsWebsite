@@ -1,30 +1,8 @@
 import React from "react";
-import { faArrowRight, faClock } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion } from "framer-motion";
-import Text from "./common/Text";
 import Heading from "./common/Heading";
-import CustomLink from "./common/CustomLink";
 import { Link } from "react-router-dom";
-function BlogCard({
-  html,
-  title,
-  excerpt,
-  feature_image,
-  reading_time,
-  slug,
-  primary_author,
-  published_at,
-}) {
-  function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString("en-IN", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  }
-
+function BlogCard({ title, excerpt, feature_image, slug, primary_author }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 0 }}

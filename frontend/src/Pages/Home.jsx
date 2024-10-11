@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Banner, Blogs, InvestmentStrategies } from "../components/index";
 import FundManagers from "../components/FundManagers";
 import { Helmet } from "react-helmet"; // Import Helmet
@@ -13,12 +13,12 @@ import ParallaxSection from "../components/ParallexSection";
 
 const Home = () => {
   const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false); // Remove isLoading and use isSubmitting consistently
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentText, setCurrentText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [index, setIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
+
   const typingSpeed = 130;
   const deletingSpeed = 55;
   const delayBetweenTexts = 1500;
@@ -29,12 +29,19 @@ const Home = () => {
     "carried out by Qode.",
   ];
 
+  const API_URL =
+    import.meta.env.MODE === "production"
+      ? import.meta.env.VITE_BACKEND_PROD_URL
+      : import.meta.env.VITE_BACKEND_DEV_URL;
+
   useEffect(() => {
     let timeout;
     if (isTyping) {
       if (currentText.length < textArray[index].length) {
         timeout = setTimeout(() => {
-          setCurrentText(textArray[index].slice(0, currentText.length + 1));
+          setCurrentText((prevText) =>
+            textArray[index].slice(0, prevText.length + 1)
+          );
         }, typingSpeed);
       } else {
         timeout = setTimeout(() => {
@@ -44,7 +51,7 @@ const Home = () => {
     } else {
       if (currentText.length > 0) {
         timeout = setTimeout(() => {
-          setCurrentText(currentText.slice(0, -1));
+          setCurrentText((prevText) => prevText.slice(0, -1));
         }, deletingSpeed);
       } else {
         setIsTyping(true);
@@ -55,27 +62,33 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, [currentText, isTyping, index]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setIsSubmitting(true);
+  // Optimize handleSubmit with useCallback to avoid re-rendering
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault();
+      if (!email) {
+        toast.error("Email is required.", {
+          position: "bottom-right",
+        });
+        return;
+      }
 
-    try {
-      const response = await fetch(
-        "https://api.qodeinvestments.com/api/mailerlite/subscribe",
-        {
+      if (isSubmitting) return; // Prevent multiple submissions
+
+      setIsSubmitting(true); // Set submitting state to prevent re-submit
+
+      try {
+        const response = await fetch(`${API_URL}/emails/collect/`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ email }),
-        }
-      );
+        });
 
-      if (response.ok) {
-        toast.success(
-          "Thank you for subscribing! Check your email for confirmation.",
-          {
+        if (response.ok) {
+          const data = await response.json();
+          toast.success(data.message, {
             position: "bottom-right",
             autoClose: 5000,
             hideProgressBar: false,
@@ -85,30 +98,32 @@ const Home = () => {
             progress: undefined,
             theme: "light",
             transition: Bounce,
-          }
-        );
-        setEmail("");
-      } else {
-        throw new Error("Subscription failed");
+          });
+          console.log(data);
+
+          setEmail(""); // Reset email after successful submission
+        } else {
+          const errorData = await response.json();
+          throw new Error(errorData.message || "Subscription failed");
+        }
+      } catch (error) {
+        toast.error(`An error occurred: ${error.message}`, {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+      } finally {
+        setIsSubmitting(false); // Reset the isSubmitting state
       }
-    } catch (error) {
-      toast.error("An error occurred. Please try again later.", {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
-      console.error("Error subscribing to newsletter:", error);
-    } finally {
-      setIsLoading(false);
-      setIsSubmitting(false);
-    }
-  };
+    },
+    [API_URL, email, isSubmitting] // Only re-run when these variables change
+  );
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -161,35 +176,6 @@ const Home = () => {
 
       {/* Parallax Section */}
       <ParallaxSection />
-      {/* <Parallax className="mb-6 mt-7" bgImage={principle} strength={200}>
-        <div
-          className="relative w-full min-h-[485px] bg-fixed bg-right sm:bg-center bg-cover flex items-center justify-center"
-          style={{
-            backgroundImage: `url(${principle})`,
-            backgroundPosition: "65% 20%",
-          }}
-        >
-          <div className="absolute inset-0 bg-black opacity-35"></div>
-
-          <div className="relative z-10 w-full max-w-[93%] sm:max-w-[1386px] mx-auto flex items-center justify-end">
-            <div className="w-[820px]  text-start p-4  backdrop-filter backdrop-blur-sm bg-white bg-opacity-5 shadow-2xl overflow-auto">
-              <Heading className="text-heading font-heading text-lightBeige italic mb-18">
-                Our Investing Principles
-              </Heading>
-              <Text className="text-lightBeige text-body mb-4">
-                At Qode, we see things for what they are and ignore all the
-                noise.
-              </Text>
-              <Button
-                href={"/blogs/qodes-principles-of-investing"}
-                isGlassmorphism={true}
-              >
-                Know How
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Parallax> */}
 
       <Section padding="normal" className="mb-6">
         <div className="md:flex flex-col items-center text-center gap-2 justify-center">
@@ -215,11 +201,11 @@ const Home = () => {
               <div>
                 <Button
                   type="submit"
-                  disabled={isLoading}
+                  disabled={isSubmitting} // Ensure proper usage of the isSubmitting flag
                   className="bg-beige text-black"
-                  aria-busy={isLoading}
+                  aria-busy={isSubmitting}
                 >
-                  {isLoading ? (
+                  {isSubmitting ? (
                     <>
                       <span className="inline-flex items-center">
                         Submitting

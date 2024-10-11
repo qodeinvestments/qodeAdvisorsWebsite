@@ -31,13 +31,13 @@ const AboutUs = () => {
       designation: "Fund Manager, CEO",
       linkedin: "https://www.linkedin.com/in/rishabhnahar",
       image: rishabh,
-      email: "rishabh@qodeinvest.com",
+      email: "rishabh.nahar@qodeinvest.com",
     },
     {
       name: "Kavan Sejpal",
       designation: "Fund Manager",
       linkedin: "https://www.linkedin.com/in/kavan-sejpal-760a2b23/",
-      email: "kavan@qodeinvest.com",
+      email: "kavan.sejpal@qodeinvest.com",
       image: kavan,
     },
     {
@@ -58,7 +58,7 @@ const AboutUs = () => {
       name: "Purnanand Kulkarni",
       designation: "Quant Analyst",
       linkedin: "https://www.linkedin.com/in/purnanandkulkarni/",
-      email: "purnanand.kulkarni@swancapital.in",
+      email: "compliance@qodeinvest.com",
       image: purnanand,
     },
     {
@@ -152,14 +152,14 @@ const AboutUs = () => {
         />
         <meta name="author" content="Qode Advisors LLP" />
       </Helmet>
-      <Section padding="extralarge" className="mt-5">
+      <Section className="mt-9">
         <Heading
           isItalic
           className="sm:text-semiheading text-mobileSemiHeading text-center mb-1 text-brown font-semiheading"
         >
           Our Story
         </Heading>
-        <Text className="text-center text-body font-body mb-7">
+        <Text className="text-center text-body font-body mb-7 px-4 lg:px-10">
           Our journey started when we (Karan, Kavan, and Rishabh) invested our
           money in the stock market using quant models. We had a passion for
           finance, and soon enough, we began consistently outperforming the
@@ -186,7 +186,7 @@ const AboutUs = () => {
           Our Team
         </Heading>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {teamMembers.map((member, index) => (
             <TeamMemberCard key={index} member={member} />
           ))}

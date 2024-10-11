@@ -33,8 +33,8 @@ function sendNewsletterMail(email, subject) {
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 }
                 .email-header {
-                    background-color: #d1a47b; /* Changed from green to brown */
-                    color: white;
+                    background-color: #ffffff; /* Changed from green to brown */
+                    color:  #d1a47b;
                     padding: 10px;
                     text-align: center;
                     font-family: 'Playfair Display', serif; /* Company logo in Playfair font */
@@ -56,7 +56,7 @@ function sendNewsletterMail(email, subject) {
                     color: #777777;
                 }
                 .cta-button {
-                    background-color: #945c39; /* Changed from green to brown */
+                    background-color: #d1a47b; /* Changed from green to brown */
                     color: white;
                     padding: 10px 20px;
                     text-decoration: none;
@@ -64,9 +64,15 @@ function sendNewsletterMail(email, subject) {
                     display: inline-block;
                     margin-top: 20px;
                 }
+
                 .cta-button:hover {
                     background-color: #7a4e30; /* Slightly darker shade of brown on hover */
                 }
+
+                .cta-button:active {
+                    color: white; /* Set active link color to white */
+                }
+
             </style>
         </head>
         <body>

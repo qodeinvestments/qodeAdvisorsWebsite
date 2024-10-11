@@ -55,9 +55,7 @@ function sendNewsletterMail(email, subject) {
                     font-size: 12px;
                     color: #777777;
                 }
-                    .ii a[href] {
-                        color: #ffffff;
-                    }
+                   
                 .cta-button {
                     background-color: #d1a47b; /* Changed from green to brown */
                     color: white;
@@ -88,7 +86,7 @@ function sendNewsletterMail(email, subject) {
                     <p>Thank you for subscribing to the Qode Newsletter! We're excited to have you on board.</p>
                     <p>At Qode, we are committed to helping you grow your wealth through data-driven strategies.</p>
                     <p>In the meantime, feel free to check out our latest blog posts or reach out if you have any questions.</p>
-                    <a href="https://qodeinvest.com/blogs" class="cta-button">Visit Our Blog</a>
+                    <a href="https://qodeinvest.com/blogs" style="color: white; text-decoration: none;" class="cta-button">Visit Our Blog</a>
                 </div>
                 <div class="email-footer">
                     <p>&copy; 2024 Qode Advisors LLP, All rights reserved.</p>

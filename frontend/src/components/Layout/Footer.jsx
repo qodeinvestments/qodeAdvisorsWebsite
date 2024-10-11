@@ -96,7 +96,7 @@ const Footer = () => {
                 <CustomLink to="/strategies/qode-all-weather">
                   Qode All Weather
                 </CustomLink>,
-                <CustomLink to="/blogs/qode-future-horizon">
+                <CustomLink to="/blogs/qode-future-horizons">
                   Qode Future Horizons
                 </CustomLink>,
               ]}

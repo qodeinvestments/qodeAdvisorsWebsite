@@ -204,7 +204,9 @@ const PerformanceChart = ({ data, strategy, blogUrl, error, isLoading }) => {
             {" "}
             {startDate && (
               <Text className="text-center text-xs mb-3">
-                Showing data from {startDate} to {endDate}
+                Showing data from{" "}
+                {new Date(startDate).toLocaleDateString("en-GB")} to{" "}
+                {new Date(endDate).toLocaleDateString("en-GB")}
               </Text>
             )}
             {/* Adjusted margin */}

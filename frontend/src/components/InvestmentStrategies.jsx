@@ -56,7 +56,7 @@ const InvestmentStrategies = () => {
     {
       title: "Qode Future Horizons",
       description: "Fusing data and insight to add an edge.",
-      link: "/blogs/qode-future-horizon",
+      link: "/blogs/qode-future-horizons",
     },
   ];
 

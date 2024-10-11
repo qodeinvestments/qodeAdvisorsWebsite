@@ -122,7 +122,7 @@ const Strategies = () => {
     {
       id: "futureHorizon",
       name: "Qode Future Horizons",
-      slug: "qode-future-horizon",
+      slug: "qode-future-horizons",
       description:
         "<Text class='mb-1'>Fusing data & insight<br class='md:hidden' />  to add an edge.</Text>",
     },

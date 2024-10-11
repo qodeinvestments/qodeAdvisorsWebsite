@@ -1,6 +1,6 @@
-import { useCallback, useState, useMemo, useRef } from "react";
+import { useCallback, useState, useRef } from "react";
 
-const useChartData = (strategy, isMobile) => {
+const useChartData = (strategy, isMobile, showDrawdown = false) => {
   const [chartOptions, setChartOptions] = useState(null);
   const prevDataLength = useRef(0);
 
@@ -11,16 +11,26 @@ const useChartData = (strategy, isMobile) => {
       data[0]["benchmark_values"] || data[0]["benchmark_values"]
     );
 
-    return data.map((item) => ({
-      date: item.date,
-      strategyValue:
-        (parseFloat(item[strategyKey]) / initialStrategyValue) * 100,
-      niftyValue:
-        (parseFloat(item["benchmark_values"] || item["benchmark_values"]) /
-          initialNiftyValue) *
-        100,
-      benchmark: item.benchmark,
-    }));
+    let maxStrategyValue = initialStrategyValue;
+    return data.map((item) => {
+      const currentValue = parseFloat(item[strategyKey]);
+      const drawdown =
+        maxStrategyValue > currentValue
+          ? (currentValue / maxStrategyValue - 1) * 100
+          : 0;
+      maxStrategyValue = Math.max(maxStrategyValue, currentValue);
+
+      return {
+        date: item.date,
+        strategyValue: (currentValue / initialStrategyValue) * 100,
+        niftyValue:
+          (parseFloat(item["benchmark_values"] || item["benchmark_values"]) /
+            initialNiftyValue) *
+          100,
+        drawdown,
+        benchmark: item.benchmark,
+      };
+    });
   }, []);
 
   const updateChartOptions = useCallback(
@@ -28,15 +38,72 @@ const useChartData = (strategy, isMobile) => {
       const dates = data.map((item) => item.date);
       const strategyValues = data.map((item) => Math.trunc(item.strategyValue));
       const niftyValues = data.map((item) => Math.trunc(item.niftyValue));
+      const drawdownValues = data.map((item) => Math.trunc(item.drawdown));
       const benchmarkName = data[0].benchmark;
-      let maxStrategyValue = 0;
-      const drawdown = data.map((item) => {
-        const value = item.strategyValue;
-        const dd =
-          maxStrategyValue > value ? (value / maxStrategyValue - 1) * 100 : 0;
-        maxStrategyValue = Math.max(maxStrategyValue, value);
-        return Math.trunc(dd);
-      });
+
+      const mainYAxis = {
+        title: { text: "" },
+        height: showDrawdown ? "70%" : "100%",
+      };
+
+      const drawdownYAxis = {
+        title: { text: "Drawdown %" },
+        top: "75%",
+        height: "25%",
+        offset: 0,
+        opposite: true,
+        reversed: true,
+      };
+
+      const series = [
+        {
+          name: strategy,
+          data: strategyValues,
+          color: "#d1a47b",
+          lineWidth: 1,
+          marker: {
+            enabled: false,
+            states: {
+              hover: {
+                enabled: true,
+                radius: 5,
+              },
+            },
+          },
+          type: "line",
+          animation: { duration: 2000 },
+        },
+        {
+          name: benchmarkName,
+          data: niftyValues,
+          color: "#000",
+          lineWidth: 1,
+          marker: {
+            enabled: false,
+            states: {
+              hover: {
+                enabled: true,
+                radius: 5,
+              },
+            },
+          },
+          type: "line",
+          animation: { duration: 2000 },
+        },
+      ];
+
+      if (showDrawdown) {
+        series.push({
+          name: "Drawdown",
+          data: drawdownValues,
+          color: "#FF0000",
+          lineWidth: 1,
+          yAxis: 1,
+          type: "area",
+          fillOpacity: 0.3,
+          animation: { duration: 2000 },
+        });
+      }
 
       const options = {
         title: "",
@@ -45,55 +112,15 @@ const useChartData = (strategy, isMobile) => {
           labels: {
             formatter: function () {
               const date = new Date(this.value);
-              return `${date.getFullYear()}`; // Ensures the labels are formatted correctly
+              return `${date.getFullYear()}`;
             },
           },
           tickPositions: [0, Math.floor(dates.length / 2), dates.length - 1],
         },
-        yAxis: [
-          {
-            title: { text: "" },
-            height: "100%",
-          },
-        ],
-        series: [
-          {
-            name: strategy,
-            data: strategyValues,
-            color: "#d1a47b",
-            lineWidth: 1,
-            marker: {
-              enabled: false,
-              states: {
-                hover: {
-                  enabled: true,
-                  radius: 5,
-                },
-              },
-            },
-            type: "line",
-            animation: { duration: 2000 }, // Explicitly define animation duration
-          },
-          {
-            name: benchmarkName,
-            data: niftyValues,
-            color: "#000",
-            lineWidth: 1,
-            marker: {
-              enabled: false,
-              states: {
-                hover: {
-                  enabled: true,
-                  radius: 5,
-                },
-              },
-            },
-            type: "line",
-            animation: { duration: 2000 }, // Explicitly define animation duration
-          },
-        ],
+        yAxis: showDrawdown ? [mainYAxis, drawdownYAxis] : [mainYAxis],
+        series,
         chart: {
-          height: isMobile ? 300 : 520,
+          height: isMobile ? 300 : showDrawdown ? 620 : 520,
           backgroundColor: "none",
           zoomType: "x",
           marginLeft: isMobile ? 0 : 40,
@@ -108,7 +135,7 @@ const useChartData = (strategy, isMobile) => {
         exporting: { enabled: !isMobile },
         plotOptions: {
           series: {
-            animation: { duration: 2000 }, // Explicitly define animation for the entire series
+            animation: { duration: 2000 },
             states: {
               hover: {
                 enabled: true,
@@ -119,10 +146,9 @@ const useChartData = (strategy, isMobile) => {
         },
       };
 
-      // Apply the new options with animation
       setChartOptions(options);
     },
-    [strategy, isMobile]
+    [strategy, isMobile, showDrawdown]
   );
 
   return {

@@ -12,6 +12,8 @@ const Calculator = ({ data, strategy }) => {
   const [maxInvestmentPeriod, setMaxInvestmentPeriod] = useState(Infinity);
 
   useEffect(() => {
+    console.log(data);
+
     if (data && data.length > 0) {
       const oldestDate = new Date(data[0].date);
       const newestDate = new Date(data[data.length - 1].date);
@@ -36,7 +38,6 @@ const Calculator = ({ data, strategy }) => {
 
   const updateStartOfMonthData = () => {
     if (!data || data.length === 0) return;
-
     const periodStartDate = new Date(data[data.length - 1].date);
     periodStartDate.setFullYear(
       periodStartDate.getFullYear() - investmentPeriod
@@ -50,7 +51,6 @@ const Calculator = ({ data, strategy }) => {
         date >= periodStartDate
       );
     });
-
     setStartOfMonthData(filteredData);
   };
 
@@ -93,18 +93,20 @@ const Calculator = ({ data, strategy }) => {
           setFutureInvestmentValue(0);
         }
       } else {
-        const months =
-          investmentFrequency === "monthly"
-            ? investmentPeriod * 12
-            : investmentPeriod;
+        const totalMonths = investmentPeriod * 12;
         let totalShares = 0;
-        for (let i = 0; i < months && i < startOfMonthData.length; i++) {
+
+        for (let i = 0; i < totalMonths; i++) {
+          const monthIndex = i % startOfMonthData.length;
           const strategyValue = safeParseFloat(
-            startOfMonthData[i].total_portfolio_nav
+            startOfMonthData[monthIndex].total_portfolio_nav
           );
+          console.log(strategyValue);
+
           const shares = investmentAmount / strategyValue;
           totalShares += shares;
         }
+
         const finalPrice =
           totalShares *
           safeParseFloat(data[data.length - 1].total_portfolio_nav);

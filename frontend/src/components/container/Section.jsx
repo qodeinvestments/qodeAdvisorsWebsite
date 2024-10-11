@@ -20,13 +20,13 @@ const Section = ({
     small: "p-2",
     normal: "p-2 sm:p-4",
     large: "p-2 sm:p-5",
-    extralarge: "sm:p-7 p-2 py-5 sm:py-7",
+    extralarge: "md:p-7 p-2 py-5 sm:py-7",
   };
 
   const paddingClass = paddingClasses[padding] || "";
 
   // Define width class
-  const widthClass = fullWidth ? "w-full" : "max-w-[93%] sm:max-w-[1386px]";
+  const widthClass = fullWidth ? "w-full" : "max-w-[93%] lg:max-w-[1386px]";
 
   // Check if the className contains any explicit margin classes for top or bottom
   const hasMarginTop = /mt-\d+/.test(className);

@@ -186,7 +186,7 @@ const AboutUs = () => {
           Our Team
         </Heading>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {teamMembers.map((member, index) => (
             <TeamMemberCard key={index} member={member} />
           ))}
@@ -207,10 +207,10 @@ const TeamMemberCard = ({ member }) => {
       <div className="p-1">
         <div className="flex justify-between items-start mb-18">
           <div>
-            <Text className="text-subheading font-subheading text-brown">
+            <Text className="text-body font-semibold  text-black">
               {member.name}
             </Text>
-            <span className="text-body text-text-secondary">
+            <span className="text-body text-darkGray">
               {member.designation}
             </span>
           </div>

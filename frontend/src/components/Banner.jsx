@@ -67,7 +67,7 @@ const Banner = () => {
 
       {/* Content */}
       <div className="relative text-center z-10 flex justify-center items-center gap-4  h-full">
-        <SectionContent className="text-center max-w-[1066px] m-auto text-lightBeige ">
+        <SectionContent className="text-center max-w-[1066px] mt-9 lg:mt-auto m-auto text-lightBeige ">
           <Heading className="sm:text-semiheading italic text-mobileSemiHeading font-subheading mb-8 ">
             We grow wealth for individuals, families, and businesses.
           </Heading>

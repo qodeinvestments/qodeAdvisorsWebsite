@@ -142,7 +142,7 @@ const Home = () => {
 
       <Section
         padding="extralarge"
-        className="max-w-[93%] mt-5 sm:max-w-[1386px] bg-lightBeige mx-auto"
+        className="max-w-[93%] mt-5 md:max-w-[1386px] bg-lightBeige mx-auto"
         fullWidth={false}
       >
         <InvestmentStrategies />
@@ -150,7 +150,7 @@ const Home = () => {
 
       <Section
         padding="normal"
-        className="max-w-[93%] mb-4 sm:mb-0 sm:max-w-[1386px] mx-auto"
+        className="max-w-[93%] mb-4 sm:mb-0 md:max-w-[1386px] mx-auto"
       >
         <FundManagers />
       </Section>

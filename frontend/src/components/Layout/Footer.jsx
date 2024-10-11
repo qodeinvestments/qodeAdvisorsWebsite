@@ -17,13 +17,13 @@ import Section from "../container/Section";
 const Footer = () => {
   return (
     <footer className="bg-lightBeige">
-      <div className="py-5 px-2 sm:px-0 sm:max-w-[1386px] mx-auto">
-        <div className="flex flex-col md:flex-row justify-between  items-start space-y-2 sm:space-y-0">
-          <div className="text-center mx-auto sm:mx-0 mb-4 sm:mb-0 sm:text-left col-span-1 sm:col-span-2 md:col-span-1">
+      <div className="py-5 px-2 md:px-4 lg:max-w-[1386px] mx-auto">
+        <div className="flex flex-col lg:flex-row justify-between items-start space-y-2 md:space-y-0">
+          <div className="text-center mx-auto lg:mx-0 mb-4 sm:mb-0 lg:text-left col-span-1 sm:col-span-2 md:col-span-1">
             <Heading className="sm:text-subheading text-mobileSubHeadingtext text-brown mb-2">
               Qode Advisors LLP
             </Heading>
-            <Text className="text-body sm:text-body max-w-xs mx-auto sm:mx-0 text-black">
+            <Text className="text-body lg:text-body w-full lg:max-w-xs mx-auto sm:mx-0 text-black">
               2nd Floor, Tree Building, Raghuvanshi Mills Compound, Gandhi
               Nagar, Upper Worli, Lower Parel, Mumbai, Maharashtra 400013
             </Text>

@@ -14,7 +14,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
     "1Y": {},
     "3Y": {},
     "5Y": {},
-    "Since Inception": {}, // Changed from All to "Since Inception"
+    All: {}, // Changed from All to "All"
   });
   const [drawdowns, setDrawdowns] = useState({
     latest: {},
@@ -35,7 +35,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
       "1Y": "1Y",
       "3Y": "3Y",
       "5Y": "5Y",
-      "Since Inception": "ALL", // Changed display text while keeping calculation logic
+      All: "ALL", // Changed display text while keeping calculation logic
     };
 
     const calculatedReturns = {};
@@ -123,7 +123,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
 
   const benchmark = data[0]?.benchmark || "Default Benchmark";
   const strategies = [strategy, benchmark];
-  const periods = ["1Y", "3Y", "5Y", "Since Inception"]; // Updated display text
+  const periods = ["1Y", "3Y", "5Y", "All"]; // Updated display text
 
   return (
     <div className="overflow-x-auto sm:p-4 p-18">
@@ -135,7 +135,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
       </Heading>
       <Text className="sm:text-body text-sm font-body text-black mb-4">
         Trailing returns are annualised returns from the specified period till
-        today. "Since Inception" represents returns since the strategy began.
+        today.
       </Text>
       <div className="relative overflow-x-auto scrollbar-thin scrollbar-thumb-brown scrollbar-track-black border-l md:border-none border-brown">
         <div className="sm:w-full min-sm:w-[640px]">
@@ -153,9 +153,9 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
                     {period}
                   </th>
                 ))}
-                <th className=" p-18 text-start font-body sm:text-body text-sm text-black border border-brown ">
+                {/* <th className=" p-18 text-start font-body sm:text-body text-sm text-black border border-brown ">
                   DD
-                </th>
+                </th> */}
                 <th className=" p-18 text-start font-body sm:text-body text-sm text-black border border-brown ">
                   MDD
                 </th>
@@ -177,11 +177,11 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
                         : "N/A"}
                     </td>
                   ))}
-                  <td className=" p-18 text-start font-body sm:text-body text-sm text-black border border-brown ">
+                  {/* <td className=" p-18 text-start font-body sm:text-body text-sm text-black border border-brown ">
                     {drawdowns.latest[strat]
                       ? `${drawdowns.latest[strat].toFixed(2)}%`
                       : "N/A"}
-                  </td>
+                  </td> */}
                   <td className=" p-18 text-start text-black border border-brown ">
                     {drawdowns.lowest[strat]
                       ? `${drawdowns.lowest[strat].toFixed(2)}%`
@@ -195,7 +195,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
       </div>
 
       <Text className="text-beige sm:text-body text-sm font-body mt-1">
-        *MDD(Maximum Drawdown) is how much money an investment loses from its
+        *MDD (Maximum Drawdown) is how much money an investment loses from its
         highest point to its lowest point before it starts going up again.
       </Text>
     </div>

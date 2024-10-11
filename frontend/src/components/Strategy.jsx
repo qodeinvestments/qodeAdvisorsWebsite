@@ -88,16 +88,16 @@ const StrategyComponent = ({ strategyData }) => {
         </Section>
 
         <Section>
-          <div className="w-full flex sm:flex-row flex-col gap-4">
+          <div className="w-full flex lg:flex-row flex-col gap-4">
             {" "}
             {/* Adjusted margin */}
-            <div className=" sm:p-6 p-3 border border-brown bg-white  sm:w-3/6">
+            <div className=" lg:p-6 p-3 border border-brown bg-white  lg:w-3/6">
               {" "}
               {/* Adjusted padding */}
               <Calculator data={data} strategy={strategyCode} />
             </div>
             <div
-              className="relative bg-cover flex justify-start items-start flex-col sm:p-6 p-2 sm:w-1/2"
+              className="relative bg-cover flex justify-start items-start flex-col sm:p-6 p-2 lg:w-1/2"
               style={{
                 backgroundImage: `url(${image})`,
                 minHeight: "490px",

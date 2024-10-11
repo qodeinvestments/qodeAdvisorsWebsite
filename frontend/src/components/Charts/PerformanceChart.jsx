@@ -129,7 +129,7 @@ const PerformanceChart = ({ data, strategy, blogUrl, error, isLoading }) => {
                 maxWidth: "90vw",
               }}
             >
-              <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
+              <div className="flex flex-col gap-1 lg:flex-row sm:gap-4">
                 <div className="w-full">
                   <label
                     htmlFor="start-date"
@@ -185,7 +185,7 @@ const PerformanceChart = ({ data, strategy, blogUrl, error, isLoading }) => {
       <div className="w-full ">
         <Tabs value="chart1">
           {" "}
-          <div className="flex justify-between flex-col sm:flex-row items-center">
+          <div className="flex justify-between flex-col lg:flex-row items-center">
             <div className="flex flex-wrap  justify-center items-center   gap-18">
               {renderDateRangeButtons()}
             </div>
@@ -232,7 +232,7 @@ const PerformanceChart = ({ data, strategy, blogUrl, error, isLoading }) => {
         className="p-1  border-brown border transition-all justify-between items-center  flex duration-500 hover:bg-beige hover:text-black  hover:shadow-xl group"
       >
         <div className="text-black">
-          <Text className="sm:text-subheading text-mobileSubHeading font-subheading">
+          <Text className="lg:text-subheading text-mobileSubHeading font-subheading">
             Read Here
           </Text>
         </div>

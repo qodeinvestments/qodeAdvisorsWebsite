@@ -53,7 +53,7 @@ const Blogs = () => {
             <Spinner />
           </div>
         ) : (
-          <div className="mx-auto grid gap-2 sm:grid-cols-3">
+          <div className="mx-auto grid justify-center items-center gap-2 lg:grid-cols-3">
             {blog.map((post) => (
               <BlogCard
                 key={post.id}

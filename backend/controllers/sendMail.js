@@ -55,6 +55,9 @@ function sendNewsletterMail(email, subject) {
                     font-size: 12px;
                     color: #777777;
                 }
+                    .ii a[href] {
+                        color: #ffffff;
+                    }
                 .cta-button {
                     background-color: #d1a47b; /* Changed from green to brown */
                     color: white;

@@ -3,9 +3,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const MailerLite = require('@mailerlite/mailerlite-nodejs').default;
 require('dotenv').config();
-
+const { upload, uploadFiles } = require("./routes/uploadFiles");
+const emailCollectionRoutes = require('./routes/collectMail')
 const strategyRoutes = require("./routes/strategyRoutes");
-const mailerLiteRoutes = require("./routes/mailerLiteRoutes");
 const db = require("./models");
 
 const app = express();
@@ -27,8 +27,8 @@ const mailerlite = new MailerLite({
 
 // Routes
 app.use("/api/strategies", strategyRoutes);
-app.use("/api/mailerlite", mailerLiteRoutes(mailerlite));
-
+app.post("/api/uploads", upload.single("file"), uploadFiles);
+app.use("/api/emails", emailCollectionRoutes)
 // Database connection and server start
 db.sequelize
   .sync()

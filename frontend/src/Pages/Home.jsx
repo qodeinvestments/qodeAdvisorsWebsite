@@ -142,45 +142,46 @@ const Home = () => {
         />
         <meta name="author" content="Qode Invest" />
       </Helmet>
+
       <Banner />
 
-      <Section padding="none" className="my-7 text-center">
-        <Text className="text-subheading font-heading  text-brown ">
+      <Section padding="large" className="text-center">
+        <Text className="text-subheading font-heading text-brown">
           The best investments are <br />
-          <div className=" ">
+          <div>
             {currentText} <span className="animate-blink">|</span>
           </div>
         </Text>
       </Section>
 
-      <Section
-        padding="extralarge"
-        className="max-w-[93%] mt-5 md:max-w-[1386px] bg-lightBeige mx-auto"
-        fullWidth={false}
-      >
-        <InvestmentStrategies />
+      <Section padding="none" className="my-7">
+        <div className="bg-lightBeige overflow-hidden">
+          <Section padding="extralarge">
+            <InvestmentStrategies />
+          </Section>
+        </div>
       </Section>
 
-      <Section
-        padding="normal"
-        className="max-w-[93%] border border-brown mb-4 sm:mb-0 md:max-w-[1386px] mx-auto"
-      >
-        <FundManagers />
+      <Section padding="none" className="my-7">
+        <div className="border border-brown overflow-hidden max-w-[93%] md:max-w-[90%] lg:max-w-[1066px] xl:max-w-[1386px] mx-auto">
+          <Section padding="large">
+            <FundManagers />
+          </Section>
+        </div>
       </Section>
 
-      <Section padding="normal" className="mt-1">
+      <Section padding="large">
         <Blogs />
       </Section>
 
-      {/* Parallax Section */}
       <ParallaxSection />
 
-      <Section padding="normal" className="mb-6">
+      <Section padding="large">
         <div className="md:flex flex-col items-center text-center gap-2 justify-center">
-          <div className="md:w-1/2">
-            <Text className="sm:text-subheading text-mobileSubHeading text-black mb-3">
+          <div className="md:w-1/2 mb-3">
+            <Text className="sm:text-subheading text-mobileSubHeading text-black">
               Subscribe to know more about our investment strategies, style, and
-              principles.
+            principles.
             </Text>
           </div>
           <div className="md:w-1/2">
@@ -199,7 +200,7 @@ const Home = () => {
               <div>
                 <Button
                   type="submit"
-                  disabled={isSubmitting} // Ensure proper usage of the isSubmitting flag
+                  disabled={isSubmitting}
                   className="bg-beige text-black"
                   aria-busy={isSubmitting}
                 >
@@ -213,7 +214,6 @@ const Home = () => {
                           <span className="dot">.</span>
                         </span>
                       </span>
-                      .
                     </>
                   ) : (
                     "Subscribe"

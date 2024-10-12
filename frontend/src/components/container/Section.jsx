@@ -8,34 +8,34 @@ const Section = ({
   className = "",
   containerClassName = "",
   innerBorder = false,
-  padding = "", // Prop for padding
-  fullWidth = false, // New prop for width
+  padding = "",
+  fullWidth = false,
 }) => {
   const BaseComponent = gray ? GrayContainer : "div";
   const innerBorderClass = innerBorder ? "" : "";
 
-  // Define padding classes
+  // Updated padding classes to include md and lg breakpoints
   const paddingClasses = {
     none: "p-0",
-    small: "p-2",
-    normal: "p-2 sm:p-4",
-    large: "p-2 sm:p-5",
-    extralarge: "md:p-7 p-2 py-5 sm:py-7",
+    small: "p-2 md:p-3 lg:p-4",
+    normal: "p-2 sm:p-3 md:p-4 lg:p-5",
+    large: "p-2 sm:p-3 md:p-5 lg:p-6",
+    extralarge: "p-2 sm:p-4 md:p-6 lg:p-7",
   };
 
   const paddingClass = paddingClasses[padding] || "";
 
-  // Define width class
+  // Updated width class to include md breakpoint
   const widthClass = fullWidth
     ? "w-full"
-    : "max-w-[93%] lg:max-w-[1066px] xl:max-w-[1386px]";
+    : "max-w-[93%] md:max-w-[90%] lg:max-w-[1066px] xl:max-w-[1386px]";
 
   // Check if the className contains any explicit margin classes for top or bottom
   const hasMarginTop = /mt-\d+/.test(className);
   const hasMarginBottom = /mb-\d+/.test(className);
 
-  // Default margin bottom class if not explicitly defined
-  const defaultMarginBottom = hasMarginBottom ? "" : "sm:mb-5 mb-2 ";
+  // Updated default margin bottom class to include md and lg breakpoints
+  const defaultMarginBottom = hasMarginBottom ? "" : "mb-2 sm:mb-3 md:mb-4 lg:mb-5";
 
   return (
     <BaseComponent className={`${className}`}>

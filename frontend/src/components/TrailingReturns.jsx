@@ -131,7 +131,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
         <table className="w-full border-collapse table-fixed">
           <thead>
             <tr className="text-sm sm:text-body font-body">
-              <th className="sticky border border-brown border-r-0 left-0 z-20 p-18 font-body text-start text-black bg-lightBeige">
+              <th className="sticky border border-brown border-r-0 left-0 z-10 p-18 font-body text-start text-black bg-lightBeige">
                 <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                 Strategy
               </th>
@@ -152,7 +152,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
           <tbody>
             {strategies.map((strat, index) => (
               <tr key={strat} className="text-black text-start">
-                <td className="sticky border border-brown border-r-0 left-0 z-20 p-18 font-body text-sm sm:text-body bg-lightBeige">
+                <td className="sticky border border-brown border-r-0 left-0 z-10 p-18 font-body text-sm sm:text-body bg-lightBeige">
                   <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                   {strat}
                 </td>

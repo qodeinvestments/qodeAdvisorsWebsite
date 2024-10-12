@@ -62,7 +62,7 @@ const InvestmentStrategies = () => {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row justify-between w-full">
+      <div className="flex flex-col lg:flex-row justify-between w-full mb-4">
         <Heading
           isItalic
           className="text-center text-heading sm:text-left group-hover:text-black text-brown"
@@ -70,7 +70,7 @@ const InvestmentStrategies = () => {
           Strategies
         </Heading>
         <div className="text-center sm:text-start lg:w-1/2">
-          <Text className="sm:mt-1 mt-3 mb-5">
+          <Text className="sm:mt-1 mt-2">
             We've created data-driven strategies that have the highest
             probability
             <br className="hidden sm:block" /> of helping you reach your
@@ -78,8 +78,8 @@ const InvestmentStrategies = () => {
           </Text>
         </div>
       </div>
-      <div className=" mx-auto ">
-        <div className="grid lg:grid-cols-2 gap-4 items-center  justify-center lg:justify-between">
+      <div className="mx-auto">
+        <div className="grid lg:grid-cols-2 gap-4 items-center justify-center lg:justify-between">
           {strategies.map((strategy, index) => (
             <StrategyCard key={index} {...strategy} />
           ))}

@@ -28,33 +28,13 @@ const FundManagers = ({ text }) => {
   };
 
   return (
-    <div className="flex flex-col-reverse md:flex-row-reverse items-center md:items-center  text-center md:gap-4 justify-between w-full">
-      {/* Right Section: Image or Fund Managers */}
-      {/* <div className="md:w-1/2 w-full flex flex-col justify-center md:justify-end">
-        <div className="flex-shrink-0">
-          <img
-            src={founders}
-            alt="Founders"
-            className="w-full max-w-xs md:max-w-lg object-cover"
-          />
-        </div>
-        <div className="flex sm:hidden mt-2 justify-center md:justify-start">
-          <Button
-            className="bg-beige shadow-md hover:bg-lightBrown transition duration-300"
-            onClick={openModal}
-          >
-            Schedule A Meeting
-          </Button>
-        </div>
-      </div> */}
-
-      {/* Left Section */}
-      <div className=" w-full  md:px-9 ">
-        <Heading className="text-mobileSemiHeading md:text-semiheading italic text-brown mb-2 text-center ">
+    <div className="flex flex-col-reverse md:flex-row-reverse items-center md:items-center text-center justify-between w-full">
+      <div className="w-full md:px-6">
+        <Heading className="text-mobileSemiHeading md:text-semiheading italic text-brown mb-4 text-center">
           {text ? text : "Want to speak to our fund manager before investing?"}
         </Heading>
 
-        <div className="sm:flex  justify-center md:justify-center">
+        <div className="flex justify-center">
           <Button
             className="bg-beige shadow-md hover:bg-lightBrown transition duration-300"
             onClick={openModal}
@@ -64,7 +44,6 @@ const FundManagers = ({ text }) => {
         </div>
       </div>
 
-      {/* Modal */}
       {isModalOpen && (
         <Modal onClose={closeModal}>
           <BookAMeet />

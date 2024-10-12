@@ -154,15 +154,15 @@ const Home = () => {
         </Text>
       </Section>
 
-      <Section padding="none" className="my-7">
+      <Section padding="none">
         <div className="bg-lightBeige overflow-hidden">
-          <Section padding="extralarge">
+          <Section padding="large">
             <InvestmentStrategies />
           </Section>
         </div>
       </Section>
 
-      <Section padding="none" className="my-7">
+      <Section padding="none">
         <div className="border border-brown overflow-hidden max-w-[93%] md:max-w-[90%] lg:max-w-[1066px] xl:max-w-[1386px] mx-auto">
           <Section padding="large">
             <FundManagers />
@@ -181,7 +181,7 @@ const Home = () => {
           <div className="md:w-1/2 mb-3">
             <Text className="sm:text-subheading text-mobileSubHeading text-black">
               Subscribe to know more about our investment strategies, style, and
-            principles.
+              principles.
             </Text>
           </div>
           <div className="md:w-1/2">

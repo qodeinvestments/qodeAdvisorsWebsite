@@ -97,13 +97,10 @@ const BlogDetails = () => {
   return (
     <>
       <Helmet>
-        <title>{post?.title || "Loading..."} - Qode Advisors LLP Blog</title>
+        <title>{post?.title || "Loading..."} - Qode Blog</title>
         <meta
           name="description"
-          content={
-            post?.excerpt ||
-            "Read this insightful blog post from Qode Advisors LLP."
-          }
+          content={post?.excerpt || "Read this insightful blog post from Qode."}
         />
         {post?.feature_image && (
           <link rel="preload" as="image" href={post.feature_image} />

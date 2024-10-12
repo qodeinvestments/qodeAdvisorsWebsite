@@ -42,16 +42,16 @@ const StrategyComponent = ({ strategyData }) => {
   return (
     <>
       <Helmet>
-        <title>{title} - Strategy Overview | Qode Advisors LLP</title>
+        <title>{title} - Strategy Overview | Qode</title>
         <meta
           name="description"
-          content={`Learn more about the ${title} strategy at Qode Advisors LLP. ${description}`}
+          content={`Learn more about the ${title} strategy at Qode. ${description}`}
         />
         <meta
           name="keywords"
-          content={`${title}, ${tagLine}, investment strategy, Qode Advisors LLP`}
+          content={`${title}, ${tagLine}, investment strategy, Qode`}
         />
-        <meta name="author" content="Qode Advisors LLP" />
+        <meta name="author" content="Qode" />
       </Helmet>
       <div className="mx-auto sm:mt-8 mt-8">
         <Section padding="normal">
@@ -68,7 +68,7 @@ const StrategyComponent = ({ strategyData }) => {
           {principle && <Text className="text-center">{principle}</Text>}
         </Section>
 
-        <Section>
+        <Section className="mx-0">
           <TrailingReturns
             data={data}
             isLoading={isLoading}
@@ -128,7 +128,10 @@ const StrategyComponent = ({ strategyData }) => {
           </div>
         </Section>
 
-        <Section padding="normal">
+        <Section
+          padding="large"
+          className="max-w-[93%] border border-brown mb-4 sm:mb-5 md:max-w-[1386px] mx-auto"
+        >
           <FundManagers
             text={
               "Need help deciding which strategy would be best for reaching your financial goal?"

@@ -9,6 +9,8 @@ const config = {
       screens: {
         sm: "490px",  // Custom sm breakpoint
         md: "700px",  // Custom md breakpoint
+        lg: "1000px",  // Custom md breakpoint
+        xl: "1300px",  // Custom md breakpoint
       },
       colors: {
         primary: {

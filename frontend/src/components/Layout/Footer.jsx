@@ -21,7 +21,7 @@ const Footer = () => {
         <div className="flex flex-col lg:flex-row justify-between items-start space-y-2 md:space-y-0">
           <div className="text-center mx-auto lg:mx-0 mb-4 sm:mb-0 lg:text-left col-span-1 sm:col-span-2 md:col-span-1">
             <Heading className="sm:text-subheading text-mobileSubHeadingtext text-brown mb-2">
-              Qode Advisors LLP
+              Qode
             </Heading>
             <Text className="text-body lg:text-body w-full lg:max-w-xs mx-auto sm:mx-0 text-black">
               2nd Floor, Tree Building, Raghuvanshi Mills Compound, Gandhi
@@ -128,8 +128,7 @@ const Footer = () => {
         <hr className="border-brown mt-4" />
         <div className="mt-4">
           <Text className="text-body sm:text-body text-black text-center">
-            &copy; {new Date().getFullYear()} Qode Advisors LLP. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} Qode. All rights reserved.
           </Text>
         </div>
       </div>

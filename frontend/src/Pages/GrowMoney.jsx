@@ -7,7 +7,7 @@ const GrowMoney = () => {
   const VITE_INPERSON_URL = import.meta.env.VITE_INPERSON_URL;
 
   return (
-    <div className="bg-black bg-opacity-10 backdrop-blur-md flex flex-col sm:p-7 p-3 items-center justify-center z-50 font-body">
+    <div className="bg-black bg-opacity-10 backdrop-blur-md flex flex-col sm:p-5 lg:p-4 p-3 items-center justify-center z-50 font-body">
       <div className="text-center w-full">
         {/* Heading Section */}
         <Text className="sm:text-subheading text-mobileSubHeading text-beige font-heading mb-2 px-2">
@@ -15,7 +15,7 @@ const GrowMoney = () => {
           and how you can reach them.
         </Text>
 
-        <div className="flex flex-col items-center text-lightBeige justify-center gap-4 sm:gap-5 p-2">
+        <div className="flex flex-col items-center text-lightBeige justify-center gap-4 sm:gap-5 p-2 pb-1">
           {/* Office Visit Section */}
           <div className="w-full">
             <Text className="mb-2 text-sm sm:text-body">In Mumbai?</Text>

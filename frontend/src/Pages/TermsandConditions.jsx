@@ -10,27 +10,27 @@ const TermsnConditions = () => {
   return (
     <>
       <Helmet>
-        <title>Terms & Conditions - Qode Advisors LLP</title>
+        <title>Terms & Conditions - Qode</title>
         <meta
           name="description"
-          content="Read the Terms & Conditions for accessing and using Qode Advisors LLP' website, including intellectual property rights, exclusions of liability, and more."
+          content="Read the Terms & Conditions for accessing and using Qode' website, including intellectual property rights, exclusions of liability, and more."
         />
         <meta
           name="keywords"
-          content="Terms & Conditions, Qode Advisors LLP, intellectual property, legal agreements, website terms, liabilities"
+          content="Terms & Conditions, Qode, intellectual property, legal agreements, website terms, liabilities"
         />
-        <meta name="author" content="Qode Advisors LLP" />
+        <meta name="author" content="Qode" />
       </Helmet>
       <Section className="mt-8 sm:mt-5" padding="extralarge">
         <Heading isItalic className="text-brown mb-18">
           Terms & Conditions
         </Heading>
         <Text className="text-body">
-          By accessing & using the website of Qode Advisors LLP (hereinafter
-          referred to as "Qode"), including any of its web pages, you signify
-          your agreement to these Terms & Conditions. It is important that you
-          read these terms each time you access our website, as they may be
-          amended from time to time at Qode's sole discretion
+          By accessing & using the website of Qode (hereinafter referred to as
+          "Qode"), including any of its web pages, you signify your agreement to
+          these Terms & Conditions. It is important that you read these terms
+          each time you access our website, as they may be amended from time to
+          time at Qode's sole discretion
           <a
             href="https://qodeinvest.com"
             className="text-brown hover:text-black"
@@ -63,10 +63,10 @@ const TermsnConditions = () => {
             </Text>
             <Text className="mb-4 md:text-body">
               All content on Qode's website, including text, graphics, logos, &
-              images, is the property of Qode Advisors LLP or its content
-              suppliers & is protected by copyright & other intellectual
-              property laws. Unauthorized use, reproduction, or distribution of
-              any material from this website is strictly prohibited.
+              images, is the property of Qode or its content suppliers & is
+              protected by copyright & other intellectual property laws.
+              Unauthorized use, reproduction, or distribution of any material
+              from this website is strictly prohibited.
             </Text>
 
             <Text className="mt-5 mb-18 sm:text-subheading text-mobileSubHeading font-subheading">

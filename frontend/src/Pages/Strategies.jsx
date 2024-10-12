@@ -131,7 +131,7 @@ const Strategies = () => {
   return (
     <>
       <Helmet>
-        <title>Qode Advisors LLP - Discover Investment Approaches</title>
+        <title>Qode - Discover Investment Approaches</title>
         <meta
           name="description"
           content="Explore Qode's data-driven strategies, including Growth, Momentum, and Low Volatility Funds. Find the right approach to meet your financial goals."

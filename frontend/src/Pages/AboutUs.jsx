@@ -141,16 +141,16 @@ const AboutUs = () => {
   return (
     <>
       <Helmet>
-        <title>About Us - Meet the Qode Advisors LLP Team</title>
+        <title>About Us - Meet the Qode Team</title>
         <meta
           name="description"
-          content="Learn about Qode Advisors LLP, our founders Karan, Rishabh, and Kavan, and meet the team that helps clients achieve their financial goals through data-driven strategies."
+          content="Learn about Qode, our founders Karan, Rishabh, and Kavan, and meet the team that helps clients achieve their financial goals through data-driven strategies."
         />
         <meta
           name="keywords"
-          content="Qode Advisors LLP, About Us, Karan Salecha, Rishabh Nahar, Kavan Sejpal, Vidhi Chheda, Fund Managers, Quantitative Investment Team"
+          content="Qode, About Us, Karan Salecha, Rishabh Nahar, Kavan Sejpal, Vidhi Chheda, Fund Managers, Quantitative Investment Team"
         />
-        <meta name="author" content="Qode Advisors LLP" />
+        <meta name="author" content="Qode" />
       </Helmet>
       <Section className="mt-9">
         <Heading

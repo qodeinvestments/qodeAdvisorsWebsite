@@ -10,28 +10,28 @@ const PrivacyPolicy = () => {
   return (
     <>
       <Helmet>
-        <title>Privacy Policy - Qode Advisors LLP</title>
+        <title>Privacy Policy - Qode</title>
         <meta
           name="description"
-          content="Learn about the privacy practices at Qode Advisors LLP, how we collect, use, and protect your personal information, and your rights and responsibilities."
+          content="Learn about the privacy practices at Qode, how we collect, use, and protect your personal information, and your rights and responsibilities."
         />
         <meta
           name="keywords"
-          content="privacy policy, Qode Advisors LLP, personal information, data protection, cookies, web analytics"
+          content="privacy policy, Qode, personal information, data protection, cookies, web analytics"
         />
-        <meta name="author" content="Qode Advisors LLP" />
+        <meta name="author" content="Qode" />
       </Helmet>
       <Section className="sm:mt-5 mt-8" padding="extralarge">
         <Heading isItalic className=" text-brown mb-18">
           Privacy policy
         </Heading>
         <Text className="text-body">
-          At Qode Advisors LLP (Qode), we prioritize the privacy and security of
-          our clients' personal, financial, and transactional information. Our
-          commitment to safeguarding your privacy is integral to our
-          relationship with you, and we employ advanced technology to ensure a
-          secure online experience. This Privacy Policy outlines how we collect,
-          use, protect, and share information obtained through our website
+          At Qode (Qode), we prioritize the privacy and security of our clients'
+          personal, financial, and transactional information. Our commitment to
+          safeguarding your privacy is integral to our relationship with you,
+          and we employ advanced technology to ensure a secure online
+          experience. This Privacy Policy outlines how we collect, use, protect,
+          and share information obtained through our website
           <a
             href="https://qodeinvest.com"
             className="text-brown hover:text-black"

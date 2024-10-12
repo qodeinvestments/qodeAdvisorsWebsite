@@ -125,76 +125,83 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
   const strategies = [strategy, benchmark];
   const periods = ["1Y", "3Y", "5Y", "All"]; // Updated display text
 
+  const ResponsiveTable = () => (
+    <div className="overflow-x-auto">
+      <div className="min-w-[640px] relative">
+        <table className="w-full border-collapse table-fixed">
+          <thead>
+            <tr className="text-sm sm:text-body font-body">
+              <th className="sticky border border-brown border-r-0 left-0 z-20 p-18 font-body text-start text-black bg-lightBeige">
+                <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
+                Strategy
+              </th>
+              {periods.map((period) => (
+                <th
+                  key={period}
+                  className="relative p-18 font-body text-start text-black border-t border-b border-brown"
+                >
+                  <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
+                  {period}
+                </th>
+              ))}
+              <th className="p-18 text-start font-body text-black border border-brown">
+                MDD
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {strategies.map((strat, index) => (
+              <tr key={strat} className="text-black text-start">
+                <td className="sticky border border-brown border-r-0 left-0 z-20 p-18 font-body text-sm sm:text-body bg-lightBeige">
+                  <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
+                  {strat}
+                </td>
+                {periods.map((period) => (
+                  <td
+                    key={period}
+                    className={`relative p-18 text-black font-body text-sm sm:text-body ${
+                      index === strategies.length - 1
+                        ? "border border-l-0 border-r-0 border-brown"
+                        : ""
+                    }`}
+                  >
+                    <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
+                    {returns[period] && returns[period][strat]
+                      ? `${parseFloat(returns[period][strat]).toFixed(1)}%`
+                      : "N/A"}
+                  </td>
+                ))}
+                <td
+                  className={`p-18 text-start text-black border border-brown ${
+                    index === strategies.length - 1 ? "border-b" : ""
+                  }`}
+                >
+                  {drawdowns.lowest[strat]
+                    ? `${drawdowns.lowest[strat].toFixed(1)}%`
+                    : "N/A"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+
   return (
-    <div className="overflow-x-auto sm:p-4 p-18">
+    <div className="p-18 sm:p-18">
       <Heading
         isItalic
-        className="sm:text-subheading text-mobileSubHeading font-subheading text-brown mb-18"
+        className="text-mobileSubHeading sm:text-subheading font-subheading text-brown mb-18"
       >
         Trailing Returns
       </Heading>
-      <Text className="sm:text-body text-sm font-body text-black mb-4">
+      <Text className="text-sm sm:text-body font-body text-black mb-4">
         Trailing returns are annualised returns from the specified period till
         today.
       </Text>
-      <div className="relative overflow-x-auto scrollbar-thin scrollbar-thumb-brown scrollbar-track-black border-l md:border-none border-brown">
-        <div className="sm:w-full min-sm:w-[640px]">
-          <table className="sm:w-full border-collapse table-fixed">
-            <thead>
-              <tr className="sm:text-body text-sm font-body">
-                <th className="sticky left-0 z-10  p-18 font-body text-start sm:text-body text-sm text-black sm:bg-white bg-lightBeige border border-brown border-l-0 sm:border-l ">
-                  Strategy
-                </th>
-                {periods.map((period) => (
-                  <th
-                    key={period}
-                    className="p-18 font-body text-start sm:text-body text-sm text-black border border-brown "
-                  >
-                    {period}
-                  </th>
-                ))}
-                {/* <th className=" p-18 text-start font-body sm:text-body text-sm text-black border border-brown ">
-                  DD
-                </th> */}
-                <th className=" p-18 text-start font-body sm:text-body text-sm text-black border border-brown ">
-                  MDD
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {strategies.map((strat) => (
-                <tr key={strat} className="text-black text-start">
-                  <td className="sticky left-0 z-10  p-18 font-body sm:text-body text-sm sm:bg-white bg-lightBeige border border-brown border-l-0 sm:border-l text-start ">
-                    {strat}
-                  </td>
-                  {periods.map((period) => (
-                    <td
-                      key={period}
-                      className=" p-18 text-black border font-body sm:text-body text-sm border-brown "
-                    >
-                      {returns[period] && returns[period][strat]
-                        ? returns[period][strat]
-                        : "N/A"}
-                    </td>
-                  ))}
-                  {/* <td className=" p-18 text-start font-body sm:text-body text-sm text-black border border-brown ">
-                    {drawdowns.latest[strat]
-                      ? `${drawdowns.latest[strat].toFixed(2)}%`
-                      : "N/A"}
-                  </td> */}
-                  <td className=" p-18 text-start text-black border border-brown ">
-                    {drawdowns.lowest[strat]
-                      ? `${drawdowns.lowest[strat].toFixed(2)}%`
-                      : "N/A"}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-      <Text className="text-beige sm:text-body text-sm font-body mt-1">
+      <ResponsiveTable />
+      <Text className="text-beige text-sm sm:text-body font-body mt-4">
         *MDD (Maximum Drawdown) is how much money an investment loses from its
         highest point to its lowest point before it starts going up again.
       </Text>

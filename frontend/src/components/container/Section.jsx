@@ -26,7 +26,9 @@ const Section = ({
   const paddingClass = paddingClasses[padding] || "";
 
   // Define width class
-  const widthClass = fullWidth ? "w-full" : "max-w-[93%] lg:max-w-[1386px]";
+  const widthClass = fullWidth
+    ? "w-full"
+    : "max-w-[93%] lg:max-w-[1066px] xl:max-w-[1386px]";
 
   // Check if the className contains any explicit margin classes for top or bottom
   const hasMarginTop = /mt-\d+/.test(className);

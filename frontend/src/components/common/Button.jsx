@@ -47,7 +47,7 @@ const Button = ({
 
   if (to) {
     return (
-      <CustomLink to={to} className={fullClassName}>
+      <CustomLink to={to} target={target} className={fullClassName}>
         {content}
       </CustomLink>
     );

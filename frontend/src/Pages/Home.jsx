@@ -131,9 +131,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>
-          Qode Advisors LLP - Grow Your Wealth with Data-Driven Strategies
-        </title>
+        <title>Qode - Grow Your Wealth with Data-Driven Strategies</title>
         <meta
           name="description"
           content="At Qode Invest, we help individuals grow their wealth using data-driven investment strategies with a proven track record. Learn more about our investing principles and strategies."
@@ -165,7 +163,7 @@ const Home = () => {
 
       <Section
         padding="normal"
-        className="max-w-[93%] mb-4 sm:mb-0 md:max-w-[1386px] mx-auto"
+        className="max-w-[93%] border border-brown mb-4 sm:mb-0 md:max-w-[1386px] mx-auto"
       >
         <FundManagers />
       </Section>
@@ -181,7 +179,7 @@ const Home = () => {
         <div className="md:flex flex-col items-center text-center gap-2 justify-center">
           <div className="md:w-1/2">
             <Text className="sm:text-subheading text-mobileSubHeading text-black mb-3">
-              Subscribe to know more about our investment strategies, style and
+              Subscribe to know more about our investment strategies, style, and
               principles.
             </Text>
           </div>
@@ -218,7 +216,7 @@ const Home = () => {
                       .
                     </>
                   ) : (
-                    "Submit"
+                    "Subscribe"
                   )}
                 </Button>
               </div>

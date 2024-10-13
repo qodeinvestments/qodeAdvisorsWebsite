@@ -154,11 +154,9 @@ const Home = () => {
         </Text>
       </Section>
 
-      <Section padding="none">
-        <div className="bg-lightBeige overflow-hidden">
-          <Section padding="large">
-            <InvestmentStrategies />
-          </Section>
+      <Section className="mb-7" padding="none">
+        <div className="bg-lightBeige overflow-hidden p-4 sm:p-5 md:p-6 lg:p-8">
+          <InvestmentStrategies />
         </div>
       </Section>
 

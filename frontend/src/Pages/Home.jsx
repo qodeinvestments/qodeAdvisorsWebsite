@@ -160,13 +160,11 @@ const Home = () => {
         </div>
       </Section>
 
-      <Section padding="none">
-        <div className="border border-brown overflow-hidden max-w-[93%] md:max-w-[90%] lg:max-w-[1066px] xl:max-w-[1386px] mx-auto">
-          <Section padding="large">
-            <FundManagers />
-          </Section>
-        </div>
-      </Section>
+      <div className="border border-brown overflow-hidden max-w-[93%] md:max-w-[90%] lg:max-w-[1066px] xl:max-w-[1386px] mx-auto">
+        <Section padding="large">
+          <FundManagers />
+        </Section>
+      </div>
 
       <Section padding="large">
         <Blogs />

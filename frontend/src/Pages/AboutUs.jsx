@@ -152,46 +152,49 @@ const AboutUs = () => {
         />
         <meta name="author" content="Qode" />
       </Helmet>
-      <Section padding="extralarge" className="mt-5">
-        <Heading
-          isItalic
-          className="sm:text-semiheading text-mobileSemiHeading text-center mb-1 text-brown font-semiheading"
-        >
-          Our Story
-        </Heading>
-        <Text className="text-center text-body font-body mb-7 px-4 lg:px-10">
-          Our journey started when we (Karan, Kavan, and Rishabh) invested our
-          money in the stock market using quant models. We had a passion for
-          finance, and soon enough, we began consistently outperforming the
-          market averages. This success gave us the confidence to invest the
-          reserve capital from our family business. We grew the capital
-          significantly. <br />
-          <br /> As time passed, it became clear to us: we’re really good at
-          this. Why not use our expertise to help others grow their wealth too?
-          With this in mind, we launched our first quant strategy, "The Quant
-          Growth Fund", with another fund manager. It’s been five years since
-          then, and we’re proud to have achieved a CAGR of 35.1%. Compared to
-          the 5-year CAGR of all the PMS providers, we currently stand 4th.{" "}
-          <br />
-          <br /> This success sparked the next phase of our journey. We launched
-          our own PMS and created new schemes tailored for different types of
-          investors, each with their unique financial goals and varying risk
-          appetites. And that's exactly what we're doing now—expanding to help
-          others achieve financial growth through smart, data-driven strategies.
-        </Text>
-        <Heading
-          isItalic
-          className="sm:text-semiheading text-mobileSemiHeading font-semibold text-center mb-3 text-brown"
-        >
-          Our Team
-        </Heading>
+      <div className="mx-auto mt-8">
+        <Section padding="normal">
+          <Heading
+            isItalic
+            className="sm:text-semiheading text-mobileSemiHeading text-center mb-1 text-brown font-semiheading"
+          >
+            Our Story
+          </Heading>
+          <Text className="text-center text-body font-body mb-7 lg:px-10">
+            Our journey started when we (Karan, Kavan, and Rishabh) invested our
+            money in the stock market using quant models. We had a passion for
+            finance, and soon enough, we began consistently outperforming the
+            market averages. This success gave us the confidence to invest the
+            reserve capital from our family business. We grew the capital
+            significantly. <br />
+            <br /> As time passed, it became clear to us: we’re really good at
+            this. Why not use our expertise to help others grow their wealth
+            too? With this in mind, we launched our first quant strategy, "The
+            Quant Growth Fund", with another fund manager. It’s been five years
+            since then, and we’re proud to have achieved a CAGR of 35.1%.
+            Compared to the 5-year CAGR of all the PMS providers, we currently
+            stand 4th. <br />
+            <br /> This success sparked the next phase of our journey. We
+            launched our own PMS and created new schemes tailored for different
+            types of investors, each with their unique financial goals and
+            varying risk appetites. And that's exactly what we're doing
+            now—expanding to help others achieve financial growth through smart,
+            data-driven strategies.
+          </Text>
+          <Heading
+            isItalic
+            className="sm:text-semiheading text-mobileSemiHeading font-semibold text-center mb-3 text-brown"
+          >
+            Our Team
+          </Heading>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {teamMembers.map((member, index) => (
-            <TeamMemberCard key={index} member={member} />
-          ))}
-        </div>
-      </Section>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {teamMembers.map((member, index) => (
+              <TeamMemberCard key={index} member={member} />
+            ))}
+          </div>
+        </Section>
+      </div>
     </>
   );
 };

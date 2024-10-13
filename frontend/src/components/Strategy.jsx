@@ -67,7 +67,7 @@ const StrategyComponent = ({ strategyData }) => {
           {principle && <Text className="text-center">{principle}</Text>}
         </Section>
 
-        <Section padding="normal">
+        <Section padding="none">
           <TrailingReturns
             data={data}
             isLoading={isLoading}

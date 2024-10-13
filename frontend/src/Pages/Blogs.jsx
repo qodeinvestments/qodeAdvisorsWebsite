@@ -39,7 +39,8 @@ const Blogs = () => {
         />
         <meta name="author" content="Qode" />
       </Helmet>
-      <Section padding="extralarge" className="mt-5">
+      <div className="mx-auto mt-8">
+      <Section padding="normal">
         <Heading
           isItalic
           className="text-center text-brown mb-4 text-heading font-heading"
@@ -70,6 +71,7 @@ const Blogs = () => {
           </div>
         )}
       </Section>
+      </div>
     </>
   );
 };

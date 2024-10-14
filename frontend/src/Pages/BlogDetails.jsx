@@ -117,8 +117,7 @@ const BlogDetails = () => {
           <div className="sm:max-w-[820px] mx-auto">
             <div className="text-center mb-18">
               <Text className="text-primary font-body text-body">
-                {formatDate(post.published_at)} &#x2022; {post.reading_time} min
-                read
+                {formatDate(post.published_at)} &#x2022;{" "}
               </Text>
             </div>
             <Heading className="text-mobileHeading sm:text-heading font-heading text-brown mb-6 text-center">

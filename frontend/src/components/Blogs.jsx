@@ -40,7 +40,7 @@ const Blogs = () => {
 
   return (
     <>
-      <Heading className="text-heading italic font-bold  text-center text-brown sm:mb-2 mb-2 ">
+      <Heading className="text-heading italic font-bold  text-center text-brown sm:mb-18 ">
         Blogs
       </Heading>
       <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-3">

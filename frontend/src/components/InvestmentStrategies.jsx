@@ -40,12 +40,12 @@ const InvestmentStrategies = () => {
   const strategies = [
     {
       title: "Qode Growth Fund",
-      description: "Invest in quality business. Get quality results.",
+      description: "Investing in Quality business for long-term growth.",
       link: "/strategies/qode-growth-fund",
     },
     {
       title: "Qode Velocity Fund",
-      description: "Ride the wave. Buy high sell higher.",
+      description: "Capturing the market’s growth.",
       link: "/strategies/qode-velocity-fund",
     },
     {
@@ -55,7 +55,7 @@ const InvestmentStrategies = () => {
     },
     {
       title: "Qode Future Horizons",
-      description: "Fusing data and insight to add an edge.",
+      description: "Precision stock picking using data-driven models.",
       link: "/blogs/qode-future-horizons",
     },
   ];
@@ -69,7 +69,7 @@ const InvestmentStrategies = () => {
         >
           Strategies
         </Heading>
-        <div className="text-center sm:text-start lg:w-1/2">
+        <div className="text-center sm:text-start lg:w-1/2 pl-1">
           <Text className="sm:mt-1 mt-3 mb-5">
             We've created data-driven strategies that have the highest
             probability

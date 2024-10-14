@@ -22,16 +22,8 @@ import useFetchStrategyData from "./hooks/useFetchStrategyData";
 const StrategyComponent = ({ strategyData }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const {
-    title,
-    tagLine,
-    description,
-    principle,
-    strategyCode,
-    steps,
-    faqItems,
-    blogUrl,
-  } = strategyData;
+  const { title, tagLine, description, principle, strategyCode, blogUrl } =
+    strategyData;
 
   const closeModal = () => {
     setIsModalOpen(false);
@@ -42,29 +34,28 @@ const StrategyComponent = ({ strategyData }) => {
   return (
     <>
       <Helmet>
-        <title>{title} - Strategy Overview | Qode</title>
+        <title>{title} - Strategy Overview | Qode Advisors LLP</title>
         <meta
           name="description"
-          content={`Learn more about the ${title} strategy at Qode. ${description}`}
+          content={`Learn more about the ${title} strategy at Qode Advisors LLP. ${description}`}
         />
         <meta
           name="keywords"
-          content={`${title}, ${tagLine}, investment strategy, Qode`}
+          content={`${title}, ${tagLine}, investment strategy, Qode Advisors LLP`}
         />
-        <meta name="author" content="Qode" />
+        <meta name="author" content="Qode Advisors LLP" />
       </Helmet>
       <div className="mx-auto sm:mt-8 mt-8">
         <Section padding="normal">
           <Heading className="font-bold mb-1 text-brown text-center">
             <span className="block">{title}</span>
           </Heading>
-          <Text className="text-center sm:text-subheading text-mobileSubHeading font-subheading mb-3">
+          <Text className="text-center sm:text-subheading text-mobileSubHeading font-subheading mb-2">
             {tagLine}
           </Text>
           <Text className="text-center dm-sans-font text-body">
             {description}
           </Text>{" "}
-          <br />
           {principle && <Text className="text-center">{principle}</Text>}
         </Section>
 
@@ -74,6 +65,7 @@ const StrategyComponent = ({ strategyData }) => {
             isLoading={isLoading}
             error={error}
             strategy={strategyCode}
+            name={title}
           />
         </Section>
 
@@ -81,6 +73,7 @@ const StrategyComponent = ({ strategyData }) => {
           <PerformanceChart
             data={data}
             strategy={strategyCode}
+            name={title}
             blogUrl={blogUrl}
             error={error}
             isLoading={isLoading}

@@ -4,7 +4,9 @@ import Text from "./common/Text";
 import useCalculateCagr from "./hooks/useCalculateCagr";
 import { Spinner } from "@material-tailwind/react";
 
-const TrailingReturns = ({ strategy, isLoading, error, data }) => {
+const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
+  console.log(name);
+
   const [returns, setReturns] = useState({
     "10D": {},
     "1W": {},
@@ -131,14 +133,14 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
         <table className="w-full border-collapse table-fixed">
           <thead>
             <tr className="text-sm sm:text-body font-body">
-              <th className="sticky border border-brown border-r-0 left-0 z-20 p-18 font-body text-start text-black bg-lightBeige">
+              <th className="sticky border border-brown border-r-0 left-0 z-20 p-18 font-semibold text-start text-black bg-lightBeige">
                 <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                 Strategy
               </th>
               {periods.map((period) => (
                 <th
                   key={period}
-                  className="relative p-18 font-body text-start text-black border-t border-b border-brown"
+                  className="relative p-18 font-semibold text-start text-black border-t border-b border-brown"
                 >
                   <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                   {period}
@@ -152,9 +154,9 @@ const TrailingReturns = ({ strategy, isLoading, error, data }) => {
           <tbody>
             {strategies.map((strat, index) => (
               <tr key={strat} className="text-black text-start">
-                <td className="sticky border border-brown border-r-0 left-0 z-20 p-18 font-body text-sm sm:text-body bg-lightBeige">
+                <td className="sticky border border-brown border-r-0 left-0 z-20 p-18 font-semibold text-sm sm:text-body bg-lightBeige">
                   <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
-                  {strat}
+                  {strat === strategy ? name : strat}
                 </td>
                 {periods.map((period) => (
                   <td

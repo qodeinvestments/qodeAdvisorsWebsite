@@ -1,6 +1,6 @@
 import { useCallback, useState, useRef } from "react";
 
-const useChartData = (strategy, isMobile, showDrawdown = false) => {
+const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
   const [chartOptions, setChartOptions] = useState(null);
   const prevDataLength = useRef(0);
 
@@ -57,7 +57,7 @@ const useChartData = (strategy, isMobile, showDrawdown = false) => {
 
       const series = [
         {
-          name: strategy,
+          name: name,
           data: strategyValues,
           color: "#d1a47b",
           lineWidth: 1,

@@ -155,27 +155,29 @@ const Home = () => {
 
       <Section
         padding="extralarge"
-        className="max-w-[93%] mt-5 md:max-w-[1386px] bg-lightBeige mx-auto"
+        className="max-w-[93%] my-7 sm:my-0  md:max-w-[1386px] bg-lightBeige mx-auto"
         fullWidth={false}
       >
         <InvestmentStrategies />
       </Section>
 
       <Section
-        padding="normal"
-        className="max-w-[93%] border border-brown mb-4 sm:mb-0 md:max-w-[1386px] mx-auto"
+        padding="extralarge"
+        className="max-w-[93%] my-7 sm:my-0 border border-brown mb-4 sm:mb-0 md:max-w-[1386px] mx-auto"
       >
         <FundManagers />
       </Section>
 
-      <Section padding="normal" className="mt-1">
+      <Section padding="none" className="mt-5 ">
         <Blogs />
       </Section>
 
       {/* Parallax Section */}
-      <ParallaxSection />
+      <Section fullWidth className="mt-7">
+        <ParallaxSection />
+      </Section>
 
-      <Section padding="normal" className="mb-6">
+      {/* <Section padding="normal" className="mb-6">
         <div className="md:flex flex-col items-center text-center gap-2 justify-center">
           <div className="md:w-1/2">
             <Text className="sm:text-subheading text-mobileSubHeading text-black mb-3">
@@ -223,7 +225,7 @@ const Home = () => {
             </form>
           </div>
         </div>
-      </Section>
+      </Section> */}
 
       <ToastContainer
         position="bottom-right"

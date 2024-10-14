@@ -19,13 +19,28 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   // if (loading) return <div>Loading...</div>;
   // if (error) return <div>Error: {error}</div>;
 
+  const ArrowIcon = () => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 100 100"
+      width="44"
+      height="44"
+      className="mx-auto sm:mx-0"
+    >
+      <path
+        d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+
   const renderCustomLink = () => {
     return (
       <CustomLink
         to={name === "Qode Future Horizons" ? `/blogs/${slug}` : slug}
-        className="p-3 relative h-[170px] sm:h-auto transition-all group justify-between items-start flex-col sm:flex-row border border-brown flex duration-500 bg-white  hover:bg-beige hover:text-black hover:shadow-xl group"
+        className="p-2 sm:p-3 relative  sm:h-auto transition-all group justify-between items-start flex-col sm:flex-row border border-brown flex duration-500 bg-white  hover:bg-beige hover:text-black hover:shadow-xl group"
       >
-        <div className="text-black">
+        <div className="text-black mb-2 sm:mb-0">
           <Heading className="sm:text-subheading text-brown group-hover:text-black mb-18 text-mobileSubHeading font-subheading">
             {name}
           </Heading>
@@ -34,17 +49,8 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
             dangerouslySetInnerHTML={{ __html: description }}
           ></Text>
         </div>
-        <div className="absolute sm:static bottom-1 right-18 sm:flex sm:items-center sm:justify-center sm:ml-4 sm:self-center">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 100 100"
-            width="44"
-            height="44"
-            fill="currentColor"
-            className="ml-2"
-          >
-            <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
-          </svg>
+        <div className="absolute sm:static bottom-1 right-18 sm:flex sm:items-center sm:justify-center sm:ml-4   sm:self-center">
+          <ArrowIcon />
         </div>
       </CustomLink>
     );
@@ -103,14 +109,13 @@ const Strategies = () => {
       name: "Qode Growth Fund",
       slug: "qode-growth-fund",
       description:
-        "<Text class='mb-1'>Invest in quality business.<br class='md:hidden' /> Get quality results.</Text>",
+        "<Text class='mb-1'>Investing in Quality business <br class='md:hidden' /> for long-term growth.</Text>",
     },
     {
       id: "momentum",
       name: "Qode Velocity Fund",
       slug: "qode-velocity-fund",
-      description:
-        "<Text class='mb-1'>Ride the wave.<br class='md:hidden' /> Buy high sell higher</Text> ",
+      description: "<Text class='mb-1'>Capturing the market’s growth.</Text> ",
     },
     {
       id: "lowvol",
@@ -124,7 +129,7 @@ const Strategies = () => {
       name: "Qode Future Horizons",
       slug: "qode-future-horizons",
       description:
-        "<Text class='mb-1'>Fusing data & insight<br class='md:hidden' />  to add an edge.</Text>",
+        "<Text class='mb-1'>Precision stock picking using data-driven models<br class='md:hidden' />  to add an edge.</Text>",
     },
   ];
 

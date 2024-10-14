@@ -105,6 +105,13 @@ const Strategies = () => {
 
   const strategies = [
     {
+      id: "futureHorizon",
+      name: "Qode Future Horizons",
+      slug: "qode-future-horizons",
+      description:
+        "<Text class='mb-1'>Precision stock picking using data-driven models<br class='md:hidden' />  to add an edge.</Text>",
+    },
+    {
       id: "qgf",
       name: "Qode Growth Fund",
       slug: "qode-growth-fund",
@@ -125,13 +132,7 @@ const Strategies = () => {
       description:
         "<Text class='mb-1'>Lower Risk need not  <br class='md:hidden' /> mean lower returns.</Text>",
     },
-    {
-      id: "futureHorizon",
-      name: "Qode Future Horizons",
-      slug: "qode-future-horizons",
-      description:
-        "<Text class='mb-1'>Precision stock picking using data-driven models<br class='md:hidden' />  to add an edge.</Text>",
-    },
+    
   ];
 
   return (

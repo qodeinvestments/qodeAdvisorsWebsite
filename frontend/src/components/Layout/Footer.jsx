@@ -87,6 +87,9 @@ const Footer = () => {
               className="text-body sm:text-body text-black"
               itemClassName="mb-18 hover:text-black"
               items={[
+                <CustomLink to="/blogs/qode-future-horizons">
+                Qode Future Horizons
+              </CustomLink>,
                 <CustomLink to="/strategies/qode-growth-fund">
                   Qode Growth Fund
                 </CustomLink>,
@@ -96,9 +99,7 @@ const Footer = () => {
                 <CustomLink to="/strategies/qode-all-weather">
                   Qode All Weather
                 </CustomLink>,
-                <CustomLink to="/blogs/qode-future-horizons">
-                  Qode Future Horizons
-                </CustomLink>,
+
               ]}
             />
           </div>

@@ -85,13 +85,13 @@ const StrategyComponent = ({ strategyData }) => {
           <div className="w-full flex lg:flex-row flex-col gap-4">
             {" "}
             {/* Adjusted margin */}
-            <div className=" lg:p-6 p-3 border border-brown bg-white  lg:w-3/6">
+            <div className="xl:p-6 lg:p-4 p-3 border border-brown bg-white  lg:w-3/6">
               {" "}
               {/* Adjusted padding */}
               <Calculator data={data} strategy={strategyCode} />
             </div>
             <div
-              className="relative bg-cover flex justify-start items-start flex-col sm:p-6 p-2 lg:w-1/2"
+              className="relative bg-cover flex justify-start items-start flex-col md:p-4 xl:p-6 p-2 lg:w-1/2"
               style={{
                 backgroundImage: `url(${image})`,
                 minHeight: "490px",

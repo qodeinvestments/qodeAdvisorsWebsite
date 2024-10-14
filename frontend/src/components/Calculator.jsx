@@ -191,7 +191,7 @@ const Calculator = ({ data, strategy }) => {
             {["Monthly", "One-time"].map((freq) => (
               <Button
                 key={freq}
-                className={`text-center flex-grow ${
+                className={`text-center md:text-sm xl:text-body flex-grow ${
                   investmentFrequency === freq.toLowerCase()
                     ? "bg-beige text-black"
                     : "bg-white border border-brown text-black"

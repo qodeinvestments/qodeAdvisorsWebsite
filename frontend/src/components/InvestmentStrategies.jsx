@@ -39,9 +39,9 @@ const StrategyCard = ({ title, description, link }) => (
 const InvestmentStrategies = () => {
   const strategies = [
     {
-      title: "Qode Future Horizons",
-      description: "Precision stock picking using data-driven models.",
-      link: "/blogs/qode-future-horizons",
+      title: "Qode All Weather",
+      description: "Lower Risk need not mean lower returns",
+      link: "/strategies/qode-all-weather",
     },
     {
       title: "Qode Growth Fund",
@@ -54,10 +54,12 @@ const InvestmentStrategies = () => {
       link: "/strategies/qode-velocity-fund",
     },
     {
-      title: "Qode All Weather",
-      description: "Lower Risk need not mean lower returns",
-      link: "/strategies/qode-all-weather",
+      title: "Qode Future Horizons",
+      description: "Precision stock picking using data-driven models.",
+      link: "/blogs/qode-future-horizons",
     },
+    
+    
   ];
 
   return (

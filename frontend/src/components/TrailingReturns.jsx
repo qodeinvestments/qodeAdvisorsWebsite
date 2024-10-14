@@ -140,13 +140,13 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
               {periods.map((period) => (
                 <th
                   key={period}
-                  className="relative p-18 font-semibold text-left text-black border-t border-b border-brown"
+                  className="relative p-18 font-semibold text-center text-black border-t border-b border-brown"
                 >
                   <div className="absolute inset-y-0 right-0  bg-brown" />
                   {period}
                 </th>
               ))}
-              <th className="p-18 text-start font-body border-l text-black border border-brown">
+              <th className="p-18 text-center font-body border-l text-black border border-brown">
                 MDD
               </th>
             </tr>
@@ -163,7 +163,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
                 {periods.map((period) => (
                   <td
                     key={period}
-                    className={`relative p-18 text-black text-left font-body text-sm sm:text-body ${
+                    className={`relative p-18 text-black text-center font-body text-sm sm:text-body ${
                       index === strategies.length - 1
                         ? "border border-l-0 border-r-0 border-brown"
                         : ""
@@ -176,7 +176,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
                   </td>
                 ))}
                 <td
-                  className={`p-18 text-start border-l text-black border border-brown ${
+                  className={`p-18 text-center border-l text-black border border-brown ${
                     index === strategies.length - 1 ? "border-b" : ""
                   }`}
                 >

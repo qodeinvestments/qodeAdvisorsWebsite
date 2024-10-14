@@ -8,38 +8,39 @@ const Section = ({
   className = "",
   containerClassName = "",
   innerBorder = false,
-  padding = "",
-  fullWidth = false,
+  padding = "", // Prop for padding
+  fullWidth = false, // New prop for width
 }) => {
   const BaseComponent = gray ? GrayContainer : "div";
   const innerBorderClass = innerBorder ? "" : "";
 
+  // Define padding classes
   const paddingClasses = {
     none: "p-0",
-    small: "p-2 md:p-3",
-    normal: "p-2 sm:p-3 md:p-4",
-    large: "p-2 sm:p-3 md:p-4 lg:p-5",
-    extralarge: "p-2 sm:p-4 md:p-5 lg:p-6",
+    small: "p-2",
+    normal: "p-2 sm:p-4",
+    large: "p-2 sm:p-5",
+    extralarge: "md:p-7 p-2 py-5 sm:py-7",
   };
 
   const paddingClass = paddingClasses[padding] || "";
 
+  // Define width class
   const widthClass = fullWidth
     ? "w-full"
-    : "max-w-[93%] md:max-w-[90%] lg:max-w-[1066px] xl:max-w-[1386px]";
+    : "max-w-[93%] lg:max-w-[1066px] xl:max-w-[1386px]";
 
   // Check if the className contains any explicit margin classes for top or bottom
   const hasMarginTop = /mt-\d+/.test(className);
   const hasMarginBottom = /mb-\d+/.test(className);
 
-  // Reduced default margin classes
-  const defaultMarginTop = hasMarginTop ? "" : "mt-2 sm:mt-3 md:mt-4";
-  const defaultMarginBottom = hasMarginBottom ? "" : "mb-2 sm:mb-3 md:mb-4";
+  // Default margin bottom class if not explicitly defined
+  const defaultMarginBottom = hasMarginBottom ? "" : "sm:mb-5 mb-2 ";
 
   return (
     <BaseComponent className={`${className}`}>
       <Container
-        className={`${widthClass} mx-auto ${defaultMarginTop} ${defaultMarginBottom} ${paddingClass} ${containerClassName}`}
+        className={`${widthClass} mx-auto ${defaultMarginBottom} ${paddingClass} ${containerClassName}`}
       >
         <div className={`${innerBorderClass}`}>{children}</div>
       </Container>

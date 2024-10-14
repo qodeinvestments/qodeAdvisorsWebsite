@@ -50,7 +50,7 @@ const InvestmentStrategies = () => {
     },
     {
       title: "Qode All Weather",
-      description: "Lower Risk does not mean lower returns.",
+      description: "Lower Risk need not mean lower returns",
       link: "/strategies/qode-all-weather",
     },
     {
@@ -62,14 +62,14 @@ const InvestmentStrategies = () => {
 
   return (
     <>
-      <div className="flex flex-col lg:flex-row justify-between w-full mb-4">
+      <div className="flex flex-col lg:flex-row justify-between w-full">
         <Heading
           isItalic
           className="text-center text-heading sm:text-left group-hover:text-black text-brown"
         >
           Strategies
         </Heading>
-        <div className="text-center sm:text-start lg:w-1/2">
+        <div className="text-center sm:text-start lg:w-1/2 pl-1">
           <Text className="sm:mt-1 mt-3 mb-5">
             We've created data-driven strategies that have the highest
             probability
@@ -78,8 +78,8 @@ const InvestmentStrategies = () => {
           </Text>
         </div>
       </div>
-      <div className="mx-auto">
-        <div className="grid lg:grid-cols-2 gap-4 items-center justify-center lg:justify-between">
+      <div className=" mx-auto ">
+        <div className="grid lg:grid-cols-2 gap-4 items-center  justify-center lg:justify-between">
           {strategies.map((strategy, index) => (
             <StrategyCard key={index} {...strategy} />
           ))}

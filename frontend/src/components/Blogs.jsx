@@ -43,7 +43,7 @@ const Blogs = () => {
       <Heading className="text-heading italic font-bold  text-center text-brown sm:mb-2 mb-2 ">
         Blogs
       </Heading>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-2">
         {latestPosts.map((post) => (
           <BlogCard
             key={post.id}

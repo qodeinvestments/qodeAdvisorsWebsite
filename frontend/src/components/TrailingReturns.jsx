@@ -133,7 +133,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
         <table className="w-full border-collapse table-fixed">
           <thead>
             <tr className="text-sm sm:text-body font-body">
-              <th className="sticky border border-brown border-r-0 left-0 z-20 p-18 font-body text-start text-black bg-lightBeige">
+              <th className="sticky border border-brown border-r-0 left-0 z-10 p-18 font-semibold text-start text-black bg-lightBeige">
                 <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                 Strategy
               </th>
@@ -146,7 +146,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
                   {period}
                 </th>
               ))}
-              <th className="p-18 text-start font-body text-black border border-brown">
+              <th className="p-18 text-start font-body border-l-0 text-black border border-brown">
                 MDD
               </th>
             </tr>
@@ -154,7 +154,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
           <tbody>
             {strategies.map((strat, index) => (
               <tr key={strat} className="text-black text-start">
-                <td className="sticky border border-brown border-r-0 left-0 z-20 p-18 font-body text-sm sm:text-body bg-lightBeige">
+                <td className="sticky border border-brown border-r-0 left-0 z-10 p-18 font-semibold text-sm sm:text-body bg-lightBeige">
                   <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                   {strat === strategy ? name : strat}
                 </td>
@@ -167,14 +167,14 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
                         : ""
                     }`}
                   >
-                    <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
+                    <div className="absolute  inset-y-0 right-0 w-[1px] bg-brown" />
                     {returns[period] && returns[period][strat]
                       ? `${parseFloat(returns[period][strat]).toFixed(1)}%`
                       : "N/A"}
                   </td>
                 ))}
                 <td
-                  className={`p-18 text-start text-black border border-brown ${
+                  className={`p-18 text-start border-l-0 text-black border border-brown ${
                     index === strategies.length - 1 ? "border-b" : ""
                   }`}
                 >

@@ -11,7 +11,7 @@ import StrategyComponent from "../components/Strategy";
 const QodeAllWeather = () => {
   const strategyData = {
     title: "Qode All Weather",
-    tagLine: "Lower Risk does not mean lower returns.",
+    tagLine: "Lower Risk need not mean lower returns",
     description:
       "This strategy invests in the 30 most stable stocks in the market. This strategy outperforms the Index with considerably lower risk.",
     strategyCode: "QAW",

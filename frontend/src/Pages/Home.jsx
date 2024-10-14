@@ -143,10 +143,10 @@ const Home = () => {
         <meta name="author" content="Qode Invest" />
       </Helmet>
       <Banner />
-      <Section padding="large" className="text-center">
-        <Text className="text-subheading font-heading text-brown">
+      <Section padding="none" className="my-7 text-center">
+        <Text className="text-subheading font-heading  text-brown ">
           The best investments are <br />
-          <div>
+          <div className=" ">
             {currentText} <span className="animate-blink">|</span>
           </div>
         </Text>
@@ -159,16 +159,18 @@ const Home = () => {
         <InvestmentStrategies />
       </Section>
       <Section
-        padding="normal"
-        className="max-w-[93%] border border-brown mb-4 sm:mb-0 md:max-w-[1386px] mx-auto"
+        padding="extralarge"
+        className="max-w-[93%] my-7 sm:my-0 border border-brown mb-4 sm:mb-0 md:max-w-[1386px] mx-auto"
       >
         <FundManagers />
       </Section>
-      <Section padding="normal" className="mt-1">
+      <Section padding="none" className="mt-5 ">
         <Blogs />
       </Section>
       {/* Parallax Section */}
-      <ParallaxSection />
+      <Section padding="none" fullWidth className="mt-5 ">
+        <ParallaxSection />
+      </Section>
       <Section padding="normal" className="mb-6">
         <div className="md:flex flex-col items-center text-center gap-2 justify-center">
           <div className="md:w-1/2 mb-3">

@@ -55,7 +55,8 @@ const StrategyComponent = ({ strategyData }) => {
           </Text>
           <Text className="text-center dm-sans-font text-body">
             {description}
-          </Text>{" "}
+          </Text>
+          <br className="block md:hidden" />
           {principle && <Text className="text-center">{principle}</Text>}
         </Section>
 

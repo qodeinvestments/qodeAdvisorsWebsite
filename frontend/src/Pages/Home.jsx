@@ -131,7 +131,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>Qode - Grow Your Wealth with Data-Driven Strategies</title>
+        <title>Qode - Multiply your wealth with data-driven strategies</title>
         <meta
           name="description"
           content="At Qode Invest, we help individuals grow their wealth using data-driven investment strategies with a proven track record. Learn more about our investing principles and strategies."
@@ -151,24 +151,21 @@ const Home = () => {
           </div>
         </Text>
       </Section>
-      <Section
-        padding="extralarge"
-        className="max-w-[93%] mt-5 md:max-w-[1386px] bg-lightBeige mx-auto"
-        fullWidth={false}
-      >
+      <Section padding="extralarge" className="mt-5 bg-lightBeige">
         <InvestmentStrategies />
       </Section>
       <Section
         padding="extralarge"
-        className="max-w-[93%] my-7 sm:my-0 border border-brown mb-4 sm:mb-0 md:max-w-[1386px] mx-auto"
+        className="my-7 sm:my-0 mb-4 sm:mb-0"
+        innerBorder={true}
       >
         <FundManagers />
       </Section>
-      <Section padding="none" className="mt-5 ">
+      <Section padding="none" className="mt-7 sm:mt-5 ">
         <Blogs />
       </Section>
       {/* Parallax Section */}
-      <Section padding="none" fullWidth className="mt-5 ">
+      <Section padding="none" fullWidth className="mt-8 sm:mt-5 ">
         <ParallaxSection />
       </Section>
       <Section padding="normal" className="mb-6">
@@ -202,7 +199,7 @@ const Home = () => {
                   {isSubmitting ? (
                     <>
                       <span className="inline-flex items-center">
-                        Submitting
+                        Subscribing
                         <span className="dot-animation">
                           <span className="dot">.</span>
                           <span className="dot">.</span>

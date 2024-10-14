@@ -36,11 +36,24 @@ const Header = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "visible";
+    }
+
+    // Cleanup function to ensure scroll is re-enabled when component unmounts
+    return () => {
+      document.body.style.overflow = "visible";
+    };
+  }, [isMobileMenuOpen]);
+
   const isHomePage = location.pathname === "/";
 
   return (
     <header
-        className={`fixed z-20 transition-all duration-300 w-full 
+      className={`fixed z-20 transition-all duration-300 w-full 
           md:w-[700px] md:left-1/2 md:-translate-x-1/2 
           lg:w-[1066px] 
           xl:w-[1386px] 
@@ -48,7 +61,7 @@ const Header = () => {
             isHomePage
               ? isScrolled
                 ? "bg-white top-0 bg-opacity-100 shadow-lg"
-                : "bg-black opacity-70 sm:top-2 backdrop-blur-md"
+                : "bg-black opacity-100 sm:opacity-70 sm:top-2 backdrop-blur-md"
               : "bg-white top-0 bg-opacity-100 shadow-lg"
           }`}
     >
@@ -147,7 +160,7 @@ const Header = () => {
                 <>
                   {/* Backdrop */}
                   <div
-                    className="fixed inset-0 h-[100vh] bg-black bg-opacity-70 z-40"
+                    className="fixed inset-0 h-[100vh] bg-black bg-opacity-60 z-40"
                     onClick={closeMobileMenu}
                     style={{
                       position: "fixed",

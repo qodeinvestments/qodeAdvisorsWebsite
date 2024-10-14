@@ -142,11 +142,11 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
                   key={period}
                   className="relative p-18 font-semibold text-start text-black border-t border-b border-brown"
                 >
-                  <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
+                  <div className="absolute inset-y-0 right-0  bg-brown" />
                   {period}
                 </th>
               ))}
-              <th className="p-18 text-start font-body border-l-0 text-black border border-brown">
+              <th className="p-18 text-start font-body border-l text-black border border-brown">
                 MDD
               </th>
             </tr>
@@ -167,14 +167,14 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
                         : ""
                     }`}
                   >
-                    <div className="absolute  inset-y-0 right-0 w-[1px] bg-brown" />
+                    <div className="absolute  inset-y-0 right-0  bg-brown" />
                     {returns[period] && returns[period][strat]
                       ? `${parseFloat(returns[period][strat]).toFixed(1)}%`
                       : "N/A"}
                   </td>
                 ))}
                 <td
-                  className={`p-18 text-start border-l-0 text-black border border-brown ${
+                  className={`p-18 text-start border-l text-black border border-brown ${
                     index === strategies.length - 1 ? "border-b" : ""
                   }`}
                 >
@@ -204,8 +204,8 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
       </Text>
       <ResponsiveTable />
       <Text className="text-beige text-sm sm:text-body font-body mt-4">
-        *MDD (Maximum Drawdown) is how much money an investment loses from its
-        highest point to its lowest point before it starts going up again.
+        MDD (Maximum Drawdown) is the percentage an investment loses from its
+        highest point to its lowest point.
       </Text>
     </div>
   );

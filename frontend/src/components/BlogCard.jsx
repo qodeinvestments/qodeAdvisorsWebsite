@@ -12,15 +12,6 @@ function BlogCard({ title, excerpt, feature_image, slug, primary_author }) {
     >
       <Link to={`/blogs/${slug}`} className="block flex-grow">
         <div className="h-full group overflow-hidden relative flex flex-col">
-          {feature_image && (
-            <div className="h-48 mb-4">
-              <img
-                src={feature_image}
-                alt={title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-          )}
           <div className="flex flex-col flex-grow">
             <div className="h-full mb-2 overflow-hidden">
               <Heading className="md:text-subheading text-mobileSubHeading text-brown group-hover:text-black font-bold">
@@ -45,7 +36,7 @@ function BlogCard({ title, excerpt, feature_image, slug, primary_author }) {
               )}
             </div>
           </div>
-          <div className="mt-2 flex justify-end items-center">
+          <div className=" flex justify-end items-center">
             <div className="group-hover:text-black">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

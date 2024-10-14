@@ -122,7 +122,7 @@ const Strategies = () => {
       name: "Qode All Weather",
       slug: "qode-all-weather",
       description:
-        "<Text class='mb-1'>Lower Risk does not  <br class='md:hidden' /> mean lower returns.</Text>",
+        "<Text class='mb-1'>Lower Risk need not  <br class='md:hidden' /> mean lower returns.</Text>",
     },
     {
       id: "futureHorizon",
@@ -169,8 +169,9 @@ const Strategies = () => {
           </Heading>
           <Text className=" text-body font-body text-center sm:mt-1 mt-3 mb-5">
             One of these or a combination of these strategies will help you
-            reach your financial goal with the highest probability <br /> (based
-            on how much risk you're willing to take)
+            reach your financial goal with the highest probability{" "}
+            <br className="md:block hidden" /> (based on how much risk you're
+            willing to take)
           </Text>
           <div className="flex flex-col gap-3">
             {strategies.map((strategy) => (

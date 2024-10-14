@@ -160,26 +160,24 @@ const AboutUs = () => {
           Our Story
         </Heading>
         <Text className="text-center text-body font-body mb-7 px-4 lg:px-10">
-          Our journey began in 2016 when we (Karan, Kavan, and Rishabh) decided
-          to invest our own money in the stock market using quant models. We
-          quickly began outperforming market averages. This success gave us the
-          confidence to invest the reserve capital from our family business, and
-          we were able to grow that capital significantly. <br />
-          <br /> As time passed, it became clear: we were really good at this.
-          So, we thought, why not use our expertise to help others grow their
-          wealth too? With this idea in mind, we launched our first quant
-          strategy, “The Quant Growth Fund,” partnering with another fund
-          manager. Over the past five years, we’ve achieved a CAGR of 35.1%.
-          Among all PMS providers, our 5-year CAGR currently ranks 4th.
+          Our journey started when we (Karan, Kavan, and Rishabh) invested our
+          money in the stock market using quant models. We had a passion for
+          finance, and soon enough, we began consistently outperforming the
+          market averages. This success gave us the confidence to invest the
+          reserve capital from our family business. We grew the capital
+          significantly. <br />
+          <br /> As time passed, it became clear to us: we’re really good at
+          this. Why not use our expertise to help others grow their wealth too?
+          With this in mind, we launched our first quant strategy, "The Quant
+          Growth Fund", with another fund manager. It’s been five years since
+          then, and we’re proud to have achieved a CAGR of 35.1%. Compared to
+          the 5-year CAGR of all the PMS providers, we currently stand 4th.{" "}
           <br />
-          <br /> In fact, we were one of the early pioneers of quant investing
-          and trading in India, adopting data-driven strategies when it was
-          still a new concept in the country. This success fueled the next phase
-          of our journey. We launched our own PMS and created new schemes
-          tailored to different types of investors, each with unique financial
-          goals and varying risk appetites. Today, we continue to expand,
-          helping more people achieve financial growth through data-driven
-          strategies.
+          <br /> This success sparked the next phase of our journey. We launched
+          our own PMS and created new schemes tailored for different types of
+          investors, each with their unique financial goals and varying risk
+          appetites. And that's exactly what we're doing now—expanding to help
+          others achieve financial growth through smart, data-driven strategies.
         </Text>
         <Heading
           isItalic
@@ -188,12 +186,13 @@ const AboutUs = () => {
           Our Team
         </Heading>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {teamMembers.map((member, index) => (
-            <TeamMemberCard key={index} member={member} />
-          ))}
-        </div>
-      </Section>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {teamMembers.map((member, index) => (
+              <TeamMemberCard key={index} member={member} />
+            ))}
+          </div>
+        </Section>
+      </div>
     </>
   );
 };

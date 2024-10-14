@@ -40,17 +40,17 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed z-20 transition-all duration-300 w-full 
-        md:w-[700px] md:left-1/2 md:-translate-x-1/2 
-        lg:w-[1066px] 
-        xl:w-[1386px] 
-        max-w-full ${
-          isHomePage
-            ? isScrolled
-              ? "bg-white top-0 bg-opacity-100 shadow-lg"
-              : "bg-black opacity-70 sm:top-2 backdrop-blur-md"
-            : "bg-white top-0 bg-opacity-100 shadow-lg"
-        }`}
+        className={`fixed z-20 transition-all duration-300 w-full 
+          md:w-[700px] md:left-1/2 md:-translate-x-1/2 
+          lg:w-[1066px] 
+          xl:w-[1386px] 
+          max-w-full ${
+            isHomePage
+              ? isScrolled
+                ? "bg-white top-0 bg-opacity-100 shadow-lg"
+                : "bg-black opacity-70 sm:top-2 backdrop-blur-md"
+              : "bg-white top-0 bg-opacity-100 shadow-lg"
+          }`}
     >
       <div className="mx-auto">
         <div className="shadow-lg py-18 sm:py-18 sm:px-4 px-18">

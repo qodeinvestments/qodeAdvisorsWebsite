@@ -40,17 +40,16 @@ const Blogs = () => {
 
   return (
     <>
-      <Heading className="text-heading italic font-bold  text-center text-brown sm:mb-18 ">
+      <Heading className="text-heading italic font-bold  text-center text-brown sm:mb-2 mb-2 ">
         Blogs
       </Heading>
-      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mb-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
         {latestPosts.map((post) => (
           <BlogCard
             key={post.id}
             html={post.html}
             title={post.title}
             excerpt={post.excerpt}
-            // feature_image={post.feature_image}
             reading_time={post.reading_time}
             slug={post.slug}
             primary_author={post.primary_author}
@@ -58,7 +57,7 @@ const Blogs = () => {
           />
         ))}
       </div>
-      <div className="text-center relative top-1">
+      <div className="text-center">
         <Button to={"/blogs"}>All Blogs</Button>
       </div>
     </>

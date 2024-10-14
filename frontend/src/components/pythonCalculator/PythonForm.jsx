@@ -10,11 +10,11 @@ const { RangePicker } = DatePicker;
 const STRATEGIES = [
   { label: "QGFLong", value: "QGFLong" },
   { label: "Shortflat", value: "Shortflat" },
-  { label: "LongOpt", value: "LongOpt" },
-  { label: "QGF+Derivatives", value: "QGF+Derivatives" },
-  { label: "QGF", value: "QGF" },
-  { label: "QAW", value: "QAW" },
-  { label: "QVF", value: "QVF" },
+  { label: "Long OPtions", value: "LongOpt" },
+  { label: "Qode Growth Fund+Derivatives", value: "QGF+Derivatives" },
+  { label: "Qode Growth Fund", value: "QGF" },
+  { label: "Qode All Weather", value: "QAW" },
+  { label: "Qode Velocity Fund", value: "QVF" },
 ];
 
 const DEBTFUNDS = [

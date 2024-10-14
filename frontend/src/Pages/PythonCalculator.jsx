@@ -353,9 +353,9 @@ function PythonCalculator() {
   return (
     <Section padding="extralarge" className="mt-5">
       <Heading className="text-mobileHeading sm:text-heading text-brown text-center mb-4 font-heading">
-        Portfolio
+        Portfolio Visualiser
       </Heading>
-      <div className="  text-black sm:p-4 text-body  font-body" role="alert">
+      {/* <div className="  text-black sm:p-4 text-body  font-body" role="alert">
         <p className="sm:text-subheading text-mobileSubHeading font-subheading mb-1">
           Upload Requirements
         </p>
@@ -374,12 +374,12 @@ function PythonCalculator() {
             </ul>
           </li>
         </ul>
-      </div>
+      </div> */}
       <Text className="sm:text-subheading text-mobileSubHeading mt-5 mb-2 font-subheading">
         Dataset
       </Text>
 
-      <FileUpload onColumnsUpdate={handleFileUpload} />
+      {/* <FileUpload onColumnsUpdate={handleFileUpload} /> */}
 
       <StyledPortfolioCalculatorForm
         onSubmit={handleSubmit}

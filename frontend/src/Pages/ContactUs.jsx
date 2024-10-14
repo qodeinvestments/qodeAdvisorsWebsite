@@ -52,17 +52,17 @@ const ContactUs = () => {
           <div className="md:w-1/2">
             <div className="bg-white">
               <div className="text-left">
-                <div className=" mb-4">
+                <div className="mb-4">
                   <Text className="sm:text-subheading text-mobileSubHeading font-subheading mb-2">
                     Address
                   </Text>
                   <Text>
-                    2nd Floor, Tree Building, Raghuvanshi Mills Compound,
+                    2nd Floor, Tree Building, Raghuvanshi Mills Compound, Gandhi
+                    Nagar, Upper Worli, Lower Parel, Mumbai, Maharashtra 400013
                   </Text>
-                  <Text>Gandhi Nagar, Upper Worli, Lower Parel,</Text>
-                  <Text>Mumbai, Maharashtra 400013</Text>
                   <Text>India</Text>
                 </div>
+
                 <div className="mb-4">
                   <Text className="sm:text-subheading text-mobileSubHeading font-subheading mb-2">
                     Phone

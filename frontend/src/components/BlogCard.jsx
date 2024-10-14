@@ -22,7 +22,7 @@ function BlogCard({ title, excerpt, feature_image, slug, primary_author }) {
               </Heading>
             </div>
             <div className="flex-grow">
-              <p className="text-body font-body line-clamp-3">{excerpt}</p>
+              <p className="text-body font-body ">{excerpt}</p>
             </div>
             <div className="flex items-center justify-between mt-2">
               {primary_author && (
@@ -40,7 +40,7 @@ function BlogCard({ title, excerpt, feature_image, slug, primary_author }) {
             </div>
           </div>
           <div className="flex justify-end items-center">
-            <div className="group-hover:text-black">
+            <div className="group-hover:text-black -mt-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 100 100"
@@ -54,7 +54,7 @@ function BlogCard({ title, excerpt, feature_image, slug, primary_author }) {
               </svg>
             </div>
           </div>
-          <hr className="mt-2 border-t group-hover:border-beige border-lightBeige" />
+          <hr className="mt-1 border-t group-hover:border-beige border-lightBeige" />
         </div>
       </Link>
     </motion.div>

@@ -217,7 +217,6 @@ const Home = () => {
           </div>
         </div>
       </Section>{" "}
-      */}
       <ToastContainer
         position="bottom-right"
         autoClose={5000}

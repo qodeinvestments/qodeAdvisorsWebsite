@@ -8,7 +8,7 @@ import StrategyComponent from "../components/Strategy";
 
 export const qodeVelocityFund = {
   title: "Qode Velocity Fund",
-  tagLine: "Capturing the market’s growth",
+  tagLine: "Capturing the market’s momentum",
   description:
     "This strategy invests in 30 businesses whose stock price has grown significantly and sells it before they start falling",
   principle:

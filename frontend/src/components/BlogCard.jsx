@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Heading from "./common/Heading";
 import { Link } from "react-router-dom";
+
 function BlogCard({ title, excerpt, feature_image, slug, primary_author }) {
   return (
     <motion.div
@@ -12,9 +13,11 @@ function BlogCard({ title, excerpt, feature_image, slug, primary_author }) {
     >
       <Link to={`/blogs/${slug}`} className="block flex-grow">
         <div className="h-full group overflow-hidden relative flex flex-col">
-          <div className="flex flex-col flex-grow">
-            <div className="h-full mb-2 overflow-hidden">
-              <Heading className="md:text-subheading text-mobileSubHeading text-brown group-hover:text-black font-bold">
+          <div className="flex flex-col h-full">
+            <div className="mb-2 overflow-hidden h-[4.5em]">
+              {" "}
+              {/* Fixed height for title */}
+              <Heading className="md:text-subheading text-mobileSubHeading text-brown group-hover:text-black font-bold line-clamp-2">
                 {title}
               </Heading>
             </div>
@@ -36,7 +39,7 @@ function BlogCard({ title, excerpt, feature_image, slug, primary_author }) {
               )}
             </div>
           </div>
-          <div className=" flex justify-end items-center">
+          <div className="flex justify-end items-center">
             <div className="group-hover:text-black">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

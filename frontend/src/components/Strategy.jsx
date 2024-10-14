@@ -60,7 +60,7 @@ const StrategyComponent = ({ strategyData }) => {
           {principle && <Text className="text-center">{principle}</Text>}
         </Section>
 
-        <Section className="mx-0">
+        <Section padding="none">
           <TrailingReturns
             data={data}
             isLoading={isLoading}
@@ -81,7 +81,7 @@ const StrategyComponent = ({ strategyData }) => {
           />
         </Section>
 
-        <Section>
+        <Section padding="none" className="mb-7">
           <div className="w-full flex lg:flex-row flex-col gap-4">
             {" "}
             {/* Adjusted margin */}
@@ -123,8 +123,9 @@ const StrategyComponent = ({ strategyData }) => {
         </Section>
 
         <Section
-          padding="large"
-          className="max-w-[93%] border border-brown mb-4 sm:mb-5 md:max-w-[1386px] mx-auto"
+          padding="extralarge"
+          className="my-7 sm:my-0 mb-4 sm:mb-7"
+          innerBorder={true}
         >
           <FundManagers
             text={

@@ -20,7 +20,7 @@ const ArrowIcon = () => (
 
 const StrategyCard = ({ title, description, link }) => (
   <Link to={link} className="text-black w-full group">
-    <div className="p-1 transition-all duration-300 h-[170px] hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl relative flex flex-col sm:h-full">
+    <div className="p-1 transition-all duration-300 h-[170px] hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl relative flex flex-col md:h-[160px] xl:h-full">
       <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center">
         <div className="">
           <Heading className="font-heading playfair-font-display md:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold mb-1 relative overflow-hidden text-ellipsis">
@@ -39,24 +39,24 @@ const StrategyCard = ({ title, description, link }) => (
 const InvestmentStrategies = () => {
   const strategies = [
     {
+      title: "Qode Future Horizons",
+      description: "Precision stock picking using data-driven models.",
+      link: "/blogs/qode-future-horizons",
+    },
+    {
       title: "Qode Growth Fund",
       description: "Investing in Quality business for long-term growth.",
       link: "/strategies/qode-growth-fund",
     },
     {
       title: "Qode Velocity Fund",
-      description: "Capturing the market’s growth.",
+      description: "Capturing the market’s momentum.",
       link: "/strategies/qode-velocity-fund",
     },
     {
       title: "Qode All Weather",
       description: "Lower Risk need not mean lower returns",
       link: "/strategies/qode-all-weather",
-    },
-    {
-      title: "Qode Future Horizons",
-      description: "Precision stock picking using data-driven models.",
-      link: "/blogs/qode-future-horizons",
     },
   ];
 

@@ -63,6 +63,19 @@
 
 
 
+.break-word-mobile {
+  white-space: nowrap;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 640px) {
+  .break-word-mobile {
+    white-space: normal; /* Allows breaking on mobile screens */
+  }
+}
+
+
 
 @media screen and (max-width:500px) {
   .post-content {

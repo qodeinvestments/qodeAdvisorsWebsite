@@ -40,37 +40,37 @@ const Blogs = () => {
         <meta name="author" content="Qode" />
       </Helmet>
       <div className="mx-auto mt-8">
-      <Section padding="normal">
-        <Heading
-          isItalic
-          className="text-center text-brown mb-4 text-heading font-heading"
-        >
-          Blogs
-        </Heading>
+        <Section padding="none">
+          <Heading
+            isItalic
+            className="text-center text-brown mb-4 text-heading font-heading"
+          >
+            Blogs
+          </Heading>
 
-        {loading ? (
-          <div className="flex justify-center items-center h-40">
-            {/* You can replace this with a spinner or any preloader UI */}
-            <Spinner />
-          </div>
-        ) : (
-          <div className="mx-auto grid justify-center items-center gap-2 lg:grid-cols-3">
-            {blog.map((post) => (
-              <BlogCard
-                key={post.id}
-                html={post.html}
-                title={post.title}
-                excerpt={post.excerpt}
-                // feature_image={post.feature_image}
-                reading_time={post.reading_time}
-                slug={post.slug}
-                primary_author={post.primary_author}
-                published_at={post.published_at}
-              />
-            ))}
-          </div>
-        )}
-      </Section>
+          {loading ? (
+            <div className="flex justify-center items-center h-40">
+              {/* You can replace this with a spinner or any preloader UI */}
+              <Spinner />
+            </div>
+          ) : (
+            <div className="mx-auto grid justify-center items-center gap-2 lg:grid-cols-3">
+              {blog.map((post) => (
+                <BlogCard
+                  key={post.id}
+                  html={post.html}
+                  title={post.title}
+                  excerpt={post.excerpt}
+                  // feature_image={post.feature_image}
+                  reading_time={post.reading_time}
+                  slug={post.slug}
+                  primary_author={post.primary_author}
+                  published_at={post.published_at}
+                />
+              ))}
+            </div>
+          )}
+        </Section>
       </div>
     </>
   );

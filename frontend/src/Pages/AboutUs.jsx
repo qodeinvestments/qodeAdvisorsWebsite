@@ -155,11 +155,11 @@ const AboutUs = () => {
       <Section className="mt-9">
         <Heading
           isItalic
-          className="sm:text-semiheading text-mobileSemiHeading text-center mb-1 text-brown font-semiheading"
+          className="text-center text-brown mb-4 text-heading font-heading"
         >
           Our Story
         </Heading>
-        <Text className="text-center text-body font-body mb-7 px-4 lg:px-10">
+        <Text className="text-center text-body font-body mb-7 px-18 lg:px-10">
           Our journey began in 2016 when we (Karan, Kavan, and Rishabh) decided
           to invest our own money in the stock market using quant models. We
           quickly began outperforming market averages. This success gave us the

@@ -140,7 +140,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
               {periods.map((period) => (
                 <th
                   key={period}
-                  className="relative p-18 font-semibold text-start text-black border-t border-b border-brown"
+                  className="relative p-18 font-semibold text-left text-black border-t border-b border-brown"
                 >
                   <div className="absolute inset-y-0 right-0  bg-brown" />
                   {period}
@@ -154,20 +154,22 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
           <tbody>
             {strategies.map((strat, index) => (
               <tr key={strat} className="text-black text-start">
-                <td className="sticky border border-brown border-r-0 left-0 z-10 p-18 font-semibold text-sm sm:text-body bg-lightBeige">
+                <td className="sticky border border-brown w-44 border-r-0 text-nowrap left-0 z-10 p-18 font-semibold text-sm sm:text-body bg-lightBeige">
                   <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
-                  {strat === strategy ? name : strat}
+                  <span className="break-word-mobile">
+                    {strat === strategy ? name : strat}
+                  </span>
                 </td>
                 {periods.map((period) => (
                   <td
                     key={period}
-                    className={`relative p-18 text-black font-body text-sm sm:text-body ${
+                    className={`relative p-18 text-black text-left font-body text-sm sm:text-body ${
                       index === strategies.length - 1
                         ? "border border-l-0 border-r-0 border-brown"
                         : ""
                     }`}
                   >
-                    <div className="absolute  inset-y-0 right-0  bg-brown" />
+                    <div className="absolute inset-y-0 right-0 bg-brown" />
                     {returns[period] && returns[period][strat]
                       ? `${parseFloat(returns[period][strat]).toFixed(1)}%`
                       : "N/A"}
@@ -191,7 +193,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
   );
 
   return (
-    <div className="p-18 sm:p-18">
+    <>
       <Heading
         isItalic
         className="text-mobileSubHeading sm:text-subheading font-subheading text-brown mb-18"
@@ -203,11 +205,11 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
         today.
       </Text>
       <ResponsiveTable />
-      <Text className="text-beige text-sm sm:text-body font-body mt-4">
+      <Text className="text-beige text-sm sm:text-body font-body mt-2 sm:mt-4  ">
         MDD (Maximum Drawdown) is the percentage an investment loses from its
         highest point to its lowest point.
       </Text>
-    </div>
+    </>
   );
 };
 

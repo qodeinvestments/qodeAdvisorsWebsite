@@ -115,7 +115,8 @@ const Strategies = () => {
       id: "momentum",
       name: "Qode Velocity Fund",
       slug: "qode-velocity-fund",
-      description: "<Text class='mb-1'>Capturing the market’s growth.</Text> ",
+      description:
+        "<Text class='mb-1'>Capturing the market’s momentum.</Text> ",
     },
     {
       id: "lowvol",

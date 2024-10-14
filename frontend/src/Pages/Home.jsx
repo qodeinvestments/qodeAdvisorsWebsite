@@ -168,7 +168,7 @@ const Home = () => {
       <Section padding="none" fullWidth className="mt-8 sm:mt-5 ">
         <ParallaxSection />
       </Section>
-      <Section padding="normal" className="mb-6">
+      <Section padding="none" className="mb-6">
         <div className="md:flex flex-col items-center text-center gap-2 justify-center">
           <div className="md:w-1/2 mb-3">
             <Text className="sm:text-subheading text-mobileSubHeading text-black">

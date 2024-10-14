@@ -52,7 +52,7 @@ const ParallaxSection = () => {
 const ParallaxContent = () => (
   <>
     <div className="absolute inset-0 bg-black opacity-35"></div>
-    <div className="relative z-10 w-full max-w-[93%] sm:max-w-[1386px] mx-auto flex items-center justify-end">
+    <div className="relative z-10 w-full max-w-[93%] lg:max-w-[1066px] xl:max-w-[1386px] mx-auto flex items-center justify-end">
       <div className="w-[820px] text-start p-4 backdrop-filter backdrop-blur-sm bg-white bg-opacity-5 shadow-2xl overflow-auto">
         <Heading className="text-heading font-heading text-lightBeige italic mb-18">
           Our Investing Principles

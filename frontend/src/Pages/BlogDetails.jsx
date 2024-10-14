@@ -115,14 +115,14 @@ const BlogDetails = () => {
       ) : (
         <Section padding="none" className="mt-9 p-18">
           <div className="sm:max-w-[820px] mx-auto">
-            <div className="text-center mb-18">
-              <Text className="text-primary font-body text-body">
-                {formatDate(post.published_at)} &#x2022;{" "}
-              </Text>
-            </div>
             <Heading className="text-mobileHeading sm:text-heading font-heading text-brown mb-6 text-center">
               {post.title}
             </Heading>
+            <div className="text-center mb-18">
+              <Text className="text-primary font-body text-sm">
+                {formatDate(post.published_at)} &#x2022;{" "}
+              </Text>
+            </div>
             {post.feature_image && (
               <img
                 src={post.feature_image}

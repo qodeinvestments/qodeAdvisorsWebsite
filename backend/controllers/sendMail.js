@@ -33,11 +33,11 @@ function sendNewsletterMail(email, subject) {
                     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
                 }
                 .email-header {
-                    background-color: #ffffff; /* Changed from green to brown */
+                    background-color: #ffffff;
                     color:  #d1a47b;
                     padding: 10px;
                     text-align: center;
-                    font-family: 'Playfair Display', serif; /* Company logo in Playfair font */
+                    font-family: 'Playfair Display', serif;
                     font-size: 24px;
                     font-weight: 700;
                 }
@@ -57,7 +57,7 @@ function sendNewsletterMail(email, subject) {
                 }
                    
                 .cta-button {
-                    background-color: #d1a47b; /* Changed from green to brown */
+                    background-color: #d1a47b;
                     color: white;
                     padding: 10px 20px;
                     text-decoration: none;
@@ -67,28 +67,25 @@ function sendNewsletterMail(email, subject) {
                 }
 
                 .cta-button:hover {
-                    background-color: #7a4e30; /* Slightly darker shade of brown on hover */
+                    background-color: #7a4e30;
                 }
 
                 .cta-button:active {
-                    color: white; /* Set active link color to white */
+                    color: white;
                 }
 
             </style>
         </head>
         <body>
             <div class="email-container">
-                <div class="email-header">
-                    <h1>Welcome to Qode</h1>
-                </div>
                 <div class="email-content">
                     <p>Hey,</p>
-                    <p>I’m Harshal, I’m in charge of marketing and communication at Qode.</p>
+                    <p>I'm Harshal, I'm in charge of marketing and communication at Qode.</p>
                     <p>I come from the creative field and this finance and investing world always felt overwhelming and complex.</p>
                     <p>But, after spending a few days at Qode I realized that it's not as complicated as I thought it was.</p>
-                    <p>(Sometimes these finance people don’t realize that they are talking in a language only people from finance can understand)</p>
+                    <p>(Sometimes these finance people don't realize that they are talking in a language only people from finance can understand)</p>
                     <p>At Qode, they did realize this! And wanted to make sure their communication and ideas are understood by all their investors. So they hired me to keep all their communication simple and straightforward, and not let it feel overwhelming for you. (I think they made the right decision picking someone who is not from finance.)</p>
-                    <p>That’s it for now.</p>
+                    <p>That's it for now.</p>
                     <p>(P.S. If you want to know about our investment strategies and investing principles you can read it here.)</p>
                     <a href="https://qodeinvest.com/blogs" style="color: white; text-decoration: none;" class="cta-button">Read More</a>
                 </div>
@@ -103,7 +100,7 @@ function sendNewsletterMail(email, subject) {
 
     // Define the email options with HTML content
     const mailOptions = {
-        from: 'harshal.pokle@qodeinvest.com',
+        from: '"Harshal Pokle" <harshal.pokle@qodeinvest.com>',
         to: email,
         subject: subject,
         html: htmlContent // Using HTML instead of plain text

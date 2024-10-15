@@ -260,6 +260,15 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
             );
           }}
           className="w-full border-brown border rounded-none p-18"
+          disabledDate={(current) => {
+            // Disable dates before 01-04-2005 and after 01-10-2024
+            const startDate = moment("01-04-2005", "DD-MM-YYYY");
+            const endDate = moment("01-10-2024", "DD-MM-YYYY");
+            return (
+              current &&
+              (current.isBefore(startDate) || current.isAfter(endDate))
+            );
+          }}
         />
       </div>
       <div className="space-y-2">

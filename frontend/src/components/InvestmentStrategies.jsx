@@ -43,17 +43,17 @@ const InvestmentStrategies = () => {
   const strategies = [
     {
       title: "Qode All Weather",
-      description: "Lower Risk need not mean lower returns",
+      description: "Lower risk need not mean lower returns",
       link: "/strategies/qode-all-weather",
     },
     {
       title: "Qode Growth Fund",
-      description: "Investing in Quality business for long-term growth.",
+      description: "Investing in quality businesses for long-term growth.",
       link: "/strategies/qode-growth-fund",
     },
     {
       title: "Qode Velocity Fund",
-      description: "Capturing the market’s momentum.",
+      description: "Capturing the market’s growth.",
       link: "/strategies/qode-velocity-fund",
     },
     {

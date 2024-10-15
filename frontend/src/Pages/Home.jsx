@@ -131,7 +131,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>Qode - Multiply your wealth with data-driven strategies</title>
+        <title>Qode - Grow your wealth with data-driven strategies</title>
         <meta
           name="description"
           content="At Qode Invest, we help individuals grow their wealth using data-driven investment strategies with a proven track record. Learn more about our investing principles and strategies."
@@ -146,7 +146,7 @@ const Home = () => {
       <Section padding="none" className="my-7 text-center">
         <Text className="text-subheading font-heading  text-brown ">
           The best investments are <br />
-          <div className=" ">
+          <div className=" text-beige">
             {currentText} <span className="animate-blink">|</span>
           </div>
         </Text>
@@ -172,7 +172,7 @@ const Home = () => {
         <div className="md:flex flex-col items-center text-center gap-2 justify-center">
           <div className="md:w-1/2 mb-3">
             <Text className="sm:text-subheading text-mobileSubHeading text-black">
-              Subscribe to know more about our investment strategies, style, and
+              Subscribe to know more about our investment style, strategies, and
               principles.
             </Text>
           </div>

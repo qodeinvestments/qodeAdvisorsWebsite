@@ -60,13 +60,13 @@ const Header = () => {
           max-w-full ${
             isHomePage
               ? isScrolled
-                ? "bg-white top-0 bg-opacity-100 shadow-lg"
+                ? "bg-white top-0 bg-opacity-100 shadow-md"
                 : "bg-black opacity-100 sm:opacity-70 sm:top-2 backdrop-blur-md"
-              : "bg-white top-0 bg-opacity-100 shadow-lg"
+              : "bg-white top-0 bg-opacity-100 shadow-md"
           }`}
     >
       <div className="mx-auto">
-        <div className="shadow-lg py-18 sm:py-18 sm:px-4 px-18">
+        <div className="shadow-md py-18 sm:py-18 sm:px-4 px-18">
           <div className="flex items-center justify-between z-50 w-full">
             {/* Left Navigation (hidden on md and below) */}
             <nav className="hidden lg:flex items-center space-x-6 flex-1">
@@ -172,7 +172,7 @@ const Header = () => {
                   ></div>
 
                   {/* Dropdown Menu */}
-                  <div className="absolute right-0 w-48 shadow-lg bg-black z-50 overflow-hidden">
+                  <div className="absolute right-0 w-48 shadow-md bg-black z-50 overflow-hidden">
                     <CustomLink
                       to="/blogs"
                       className="block px-4 py-2 text-body text-beige hover:bg-beige hover:text-black hover:bg-opacity-50"

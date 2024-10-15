@@ -11,7 +11,7 @@ import StrategyComponent from "../components/Strategy";
 const QodeGrowthFund = () => {
   const strategyData = {
     title: "Qode Growth Fund",
-    tagLine: "Investing in Quality business for long-term growth.",
+    tagLine: "Investing in quality businesses for long-term growth.",
     description:
       "This strategy invests in 30 Quality businesses. (Quality Business - A company that generates a high return on invested capital). ",
     principle:

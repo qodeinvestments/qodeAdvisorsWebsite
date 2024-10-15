@@ -109,28 +109,27 @@ const Strategies = () => {
       name: "Qode All Weather",
       slug: "qode-all-weather",
       description:
-        "<Text class='mb-1'>Lower Risk need not  <br class='md:hidden' /> mean lower returns.</Text>",
+        "<Text class='mb-1'>Lower risk need not  <br class='md:hidden' /> mean lower returns.</Text>",
     },
     {
       id: "qgf",
       name: "Qode Growth Fund",
       slug: "qode-growth-fund",
       description:
-        "<Text class='mb-1'>Investing in Quality business <br class='md:hidden' /> for long-term growth.</Text>",
+        "<Text class='mb-1'>Investing in quality businesses <br class='md:hidden' /> for long-term growth.</Text>",
     },
     {
       id: "momentum",
       name: "Qode Velocity Fund",
       slug: "qode-velocity-fund",
-      description:
-        "<Text class='mb-1'>Capturing the market’s momentum.</Text> ",
+      description: "<Text class='mb-1'>Capturing the market’s growth.</Text> ",
     },
     {
       id: "futureHorizon",
       name: "Qode Future Horizons",
       slug: "qode-future-horizons",
       description:
-        "<Text class='mb-1'>Precision stock picking using data-driven models<br class='md:hidden' />  to add an edge.</Text>",
+        "<Text class='mb-1'>Precision stock picking using data-driven models</Text>",
     },
   ];
 
@@ -149,9 +148,9 @@ const Strategies = () => {
         <meta name="author" content="Qode Invest" />
       </Helmet>
       <Section className="mt-9 text-center">
-        <Text className="text-subheading font-semibold text-brown ">
+        <Text className="text-subheading font-semibold text-beige ">
           The best investments are <br />
-          <div className=" ">
+          <div className=" text-brown">
             {currentText} <span className="animate-blink">|</span>
           </div>
         </Text>

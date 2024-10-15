@@ -156,28 +156,48 @@ function PythonCalculator() {
   });
 
   const updateChartOptions = (chartData, drawdownData) => {
+    console.log(chartData);
+
+    const roundData = data => data.map(([timestamp, value]) => [timestamp, Math.round(value)]);
+
+    const roundedChartData = roundData(chartData);
+    const roundedDrawdownData = roundData(drawdownData);
+
     return {
-      ...chartOptions,
-      xAxis: {
-        ...chartOptions.xAxis,
-        tickPositions: [
-          0,
-          Math.floor(chartData.length / 2),
-          chartData.length - 1,
+        ...chartOptions,
+        xAxis: {
+            ...chartOptions.xAxis,
+            tickPositions: [
+                0,
+                Math.floor(chartData.length / 2),
+                chartData.length - 1,
+            ],
+        },
+        series: [
+            {
+                ...chartOptions.series[0],
+                name: 'NAV',
+                data: roundedChartData,
+            },
+            {
+                ...chartOptions.series[1],
+                name: 'Drawdown',
+                data: roundedDrawdownData,
+            },
         ],
-      },
-      series: [
-        {
-          ...chartOptions.series[0],
-          data: chartData,
-        },
-        {
-          ...chartOptions.series[1],
-          data: drawdownData,
-        },
-      ],
+        tooltip: {
+            shared: true,
+            formatter: function() {
+                let tooltipHtml = `<b>${Highcharts.dateFormat('%Y-%m-%d', this.x)}</b><br/>`;
+                this.points.forEach(point => {
+                    tooltipHtml += `<span style="color:${point.series.color}">\u25CF</span> ${point.series.name}: <b>${Math.round(point.y)}</b><br/>`;
+                });
+                return tooltipHtml;
+            }
+        }
     };
-  };
+};
+
 
   const handleSubmit = async (formData) => {
     if (
@@ -351,7 +371,7 @@ function PythonCalculator() {
   };
 
   return (
-    <Section padding="none" className="mt-5">
+    <Section padding="none" className="mt-9">
       <Heading
         isItalic
         className="text-mobileHeading sm:text-heading text-brown text-center mb-4 font-heading"
@@ -415,9 +435,9 @@ function PythonCalculator() {
           {renderMetrics()}
           {renderDrawdownsTable()}
           <MonthlyPLTable data={resultData?.monthly_pl_table || []} />
-          {resultData?.cagrData && (
+          {/* {resultData?.cagrData && (
             <CAGRBarChart cagrData={resultData.cagrData} />
-          )}
+          )} */}
           {/* {resultData?.peak_to_peak_data && (
             <MaxPeakToPeakTable data={resultData?.peak_to_peak_data || []} />
           )} */}

@@ -23,7 +23,7 @@ const ParallaxSection = () => {
     // iOS fallback
     <div className="mb-6 mt-7">
       <div
-        className="relative w-full min-h-[485px] bg-cover flex items-center justify-center"
+        className="relative w-full min-h-[585px] bg-cover flex items-center justify-center"
         style={{
           backgroundImage: `url(${principle})`,
           backgroundPosition: "65% 20%",
@@ -36,7 +36,7 @@ const ParallaxSection = () => {
     // Normal Parallax for other devices
     <Parallax className="mb-6 mt-7" bgImage={principle} strength={200}>
       <div
-        className="relative w-full min-h-[485px] bg-fixed bg-right sm:bg-center bg-cover flex items-center justify-center"
+        className="relative w-full min-h-[585px] sm:min-h-[485px] bg-fixed bg-right sm:bg-center bg-cover flex items-center justify-center"
         style={{
           backgroundImage: `url(${principle})`,
           backgroundPosition: "65% 20%",

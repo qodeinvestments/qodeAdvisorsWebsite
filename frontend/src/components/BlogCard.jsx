@@ -39,7 +39,7 @@ function BlogCard({ title, excerpt, feature_image, slug, primary_author }) {
               )}
             </div>
           </div>
-          <div className="flex justify-end items-center">
+          <div className="flex justify-end mt-2 items-center">
             <div className="group-hover:text-black -mt-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

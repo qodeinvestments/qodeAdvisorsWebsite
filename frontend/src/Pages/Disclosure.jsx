@@ -39,7 +39,10 @@ const Disclosure = () => {
           Disclosure
         </Heading>
         <div className="grid grid-cols-1 gap-2">
-          <CustomLink to={"/documents/Qode-Disclosure-Document.pdf"} target="_blank">
+          <CustomLink
+            to={"/documents/Qode-Disclosure-Document.pdf"}
+            target="_blank"
+          >
             <div className=" p-1 md:p-3 cursor-pointer border border-brown transition-all group duration-300 hover:bg-beige hover:text-black capitalize hover:shadow-xl">
               <div className="flex justify-between items-center">
                 <div>
@@ -69,7 +72,7 @@ const Disclosure = () => {
               <div className="flex justify-between items-center">
                 <div>
                   <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
-                    Prevention of money laundering
+                    Anti-Money Laundering Policy
                   </Heading>
                 </div>
                 <div className="flex items-center space-x-2">

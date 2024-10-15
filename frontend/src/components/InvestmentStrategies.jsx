@@ -20,7 +20,7 @@ const ArrowIcon = () => (
 
 const StrategyCard = ({ title, description, link }) => (
   <Link to={link} className="text-black w-full group">
-    <div className="p-1 transition-all duration-300 h-[170px] hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl relative flex flex-col md:h-[160px] xl:h-full">
+    <div className="p-1 transition-all duration-300 h-[180px] hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl relative flex flex-col sm:flex-row  justify-between items-center md:h-[160px] xl:h-full">
       <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center">
         <div className="">
           <Heading className="font-heading playfair-font-display md:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold mb-1 relative overflow-hidden text-ellipsis">
@@ -28,9 +28,12 @@ const StrategyCard = ({ title, description, link }) => (
           </Heading>
           <p className="text-body">{description}</p>
         </div>
-        <div className="absolute sm:static bottom-1 right-18 sm:flex sm:items-center sm:justify-center sm:ml-4   sm:self-center">
+        <div className="absolute  bottom-1  right-18 sm:hidden sm:items-center sm:justify-center sm:ml-4   sm:self-center">
           <ArrowIcon />
         </div>
+      </div>
+      <div className="hidden sm:block">
+        <ArrowIcon />
       </div>
     </div>
   </Link>
@@ -58,8 +61,6 @@ const InvestmentStrategies = () => {
       description: "Precision stock picking using data-driven models.",
       link: "/blogs/qode-future-horizons",
     },
-    
-    
   ];
 
   return (
@@ -74,9 +75,8 @@ const InvestmentStrategies = () => {
         <div className="text-center sm:text-start lg:w-1/2 pl-1">
           <Text className="sm:mt-1 mt-3 mb-5">
             We've created data-driven strategies that have the highest
-            probability
-            <br className="hidden sm:block" /> of helping you reach your
-            financial goals over the long term.
+            probability of helping you reach your financial goals over the long
+            term.
           </Text>
         </div>
       </div>

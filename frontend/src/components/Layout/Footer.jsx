@@ -17,9 +17,9 @@ import Section from "../container/Section";
 const Footer = () => {
   return (
     <footer className="bg-lightBeige">
-      <div className="py-5 lg:max-w-[1066px] xl:max-w-[1386px] mx-auto">
+      <div className="px-2 sm:px-0 py-5 lg:max-w-[1066px] xl:max-w-[1386px] mx-auto">
         <div className="flex flex-col lg:flex-row justify-between items-start space-y-2 md:space-y-0">
-          <div className="text-center mx-auto lg:mx-0 mb-4 sm:mb-0 lg:text-left col-span-1 sm:col-span-2 md:col-span-1">
+          <div className="text-center hidden sm:block mx-auto lg:mx-0 mb-4 sm:mb-0 lg:text-left col-span-1 sm:col-span-2 md:col-span-1">
             <Heading className="sm:text-subheading text-mobileSubHeading font-bold text text-brown mb-3">
               Qode
             </Heading>
@@ -88,8 +88,8 @@ const Footer = () => {
               itemClassName="mb-18 hover:text-black"
               items={[
                 <CustomLink to="/blogs/qode-future-horizons">
-                Qode Future Horizons
-              </CustomLink>,
+                  Qode Future Horizons
+                </CustomLink>,
                 <CustomLink to="/strategies/qode-growth-fund">
                   Qode Growth Fund
                 </CustomLink>,
@@ -99,7 +99,6 @@ const Footer = () => {
                 <CustomLink to="/strategies/qode-all-weather">
                   Qode All Weather
                 </CustomLink>,
-
               ]}
             />
           </div>
@@ -124,6 +123,44 @@ const Footer = () => {
                 </CustomLink>,
               ]}
             />
+          </div>
+          <div className="block sm:hidden">
+            <Heading className="sm:text-subheading text-mobileSubHeading text text-brown mb-2">
+              Qode
+            </Heading>
+            <Text className="text-body lg:text-body w-full lg:max-w-xs mx-auto sm:mx-0 text-black">
+              2nd Floor, Tree Building, Raghuvanshi Mills Compound, Gandhi
+              Nagar, Upper Worli, Lower Parel, Mumbai, Maharashtra 400013
+            </Text>
+            <div className="mt-1 text-body sm:text-body text-black">
+              <Text className="mb-18">
+                PMS No: <span>INP000008914</span>
+              </Text>
+              <br />
+              <Text className="mb-18">
+                For Investor Onboarding and other queries contact us at
+                <br /> Email:{" "}
+                <a
+                  href="mailto:contact@qodeinvestments.com"
+                  className="hover:text-black"
+                >
+                  operations@qodeinvest.com
+                </a>{" "}
+                <br />
+                Contact No:{" "}
+                <a href="tel:+919820300088" className="hover:text-black">
+                  +91 98203 00088
+                </a>
+              </Text>
+              {/* <Text>
+                <a
+                  href="tel:+919820300028"
+                  className="text-gray-900 hover:text-gray-600 transition duration-300"
+                >
+                  +91 98203 00028
+                </a>
+              </Text> */}
+            </div>
           </div>
         </div>
         <hr className="border-brown mt-4" />

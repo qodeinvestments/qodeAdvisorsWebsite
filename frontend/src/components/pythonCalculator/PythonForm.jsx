@@ -8,13 +8,13 @@ import Button from "../common/Button";
 const { RangePicker } = DatePicker;
 
 const STRATEGIES = [
-  { label: "QGFLong", value: "QGFLong" },
-  { label: "Shortflat", value: "Shortflat" },
-  { label: "Long OPtions", value: "LongOpt" },
-  { label: "Qode Growth Fund+Derivatives", value: "QGF+Derivatives" },
-  { label: "Qode Growth Fund", value: "QGF" },
   { label: "Qode All Weather", value: "QAW" },
+  { label: "Qode Growth Fund", value: "QGF" },
   { label: "Qode Velocity Fund", value: "QVF" },
+  // { label: "QGFLong", value: "QGFLong" },
+  // { label: "Shortflat", value: "Shortflat" },
+  // { label: "Long Options", value: "LongOpt" },
+  // { label: "Qode Growth Fund+Derivatives", value: "QGF+Derivatives" },
 ];
 
 const DEBTFUNDS = [
@@ -189,7 +189,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           </div>
         </div>
       ))}
-      <div className="space-y-1">
+      {/* <div className="space-y-1">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Choose Debt Funds
         </label>
@@ -212,8 +212,8 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
             </span>
           )}
         />
-      </div>
-      {formData.selected_debtfunds.map((debtfund, index) => (
+      </div> */}
+      {/* {formData.selected_debtfunds.map((debtfund, index) => (
         <div key={index} className="space-y-1 sm:p-2 ">
           <h3 className="font-body text-black">{debtfund.debtfund}</h3>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -241,7 +241,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
             />
           </div>
         </div>
-      ))}
+      ))} */}
       <div className="space-y-1">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Investment Period *
@@ -273,7 +273,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           prefix="₹"
         />
       </div>
-      <div className="space-y-2">
+      {/* <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Cash Percentage
         </label>
@@ -284,7 +284,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           className="w-full border-brown border rounded-none p-18"
           suffix="%"
         />
-      </div>
+      </div> */}
       <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Rebalance Frequency *

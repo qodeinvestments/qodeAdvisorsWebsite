@@ -129,66 +129,64 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
 
   const ResponsiveTable = () => (
     <div className="overflow-x-auto">
-      <div className="min-w-[640px] relative">
-        <table className="w-full border-collapse table-fixed">
-          <thead>
-            <tr className="text-sm sm:text-body font-body">
-              <th className="sticky border border-brown border-r-0 left-0 z-10 p-18 font-semibold text-start text-black bg-lightBeige">
+      <table className="w-full min-w-[900px] border-collapse table-fixed">
+        <thead>
+          <tr className="text-sm sm:text-body font-body">
+            <th className="sticky border border-brown border-r-0 left-0 z-10 p-18 font-semibold text-start text-black bg-lightBeige">
+              <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
+              Strategy
+            </th>
+            {periods.map((period) => (
+              <th
+                key={period}
+                className="relative p-18 font-semibold text-center text-black border-t border-b border-brown"
+              >
+                <div className="absolute inset-y-0 right-0  bg-brown" />
+                {period}
+              </th>
+            ))}
+            <th className="p-18 text-center font-body border-l text-black border border-brown">
+              MDD
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {strategies.map((strat, index) => (
+            <tr key={strat} className="text-black text-start">
+              <td className="sticky border border-brown w-44 border-r-0 text-nowrap left-0 z-10 p-18 font-semibold text-sm sm:text-body bg-lightBeige">
                 <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
-                Strategy
-              </th>
+                <span className="break-word-mobile">
+                  {strat === strategy ? name : strat}
+                </span>
+              </td>
               {periods.map((period) => (
-                <th
-                  key={period}
-                  className="relative p-18 font-semibold text-center text-black border-t border-b border-brown"
-                >
-                  <div className="absolute inset-y-0 right-0  bg-brown" />
-                  {period}
-                </th>
-              ))}
-              <th className="p-18 text-center font-body border-l text-black border border-brown">
-                MDD
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {strategies.map((strat, index) => (
-              <tr key={strat} className="text-black text-start">
-                <td className="sticky border border-brown w-44 border-r-0 text-nowrap left-0 z-10 p-18 font-semibold text-sm sm:text-body bg-lightBeige">
-                  <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
-                  <span className="break-word-mobile">
-                    {strat === strategy ? name : strat}
-                  </span>
-                </td>
-                {periods.map((period) => (
-                  <td
-                    key={period}
-                    className={`relative p-18 text-black text-center font-body text-sm sm:text-body ${
-                      index === strategies.length - 1
-                        ? "border border-l-0 border-r-0 border-brown"
-                        : ""
-                    }`}
-                  >
-                    <div className="absolute inset-y-0 right-0 bg-brown" />
-                    {returns[period] && returns[period][strat]
-                      ? `${parseFloat(returns[period][strat]).toFixed(1)}%`
-                      : "N/A"}
-                  </td>
-                ))}
                 <td
-                  className={`p-18 text-center border-l text-black border border-brown ${
-                    index === strategies.length - 1 ? "border-b" : ""
+                  key={period}
+                  className={`relative p-18 text-black text-center font-body text-sm sm:text-body ${
+                    index === strategies.length - 1
+                      ? "border border-l-0 border-r-0 border-brown"
+                      : ""
                   }`}
                 >
-                  {drawdowns.lowest[strat]
-                    ? `${drawdowns.lowest[strat].toFixed(1)}%`
+                  <div className="absolute inset-y-0 right-0 bg-brown" />
+                  {returns[period] && returns[period][strat]
+                    ? `${parseFloat(returns[period][strat]).toFixed(1)}%`
                     : "N/A"}
                 </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+              ))}
+              <td
+                className={`p-18 text-center border-l text-black border border-brown ${
+                  index === strategies.length - 1 ? "border-b" : ""
+                }`}
+              >
+                {drawdowns.lowest[strat]
+                  ? `${drawdowns.lowest[strat].toFixed(1)}%`
+                  : "N/A"}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 

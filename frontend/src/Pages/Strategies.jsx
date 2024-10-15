@@ -148,9 +148,9 @@ const Strategies = () => {
         <meta name="author" content="Qode Invest" />
       </Helmet>
       <Section className="mt-9 text-center">
-        <Text className="text-subheading font-semibold text-beige ">
+        <Text className="text-subheading font-semibold text-brown ">
           The best investments are <br />
-          <div className=" text-brown">
+          <div className=" text-beige">
             {currentText} <span className="animate-blink">|</span>
           </div>
         </Text>

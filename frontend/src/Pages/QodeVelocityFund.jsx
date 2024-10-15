@@ -10,7 +10,7 @@ export const qodeVelocityFund = {
   title: "Qode Velocity Fund",
   tagLine: "Capturing the market’s growth",
   description:
-    "This strategy invests in 30 businesses whose stock price has grown significantly and sells it before they start falling",
+    "This strategy combines momentum investing with a built-in derivative hedge to protect against significant drawdowns.",
   principle:
     "Principle - The stock price tells the story before the actual story unfolds.",
   strategyCode: "QVF",

@@ -13,7 +13,7 @@ const QodeAllWeather = () => {
     title: "Qode All Weather",
     tagLine: "Lower risk need not mean lower returns",
     description:
-      "This strategy invests in the 30 most stable stocks in the market. This strategy outperforms the Index with considerably lower risk.",
+      "This is a resilient investment strategy to weather all market fluctuations. Designed for minimal drawdowns and superior returns, providing consistent growth in all market conditions.",
     strategyCode: "QAW",
     strategySlug: "qode-all-weather",
     pptLink: "/Quant Growth Fund Feb.pdf",

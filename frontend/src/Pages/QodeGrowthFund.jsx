@@ -13,7 +13,7 @@ const QodeGrowthFund = () => {
     title: "Qode Growth Fund",
     tagLine: "Investing in quality businesses for long-term growth.",
     description:
-      "This strategy invests in 30 Quality businesses. (Quality Business - A company that generates a high return on invested capital). ",
+      "Strategy focusing on high-quality small and midcap companies, driving sustainable growth through a factor-based investment approach.",
     principle:
       "Principle - In the long run the stock price always reflects the business performance.",
     strategyCode: "QGF",

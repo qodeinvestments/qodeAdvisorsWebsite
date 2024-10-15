@@ -8,9 +8,10 @@ import Button from "../common/Button";
 const { RangePicker } = DatePicker;
 
 const STRATEGIES = [
-  { label: "Qode All Weather", value: "QAW" },
-  { label: "Qode Growth Fund", value: "QGF" },
-  { label: "Qode Velocity Fund", value: "QVF" },
+  { label: "NSE Momentum Index", value: "NSE Momentum Index" },
+  { label: "Equity + Puts", value: "Equity + Puts" },
+  { label: "Equity + Puts + Calls", value: "Equity + Puts + Calls" },
+  { label: "Gold Bees", value: "Gold Bees" },
   // { label: "QGFLong", value: "QGFLong" },
   // { label: "Shortflat", value: "Shortflat" },
   // { label: "Long Options", value: "LongOpt" },

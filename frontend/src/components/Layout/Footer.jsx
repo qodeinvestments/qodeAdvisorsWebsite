@@ -134,7 +134,7 @@ const Footer = () => {
             </Text>
             <div className="mt-1 text-body sm:text-body text-black">
               <Text className="mb-18">
-                PMS No: <span>INP000008914</span>
+                SEBI registered PMS no: <span>INP000008914</span>
               </Text>
               <br />
               <Text className="mb-18">

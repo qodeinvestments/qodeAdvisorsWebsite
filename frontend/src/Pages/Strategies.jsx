@@ -167,12 +167,12 @@ const Strategies = () => {
           >
             Our Strategies
           </Heading>
-          <Text className=" text-body font-body text-center sm:mt-1 mt-3 mb-5">
+          {/* <Text className=" text-body font-body text-center sm:mt-1 mt-3 mb-5">
             One of these or a combination of these strategies will help you
             reach your financial goal with the highest probability{" "}
             <br className="md:block hidden" /> (based on how much risk you're
             willing to take)
-          </Text>
+          </Text> */}
           <div className="flex flex-col gap-3">
             {strategies.map((strategy) => (
               <StrategyCard

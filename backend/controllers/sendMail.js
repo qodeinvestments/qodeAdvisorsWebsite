@@ -8,8 +8,8 @@ function sendNewsletterMail(email, subject) {
         port: 465,
         secure: true,
         auth: {
-            user: "tech@qodeinvest.com",
-            pass: "gnkz lwxf aexp bpri" // Make sure to secure this, consider using environment variables
+            user: "harshal.pokle@qodeinvest.com",
+            pass: "ghga nxbj vzqx fxty" // Make sure to secure this, consider using environment variables
         }
     });
 
@@ -82,11 +82,15 @@ function sendNewsletterMail(email, subject) {
                     <h1>Welcome to Qode</h1>
                 </div>
                 <div class="email-content">
-                    <p>Hi,</p>
-                    <p>Thank you for subscribing to the Qode Newsletter! We're excited to have you on board.</p>
-                    <p>At Qode, we are committed to helping you grow your wealth through data-driven strategies.</p>
-                    <p>In the meantime, feel free to check out our latest blog posts or reach out if you have any questions.</p>
-                    <a href="https://qodeinvest.com/blogs" style="color: white; text-decoration: none;" class="cta-button">Visit Our Blog</a>
+                    <p>Hey,</p>
+                    <p>I’m Harshal, I’m in charge of marketing and communication at Qode.</p>
+                    <p>I come from the creative field and this finance and investing world always felt overwhelming and complex.</p>
+                    <p>But, after spending a few days at Qode I realized that it's not as complicated as I thought it was.</p>
+                    <p>(Sometimes these finance people don’t realize that they are talking in a language only people from finance can understand)</p>
+                    <p>At Qode, they did realize this! And wanted to make sure their communication and ideas are understood by all their investors. So they hired me to keep all their communication simple and straightforward, and not let it feel overwhelming for you. (I think they made the right decision picking someone who is not from finance.)</p>
+                    <p>That’s it for now.</p>
+                    <p>(P.S. If you want to know about our investment strategies and investing principles you can read it here.)</p>
+                    <a href="https://qodeinvest.com/blogs" style="color: white; text-decoration: none;" class="cta-button">Read More</a>
                 </div>
                 <div class="email-footer">
                     <p>&copy; 2024 Qode Advisors LLP, All rights reserved.</p>
@@ -99,7 +103,7 @@ function sendNewsletterMail(email, subject) {
 
     // Define the email options with HTML content
     const mailOptions = {
-        from: 'tech@qodeinvest.com',
+        from: 'harshal.pokle@qodeinvest.com',
         to: email,
         subject: subject,
         html: htmlContent // Using HTML instead of plain text

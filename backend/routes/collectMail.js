@@ -24,7 +24,7 @@ router.post('/collect', async (req, res) => {
             // Call the sendNewsletterMail function to send the email
             try {
                 await sendNewsletterMail(email, subject);
-                res.status(201).json({ message: "Thank you for subscribing! Check your email for confirmation." });
+                res.status(201).json({ message: "Subscribed! We’ve sent you an email—be sure to check your inbox." });
             } catch (emailError) {
                 console.error('Error sending confirmation email:', emailError);
                 res.status(500).json({ message: "Subscription successful, but failed to send confirmation email." });

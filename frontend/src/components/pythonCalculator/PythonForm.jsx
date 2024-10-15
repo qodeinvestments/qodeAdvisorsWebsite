@@ -333,12 +333,6 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           Calculate Portfolio
         </Button>
       </div>
-      <div className="text-body text-gray-500 flex items-center mt-4">
-        <InfoCircleOutlined className="mr-2" />
-        <span>
-          Fill in all required fields to calculate your portfolio performance.
-        </span>
-      </div>
     </form>
   );
 }

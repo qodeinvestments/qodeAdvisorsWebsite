@@ -31,7 +31,7 @@ function PythonCalculator() {
 
   const [chartOptions, setChartOptions] = useState({
     title: {
-      text: "Equity Curve",
+      text: "",
     },
     xAxis: {
       type: "datetime",
@@ -107,7 +107,7 @@ function PythonCalculator() {
       },
     ],
     chart: {
-      height: isMobile ? 300 : 520, // Adjusted based on mobile
+      height: isMobile ? 500 : 520, // Adjusted based on mobile
       backgroundColor: "none",
       zoomType: "x",
       marginLeft: isMobile ? 0 : 50,
@@ -265,17 +265,17 @@ function PythonCalculator() {
 
     return (
       <>
-        <h3 className="font-semibold mb-4 text-gray-800 text-center">
+        <Heading isItalic className="font-semibold my-5 text-brown  text-start">
           Performance Metrics
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-4">
+        </Heading>
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-6 gap-1 ">
           {metrics.map((metric, index) => (
             <div
               key={index}
-              className="bg-gray-50 p-4 shadow-sm flex flex-col items-center justify-center border border-gray-200"
+              className=" py-2 shadow-sm flex flex-col items-center justify-center border border-brown"
             >
-              <p className="text-gray-500 text-xs">{metric.key}</p>
-              <p className="font-bold text-gray-700">
+              <p className="text-black  text-sm sm:text-body">{metric.key}</p>
+              <p className="font-subheading text-subheading text-beige">
                 {metric.value !== null ? metric.value : "N/A"}
               </p>
             </div>
@@ -297,47 +297,47 @@ function PythonCalculator() {
 
     return (
       <>
-        <h3 className="font-semibold mb-2">Top 10 Worst Drawdowns</h3>
+        <Text className="font-subheading mt-6  text-brown text-subheading mb-2">
+          Top 10 Worst Drawdowns
+        </Text>
         <div className="overflow-x-auto">
           {" "}
           {/* Makes table horizontally scrollable */}
           <div className="overflow-x-auto">
-            <table className="min-w-full table-auto border-collapse border border-gray-300">
+            <table className="min-w-full text-sm sm:text-body font-body table-auto border-collapse border border-brown">
               <thead>
-                <tr className="bg-gray-200">
-                  <th className="border border-gray-300 px-1 py-1 text-left">
+                <tr className="bg-lightBeige">
+                  <th className="border border-brown p-18 text-left">
                     Drawdown
                   </th>
-                  <th className="border border-gray-300 px-1 py-1 text-left">
+                  <th className="border border-brown p-18 text-left">
                     Peak Date
                   </th>
-                  <th className="border border-gray-300 px-1 py-1 text-left">
+                  <th className="border border-brown p-18 text-left">
                     Drawdown Date
                   </th>
-                  <th className="border border-gray-300 px-1 py-1 text-left">
+                  <th className="border border-brown p-18 text-left">
                     Recovery Date
                   </th>
-                  <th className="border border-gray-300 px-1 py-1 text-left">
-                    Days between Drawdown and Recovery Date
+                  <th className="border border-brown p-18 text-left">
+                    Days between Drawdown <br /> and Recovery Date
                   </th>
                 </tr>
               </thead>
               <tbody>
                 {resultData.top_10_worst_drawdowns.map((row, index) => (
-                  <tr key={index} className="hover:bg-gray-100">
-                    <td className="border border-gray-300 px-1 py-1">
-                      {row.Drawdown}
-                    </td>
-                    <td className="border border-gray-300 text-nowrap px-1 py-1">
+                  <tr key={index} className="hover:bg-lightBeige">
+                    <td className="border border-brown p-18">{row.Drawdown}</td>
+                    <td className="border border-brown text-nowrap p-18">
                       {row.Peak_Date}
                     </td>
-                    <td className="border border-gray-300 text-nowrap px-1 py-1">
+                    <td className="border border-brown text-nowrap p-18">
                       {row.Drawdown_Date}
                     </td>
-                    <td className="border border-gray-300 text-nowrap px-1 py-1">
+                    <td className="border border-brown text-nowrap p-18">
                       {row.Recovery_Date}
                     </td>
-                    <td className="border border-gray-300 px-1 py-1">
+                    <td className="border border-brown p-18">
                       {row["Days between Drawdown and Recovery Date"]}
                     </td>
                   </tr>
@@ -351,14 +351,14 @@ function PythonCalculator() {
   };
 
   return (
-    <Section padding="extralarge" className="mt-5">
+    <Section padding="none" className="mt-5">
       <Heading
         isItalic
         className="text-mobileHeading sm:text-heading text-brown text-center mb-4 font-heading"
       >
         Portfolio Visualizer
       </Heading>
-      {/* <div className="  text-black sm:p-4 text-body  font-body" role="alert">
+      {/* <div className="  text-black sm:p-4 text-sm sm:text-body  font-body" role="alert">
         <p className="sm:text-subheading text-mobileSubHeading font-subheading mb-1">
           Upload Requirements
         </p>
@@ -401,14 +401,15 @@ function PythonCalculator() {
               {/* <Button type="primary" onClick={handleDownloadExcel} className="mb-4">
                 Download Excel
               </Button> */}
-              <div
-                className={`chart-container ${isMobile ? "mobile-chart" : ""}`}
-              >
+              <>
+                <Text className="font-subheading mt-6  text-brown text-subheading mb-2">
+                  NAV Curve
+                </Text>
                 <HighchartsReact
                   highcharts={Highcharts}
                   options={chartOptions}
                 />
-              </div>
+              </>
             </>
           )}
           {renderMetrics()}
@@ -417,9 +418,9 @@ function PythonCalculator() {
           {resultData?.cagrData && (
             <CAGRBarChart cagrData={resultData.cagrData} />
           )}
-          {resultData?.peak_to_peak_data && (
+          {/* {resultData?.peak_to_peak_data && (
             <MaxPeakToPeakTable data={resultData?.peak_to_peak_data || []} />
-          )}
+          )} */}
         </>
       )}
     </Section>

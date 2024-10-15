@@ -163,7 +163,7 @@ const Strategies = () => {
         <div className="mx-auto">
           <Heading
             isItalic
-            className="text-mobileHeading sm:text-heading text-brown text-center font-heading"
+            className="text-mobileHeading sm:text-heading mb-5 text-brown text-center font-heading"
           >
             Our Strategies
           </Heading>

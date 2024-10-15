@@ -1,11 +1,27 @@
 import React from "react";
+import Text from "../common/Text";
 
 function MonthlyPLTable({ data }) {
   if (!data || data.length === 0) {
     return <p className="text-center text-brown">No data available</p>;
   }
 
-  const months = [
+  const monthsShort = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const monthsFull = [
     "January",
     "February",
     "March",
@@ -25,7 +41,7 @@ function MonthlyPLTable({ data }) {
     const isHighlighted = value !== null && Number(value) > 4;
     return (
       <td
-        className={`text-center text-sm ${isHighlighted ? "bg-green-600 font-semibold" : ""}`}
+        className={`text-center text-sm p-1 border border-brown ${isHighlighted ? "bg-green-400 font-semibold" : ""}`}
       >
         {cellValue}
       </td>
@@ -34,28 +50,36 @@ function MonthlyPLTable({ data }) {
 
   return (
     <>
-      <h3 className="font-bold text-center mb-2 mt-4">Monthly PL Table (%)</h3>
+      <Text className="font-subheading mt-6 text-brown text-subheading mb-2">
+        Monthly PL Table (%)
+      </Text>
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse">
+        <table className="w-full border-collapse border border-brown">
           <thead>
-            <tr className="bg-gray-100">
-              <th className="p-2 text-left font-semibold">Year</th>
-              {months.map((month) => (
-                <th key={month} className="p-2 text-center font-semibold">
+            <tr className="bg-lightBeige">
+              <th className="p-18 text-sm sm:text-body font-body text-left border border-brown font-semibold">
+                Year
+              </th>
+              {monthsShort.map((month) => (
+                <th
+                  key={month}
+                  className="p-18 text-sm sm:text-body font-body text-center border border-brown font-semibold"
+                >
                   {month}
                 </th>
               ))}
-              <th className="p-2 text-center font-semibold">Total</th>
+              <th className="p-18 text-sm sm:text-body font-body text-center border border-brown font-semibold">
+                Total
+              </th>
             </tr>
           </thead>
           <tbody>
             {data.map((row, index) => (
-              <tr
-                key={index}
-                className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
-              >
-                <td className="p-1 text-left font-semibold">{row.Year}</td>
-                {months.map((month) => renderCell(row[month]))}
+              <tr key={index}>
+                <td className="p-18 border border-brown bg-lightBeige text-left font-semibold">
+                  {row.Year}
+                </td>
+                {monthsFull.map((month) => renderCell(row[month]))}
                 {renderCell(row.Total)}
               </tr>
             ))}

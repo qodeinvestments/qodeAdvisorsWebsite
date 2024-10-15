@@ -1,6 +1,7 @@
 // src/components/MaxPeakToPeakTable.js
 import React from "react";
 import { Table } from "antd";
+import Text from "../common/Text";
 
 const MaxPeakToPeakTable = ({ data }) => {
   // Define columns for the table
@@ -23,28 +24,28 @@ const MaxPeakToPeakTable = ({ data }) => {
 
   return (
     <>
-      <h3 className=" font-semibold mb-4 text-gray-800 text-center">
-        Max Peak to Peak Data
-      </h3>
+      <Text className="font-subheading mt-6 text-brown text-subheading mb-2">
+        Max peak to peak
+      </Text>
       <div className="overflow-x-auto">
-        <table className="min-w-full table-auto border-collapse border border-gray-300">
+        <table className="min-w-[200px]  table-auto border-collapse border border-brown">
           <thead>
-            <tr className="bg-gray-200">
-              <th className="border border-gray-300 px-4 py-2 text-center font-semibold">
+            <tr className="bg-lightBeige">
+              <th className="border border-brown p-18 text-center font-semibold">
                 Rank
               </th>
-              <th className="border border-gray-300 px-4 py-2 text-center">
+              <th className="border border-brown p-18 text-center">
                 Max Peak to Peak
               </th>
             </tr>
           </thead>
           <tbody>
             {data.map((row) => (
-              <tr key={row.Rank} className="hover:bg-gray-100">
-                <td className="border border-gray-300 px-4 py-2 text-center">
+              <tr key={row.Rank} className="hover:bg-lightBeige">
+                <td className="border border-brown p-18 text-center">
                   {row.Rank}
                 </td>
-                <td className="border border-gray-300 px-4 py-2 text-center">
+                <td className="border border-brown p-18 text-center">
                   {row["Max peak to peak"]}
                 </td>
               </tr>

@@ -2,9 +2,13 @@
 import React from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
+import Text from "../common/Text";
+import useMobileWidth from "../hooks/useMobileWidth";
 
 const CAGRBarChart = ({ cagrData }) => {
   // Extracting max and min values for each period
+  const { isMobile } = useMobileWidth();
+
   const categories = ["1 yr CAGR", "3 yr CAGR", "5 yr CAGR"];
   const maxValues = categories.map(
     (category) => cagrData[category]?.top_5_max_values[0] || 0
@@ -20,20 +24,34 @@ const CAGRBarChart = ({ cagrData }) => {
   const chartOptions = {
     chart: {
       type: "column",
+      height: isMobile ? 500 : 520, // Adjusted based on mobile
+      backgroundColor: "none",
+      zoomType: "x",
+      marginLeft: isMobile ? 0 : 50,
+      marginRight: isMobile ? 0 : 50,
     },
     title: {
-      text: "CAGR",
+      text: "",
     },
     xAxis: {
-      categories: categories,
+      categories: categories, // Use your array of categories here
       title: {
-        text: "CAGR Periods",
+        text: "CAGR Periods", // Title for the x-axis
+        margin: 20, // Adjust margin below the title
       },
+      labels: {
+        rotation: 0, // Control the rotation of labels (optional, set to 0 for horizontal)
+        style: {
+          fontSize: "12px", // Optional, customize the font size of the labels
+        },
+      },
+      tickLength: 5, // Optional, length of the tick marks (can be adjusted)
+      lineWidth: 1, // Optional, width of the x-axis line (default is 1)
     },
     yAxis: {
-      min: Math.min(...minValues) - 10, // Set minimum y-axis value slightly below the smallest min value
+      min: Math.min(...minValues), // Set minimum y-axis value slightly below the smallest min value
       title: {
-        text: "CAGR (%)",
+        text: "",
       },
     },
     legend: {
@@ -51,7 +69,7 @@ const CAGRBarChart = ({ cagrData }) => {
       {
         name: "Max Values",
         data: maxValues,
-        color: "#4CAF50", // Green color for max values
+        color: "#4ade80", // Green color for max values
       },
       {
         name: "Min Values",
@@ -64,6 +82,7 @@ const CAGRBarChart = ({ cagrData }) => {
         color: "#2196F3", // Blue color for average values
       },
     ],
+
     responsive: {
       rules: [
         {
@@ -73,8 +92,9 @@ const CAGRBarChart = ({ cagrData }) => {
           chartOptions: {
             legend: {
               layout: "horizontal",
-              align: "center",
+              align: "top",
               verticalAlign: "bottom",
+              y: 0, // Reset to 0 for mobile view
             },
           },
         },
@@ -83,9 +103,14 @@ const CAGRBarChart = ({ cagrData }) => {
   };
 
   return (
-    <div className="my-8">
-      <HighchartsReact highcharts={Highcharts} options={chartOptions} />
-    </div>
+    <>
+      <Text className="font-subheading mt-6 text-brown text-subheading mb-2">
+        CAGR (%)
+      </Text>
+      <div className="">
+        <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+      </div>
+    </>
   );
 };
 

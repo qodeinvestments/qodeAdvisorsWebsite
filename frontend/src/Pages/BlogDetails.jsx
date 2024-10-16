@@ -120,7 +120,7 @@ const BlogDetails = () => {
             </Heading>
             <div className="text-center mb-18">
               <Text className="text-primary font-body text-sm">
-                {formatDate(post.published_at)} &#x2022;{" "}
+                {formatDate(post.published_at)}
               </Text>
             </div>
             {post.feature_image && (

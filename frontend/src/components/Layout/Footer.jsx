@@ -29,7 +29,7 @@ const Footer = () => {
             </Text>
             <div className="mt-1 text-body sm:text-body text-black">
               <Text className="mb-18">
-              SEBI registered PMS No: <span>INP000008914</span>
+                SEBI registered PMS No: <span>INP000008914</span>
               </Text>
               <br />
               <Text className="mb-18">
@@ -138,7 +138,7 @@ const Footer = () => {
               </Text>
               <br />
               <Text className="mb-18">
-                For Investor Onboarding and other queries contact us at
+                For Investor onboarding and other queries contact us at
                 <br /> Email:{" "}
                 <a
                   href="mailto:contact@qodeinvestments.com"

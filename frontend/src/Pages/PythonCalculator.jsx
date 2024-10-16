@@ -371,7 +371,7 @@ function PythonCalculator() {
   };
 
   return (
-    <Section padding="none" className="mt-9 mb-6">
+    <Section padding="none" className="mt-8 mb-6">
       <Heading
         isItalic
         className="text-mobileHeading sm:text-heading text-brown text-center mb-4 font-heading"

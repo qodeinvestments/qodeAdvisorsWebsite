@@ -152,7 +152,7 @@ const AboutUs = () => {
         />
         <meta name="author" content="Qode" />
       </Helmet>
-      <Section className="mt-9">
+      <Section className="mt-8">
         <Heading
           isItalic
           className="text-center text-brown mb-4 text-heading font-heading"

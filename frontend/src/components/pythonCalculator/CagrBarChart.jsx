@@ -1,117 +1,67 @@
-// src/components/CAGRBarChart.js
 import React from "react";
-import Highcharts from "highcharts";
-import HighchartsReact from "highcharts-react-official";
 import Text from "../common/Text";
-import useMobileWidth from "../hooks/useMobileWidth";
 
-const CAGRBarChart = ({ cagrData }) => {
-  // Extracting max and min values for each period
-  const { isMobile } = useMobileWidth();
-
+const CAGRTable = ({ cagrData }) => {
   const categories = ["1 yr CAGR", "3 yr CAGR", "5 yr CAGR"];
-  const maxValues = categories.map(
-    (category) => cagrData[category]?.top_5_max_values[0] || 0
-  );
-  const minValues = categories.map(
-    (category) => cagrData[category]?.top_5_min_values[0] || 0
-  );
-  const avgValues = categories.map(
-    (category) => cagrData[category]?.average_value || 0
-  );
+  const categoriesKey = ["1 Year", "3 Years", "5 Years"]; // Display this in the table
 
-  // Chart options
-  const chartOptions = {
-    chart: {
-      type: "column",
-      height: isMobile ? 500 : 520, // Adjusted based on mobile
-      backgroundColor: "none",
-      zoomType: "x",
-      marginLeft: isMobile ? 0 : 50,
-      marginRight: isMobile ? 0 : 50,
-    },
-    title: {
-      text: "",
-    },
-    xAxis: {
-      categories: categories, // Use your array of categories here
-      title: {
-        text: "CAGR Periods", // Title for the x-axis
-        margin: 20, // Adjust margin below the title
-      },
-      labels: {
-        rotation: 0, // Control the rotation of labels (optional, set to 0 for horizontal)
-        style: {
-          fontSize: "12px", // Optional, customize the font size of the labels
-        },
-      },
-      tickLength: 5, // Optional, length of the tick marks (can be adjusted)
-      lineWidth: 1, // Optional, width of the x-axis line (default is 1)
-    },
-    yAxis: {
-      min: Math.min(...minValues), // Set minimum y-axis value slightly below the smallest min value
-      title: {
-        text: "",
-      },
-    },
-    legend: {
-      layout: "vertical",
-      align: "right",
-      verticalAlign: "middle",
-    },
-    plotOptions: {
-      series: {
-        groupPadding: 0.1,
-        borderWidth: 0,
-      },
-    },
-    series: [
-      {
-        name: "Max Values",
-        data: maxValues,
-        color: "#4ade80", // Green color for max values
-      },
-      {
-        name: "Min Values",
-        data: minValues,
-        color: "#F44336", // Red color for min values
-      },
-      {
-        name: "Average Values",
-        data: avgValues,
-        color: "#2196F3", // Blue color for average values
-      },
-    ],
-
-    responsive: {
-      rules: [
-        {
-          condition: {
-            maxWidth: 500,
-          },
-          chartOptions: {
-            legend: {
-              layout: "horizontal",
-              align: "top",
-              verticalAlign: "bottom",
-              y: 0, // Reset to 0 for mobile view
-            },
-          },
-        },
-      ],
-    },
+  const getData = (category, type) => {
+    switch (type) {
+      case "max":
+        return cagrData[category]?.top_5_max_values[0] || 0;
+      case "avg":
+        return cagrData[category]?.average_value || 0;
+      case "min":
+        return cagrData[category]?.top_5_min_values[0] || 0;
+      default:
+        return 0;
+    }
   };
 
   return (
     <>
-      <Text className="font-subheading mt-6 text-brown text-subheading mb-2">
-        CAGR (%)
+      <Text className="font-subheading mt-6 text-brown text-subheading mb-18">
+        Rolling Returns
       </Text>
-      <div className="">
-        <HighchartsReact highcharts={Highcharts} options={chartOptions} />
+      <Text className="mb-2">
+        Rolling returns show how an investment grows over time, helping you
+        track its overall progress and consistency.
+      </Text>
+      <div className="overflow-x-auto">
+        <table className="min-w-full text-sm sm:text-body font-body table-auto border-collapse border border-brown">
+          <thead>
+            <tr className="bg-lightBeige">
+              <th className="border border-brown p-18 text-left">
+                Returns CAGR
+              </th>
+              <th className="border border-brown p-18 text-left">Min</th>
+              <th className="border border-brown p-18 text-left">Average</th>
+              <th className="border border-brown p-18 text-left">Max</th>
+            </tr>
+          </thead>
+          <tbody>
+            {categoriesKey.map((categoryKey, index) => (
+              <tr key={index} className="hover:bg-lightBeige">
+                <td className="border font-bold border-brown p-18">
+                  {categoryKey}
+                </td>
+                <td className="border border-brown p-18 text-black">
+                  {getData(categories[index], "min")}%{" "}
+                  {/* Use categories[index] to fetch the corresponding data */}
+                </td>
+                <td className="border  border-brown p-18 text-black">
+                  {getData(categories[index], "avg")}% {/* Same here */}
+                </td>
+                <td className="border  border-brown p-18 text-black">
+                  {getData(categories[index], "max")}% {/* And here */}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );
 };
 
-export default CAGRBarChart;
+export default CAGRTable;

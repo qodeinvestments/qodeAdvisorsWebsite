@@ -115,7 +115,7 @@ const BlogDetails = () => {
       ) : (
         <Section padding="none" className="mt-9 p-18">
           <div className="sm:max-w-[820px] mx-auto">
-            <Heading className="text-mobileHeading sm:text-heading font-heading text-brown mb-6 text-center">
+            <Heading className="text-mobileHeading sm:text-heading font-heading text-brown mb-1 text-center">
               {post.title}
             </Heading>
             <div className="text-center mb-18">

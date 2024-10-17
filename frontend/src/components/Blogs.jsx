@@ -11,7 +11,7 @@ const Blogs = () => {
   const [error, setError] = useState(null);
 
   const key = import.meta.env.VITE_GHOST_BLOG_KEY;
-  const url = `https://blogs.qodeinvest.com/ghost/api/content/posts/?key=${key}&limit=3`;
+  const url = `https://blogs.qodeinvest.com/ghost/api/content/posts/?key=${key}&limit=3&filter=tag:qode-blogs`;
 
   useEffect(() => {
     const fetchLatestPosts = async () => {

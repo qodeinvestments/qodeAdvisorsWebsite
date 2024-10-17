@@ -20,6 +20,7 @@ import Disclosure from "./Pages/Disclosure.jsx";
 import AboutUs from "./Pages/AboutUs.jsx";
 import PythonCalculator from "./Pages/PythonCalculator.jsx";
 import Tool from "./Pages/Tool.jsx";
+import Support from "./Pages/Support.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -91,6 +92,10 @@ const router = createBrowserRouter([
       {
         path: "/portfolio-visualiser",
         element: <PythonCalculator />,
+      },
+      {
+        path: "/support", // This route captures the postId parameter
+        element: <Support />,
       },
       {
         path: "/blogs/:slug", // This route captures the postId parameter

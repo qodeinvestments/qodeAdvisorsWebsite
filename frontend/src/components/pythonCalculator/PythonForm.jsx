@@ -138,7 +138,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 max-w-7xl mx-auto">
+    <form onSubmit={handleSubmit} className="space-y-1 max-w-7xl mx-auto">
       <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Choose strategies *
@@ -179,7 +179,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
               className="w-full sm:w-1/2"
               suffix="%"
             />
-            <label htmlFor="">Leverage</label>
+            {/* <label htmlFor="">Leverage</label>
 
             <Input
               type="text"
@@ -189,7 +189,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
                 handleSystemInputChange(index, "leverage", e.target.value)
               }
               className="w-full sm:w-1/2"
-            />
+            /> */}
           </div>
         </div>
       ))}

@@ -78,7 +78,7 @@ const Home = () => {
       setIsSubmitting(true); // Set submitting state to prevent re-submit
 
       try {
-        const response = await fetch(`${API_URL}/emails/collect/`, {
+        const response = await fetch(`${API_URL}/newsletter/subscribe`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

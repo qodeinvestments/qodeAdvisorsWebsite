@@ -41,7 +41,7 @@ function MonthlyPLTable({ data }) {
     const isHighlighted = value !== null && Number(value) > 4;
     return (
       <td
-        className={`text-center text-sm p-1 border border-brown ${isHighlighted ? "bg-green-400 font-semibold" : ""}`}
+        className={`text-center text-sm p-18 border border-brown ${isHighlighted ? "bg-green-400 font-semibold" : ""}`}
       >
         {cellValue}
       </td>

@@ -7,11 +7,11 @@ import Heading from "../components/common/Heading";
 import { Spinner } from "@material-tailwind/react";
 import { Helmet } from "react-helmet"; // Import Helmet
 
-const Blogs = () => {
+const Support = () => {
   const [blog, setBlog] = useState([]);
   const [loading, setLoading] = useState(true); // New loading state
   const key = import.meta.env.VITE_GHOST_BLOG_KEY;
-  const url = `https://blogs.qodeinvest.com/ghost/api/content/posts/?key=${key}&filter=tag:qode-blogs`; // Corrected URL
+  const url = `https://blogs.qodeinvest.com/ghost/api/content/posts/?key=${key}&filter=tag:qode-support`; // Corrected URL
 
   useEffect(() => {
     axios
@@ -76,4 +76,4 @@ const Blogs = () => {
   );
 };
 
-export default Blogs;
+export default Support;

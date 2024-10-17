@@ -7,6 +7,10 @@ const { upload, uploadFiles } = require("./routes/uploadFiles");
 const emailCollectionRoutes = require('./routes/collectMail')
 const strategyRoutes = require("./routes/strategyRoutes");
 const db = require("./models");
+const emailRoutes = require('./routes/emailRoutes');
+const newsletterRoutes = require('./routes/newsletterRoutes');
+
+
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -28,7 +32,8 @@ const mailerlite = new MailerLite({
 // Routes
 app.use("/api/strategies", strategyRoutes);
 app.post("/api/uploads", upload.single("file"), uploadFiles);
-app.use("/api/emails", emailCollectionRoutes)
+app.use('/api/emails', emailRoutes);
+app.use('/api/newsletter', newsletterRoutes);
 // Database connection and server start
 db.sequelize
   .sync()

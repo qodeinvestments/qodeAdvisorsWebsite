@@ -6,18 +6,25 @@ import "react-toastify/dist/ReactToastify.css";
 import Button from "./common/Button";
 import useMobileWidth from "../components/hooks/useMobileWidth";
 import Text from "./common/Text";
+import Modal from "./Modal";
+import Heading from "./common/Heading";
+
 const SendEmailForm = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+
   const API_URL =
     import.meta.env.MODE === "production"
       ? import.meta.env.VITE_BACKEND_PROD_URL
       : import.meta.env.VITE_BACKEND_DEV_URL;
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -26,6 +33,8 @@ const SendEmailForm = () => {
     }));
   };
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
   const { isMobile } = useMobileWidth();
 
   const handleSubmit = async (e) => {
@@ -64,7 +73,7 @@ const SendEmailForm = () => {
         );
 
         setFormData({ name: "", email: "", message: "" });
-        setIsOpen(false);
+        closeModal();
       } else {
         const errorData = await response.json();
         throw new Error(errorData.error || "Submission failed");
@@ -89,68 +98,67 @@ const SendEmailForm = () => {
   return (
     <div className="fixed bottom-2 right-2 z-50 flex flex-col items-end">
       <Button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={openModal}
         className="w-5 h-5 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary-dark transition-colors mb-2"
       >
-        <FontAwesomeIcon icon={isOpen ? faTimes : faEnvelope} />
+        <FontAwesomeIcon icon={faEnvelope} />
       </Button>
-      {isOpen && (
-        <div
-          className={`transition-all duration-20 ease-in ${
-            isOpen
-              ? "max-w-md opacity-100"
-              : "max-w-0 opacity-0 pointer-events-none"
-          } ${
-            isMobile ? "w-full" : "mr-0 mb-6 w-80"
-          } bg-[#fee9d6] border border-brown p-1 overflow-hidden`}
-        >
-          <Text className="mb-2">
-            Please fill out the form below and we will get back to you as soon
-            as possible.
-          </Text>
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <div className="bg-black bg-opacity-10 backdrop-blur-md flex flex-col sm:p-5 lg:p-4 p-3 items-center justify-center z-50 font-body">
+            <Text className="mb-18 text-beige font-semiheading text-semiheading">
+              Contact Us
+            </Text>
+            <Text className="mb-4 text-lightBeige text-body font-body">
+              Please fill out the form below and we will get back to you as soon
+              as possible.
+            </Text>
 
-          <form onSubmit={handleSubmit} className="w-full">
-            <div className="mb-3">
-              <input
-                type="text"
-                name="username"
-                value={formData.username}
-                onChange={handleInputChange}
-                placeholder="Username"
-                className="w-full p-18 bg-white border border-[#945c39]"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleInputChange}
-                placeholder="Email"
-                className="w-full p-18 bg-white border border-[#945c39]"
-                required
-              />
-            </div>
-            <div className="mb-3">
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                placeholder="Message"
-                className="w-full p-18 bg-white border border-[#945c39] h-20"
-                required
-              />
-            </div>
-            <Button
-              type="submit"
-              className=" bg-[#d1a47b] text-white hover:bg-[#945c39] transition-colors"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Sending..." : "Send"}
-            </Button>
-          </form>
-        </div>
+            <form onSubmit={handleSubmit} className="w-full">
+              <div className="mb-4">
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Name"
+                  className="w-full p-18 text-body font-body bg-lightBeige border border-brown    "
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Email"
+                  className="w-full p-18 text-body font-body bg-lightBeige border border-brown    "
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder="Message"
+                  className="w-full p-18 text-body font-body bg-lightBeige border border-brown     h-32"
+                  required
+                />
+              </div>
+              <div className="text-right">
+                <Button
+                  type="submit"
+                  className="bg-beige text-black  p-1 px-3"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? "Sending..." : "Send"}
+                </Button>
+              </div>
+            </form>
+          </div>
+        </Modal>
       )}
     </div>
   );

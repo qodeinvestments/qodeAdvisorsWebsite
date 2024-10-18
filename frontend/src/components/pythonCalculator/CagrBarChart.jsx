@@ -6,16 +6,19 @@ const CAGRTable = ({ cagrData }) => {
   const categoriesKey = ["1 Year", "3 Years", "5 Years"]; // Display this in the table
 
   const getData = (category, type) => {
-    switch (type) {
-      case "max":
-        return cagrData[category]?.top_5_max_values[0] || 0;
-      case "avg":
-        return cagrData[category]?.average_value || 0;
-      case "min":
-        return cagrData[category]?.top_5_min_values[0] || 0;
-      default:
-        return 0;
-    }
+    const value = (() => {
+      switch (type) {
+        case "max":
+          return cagrData[category]?.top_5_max_values[0] || 0;
+        case "avg":
+          return cagrData[category]?.average_value || 0;
+        case "min":
+          return cagrData[category]?.top_5_min_values[0] || 0;
+        default:
+          return 0;
+      }
+    })();
+    return value.toFixed(1); // Ensure all values are rounded to 1 decimal place
   };
 
   return (
@@ -34,9 +37,9 @@ const CAGRTable = ({ cagrData }) => {
               <th className="border border-brown p-18 text-left">
                 Returns CAGR
               </th>
-              <th className="border border-brown p-18 text-left">Min</th>
+              <th className="border border-brown p-18 text-left">Worst</th>
               <th className="border border-brown p-18 text-left">Average</th>
-              <th className="border border-brown p-18 text-left">Max</th>
+              <th className="border border-brown p-18 text-left">Best</th>
             </tr>
           </thead>
           <tbody>
@@ -47,13 +50,12 @@ const CAGRTable = ({ cagrData }) => {
                 </td>
                 <td className="border border-brown p-18 text-black">
                   {getData(categories[index], "min")}%{" "}
-                  {/* Use categories[index] to fetch the corresponding data */}
                 </td>
-                <td className="border  border-brown p-18 text-black">
-                  {getData(categories[index], "avg")}% {/* Same here */}
+                <td className="border border-brown p-18 text-black">
+                  {getData(categories[index], "avg")}%
                 </td>
-                <td className="border  border-brown p-18 text-black">
-                  {getData(categories[index], "max")}% {/* And here */}
+                <td className="border border-brown p-18 text-black">
+                  {getData(categories[index], "max")}%
                 </td>
               </tr>
             ))}

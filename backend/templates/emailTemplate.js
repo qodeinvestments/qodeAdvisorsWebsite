@@ -1,4 +1,12 @@
-function generateNewsletterHTML() {
+const generateEmailHTML = ({
+    headerText = 'Qode',
+    headerColor = '#d1a47b',
+    bodyContent,
+    ctaText,
+    ctaLink,
+    footerText = '© 2024 Qode Advisors LLP, All rights reserved.',
+    unsubscribeLink = '#'
+}) => {
     return `
         <html>
         <head>
@@ -19,7 +27,7 @@ function generateNewsletterHTML() {
                 }
                 .email-header {
                     background-color: #ffffff;
-                    color: #d1a47b;
+                    color: ${headerColor};
                     padding: 10px;
                     text-align: center;
                     font-family: 'Playfair Display', serif;
@@ -35,7 +43,7 @@ function generateNewsletterHTML() {
                     color: #333333;
                 }
                 .cta-button {
-                    background-color: #d1a47b;
+                    background-color: ${headerColor};
                     color: white;
                     padding: 10px 20px;
                     text-decoration: none;
@@ -44,7 +52,7 @@ function generateNewsletterHTML() {
                     margin-top: 20px;
                 }
                 .cta-button:hover {
-                    background-color: #7a4e30;
+                    opacity: 0.8;
                 }
                 .cta-button:active {
                     color: white;
@@ -59,25 +67,18 @@ function generateNewsletterHTML() {
         </head>
         <body>
             <div class="email-container">
-            
                 <div class="email-content">
-                    <p>Hey,</p>
-                    <p>I'm Harshal, I'm in charge of marketing and communication at Qode.</p>
-                    <p>I come from the creative field and this finance and investing world always felt overwhelming and complex.</p>
-                    <p>But, after spending a few days at Qode, I realized that it's not as complicated as I thought it was.</p>
-                    <p>(Sometimes these finance people don't realize that they are talking in a language only people from finance can understand!)</p>
-                    <p>At Qode, we make sure our communication is simple, and that's why I’m here.</p>
-                    <p>Thank you for subscribing! Stay tuned for more updates.</p>
-                    <a href="https://qodeinvest.com/blogs" style="color:#ffff" class="cta-button">Read More</a>
+                    ${bodyContent}
+                    ${ctaText && ctaLink ? `<a href="${ctaLink}" style="color:#ffff" class="cta-button">${ctaText}</a>` : ''}
                 </div>
                 <div class="email-footer">
-                    <p>&copy; 2024 Qode Advisors LLP, All rights reserved.</p>
-                    <p>If you wish to unsubscribe, please <a href="#">click here</a>.</p>
+                    <p>${footerText}</p>
+                    <p>If you wish to unsubscribe, please <a href="${unsubscribeLink}">click here</a>.</p>
                 </div>
             </div>
         </body>
         </html>
     `;
-}
+};
 
-module.exports = { generateNewsletterHTML };
+module.exports = { generateEmailHTML };

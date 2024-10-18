@@ -13,7 +13,6 @@ import Heading from "../components/common/Heading";
 import "../components/components.css";
 import Text from "../components/common/Text";
 import useMobileWidth from "../components/hooks/useMobileWidth.jsx";
-import OptimizedChart from "./PortfolioChart.jsx";
 const API_URL =
   import.meta.env.MODE === "production"
     ? import.meta.env.VITE_PROD_API_URL
@@ -108,10 +107,11 @@ function PythonCalculator() {
       },
     ],
     chart: {
+      height: isMobile ? 500 : 520, // Adjusted based on mobile
       backgroundColor: "none",
       zoomType: "x",
-      marginLeft: isMobile ? 0 : 0,
-      marginRight: isMobile ? 0 : 0,
+      marginLeft: isMobile ? 0 : 50,
+      marginRight: isMobile ? 0 : 50,
     },
     tooltip: {
       shared: true,
@@ -134,6 +134,18 @@ function PythonCalculator() {
             lineWidthPlus: 1,
           },
         },
+      },
+      area: {
+        marker: {
+          radius: 2,
+        },
+        lineWidth: 1,
+        states: {
+          hover: {
+            lineWidth: 1,
+          },
+        },
+        threshold: null,
       },
     },
     navigation: {
@@ -413,25 +425,9 @@ function PythonCalculator() {
                 <Text className="font-subheading mt-6  text-brown text-subheading mb-2">
                   NAV Curve
                 </Text>
-                <OptimizedChart
-                  data={{
-                    navData: resultData.equity_curve_data.map((point) => [
-                      Date.UTC(
-                        parseInt(point.Date.split("-")[2]),
-                        parseInt(point.Date.split("-")[1]) - 1,
-                        parseInt(point.Date.split("-")[0])
-                      ),
-                      point.NAV,
-                    ]),
-                    drawdownData: resultData.drawdown_data.map((point) => [
-                      Date.UTC(
-                        parseInt(point.Date.split("-")[2]),
-                        parseInt(point.Date.split("-")[1]) - 1,
-                        parseInt(point.Date.split("-")[0])
-                      ),
-                      point.Drawdown,
-                    ]),
-                  }}
+                <HighchartsReact
+                  highcharts={Highcharts}
+                  options={chartOptions}
                 />
               </>
             </>

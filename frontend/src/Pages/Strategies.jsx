@@ -139,11 +139,13 @@ const Strategies = () => {
         <title>Qode - Discover Investment Approaches</title>
         <meta
           name="description"
-          content="Explore Qode's data-driven strategies, including Growth, Momentum, and Low Volatility Funds. Find the right approach to meet your financial goals."
+          content="Explore Qode's data-driven strategies, including Growth, Momentum, and Low Volatility Funds. Find the right approach to meet your investment
+          goals."
         />
         <meta
           name="keywords"
-          content="investment strategies, Qode Growth Fund, Momentum Fund, Low Volatility Fund, data-driven investment, financial goals"
+          content="investment strategies, Qode Growth Fund, Momentum Fund, Low Volatility Fund, data-driven investment, investment
+          goals"
         />
         <meta name="author" content="Qode Invest" />
       </Helmet>

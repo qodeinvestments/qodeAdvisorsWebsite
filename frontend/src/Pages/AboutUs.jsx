@@ -165,12 +165,10 @@ const AboutUs = () => {
           quickly began outperforming market averages. This success gave us the
           confidence to invest the reserve capital from our family business, and
           we were able to grow that capital significantly. <br />
-          <br /> As time passed, it became clear: we were really good at this.
-          So, we thought, why not use our expertise to help others grow their
-          wealth too? With this idea in mind, we launched our first quant
-          strategy, “The Quant Growth Fund,” partnering with another fund
-          manager. Over the past five years, we’ve achieved a CAGR of 35.1%.
-          Among all PMS providers, our 5-year CAGR currently ranks 4th.
+          <br /> As time passed, we thought, why not use our expertise to help
+          others grow their wealth too? With this idea in mind, we launched our
+          first quant strategy, “The Quant Growth Fund,” partnering with another
+          fund manager.
           <br />
           <br /> In fact, we were one of the early pioneers of quant investing
           and trading in India, adopting data-driven strategies when it was

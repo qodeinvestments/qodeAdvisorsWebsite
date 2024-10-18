@@ -32,7 +32,7 @@ const useStrategyData = (strategy) => {
   const calculateReturns = (period) => {
     // // console.log("strategy data: ", data);
     // // console.log("strategy: ", strategy);
-    if (!data || data.length < 2) return "N/A";
+    if (!data || data.length < 2) return "0%";
 
     const latestData = data[data.length - 1];
     const latestDate = new Date(latestData.Date);
@@ -57,16 +57,16 @@ const useStrategyData = (strategy) => {
         startDate.setFullYear(startDate.getFullYear() - 5);
         break;
       default:
-        return "N/A";
+        return "0%";
     }
 
     const startIndex = data.findIndex((d) => new Date(d.Date) >= startDate);
-    if (startIndex === -1) return "N/A"; // No data matches the start date
+    if (startIndex === -1) return "0%"; // No data matches the start date
 
     const startValue = data[startIndex]["Total Portfolio NAV"];
     const endValue = latestData["Total Portfolio NAV"];
 
-    if (startValue === undefined || endValue === undefined) return "N/A";
+    if (startValue === undefined || endValue === undefined) return "0%";
 
     // Calculate return based on period
     if (period === "1Y" || period === "3Y" || period === "5Y") {

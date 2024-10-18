@@ -11,28 +11,28 @@ const GrowMoney = () => {
       <div className="text-center w-full">
         {/* Heading Section */}
         <Text className="sm:text-subheading text-mobileSubHeading text-beige font-heading mb-2 px-2">
-          Schedule a meeting with our fund manager to discuss financial goals
-          and how you can reach them.
+          Schedule a meeting with our fund manager to discuss your investment
+          goals and how you can reach them.
         </Text>
 
         <div className="flex flex-col items-center text-lightBeige justify-center gap-4 sm:gap-5 p-2 pb-1">
           {/* Office Visit Section */}
           <div className="w-full">
-            <Text className="mb-2 text-sm sm:text-body">In Mumbai?</Text>
+            {/* <Text className="mb-2 text-sm sm:text-body">In Mumbai?</Text> */}
 
-            <Button
+            {/* <Button
               href={VITE_INPERSON_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto text-sm sm:text-body bg-beige text-black"
             >
               Schedule Office Visit
-            </Button>
+            </Button> */}
           </div>
 
           {/* Zoom Call Section */}
           <div className="w-full">
-            <Text className="mb-1 text-sm sm:text-body">Outside Mumbai?</Text>
+            {/* <Text className="mb-1 text-sm sm:text-body">Outside Mumbai?</Text> */}
 
             <Button
               href={VITE_GOOGLE_MEET_URL}

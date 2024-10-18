@@ -100,7 +100,7 @@ const PerformanceChart = ({
   );
 
   const renderDateRangeButtons = () => {
-    const ranges = ["1M", "6M", "1Y", "3Y", "5Y", "ALL"];
+    const ranges = ["1M", "6M", "1Y", "3Y", "5Y", "Inception"];
     return (
       <>
         {ranges.map((range) => (
@@ -233,6 +233,10 @@ const PerformanceChart = ({
           </TabsBody>
         </Tabs>
       </div>
+      <Text className="text-beige text-sm sm:text-body font-body mt-1 italic">
+        *The results shown below are based on backtested data and are shared to
+        highlight the strategy’s past performance.
+      </Text>
       <Text className="sm:text-subheading text-mobileSubHeading font-subheading text-center my-2 mt-6 sm:mt-4 ">
         How does this Strategy work & <br className="sm:visible hidden" />  how
         was it made to get the expected returns with the highest certainty?

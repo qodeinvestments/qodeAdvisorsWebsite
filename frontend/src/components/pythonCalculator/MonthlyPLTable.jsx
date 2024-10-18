@@ -37,7 +37,7 @@ function MonthlyPLTable({ data }) {
   ];
 
   const renderCell = (value) => {
-    const cellValue = value !== null ? `${value}%` : "N/A";
+    const cellValue = value !== null ? `${value}%` : "0%";
     const isHighlighted = value !== null && Number(value) > 4;
     return (
       <td
@@ -57,7 +57,7 @@ function MonthlyPLTable({ data }) {
         <table className="w-full border-collapse border border-brown">
           <thead>
             <tr className="bg-lightBeige">
-              <th className="p-18 text-sm sm:text-body font-body text-left border border-brown font-semibold">
+              <th className="p-18 text-sm sm:text-body font-body text-center border border-brown font-semibold">
                 Year
               </th>
               {monthsShort.map((month) => (
@@ -76,7 +76,7 @@ function MonthlyPLTable({ data }) {
           <tbody>
             {data.map((row, index) => (
               <tr key={index}>
-                <td className="p-18 border border-brown bg-lightBeige text-left font-semibold">
+                <td className="p-18 border border-brown bg-lightBeige text-center font-semibold">
                   {row.Year}
                 </td>
                 {monthsFull.map((month) => renderCell(row[month]))}

@@ -37,7 +37,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
     end_date: "",
     invest_amount: "",
     cash_percent: "",
-    frequency: "daily",
+    frequency: "yearly",
     selected_systems: [],
     selected_debtfunds: [],
   });

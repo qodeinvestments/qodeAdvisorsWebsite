@@ -30,6 +30,28 @@ const StrategyComponent = ({ strategyData }) => {
   };
 
   const { data, isLoading, error } = useFetchStrategyData(strategyCode);
+  // Helper function to format dates (e.g., "1st April 2007")
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const options = { day: "numeric", month: "long", year: "numeric" };
+    return date.toLocaleDateString("en-GB", options);
+  };
+
+  // Extract the earliest and latest dates from the data
+  const extractDateRange = (data) => {
+    if (!data || data.length === 0) return { startDate: "0", endDate: "0" };
+
+    const dates = data.map((entry) => new Date(entry.date));
+    const startDate = new Date(Math.min(...dates));
+    const endDate = new Date(Math.max(...dates));
+
+    return {
+      startDate: formatDate(startDate),
+      endDate: formatDate(endDate),
+    };
+  };
+
+  const { startDate, endDate } = extractDateRange(data);
 
   return (
     <>
@@ -67,6 +89,8 @@ const StrategyComponent = ({ strategyData }) => {
             error={error}
             strategy={strategyCode}
             name={title}
+            startDates={startDate}
+            endDates={endDate}
           />
         </Section>
 

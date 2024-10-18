@@ -75,7 +75,7 @@ const InvestmentStrategies = () => {
         <div className="text-center sm:text-start lg:w-1/2 pl-1">
           <Text className="sm:mt-1 mt-3 mb-5">
             We've created data-driven strategies that have the highest
-            probability of helping you reach your financial goals over the long
+            probability of helping you reach your investment goals over the long
             term.
           </Text>
         </div>

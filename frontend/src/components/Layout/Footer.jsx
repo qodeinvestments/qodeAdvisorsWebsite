@@ -43,6 +43,7 @@ const Footer = () => {
                 </a>
               </Text>
               <Text>
+                Contact No:{" "}
                 <a href="tel:+919820300088" className="hover:text-black">
                   +91 98203 00088
                 </a>
@@ -87,8 +88,8 @@ const Footer = () => {
               className="text-body sm:text-body text-black"
               itemClassName="mb-18 hover:text-black"
               items={[
-                <CustomLink to="/blogs/qode-future-horizons">
-                  Qode Future Horizons
+                <CustomLink to="/strategies/qode-all-weather">
+                  Qode All Weather
                 </CustomLink>,
                 <CustomLink to="/strategies/qode-growth-fund">
                   Qode Growth Fund
@@ -96,8 +97,8 @@ const Footer = () => {
                 <CustomLink to="/strategies/qode-velocity-fund">
                   Qode Velocity Fund
                 </CustomLink>,
-                <CustomLink to="/strategies/qode-all-weather">
-                  Qode All Weather
+                <CustomLink to="/blogs/qode-future-horizons">
+                  Qode Future Horizons
                 </CustomLink>,
               ]}
             />
@@ -149,12 +150,12 @@ const Footer = () => {
                 >
                   operations@qodeinvest.com
                 </a>{" "}
-                <br />
-                Contact No:{" "}
-                <a href="tel:+919820300088" className="hover:text-black">
-                  +91 98203 00088
-                </a>
               </Text>
+              <br />
+              Contact No:{" "}
+              <a href="tel:+919820300088" className="hover:text-black">
+                +91 98203 00088
+              </a>
               {/* <Text>
                 <a
                   href="tel:+919820300028"

@@ -4,7 +4,15 @@ import Text from "./common/Text";
 import useCalculateCagr from "./hooks/useCalculateCagr";
 import { Spinner } from "@material-tailwind/react";
 
-const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
+const TrailingReturns = ({
+  strategy,
+  isLoading,
+  error,
+  data,
+  name,
+  startDates,
+  endDates,
+}) => {
   console.log(name);
 
   const [returns, setReturns] = useState({
@@ -16,7 +24,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
     "1Y": {},
     "3Y": {},
     "5Y": {},
-    All: {}, // Changed from All to "All"
+    Inception: {}, // Changed from All to "All"
   });
   const [drawdowns, setDrawdowns] = useState({
     latest: {},
@@ -37,7 +45,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
       "1Y": "1Y",
       "3Y": "3Y",
       "5Y": "5Y",
-      All: "ALL", // Changed display text while keeping calculation logic
+      Inception: "Inception", // Changed display text while keeping calculation logic
     };
 
     const calculatedReturns = {};
@@ -125,7 +133,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
 
   const benchmark = data[0]?.benchmark || "Default Benchmark";
   const strategies = [strategy, benchmark];
-  const periods = ["1Y", "3Y", "5Y", "All"]; // Updated display text
+  const periods = ["1Y", "3Y", "5Y", "Inception"]; // Updated display text
 
   const ResponsiveTable = () => (
     <div className="overflow-x-auto">
@@ -172,7 +180,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
                     <div className="absolute inset-y-0 right-0 bg-brown" />
                     {returns[period] && returns[period][strat]
                       ? `${parseFloat(returns[period][strat]).toFixed(1)}%`
-                      : "N/A"}
+                      : "0%"}
                   </td>
                 ))}
                 <td
@@ -182,7 +190,7 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
                 >
                   {drawdowns.lowest[strat]
                     ? `${drawdowns.lowest[strat].toFixed(1)}%`
-                    : "N/A"}
+                    : "0%"}
                 </td>
               </tr>
             ))}
@@ -196,16 +204,22 @@ const TrailingReturns = ({ strategy, isLoading, error, data, name }) => {
     <>
       <Heading
         isItalic
-        className="text-mobileSubHeading sm:text-subheading font-subheading text-brown mb-18"
+        className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
       >
         Trailing Returns
       </Heading>
-      <Text className="text-sm sm:text-body font-body text-black mb-4">
-        Trailing returns are annualised returns from the specified period till
-        today.
-      </Text>
+      <div className="flex justify-between flex-col sm:flex-row">
+        <Text className="text-sm sm:text-body font-body text-black mb-18">
+          Trailing returns indicate an investment's performance over a fixed
+          past period, ending at a specific date.
+        </Text>
+
+        <Text className="text-xs text-right sm:text-xs font-body mb-18 text-brown italic ">
+          *Data from {startDates} to {endDates}.
+        </Text>
+      </div>
       <ResponsiveTable />
-      <Text className="text-beige text-sm sm:text-body font-body mt-2 sm:mt-4  ">
+      <Text className="text-beige text-sm sm:text-body font-body mt-2 sm:mt-18  ">
         MDD (Maximum Drawdown) is the percentage an investment loses from its
         highest point to its lowest point.
       </Text>

@@ -13,7 +13,10 @@ export function useStrategyData(strategy) {
       try {
         setLoading(true);
         const strategyAlias = strategy === "qgm" ? "momentum" : strategy;
-        const strategyData = await fetchStrategyData(strategyAlias, "ALL");
+        const strategyData = await fetchStrategyData(
+          strategyAlias,
+          "Inception"
+        );
 
         if (!Array.isArray(strategyData) || strategyData.length === 0) {
           throw new Error("Invalid data received from API");

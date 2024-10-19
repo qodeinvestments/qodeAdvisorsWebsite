@@ -19,7 +19,7 @@ const BookAMeet = () => {
 
         <div className="flex flex-col items-center text-lightBeige justify-center gap-5">
           <div>
-            <Text className="mb-2">In Mumbai?</Text>
+            {/* <Text className="mb-2">In Mumbai?</Text>
 
             <Button
               href={VITE_INPERSON_URL}
@@ -31,7 +31,7 @@ const BookAMeet = () => {
             </Button>
           </div>
           <div>
-            <Text className="mb-2">Outside Mumbai?</Text>
+            <Text className="mb-2">Outside Mumbai?</Text> */}
 
             <Button
               href={VITE_GOOGLE_MEET_URL}

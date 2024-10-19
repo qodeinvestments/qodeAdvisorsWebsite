@@ -4,23 +4,28 @@ import { InfoCircleOutlined } from "@ant-design/icons";
 import axios from "axios";
 import moment from "moment/moment";
 import Button from "../common/Button";
+const { Option, OptGroup } = Select;
 
 const { RangePicker } = DatePicker;
 
 const STRATEGIES = [
-  { label: "NSE Momentum Index", value: "NSE Momentum Index" },
-  { label: "Equity + Puts", value: "Equity + Puts" },
-  { label: "Equity + Puts + Calls", value: "Equity + Puts + Calls" },
-  { label: "Gold Bees", value: "Gold Bees" },
-  { label: "Qode All Weather", value: "QAW" },
-  { label: "Qode Growth Fund", value: "QGF" },
-  { label: "Qode Velocity Fund", value: "QVF" },
-  // { label: "QGFLong", value: "QGFLong" },
-  // { label: "Shortflat", value: "Shortflat" },
-  // { label: "Long Options", value: "LongOpt" },
-  // { label: "Qode Growth Fund+Derivatives", value: "QGF+Derivatives" },
-];
+  { label: "Qode All Weather", value: "QAW", group: "Qode Strategies" },
+  { label: "Qode Growth Fund", value: "QGF", group: "Qode Strategies" },
+  { label: "Qode Velocity Fund", value: "QVF", group: "Qode Strategies" },
+  { label: "NSE Momentum Index", value: "NSE Momentum Index", group: "Index" },
+  { label: "Gold Bees", value: "Gold Bees", group: "Index" },
 
+  {
+    label: "NSE Momentum + Qode (Puts)",
+    value: "Equity + Puts",
+    group: "Qode Derivatives Portfolio",
+  },
+  {
+    label: "NSE Momentum + Qode (Puts + Calls)",
+    value: "Equity + Puts + Calls",
+    group: "Qode Derivatives Portfolio",
+  },
+];
 const DEBTFUNDS = [
   { label: "QGFLong", value: "QGFLong" },
   { label: "Shortflat", value: "Shortflat" },
@@ -30,6 +35,16 @@ const DEBTFUNDS = [
   { label: "QAW", value: "QAW" },
   { label: "QVF", value: "QVF" },
 ];
+const groupedOptions = STRATEGIES.reduce((groups, strategy) => {
+  const { group } = strategy;
+  if (!groups[group]) groups[group] = [];
+  groups[group].push(strategy);
+  return groups;
+}, {});
+
+const handleSystemChange = (value) => {
+  console.log("Selected strategies:", value);
+};
 
 function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
   const [formData, setFormData] = useState({
@@ -48,8 +63,8 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
     isJsonColumn: true,
   }));
 
-  const combinedStrategies = [...STRATEGIES, ...columnList];
-  const combinedDebtFunds = [...DEBTFUNDS, ...columnList];
+  // const combinedStrategies = [...STRATEGIES, ...columnList];
+  // const combinedDebtFunds = [...DEBTFUNDS, ...columnList];
 
   const handleInputChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -146,22 +161,30 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
         <Select
           mode="multiple"
           style={{ width: "100%" }}
-          options={combinedStrategies}
-          value={formData.selected_systems.map((s) => s.system)}
           onChange={handleSystemChange}
           className="w-full border-brown border rounded-none"
           placeholder="Choose strategies"
-          optionRender={(option) => (
-            <span
-              style={{
-                color: option.data.isJsonColumn ? "#1890ff" : "inherit",
-                fontWeight: option.data.isJsonColumn ? "bold" : "normal",
-              }}
+        >
+          {Object.keys(groupedOptions).map((group) => (
+            <OptGroup
+              key={group}
+              label={<span className="font-bold text-gray-800">{group}</span>}
             >
-              {option.data.isJsonColumn ? `📊 ${option.label}` : option.label}
-            </span>
-          )}
-        />
+              {groupedOptions[group].map((option) => (
+                <Select.Option key={option.value} value={option.value}>
+                  <span
+                    style={{
+                      color: option.isJsonColumn ? "#1890ff" : "inherit",
+                      fontWeight: option.isJsonColumn ? "bold" : "normal",
+                    }}
+                  >
+                    {option.isJsonColumn ? `📊 ${option.label}` : option.label}
+                  </span>
+                </Select.Option>
+              ))}
+            </OptGroup>
+          ))}
+        </Select>
       </div>
       {formData.selected_systems.map((system, index) => (
         <div key={index} className="space-y-18 sm:p-2">

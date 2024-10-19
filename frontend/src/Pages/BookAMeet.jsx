@@ -17,27 +17,30 @@ const BookAMeet = () => {
           Schedule a Meeting
         </Heading>
 
-        <div className="flex flex-col items-center text-lightBeige justify-center gap-5">
-          <div>
-            {/* <Text className="mb-2">In Mumbai?</Text>
+        <div className="flex flex-col items-center text-lightBeige justify-center gap-18 sm:gap-18 p-2 pb-1">
+          {/* Office Visit Section */}
+          <div className="w-full">
+            {/* <Text className="mb-2 text-sm sm:text-body">In Mumbai?</Text> */}
 
-            <Button
+            {/* <Button
               href={VITE_INPERSON_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-beige text-black"
+              className="w-full sm:w-auto text-sm sm:text-body bg-beige text-black"
             >
               Schedule Office Visit
-            </Button>
+            </Button> */}
           </div>
-          <div>
-            <Text className="mb-2">Outside Mumbai?</Text> */}
+
+          {/* Zoom Call Section */}
+          <div className="w-full">
+            {/* <Text className="mb-1 text-sm sm:text-body">Outside Mumbai?</Text> */}
 
             <Button
               href={VITE_GOOGLE_MEET_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-beige text-black"
+              className="w-full text-sm sm:text-body sm:w-auto bg-beige text-black"
             >
               Schedule a Call
             </Button>

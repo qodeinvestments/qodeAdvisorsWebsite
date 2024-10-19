@@ -221,7 +221,7 @@ const Tool = () => {
           let tooltipText = `<b>${this.x}</b><br/>`;
           this.points.forEach((point) => {
             if (point.y !== null) {
-              tooltipText += `${point.series.name}: ${point.y.toFixed(2)}%<br/>`;
+              tooltipText += `${point.series.name}: ${point.y.toFixed(1)}%<br/>`;
             }
           });
           return tooltipText;

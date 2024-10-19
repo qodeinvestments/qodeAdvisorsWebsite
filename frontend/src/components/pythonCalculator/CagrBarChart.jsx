@@ -31,15 +31,15 @@ const CAGRTable = ({ cagrData }) => {
         track its overall progress and consistency.
       </Text>
       <div className="overflow-x-auto">
-        <table className="min-w-full text-sm sm:text-body font-body table-auto border-collapse border border-brown">
+        <table className="min-w-full text-sm sm:text-body text-center font-body table-auto border-collapse border border-brown">
           <thead>
             <tr className="bg-lightBeige">
-              <th className="border border-brown p-18 text-left">
+              <th className="border border-brown p-18 ">
                 Returns CAGR
               </th>
-              <th className="border border-brown p-18 text-left">Worst</th>
-              <th className="border border-brown p-18 text-left">Average</th>
-              <th className="border border-brown p-18 text-left">Best</th>
+              <th className="border border-brown p-18 ">Worst</th>
+              <th className="border border-brown p-18 ">Average</th>
+              <th className="border border-brown p-18 ">Best</th>
             </tr>
           </thead>
           <tbody>

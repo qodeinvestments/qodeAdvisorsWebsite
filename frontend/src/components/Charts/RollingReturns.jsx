@@ -101,7 +101,7 @@ const RollingReturns = ({ strategy }) => {
       tooltip: {
         formatter: function () {
           const date = rollingReturnsData[this.point.x].date;
-          const cagr = this.point.y.toFixed(2);
+          const cagr = this.point.y.toFixed(1);
           return `Date: ${date}<br>CAGR: ${cagr}%`;
         },
       },

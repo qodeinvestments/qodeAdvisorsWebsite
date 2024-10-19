@@ -15,7 +15,7 @@ export function calculateFutureValue(amount, frequency, period, data, startOfMon
             const strategyValue = parseFloat(investmentEntry.total_portfolio_nav);
             const shares = amount / strategyValue;
             const currentPrice = parseFloat(data[data.length - 1].total_portfolio_nav);
-            return (shares * currentPrice).toFixed(2);
+            return (shares * currentPrice).toFixed(1);
         }
         return '0.00';
     } else {
@@ -27,7 +27,7 @@ export function calculateFutureValue(amount, frequency, period, data, startOfMon
             totalShares += shares;
         }
         const finalPrice = totalShares * data[data.length - 1].total_portfolio_nav;
-        return finalPrice.toFixed(2);
+        return finalPrice.toFixed(1);
     }
 }
 

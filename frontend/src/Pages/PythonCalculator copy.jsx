@@ -275,12 +275,12 @@ function PythonCalculator() {
     if (!resultData) return null;
 
     const metrics = [
-      { key: "CAGR", value: resultData.car.toFixed(2) + "%" },
-      { key: "Max Drawdown", value: resultData.max_dd.toFixed(2) + "%" },
-      { key: "Avg Drawdown", value: resultData.avg_dd.toFixed(2) + "%" },
-      { key: "CAR/MDD", value: resultData.carbymdd.toFixed(2) },
-      { key: "Max Gain / Day", value: resultData.max_gain.toFixed(2) + "%" },
-      { key: "Max Loss / Day", value: resultData.max_loss.toFixed(2) + "%" },
+      { key: "CAGR", value: resultData.car.toFixed(1) + "%" },
+      { key: "Max Drawdown", value: resultData.max_dd.toFixed(1) + "%" },
+      { key: "Avg Drawdown", value: resultData.avg_dd.toFixed(1) + "%" },
+      { key: "CAR/MDD", value: resultData.carbymdd.toFixed(1) },
+      { key: "Max Gain / Day", value: resultData.max_gain.toFixed(1) + "%" },
+      { key: "Max Loss / Day", value: resultData.max_loss.toFixed(1) + "%" },
     ];
 
     return (

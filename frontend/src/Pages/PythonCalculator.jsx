@@ -260,15 +260,27 @@ function PythonCalculator() {
   };
 
   const renderMetrics = () => {
-    if (!resultData) return null;
+    if (!resultData || !resultData.equity_curve_data || resultData.equity_curve_data.length < 2) return null;
+
+    // Get the first and last dates from equity_curve_data
+    const dates = resultData.equity_curve_data.map(point => new Date(point.Date.split('-').reverse().join('-')));
+    const startDate = dates[0];
+    const endDate = dates[dates.length - 1];
+
+    // Calculate the date range in days
+    const dateRangeInDays = (endDate - startDate) / (1000 * 60 * 60 * 24);
+    const isLessThanOneYear = dateRangeInDays <= 365;
 
     const metrics = [
-      { key: "CAGR", value: resultData.car.toFixed(2) + "%" },
-      { key: "Max Drawdown", value: resultData.max_dd.toFixed(2) + "%" },
-      { key: "Avg Drawdown", value: resultData.avg_dd.toFixed(2) + "%" },
-      { key: "CAR/MDD", value: resultData.carbymdd.toFixed(2) },
-      { key: "Max Gain / Day", value: resultData.max_gain.toFixed(2) + "%" },
-      { key: "Max Loss / Day", value: resultData.max_loss.toFixed(2) + "%" },
+      {
+        key: isLessThanOneYear ? "Absolute Returns" : "CAGR",
+        value: resultData.car.toFixed(1) + "%"
+      },
+      { key: "Max Drawdown", value: resultData.max_dd.toFixed(1) + "%" },
+      { key: "Avg Drawdown", value: resultData.avg_dd.toFixed(1) + "%" },
+      { key: "CAR/MDD", value: resultData.carbymdd.toFixed(1) },
+      { key: "Max Gain / Day", value: resultData.max_gain.toFixed(1) + "%" },
+      { key: "Max Loss / Day", value: resultData.max_loss.toFixed(1) + "%" },
     ];
 
     return (
@@ -293,6 +305,13 @@ function PythonCalculator() {
     );
   };
 
+  const calculateDaysBetween = (date1, date2) => {
+    const d1 = new Date(date1.split('-').reverse().join('-'));
+    const d2 = new Date(date2.split('-').reverse().join('-'));
+    const diffTime = Math.abs(d2 - d1);
+    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  };
+
   const renderDrawdownsTable = () => {
     if (
       !resultData?.top_10_worst_drawdowns ||
@@ -310,22 +329,22 @@ function PythonCalculator() {
           {" "}
           {/* Makes table horizontally scrollable */}
           <div className="overflow-x-auto">
-            <table className="min-w-full text-sm sm:text-body font-body table-auto border-collapse border border-brown">
+            <table className="min-w-full text-sm sm:text-body font-body text-center table-auto border-collapse border border-brown">
               <thead>
                 <tr className="bg-lightBeige">
-                  <th className="border border-brown p-18 text-left">
+                  <th className="border border-brown p-18">
                     Drawdown
                   </th>
-                  <th className="border border-brown p-18 text-left">
+                  <th className="border border-brown p-18">
                     Peak Date
                   </th>
-                  <th className="border border-brown p-18 text-left">
+                  <th className="border border-brown p-18">
                     Drawdown Date
                   </th>
-                  <th className="border border-brown p-18 text-left">
+                  <th className="border border-brown p-18">
                     Recovery Date
                   </th>
-                  <th className="border border-brown p-18 text-left">
+                  <th className="border border-brown p-18">
                     Days to Recover
                   </th>
                 </tr>
@@ -334,7 +353,7 @@ function PythonCalculator() {
                 {resultData.top_10_worst_drawdowns.map((row, index) => (
                   <tr key={index} className="hover:bg-lightBeige">
                     <td className="border border-brown p-18">
-                      {row.Drawdown}%
+                      {row.Drawdown.toFixed(1)}%
                     </td>
                     <td className="border border-brown text-nowrap p-18">
                       {row.Peak_Date}
@@ -346,7 +365,9 @@ function PythonCalculator() {
                       {row.Recovery_Date}
                     </td>
                     <td className="border border-brown p-18">
-                      {row["Days between Drawdown and Recovery Date"]}
+                      {row.Recovery_Date !== "Not Recovered" 
+                        ? calculateDaysBetween(row.Peak_Date, row.Recovery_Date)
+                        : "Not Recovered"}
                     </td>
                   </tr>
                 ))}
@@ -411,7 +432,7 @@ function PythonCalculator() {
               </Button> */}
               <>
                 <Text className="font-subheading mt-6  text-brown text-subheading mb-2">
-                  NAV Curve
+                  Equity Curve
                 </Text>
                 <OptimizedChart
                   data={{

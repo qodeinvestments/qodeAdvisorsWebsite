@@ -101,7 +101,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
 
   const calculateEqualWeightage = (count) => {
     if (count === 0) return "";
-    return (100 / count).toFixed(2);
+    return (100 / count).toFixed(1);
   };
 
   const handleSubmit = (e) => {

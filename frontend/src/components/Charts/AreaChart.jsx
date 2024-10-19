@@ -62,7 +62,7 @@ const AreaChart = () => {
           show: false,
         },
         y: {
-          formatter: (val) => `${val.toFixed(2)}`, // Format tooltip values
+          formatter: (val) => `${val.toFixed(1)}`, // Format tooltip values
           title: {
             formatter: (seriesName) => `${seriesName}: `, // Custom series name formatting
           },

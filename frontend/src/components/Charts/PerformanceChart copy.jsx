@@ -154,12 +154,12 @@ const PerformanceChart = ({ strategy, blogUrl }) => {
       // For periods less than a year, use simple return
       if (years < 1) {
         const simpleReturn = ((endValue - startValue) / startValue) * 100;
-        return simpleReturn.toFixed(2) + "%";
+        return simpleReturn.toFixed(1) + "%";
       }
 
       // For periods of a year or more, use CAGR
       const cagr = (Math.pow(endValue / startValue, 1 / years) - 1) * 100;
-      return cagr.toFixed(2) + "%";
+      return cagr.toFixed(1) + "%";
     },
     []
   );

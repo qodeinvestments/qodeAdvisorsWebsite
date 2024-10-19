@@ -45,9 +45,9 @@ const HoldingDistribution = ({ strategy }) => {
         );
 
         const percentages = {
-          large: parseFloat((totals.large / totals.total) * 100).toFixed(2),
-          mid: parseFloat((totals.mid / totals.total) * 100).toFixed(2),
-          small: parseFloat((totals.small / totals.total) * 100).toFixed(2),
+          large: parseFloat((totals.large / totals.total) * 100).toFixed(1),
+          mid: parseFloat((totals.mid / totals.total) * 100).toFixed(1),
+          small: parseFloat((totals.small / totals.total) * 100).toFixed(1),
         };
 
         setChartOptions({

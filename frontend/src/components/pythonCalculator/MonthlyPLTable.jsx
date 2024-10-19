@@ -7,41 +7,24 @@ function MonthlyPLTable({ data }) {
   }
 
   const monthsShort = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
+    "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
   ];
 
   const monthsFull = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
   ];
 
   const renderCell = (value) => {
-    const cellValue = value !== null ? `${value}%` : "0%";
-    const isHighlighted = value !== null && Number(value) > 4;
+    const numValue = parseFloat(value);
+    const cellValue = isNaN(numValue) ? "0.0%" : `${numValue.toFixed(1)}%`;
+    const isHighlighted = !isNaN(numValue) && numValue > 4;
     return (
       <td
-        className={`text-center text-sm p-18 border border-brown ${isHighlighted ? "bg-green-400 font-semibold" : ""}`}
+        className={`text-center text-sm p-18 border border-brown ${
+          isHighlighted ? "bg-green-400 font-semibold" : ""
+        }`}
       >
         {cellValue}
       </td>
@@ -54,7 +37,7 @@ function MonthlyPLTable({ data }) {
         Monthly PL Table (%)
       </Text>
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse border border-brown">
+        <table className="w-full text-center border-collapse border border-brown">
           <thead>
             <tr className="bg-lightBeige">
               <th className="p-18 text-sm sm:text-body font-body text-center border border-brown font-semibold">

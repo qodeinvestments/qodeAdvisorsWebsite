@@ -98,10 +98,36 @@
   margin-top: calc(16px * var(--content-spacing-multiplier, 1));
 }
 
-.post-content h1 { font-size: 67px;line-height: 78px;font-family: "Playfair Display", serif;color: #945c39; }
-.post-content h2 { font-size: 42px;line-height: 46px; }
-.post-content h3 { font-size: 35px;line-height: 46px; }
-.post-content h4 { font-size: 16px;line-height: 21px; }
+.post-content h1 {
+  font-size: 67px;
+  line-height: 78px;
+  font-family: "Playfair Display", serif;
+  color: #945c39;
+  font-style: italic;
+}
+.post-content h2 {
+  font-size: 42px;
+  line-height: 46px;
+  font-family: "Playfair Display", serif;
+  color: #945c39;
+font-weight: 500;
+}
+
+.post-content h3 {
+  font-size: 26px;
+  line-height: 35px;
+  font-family: "DM Sans", sans-serif;
+font-weight: 500;
+}
+
+.post-content h4 {
+  font-size: 16px;
+  line-height: 21px;
+  font-family: "Playfair Display", serif;
+  color: #945c39;
+  font-style: italic;
+font-weight: 400;
+}
 /* Paragraphs */
 /* .post-content p {
   font-size: 16px;
@@ -239,9 +265,9 @@
   
 
   .post-content h1 { font-size: 35px;line-height: 46px;font-family: "Playfair Display", serif;color: #945c39; }
-  .post-content h2 { font-size: 27px;line-height: 40px; }
-  .post-content h3 { font-size: 21px;line-height: 46px; }
-  .post-content h4 { font-size: 16px;line-height: 21px; }
+  .post-content h2 { font-size: 27px;line-height: 40px;font-family: "Playfair Display", serif;color: #945c39; }
+  .post-content h3 { font-size: 21px;line-height: 46px;font-family: "Playfair Display", serif;color: #945c39; }
+  .post-content h4 { font-size: 16px;line-height: 21px;font-family: "Playfair Display", serif;color: #945c39; }
 
 
 

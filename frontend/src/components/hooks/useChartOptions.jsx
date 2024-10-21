@@ -63,12 +63,8 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
           lineWidth: 1,
           marker: {
             enabled: false,
-            states: {
-              hover: {
-                enabled: true,
-                radius: 5,
-              },
-            },
+            symbol: "circle",
+            states: { hover: { enabled: true, radius: 5 } },
           },
           type: "line",
           animation: { duration: 2000 },
@@ -80,12 +76,8 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
           lineWidth: 1,
           marker: {
             enabled: false,
-            states: {
-              hover: {
-                enabled: true,
-                radius: 5,
-              },
-            },
+            symbol: "circle",
+            states: { hover: { enabled: true, radius: 5 } },
           },
           type: "line",
           animation: { duration: 2000 },

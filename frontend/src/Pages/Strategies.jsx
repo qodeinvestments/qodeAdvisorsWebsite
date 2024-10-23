@@ -15,7 +15,7 @@ import List from "../components/common/List";
 import Section from "../components/container/Section";
 import { motion } from "framer-motion";
 
-const StrategyCard = ({ strategy, name, description, slug }) => {
+const StrategyCard = ({ strategy, name, description, slug, cagr }) => {
   // if (loading) return <div>Loading...</div>;
   // if (error) return <div>Error: {error}</div>;
 
@@ -38,7 +38,7 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
     return (
       <CustomLink
         to={name === "Qode Future Horizons" ? `/blogs/${slug}` : slug}
-        className="p-2 sm:p-3 relative  sm:h-auto transition-all group justify-between items-start flex-col sm:flex-row border border-brown flex duration-500 bg-white  hover:bg-beige hover:text-black hover:shadow-xl group"
+        className="p-2 sm:p-3 relative  sm:h-auto transition-all group justify-between items-end flex-col sm:flex-row border border-brown flex duration-500 bg-white  hover:bg-beige hover:text-black hover:shadow-xl group"
       >
         <div className="text-black mb-2 sm:mb-0">
           <Heading className="sm:text-subheading text-brown group-hover:text-black mb-18 text-mobileSubHeading font-subheading">
@@ -49,9 +49,14 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
             dangerouslySetInnerHTML={{ __html: description }}
           ></Text>
         </div>
-        <div className="absolute sm:static bottom-1 right-18 sm:flex sm:items-center sm:justify-center sm:ml-4   sm:self-center">
-          <ArrowIcon />
-        </div>
+        {cagr && (
+          <div className=" flex flex-col items-end ">
+            <Text className="text-body leading-8 text-right">5Y </Text>
+            <Text className="text-subheading font-subheading shine leading-none text-brown">
+              {cagr}%
+            </Text>
+          </div>
+        )}
       </CustomLink>
     );
   };
@@ -108,6 +113,7 @@ const Strategies = () => {
       id: "lowvol",
       name: "Qode All Weather",
       slug: "qode-all-weather",
+      cagr: "25.7",
       description:
         "<Text class='mb-1'>Lower risk need not  <br class='md:hidden' /> mean lower returns.</Text>",
     },
@@ -115,6 +121,8 @@ const Strategies = () => {
       id: "qgf",
       name: "Qode Growth Fund",
       slug: "qode-growth-fund",
+      cagr: "37.7",
+
       description:
         "<Text class='mb-1'>Investing in quality businesses <br class='md:hidden' /> for long-term growth.</Text>",
     },
@@ -122,6 +130,8 @@ const Strategies = () => {
       id: "momentum",
       name: "Qode Velocity Fund",
       slug: "qode-velocity-fund",
+      cagr: "43.8",
+
       description: "<Text class='mb-1'>Capturing the market’s growth.</Text> ",
     },
     {
@@ -183,6 +193,7 @@ const Strategies = () => {
                 name={strategy.name}
                 description={strategy.description}
                 slug={strategy.slug}
+                cagr={strategy.cagr}
               />
             ))}
           </div>

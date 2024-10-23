@@ -18,9 +18,9 @@ const ArrowIcon = () => (
   </svg>
 );
 
-const StrategyCard = ({ title, description, link }) => (
+const StrategyCard = ({ title, description, link, cagr }) => (
   <Link to={link} className="text-black w-full group">
-    <div className="p-1 transition-all duration-300 h-[180px] hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl relative flex flex-col sm:flex-row justify-between sm:items-center items-start  md:h-[160px] xl:h-full">
+    <div className="p-1 transition-all duration-300 h-[180px] hover:bg-beige group-hover:text-black bg-lightBeige border border-brown hover:shadow-2xl relative flex flex-col sm:flex-row justify-between sm:items-center  md:h-[160px] xl:h-full">
       <div className="flex flex-col sm:flex-row sm:justify-between items-start sm:items-center">
         <div className="">
           <Heading className="font-heading playfair-font-display md:text-subheading text-mobileSubHeading group-hover:text-black text-brown font-bold mb-1 relative overflow-hidden text-ellipsis">
@@ -28,13 +28,15 @@ const StrategyCard = ({ title, description, link }) => (
           </Heading>
           <p className="text-body">{description}</p>
         </div>
-        <div className="absolute  bottom-1  right-18 sm:hidden sm:items-center sm:justify-center sm:ml-4   sm:self-center">
-          <ArrowIcon />
+      </div>
+      {cagr && (
+        <div className=" flex flex-col items-end md:gap-1  ">
+          <Text className="text-body text-right">5Y </Text>
+          <Text className="text-subheading font-subheading shine text-brown">
+            {cagr}%
+          </Text>
         </div>
-      </div>
-      <div className="hidden sm:block">
-        <ArrowIcon />
-      </div>
+      )}
     </div>
   </Link>
 );
@@ -45,21 +47,25 @@ const InvestmentStrategies = () => {
       title: "Qode All Weather",
       description: "Lower risk need not mean lower returns",
       link: "/strategies/qode-all-weather",
+      cagr: "25.7",
     },
     {
       title: "Qode Growth Fund",
       description: "Investing in quality businesses for long-term growth.",
       link: "/strategies/qode-growth-fund",
+      cagr: "37.7",
     },
     {
       title: "Qode Velocity Fund",
       description: "Capturing the market’s growth.",
       link: "/strategies/qode-velocity-fund",
+      cagr: "43.8",
     },
     {
       title: "Qode Future Horizons",
       description: "Precision stock picking using data-driven models.",
       link: "/blogs/qode-future-horizons",
+      cagr: "",
     },
   ];
 
@@ -81,7 +87,7 @@ const InvestmentStrategies = () => {
         </div>
       </div>
       <div className=" mx-auto ">
-        <div className="grid lg:grid-cols-2 gap-4 items-center  justify-center lg:justify-between">
+        <div className="grid lg:grid-cols-1 gap-2 items-center  justify-center lg:justify-between">
           {strategies.map((strategy, index) => (
             <StrategyCard key={index} {...strategy} />
           ))}

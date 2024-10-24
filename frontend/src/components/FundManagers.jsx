@@ -9,6 +9,7 @@ import Text from "./common/Text";
 import founders from "../assets/founders.jpg";
 const FundManagers = ({ text }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const VITE_GOOGLE_MEET_URL = import.meta.env.VITE_GOOGLE_MEET_URL;
 
   const managers = [
     {
@@ -34,12 +35,22 @@ const FundManagers = ({ text }) => {
           {text ? text : "Want to speak to our fund manager before investing?"}
         </Heading>
 
-        <div className="flex justify-center">
+        {/* <div className="flex justify-center">
           <Button
             className="bg-beige shadow-md hover:bg-lightBrown transition duration-300"
             onClick={openModal}
           >
             Schedule A Meeting
+          </Button>
+        </div> */}
+
+        <div className="flex justify-center">
+          <Button
+            className="bg-beige shadow-md hover:bg-lightBrown transition duration-300"
+            href={VITE_GOOGLE_MEET_URL}
+            target={"_blank"}
+          >
+            Schedule A Call
           </Button>
         </div>
       </div>

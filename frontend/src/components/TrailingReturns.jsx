@@ -206,12 +206,11 @@ const TrailingReturns = ({
         isItalic
         className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
       >
-        Trailing Returns
+        Returns
       </Heading>
       <div className="flex justify-between flex-col sm:flex-row">
         <Text className="text-sm sm:text-body font-body text-black mb-18">
-          Trailing returns indicate an investment's performance over a fixed
-          past period, ending at a specific date.
+          Returns as of {endDates}.
         </Text>
 
         <Text className="text-xs text-right sm:text-xs font-body mb-18 text-brown italic ">
@@ -220,8 +219,8 @@ const TrailingReturns = ({
       </div>
       <ResponsiveTable />
       <Text className="text-beige text-sm sm:text-body font-body mt-2 sm:mt-18  ">
-        MDD (Maximum Drawdown) is the percentage an investment loses from its
-        highest point to its lowest point.
+        MDD (Maximum Drawdown) refers to the maximum loss an investment can
+        incur from its highest point.
       </Text>
     </>
   );

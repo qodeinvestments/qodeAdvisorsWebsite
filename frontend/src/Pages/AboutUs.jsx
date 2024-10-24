@@ -43,7 +43,7 @@ const AboutUs = () => {
     {
       name: "Gaurav Didwania",
       designation: "Fund Manager",
-      linkedin: "https://www.linkedin.com/in/gaurav-didwania-234bbb37/",
+      linkedin: "http://www.linkedin.com/in/gauravdidwania1",
       email: "gaurav.didwania@qodeinvest.com",
       image: gaurav,
     },

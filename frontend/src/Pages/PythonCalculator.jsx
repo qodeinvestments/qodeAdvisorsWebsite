@@ -408,7 +408,7 @@ function PythonCalculator() {
         Dataset
       </Text> */}
 
-      <FileUpload onColumnsUpdate={handleFileUpload} />
+      {/* <FileUpload onColumnsUpdate={handleFileUpload} /> */}
 
       <StyledPortfolioCalculatorForm
         onSubmit={handleSubmit}

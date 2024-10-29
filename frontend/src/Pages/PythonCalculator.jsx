@@ -260,10 +260,17 @@ function PythonCalculator() {
   };
 
   const renderMetrics = () => {
-    if (!resultData || !resultData.equity_curve_data || resultData.equity_curve_data.length < 2) return null;
+    if (
+      !resultData ||
+      !resultData.equity_curve_data ||
+      resultData.equity_curve_data.length < 2
+    )
+      return null;
 
     // Get the first and last dates from equity_curve_data
-    const dates = resultData.equity_curve_data.map(point => new Date(point.Date.split('-').reverse().join('-')));
+    const dates = resultData.equity_curve_data.map(
+      (point) => new Date(point.Date.split("-").reverse().join("-"))
+    );
     const startDate = dates[0];
     const endDate = dates[dates.length - 1];
 
@@ -274,7 +281,7 @@ function PythonCalculator() {
     const metrics = [
       {
         key: isLessThanOneYear ? "Absolute Returns" : "CAGR",
-        value: resultData.car.toFixed(1) + "%"
+        value: resultData.car.toFixed(1) + "%",
       },
       { key: "Max Drawdown", value: resultData.max_dd.toFixed(1) + "%" },
       { key: "Avg Drawdown", value: resultData.avg_dd.toFixed(1) + "%" },
@@ -306,8 +313,8 @@ function PythonCalculator() {
   };
 
   const calculateDaysBetween = (date1, date2) => {
-    const d1 = new Date(date1.split('-').reverse().join('-'));
-    const d2 = new Date(date2.split('-').reverse().join('-'));
+    const d1 = new Date(date1.split("-").reverse().join("-"));
+    const d2 = new Date(date2.split("-").reverse().join("-"));
     const diffTime = Math.abs(d2 - d1);
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   };
@@ -332,21 +339,11 @@ function PythonCalculator() {
             <table className="min-w-full text-sm sm:text-body font-body text-center table-auto border-collapse border border-brown">
               <thead>
                 <tr className="bg-lightBeige">
-                  <th className="border border-brown p-18">
-                    Drawdown
-                  </th>
-                  <th className="border border-brown p-18">
-                    Peak Date
-                  </th>
-                  <th className="border border-brown p-18">
-                    Drawdown Date
-                  </th>
-                  <th className="border border-brown p-18">
-                    Recovery Date
-                  </th>
-                  <th className="border border-brown p-18">
-                    Days to Recover
-                  </th>
+                  <th className="border border-brown p-18">Drawdown</th>
+                  <th className="border border-brown p-18">Peak Date</th>
+                  <th className="border border-brown p-18">Drawdown Date</th>
+                  <th className="border border-brown p-18">Recovery Date</th>
+                  <th className="border border-brown p-18">Days to Recover</th>
                 </tr>
               </thead>
               <tbody>
@@ -365,7 +362,7 @@ function PythonCalculator() {
                       {row.Recovery_Date}
                     </td>
                     <td className="border border-brown p-18">
-                      {row.Recovery_Date !== "Not Recovered" 
+                      {row.Recovery_Date !== "Not Recovered"
                         ? calculateDaysBetween(row.Peak_Date, row.Recovery_Date)
                         : "Not Recovered"}
                     </td>
@@ -411,7 +408,7 @@ function PythonCalculator() {
         Dataset
       </Text> */}
 
-      {/* <FileUpload onColumnsUpdate={handleFileUpload} /> */}
+      <FileUpload onColumnsUpdate={handleFileUpload} />
 
       <StyledPortfolioCalculatorForm
         onSubmit={handleSubmit}

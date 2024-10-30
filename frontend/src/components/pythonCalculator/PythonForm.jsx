@@ -60,11 +60,19 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
   const columnList = columns.map((column) => ({
     label: column.trim(),
     value: column.trim(),
+    group: "Custom Columns",
     isJsonColumn: true,
   }));
 
   const combinedStrategies = [...STRATEGIES, ...columnList];
   const combinedDebtFunds = [...DEBTFUNDS, ...columnList];
+
+  const groupedOptions = combinedStrategies.reduce((groups, strategy) => {
+    const { group } = strategy;
+    if (!groups[group]) groups[group] = [];
+    groups[group].push(strategy);
+    return groups;
+  }, {});
 
   const handleInputChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));

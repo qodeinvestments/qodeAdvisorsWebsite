@@ -63,8 +63,8 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
     isJsonColumn: true,
   }));
 
-  // const combinedStrategies = [...STRATEGIES, ...columnList];
-  // const combinedDebtFunds = [...DEBTFUNDS, ...columnList];
+  const combinedStrategies = [...STRATEGIES, ...columnList];
+  const combinedDebtFunds = [...DEBTFUNDS, ...columnList];
 
   const handleInputChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -216,7 +216,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           </div>
         </div>
       ))}
-      {/* <div className="space-y-1">
+      <div className="space-y-1">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Choose Debt Funds
         </label>
@@ -239,8 +239,8 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
             </span>
           )}
         />
-      </div> */}
-      {/* {formData.selected_debtfunds.map((debtfund, index) => (
+      </div>
+      {formData.selected_debtfunds.map((debtfund, index) => (
         <div key={index} className="space-y-1 sm:p-2 ">
           <h3 className="font-body text-black">{debtfund.debtfund}</h3>
           <div className="flex flex-col sm:flex-row gap-4">
@@ -268,7 +268,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
             />
           </div>
         </div>
-      ))} */}
+      ))}
       <div className="space-y-1">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Investment Period *

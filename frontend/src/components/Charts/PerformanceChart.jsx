@@ -234,7 +234,7 @@ const PerformanceChart = ({
         </Tabs>
       </div>
       <Text className="text-beige text-sm sm:text-body font-body mt-1 italic">
-        *The results shown below are based on backtested data and are shared to
+        *The results shown above are based on backtested data and are shared to
         highlight the strategy’s past performance.
       </Text>
       <Text className="sm:text-subheading text-mobileSubHeading font-subheading text-center my-2 mt-6 sm:mt-4 ">

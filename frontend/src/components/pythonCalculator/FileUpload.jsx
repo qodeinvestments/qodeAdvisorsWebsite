@@ -13,22 +13,22 @@ function FileUpload({ onColumnsUpdate, onFileSelect }) {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  useEffect(() => {
-    const clearUserData = async () => {
-      try {
-        await axios.post(`${API_URL}/clear_user_data`);
-      } catch (error) {
-        console.error("Error clearing user data:", error);
-      }
-    };
+  // useEffect(() => {
+  //   const clearUserData = async () => {
+  //     try {
+  //       await axios.post(`${API_URL}/clear_user_data`);
+  //     } catch (error) {
+  //       console.error("Error clearing user data:", error);
+  //     }
+  //   };
 
-    window.addEventListener("beforeunload", clearUserData);
+  //   window.addEventListener("beforeunload", clearUserData);
 
-    return () => {
-      window.removeEventListener("beforeunload", clearUserData);
-      clearUserData();
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("beforeunload", clearUserData);
+  //     clearUserData();
+  //   };
+  // }, []);
 
   // Handle file selection
   const handleFileChange = (event) => {

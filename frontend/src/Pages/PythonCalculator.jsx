@@ -23,6 +23,7 @@ function PythonCalculator() {
   const [resultData, setResultData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [columns, setColumns] = useState([]); // State to hold columns from uploaded Excel
+  const [buttonLink, setButtonLink] = useState(null); // Add state for button link
 
   const handleFileUpload = (uploadedColumns) => {
     setColumns(uploadedColumns);
@@ -202,7 +203,11 @@ function PythonCalculator() {
         `${API_URL}/calculate_portfolio`,
         formData
       );
-      const data = response.data;
+      console.log(response);
+      
+      const data = response.data.result;
+      const buttonLink = response.data.download_link;
+      setButtonLink(buttonLink)
       console.log(data);
       setResultData(data);
 
@@ -428,6 +433,16 @@ function PythonCalculator() {
                 Download Excel
               </Button> */}
               <>
+                {buttonLink && (
+                  <Button
+                    type="primary"
+                    onClick={() => window.open(`${API_URL}${buttonLink}`, "_blank")}
+
+                    className="mb-4"
+                  >
+                    Download Report
+                  </Button>
+                )}
                 <Text className="font-subheading mt-6  text-brown text-subheading mb-2">
                   Equity Curve
                 </Text>

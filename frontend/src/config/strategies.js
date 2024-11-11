@@ -1,7 +1,7 @@
 // src/config/strategies.js
 export const strategies = [
   {
-    id: 'qode-velocity-fund',
+    id: 'qode-tactical-fund',
     title: 'Quant Growth Momentum',
     description: 'A widely researched strategy that consistently outperforms benchmarks across markets, assets, and time periods in developed markets.',
     // Add any strategy-specific configuration here

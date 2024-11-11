@@ -43,7 +43,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/strategies/qode-velocity-fund",
+        path: "/strategies/qode-tactical-fund",
         element: <MomentumTabs />,
       },
       {

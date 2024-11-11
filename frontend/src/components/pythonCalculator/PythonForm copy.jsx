@@ -15,7 +15,7 @@ const STRATEGIES = [
   { label: "Gold Bees", value: "Gold Bees" },
   { label: "Qode All Weather", value: "QAW" },
   { label: "Qode Growth Fund", value: "QGF" },
-  { label: "Qode Velocity Fund", value: "QVF" },
+  { label: "Qode Tactical Fund", value: "QVF" },
   // { label: "QGFLong", value: "QGFLong" },
   // { label: "Shortflat", value: "Shortflat" },
   // { label: "Long Options", value: "LongOpt" },

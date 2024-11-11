@@ -7,16 +7,16 @@ import {
 import StrategyComponent from "../components/Strategy";
 
 export const qodeVelocityFund = {
-  title: "Qode Velocity Fund",
+  title: "Qode Tactical Fund",
   tagLine: "Capturing the market’s growth",
   description:
     "This strategy combines momentum investing with a built-in derivative hedge to protect against significant drawdowns.",
   principle:
     "Principle - The stock price tells the story before the actual story unfolds.",
   strategyCode: "QVF",
-  strategySlug: "qode-velocity-fund",
+  strategySlug: "qode-tactical-fund",
   pptLink: "/path-to-your-ppt-file.pptx",
-  blogUrl: "/qode-velocity-fund",
+  blogUrl: "/qode-tactical-fund",
   whitePaperLink: "",
   steps: [
     {

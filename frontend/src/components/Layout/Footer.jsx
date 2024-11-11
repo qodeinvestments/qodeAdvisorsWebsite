@@ -94,8 +94,8 @@ const Footer = () => {
                 <CustomLink to="/strategies/qode-growth-fund">
                   Qode Growth Fund
                 </CustomLink>,
-                <CustomLink to="/strategies/qode-velocity-fund">
-                  Qode Velocity Fund
+                <CustomLink to="/strategies/qode-tactical-fund">
+                  Qode Tactical Fund
                 </CustomLink>,
                 <CustomLink to="/blogs/qode-future-horizons">
                   Qode Future Horizons

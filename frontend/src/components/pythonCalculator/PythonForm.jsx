@@ -11,7 +11,7 @@ const { RangePicker } = DatePicker;
 const STRATEGIES = [
   { label: "Qode All Weather", value: "QAW", group: "Qode Strategies" },
   { label: "Qode Growth Fund", value: "QGF", group: "Qode Strategies" },
-  { label: "Qode Velocity Fund", value: "QVF", group: "Qode Strategies" },
+  { label: "Qode Tactical Fund", value: "QVF", group: "Qode Strategies" },
   { label: "NSE Momentum Index", value: "NSE Momentum Index", group: "Index" },
   { label: "Gold Bees", value: "Gold Bees", group: "Index" },
 

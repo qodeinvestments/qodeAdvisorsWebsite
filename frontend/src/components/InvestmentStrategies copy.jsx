@@ -56,9 +56,9 @@ const InvestmentStrategies = () => {
       cagr: "37.7",
     },
     {
-      title: "Qode Velocity Fund",
+      title: "Qode Tactical Fund",
       description: "Capturing the market’s growth.",
-      link: "/strategies/qode-velocity-fund",
+      link: "/strategies/qode-tactical-fund",
       cagr: "43.8",
     },
     {

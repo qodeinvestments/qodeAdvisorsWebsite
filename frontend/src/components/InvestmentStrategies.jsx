@@ -52,9 +52,9 @@ const InvestmentStrategies = () => {
       link: "/strategies/qode-growth-fund",
     },
     {
-      title: "Qode Velocity Fund",
+      title: "Qode Tactical Fund",
       description: "Capturing the market’s growth.",
-      link: "/strategies/qode-velocity-fund",
+      link: "/strategies/qode-tactical-fund",
     },
     {
       title: "Qode Future Horizons",

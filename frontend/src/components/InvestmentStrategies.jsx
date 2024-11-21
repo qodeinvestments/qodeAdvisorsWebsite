@@ -2,6 +2,7 @@ import React from "react";
 import Heading from "./common/Heading";
 import Text from "./common/Text";
 import { Link } from "react-router-dom";
+import Button from "./common/Button";
 
 const ArrowIcon = () => (
   <svg
@@ -87,6 +88,18 @@ const InvestmentStrategies = () => {
           ))}
         </div>
       </div>
+      {/* <div className="text-center mt-6">
+        <Button
+          onClick={() => {
+            const link = document.createElement("a");
+            link.href = "/Qode Presentation.pdf"; // Update this path to your PDF file
+            link.download = "Qode Presentation.pdf";
+            link.click();
+          }}
+        >
+          Download Strategies Presentation
+        </Button>
+      </div> */}
     </>
   );
 };

@@ -152,13 +152,13 @@ const Strategies = () => {
       <Section className="mt-9 text-center">
         <Text className="text-subheading font-semibold text-brown ">
           The best investments are <br />
-          <div className=" text-beige">
+          <div className="text-beige">
             {currentText} <span className="animate-blink">|</span>
           </div>
         </Text>
       </Section>
       <Section
-        className="  sm:max-w-[1386px] mx-auto"
+        className="sm:max-w-[1386px] mx-auto"
         fullWidth={false}
         padding="normal"
       >
@@ -169,12 +169,6 @@ const Strategies = () => {
           >
             Our Strategies
           </Heading>
-          {/* <Text className=" text-body font-body text-center sm:mt-1 mt-3 mb-5">
-            One of these or a combination of these strategies will help you
-            reach your financial goal with the highest probability{" "}
-            <br className="md:block hidden" /> (based on how much risk you're
-            willing to take)
-          </Text> */}
           <div className="flex flex-col gap-3">
             {strategies.map((strategy) => (
               <StrategyCard
@@ -187,6 +181,20 @@ const Strategies = () => {
             ))}
           </div>
 
+          {/* Download Button */}
+          <div className="text-center mt-6">
+            <Button
+              onClick={() => {
+                const link = document.createElement("a");
+                link.href = "/Qode Presentation.pdf"; // Update this path to your PDF file
+                link.download = "Qode Presentation.pdf";
+                link.click();
+              }}
+            >
+              Download Qode Strategies Presentation
+            </Button>
+          </div>
+
           {isModalOpen && (
             <Modal onClose={closeModal}>
               <BookAMeet />
@@ -196,6 +204,7 @@ const Strategies = () => {
       </Section>
     </>
   );
+
 };
 
 export default Strategies;

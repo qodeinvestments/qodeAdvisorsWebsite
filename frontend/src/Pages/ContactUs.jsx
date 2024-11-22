@@ -90,10 +90,10 @@ const ContactUs = () => {
                   </Text>
                   <Text>
                     <a
-                      href="mailto:operations@qodeinvest.com"
+                      href="mailto:client.advisory@qodeinvest.com"
                       className="text-gray-900 hover:text-gray-600 transition duration-300"
                     >
-                      operations@qodeinvest.com
+                      client.advisory@qodeinvest.com
                     </a>
                   </Text>
                 </div>

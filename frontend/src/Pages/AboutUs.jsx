@@ -58,7 +58,7 @@ const AboutUs = () => {
       name: "Purnanand Kulkarni",
       designation: "Quant Analyst",
       linkedin: "https://www.linkedin.com/in/purnanandkulkarni/",
-      email: "compliance@qodeinvest.com",
+      email: "purnanand.kulkarni@qodeinvest.com",
       image: purnanand,
     },
     {

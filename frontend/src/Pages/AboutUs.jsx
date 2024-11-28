@@ -12,6 +12,8 @@ import pratik from "/assets/Team/Pratik.jpg";
 import harshal from "/assets/Team/Harshal.jpg";
 import kruti from "/assets/Team/Kruti.jpg";
 import gaurav from "/assets/Team/Gaurav.jpg";
+import vaibhav from "/assets/Team/Vaibhav.jpg";
+import ainam from "/assets/Team/Ainam.jpg";
 import Text from "../components/common/Text";
 import Section from "../components/container/Section";
 import Heading from "../components/common/Heading";
@@ -49,7 +51,7 @@ const AboutUs = () => {
     },
     {
       name: "Vidhi Chheda",
-      designation: "Partner & Senior Quant Analyst",
+      designation: "Partner & Head Of Quant Research",
       linkedin: "https://www.linkedin.com/in/vidhi-chheda-770600101/",
       email: "vidhi.chheda@qodeinvest.com",
       image: vidhi,
@@ -82,14 +84,7 @@ const AboutUs = () => {
       email: "harshal.pokle@qodeinvest.com",
       image: harshal,
     },
-    // {
-    //   name: "Kinjal Babariya",
-    //   designation: "Operations Analyst",
-    //   linkedin: "https://www.linkedin.com/in/kinjal-babariya/",
-    //   email: "harshal.pokle@qodeinvest.com",
-    //   image:
-    //     "https://media.istockphoto.com/id/1327592506/vector/default-avatar-photo-placeholder-icon-grey-profile-picture-business-man.jpg?s=612x612&w=0&k=20&c=BpR0FVaEa5F24GIw7K8nMWiiGmbb8qmhfkpXcp1dhQg=",
-    // },
+
     // {
     //   name: "Shrikant Rakte",
     //   designation: "Manager",
@@ -129,13 +124,20 @@ const AboutUs = () => {
     //   email: "neha@qodeinvest.com",
     //   image: neha,
     // },
-    // {
-    //   name: "Sakshi",
-    //   designation: "Quantitative Research Analyst",
-    //   linkedin: "https://www.linkedin.com/in/sakshi-chheda/",
-    //   email: "sakshi.chheda@qodeinvest.com",
-    //   image: sakshi,
-    // },
+    {
+      name: "Vaibhav Jain",
+      designation: "Fund Operations Analyst",
+      linkedin: "https://www.linkedin.com/in/vaibhav-jain-bb5520120/",
+      email: "vaibhav.jain@qodeinvest.com",
+      image: vaibhav,
+    },
+    {
+      name: "Ainam Bano",
+      designation: "Senior HR Associate",
+      linkedin: "https://www.linkedin.com/in/ainamb/",
+      email: "hr@qodeinvest.com",
+      image: ainam,
+    },
   ];
 
   return (

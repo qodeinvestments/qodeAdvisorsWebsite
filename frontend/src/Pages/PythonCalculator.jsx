@@ -204,7 +204,7 @@ function PythonCalculator() {
         formData
       );
       console.log(response);
-      
+
       const data = response.data.result;
       const buttonLink = response.data.download_link;
       setButtonLink(buttonLink)
@@ -245,23 +245,24 @@ function PythonCalculator() {
     }
   };
 
-  const handleDownloadExcel = async () => {
-    try {
-      const response = await axios.get(`${API_URL}/download-excel`, {
-        responseType: "blob", // Important to receive file as blob
-      });
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "portfolio_data.xlsx"); // File name
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      message.success("Excel file downloaded successfully.");
-    } catch (error) {
-      console.error("Error downloading Excel file:", error);
-      message.error("Failed to download Excel file.");
-    }
+  const handleDownloadReport = () => {
+    if (!resultData || !resultData.equity_curve_data) return;
+
+    // Convert equity_curve_data to CSV
+    let csvContent = "Date,NAV\n";
+    resultData.equity_curve_data.forEach((point) => {
+      csvContent += `${point.Date},${point.NAV}\n`;
+    });
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "equity_curve_data.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    message.success("Report downloaded successfully.");
   };
 
   const renderMetrics = () => {
@@ -436,8 +437,7 @@ function PythonCalculator() {
                 {buttonLink && (
                   <Button
                     type="primary"
-                    onClick={() => window.open(`${API_URL}${buttonLink}`, "_blank")}
-
+                    onClick={handleDownloadReport}
                     className="mb-4"
                   >
                     Download Report

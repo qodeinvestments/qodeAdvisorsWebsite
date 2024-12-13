@@ -244,20 +244,20 @@ const Disclosure = () => {
           <Text className="text-body font-body">
             For general queries and updates, write to{" "}
             <a
-              href="mailto:client.advisory@qodeinvest.com"
+              href="mailto:investor.relations@qodeinvest.com"
               className="text-brown font-bold"
             >
-              client.advisory@qodeinvest.com
+              investor.relations@qodeinvest.com
             </a>
             .
           </Text>
           <Text className="text-body font-body">
             To register a formal complaint with us, write to{" "}
             <a
-              href="mailto:client.advisory@qodeinvest.com"
+              href="mailto:investor.relations@qodeinvest.com"
               className="text-brown font-bold"
             >
-              client.advisory@qodeinvest.com
+              investor.relations@qodeinvest.com
             </a>{" "}
             with your name, registered mobile number, PAN Card, and nature of
             the complaint.

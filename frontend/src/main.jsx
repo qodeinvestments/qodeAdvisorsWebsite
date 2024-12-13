@@ -21,6 +21,7 @@ import AboutUs from "./Pages/AboutUs.jsx";
 import PythonCalculator from "./Pages/PythonCalculator.jsx";
 import Tool from "./Pages/Tool.jsx";
 import Support from "./Pages/Support.jsx";
+import SchemeD from "./Pages/SchemeD.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -104,6 +105,10 @@ const router = createBrowserRouter([
       {
         path: "/tool", // This route captures the postId parameter
         element: <Tool />,
+      },
+      {
+        path: "/scheme-d", // This route captures the postId parameter
+        element: <SchemeD />,
       },
     ],
   },

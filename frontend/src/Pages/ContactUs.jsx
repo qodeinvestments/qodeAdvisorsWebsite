@@ -72,7 +72,7 @@ const ContactUs = () => {
                       href="tel:+919820300088"
                       className="text-gray-900 hover:text-gray-600 transition duration-300"
                     >
-                      +91 98203 00088
+                      +91 98203 00028
                     </a>
                   </Text>
                   <Text>

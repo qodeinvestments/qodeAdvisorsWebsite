@@ -45,7 +45,7 @@ const Footer = () => {
               <Text>
                 Contact No:{" "}
                 <a href="tel:+919820300088" className="hover:text-black">
-                  +91 98203 00088
+                  +91 98203 00028
                 </a>
               </Text>
               {/* <Text>
@@ -154,7 +154,7 @@ const Footer = () => {
               <br />
               Contact No:{" "}
               <a href="tel:+919820300088" className="hover:text-black">
-                +91 98203 00088
+                +91 98203 00028
               </a>
               {/* <Text>
                 <a

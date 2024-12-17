@@ -6,41 +6,103 @@ const { sendMail } = require('../services/mailService');
  * @param {Object} res - Express response object
  */
 const sendGeneralMail = async (req, res) => {
-    const { to, subject, message, fromName } = req.body;
+    const {  userEmail, message, fromName, investmentGoal, investmentExperience, preferredStrategy, initialInvestmentSize } = req.body;
 
-    if (!to || !subject || !message || !fromName) {
-        return res.status(400).json({ error: 'All fields (to, subject, message, fromName) are required' });
+    if (!userEmail  || !fromName) {
+        return res.status(400).json({ error: 'All fields (subject, userEmail, message, fromName) are required' });
     }
 
     try {
-        // Send email to operations
-        const operationsEmail = process.env.OPERATIONS_EMAIL;
-        const operationsEmailBody = `
-            <h2>New Contact Form Submission</h2>
-            <p><strong>From:</strong> ${fromName}</p>
-            <p><strong>Email:</strong> ${to}</p>
-            <p><strong>Message:</strong></p>
-            <p>${message}</p>
+        // Define the HTML signature
+        const signature = `
+            <div style="margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px; font-family: Arial, sans-serif; font-size: 14px; color: #555;">
+                <!-- Logo wrapped in a link -->
+                <p>
+                    <a href="https://qodeinvest.com" target="_blank">
+                        <img src="https://workspace.qodeinvest.com/files/output-onlinejpgtools.png" width="114" alt="Qode Logo" style="display: block;">
+                    </a>
+                </p>
+                <p style="margin: 0px;" >M: +91 98203 00028</p>
+                <p style="margin: 0px;" >E: <a href="mailto:investor.relations@qodeinvest.com" style="color: #1a0dab; text-decoration: none;">investor.relations@qodeinvest.com</a></p>
+                <p style="margin: 0px;" >W: <a href="http://www.qodeinvest.com" style="color: #1a0dab; text-decoration: none;">www.qodeinvest.com</a></p>
+                <p style="margin: 0px;" >A: 2nd Floor, Tree House, Raghuvanshi Mills, Lower Parel, Mumbai-400013</p>
+                <p style="margin: 0px;" >Follow us:</p>
+                <!-- LinkedIn icon wrapped in a link -->
+                <p>
+                    <a style="margin: 0px;"  href="https://www.linkedin.com/company/qode1/" target="_blank">
+                        <img src="https://workspace.qodeinvest.com/files/linkedin%20(1).png" alt="LinkedIn" style="width: 24px; height: 24px;">
+                    </a>
+                </p>
+            </div>
         `;
+
+        // Build styled table with form inputs
+        const formattedMessage = `
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6; color: #555;">
+                <tr>
+                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Name:</td>
+                    <td style="padding: 5px 0;">${fromName}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Email:</td>
+                    <td style="padding: 5px 0;">${userEmail}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Investment Goal:</td>
+                    <td style="padding: 5px 0;">${investmentGoal}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Investment Experience:</td>
+                    <td style="padding: 5px 0;">${investmentExperience}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Preferred Strategy:</td>
+                    <td style="padding: 5px 0;">${preferredStrategy.join(", ")}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Initial Investment Size:</td>
+                    <td style="padding: 5px 0;">${initialInvestmentSize}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Additional Message:</td>
+                    <td style="padding: 5px 0;">${message.replace(/\n/g, '<br>')}</td>
+                </tr>
+            </table>
+        `;
+
+        // Operations Email Content
+        const operationsEmailBody = `
+            <h2 style="color: #333; font-family: Arial, sans-serif;">New Contact Form Submission</h2>
+            ${formattedMessage}
+            ${signature}
+        `;
+
+        // Send email to operations team
         await sendMail({
             fromName: 'Qode Contact Form',
             emailType: 'operations',
-            to: operationsEmail,
+            to: 'investor.relations@qodeinvest.com',
             subject: 'New Contact Form Submission',
             body: operationsEmailBody
         });
 
-        // Send confirmation email to user
+        // Confirmation Email to Sender
         const userConfirmationBody = `
-            <h2>Thank you for contacting Qode</h2>
+            <h2 style="color: #333; font-family: Arial, sans-serif;">Thank you for contacting Qode</h2>
             <p>We have received your message and will get back to you as soon as possible.</p>
-            <p>Here's a copy of your message:</p>
-            <p>${message}</p>
+            <h3 style="margin-top: 15px; font-size: 16px;">Here's a copy of your message:</h3>
+            ${formattedMessage}
+            <p style="margin-top: 20px; font-weight: bold;">
+                Best regards,<br>
+                <span style="color: #000;">Qode Support Team</span>
+            </p>
+            ${signature}
         `;
+
         await sendMail({
             fromName: 'Qode Support',
             emailType: 'operations',
-            to: to,
+            to: userEmail,
             subject: "We've Received Your Message",
             body: userConfirmationBody
         });

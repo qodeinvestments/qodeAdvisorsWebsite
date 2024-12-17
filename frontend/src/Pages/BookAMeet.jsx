@@ -20,6 +20,7 @@ const BookAMeet = () => {
         <div className="flex flex-col items-center text-lightBeige justify-center gap-18 sm:gap-18 p-2 pb-1">
           {/* Office Visit Section */}
           <div className="w-full">
+            
             {/* <Text className="mb-2 text-sm sm:text-body">In Mumbai?</Text> */}
 
             {/* <Button

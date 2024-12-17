@@ -21,12 +21,14 @@ const sendMail = ({ fromName, emailType, to, subject, body }) => {
         user = process.env.NEWSLETTER_EMAIL;
         pass = process.env.NEWSLETTER_EMAIL_PASS;
     } else if (emailType === 'operations') {
-        user = process.env.OPERATIONS_EMAIL;
-        pass = process.env.OPERATIONS_EMAIL_PASS;
+        user = process.env.CLIENT_ADVISORY_EMAIL;
+        pass = process.env.CLIENT_ADVISORY_EMAIL_PASS;
     } else {
         throw new Error('Invalid email type specified.');
     }
     console.log({
+        user,
+        pass,
         from: `"${fromName}" <${user}>`,
         to,
         subject,

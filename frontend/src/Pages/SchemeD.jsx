@@ -3,49 +3,50 @@ import schemed1 from '../assets/Scheme D image 1.png'
 import schemed2 from '../assets/Scheme D image 2.png'
 import { Container } from '../components'
 import Section from '../components/container/Section'
+import Button from '../components/common/Button'
 
 const SchemeD = () => {
-    const [selectedImage, setSelectedImage] = useState('both');
+    const [selectedImage, setSelectedImage] = useState('a');
 
     return (
         <Section>
             <div className="mt-9">
-                <div className="flex justify-between items-center mb-4">
-                    <h1 className='ml-5'>
-                        Last Updated Date : <strong>12/12/2024</strong>
+                <div className="sm:flex justify-between items-center  mb-4">
+                    <h1 className='mb-2 ml-1'>
+                        Last Updated Date : <strong>17/12/2024</strong>
                     </h1>
-                    <div className="flex space-x-2">
+                    <div className="flex ml-1 items-center space-x-2">
 
-                        <button 
+                        <Button 
                             onClick={() => setSelectedImage('a')}
-                            className={`px-2 py-18  ${
+                            className={`px-1 py-[10px] sm:px-2 px-1 py-[10px] sm:py-18  ${
                                 selectedImage === 'a' 
                                     ? 'bg-beige text-white' 
                                     : 'bg-gray-200 text-gray-700'
                             }`}
                         >
                             Demo (1 CR)
-                        </button>
-                        <button 
+                        </Button>
+                        <Button 
                             onClick={() => setSelectedImage('b')}
-                            className={`px-2 py-18  ${
+                            className={`px-1 py-[10px] sm:px-2 px-1 py-[10px] sm:py-18  ${
                                 selectedImage === 'b' 
                                     ? 'bg-beige text-white' 
                                     : 'bg-gray-200 text-gray-700'
                             }`}
                         >
                             Batch 1
-                        </button>
-                        <button 
+                        </Button>
+                        <Button 
                             onClick={() => setSelectedImage('batch 2')}
-                            className={`px-2  py-18  ${
+                            className={`px-1 py-[10px] sm:px-2  px-1 py-[10px] sm:py-18  ${
                                 selectedImage === 'batch 2' 
                                     ? 'bg-beige  text-white' 
                                     : 'bg-gray-200 text-gray-700'
                             }`}
                         >
                             Batch 2
-                        </button>
+                        </Button>
                     </div>
                 </div>
 
@@ -76,7 +77,7 @@ const SchemeD = () => {
                 )}
 
                 {(selectedImage === 'both' || selectedImage === 'batch 2') && (
-                    <h1 className='text-center text-2xl'>Strategy to be live from 16th Dec, 2024</h1>
+                    <h1 className='text-center text-2xl'>Strategy to be live from 18th Dec, 2024</h1>
                 )}
             </div>
         </Section>

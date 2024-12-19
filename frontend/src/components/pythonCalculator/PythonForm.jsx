@@ -210,7 +210,6 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
               className="w-full sm:w-1/2"
               suffix="%"
             />
-            {/* <label htmlFor="">Leverage</label>
 
             <Input
               type="text"
@@ -220,7 +219,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
                 handleSystemInputChange(index, "leverage", e.target.value)
               }
               className="w-full sm:w-1/2"
-            /> */}
+            /> 
           </div>
         </div>
       ))}
@@ -317,7 +316,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           prefix="₹"
         />
       </div>
-      {/* <div className="space-y-2">
+      <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Cash Percentage
         </label>
@@ -328,7 +327,7 @@ function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {
           className="w-full border-brown border rounded-none p-18"
           suffix="%"
         />
-      </div> */}
+      </div>
       <div className="space-y-2">
         <label className="block sm:text-subheading text-mobileSubHeading font-subheading text-black">
           Rebalance Frequency *

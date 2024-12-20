@@ -334,3 +334,9 @@ font-weight: 400;
   z-index: 1000;
   white-space: nowrap;
 }
+
+
+.playFair-scheme-page{
+  font-family: "Playfair Display", serif;
+  line-height: 30px;
+}

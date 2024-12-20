@@ -6,15 +6,13 @@ require('dotenv').config();
 const { upload, uploadFiles } = require("./routes/uploadFiles");
 const emailCollectionRoutes = require('./routes/collectMail')
 const strategyRoutes = require("./routes/strategyRoutes");
-const db = require("./models");
 const emailRoutes = require('./routes/emailRoutes');
 const newsletterRoutes = require('./routes/newsletterRoutes');
-
-
+const sarlaPerformance = require('./routes/sarlaPerformance')
+const db = require("./models");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-// // console.log(process.env.MAILERLITE_API_KEY);
 
 // Middleware
 app.use(cors({
@@ -34,6 +32,8 @@ app.use("/api/strategies", strategyRoutes);
 app.post("/api/uploads", upload.single("file"), uploadFiles);
 app.use('/api/emails', emailRoutes);
 app.use('/api/newsletter', newsletterRoutes);
+app.use('/api/sarlaPerformance', sarlaPerformance); // Use the new route
+
 // Database connection and server start
 db.sequelize
   .sync()

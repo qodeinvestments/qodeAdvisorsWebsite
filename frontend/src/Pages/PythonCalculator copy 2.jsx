@@ -23,8 +23,8 @@ console.log(API_URL);
 function PythonCalculator() {
   const [resultData, setResultData] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [columns, setColumns] = useState([]);
-  const [buttonLink, setButtonLink] = useState(null);
+  const [columns, setColumns] = useState([]); // State to hold columns from uploaded Excel
+  const [buttonLink, setButtonLink] = useState(null); // Add state for button link
 
   const handleFileUpload = (uploadedColumns) => {
     setColumns(uploadedColumns);
@@ -188,8 +188,6 @@ function PythonCalculator() {
       },
     };
   };
-
-  
 
   const handleSubmit = async (formData) => {
     if (
@@ -393,6 +391,29 @@ function PythonCalculator() {
       >
         Portfolio Visualizer
       </Heading>
+      {/* <div className="  text-black sm:p-4 text-sm sm:text-body  font-body" role="alert">
+        <p className="sm:text-subheading text-mobileSubHeading font-subheading mb-1">
+          Upload Requirements
+        </p>
+        <p className="mb-18">
+          Please ensure your file meets the following criteria:
+        </p>
+        <ul className="list-disc sm:pl-5 pl-2">
+          <li>Only CSV file formats are supported.</li>
+          <li>
+            Daily series must include two columns:
+            <ul className="list-decimal sm:pl-5 pl-2">
+              <li>
+                First column for the date (Supported formats: DD-MM-YYYY).
+              </li>
+              <li>Second column for daily return or index value</li>
+            </ul>
+          </li>
+        </ul>
+      </div> */}
+      {/* <Text className="sm:text-subheading text-mobileSubHeading mt-5 mb-2 font-subheading">
+        Dataset
+      </Text> */}
 
       <FileUpload onColumnsUpdate={handleFileUpload} />
 
@@ -409,6 +430,10 @@ function PythonCalculator() {
       ) : (
         <>
           {resultData && (
+            <>
+              {/* <Button type="primary" onClick={handleDownloadExcel} className="mb-4">
+                Download Excel
+              </Button> */}
               <>
                 {buttonLink && (
                   <Button
@@ -443,6 +468,7 @@ function PythonCalculator() {
                   }}
                 />
               </>
+            </>
           )}
           {renderMetrics()}
           {renderDrawdownsTable()}
@@ -450,6 +476,9 @@ function PythonCalculator() {
           {resultData?.cagrData && (
             <CAGRBarChart cagrData={resultData.cagrData} />
           )}
+          {/* {resultData?.peak_to_peak_data && (
+            <MaxPeakToPeakTable data={resultData?.peak_to_peak_data || []} />
+          )} */}
         </>
       )}
     </Section>

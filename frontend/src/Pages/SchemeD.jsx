@@ -94,73 +94,114 @@ const SchemeD = () => {
         'realised', 'unrealised', 'total'
     ];
 
+    // Columns that should always have a faded red background
+    const alwaysRedColumns = ['cost_percentage'];
+
+    // Columns that should have conditional background colors based on their value
+    const conditionalBgColors = [
+        'total', 
+        'total_percentage', 
+        'cost_recovered',
+        'dynamic_puts' // If 'dynamic_puts' should also be conditionally colored
+    ];
+
+
     const dateFields = ['date'];
 
     // Function to render a table
-    const renderTable = (tableData, tableName) => {
-        if (!tableData || tableData.length === 0) return null;
+    // Function to render a table
+// Function to render a table
+const renderTable = (tableData, tableName) => {
+    if (!tableData || tableData.length === 0) return null;
 
-        const columns = Object.keys(tableData[0]).filter(column => 
-            column.toLowerCase() !== 'id'
-        );
+    const columns = Object.keys(tableData[0]).filter(column => 
+        column.toLowerCase() !== 'id'
+    );
 
-        return (
-            <div className="w-full lg:w-1/2 p-1" key={tableName}>
-                <div className="overflow-x-auto">
-                    <table className="border-collapse border-brown w-full">
-                        <thead>
-                            <tr className="bg-gray-100 border-b border-brown">
-                                {columns.map((column) => (
-                                    <th
-                                        key={column}
-                                        className="border border-brown text-wrap px-[6px] py-[6px] text-xs bg-lightBeige text-left whitespace-nowrap"
-                                        scope="col"
-                                    >
-                                        {column.replace(/_/g, ' ').toUpperCase()}
-                                    </th>
-                                ))}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {tableData.map((item, index) => (
-                                <tr key={index} className="border-b text-xs border-brown">
-                                    {columns.map((column) => {
-                                        let displayValue = '';
-                                        if (item[column] != null && item[column] !== 'NaN') {
-                                            if (percentageFields.includes(column)) {
-                                                displayValue = formatPercentage(item[column]);
-                                            } else if (currencyFields.includes(column)) {
-                                                displayValue = formatCurrency(item[column]);
-                                            } else if (dateFields.includes(column)) {
-                                                displayValue = formatDate(item[column]);
-                                            } else {
-                                                displayValue = String(item[column]);
+    return (
+        <div className="w-full lg:w-1/2 p-1" key={tableName}>
+            <div className="overflow-x-auto">
+                <table className="border-collapse border-brown w-full">
+                    <thead>
+                        <tr className="bg-gray-100 border-b border-brown">
+                            {columns.map((column) => (
+                                <th
+                                    key={column}
+                                    className="border border-brown px-[6px] py-[6px] text-xs bg-lightBeige text-left whitespace-nowrap"
+                                    scope="col"
+                                >
+                                    {column.replace(/_/g, ' ').toUpperCase()}
+                                </th>
+                            ))}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {tableData.map((item, index) => (
+                            <tr key={index} className="border-b text-xs border-brown">
+                                {columns.map((column) => {
+                                    let displayValue = '';
+                                    let bgColorClass = '';
+
+                                    if (item[column] != null && item[column] !== 'NaN') {
+                                        // Format the value based on its type
+                                        if (percentageFields.includes(column)) {
+                                            displayValue = formatPercentage(item[column]);
+                                        } else if (currencyFields.includes(column)) {
+                                            displayValue = formatCurrency(item[column]);
+                                        } else if (dateFields.includes(column)) {
+                                            displayValue = formatDate(item[column]);
+                                        } else {
+                                            displayValue = String(item[column]);
+                                        }
+
+                                        // Apply always red background if the column is in alwaysRedColumns
+                                        if (alwaysRedColumns.includes(column)) {
+                                            bgColorClass = 'bg-red-100';
+                                        }
+                                        // Else if the column is in conditionalBgColors, apply conditional coloring
+                                        else if (conditionalBgColors.includes(column)) {
+                                            const numericValue = parseFloat(item[column]);
+                                            if (!isNaN(numericValue)) {
+                                                if (numericValue > 0) {
+                                                    bgColorClass = 'bg-green-100';
+                                                } else if (numericValue < 0) {
+                                                    bgColorClass = 'bg-red-100';
+                                                }
+                                                // Optionally, handle zero or neutral values
+                                                // else {
+                                                //     bgColorClass = 'bg-yellow-100';
+                                                // }
                                             }
                                         }
-                                        return (
-                                            <td
-                                                key={column}
-                                                className="border text-xs text-wrap border-brown px-[12px]  py-[6px] whitespace-nowrap"
-                                            >
-                                                {displayValue}
-                                            </td>
-                                        );
-                                    })}
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </div>
+                                    }
+
+                                    return (
+                                        <td
+                                            key={column}
+                                            className={`border text-xs border-brown px-[12px] py-[6px] whitespace-nowrap ${bgColorClass}`}
+                                        >
+                                            {displayValue}
+                                        </td>
+                                    );
+                                })}
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
-        );
-    };
+        </div>
+    );
+};
+
+
 
     // Table groups configuration for each schema
     const tableGroupsOrdered = {
-        "Net Profit And Loss Report": ['t9', 't10'],
-        "Sarla Performance Fibers Ltd. (Company Account) - Portfolio Protection Strategy - A": ['t1', 't2', 't3', 't4'],
+        "Net Profit And Loss Report": ['t9', 't10' , 't8'],
+        "Overview": ['t1', 't2'],
+        "Monthly PnL": ['t3', 't4'],
         "Current Open Positions": ['t5'],
-        "Portfolio Protection Strategy Report": ['t6', 't7', 't8', 't9', 't10'],
+        "Strategy-wise Report": ['t6', 't7' ],
     };
 
     // Function to render a group of tables for a given schema
@@ -169,7 +210,7 @@ const SchemeD = () => {
 
         return (
             <div key={schemaName} className="mb-8">
-                <Text className="text-semiheading playFair-scheme-page italic mb-2 text-brown font-heading text-[1.6rem] capitalize">
+                <Text className=" playFair-scheme-page italic mb-2 text-brown font-heading text-[1.6rem] capitalize">
                     {schemaName.replace(/_/g, ' ')}
                 </Text>
                 {Object.entries(tableGroupsOrdered).map(([groupHeader, tables]) => {
@@ -178,8 +219,8 @@ const SchemeD = () => {
                     );
 
                     return validTables.length > 0 && (
-                        <div key={groupHeader} className="mb-6">
-                            <Text className="text-semiheading playFair-scheme-page text-brown font-heading text-[1.2rem]   capitalize">
+                        <div key={groupHeader} className="mb-2">
+                            <Text className=" playFair-scheme-page text-brown font-heading text-[1.2rem]   capitalize">
                                 {groupHeader}
                             </Text>
                             <div className="flex flex-col sm:flex-row flex-wrap">

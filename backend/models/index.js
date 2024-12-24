@@ -13,6 +13,16 @@ const schemas = [
   'sarla_performance_batch2'
 ];
 
+// Initialize db object
+const db = {
+  sequelize,
+  Sequelize,
+};
+
+// Initialize base models
+db.Strategy = require("./strategy")(sequelize, Sequelize.DataTypes);
+db.Email = require('./email')(sequelize, Sequelize.DataTypes);
+
 // Function to create models for schema
 const createModelsForSchema = (schema) => ({
   t1: require('./t1')(sequelize, Sequelize.DataTypes, schema),
@@ -27,11 +37,6 @@ const createModelsForSchema = (schema) => ({
   t10: require('./t10')(sequelize, Sequelize.DataTypes, schema),
 });
 
-const db = {
-  sequelize,
-  Sequelize,
-};
-
 // Add models for each schema with prefix
 schemas.forEach(schema => {
   const schemaPrefix = schema.split('_')
@@ -43,6 +48,13 @@ schemas.forEach(schema => {
   Object.entries(models).forEach(([modelName, model]) => {
     db[`${schemaPrefix}${modelName}`] = model;
   });
+});
+
+// Initialize all associations
+Object.values(db).forEach(model => {
+  if (model && model.associate) {
+    model.associate(db);
+  }
 });
 
 module.exports = db;

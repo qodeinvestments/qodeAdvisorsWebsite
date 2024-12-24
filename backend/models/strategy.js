@@ -1,41 +1,50 @@
+// strategy.js
+'use strict';
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
-  const Strategy = sequelize.define(
-    "strategy",
-    {
-      id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true,
-        autoIncrement: true,
-      },
-      strategyid: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      strategyname: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      total_portfolio_nav: {
-        type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
-      },
-      benchmark_values: { // This replaces the 'nifty' column
-        type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
-      },
-      benchmark: { // This is the new 'benchmark' column
-        type: DataTypes.STRING,
-        allowNull: true, // Assuming it's nullable; adjust if needed
-      },
-      date: {
-        type: DataTypes.DATE,
-        allowNull: false,
-      },
-    },
-    {
-      timestamps: false, // Keeps the model without 'createdAt' and 'updatedAt'
+  class Strategy extends Model {
+    static associate(models) {
+      // define association here if needed
     }
-  );
+  }
+
+  Strategy.init({
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    strategyid: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    strategyname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    total_portfolio_nav: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+    },
+    benchmark_values: {
+      type: DataTypes.DECIMAL(10, 2),
+      allowNull: false,
+    },
+    benchmark: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    date: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    }
+  }, {
+    sequelize,
+    modelName: 'Strategy',
+    tableName: 'strategies',  // Explicitly set table name
+    timestamps: false
+  });
 
   return Strategy;
 };

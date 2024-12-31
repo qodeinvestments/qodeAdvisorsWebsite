@@ -1,4 +1,3 @@
-// models/index.js
 const { Sequelize } = require("sequelize");
 const config = require("../config/config");
 
@@ -35,6 +34,7 @@ const createModelsForSchema = (schema) => ({
   t8: require('./t8')(sequelize, Sequelize.DataTypes, schema),
   t9: require('./t9')(sequelize, Sequelize.DataTypes, schema),
   t10: require('./t10')(sequelize, Sequelize.DataTypes, schema),
+  strategyDailyPnl: require('./strategy_daily_pnl')(sequelize, Sequelize.DataTypes, schema),
 });
 
 // Add models for each schema with prefix

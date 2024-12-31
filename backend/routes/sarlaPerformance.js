@@ -6,7 +6,7 @@ const db = require('../models');
 // Helper function to get data from a specific schema
 async function getSchemaData(schema) {
   const allData = {};
-  const tableNames = ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 't10'];
+  const tableNames = ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 't10','strategyDailyPnl'];
   
   for (const tableName of tableNames) {
     const schemaPrefix = schema.split('_')
@@ -84,7 +84,7 @@ router.get('/:schema/:table', async (req, res) => {
       'sarla_performance_batch1',
       'sarla_performance_batch2'
     ];
-    const validTables = ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 't10'];
+    const validTables = ['t1', 't2', 't3', 't4', 't5', 't6', 't7', 't8', 't9', 't10','strategyDailyPnl'];
     
     if (!validSchemas.includes(schema)) {
       return res.status(400).json({ error: 'Invalid schema name' });

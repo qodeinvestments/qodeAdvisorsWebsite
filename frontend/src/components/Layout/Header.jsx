@@ -43,7 +43,6 @@ const Header = () => {
       document.body.style.overflow = "visible";
     }
 
-    // Cleanup function to ensure scroll is re-enabled when component unmounts
     return () => {
       document.body.style.overflow = "visible";
     };
@@ -120,6 +119,16 @@ const Header = () => {
                 }`}
               >
                 Dashboard
+              </CustomLink>
+              <CustomLink
+                to="https://eclientreporting.nuvamaassetservices.com/wealthspectrum/app/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-body font-body transition duration-300 ${
+                  isHomePage && !isScrolled ? "text-beige" : "text-beige"
+                }`}
+              >
+                Nuvama Login
               </CustomLink>
             </nav>
 
@@ -202,6 +211,15 @@ const Header = () => {
                       onClick={closeMobileMenu}
                     >
                       Dashboard
+                    </CustomLink>
+                    <CustomLink
+                      to="https://eclientreporting.nuvamaassetservices.com/wealthspectrum/app/login"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="block px-4 py-2 dm-sans-font text-body hover:bg-beige hover:text-black text-beige transition"
+                      onClick={closeMobileMenu}
+                    >
+                      Nuvama Login
                     </CustomLink>
                   </div>
                 </>

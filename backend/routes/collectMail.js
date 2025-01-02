@@ -17,16 +17,24 @@ router.post('/collect', async (req, res) => {
         });
 
         if (created) {
-            // Send the email after successful subscription
-            const subject = "Welcome to Qode Advisors Newsletter!";
-            const text = "Thank you for subscribing to our newsletter. Stay tuned for the latest updates and insights.";
+            // Send a welcome email to the subscriber
+            const subjectToSubscriber = "Welcome to Qode Advisors Newsletter!";
+            const textToSubscriber = "Thank you for subscribing to our newsletter. Stay tuned for the latest updates and insights.";
 
-            // Call the sendNewsletterMail function to send the email
             try {
-                await sendNewsletterMail(email, subject);
+                // Email to subscriber
+                await sendNewsletterMail(email, subjectToSubscriber);
+
+                // Email to operations (Sanket Shinde)
+                const operationsEmail = "sanket.shinde@qodeinvest.com";
+                const subjectToOperations = "New Newsletter Subscription";
+                const textToOperations = `A new subscriber just joined the newsletter: ${email}`;
+                
+                await sendNewsletterMail(operationsEmail, subjectToOperations, textToOperations);
+
                 res.status(201).json({ message: "Subscribed! We’ve sent you an email—be sure to check your inbox." });
             } catch (emailError) {
-                console.error('Error sending confirmation email:', emailError);
+                console.error('Error sending email:', emailError);
                 res.status(500).json({ message: "Subscription successful, but failed to send confirmation email." });
             }
         } else {

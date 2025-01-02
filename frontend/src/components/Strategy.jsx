@@ -105,13 +105,11 @@ const StrategyComponent = ({ strategyData }) => {
           />
         </Section>
 
-        <Section padding="none" className="mb-7">
+        {/* <Section padding="none" className="mb-7">
           <div className="w-full flex lg:flex-row flex-col gap-4">
             {" "}
-            {/* Adjusted margin */}
             <div className="xl:p-6 lg:p-4 p-3 border border-brown bg-white  lg:w-3/6">
               {" "}
-              {/* Adjusted padding */}
               <Calculator data={data} strategy={strategyCode} />
             </div>
             <div
@@ -122,10 +120,8 @@ const StrategyComponent = ({ strategyData }) => {
                 backgroundPosition: "70% 10%",
               }}
             >
-              {/* Black overlay */}
               <div className="absolute inset-0 bg-black opacity-20"></div>
 
-              {/* Content that sits on top of the background and overlay */}
               <div className="relative z-10 text-start backdrop-blur-md bg-black bg-opacity-30 p-3 ">
                 <Heading
                   isItalic
@@ -144,9 +140,9 @@ const StrategyComponent = ({ strategyData }) => {
               </div>
             </div>
           </div>
-        </Section>
+        </Section> */}
 
-        <Section
+        {/* <Section
           padding="extralarge"
           className="my-7 sm:my-0 mb-4 sm:mb-7"
           innerBorder={true}
@@ -156,7 +152,7 @@ const StrategyComponent = ({ strategyData }) => {
               "Need help deciding which strategy would be best for reaching your financial goal?"
             }
           />
-        </Section>
+        </Section> */}
         {isModalOpen && (
           <Modal onClose={closeModal}>
             <BookAMeet />

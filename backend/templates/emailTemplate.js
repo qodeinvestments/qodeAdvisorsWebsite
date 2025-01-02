@@ -71,10 +71,7 @@ const generateEmailHTML = ({
                     ${bodyContent}
                     ${ctaText && ctaLink ? `<a href="${ctaLink}" style="color:#ffff" class="cta-button">${ctaText}</a>` : ''}
                 </div>
-                <div class="email-footer">
-                    <p>${footerText}</p>
-                    <p>If you wish to unsubscribe, please <a href="${unsubscribeLink}">click here</a>.</p>
-                </div>
+                
             </div>
         </body>
         </html>

@@ -1,35 +1,44 @@
+// emailController.js
 const { sendMail } = require('../services/mailService');
 
 /**
- * Handle generic email sending for contact form submissions
+ * Handle email sending for contact form submissions
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
  */
 const sendGeneralMail = async (req, res) => {
-    const {  userEmail, message, fromName, investmentGoal, investmentExperience, preferredStrategy, initialInvestmentSize } = req.body;
+    const { 
+        userEmail, 
+        message, 
+        fromName, 
+        investmentGoal, 
+        investmentExperience, 
+        preferredStrategy, 
+        initialInvestmentSize 
+    } = req.body;
 
-    if (!userEmail  || !fromName) {
-        return res.status(400).json({ error: 'All fields (subject, userEmail, message, fromName) are required' });
+    if (!userEmail || !fromName) {
+        return res.status(400).json({ 
+            error: 'Email and name are required' 
+        });
     }
 
     try {
         // Define the HTML signature
         const signature = `
             <div style="margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px; font-family: Arial, sans-serif; font-size: 14px; color: #555;">
-                <!-- Logo wrapped in a link -->
                 <p>
                     <a href="https://qodeinvest.com" target="_blank">
                         <img src="https://workspace.qodeinvest.com/files/output-onlinejpgtools.png" width="114" alt="Qode Logo" style="display: block;">
                     </a>
                 </p>
-                <p style="margin: 0px;" >M: +91 98203 00028</p>
-                <p style="margin: 0px;" >E: <a href="mailto:investor.relations@qodeinvest.com" style="color: #1a0dab; text-decoration: none;">investor.relations@qodeinvest.com</a></p>
-                <p style="margin: 0px;" >W: <a href="http://www.qodeinvest.com" style="color: #1a0dab; text-decoration: none;">www.qodeinvest.com</a></p>
-                <p style="margin: 0px;" >A: 2nd Floor, Tree House, Raghuvanshi Mills, Lower Parel, Mumbai-400013</p>
-                <p style="margin: 0px;" >Follow us:</p>
-                <!-- LinkedIn icon wrapped in a link -->
+                <p style="margin: 0px;">M: +91 98203 00028</p>
+                <p style="margin: 0px;">E: <a href="mailto:investor.relations@qodeinvest.com" style="color: #1a0dab; text-decoration: none;">investor.relations@qodeinvest.com</a></p>
+                <p style="margin: 0px;">W: <a href="http://www.qodeinvest.com" style="color: #1a0dab; text-decoration: none;">www.qodeinvest.com</a></p>
+                <p style="margin: 0px;">A: 2nd Floor, Tree House, Raghuvanshi Mills, Lower Parel, Mumbai-400013</p>
+                <p style="margin: 0px;">Follow us:</p>
                 <p>
-                    <a style="margin: 0px;"  href="https://www.linkedin.com/company/qode1/" target="_blank">
+                    <a style="margin: 0px;" href="https://www.linkedin.com/company/qode1/" target="_blank">
                         <img src="https://workspace.qodeinvest.com/files/linkedin%20(1).png" alt="LinkedIn" style="width: 24px; height: 24px;">
                     </a>
                 </p>
@@ -70,41 +79,34 @@ const sendGeneralMail = async (req, res) => {
             </table>
         `;
 
-        // Operations Email Content
-        const operationsEmailBody = `
-            <h2 style="color: #333; font-family: Arial, sans-serif;">New Contact Form Submission</h2>
-            ${formattedMessage}
-            ${signature}
-        `;
-
         // Send email to operations team
         await sendMail({
             fromName: 'Qode Contact Form',
-            emailType: 'operations',
-            to: 'investor.relations@qodeinvest.com',
+            to: 'saakshi.poddar@qodeinvest.com',
             subject: 'New Contact Form Submission',
-            body: operationsEmailBody
+            body: `
+                <h2 style="color: #333; font-family: Arial, sans-serif;">New Contact Form Submission</h2>
+                ${formattedMessage}
+                ${signature}
+            `
         });
 
-        // Confirmation Email to Sender
-        const userConfirmationBody = `
-            <h2 style="color: #333; font-family: Arial, sans-serif;">Thank you for contacting Qode</h2>
-            <p>We have received your message and will get back to you as soon as possible.</p>
-            <h3 style="margin-top: 15px; font-size: 16px;">Here's a copy of your message:</h3>
-            ${formattedMessage}
-            <p style="margin-top: 20px; font-weight: bold;">
-                Best regards,<br>
-                <span style="color: #000;">Qode Support Team</span>
-            </p>
-            ${signature}
-        `;
-
+        // Send confirmation email to user
         await sendMail({
             fromName: 'Qode Support',
-            emailType: 'operations',
             to: userEmail,
             subject: "We've Received Your Message",
-            body: userConfirmationBody
+            body: `
+                <h2 style="color: #333; font-family: Arial, sans-serif;">Thank you for contacting Qode</h2>
+                <p>We have received your message and will get back to you as soon as possible.</p>
+                <h3 style="margin-top: 15px; font-size: 16px;">Here's a copy of your message:</h3>
+                ${formattedMessage}
+                <p style="margin-top: 20px; font-weight: bold;">
+                    Best regards,<br>
+                    <span style="color: #000;">Qode Support Team</span>
+                </p>
+                ${signature}
+            `
         });
 
         res.status(200).json({
@@ -112,7 +114,9 @@ const sendGeneralMail = async (req, res) => {
         });
     } catch (error) {
         console.error('Error handling contact form:', error);
-        res.status(500).json({ error: 'Failed to process your request. Please try again later.' });
+        res.status(500).json({ 
+            error: 'Failed to process your request. Please try again later.' 
+        });
     }
 };
 

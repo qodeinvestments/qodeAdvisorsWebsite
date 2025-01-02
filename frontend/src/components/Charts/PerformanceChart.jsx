@@ -233,7 +233,7 @@ const PerformanceChart = ({
           </TabsBody>
         </Tabs>
       </div>
-      <Text className="text-beige text-sm sm:text-body font-body mt-1 italic">
+      {/* <Text className="text-beige text-sm sm:text-body font-body mt-1 italic">
         *The results shown above are based on backtested data and are shared to
         highlight the strategy’s past performance.
       </Text>
@@ -262,7 +262,7 @@ const PerformanceChart = ({
             <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
           </svg>
         </div>
-      </CustomLink>
+      </CustomLink> */}
       {/* <Button className="" to={`/blogs${blogUrl}`}>
           Read Here
         </Button> */}

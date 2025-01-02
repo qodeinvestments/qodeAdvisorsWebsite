@@ -1,123 +1,204 @@
+const express = require('express');
+const router = express.Router();
 const nodemailer = require('nodemailer');
+const axios = require('axios');
+const { msalClient, getGraphClient } = require('../config/graphConfig');
 
-function sendNewsletterMail(email, subject) {
-    // Create a transporter using SMTP
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        host: "smtp.gmail.com",
-        port: 465,
-        secure: true,
-        auth: {
-            user: "harshal.pokle@qodeinvest.com",
-            pass: "ghga nxbj vzqx fxty" // Make sure to secure this, consider using environment variables
-        }
-    });
-
-    // Define the HTML content with inline CSS
-    const htmlContent = `
-        <html>
-        <head>
-            <style>
-                @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:wght@400;700&display=swap');
-                body {
-                    font-family: 'DM Sans', sans-serif;
-                    background-color: #f4f4f4;
-                    margin: 0;
-                    padding: 0;
-                }
-                .email-container {
-                    background-color: #ffffff;
-                    max-width: 600px;
-                    margin: 30px auto;
-                    padding: 20px;
-                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-                }
-                .email-header {
-                    background-color: #ffffff;
-                    color:  #d1a47b;
-                    padding: 10px;
-                    text-align: center;
-                    font-family: 'Playfair Display', serif;
-                    font-size: 24px;
-                    font-weight: 700;
-                }
-                .email-content {
-                    margin: 20px 0;
-                }
-                .email-content p {
-                    font-size: 16px;
-                    line-height: 1.6;
-                    color: #333333;
-                }
-                .email-footer {
-                    text-align: center;
-                    padding: 10px;
-                    font-size: 12px;
-                    color: #777777;
-                }
-                   
-                .cta-button {
-                    background-color: #d1a47b;
-                    color: white;
-                    padding: 10px 20px;
-                    text-decoration: none;
-                    font-weight: bold;
-                    display: inline-block;
-                    margin-top: 20px;
-                }
-
-                .cta-button:hover {
-                    background-color: #7a4e30;
-                }
-
-                .cta-button:active {
-                    color: white;
-                }
-
-            </style>
-        </head>
-        <body>
-            <div class="email-container">
-                <div class="email-content">
-                    <p>Hey,</p>
-                    <p>I'm Harshal, I'm in charge of marketing and communication at Qode.</p>
-                    <p>I come from the creative field and this finance and investing world always felt overwhelming and complex.</p>
-                    <p>But, after spending a few days at Qode I realized that it's not as complicated as I thought it was.</p>
-                    <p>(Sometimes these finance people don't realize that they are talking in a language only people from finance can understand)</p>
-                    <p>At Qode, they did realize this! And wanted to make sure their communication and ideas are understood by all their investors. So they hired me to keep all their communication simple and straightforward, and not let it feel overwhelming for you. (I think they made the right decision picking someone who is not from finance.)</p>
-                    <p>That's it for now.</p>
-                    <p>(P.S. If you want to know about our investment strategies and investing principles you can read it here.)</p>
-                    <a href="https://qodeinvest.com/blogs" style="color: white; text-decoration: none;" class="cta-button">Read More</a>
-                </div>
-                <div class="email-footer">
-                    <p>&copy; 2024 Qode Advisors LLP, All rights reserved.</p>
-                    <p>If you wish to unsubscribe, please <a href="#">click here</a>.</p>
-                </div>
-            </div>
-        </body>
-        </html>
-    `;
-
-    // Define the email options with HTML content
-    const mailOptions = {
-        from: '"Harshal Pokle" <harshal.pokle@qodeinvest.com>',
-        to: email,
-        subject: subject,
-        html: htmlContent // Using HTML instead of plain text
-    };
-
-    // Send the email
-    return new Promise((resolve, reject) => {
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('Error occurred:', error.message);
-                reject(error);
-            } else {
-                console.log('Email sent successfully!');
-                resolve(info);
-            }
+// Get access token for nodemailer
+async function getNodemailerAccessToken() {
+    try {
+        const tokenEndpoint = `https://login.microsoftonline.com/${process.env.TENANT_ID}/oauth2/v2.0/token`;
+        const params = new URLSearchParams({
+            client_id: process.env.CLIENT_ID,
+            client_secret: process.env.CLIENT_SECRET,
+            scope: 'https://outlook.office365.com/.default',
+            grant_type: 'client_credentials',
         });
-    });
+
+        const response = await axios.post(tokenEndpoint, params.toString(), {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        });
+
+        if (!response.data?.access_token) {
+            throw new Error('No access token received from Azure AD');
+        }
+
+        return response.data.access_token;
+    } catch (error) {
+        console.error('Failed to get nodemailer access token:', error.response?.data || error.message);
+        throw error;
+    }
 }
 
-module.exports = sendNewsletterMail;
+// Create nodemailer transporter
+async function createTransporter() {
+    try {
+        const accessToken = await getNodemailerAccessToken();
+        const transporter = nodemailer.createTransport({
+            host: 'smtp.office365.com',
+            port: 587,
+            secure: false,
+            auth: {
+                type: 'OAuth2',
+                user: process.env.SENDER_EMAIL,
+                accessToken,
+            },
+        });
+
+        await transporter.verify();
+        return transporter;
+    } catch (error) {
+        console.error('Error creating transporter:', error);
+        throw error;
+    }
+}
+
+// Authentication endpoint
+router.get('/auth', (req, res) => {
+    const authCodeUrlParameters = {
+        scopes: ["https://graph.microsoft.com/Mail.Send"],
+        redirectUri: process.env.MICROSOFT_REDIRECT_URI || "http://localhost:5000/api/graph/redirect",
+    };
+
+    msalClient.getAuthCodeUrl(authCodeUrlParameters)
+        .then((response) => {
+            res.redirect(response);
+        })
+        .catch((error) => {
+            console.error('Auth URL Error:', error);
+            res.status(500).json({ error: 'Authentication failed' });
+        });
+});
+
+// Redirect handler
+router.get('/redirect', async (req, res) => {
+    if (!req.session) {
+        return res.status(500).json({ error: 'Session management error' });
+    }
+
+    const tokenRequest = {
+        code: req.query.code,
+        scopes: ["https://graph.microsoft.com/Mail.Send"],
+        redirectUri: process.env.MICROSOFT_REDIRECT_URI || "http://localhost:5000/api/graph/redirect",
+    };
+
+    try {
+        const response = await msalClient.acquireTokenByCode(tokenRequest);
+        req.session.graphToken = response.accessToken;
+        res.redirect('/email-success');
+    } catch (error) {
+        console.error('Token Error:', error);
+        res.status(500).json({ error: 'Token acquisition failed' });
+    }
+});
+
+// Email success page
+router.get('/email-success', (req, res) => {
+    res.send(`
+        <!DOCTYPE html>
+        <html>
+            <head>
+                <title>Authentication Success</title>
+                <style>
+                    body {
+                        font-family: Arial, sans-serif;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh;
+                        margin: 0;
+                        background-color: #f5f5f5;
+                    }
+                    .success-container {
+                        text-align: center;
+                        padding: 2rem;
+                        background: white;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+                    }
+                    .success-message {
+                        color: #4CAF50;
+                        margin-bottom: 1rem;
+                    }
+                    .back-button {
+                        background-color: #4CAF50;
+                        color: white;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        text-decoration: none;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="success-container">
+                    <h1 class="success-message">Authentication Successful!</h1>
+                    <p>You have successfully authenticated with Microsoft Graph.</p>
+                    <a href="/" class="back-button">Return to Home</a>
+                </div>
+            </body>
+        </html>
+    `);
+});
+
+// Send email endpoint using nodemailer
+router.post('/send-email', async (req, res) => {
+    const { fromName, to, subject, body } = req.body;
+
+    try {
+        // Try sending with nodemailer first
+        const transporter = await createTransporter();
+        const mailOptions = {
+            from: `"${fromName}" <${process.env.SENDER_EMAIL}>`,
+            to,
+            subject,
+            html: body,
+        };
+
+        const info = await transporter.sendMail(mailOptions);
+        console.log('Email sent successfully via nodemailer:', info.response);
+        res.json({ message: 'Email sent successfully', method: 'nodemailer' });
+
+    } catch (nodemailerError) {
+        console.error('Nodemailer failed, trying Microsoft Graph:', nodemailerError);
+
+        // Fall back to Microsoft Graph if nodemailer fails
+        try {
+            if (!req.session?.graphToken) {
+                throw new Error('Not authenticated with Microsoft Graph');
+            }
+
+            const client = getGraphClient(req.session.graphToken);
+            const mailBody = {
+                message: {
+                    subject: subject,
+                    body: {
+                        contentType: "HTML",
+                        content: body
+                    },
+                    toRecipients: [
+                        {
+                            emailAddress: {
+                                address: to
+                            }
+                        }
+                    ]
+                }
+            };
+
+            await client.api('/me/sendMail').post(mailBody);
+            res.json({ message: 'Email sent successfully', method: 'graph' });
+
+        } catch (graphError) {
+            console.error('Both email methods failed:', graphError);
+            res.status(500).json({ 
+                error: 'Failed to send email via both methods',
+                nodemailerError: nodemailerError.message,
+                graphError: graphError.message
+            });
+        }
+    }
+});
+
+module.exports = router;

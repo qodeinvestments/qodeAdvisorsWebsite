@@ -154,13 +154,13 @@ const Home = () => {
       <Section padding="extralarge" className="mt-5 bg-lightBeige">
         <InvestmentStrategies />
       </Section>
-      <Section
+      {/* <Section
         padding="extralarge"
         className="my-7 sm:my-0 mb-4 sm:mb-0"
         innerBorder={true}
       >
         <FundManagers />
-      </Section>
+      </Section> */}
       <Section padding="none" className="mt-7 sm:mt-5 ">
         <Blogs />
       </Section>

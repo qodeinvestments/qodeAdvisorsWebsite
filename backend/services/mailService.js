@@ -1,59 +1,82 @@
-const nodemailer = require('nodemailer');
+// mailService.js
+const msal = require('@azure/msal-node');
+const { Client } = require('@microsoft/microsoft-graph-client');
+require('isomorphic-fetch');
 
-// Create a transporter using environment variables
-const createTransporter = (user, pass) => {
-    return nodemailer.createTransport({
-        service: 'gmail',
-        host: 'smtp.gmail.com',
-        port: 465,
-        secure: true,
-        auth: {
-            user,
-            pass,
-        },
-    });
+const msalConfig = {
+    auth: {
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
+        tenantId: process.env.TENANT_ID,
+        authority: `https://login.microsoftonline.com/${process.env.TENANT_ID}`
+    }
 };
 
-const sendMail = ({ fromName, emailType, to, subject, body }) => {
-    let user, pass;
+const msalClient = new msal.ConfidentialClientApplication(msalConfig);
 
-    if (emailType === 'newsletter') {
-        user = process.env.NEWSLETTER_EMAIL;
-        pass = process.env.NEWSLETTER_EMAIL_PASS;
-    } else if (emailType === 'operations') {
-        user = process.env.CLIENT_ADVISORY_EMAIL;
-        pass = process.env.CLIENT_ADVISORY_EMAIL_PASS;
-    } else {
-        throw new Error('Invalid email type specified.');
-    }
-    console.log({
-        user,
-        pass,
-        from: `"${fromName}" <${user}>`,
-        to,
-        subject,
-        html: body
-    });
+// Initialize Graph client with access token
+const getGraphClient = async () => {
+    try {
+        const result = await msalClient.acquireTokenByClientCredential({
+            scopes: ["https://graph.microsoft.com/.default"]
+        });
 
-    const transporter = createTransporter(user, pass);
-    const mailOptions = {
-        from: `"${fromName}" <${user}>`,
-        to,
-        subject,
-        html: body,
-    };
-
-    return new Promise((resolve, reject) => {
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('Error sending email:', error.message);
-                reject(error);
-            } else {
-                console.log('Email sent:', info.response);
-                resolve(info);
+        return Client.init({
+            authProvider: (done) => {
+                done(null, result.accessToken);
             }
         });
-    });
+    } catch (error) {
+        console.error('Error getting Graph client:', error);
+        throw error;
+    }
 };
+
+/**
+ * Send email using Microsoft Graph API
+ * @param {Object} options - Email options
+ * @param {string} options.fromName - Sender display name
+ * @param {string} options.to - Recipient email address
+ * @param {string} options.subject - Email subject
+ * @param {string} options.body - HTML email body
+ * @returns {Promise<Object>} - Result of the operation
+ */
+async function sendMail({ fromName, to, subject, body }) {
+    try {
+        const client = await getGraphClient();
+        
+        const mailBody = {
+            message: {
+                subject,
+                body: {
+                    contentType: "HTML",
+                    content: body
+                },
+                toRecipients: [{
+                    emailAddress: {
+                        address: to
+                    }
+                }],
+                from: {
+                    emailAddress: {
+                        address: process.env.SENDER_EMAIL,
+                        name: fromName
+                    }
+                }
+            },
+            saveToSentItems: true
+        };
+
+        await client.api(`/users/${process.env.SENDER_EMAIL}/sendMail`)
+            .post(mailBody);
+
+        console.log(`Email sent successfully to ${to}`);
+        return { success: true, method: 'graph' };
+
+    } catch (error) {
+        console.error('Failed to send email via Graph API:', error);
+        throw new Error(`Failed to send email: ${error.message}`);
+    }
+}
 
 module.exports = { sendMail };

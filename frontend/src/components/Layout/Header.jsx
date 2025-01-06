@@ -128,7 +128,7 @@ const Header = () => {
                   isHomePage && !isScrolled ? "text-beige" : "text-beige"
                 }`}
               >
-                Nuvama Login
+                Client Login
               </CustomLink>
             </nav>
 
@@ -219,7 +219,7 @@ const Header = () => {
                       className="block px-4 py-2 dm-sans-font text-body hover:bg-beige hover:text-black text-beige transition"
                       onClick={closeMobileMenu}
                     >
-                      Nuvama Login
+                      Client Login
                     </CustomLink>
                   </div>
                 </>

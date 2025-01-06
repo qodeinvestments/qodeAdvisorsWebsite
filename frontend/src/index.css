@@ -11,6 +11,9 @@
     @apply border-l-4 border-gray-200 pl-4 italic;
   }
 }
+html {
+  scroll-behavior: smooth;
+}
 
 /* Spinner animation keyframes */
 @keyframes spin {

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Banner, Blogs, InvestmentStrategies } from "../components/index";
 import FundManagers from "../components/FundManagers";
-import { Helmet } from "react-helmet"; // Import Helmet
+import { Helmet } from "react-helmet";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "../components/common/Button";
@@ -13,12 +13,41 @@ import ParallaxSection from "../components/ParallexSection";
 
 const Home = () => {
   const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false); // Remove isLoading and use isSubmitting consistently
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentText, setCurrentText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [index, setIndex] = useState(0);
 
+  // Add scroll handling useEffect
+  useEffect(() => {
+    // Function to handle scroll
+    const scrollToSection = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        // Remove the # from the hash
+        const sectionId = hash.replace('#', '');
+        const element = document.getElementById(sectionId);
+        if (element) {
+          // Add a small delay to ensure the page is fully loaded
+          setTimeout(() => {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      }
+    };
+
+    // Call the function when component mounts
+    scrollToSection();
+
+    // Add event listener for hash changes
+    window.addEventListener('hashchange', scrollToSection);
+
+    // Cleanup
+    return () => window.removeEventListener('hashchange', scrollToSection);
+  }, []);
+
+  // Rest of your existing code remains the same...
   const typingSpeed = 130;
   const deletingSpeed = 55;
   const delayBetweenTexts = 1500;
@@ -34,6 +63,7 @@ const Home = () => {
       ? import.meta.env.VITE_BACKEND_PROD_URL
       : import.meta.env.VITE_BACKEND_DEV_URL;
 
+  // Your existing useEffects and handlers...
   useEffect(() => {
     let timeout;
     if (isTyping) {
@@ -62,7 +92,6 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, [currentText, isTyping, index]);
 
-  // Optimize handleSubmit with useCallback to avoid re-rendering
   const handleSubmit = useCallback(
     async (e) => {
       e.preventDefault();
@@ -73,9 +102,9 @@ const Home = () => {
         return;
       }
 
-      if (isSubmitting) return; // Prevent multiple submissions
+      if (isSubmitting) return;
 
-      setIsSubmitting(true); // Set submitting state to prevent re-submit
+      setIsSubmitting(true);
 
       try {
         const response = await fetch(`${API_URL}/newsletter/subscribe`, {
@@ -101,7 +130,7 @@ const Home = () => {
           });
           console.log(data);
 
-          setEmail(""); // Reset email after successful submission
+          setEmail("");
         } else {
           const errorData = await response.json();
           throw new Error(errorData.message || "Subscription failed");
@@ -119,15 +148,16 @@ const Home = () => {
           transition: Bounce,
         });
       } finally {
-        setIsSubmitting(false); // Reset the isSubmitting state
+        setIsSubmitting(false);
       }
     },
-    [API_URL, email, isSubmitting] // Only re-run when these variables change
+    [API_URL, email, isSubmitting]
   );
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  // Rest of your JSX remains the same...
   return (
     <div>
       <Helmet>
@@ -154,26 +184,17 @@ const Home = () => {
       <Section padding="extralarge" className="mt-5 bg-lightBeige">
         <InvestmentStrategies />
       </Section>
-      {/* <Section
-        padding="extralarge"
-        className="my-7 sm:my-0 mb-4 sm:mb-0"
-        innerBorder={true}
-      >
-        <FundManagers />
-      </Section> */}
       <Section padding="none" className="mt-7 sm:mt-5 ">
         <Blogs />
       </Section>
-      {/* Parallax Section */}
       <Section padding="none" fullWidth className="mt-8 sm:mt-5 ">
         <ParallaxSection />
       </Section>
-      <Section padding="none" className="mb-6">
+      <Section id="newsletter-section" padding="none" className="mb-6">
         <div className="md:flex flex-col items-center text-center gap-2 justify-center">
           <div className="md:w-1/2 mb-3">
             <Text className="sm:text-subheading text-mobileSubHeading text-black">
-              Subscribe to know more about our investment style, strategies, and
-              principles.
+              Subscribe to know more about our investment style, strategies, and principles.
             </Text>
           </div>
           <div className="md:w-1/2">
@@ -215,7 +236,8 @@ const Home = () => {
             </form>
           </div>
         </div>
-      </Section>{" "}
+      </Section>
+
       <ToastContainer
         position="bottom-right"
         autoClose={5000}

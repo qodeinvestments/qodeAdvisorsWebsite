@@ -74,6 +74,10 @@ const SchemeD = () => {
                   labels: {
                     format: '{value:%d/%m}',
                   },
+                  // Add these options to ensure proper date display
+                  startOnTick: true,
+                  endOnTick: true,
+                  minTickInterval: 24 * 3600 * 1000, // One day
                 },
                 yAxis: {
                   title: {
@@ -89,12 +93,9 @@ const SchemeD = () => {
                   shared: true,
                   crosshairs: true,
                   formatter: function () {
-                    let tooltip =
-                      '<b>' + Highcharts.dateFormat('%d/%m/%Y', this.x) + '</b><br/>';
+                    let tooltip = '<b>' + Highcharts.dateFormat('%d/%m/%Y', this.x) + '</b><br/>';
                     this.points.forEach((point) => {
-                      tooltip += `${point.series.name}: <b>₹${point.y.toFixed(
-                        2
-                      )}</b><br/>`;
+                      tooltip += `${point.series.name}: <b>₹${point.y.toFixed(2)}</b><br/>`;
                     });
                     return tooltip;
                   },
@@ -155,7 +156,7 @@ const SchemeD = () => {
   const processDataForChart = (schemaData) => {
     console.log('Processing data for chart:', schemaData);
     
-    const strategies = ['put_protection', 'covered_calls', 'long_options', 'total','dynamic_puts'];
+    const strategies = ['put_protection', 'covered_calls', 'long_options', 'total', 'dynamic_puts'];
     const seriesData = {};
   
     // Initialize an empty array for each strategy
@@ -169,12 +170,19 @@ const SchemeD = () => {
     // Fill arrays for each strategy
     strategyPnLData.forEach((item) => {
       if (strategies.includes(item.derivative_strategy)) {
-        // Ensure valid date and value
-        const timestamp = new Date(item.date).getTime();
+        // Create date object and set it to UTC midnight
+        const date = new Date(item.date);
+        const utcDate = Date.UTC(
+          date.getFullYear(),
+          date.getMonth(),
+          date.getDate(),
+          0, 0, 0
+        );
+        
         const value = parseFloat(item.daily_value);
   
-        if (!isNaN(timestamp) && !isNaN(value)) {
-          seriesData[item.derivative_strategy].push([timestamp, value]);
+        if (!isNaN(utcDate) && !isNaN(value)) {
+          seriesData[item.derivative_strategy].push([utcDate, value]);
         }
       }
     });
@@ -182,7 +190,7 @@ const SchemeD = () => {
     // Return in the Highcharts series format, sorted by date
     return strategies.map((strategy) => ({
       name: strategy.replace(/_/g, ' ').toUpperCase(),
-      data: seriesData[strategy].sort((a, b) => a[0] - b[0]), // Ensure data is sorted by timestamp
+      data: seriesData[strategy].sort((a, b) => a[0] - b[0]),
     }));
   };
   

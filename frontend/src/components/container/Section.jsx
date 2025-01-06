@@ -3,6 +3,7 @@ import Container from "./Container";
 import GrayContainer from "./GrayContainer";
 
 const Section = ({
+  id, // Accept id as a prop
   children,
   gray = false,
   className = "",
@@ -38,6 +39,7 @@ const Section = ({
 
   return (
     <BaseComponent
+      id={id} // Pass the id prop to the BaseComponent
       className={`${className} ${widthClass} mx-auto ${defaultMargin}`}
     >
       <div

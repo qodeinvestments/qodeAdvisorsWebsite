@@ -8,9 +8,38 @@ import useMobileWidth from "../components/hooks/useMobileWidth";
 import Text from "./common/Text";
 import Heading from "./common/Heading";
 
+// Validation utility functions
+const validateEmail = (email) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email) return "Email is required";
+  if (!emailRegex.test(email)) return "Please enter a valid email address";
+  return "";
+};
+
+const validatePhone = (phone) => {
+  const phoneRegex = /^\d{10}$/;
+  if (!phone) return "Phone number is required";
+  if (!phoneRegex.test(phone)) return "Please enter a valid 10-digit phone number";
+  return "";
+};
+
+const validateName = (name) => {
+  if (!name) return "Name is required";
+  if (name.length < 2) return "Name must be at least 2 characters long";
+  if (!/^[a-zA-Z\s]+$/.test(name)) return "Name can only contain letters and spaces";
+  return "";
+};
+
+const validateLocation = (location) => {
+  if (!location) return "Location is required";
+  if (location.length < 2) return "Location must be at least 2 characters long";
+  return "";
+};
+
 const SendEmailForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
     to: "investor.relations@qodeinvest.com",
@@ -25,10 +54,55 @@ const SendEmailForm = () => {
     message: "",
   });
 
-  const API_URL =
-    import.meta.env.MODE === "production"
-      ? import.meta.env.VITE_BACKEND_PROD_URL
-      : import.meta.env.VITE_BACKEND_DEV_URL;
+  const validateStep = (step) => {
+    const newErrors = {};
+
+    switch(step) {
+      case 1:
+        // Personal Information validation
+        const nameError = validateName(formData.name);
+        const emailError = validateEmail(formData.userEmail);
+        const phoneError = validatePhone(formData.phone);
+        const locationError = validateLocation(formData.location);
+
+        if (nameError) newErrors.name = nameError;
+        if (emailError) newErrors.email = emailError;
+        if (phoneError) newErrors.phone = phoneError;
+        if (locationError) newErrors.location = locationError;
+        break;
+
+      case 2:
+        // Investment Goal validation
+        if (!formData.investmentGoal) {
+          newErrors.investmentGoal = "Please select an investment goal";
+        }
+        break;
+
+      case 3:
+        // Investment Experience validation
+        if (!formData.investmentExperience) {
+          newErrors.investmentExperience = "Please select your investment experience";
+        }
+        break;
+
+      case 4:
+        // Strategy validation
+        if (!formData.preferredStrategy.length) {
+          newErrors.preferredStrategy = "Please select at least one investment strategy";
+        }
+        break;
+
+      case 5:
+        // Final step validation
+        if (!formData.initialInvestmentSize) {
+          newErrors.initialInvestmentSize = "Please select your initial investment size";
+        }
+        break;
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -53,39 +127,28 @@ const SendEmailForm = () => {
         ...prevData,
         [name]: value,
       }));
+      
+      // Clear error when user starts typing
+      if (errors[name]) {
+        setErrors(prev => ({
+          ...prev,
+          [name]: ""
+        }));
+      }
     }
   };
 
   const nextStep = () => {
-    // Basic validation for each step
-    switch(currentStep) {
-      case 1:
-        if (!formData.name || !formData.email || !formData.phone || !formData.location) {
-          toast.error("Please fill in your name and email");
-          return;
+    if (validateStep(currentStep)) {
+      setCurrentStep(prev => Math.min(prev + 1, 5));
+    } else {
+      // Display all errors for current step
+      Object.values(errors).forEach(error => {
+        if (error) {
+          toast.error(error);
         }
-        break;
-      case 2:
-        if (!formData.investmentGoal) {
-          toast.error("Please select an investment goal");
-          return;
-        }
-        break;
-      case 3:
-        if (!formData.investmentExperience) {
-          toast.error("Please select your investment experience");
-          return;
-        }
-        break;
-      case 4:
-        if (formData.preferredStrategy.length === 0) {
-          toast.error("Please select at least one strategy");
-          return;
-        }
-        break;
+      });
     }
-    
-    setCurrentStep(prev => Math.min(prev + 1, 5));
   };
 
   const prevStep = () => {
@@ -95,9 +158,8 @@ const SendEmailForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Final validation before submission
-    if (!formData.initialInvestmentSize) {
-      toast.error("Please select your initial investment size");
+    // Validate final step before submission
+    if (!validateStep(5)) {
       return;
     }
 
@@ -110,41 +172,30 @@ const SendEmailForm = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          userEmail: formData.email,
+          userEmail: formData.userEmail,
           subject: "Qode Investment Inquiry",
           message: formData.message,
           fromName: formData.name,
+          phone: formData.phone,         // Added phone number
           investmentGoal: formData.investmentGoal,
           investmentExperience: formData.investmentExperience,
           preferredStrategy: formData.preferredStrategy,
           initialInvestmentSize: formData.initialInvestmentSize
         }),
       });
+    
       if (response.ok) {
-        toast.success(
-          "Your message has been sent. We'll get back to you soon!",
-          {
-            position: "bottom-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: Bounce,
-          }
-        );
-
-        // Reset form
-        setFormData({ 
-          name: "", 
-          email: "", 
-          message: "",
+        toast.success("Your message has been sent. We'll get back to you soon!");
+        setFormData({
+          name: "",
+          userEmail: "",
+          phone: "",
+          location: "",
           investmentGoal: "",
           investmentExperience: "",
           preferredStrategy: [],
-          initialInvestmentSize: ""
+          initialInvestmentSize: "",
+          message: ""
         });
         setCurrentStep(1);
       } else {
@@ -152,20 +203,16 @@ const SendEmailForm = () => {
         throw new Error(errorData.error || "Submission failed");
       }
     } catch (error) {
-      toast.error(`An error occurred: ${error.message}`, {
-        position: "bottom-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
+      toast.error(`An error occurred: ${error.message}`);
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const renderError = (fieldName) => {
+    return errors[fieldName] ? (
+      <span className="text-red-500 text-sm mt-1">{errors[fieldName]}</span>
+    ) : null;
   };
 
   const renderStep = () => {
@@ -178,59 +225,60 @@ const SendEmailForm = () => {
             </Text>
             <div className="mb-4">
               <input
-              autoComplete="off"
-
+                autoComplete="off"
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
                 placeholder="Your Name"
-                className="w-full p-[12px] text-body font-body bg-transparent focus:outline-none focus:bg-lightBeige text-white focus:text-black border border-brown"
-                required
+                className={`w-full p-[12px] text-body font-body bg-transparent focus:outline-none focus:bg-lightBeige text-white focus:text-black border ${
+                  errors.name ? 'border-red-500' : 'border-brown'
+                }`}
               />
+              {renderError('name')}
             </div>
             <div className="mb-4">
               <input
-              autoComplete="off"
-
+                autoComplete="off"
                 type="email"
-                name="email"
-                value={formData.email}
+                name="userEmail"
+                value={formData.userEmail}
                 onChange={handleInputChange}
                 placeholder="Your Email"
-                className="w-full p-[12px] text-body font-body bg-transparent focus:outline-none focus:bg-lightBeige text-white focus:text-black border border-brown"
-                required
+                className={`w-full p-[12px] text-body font-body bg-transparent focus:outline-none focus:bg-lightBeige text-white focus:text-black border ${
+                  errors.email ? 'border-red-500' : 'border-brown'
+                }`}
               />
+              {renderError('email')}
             </div>
             <div className="mb-4">
-            <label htmlFor="phone" className="sr-only">Phone Number</label>
-            <input
-              id="phone"
-              autoComplete="off"
-              maxLength={10}
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              placeholder="Your Phone"
-              className="w-full p-[12px] text-body font-body bg-transparent focus:outline-none focus:bg-lightBeige text-white focus:text-black border border-brown"
-              required
-              pattern="[0-9]{10}"
-              title="Please enter a 10-digit phone number"
-            />
-          </div>
-
+              <input
+                autoComplete="off"
+                type="tel"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                placeholder="Your Phone"
+                maxLength={10}
+                className={`w-full p-[12px] text-body font-body bg-transparent focus:outline-none focus:bg-lightBeige text-white focus:text-black border ${
+                  errors.phone ? 'border-red-500' : 'border-brown'
+                }`}
+              />
+              {renderError('phone')}
+            </div>
             <div className="mb-4">
               <input
-              autoComplete="off"
+                autoComplete="off"
                 type="text"
                 name="location"
                 value={formData.location}
                 onChange={handleInputChange}
                 placeholder="Your Location"
-                className="w-full p-[12px] text-body font-body bg-transparent focus:outline-none focus:bg-lightBeige text-white focus:text-black border border-brown"
-                required
+                className={`w-full p-[12px] text-body font-body bg-transparent focus:outline-none focus:bg-lightBeige text-white focus:text-black border ${
+                  errors.location ? 'border-red-500' : 'border-brown'
+                }`}
               />
+              {renderError('location')}
             </div>
           </div>
         );

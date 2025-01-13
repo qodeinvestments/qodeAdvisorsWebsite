@@ -4,9 +4,13 @@ import { faEnvelope, faTimes, faChevronRight, faChevronLeft } from "@fortawesome
 import { Bounce, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "./common/Button";
-import useMobileWidth from "../components/hooks/useMobileWidth";
 import Text from "./common/Text";
-import Heading from "./common/Heading";
+
+const API_URL =
+import.meta.env.MODE === "production"
+  ? import.meta.env.VITE_BACKEND_PROD_URL
+  : import.meta.env.VITE_BACKEND_DEV_URL;
+
 
 // Validation utility functions
 const validateEmail = (email) => {

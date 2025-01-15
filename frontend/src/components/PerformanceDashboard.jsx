@@ -269,10 +269,10 @@ const MetricsTable = React.memo(
                   Sharpe Ratio
                 </td>
                 <td className="p-18 text-center border-b border-r border-brown">
-                  {metrics.sharpeRatio.portfolio.toFixed(2)}
+                  {metrics.sharpeRatio.portfolio.toFixed(2)}%
                 </td>
                 <td className="p-18 text-center border-b border-r border-brown">
-                  {metrics.sharpeRatio.benchmark.toFixed(2)}
+                  {metrics.sharpeRatio.benchmark.toFixed(2)}%
                 </td>
               </tr>
               <tr className="border-b border-brown">
@@ -280,10 +280,10 @@ const MetricsTable = React.memo(
                   Annualized Std Dev (%)
                 </td>
                 <td className="p-18 text-center border-b border-r border-brown">
-                  {metrics.stdDev.portfolio.toFixed(2)}
+                  {metrics.stdDev.portfolio.toFixed(2)}%
                 </td>
                 <td className="p-18 text-center border-b border-r border-brown">
-                  {metrics.stdDev.benchmark.toFixed(2)}
+                  {metrics.stdDev.benchmark.toFixed(2)}%
                 </td>
               </tr>
               <tr>
@@ -291,10 +291,10 @@ const MetricsTable = React.memo(
                   Max Drawdown (%)
                 </td>
                 <td className="p-18 text-center border-r border-brown border-b">
-                  {metrics.maxDrawdown.portfolio.toFixed(2)}
+                  {metrics.maxDrawdown.portfolio.toFixed(2)}%
                 </td>
                 <td className="p-18 text-center border-r border-brown border-b">
-                  {metrics.maxDrawdown.benchmark.toFixed(2)}
+                  {metrics.maxDrawdown.benchmark.toFixed(2)}%
                 </td>
               </tr>
 
@@ -353,22 +353,22 @@ const RollingReturnsTable = React.memo(
               </tr>
               <tr className="text-sm sm:text-body font-body border-brown">
                 <th className="p-18 text-center border-b border-r border-brown">
-                  {strategyName || 'Strategy'}
+                  {strategyName || 'Strategy'} 
                 </th>
                 <th className="p-18 text-center border-b border-r border-brown">
-                  {benchmarkName || 'Benchmark'}
+                  {benchmarkName || 'Benchmark'} 
                 </th>
                 <th className="p-18 text-center border-b border-r border-brown">
-                  {strategyName || 'Strategy'}
+                  {strategyName || 'Strategy'} 
                 </th>
                 <th className="p-18 text-center border-b border-r border-brown">
-                  {benchmarkName || 'Benchmark'}
+                  {benchmarkName || 'Benchmark'} 
                 </th>
                 <th className="p-18 text-center border-b border-r border-brown">
-                  {strategyName || 'Strategy'}
+                  {strategyName || 'Strategy'} 
                 </th>
                 <th className="p-18 text-center border-b border-r border-brown">
-                  {benchmarkName || 'Benchmark'}
+                  {benchmarkName || 'Benchmark'} 
                 </th>
               </tr>
             </thead>
@@ -381,22 +381,22 @@ const RollingReturnsTable = React.memo(
                       {year}
                     </td>
                     <td className="p-18 text-center border-b border-r border-brown">
-                      {row.worst.portfolio.toFixed(2)}
+                      {row.worst.portfolio.toFixed(2)}%
                     </td>
                     <td className="p-18 text-center border-b border-r border-brown">
-                      {row.worst.benchmark.toFixed(2)}
+                      {row.worst.benchmark.toFixed(2)}%
                     </td>
                     <td className="p-18 text-center border-b border-r border-brown">
-                      {row.median.portfolio.toFixed(2)}
+                      {row.median.portfolio.toFixed(2)}%
                     </td>
                     <td className="p-18 text-center border-b border-r border-brown">
-                      {row.median.benchmark.toFixed(2)}
+                      {row.median.benchmark.toFixed(2)}%
                     </td>
                     <td className="p-18 text-center border-b border-r border-brown">
-                      {row.best.portfolio.toFixed(2)}
+                      {row.best.portfolio.toFixed(2)}%
                     </td>
                     <td className="p-18 text-center border-b border-r border-brown">
-                      {row.best.benchmark.toFixed(2)}
+                      {row.best.benchmark.toFixed(2)}%
                     </td>
                   </tr>
                 );

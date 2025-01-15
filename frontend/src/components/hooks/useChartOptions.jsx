@@ -4,45 +4,103 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
   const [chartOptions, setChartOptions] = useState(null);
   const prevDataLength = useRef(0);
 
-  const prepareChartData = useCallback((data) => {
-    const strategyKey = "total_portfolio_nav";
-    const initialStrategyValue = parseFloat(data[0][strategyKey]);
-    const initialNiftyValue = parseFloat(
-      data[0]["benchmark_values"] || data[0]["benchmark_values"]
-    );
+  /**
+   * Sort the data by date and ensure both series start from the same date with valid data.
+   * Both series will be normalized to start at 1000.
+   */
+  const prepareChartData = useCallback(
+    (data) => {
+      if (!data || data.length === 0) return [];
 
-    let maxStrategyValue = initialStrategyValue;
-    return data.map((item) => {
-      const currentValue = parseFloat(item[strategyKey]);
-      const drawdown =
-        maxStrategyValue > currentValue
-          ? (currentValue / maxStrategyValue - 1) * 100
-          : 0;
-      maxStrategyValue = Math.max(maxStrategyValue, currentValue);
+      const strategyKey = strategy;      // e.g., "qaw"
+      const benchmarkKey = "nifty_50";   // or adapt to your benchmark
 
-      return {
-        date: item.date,
-        strategyValue: (currentValue / initialStrategyValue) * 100,
-        niftyValue:
-          (parseFloat(item["benchmark_values"] || item["benchmark_values"]) /
-            initialNiftyValue) *
-          100,
-        drawdown,
-        benchmark: item.benchmark,
-      };
-    });
-  }, []);
+      // 1) Sort by date ascending
+      const sortedData = [...data].sort(
+        (a, b) => new Date(a.date) - new Date(b.date)
+      );
 
+      // 2) Find earliest valid strategy index
+      const earliestStrategyIndex = sortedData.findIndex((item) => {
+        const val = parseFloat(item[strategyKey]);
+        return !isNaN(val) && val !== 0;
+      });
+
+      // 3) Find earliest valid benchmark index
+      const earliestBenchmarkIndex = sortedData.findIndex((item) => {
+        const val = parseFloat(item[benchmarkKey]);
+        return !isNaN(val) && val !== 0;
+      });
+
+      // If either series has no valid data, return empty
+      if (earliestStrategyIndex === -1 || earliestBenchmarkIndex === -1) {
+        return [];
+      }
+
+      // 4) Use the LATER of the two indexes (so both lines start together)
+      const commonStartIndex = Math.max(
+        earliestStrategyIndex,
+        earliestBenchmarkIndex
+      );
+
+      // Get initial values for normalization
+      const initialStrategyValue = parseFloat(sortedData[commonStartIndex][strategyKey]);
+      const initialBenchmarkValue = parseFloat(sortedData[commonStartIndex][benchmarkKey]);
+
+      // For drawdown calculation
+      let maxNormalizedStrategyVal = 1000; // Start at 1000
+
+      // 5) Slice from the common start onward and normalize
+      const preparedData = sortedData.slice(commonStartIndex).map((item) => {
+        // Normalize both series to start at 1000
+        const curStrategyVal = parseFloat(item[strategyKey]) || 0;
+        const normalizedStrategyVal = (curStrategyVal / initialStrategyValue) * 1000;
+
+        const curBenchmarkVal = parseFloat(item[benchmarkKey]) || 0;
+        const normalizedBenchmarkVal = (curBenchmarkVal / initialBenchmarkValue) * 1000;
+
+        // Update max value for drawdown calculation using normalized value
+        if (normalizedStrategyVal > maxNormalizedStrategyVal) {
+          maxNormalizedStrategyVal = normalizedStrategyVal;
+        }
+
+        const drawdown =
+          maxNormalizedStrategyVal > 0
+            ? ((normalizedStrategyVal - maxNormalizedStrategyVal) / maxNormalizedStrategyVal) * 100
+            : 0;
+
+        return {
+          date: item.date,
+          strategyValue: normalizedStrategyVal,
+          niftyValue: normalizedBenchmarkVal,
+          drawdown,
+          benchmark: item.benchmark,
+        };
+      });
+
+      return preparedData;
+    },
+    [strategy]
+  );
+
+  /**
+   * Build chart options from the prepared data.
+   */
   const updateChartOptions = useCallback(
     (data) => {
+      if (!data || data.length === 0) {
+        setChartOptions(null);
+        return;
+      }
+
       const dates = data.map((item) => item.date);
-      const strategyValues = data.map((item) => Math.trunc(item.strategyValue));
-      const niftyValues = data.map((item) => Math.trunc(item.niftyValue));
-      const drawdownValues = data.map((item) => Math.trunc(item.drawdown));
-      const benchmarkName = data[0].benchmark;
+      const strategyValues = data.map((item) => item.strategyValue);
+      const niftyValues = data.map((item) => item.niftyValue);
+      const drawdownValues = data.map((item) => item.drawdown);
+      const benchmarkName = data[0]?.benchmark || "Benchmark";
 
       const mainYAxis = {
-        title: { text: "" },
+        title: { text: "Normalized Value (Starting at 1000)" },
         height: showDrawdown ? "70%" : "100%",
       };
 
@@ -59,8 +117,8 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
         {
           name: name,
           data: strategyValues,
-          color: "#d1a47b",
-          lineWidth: 1,
+          color: "#945c39",
+          lineWidth: 2,
           marker: {
             enabled: false,
             symbol: "circle",
@@ -72,8 +130,8 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
         {
           name: benchmarkName,
           data: niftyValues,
-          color: "#000",
-          lineWidth: 1,
+          color: "#d1a47b",
+          lineWidth: 2,
           marker: {
             enabled: false,
             symbol: "circle",
@@ -100,14 +158,23 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
       const options = {
         title: "",
         xAxis: {
-          categories: dates,
-          labels: {
-            formatter: function () {
-              const date = new Date(this.value);
-              return `${date.getFullYear()}`;
+          type: "datetime",
+          tickInterval: 365 * 24 * 3600 * 1000,
+          dateTimeLabelFormats: {
+            year: "%Y",
+          },
+          title: {
+            text: "Year",
+            style: {
+              color: "#333333",
             },
           },
-          tickPositions: [0, Math.floor(dates.length / 2), dates.length - 1],
+          labels: {
+            style: {
+              color: "#333333",
+            },
+          },
+          gridLineColor: "#e0e0e0",
         },
         yAxis: showDrawdown ? [mainYAxis, drawdownYAxis] : [mainYAxis],
         series,
@@ -140,7 +207,7 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
 
       setChartOptions(options);
     },
-    [strategy, isMobile, showDrawdown]
+    [isMobile, showDrawdown, name]
   );
 
   return {

@@ -2,34 +2,21 @@ import { useCallback } from "react";
 
 const useCalculateCagr = () => {
   const calculateCAGR = useCallback(
-    (data, timeRange = "Inception", portfolioType) => {
-      // Ensure portfolioType is provided
-      if (!portfolioType) {
-        console.error("Portfolio type is required for CAGR calculation.");
-        return "0%";
-      }
-
+    (data, timeRange = "Inception", portfolioType = "total_portfolio_nav") => {
       const parseDate = (dateString) => new Date(dateString);
-      // Sort data by date ascending
       const sortedData = [...data].sort(
         (a, b) => parseDate(a.date) - parseDate(b.date)
       );
 
-      // Filter out records with invalid portfolio values for the given strategy
-      const validData = sortedData.filter(
-        (d) => d[portfolioType] !== null && !isNaN(parseFloat(d[portfolioType]))
-      );
+      if (sortedData.length < 2) return "Loading...";
 
-      if (validData.length < 2) return "Loading...";
-
-      // Use the most recent valid data record for calculations
-      const latestData = validData[validData.length - 1];
+      const latestData = sortedData[sortedData.length - 1];
       const latestDate = parseDate(latestData.date);
       let startDate = new Date(latestDate);
+      console.log(startDate);
 
-      // Determine the start date based on the specified time range
       if (timeRange === "Custom") {
-        startDate = parseDate(validData[0].date);
+        startDate = parseDate(sortedData[0].date);
       } else {
         switch (timeRange) {
           case "1M":
@@ -46,7 +33,6 @@ const useCalculateCagr = () => {
             break;
           case "2Y":
             startDate.setFullYear(startDate.getFullYear() - 2);
-            break;
           case "3Y":
             startDate.setFullYear(startDate.getFullYear() - 3);
             break;
@@ -57,7 +43,7 @@ const useCalculateCagr = () => {
             startDate.setFullYear(startDate.getFullYear() - 7);
             break;
           case "Inception":
-            startDate = parseDate(validData[0].date);
+            startDate = parseDate(sortedData[0].date);
             break;
           case "YTD":
             startDate.setMonth(0, 1);
@@ -67,19 +53,18 @@ const useCalculateCagr = () => {
         }
       }
 
-      // Find the first valid record on or after the computed start date
-      const startIndex = validData.findIndex(
+      const startIndex = sortedData.findIndex(
         (d) => parseDate(d.date) >= startDate
       );
       if (startIndex === -1) return "0%";
 
-      const startValue = parseFloat(validData[startIndex][portfolioType]);
+      const startValue = parseFloat(sortedData[startIndex][portfolioType]);
       const endValue = parseFloat(latestData[portfolioType]);
 
       if (isNaN(startValue) || isNaN(endValue)) return "0%";
 
       const days =
-        (latestDate - parseDate(validData[startIndex].date)) /
+        (latestDate - parseDate(sortedData[startIndex].date)) /
         (24 * 60 * 60 * 1000);
       const years = days / 365;
 
@@ -91,13 +76,12 @@ const useCalculateCagr = () => {
         return simpleReturn.toFixed(1) + "%";
       }
 
-      // For periods of a year or more, use CAGR formula
+      // For periods of a year or more, use CAGR
       const cagr = (Math.pow(endValue / startValue, 1 / years) - 1) * 100;
       return cagr.toFixed(1) + "%";
     },
     []
   );
-
   return {
     calculateCAGR,
   };

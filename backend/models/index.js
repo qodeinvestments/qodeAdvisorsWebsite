@@ -21,6 +21,7 @@ const db = {
 // Initialize base models
 db.Strategy = require("./strategy")(sequelize, Sequelize.DataTypes);
 db.Email = require('./email')(sequelize, Sequelize.DataTypes);
+db.StrategyNav = require('./strategyNav')(sequelize, Sequelize.DataTypes); // <-- Added StrategyNav model
 
 // Function to create models for schema
 const createModelsForSchema = (schema) => ({
@@ -52,7 +53,7 @@ schemas.forEach(schema => {
 
 // Initialize all associations
 Object.values(db).forEach(model => {
-  if (model && model.associate) {
+  if (model && typeof model.associate === 'function') {
     model.associate(db);
   }
 });

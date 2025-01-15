@@ -1,25 +1,15 @@
 import React, { useState, useEffect } from "react";
-import Heading from "./common/Heading";
-import Text from "./common/Text";
-import useCalculateCagr from "./hooks/useCalculateCagr";
 import { Spinner } from "@material-tailwind/react";
+import Text from "../../common/Text";
+import useCalculateCagr from "../../hooks/useCalculateCagr";
+import useFetchStrategyNavField from "../../../hooks/useFetchStrategyNavData";
 
-const TrailingReturns = ({
-  /** Required props **/
-  data,
-  strategy,         // e.g. "qaw"
-  name,             // e.g. "Qode All Weather"
-  /** Optional props for dynamic usage **/
-  benchmark = "nifty_50", // default benchmark if none provided
-  benchmarkName = "Nifty 50", // Display name for benchmark
-  startDates,
-  endDates,
-
-  /** Loading & Error states **/
-  isLoading,
-  error,
-}) => {
-  const { calculateCAGR } = useCalculateCagr();
+const TrailingReturns = () => {
+  const strategy = "qaw"; // Define strategy key
+  const { data, isLoading, error } = useFetchStrategyNavField('qaw');
+  const memoizedData = React.useMemo(() => data, [data]);
+  
+  const benchmarkField = "nifty_50";
   const [returns, setReturns] = useState({
     "10D": {},
     "1W": {},
@@ -36,8 +26,19 @@ const TrailingReturns = ({
     lowest: {},
   });
 
+  const { calculateCAGR } = useCalculateCagr();
+
+  // Dummy date range extraction logic
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+
   useEffect(() => {
     if (data && data.length > 0) {
+      // Extract date range (example logic)
+      const dates = data.map(item => new Date(item.date));
+      setStartDate(new Date(Math.min(...dates)).toLocaleDateString());
+      setEndDate(new Date(Math.max(...dates)).toLocaleDateString());
+
       calculateReturns(data);
       calculateDrawdowns(data);
     }
@@ -53,30 +54,24 @@ const TrailingReturns = ({
 
     const calculatedReturns = {};
 
-    // Calculate for 1Y, 3Y, 5Y, Inception using your `calculateCAGR` hook
     for (const [period, cagrPeriod] of Object.entries(periods)) {
       calculatedReturns[period] = {
         [strategy]: calculateCAGR(data, cagrPeriod, strategy),
-        [benchmark]: calculateCAGR(data, cagrPeriod, benchmark),
+        [benchmarkField]: calculateCAGR(data, cagrPeriod, benchmarkField),
       };
     }
 
-    // Handle custom shorter periods (10D, 1W)
-    const sortedData = [...data].sort(
-      (a, b) => new Date(a.date) - new Date(b.date)
-    );
+    const sortedData = [...data].sort((a, b) => new Date(a.date) - new Date(b.date));
     const latestDate = new Date(sortedData[sortedData.length - 1].date);
 
     ["10D", "1W"].forEach((period) => {
       const days = period === "10D" ? 10 : 7;
       const startDate = new Date(latestDate.getTime() - days * 24 * 60 * 60 * 1000);
-      const filteredData = sortedData.filter(
-        (item) => new Date(item.date) >= startDate
-      );
+      const filteredData = sortedData.filter(item => new Date(item.date) >= startDate);
 
       calculatedReturns[period] = {
         [strategy]: calculateCAGR(filteredData, "Custom", strategy),
-        [benchmark]: calculateCAGR(filteredData, "Custom", benchmark),
+        [benchmarkField]: calculateCAGR(filteredData, "Custom", benchmarkField),
       };
     });
 
@@ -84,15 +79,11 @@ const TrailingReturns = ({
   };
 
   const calculateDrawdowns = (data) => {
-    const strategies = [strategy, benchmark];
-    const calculatedDrawdowns = {
-      latest: {},
-      lowest: {},
-    };
+    const strategies = [strategy, benchmarkField];
+    const calculatedDrawdowns = { latest: {}, lowest: {} };
 
     strategies.forEach((strat) => {
-      const values = data.map((item) => parseFloat(item[strat]) || 0);
-
+      const values = data.map(item => parseFloat(item[strat]) || 0);
       let peaks = [values[0]];
       let drawdowns = [0];
 
@@ -108,25 +99,16 @@ const TrailingReturns = ({
     setDrawdowns(calculatedDrawdowns);
   };
 
-  if (isLoading) {
+  if (isLoading)
     return (
       <div className="text-start flex justify-center items-center">
         <Spinner className="text-brown" />
       </div>
     );
-  }
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  if (error) return <div>Error: {error}</div>;
 
-  // Example periods to display
+  const strategies = [strategy, benchmarkField];
   const periods = ["1Y", "3Y", "5Y", "Inception"];
-
-  const getDisplayName = (stratKey) => {
-    if (stratKey === strategy) return name;
-    if (stratKey === benchmark) return benchmarkName;
-    return stratKey;
-  };
 
   const ResponsiveTable = () => (
     <div className="overflow-x-auto">
@@ -153,12 +135,12 @@ const TrailingReturns = ({
             </tr>
           </thead>
           <tbody>
-            {[strategy, benchmark].map((strat) => (
+            {strategies.map((strat) => (
               <tr key={strat} className="text-black text-start border-b border-brown">
                 <td className="sticky border border-brown border-r-0 w-44 text-nowrap left-0 z-10 p-18 font-semibold text-sm sm:text-body bg-lightBeige">
                   <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                   <span className="break-word-mobile">
-                    {getDisplayName(strat)}
+                    {strat === strategy ? "Qode All Weather" : strat}
                   </span>
                 </td>
                 {periods.map((period) => (
@@ -189,15 +171,13 @@ const TrailingReturns = ({
     <>
       <div className="flex justify-between flex-col sm:flex-row">
         <Text className="text-sm sm:text-body font-body text-black mb-18">
-          Returns as of {endDates}.
+          Returns as of {endDate}.
         </Text>
         <Text className="text-xs text-right sm:text-xs font-body mb-18 text-brown italic">
-          *Data from {startDates} to {endDates}.
+          *Data from {startDate} to {endDate}.
         </Text>
       </div>
-
       <ResponsiveTable />
-
       <Text className="text-beige text-sm sm:text-body font-body mt-2 sm:mt-18">
         MDD (Maximum Drawdown) refers to the maximum loss an investment can
         incur from its highest point.

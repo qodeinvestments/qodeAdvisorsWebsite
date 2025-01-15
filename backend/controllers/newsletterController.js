@@ -86,7 +86,7 @@ const subscribeToNewsletter = async (req, res) => {
                     bodyContent: `
                         <p>Dear Investor,</p>
                         <p>Thank you for subscribing to Qode Newsletter. We're excited to have you on board.</p>
-                        <p>If you want us to contact you, please reply to this email with your details</p>
+                        <p>If you want us to contact you, please reply to this email with your contact details</p>
                         <p>Our team will reach out to you shortly after receiving your details.</p>
                         <p>Best regards,<br>Team Qode</p>
                     `,

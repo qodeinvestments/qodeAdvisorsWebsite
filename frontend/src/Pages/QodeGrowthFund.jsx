@@ -36,19 +36,29 @@ const QodeGrowthFund = () => {
     const options = { day: "numeric", month: "long", year: "numeric" };
     return date.toLocaleDateString("en-GB", options);
   };
-
+  
   const extractDateRange = (data) => {
     if (!data || data.length === 0) return { startDate: "0", endDate: "0" };
+  
+    // Convert all date strings to Date objects
     const dates = data.map((entry) => new Date(entry.date));
+    
+    // Calculate the minimum and maximum dates
     const minDate = new Date(Math.min(...dates));
     const maxDate = new Date(Math.max(...dates));
+  
+    // Subtract one day from the minimum date for the start date
+    const minDateMinusOne = new Date(minDate);
+    minDateMinusOne.setDate(minDateMinusOne.getDate() + 1);
+  
     return {
-      startDate: formatDate(minDate),
+      startDate: formatDate(minDateMinusOne),  // Use decremented date for startDate
       endDate: formatDate(maxDate),
     };
   };
-
+  
   const { startDate, endDate } = extractDateRange(data);
+  
   React.useEffect(() => {
     if (data) {
       startTransition(() => {

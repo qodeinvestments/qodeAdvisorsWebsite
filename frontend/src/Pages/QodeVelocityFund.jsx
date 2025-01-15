@@ -149,6 +149,11 @@ const QodeTacticalFund = () => {
                   height="667"
                 />
               </figure>
+            <div className="post-content gh-content">
+            <p><em>LTCG: <strong>12.5%</strong>, STCG: <strong>20%</strong> ; (As of 1st Sept 2024)</em></p>
+            <ul><ul><li>The index fund nearly doubles the returns by saving on taxes.</li><li>So we instead build our momentum portfolio using tax-efficient ETFs.</li></ul></ul>
+            <ol start="2"><li><strong>Avoiding Market Crashes:</strong> While timing the market or moving into cash during downturns is costly and unreliable, hedging with derivatives can effectively protect against crashes without sacrificing returns. We use a proprietary hedging model that reduces downside risk without giving up on momentum’s upside. Below are the portfolio and drawdown comparisons:</li></ol>
+            </div>
               <LazyChart>
                 <QvfVsMomentumCurve />
               </LazyChart>

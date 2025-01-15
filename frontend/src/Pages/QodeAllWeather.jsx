@@ -67,19 +67,29 @@ const QodeAllWeather = () => {
     const options = { day: "numeric", month: "long", year: "numeric" };
     return date.toLocaleDateString("en-GB", options);
   };
-
+  
   const extractDateRange = (data) => {
     if (!data || data.length === 0) return { startDate: "0", endDate: "0" };
+  
+    // Convert all date strings to Date objects
     const dates = data.map((entry) => new Date(entry.date));
+    
+    // Calculate the minimum and maximum dates
     const minDate = new Date(Math.min(...dates));
     const maxDate = new Date(Math.max(...dates));
+  
+    // Add one day to the maximum date
+    const maxDatePlusOne = new Date(maxDate);
+    maxDatePlusOne.setDate(maxDatePlusOne.getDate() + 1);
+  
     return {
       startDate: formatDate(minDate),
-      endDate: formatDate(maxDate),
+      endDate: formatDate(maxDatePlusOne),  // Use incremented date for endDate
     };
   };
-
+  
   const { startDate, endDate } = extractDateRange(data);
+  
 
   React.useEffect(() => {
     if (data) {
@@ -213,8 +223,10 @@ const QodeAllWeather = () => {
                   <h3 id="what-is-the-strategy">What is the Strategy?</h3>
                   <ul><li>This strategy is comprised of ETFs that we hold in this portfolio:<ul><li>Momentum ETF</li><li>Low Volatility ETF</li><li>Gold ETF</li><li>Derivative Hedging</li></ul></li><li><strong>The Momentum Index</strong> chooses 50 stocks from the NSE-listed stock universe based on the Normalized Momentum Score for each company is determined based on its 6-month and 12-month price return, adjusted for volatility.</li><li><strong>Low Volatility Index</strong> chooses 30 stocks from the Nifty 100 with the lowest volatility in the last year.</li><li>For exposure to <strong>Gold,</strong> we use Gold ETF which has historically proven to be uncorrelated with equity markets.</li><li>We use a dynamic <strong>Derivative Hedging</strong> mechanism that helps protect your portfolio during market downturns.</li></ul>
                   <blockquote>All the results in this backtest contains the derivative hedging from 2011 onwards, due unavailability of options data prior to it.<br />The portfolio only has Momentum ETF, Low Volatility ETF and Gold ETF as the components before 2011.</blockquote>
+                <p>Below are the annual returns of Qode All Weather compared to the Nifty 50:</p>
                   <h2 id="how-has-this-strategy-performed">How has this strategy performed?</h2>
                 </div>
+
                 <LazyChart>
                   <LogPerformanceChart
                     data={memoizedData}
@@ -227,7 +239,6 @@ const QodeAllWeather = () => {
                 </LazyChart>
 
                 <div className="post-content gh-content">
-                  <p>Below are the annual returns of Qode All Weather compared to the Nifty 50:</p>
                   <h3 id="annual-returns">Annual Returns</h3>
                 </div>
                 <LazyChart>
@@ -376,11 +387,7 @@ const QodeAllWeather = () => {
                 Why should you not invest in the Index directly?
               </h3>
               <p>
-                The Exchange does not structure its indexes to provide people
-                with maximum returns. The index is just a tool to be used for
-                benchmarking by fund managers and the public as a whole. At
-                Qode, our objective is to use the methodology of the index to
-                maximize returns.
+              Investors could potentially replicate a similar approach using index funds to benefit from basic asset allocation. However, our strategy goes further by providing better returns with lower risks, made possible through our unique derivative hedging methods. Additionally, we leverage the discretion of experienced fund managers at key moments to seize opportunities and generate alpha.
               </p>
             </div>
           </div>

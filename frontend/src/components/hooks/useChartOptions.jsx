@@ -52,7 +52,9 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
 
       // 5) Slice from the common start onward and normalize
       const preparedData = sortedData.slice(commonStartIndex).map((item) => {
-        // Normalize both series to start at 1000
+        // Convert date string to a timestamp
+        const timestamp = new Date(item.date).getTime();
+
         const curStrategyVal = parseFloat(item[strategyKey]) || 0;
         const normalizedStrategyVal = (curStrategyVal / initialStrategyValue) * 1000;
 
@@ -70,7 +72,7 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
             : 0;
 
         return {
-          date: item.date,
+          date: timestamp,  // Store as timestamp
           strategyValue: normalizedStrategyVal,
           niftyValue: normalizedBenchmarkVal,
           drawdown,
@@ -93,10 +95,10 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
         return;
       }
 
-      const dates = data.map((item) => item.date);
-      const strategyValues = data.map((item) => item.strategyValue);
-      const niftyValues = data.map((item) => item.niftyValue);
-      const drawdownValues = data.map((item) => item.drawdown);
+      // Construct series data as [timestamp, value] pairs
+      const strategyData = data.map(item => [item.date, item.strategyValue]);
+      const niftyData = data.map(item => [item.date, item.niftyValue]);
+      const drawdownData = data.map(item => [item.date, item.drawdown]);
       const benchmarkName = data[0]?.benchmark || "Benchmark";
 
       const mainYAxis = {
@@ -122,7 +124,7 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
       const series = [
         {
           name: name,
-          data: strategyValues,
+          data: strategyData,
           color: "#945c39",
           lineWidth: 2,
           marker: {
@@ -135,7 +137,7 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
         },
         {
           name: benchmarkName,
-          data: niftyValues,
+          data: niftyData,
           color: "#d1a47b",
           lineWidth: 2,
           marker: {
@@ -151,7 +153,7 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
       if (showDrawdown) {
         series.push({
           name: "Drawdown",
-          data: drawdownValues,
+          data: drawdownData,
           color: "#FF0000",
           lineWidth: 1,
           yAxis: 1,
@@ -168,8 +170,8 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
         title: "",
         xAxis: {
           type: "datetime",
-          tickInterval: 365 * 24 * 3600 * 1000,
           dateTimeLabelFormats: {
+            month: "%Y",
             year: "%Y",
           },
           title: {
@@ -191,7 +193,7 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
           height: isMobile ? 300 : showDrawdown ? 620 : 520,
           backgroundColor: "none",
           zoomType: "x",
-          marginLeft: isMobile ? 50 : 80,  // Increase margin for non-mobile screens
+          marginLeft: isMobile ? 50 : 80,
           marginRight: isMobile ? 0 : 40,
         },
         tooltip: {

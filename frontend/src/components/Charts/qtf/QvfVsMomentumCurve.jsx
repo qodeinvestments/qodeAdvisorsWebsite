@@ -97,7 +97,7 @@ const QvfVsMomentumCurve = () => {
     return {
       chart: {
         type: "line",
-        height: 600,
+        height: 400,
         zoomType: "x",
         backgroundColor: "#ffffff",
         style: { fontFamily: "Arial, sans-serif" },

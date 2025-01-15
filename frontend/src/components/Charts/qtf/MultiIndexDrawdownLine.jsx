@@ -40,11 +40,11 @@ const MultiIndexDrawdownLine = () => {
 
   // Updated to a brown/beige palette
   const indices = [
-    { key: "nifty_500_momentum_50",  name: "NSE 500 Momentum 50",     color: "#A0522D" }, // Sienna
-    { key: "nifty_low_volatility_50", name: "NIFTY LOW VOLATILITY 50", color: "#8B4513" }, // SaddleBrown
-    { key: "nifty_200_quality_30",    name: "NIFTY200 QUALITY 30",     color: "#c19a6b" }, // Camel
-    { key: "nifty_alpha_50",          name: "NIFTY ALPHA 50",          color: "#DEB887" }, // BurlyWood
-    { key: "nifty_500_value_50",      name: "NIFTY500 VALUE 50",       color: "#F5DEB3" }, // Wheat
+    { key: "nifty_500_momentum_50",  name: "NSE 500 Momentum 50",     color: "#fa8c00" }, // Sienna
+    { key: "nifty_low_volatility_50", name: "NIFTY LOW VOLATILITY 50", color: "#ffca76" }, // SaddleBrown
+    { key: "nifty_200_quality_30",    name: "NIFTY200 QUALITY 30",     color: "#c4c4c4" }, // Camel
+    { key: "nifty_alpha_50",          name: "NIFTY ALPHA 50",          color: "#474747" }, // BurlyWood
+    { key: "nifty_500_value_50",      name: "NIFTY500 VALUE 50",       color: "#969696" }, // Wheat
   ];
 
   const processedSeries = useMemo(() => {
@@ -72,7 +72,7 @@ const MultiIndexDrawdownLine = () => {
         name: index.name,
         data: drawdownData,
         color: index.color,
-        lineWidth: 1,
+        lineWidth: 2,
         type: "line",
       };
     });
@@ -86,7 +86,7 @@ const MultiIndexDrawdownLine = () => {
         style: {
           fontFamily: "Arial, sans-serif",
         },
-        height: 600,
+        height: 500,
       },
       title: {
         text: "",
@@ -122,8 +122,8 @@ const MultiIndexDrawdownLine = () => {
           },
         },
         max: 0,
-        min: -100,
-        tickInterval: 20,
+        min: -90,
+        tickInterval: 10,
         labels: {
           format: "{value}%",
           style: {

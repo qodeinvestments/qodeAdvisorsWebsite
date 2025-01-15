@@ -78,13 +78,15 @@ const QodeAllWeather = () => {
     const minDate = new Date(Math.min(...dates));
     const maxDate = new Date(Math.max(...dates));
   
-    // Add one day to the maximum date
+    // Subtract one day from the minimum date for the start date
+    const minDateMinusOne = new Date(minDate);
+    minDateMinusOne.setDate(minDateMinusOne.getDate() + 1);
     const maxDatePlusOne = new Date(maxDate);
     maxDatePlusOne.setDate(maxDatePlusOne.getDate() + 1);
-  
+
     return {
-      startDate: formatDate(minDate),
-      endDate: formatDate(maxDatePlusOne),  // Use incremented date for endDate
+      startDate: formatDate(minDateMinusOne),  // Use decremented date for startDate
+      endDate: formatDate(maxDatePlusOne),
     };
   };
   
@@ -173,6 +175,10 @@ const QodeAllWeather = () => {
                       startDates={startDate}
                       endDates={endDate}
                     />
+                    <Heading
+                    isItalic
+                    className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
+                  >Stress Period Table</Heading>
                     <StressPeriodTable
                       data={data}
                       strategy="qaw"
@@ -189,7 +195,7 @@ const QodeAllWeather = () => {
                   <Heading
                     isItalic
                     className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
-                  >Equity Curve & Drawdown Chart</Heading>
+                  >Equity Curve</Heading>
                   <LazyChart>
                     <PerformanceChart
                       data={memoizedData}
@@ -197,6 +203,8 @@ const QodeAllWeather = () => {
                       name={strategyData.title}
                       error={error}
                       isLoading={isLoading}
+                      startDates={startDate}
+                      endDates={endDate}
                     />
                   </LazyChart>
                 </div>
@@ -219,10 +227,10 @@ const QodeAllWeather = () => {
 
                 <div className="post-content gh-content">
                   <h3 id="the-specifics">The Specifics</h3>
-                  <ul><li>Looks to outperform the Nifty 50 index over holding periods of three years and longer.</li><li>It is an ETF-only portfolio, rebalanced annually at the start of every financial year, or may be changed based on the manager.</li><li>Proprietary models that use sentiments to decide dynamic weights between ETFs according to market situations.</li><li>In periods of extreme fear, our strategy increases exposure to equities, capitalizing on potential recovery opportunities. Conversely, during times of extreme greed, we adopt a more cautious stance by allocating more to gold and low-volatility strategies, prioritizing capital preservation.</li></ul>
+                  <ul><li>Qode All Weather outperforms the Nifty 50 index over holding periods of three years and longer.</li><li>It is an ETF-only portfolio, rebalanced annually at the start of every financial year, or may be changed based on the manager.</li><li>Our proprietary models use sentiment analysis to adjust asset weights dynamically based on market situations.</li><li>In periods of extreme fear, our strategy increases exposure to equities, capitalizing on potential recovery opportunities. Conversely, during times of extreme greed, we adopt a more cautious stance by allocating more to gold and low-volatility strategies, prioritizing capital preservation.</li></ul>
                   <h3 id="what-is-the-strategy">What is the Strategy?</h3>
-                  <ul><li>This strategy is comprised of ETFs that we hold in this portfolio:<ul><li>Momentum ETF</li><li>Low Volatility ETF</li><li>Gold ETF</li><li>Derivative Hedging</li></ul></li><li><strong>The Momentum Index</strong> chooses 50 stocks from the NSE-listed stock universe based on the Normalized Momentum Score for each company is determined based on its 6-month and 12-month price return, adjusted for volatility.</li><li><strong>Low Volatility Index</strong> chooses 30 stocks from the Nifty 100 with the lowest volatility in the last year.</li><li>For exposure to <strong>Gold,</strong> we use Gold ETF which has historically proven to be uncorrelated with equity markets.</li><li>We use a dynamic <strong>Derivative Hedging</strong> mechanism that helps protect your portfolio during market downturns.</li></ul>
-                  <blockquote>All the results in this backtest contains the derivative hedging from 2011 onwards, due unavailability of options data prior to it.<br />The portfolio only has Momentum ETF, Low Volatility ETF and Gold ETF as the components before 2011.</blockquote>
+                  <ul><li>This strategy is comprised of ETFs<ul><li>Momentum ETF</li><li>Low Volatility ETF</li><li>Gold ETF</li><li>Derivative Hedging</li></ul></li><li><strong>The Momentum Index</strong> chooses 50 stocks from the NSE-listed stock universe based on the Normalized Momentum Score for each company which is determined based on its 6-month and 12-month price return, adjusted for volatility.</li><li><strong>Low Volatility Index</strong> chooses 30 stocks from the Nifty 100 with the lowest volatility in the last year.</li><li>For exposure to <strong>Gold,</strong> we use Gold ETF which has historically proven to be uncorrelated with equity markets.</li><li>We use a dynamic <strong>Derivative Hedging</strong> mechanism that helps protect your portfolio during market downturns.</li></ul>
+                  <blockquote>All the results in this backtest contains the derivative hedging from 2011 onwards, due to unavailability of options data prior to it.<br />The portfolio only has Momentum ETF, Low Volatility ETF and Gold ETF as the components before 2011.</blockquote>
                 <p>Below are the annual returns of Qode All Weather compared to the Nifty 50:</p>
                   <h2 id="how-has-this-strategy-performed">How has this strategy performed?</h2>
                 </div>
@@ -257,7 +265,7 @@ const QodeAllWeather = () => {
             )}
 
             <div className="post-content gh-content">
-              <p>It is observed that from 2015, the Qode All Weather Portfolio has outperformed the Nifty 50 index, almost every calendar year. It performs well in a bull market, sure to the exposure to the momentum, etc. It has underperformed the Nifty 50 index by a very thin margin many times before that. To combat that let's see, how much had the portfolio fallen intra-year and compare it with the Nifty 50.</p>
+              <p>It is observed that from 2015, the Qode All Weather Portfolio has outperformed the Nifty 50 index, almost every calendar year. It performs well in a bull market,because of its exposure to momentum strategies. It has underperformed the Nifty 50 index by a very thin margin many times before that. To combat that let's see, how much the portfolio fallen intra-year and compare it with the Nifty 50.</p>
               <p>We have compared the calendar year drawdowns of Qode All Weather and Nifty 50 index below.</p>
             </div>
 
@@ -280,8 +288,8 @@ const QodeAllWeather = () => {
 
                 <div className="post-content gh-content">
 
-                  <p>The below donut chart tells us the percentage of times who has outperformed the other on a rolling basis, among Qode All Weather &amp; Nifty 50. </p>
-                  <p>We can see that the probability of underperformance goes to zero as we increase our holding period. If an investor were to invest for 5 years and above, the likelihood of outperformance is very high close and above 99%.</p>
+                  <p>The donut chart below shows the percentage of the times Qode All Weather has outperformed Nifty 50 on a rolling basis.</p>
+                  <p>We can see that the probability of underperformance goes to zero as we increase our holding period. If an investor were to invest for 5 years and above, the likelihood of outperformance is very high close above 99%.</p>
                 </div>
                 <Heading
                   isItalic
@@ -309,7 +317,7 @@ const QodeAllWeather = () => {
                   <div className="post-content gh-content">
 
                     <p>The Qode All Weather portfolio outperforms the Nifty 50 Index 88% of the time over any 3-year basis and 72% of the time on any 1-year basis.</p>
-                    <p>On a longer time frame, this shrinks significantly underscoring the importance of sticking with it to reap the eventual outperformance.</p>
+                    <p>On a longer time frame, this shrinks significantly highlighting of staying invested to reap the eventual outperformance.</p>
                     <h3 id="why-does-the-strategy-work">Why does the strategy work?</h3>
                     <p>When we use <strong>uncorrelated assets</strong> we can capitalize on <strong>diversification benefits</strong> thereby reducing the portfolio's unsystematic risk and downside volatility.</p>
                     <h3 id="year-2007-2009">Year 2007-2009:</h3>

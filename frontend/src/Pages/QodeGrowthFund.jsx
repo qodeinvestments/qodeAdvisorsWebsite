@@ -36,29 +36,31 @@ const QodeGrowthFund = () => {
     const options = { day: "numeric", month: "long", year: "numeric" };
     return date.toLocaleDateString("en-GB", options);
   };
-  
+
   const extractDateRange = (data) => {
     if (!data || data.length === 0) return { startDate: "0", endDate: "0" };
-  
+
     // Convert all date strings to Date objects
     const dates = data.map((entry) => new Date(entry.date));
-    
+
     // Calculate the minimum and maximum dates
     const minDate = new Date(Math.min(...dates));
     const maxDate = new Date(Math.max(...dates));
-  
+
     // Subtract one day from the minimum date for the start date
     const minDateMinusOne = new Date(minDate);
     minDateMinusOne.setDate(minDateMinusOne.getDate() + 1);
-  
+    const maxDatePlusOne = new Date(maxDate);
+    maxDatePlusOne.setDate(maxDatePlusOne.getDate() + 1);
+
     return {
       startDate: formatDate(minDateMinusOne),  // Use decremented date for startDate
-      endDate: formatDate(maxDate),
+      endDate: formatDate(maxDatePlusOne),
     };
   };
-  
+
   const { startDate, endDate } = extractDateRange(data);
-  
+
   React.useEffect(() => {
     if (data) {
       startTransition(() => {
@@ -151,7 +153,7 @@ const QodeGrowthFund = () => {
             <h1 className="font-heading playfair-font-display text-mobileHeading sm:text-heading font-semibold text-brown mb-1 text-center">
               Qode Growth Fund
             </h1>
-          
+
 
             <div className="post-content gh-content">
               <p>
@@ -163,20 +165,20 @@ const QodeGrowthFund = () => {
             {!isPending && (
               <>
                 <div className="mb-3 mt-3">
-                <Heading
+                  <Heading
                     isItalic
                     className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
                   >
-                  Trailing Returns
+                    Trailing Returns
                   </Heading>
-                      <LazyChart>
+                  <LazyChart>
                     <TrailingReturns
                       data={memoizedData}
                       isLoading={isLoading}
                       error={error}
                       strategy="qgf"
                       benchmark="bse_500"
-                      benchmarkName = "BSE 500"
+                      benchmarkName="BSE 500"
                       name={strategyData.title}
                       startDates={startDate}
                       endDates={endDate}
@@ -185,11 +187,11 @@ const QodeGrowthFund = () => {
                 </div>
 
                 <div className="mb-3 mt-3">
-                <Heading
+                  <Heading
                     isItalic
                     className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
                   >
-                  Equity Curve
+                    Equity Curve
                   </Heading>
                   <LazyChart>
                     <QgfEquityCurve />
@@ -247,12 +249,12 @@ const QodeGrowthFund = () => {
             </div>
 
             <div className="mb-3 mt-3">
-            <Heading
-                    isItalic
-                    className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
-                  >
-                  Bucket Trend Analysis
-                  </Heading>
+              <Heading
+                isItalic
+                className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
+              >
+                Bucket Trend Analysis
+              </Heading>
               <LazyChart>
                 <iframe
                   title="Interactive line chart"
@@ -271,17 +273,21 @@ const QodeGrowthFund = () => {
                 />
               </LazyChart>
             </div>
+            <div className="post-content gh-content">
+
+              <p>Below we can see the rolling returns of the strategy compared with benchmark. We can see that no matter when the investor invests this would be the median return for different holding time periods</p>
+            </div>
             <figure className="kg-card kg-embed-card">
-                  <LazyChart>
-                    <PerformanceDashboard
-                      data={data}
-                      strategyKey="qgf"
-                      benchmarkKey="bse_500"
-                      strategyName="QGF"
-                      benchmarkName="BSE 500"
-                    />
-                  </LazyChart>
-                </figure>
+              <LazyChart>
+                <PerformanceDashboard
+                  data={data}
+                  strategyKey="qgf"
+                  benchmarkKey="bse_500"
+                  strategyName="QGF"
+                  benchmarkName="BSE 500"
+                />
+              </LazyChart>
+            </figure>
             <div className="post-content gh-content">
               <p>
                 Below we can see the rolling returns of the strategy compared with benchmark. We can see that no matter when the investor invested this would be the median return for different holding time periods.
@@ -298,50 +304,52 @@ const QodeGrowthFund = () => {
                   Below we have a table of our top performers from backtest of this strategy:
                 </li>
               </ul>
+            </div>
 
-              <div className="overflow-x-auto">
-                <div className="relative overflow-x-auto scrollbar-thin scrollbar-thumb-brown scrollbar-track-black">
-                  <table className="w-full min-w-[640px] border-collapse">
-                    <thead>
-                      <tr className="text-sm bg-lightBeige sm:text-body font-body">
-                        <th className="sticky left-0 z-10 bg-lightBeige p-18 font-semibold text-start text-black bg-lightBeige border border-brown">
+            <div className="overflow-x-auto">
+              <div className="relative overflow-x-auto scrollbar-thin scrollbar-thumb-brown scrollbar-track-black">
+                <table className="w-full min-w-[640px] border-collapse">
+                  <thead>
+                    <tr className="text-sm bg-lightBeige sm:text-body font-body">
+                      <th className="sticky left-0 z-10 bg-lightBeige p-18 font-semibold text-start text-black bg-lightBeige border border-brown">
+                        <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
+                        Name of company
+                      </th>
+                      <th className="p-18 bg-lightBeige font-semibold text-center text-black border border-brown">
+                        Returns
+                      </th>
+                      <th className="p-18 bg-lightBeige font-semibold text-center text-black border border-brown">
+                        Holding period
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      ["Tata Elxsi Limited", "1264%", "7 Years"],
+                      ["Page Industries Limited", "587%", "5 Years"],
+                      ["Sonata Software Limited", "474%", "5 Years"],
+                      ["Avanti Feeds Ltd", "458%", "6 Years"],
+                      ["Alkyl Amines Chemicals Ltd", "379%", "1 Year"],
+                      ["Alembic Pharmaceuticals Ltd", "363%", "3 Years"],
+                      ["Ajanta Pharma Ltd", "313%", "5 Years"],
+                      ["Britannia Industries Ltd", "296%", "2 Years"],
+                      ["Deepak Nitrite Ltd", "292%", "1 Year"],
+                      ["Amara Raja Batteries Ltd", "235%", "3 Years"]
+                    ].map(([name, returns, period]) => (
+                      <tr key={name} className="border-b border-brown text-sm sm:text-body">
+                        <td className="sticky left-0 z-10 p-18 font-semibold text-sm sm:text-body  border border-brown">
                           <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
-                          Name of company
-                        </th>
-                        <th className="p-18 bg-lightBeige font-semibold text-center text-black border border-brown">
-                          Returns
-                        </th>
-                        <th className="p-18 bg-lightBeige font-semibold text-center text-black border border-brown">
-                          Holding period
-                        </th>
+                          {name}
+                        </td>
+                        <td className="p-18 text-center border border-brown">{returns}</td>
+                        <td className="p-18 text-center border border-brown">{period}</td>
                       </tr>
-                    </thead>
-                    <tbody>
-                      {[
-                        ["Tata Elxsi Limited", "1264%", "7 Years"],
-                        ["Page Industries Limited", "587%", "5 Years"],
-                        ["Sonata Software Limited", "474%", "5 Years"],
-                        ["Avanti Feeds Ltd", "458%", "6 Years"],
-                        ["Alkyl Amines Chemicals Ltd", "379%", "1 Year"],
-                        ["Alembic Pharmaceuticals Ltd", "363%", "3 Years"],
-                        ["Ajanta Pharma Ltd", "313%", "5 Years"],
-                        ["Britannia Industries Ltd", "296%", "2 Years"],
-                        ["Deepak Nitrite Ltd", "292%", "1 Year"],
-                        ["Amara Raja Batteries Ltd", "235%", "3 Years"]
-                      ].map(([name, returns, period]) => (
-                        <tr key={name} className="border-b border-brown text-sm sm:text-body">
-                          <td className="sticky left-0 z-10 p-18 font-semibold text-sm sm:text-body  border border-brown">
-                            <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
-                            {name}
-                          </td>
-                          <td className="p-18 text-center border border-brown">{returns}</td>
-                          <td className="p-18 text-center border border-brown">{period}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                    ))}
+                  </tbody>
+                </table>
               </div>
+            </div>
+            <div className="post-content gh-content mt-2">
               <ul>
                 <li><strong>Advantage of Rebalancing</strong>
                   <ul>
@@ -350,7 +358,6 @@ const QodeGrowthFund = () => {
                 </li>
               </ul>
             </div>
-
             <div className="post-content gh-content">
               <ul>
                 <li>By adopting this approach, we've observed that the maximum drawdown on the invested capital remains under 10%, effectively reducing the periods where your portfolio might be "underwater."</li>
@@ -366,7 +373,7 @@ const QodeGrowthFund = () => {
             </div>
 
             <div className="mb-3 mt-3">
-              
+
               <LazyChart>
                 <iframe
                   title="Covid-19 Impact Chart"

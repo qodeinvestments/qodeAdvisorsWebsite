@@ -72,7 +72,7 @@ const QvfVsMomentumDrawdownLine = () => {
         type: "line",
         backgroundColor: "#ffffff",
         style: { fontFamily: "Arial, sans-serif" },
-        height: 600,
+        height: 500,
       },
       title: {
         text: "",
@@ -95,7 +95,7 @@ const QvfVsMomentumDrawdownLine = () => {
           style: { color: "#333333" },
         },
         max: 0,
-        min: -55,
+        min: -40,
         tickInterval: 10,
         labels: {
           format: "{value}%",

@@ -22,6 +22,7 @@ const LogPerformanceChart = ({
   benchmarkName = "NIFTY 50",
   isLoading = false,
   error = null,
+  isMobile
 }) => {
   // 1) Handle loading & error states
   if (isLoading) {
@@ -66,11 +67,16 @@ const LogPerformanceChart = ({
       (point[benchmarkKey] / earliestBenchmark) * 100,
     ]);
 
+    
     return {
       chart: {
         type: "line",
-        height: 600,
+        // Use conditional height and margins based on `isMobile` and `showDrawdown`
+        height: 620,
+        backgroundColor: "none",
         zoomType: "x",
+        marginLeft: isMobile ? 50 : 90,  // Adjusted left margin
+        marginRight: isMobile ? 0 : 40,
         style: {
           fontFamily: "Inter, sans-serif",
         },
@@ -93,6 +99,12 @@ const LogPerformanceChart = ({
         },
         gridLineWidth: 1,
         gridLineColor: "#E5E7EB",
+        labels: {
+          formatter: function() {
+            // Ensure full numeric values without abbreviation
+            return this.value;
+          },
+        },
       },
       // Brown + Beige:
       colors: ["#A0522D", "#d1a47b"], 
@@ -132,6 +144,7 @@ const LogPerformanceChart = ({
         enabled: false,
       },
     };
+    
   }, [data, strategyKey, benchmarkKey, strategyName, benchmarkName]);
 
   if (!chartOptions) {

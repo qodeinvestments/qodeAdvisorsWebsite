@@ -189,11 +189,8 @@ const TrailingReturns = ({
   return (
     <>
       <div className="flex justify-between flex-col sm:flex-row">
-        <Text className="text-sm sm:text-body font-body text-black mb-18">
-          Returns as of {endDates}.
-        </Text>
         <Text className="text-xs text-right sm:text-xs font-body mb-18 text-brown italic">
-          *Data from {startDates} to {endDates}.
+          *Data from {startDates} to {endDates}
         </Text>
       </div>
 

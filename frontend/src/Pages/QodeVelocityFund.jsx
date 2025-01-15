@@ -73,11 +73,7 @@ const QodeTacticalFund = () => {
             <h1 className="font-heading playfair-font-display text-mobileHeading sm:text-heading font-semibold text-brown mb-1 text-center">
               {strategyData.title}
             </h1>
-            <div className="text-center mb-18">
-              <p className="font-body text-body dm-sans-font text-primary text-sm">
-                September 19, 2024
-              </p>
-            </div>
+           
 
             <div className="post-content gh-content">
               <h3 id="momentum-investing-an-overview">Momentum Investing: An Overview</h3>

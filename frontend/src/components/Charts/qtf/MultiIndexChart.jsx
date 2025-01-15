@@ -115,7 +115,7 @@ const MultiIndexChart = () => {
       panKey: 'shift',
     },
     title: {
-      text: 'Multi-Index Performance (Normalized to 100)',
+      text: '',
       style: {
         fontSize: '18px',
         fontWeight: 'bold',
@@ -134,7 +134,10 @@ const MultiIndexChart = () => {
         style: { fontSize: '14px' },
       },
       labels: {
-        style: { fontSize: '12px' },
+        formatter: function() {
+          // Ensure full numeric values without abbreviation
+          return this.value;
+        },
       },
     },
     tooltip: {

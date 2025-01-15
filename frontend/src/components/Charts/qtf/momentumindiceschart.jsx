@@ -98,10 +98,10 @@ const MomentumIndicesChart = () => {
           height: 600,
         },
         title: {
-          text: 'Index Performance Comparison',
+          text: '',
         },
         subtitle: {
-          text: 'Indexed to base 100',
+          text: '',
         },
         xAxis: {
           type: 'datetime',
@@ -112,6 +112,12 @@ const MomentumIndicesChart = () => {
         yAxis: {
           title: {
             text: 'Indexed Value',
+          },
+          labels: {
+            formatter: function() {
+              // Ensure full numeric values without abbreviation
+              return this.value;
+            },
           },
         },
         tooltip: {

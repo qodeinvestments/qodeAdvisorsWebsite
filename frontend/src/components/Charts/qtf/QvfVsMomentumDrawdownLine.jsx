@@ -75,7 +75,7 @@ const QvfVsMomentumDrawdownLine = () => {
         height: 600,
       },
       title: {
-        text: "QTF vs Momentum Index Drawdown Chart",
+        text: "",
         style: { color: "#333333", fontSize: "18px" },
       },
       xAxis: {

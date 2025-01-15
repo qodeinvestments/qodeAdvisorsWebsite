@@ -89,7 +89,7 @@ const MultiIndexDrawdownLine = () => {
         height: 600,
       },
       title: {
-        text: "Multi-Index Drawdown Chart",
+        text: "",
         style: {
           color: "#333333",
           fontSize: "18px",

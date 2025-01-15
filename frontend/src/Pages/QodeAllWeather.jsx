@@ -47,6 +47,7 @@ const LazyChart = ({ children }) => {
 const QodeAllWeather = () => {
   const [isPending, startTransition] = useTransition();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const isMobile = window.innerWidth < 768; 
 
   const fields = useMemo(() => ["qaw", "nifty_50"], []);
   const options = useMemo(() => ({ refreshInterval: 15000 }), []);
@@ -98,21 +99,21 @@ const QodeAllWeather = () => {
       </Helmet>
 
       <div className="mx-auto sm:mt-8 mt-8">
-        <div className="mt-4 p-18 max-w-[93%] md:max-w-[1066px] xl:max-w-[1386px] mx-auto sm:mb-1 mb-1">
-          <div className="sm:max-w-[820px] mx-auto">
+        <div className="mt-4  max-w-[93%] md:max-w-[1066px] xl:max-w-[1386px] mx-auto sm:mb-1 mb-1">
+          <div className="sm:max-w-[920px] mx-auto">
             <h1 className="font-heading playfair-font-display text-mobileHeading sm:text-heading font-semibold text-brown mb-1 text-center">
               Qode All Weather
             </h1>
             <div className="text-center mb-18">
-              <p className="font-body text-body dm-sans-font text-primary text-sm">
+              {/* <p className="font-body text-body dm-sans-font text-primary text-sm">
                 September 20, 2024
-              </p>
+              </p> */}
             </div>
 
             <div className="post-content gh-content">
               <blockquote>
-                <strong>
-                  <em>Lower Risk need not necessarily mean Lower Returns!</em>
+                <strong >
+                  <em>Lower risk need not necessarily mean lower returns!</em>
                 </strong>
               </blockquote>
               <h2 id="summary-of-strategy">Summary of Strategy</h2>
@@ -220,6 +221,7 @@ const QodeAllWeather = () => {
                     strategy="qaw"
                     strategyName={strategyData.title}
                     name={strategyData.title}
+                    isMobile
                     error={error}
                     isLoading={isLoading} />
                 </LazyChart>
@@ -229,11 +231,12 @@ const QodeAllWeather = () => {
                   <h3 id="annual-returns">Annual Returns</h3>
                 </div>
                 <LazyChart>
+                  <Text className="text-xl my-2">Qode All Weather vs Nifty 50 Annual Returns</Text>
                   <AnnualReturns
                     data={data}
                     strategyKey="qaw"
                     benchmarkKey="nifty_50"
-                    title="Qode All Weather vs Nifty 50 Annual Returns"
+                    title=""
                     strategyName="Qode All Weather"
                     benchmarkName="Nifty 50"
                   />
@@ -250,7 +253,7 @@ const QodeAllWeather = () => {
             {!isPending && (
               <>
                 <div className="post-content gh-content">
-                  <h3 id="calendar-drawdowns">Calendar Drawdowns</h3>
+                <Text className="text-xl my-2">Calendar Drawdowns</Text>
                 </div>
                 <LazyChart>
                   <AnnualCalendarDrawdown
@@ -303,7 +306,21 @@ const QodeAllWeather = () => {
 
                     <ul><li>This balance allows investors to <strong>participate in the growth</strong> potential of higher-risk assets (For eg. momentum strategy) <strong>while minimizing the downside</strong> through more conservative holdings (For eg. Low Vol and Gold).</li><li><strong>Asset Allocation</strong> doesn’t just focus on maximizing returns; it’s about achieving an optimal risk-adjusted return.</li><li>The median rolling correlation of Nifty and Gold is <strong>-0.02</strong>.</li></ul>
                     <p>By strategically spreading investments, asset allocation helps mitigate the impact of volatility in any one asset class, thus reducing overall portfolio risk. </p>
-                    <figure class="kg-card kg-image-card"><img src="https://blogs.qodeinvest.com/content/images/2024/10/image--19-.png" class="kg-image" alt="" loading="lazy" width="1176" height="624" srcset="https://blogs.qodeinvest.com/content/images/size/w600/2024/10/image--19-.png 600w, https://blogs.qodeinvest.com/content/images/size/w1000/2024/10/image--19-.png 1000w, https://blogs.qodeinvest.com/content/images/2024/10/image--19-.png 1176w" sizes="(min-width: 720px) 720px" /></figure>
+                    <figure class="kg-card kg-image-card"><iframe
+                    title="multiple-donuts-title"
+                    aria-label="multiple-donuts-title"
+                    id="datawrapper-chart-b8gIW"
+                    src="https://datawrapper.dwcdn.net/KyGuv/1/"
+                    scrolling="no"
+                    frameBorder="0"
+                    style={{
+                      width: "100%",
+                      minWidth: "100%",
+                      border: "none",
+                      height: "431px"
+                    }}
+                    data-external="1"
+                  /></figure>
                     <hr />
                     <h3 id="why-should-someone-invest-in-this-strategy">Why should someone invest in this Strategy?</h3>
                     <ul><li><strong>Tax Efficient</strong><ul><li>We believe our investors should get the highest risk-adjusted returns using the most tax-efficient ways. Since we hold ETFs and only partially rebalance annually we incur low taxes and let the money compound for the long term resulting in wealth creation for our clients.</li></ul></li><li><strong>High Risk-Adjusted Return</strong><ul><li>The Sharpe ratio of the Qode All Weather portfolio when compared to Nifty 50 is much higher. It implies that it generates alpha with a lower standard deviation.</li></ul></li></ul>

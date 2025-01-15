@@ -110,7 +110,7 @@ const AnnualCalendarDrawdown = ({
         backgroundColor: "#ffffff",
       },
       title: {
-        text: `${strategyName} vs ${benchmarkName} Annual Drawdowns`,
+        text: '',
         style: {
           fontSize: "20px",
           fontWeight: "bold",

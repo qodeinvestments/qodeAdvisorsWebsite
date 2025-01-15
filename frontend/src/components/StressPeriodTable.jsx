@@ -90,28 +90,28 @@ const StressPeriodTable = ({
   }
 
   return (
-    <div className="overflow-x-auto mt-5">
+    <div className="overflow-x-auto mt-2">
       <div className="relative overflow-x-auto scrollbar-thin scrollbar-thumb-brown scrollbar-track-black">
         <table className="w-full min-w-[640px] border-collapse">
           <thead>
             <tr className="text-sm sm:text-body font-body">
               <th className="sticky border border-brown border-r-0 left-0 z-10 p-18 font-semibold text-end text-black bg-lightBeige">
                 <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
-                Sr. No.
+                Sr. No
               </th>
-              <th className="relative p-18 font-semibold text-right text-black border-t border-b border-brown">
+              <th className="relative p-18 font-semibold text-center text-black border-t border-b border-brown">
                 <div className="absolute inset-y-0 right-0 bg-brown" />
                 Start Date
               </th>
-              <th className="relative p-18 font-semibold text-right text-black border-t border-b border-brown">
+              <th className="relative p-18 font-semibold text-center text-black border-t border-b border-brown">
                 <div className="absolute inset-y-0 right-0 bg-brown" />
                 End Date
               </th>
-              <th className="relative p-18 font-semibold text-right text-black border-t border-b border-brown">
+              <th className="relative p-18 font-semibold text-center text-black border-t border-b border-brown">
                 <div className="absolute inset-y-0 right-0 bg-brown" />
                 Nifty 50 (%)
               </th>
-              <th className="p-18 text-right font-body border-l text-black border border-brown">
+              <th className="p-18 text-center font-body border-l text-black border border-brown">
                 QAW (%)
               </th>
             </tr>
@@ -129,19 +129,19 @@ const StressPeriodTable = ({
                       {period.id}
                     </span>
                   </td>
-                  <td className="relative p-18 text-black text-right font-body text-sm sm:text-body border-b border-brown">
+                  <td className="relative p-18 text-black text-center font-body text-sm sm:text-body border-b border-brown">
                     <div className="absolute inset-y-0 right-0 bg-brown" />
                     {period.label.start}
                   </td>
-                  <td className="relative p-18 text-black text-right font-body text-sm sm:text-body border-b border-brown">
+                  <td className="relative p-18 text-black text-center font-body text-sm sm:text-body border-b border-brown">
                     <div className="absolute inset-y-0 right-0 bg-brown" />
                     {period.label.end}
                   </td>
-                  <td className="relative p-18 text-black text-right font-body text-sm sm:text-body border-b border-brown">
+                  <td className="relative p-18 text-black text-center font-body text-sm sm:text-body border-b border-brown">
                     <div className="absolute inset-y-0 right-0 bg-brown" />
                     {benchmarkDrawdown}%
                   </td>
-                  <td className="p-18 text-right border-l text-black border border-brown">
+                  <td className="p-18 text-center border-l text-black border border-brown">
                     {strategyDrawdown}%
                   </td>
                 </tr>

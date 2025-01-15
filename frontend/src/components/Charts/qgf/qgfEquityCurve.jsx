@@ -4,12 +4,12 @@ import HighchartsReact from 'highcharts-react-official';
 import useFetchStrategyNavField from '../../../hooks/useFetchStrategyNavData';
 
 const QgfEquityCurve = () => {
-  const fieldNames = useMemo(() => ['qgf', 'nifty_500_momentum_50'], []);
+  const fieldNames = useMemo(() => ['qgf', 'bse_500'], []);
   const { data, isLoading, error } = useFetchStrategyNavField(fieldNames);
 
   const seriesConfig = useMemo(() => ([
     { key: 'qgf', name: 'QGF', color: '#945c39' },
-    { key: 'nifty_500_momentum_50', name: 'Nifty 500 Momentum 50', color: '#d1a47b' }
+    { key: 'bse_500', name: 'BSE 500', color: '#d1a47b' }
   ]), []);
 
   const { chartOptions, hasData } = useMemo(() => {
@@ -40,7 +40,7 @@ const QgfEquityCurve = () => {
 
     const options = {
       chart: { type: 'line', height: 600 },
-      title: { text: 'QGF vs Nifty Midcap 100 Equity Curve' },
+      title: { text: '' },
       subtitle: { text: 'Indexed to base 100' },
       xAxis: {
         type: 'datetime',

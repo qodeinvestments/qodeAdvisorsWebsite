@@ -90,7 +90,7 @@ const AnnualReturns = ({
   benchmarkKey = "nifty_50",
   strategyName = "Strategy",
   benchmarkName = "Benchmark",
-  title = "Annual Returns Comparison",
+  title = "",
 }) => {
   const chartData = useMemo(() => {
     if (!data.length) {

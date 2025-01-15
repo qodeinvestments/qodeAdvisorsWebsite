@@ -102,6 +102,12 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
       const mainYAxis = {
         title: { text: "Normalized Value (Starting at 1000)" },
         height: showDrawdown ? "70%" : "100%",
+        labels: {
+          formatter: function() {
+            // Ensure full numeric values without abbreviation
+            return this.value;
+          },
+        },
       };
 
       const drawdownYAxis = {
@@ -156,6 +162,9 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
       }
 
       const options = {
+        lang: {
+          numericSymbols: []  // Disable abbreviations like "k", "M", etc.
+        },
         title: "",
         xAxis: {
           type: "datetime",
@@ -182,7 +191,7 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
           height: isMobile ? 300 : showDrawdown ? 620 : 520,
           backgroundColor: "none",
           zoomType: "x",
-          marginLeft: isMobile ? 0 : 40,
+          marginLeft: isMobile ? 50 : 80,  // Increase margin for non-mobile screens
           marginRight: isMobile ? 0 : 40,
         },
         tooltip: {

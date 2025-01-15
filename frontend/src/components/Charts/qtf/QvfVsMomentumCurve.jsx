@@ -103,7 +103,7 @@ const QvfVsMomentumCurve = () => {
         style: { fontFamily: "Arial, sans-serif" },
       },
       title: {
-        text: "Equity Curve: QTF vs Nifty 500 Momentum 50 (Log Scale, Normalized)",
+        text: "",
         style: { color: "#333333", fontSize: "18px" },
       },
       xAxis: {
@@ -126,6 +126,12 @@ const QvfVsMomentumCurve = () => {
         gridLineWidth: 1,
         gridLineColor: "#e0e0e0",
         labels: { style: { color: "#333333" } },
+        labels: {
+          formatter: function() {
+            // Ensure full numeric values without abbreviation
+            return this.value;
+          },
+        },
       },
       tooltip: {
         shared: true,

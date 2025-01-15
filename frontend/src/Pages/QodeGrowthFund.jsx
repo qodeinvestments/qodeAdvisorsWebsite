@@ -26,7 +26,7 @@ const LazyChart = ({ children }) => {
 const QodeGrowthFund = () => {
   const [isPending, startTransition] = useTransition();
 
-  const fields = useMemo(() => ["qgf", "nifty_500_momentum_50"], []);
+  const fields = useMemo(() => ["qgf", "bse_500"], []);
   const options = useMemo(() => ({ refreshInterval: 15000 }), []);
 
   const { data, isLoading, error } = useFetchStrategyNavField(fields, options);
@@ -141,15 +141,11 @@ const QodeGrowthFund = () => {
             <h1 className="font-heading playfair-font-display text-mobileHeading sm:text-heading font-semibold text-brown mb-1 text-center">
               Qode Growth Fund
             </h1>
-            <div className="text-center mb-18">
-              <p className="font-body text-body dm-sans-font text-primary text-sm">
-                September 19, 2024
-              </p>
-            </div>
+          
 
             <div className="post-content gh-content">
               <p>
-                At the heart of every successful investment strategy lies a disciplined approach, clear rules, and a focus on quality. Introducing QGF, our flagship factor-based strategy that does just that—while setting you on a path to capturing superior returns through high-quality growth investing.
+                At the heart of every successful investment strategy lies a disciplined approach, clear rules, and a focus on quality. Introducing QGF, our flagship fundamental factor-based strategy that does just that—while setting you on a path to capturing superior returns through high-quality growth investing.
               </p>
               <h3 id="what-are-the-returns-of-this-strategy">What are the returns of this strategy?</h3>
             </div>
@@ -169,8 +165,8 @@ const QodeGrowthFund = () => {
                       isLoading={isLoading}
                       error={error}
                       strategy="qgf"
-                      benchmark="nifty_500_momentum_50"
-                      benchmarkName = "Nifty 500 Momentum 50"
+                      benchmark="bse_500"
+                      benchmarkName = "BSE 500"
                       name={strategyData.title}
                       startDates={startDate}
                       endDates={endDate}
@@ -241,6 +237,12 @@ const QodeGrowthFund = () => {
             </div>
 
             <div className="mb-3 mt-3">
+            <Heading
+                    isItalic
+                    className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
+                  >
+                  Bucket Trend Analysis
+                  </Heading>
               <LazyChart>
                 <iframe
                   title="Interactive line chart"
@@ -264,9 +266,9 @@ const QodeGrowthFund = () => {
                     <PerformanceDashboard
                       data={data}
                       strategyKey="qgf"
-                      benchmarkKey="nifty_500_momentum_50"
+                      benchmarkKey="bse_500"
                       strategyName="QGF"
-                      benchmarkName="Nifty 500 Momentum 50"
+                      benchmarkName="BSE 500"
                     />
                   </LazyChart>
                 </figure>
@@ -354,6 +356,7 @@ const QodeGrowthFund = () => {
             </div>
 
             <div className="mb-3 mt-3">
+              
               <LazyChart>
                 <iframe
                   title="Covid-19 Impact Chart"

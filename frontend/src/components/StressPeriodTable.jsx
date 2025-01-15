@@ -53,17 +53,17 @@ const StressPeriodTable = ({
    */
   const calculatePeriodDrawdown = (startDate, endDate, key) => {
     if (!data || data.length === 0) return 0;
-
+  
     const filteredData = data.filter(item => {
       const date = new Date(item.date);
       return date >= new Date(startDate) && date <= new Date(endDate);
     });
-
+  
     if (filteredData.length === 0) return 0;
-
+  
     let peak = parseFloat(filteredData[0][key]) || 0;
     let maxDrawdown = 0;
-
+  
     for (const item of filteredData) {
       const value = parseFloat(item[key]) || 0;
       if (value > peak) {
@@ -72,9 +72,10 @@ const StressPeriodTable = ({
       const drawdown = peak > 0 ? ((value - peak) / peak) * 100 : 0;
       maxDrawdown = Math.min(maxDrawdown, drawdown); // Track maximum (negative) drawdown
     }
-
-    return maxDrawdown.toFixed(1); // Return drawdown as a negative percentage
+  
+    return maxDrawdown.toFixed(2); // Return drawdown as a negative percentage with two decimal places
   };
+  
 
   if (isLoading) {
     return (

@@ -168,18 +168,19 @@ const TrailingReturns = ({
                   >
                     <div className="absolute inset-y-0 right-0 bg-brown" />
                     {returns[period] && returns[period][strat]
-                      ? `${parseFloat(returns[period][strat]).toFixed(1)}%`
-                      : "0%"}
+                      ? `${parseFloat(returns[period][strat]).toFixed(2)}%`
+                      : "0.00%"}
                   </td>
                 ))}
                 <td className="p-18 text-center border-l text-black border border-brown">
                   {drawdowns.lowest[strat]
-                    ? `${drawdowns.lowest[strat].toFixed(1)}%`
-                    : "0%"}
+                    ? `${drawdowns.lowest[strat].toFixed(2)}%`
+                    : "0.00%"}
                 </td>
               </tr>
             ))}
           </tbody>
+
         </table>
       </div>
     </div>

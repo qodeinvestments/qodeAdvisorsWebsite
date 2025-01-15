@@ -16,18 +16,58 @@ const calculateReturns = (values) => {
 };
 
 const calculateSharpe = (returns, riskFreeRate = 0.07) => {
-  if (returns.length === 0) return 0;
+  console.log("All returns:", returns);
+
+  if (!returns || returns.length === 0) return 0;
 
   const validReturns = returns.filter(r => !isNaN(r));
-  if (validReturns.length === 0) return 0;
 
-  const meanReturn = validReturns.reduce((a, b) => a + b, 0) / validReturns.length;
-  const variance =
-    validReturns.reduce((a, b) => a + Math.pow(b - meanReturn, 2), 0) / validReturns.length;
-  const stdDev = Math.sqrt(variance || 0);
+  if (validReturns.length === 0) {
+    // If no valid returns, return 0 for Sharpe ratio
+    return 0;
+  }
 
-  return stdDev === 0 ? 0 : (meanReturn - riskFreeRate) / stdDev;
+  // Calculate daily mean
+  const dailyMean = validReturns.reduce((sum, r) => sum + r, 0) / validReturns.length;
+
+  // Annualize mean return
+  const annualMean = dailyMean * 252; // Assuming 252 trading days in a year
+
+  // Log daily mean and annual mean for debugging
+  console.log("Daily Mean Return:", dailyMean);
+  console.log("Annualized Mean Return:", annualMean);
+
+  // Calculate daily variance
+  const dailyVariance = validReturns.reduce((acc, r) => acc + Math.pow(r - dailyMean, 2), 0) / validReturns.length;
+
+  // Annualize variance (assuming independent daily returns)
+  const annualVariance = dailyVariance * 252;
+
+  // Calculate standard deviations from variances
+  const dailyStdDev = Math.sqrt(dailyVariance);
+  const annualStdDev = Math.sqrt(annualVariance);
+
+  // Log standard deviations for debugging
+  console.log("Daily Standard Deviation:", dailyStdDev);
+  console.log("Annualized Standard Deviation:", annualStdDev);
+
+  // Compute excess return (annualized)
+  const excessReturn = annualMean - riskFreeRate;
+
+  // Log excess return for debugging
+  console.log("Excess Return:", excessReturn);
+
+  // If annual standard deviation is zero, avoid division by zero
+  if (annualStdDev === 0) return 0;
+
+  // Return the annualized Sharpe ratio
+  const sharpeRatio = excessReturn / annualStdDev;
+  console.log("Sharpe Ratio:", sharpeRatio);
+
+  return sharpeRatio;
 };
+
+
 
 const calculateStdDev = (returns) => {
   if (returns.length === 0) return 0;
@@ -45,22 +85,31 @@ const calculateStdDev = (returns) => {
 const calculateMaxDrawdown = (values) => {
   if (!Array.isArray(values) || values.length === 0) return 0;
 
-  const validValues = values.filter(v => !isNaN(parseFloat(v)));
+  // Convert entries to floats and filter out invalid numbers
+  const validValues = values.map(v => parseFloat(v)).filter(v => !isNaN(v));
   if (validValues.length === 0) return 0;
 
-  let maxDrawdown = 0;
   let peak = validValues[0];
+  let maxDrawdown = 0; // Track the largest observed drawdown as a positive value internally
 
   for (const value of validValues) {
     if (value > peak) {
-      peak = value;
+      peak = value; // Update to new peak if found
+    } else {
+      // Calculate drawdown relative to the peak
+      const drawdown = ((peak - value) / peak) * 100;
+      // Update maxDrawdown if this drawdown is larger than the current one
+      if (drawdown > maxDrawdown) {
+        maxDrawdown = drawdown;
+      }
     }
-    const drawdown = peak !== 0 ? ((peak - value) / peak) * 100 : 0;
-    maxDrawdown = Math.min(maxDrawdown, drawdown);
   }
 
-  return maxDrawdown;
+  // Return the maximum drawdown as a negative percentage
+  return -maxDrawdown;
 };
+
+
 
 const calculateMetrics = (
   data,
@@ -103,7 +152,7 @@ const calculateMetrics = (
 
 const calculateReturn = (startValue, endValue, years) => {
   if (startValue === 0 || !startValue || !endValue) return 0;
-  
+
   if (years === 1) {
     // For 1 year, use simple return
     return ((endValue - startValue) / startValue) * 100;
@@ -248,6 +297,7 @@ const MetricsTable = React.memo(
                   {metrics.maxDrawdown.benchmark.toFixed(2)}
                 </td>
               </tr>
+
             </tbody>
           </table>
         </div>
@@ -323,7 +373,7 @@ const RollingReturnsTable = React.memo(
               </tr>
             </thead>
             <tbody>
-              {periods.map(year => {
+              {periods.map((year) => {
                 const row = returns[year];
                 return (
                   <tr key={year} className="border-b border-brown text-sm sm:text-body">
@@ -331,27 +381,28 @@ const RollingReturnsTable = React.memo(
                       {year}
                     </td>
                     <td className="p-18 text-center border-b border-r border-brown">
-                      {row.worst.portfolio.toFixed(1)}
+                      {row.worst.portfolio.toFixed(2)}
                     </td>
                     <td className="p-18 text-center border-b border-r border-brown">
-                      {row.worst.benchmark.toFixed(1)}
+                      {row.worst.benchmark.toFixed(2)}
                     </td>
                     <td className="p-18 text-center border-b border-r border-brown">
-                      {row.median.portfolio.toFixed(1)}
+                      {row.median.portfolio.toFixed(2)}
                     </td>
                     <td className="p-18 text-center border-b border-r border-brown">
-                      {row.median.benchmark.toFixed(1)}
+                      {row.median.benchmark.toFixed(2)}
                     </td>
                     <td className="p-18 text-center border-b border-r border-brown">
-                      {row.best.portfolio.toFixed(1)}
+                      {row.best.portfolio.toFixed(2)}
                     </td>
                     <td className="p-18 text-center border-b border-r border-brown">
-                      {row.best.benchmark.toFixed(1)}
+                      {row.best.benchmark.toFixed(2)}
                     </td>
                   </tr>
                 );
               })}
             </tbody>
+
           </table>
         </div>
       </>
@@ -373,7 +424,7 @@ const PerformanceDashboard = React.memo(
             benchmarkName={benchmarkName}
           />
         )}
-        {(strategyKey === 'qaw' || strategyKey === 'qtf'|| strategyKey === 'qgf') && (
+        {(strategyKey === 'qaw' || strategyKey === 'qtf' || strategyKey === 'qgf') && (
           <RollingReturnsTable
             data={data}
             strategyKey={strategyKey}

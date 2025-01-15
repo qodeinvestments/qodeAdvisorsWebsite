@@ -4,12 +4,12 @@ import HighchartsReact from 'highcharts-react-official';
 import useFetchStrategyNavField from '../../../hooks/useFetchStrategyNavData';
 
 const QgfEquityCurve = () => {
-  const fieldNames = useMemo(() => ['qgf', 'bse_500'], []);
+  const fieldNames = useMemo(() => ['qgf', 'nifty_smallcap_100'], []);
   const { data, isLoading, error } = useFetchStrategyNavField(fieldNames);
 
   const seriesConfig = useMemo(() => ([
     { key: 'qgf', name: 'QGF', color: '#945c39' },
-    { key: 'bse_500', name: 'BSE 500', color: '#d1a47b' }
+    { key: 'nifty_smallcap_100', name: 'Nifty Smallcap 100', color: '#d1a47b' }
   ]), []);
 
   const { chartOptions, hasData } = useMemo(() => {

@@ -26,7 +26,7 @@ const LazyChart = ({ children }) => {
 const QodeGrowthFund = () => {
   const [isPending, startTransition] = useTransition();
 
-  const fields = useMemo(() => ["qgf", "bse_500"], []);
+  const fields = useMemo(() => ["qgf", "nifty_smallcap_100"], []);
   const options = useMemo(() => ({ refreshInterval: 15000 }), []);
 
   const { data, isLoading, error } = useFetchStrategyNavField(fields, options);
@@ -177,8 +177,8 @@ const QodeGrowthFund = () => {
                       isLoading={isLoading}
                       error={error}
                       strategy="qgf"
-                      benchmark="bse_500"
-                      benchmarkName="BSE 500"
+                      benchmark="nifty_smallcap_100"
+                      benchmarkName="Nifty Smallcap 100"
                       name={strategyData.title}
                       startDates={startDate}
                       endDates={endDate}
@@ -282,9 +282,9 @@ const QodeGrowthFund = () => {
                 <PerformanceDashboard
                   data={data}
                   strategyKey="qgf"
-                  benchmarkKey="bse_500"
+                  benchmarkKey="nifty_smallcap_100"
                   strategyName="QGF"
-                  benchmarkName="BSE 500"
+                  benchmarkName="Nifty Smallcap 100"
                 />
               </LazyChart>
             </figure>

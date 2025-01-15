@@ -15,7 +15,7 @@ const calculateReturns = (values) => {
   return returns;
 };
 
-const calculateSharpe = (returns, riskFreeRate = 0.02) => {
+const calculateSharpe = (returns, riskFreeRate = 0.07) => {
   if (returns.length === 0) return 0;
 
   const validReturns = returns.filter(r => !isNaN(r));

@@ -171,7 +171,9 @@ const Home = () => {
           content="Qode Invest, data-driven investment, wealth management, quant models, stock market, investment strategies"
         />
         <meta name="author" content="Qode Invest" />
+        <link rel="canonical" href="https://www.qodeinvest.com/" />
       </Helmet>
+
       <Banner />
       <Section padding="none" className="my-7 text-center">
         <Text className="text-subheading font-heading  text-brown ">

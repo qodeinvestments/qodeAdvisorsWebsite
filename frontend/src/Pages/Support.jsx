@@ -38,6 +38,7 @@ const Support = () => {
           content="Qode blogs, investment strategies, wealth management, market analysis, data-driven investing"
         />
         <meta name="author" content="Qode" />
+        <link rel="canonical" href="https://www.qodeinvest.com/support" />
       </Helmet>
       <div className="mx-auto mt-8">
         <Section padding="none">

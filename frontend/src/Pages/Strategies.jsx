@@ -139,16 +139,16 @@ const Strategies = () => {
         <title>Qode - Discover Investment Approaches</title>
         <meta
           name="description"
-          content="Explore Qode's data-driven strategies, including Growth, Momentum, and Low Volatility Funds. Find the right approach to meet your investment
-          goals."
+          content="Explore Qode's data-driven strategies, including Growth, Momentum, and Low Volatility Funds. Find the right approach to meet your investment goals."
         />
         <meta
           name="keywords"
-          content="investment strategies, Qode Growth Fund, Momentum Fund, Low Volatility Fund, data-driven investment, investment
-          goals"
+          content="investment strategies, Qode Growth Fund, Momentum Fund, Low Volatility Fund, data-driven investment, investment goals"
         />
         <meta name="author" content="Qode Invest" />
+        <link rel="canonical" href="https://www.qodeinvest.com/strategies" />
       </Helmet>
+
       <Section className="mt-9 text-center">
         <Text className="text-subheading font-semibold text-brown ">
           The best investments are <br />

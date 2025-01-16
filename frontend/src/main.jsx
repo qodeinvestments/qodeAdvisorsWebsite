@@ -39,10 +39,10 @@ const router = createBrowserRouter([
         element: <Strategies />,
       },
 
-      {
-        path: "/book-a-meet",
-        element: <BookAMeet />,
-      },
+      // {
+      //   path: "/book-a-meet",
+      //   element: <BookAMeet />,
+      // },
 
       {
         path: "/strategies/qode-tactical-fund",
@@ -55,10 +55,6 @@ const router = createBrowserRouter([
       {
         path: "/strategies/qode-all-weather",
         element: <QodeAllWeather />,
-      },
-      {
-        path: "/strategies/quant-growth-fund",
-        element: <QodeGrowthFund />,
       },
       {
         path: "/strategies/qode-growth-fund",
@@ -82,10 +78,10 @@ const router = createBrowserRouter([
         element: <AboutUs />,
       },
 
-      {
-        path: "/faq",
-        element: <FAQs />,
-      },
+      // {
+      //   path: "/faq",
+      //   element: <FAQs />,
+      // },
       {
         path: "/contact-us",
         element: <ContactUs />,
@@ -95,22 +91,22 @@ const router = createBrowserRouter([
         path: "/blogs",
         element: <Blogs />,
       },
-      {
-        path: "/portfolio-visualiser",
-        element: <PythonCalculator />,
-      },
-      {
-        path: "/support", // This route captures the postId parameter
-        element: <Support />,
-      },
+      // {
+      //   path: "/portfolio-visualiser",
+      //   element: <PythonCalculator />,
+      // },
+      // {
+      //   path: "/support", // This route captures the postId parameter
+      //   element: <Support />,
+      // },
       {
         path: "/blogs/:slug", // This route captures the postId parameter
         element: <BlogDetails />,
       },
-      {
-        path: "/tool", // This route captures the postId parameter
-        element: <Tool />,
-      },
+      // {
+      //   path: "/tool", // This route captures the postId parameter
+      //   element: <Tool />,
+      // },
       {
         path: "/scheme-d", // This route captures the postId parameter
         element: <SchemeD />,

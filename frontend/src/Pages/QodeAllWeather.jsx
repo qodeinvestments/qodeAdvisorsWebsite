@@ -47,7 +47,7 @@ const LazyChart = ({ children }) => {
 const QodeAllWeather = () => {
   const [isPending, startTransition] = useTransition();
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const isMobile = window.innerWidth < 768; 
+  const isMobile = window.innerWidth < 768;
 
   const fields = useMemo(() => ["qaw", "nifty_50"], []);
   const options = useMemo(() => ({ refreshInterval: 15000 }), []);
@@ -67,17 +67,17 @@ const QodeAllWeather = () => {
     const options = { day: "numeric", month: "long", year: "numeric" };
     return date.toLocaleDateString("en-GB", options);
   };
-  
+
   const extractDateRange = (data) => {
     if (!data || data.length === 0) return { startDate: "0", endDate: "0" };
-  
+
     // Convert all date strings to Date objects
     const dates = data.map((entry) => new Date(entry.date));
-    
+
     // Calculate the minimum and maximum dates
     const minDate = new Date(Math.min(...dates));
     const maxDate = new Date(Math.max(...dates));
-  
+
     // Subtract one day from the minimum date for the start date
     const minDateMinusOne = new Date(minDate);
     minDateMinusOne.setDate(minDateMinusOne.getDate() + 1);
@@ -89,9 +89,9 @@ const QodeAllWeather = () => {
       endDate: formatDate(maxDatePlusOne),
     };
   };
-  
+
   const { startDate, endDate } = extractDateRange(data);
-  
+
 
   React.useEffect(() => {
     if (data) {
@@ -108,6 +108,12 @@ const QodeAllWeather = () => {
           name="description"
           content={`Learn more about the ${strategyData.title} strategy at Qode Advisors LLP. ${strategyData.description}`}
         />
+        <meta
+          name="keywords"
+          content="Qode All Weather, diversified investment, ETF strategy, risk-adjusted returns, asset allocation, investment strategy"
+        />
+        <meta name="author" content="Qode Invest" />
+        <link rel="canonical" href="https://www.qodeinvest.com/qode-all-weather" />
       </Helmet>
 
       <div className="mx-auto sm:mt-8 mt-8">
@@ -117,19 +123,19 @@ const QodeAllWeather = () => {
               Qode All Weather
             </h1>
             <div className="post-content gh-content">
-            <blockquote>
+              <blockquote>
                 <strong >
                   <em>Lower risk need not necessarily mean lower returns!</em>
                 </strong>
               </blockquote>
             </div>
             <Heading
-                    isItalic
-                    className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
-                  >Summary of Strategy</Heading>
+              isItalic
+              className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
+            >Summary of Strategy</Heading>
             <div className="post-content gh-content">
-              
-        
+
+
               <ul>
                 <li>
                   Conventional wisdom in finance often suggests that higher
@@ -177,9 +183,9 @@ const QodeAllWeather = () => {
                       endDates={endDate}
                     />
                     <Heading
-                    isItalic
-                    className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
-                  >Stress Period Table</Heading>
+                      isItalic
+                      className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
+                    >Stress Period Table</Heading>
                     <StressPeriodTable
                       data={data}
                       strategy="qaw"
@@ -232,7 +238,7 @@ const QodeAllWeather = () => {
                   <h3 id="what-is-the-strategy">What is the Strategy?</h3>
                   <ul><li>This strategy is comprised of ETFs<ul><li>Momentum ETF</li><li>Low Volatility ETF</li><li>Gold ETF</li><li>Derivative Hedging</li></ul></li><li><strong>The Momentum Index</strong> chooses 50 stocks from the NSE-listed stock universe based on the Normalized Momentum Score for each company which is determined based on its 6-month and 12-month price return, adjusted for volatility.</li><li><strong>Low Volatility Index</strong> chooses 30 stocks from the Nifty 100 with the lowest volatility in the last year.</li><li>For exposure to <strong>Gold,</strong> we use Gold ETF which has historically proven to be uncorrelated with equity markets.</li><li>We use a dynamic <strong>Derivative Hedging</strong> mechanism that helps protect your portfolio during market downturns.</li></ul>
                   <blockquote>All the results in this backtest contains the derivative hedging from 2011 onwards, due to unavailability of options data prior to it.<br />The portfolio only has Momentum ETF, Low Volatility ETF and Gold ETF as the components before 2011.</blockquote>
-                <p>Below are the annual returns of Qode All Weather compared to the Nifty 50:</p>
+                  <p>Below are the annual returns of Qode All Weather compared to the Nifty 50:</p>
                   <h2 id="how-has-this-strategy-performed">How has this strategy performed?</h2>
                 </div>
 
@@ -273,7 +279,7 @@ const QodeAllWeather = () => {
             {!isPending && (
               <>
                 <div className="post-content gh-content">
-                <Text className="text-xl my-2">Calendar Drawdowns</Text>
+                  <Text className="text-xl my-2">Calendar Drawdowns</Text>
                 </div>
                 <LazyChart>
                   <AnnualCalendarDrawdown
@@ -327,20 +333,20 @@ const QodeAllWeather = () => {
                     <ul><li>This balance allows investors to <strong>participate in the growth</strong> potential of higher-risk assets (For eg. momentum strategy) <strong>while minimizing the downside</strong> through more conservative holdings (For eg. Low Vol and Gold).</li><li><strong>Asset Allocation</strong> doesn’t just focus on maximizing returns; it’s about achieving an optimal risk-adjusted return.</li><li>The median rolling correlation of Nifty and Gold is <strong>-0.02</strong>.</li></ul>
                     <p>By strategically spreading investments, asset allocation helps mitigate the impact of volatility in any one asset class, thus reducing overall portfolio risk. </p>
                     <figure class="kg-card kg-image-card"><iframe
-                    title="multiple-donuts-title"
-                    aria-label="multiple-donuts-title"
-                    id="datawrapper-chart-b8gIW"
-                    src="https://datawrapper.dwcdn.net/KyGuv/1/"
-                    scrolling="no"
-                    frameBorder="0"
-                    style={{
-                      width: "100%",
-                      minWidth: "100%",
-                      border: "none",
-                      height: "431px"
-                    }}
-                    data-external="1"
-                  /></figure>
+                      title="multiple-donuts-title"
+                      aria-label="multiple-donuts-title"
+                      id="datawrapper-chart-b8gIW"
+                      src="https://datawrapper.dwcdn.net/KyGuv/1/"
+                      scrolling="no"
+                      frameBorder="0"
+                      style={{
+                        width: "100%",
+                        minWidth: "100%",
+                        border: "none",
+                        height: "431px"
+                      }}
+                      data-external="1"
+                    /></figure>
                     <hr />
                     <h3 id="why-should-someone-invest-in-this-strategy">Why should someone invest in this Strategy?</h3>
                     <ul><li><strong>Tax Efficient</strong><ul><li>We believe our investors should get the highest risk-adjusted returns using the most tax-efficient ways. Since we hold ETFs and only partially rebalance annually we incur low taxes and let the money compound for the long term resulting in wealth creation for our clients.</li></ul></li><li><strong>High Risk-Adjusted Return</strong><ul><li>The Sharpe ratio of the Qode All Weather portfolio when compared to Nifty 50 is much higher. It implies that it generates alpha with a lower standard deviation.</li></ul></li></ul>
@@ -396,7 +402,7 @@ const QodeAllWeather = () => {
                 Why should you not invest in the Index directly?
               </h3>
               <p>
-              Investors could potentially replicate a similar approach using index funds to benefit from basic asset allocation. However, our strategy goes further by providing better returns with lower risks, made possible through our unique derivative hedging methods. Additionally, we leverage the discretion of experienced fund managers at key moments to seize opportunities and generate alpha.
+                Investors could potentially replicate a similar approach using index funds to benefit from basic asset allocation. However, our strategy goes further by providing better returns with lower risks, made possible through our unique derivative hedging methods. Additionally, we leverage the discretion of experienced fund managers at key moments to seize opportunities and generate alpha.
               </p>
             </div>
           </div>

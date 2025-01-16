@@ -88,6 +88,8 @@ const QodeTacticalFund = () => {
           name="description"
           content={`Learn more about the ${strategyData.title} strategy at Qode Advisors LLP. ${strategyData.description}`}
         />
+        <link rel="canonical" href="https://www.qodeinvest.com/strategies" />
+
       </Helmet>
 
       <div className="mx-auto sm:mt-8 mt-8">

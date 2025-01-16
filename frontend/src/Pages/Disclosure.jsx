@@ -33,6 +33,7 @@ const Disclosure = () => {
           content="Qode, Disclosure, Annual Report, Financial Statements, Sustainability Report, Investor Complaints, Code of Conduct"
         />
         <meta name="author" content="Qode" />
+        <link rel="canonical" href="https://www.qodeinvest.com/disclosure" />
       </Helmet>
       <Section className="sm:mt-5 mt-4" padding="extralarge">
         <Heading isItalic className="text-brown text-center mb-5">

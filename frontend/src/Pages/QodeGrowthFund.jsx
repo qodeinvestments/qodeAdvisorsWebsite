@@ -145,7 +145,14 @@ const QodeGrowthFund = () => {
           name="description"
           content={`Learn more about the ${strategyData.title} strategy at Qode Advisors LLP. ${strategyData.description}`}
         />
+        <meta
+          name="keywords"
+          content="Qode Growth Fund, small-cap investing, mid-cap stocks, factor-based investing, growth investing, long-term investing"
+        />
+        <meta name="author" content="Qode Invest" />
+        <link rel="canonical" href="https://www.qodeinvest.com/qode-growth-fund" />
       </Helmet>
+
 
       <div className="mx-auto sm:mt-8 mt-8">
         <div className="mt-4 p-18 max-w-[93%] md:max-w-[1066px] xl:max-w-[1386px] mx-auto sm:mb-1 mb-1">
@@ -153,13 +160,13 @@ const QodeGrowthFund = () => {
             <h1 className="font-heading playfair-font-display text-mobileHeading sm:text-heading font-semibold text-brown mb-1 text-center">
               Qode Growth Fund
             </h1>
-          <div className="post-content gh-content">
-            <blockquote>
+            <div className="post-content gh-content">
+              <blockquote>
                 <strong >
                   <em>Investing in quality businesses for long-term growth.</em>
                 </strong>
               </blockquote>
-</div>
+            </div>
             <div className="post-content gh-content">
               <p>
                 At the heart of every successful investment strategy lies a disciplined approach, clear rules, and a focus on quality. Introducing QGF, our flagship fundamental factor-based strategy that does just that—while setting you on a path to capturing superior returns through high-quality growth investing.
@@ -354,7 +361,7 @@ const QodeGrowthFund = () => {
                 </table>
               </div>
             </div>
-            
+
             <div className="post-content gh-content mt-1">
               <ul>
                 <li>By adopting this approach, we've observed that the maximum drawdown on the invested capital remains under 10%, effectively reducing the periods where your portfolio might be "underwater."</li>
@@ -374,7 +381,7 @@ const QodeGrowthFund = () => {
                 <li>This approach allows us to preserve capital while staying invested, ensuring that we capture the upside when markets recover.</li>
                 <li>Below you can see how our hedge mechanism was able to reduce drawdowns and sharp fall in Covid-19 crash.</li>
               </ul>
-              
+
             </div>
 
             <div className="mb-3 mt-3">

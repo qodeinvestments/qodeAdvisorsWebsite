@@ -20,6 +20,7 @@ const PrivacyPolicy = () => {
           content="privacy policy, Qode, personal information, data protection, cookies, web analytics"
         />
         <meta name="author" content="Qode" />
+        <link rel="canonical" href="https://www.qodeinvest.com/privacy-policy" />
       </Helmet>
       <Section className="sm:mt-5 mt-8" padding="extralarge">
         <Heading isItalic className=" text-brown mb-18">

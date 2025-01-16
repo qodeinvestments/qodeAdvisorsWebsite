@@ -20,6 +20,7 @@ const TermsnConditions = () => {
           content="Terms & Conditions, Qode, intellectual property, legal agreements, website terms, liabilities"
         />
         <meta name="author" content="Qode" />
+        <link rel="canonical" href="https://www.qodeinvest.com/terms-and-conditions" />
       </Helmet>
       <Section className="mt-8 sm:mt-5" padding="extralarge">
         <Heading isItalic className="text-brown mb-18">

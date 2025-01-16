@@ -153,6 +153,7 @@ const AboutUs = () => {
           content="Qode, About Us, Karan Salecha, Rishabh Nahar, Kavan Sejpal, Vidhi Chheda, Fund Managers, Quantitative Investment Team"
         />
         <meta name="author" content="Qode" />
+        <link rel="canonical" href="https://www.qodeinvest.com/about-us" />
       </Helmet>
       <Section className="mt-8">
         <Heading

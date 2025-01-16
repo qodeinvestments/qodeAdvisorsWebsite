@@ -38,6 +38,7 @@ const ContactUs = () => {
           content="Qode, Contact Us, address, phone number, email, get in touch"
         />
         <meta name="author" content="Qode" />
+        <link rel="canonical" href="https://www.qodeinvest.com/contact-us" />
       </Helmet>
       <Section padding="extralarge" className="mt-5">
         <div className="text-brown text-center">

@@ -105,6 +105,8 @@ const BlogDetails = () => {
         {post?.feature_image && (
           <link rel="preload" as="image" href={post.feature_image} />
         )}
+        <meta name="author" content={post?.primary_author?.name || "Qode"} />
+        <link rel="canonical" href={`https://www.qodeinvest.com/blog/${slug}`} />
         {/* Add preload for common resources */}
       </Helmet>
 

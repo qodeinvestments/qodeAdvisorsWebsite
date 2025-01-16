@@ -145,7 +145,8 @@ router.get('/email-success', (req, res) => {
 // Send email endpoint using nodemailer
 router.post('/send-email', async (req, res) => {
     const { fromName, to, subject, body } = req.body;
-
+    console.log('Sending email:', { fromName, to, subject, body });
+    
     try {
         // Try sending with nodemailer first
         const transporter = await createTransporter();

@@ -351,7 +351,8 @@ const SendEmailForm = () => {
                 "Qode All Weather", 
                 "Qode Growth Fund", 
                 "Qode Future Horizons", 
-                "Qode Tactical Fund"
+                "Qode Tactical Fund",
+                "Help Me Choose"
               ].map((strategy) => (
                 <label key={strategy} className="block">
                   <input

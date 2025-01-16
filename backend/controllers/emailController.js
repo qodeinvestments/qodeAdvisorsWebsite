@@ -11,9 +11,10 @@ const sendGeneralMail = async (req, res) => {
         userEmail, 
         message, 
         fromName, 
-        investmentGoal, 
+        investmentGoal,
+        phone,
         investmentExperience, 
-        preferredStrategy, 
+        preferredStrategy,
         initialInvestmentSize 
     } = req.body;
 
@@ -55,6 +56,10 @@ const sendGeneralMail = async (req, res) => {
                 <tr>
                     <td style="font-weight: bold; padding: 5px 0; color: #333;">Email:</td>
                     <td style="padding: 5px 0;">${userEmail}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Phone Number:</td>
+                    <td style="padding: 5px 0;">${phone}</td>
                 </tr>
                 <tr>
                     <td style="font-weight: bold; padding: 5px 0; color: #333;">Investment Goal:</td>

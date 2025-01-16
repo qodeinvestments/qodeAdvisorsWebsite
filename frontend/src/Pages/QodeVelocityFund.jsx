@@ -271,7 +271,6 @@ const QodeTacticalFund = () => {
             <LazyChart>
               <QvfVsMomentumCurve />
             </LazyChart>
-            <hr />
             <LazyChart>
               <QvfVsMomentumDrawdownLine />
             </LazyChart>

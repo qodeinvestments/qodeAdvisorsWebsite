@@ -116,21 +116,19 @@ const QodeAllWeather = () => {
             <h1 className="font-heading playfair-font-display text-mobileHeading sm:text-heading font-semibold text-brown mb-1 text-center">
               Qode All Weather
             </h1>
-            <div className="text-center mb-18">
-              {/* <p className="font-body text-body dm-sans-font text-primary text-sm">
-                September 20, 2024
-              </p> */}
+            <div className="post-content gh-content">
+            <blockquote>
+                <strong >
+                  <em>Lower risk need not necessarily mean lower returns!</em>
+                </strong>
+              </blockquote>
             </div>
             <Heading
                     isItalic
                     className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
                   >Summary of Strategy</Heading>
             <div className="post-content gh-content">
-              {/* <blockquote>
-                <strong >
-                  <em>Lower risk need not necessarily mean lower returns!</em>
-                </strong>
-              </blockquote> */}
+              
         
               <ul>
                 <li>

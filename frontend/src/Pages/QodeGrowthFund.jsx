@@ -153,8 +153,13 @@ const QodeGrowthFund = () => {
             <h1 className="font-heading playfair-font-display text-mobileHeading sm:text-heading font-semibold text-brown mb-1 text-center">
               Qode Growth Fund
             </h1>
-
-
+          <div className="post-content gh-content">
+            <blockquote>
+                <strong >
+                  <em>Investing in quality businesses for long-term growth.</em>
+                </strong>
+              </blockquote>
+</div>
             <div className="post-content gh-content">
               <p>
                 At the heart of every successful investment strategy lies a disciplined approach, clear rules, and a focus on quality. Introducing QGF, our flagship fundamental factor-based strategy that does just that—while setting you on a path to capturing superior returns through high-quality growth investing.

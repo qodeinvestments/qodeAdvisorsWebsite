@@ -96,8 +96,14 @@ const QodeTacticalFund = () => {
             <h1 className="font-heading playfair-font-display text-mobileHeading sm:text-heading font-semibold text-brown mb-1 text-center">
               {strategyData.title}
             </h1>
+          <div className="post-content gh-content">
 
-
+            <blockquote>
+                <strong >
+                  <em>Participate in the Growth of Great Companies!</em>
+                </strong>
+              </blockquote>
+</div>
             <div className="post-content gh-content">
               <h3 id="momentum-investing-an-overview">Momentum Investing: An Overview</h3>
               <p>

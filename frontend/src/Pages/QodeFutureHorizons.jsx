@@ -8,7 +8,14 @@ const QodeFutureHorizons = () => {
           <h1 className="font-heading playfair-font-display text-mobileHeading sm:text-heading font-semibold text-brown mb-1 text-center">
             Qode Future Horizons
           </h1>
+          <div className="post-content gh-content">
           
+          <blockquote>
+                <strong >
+                  <em>Precision stock picking using data-driven models</em>
+                </strong>
+              </blockquote>
+              </div>
           <div className="post-content gh-content">
             <h3>Find the Next Market Outperformer!</h3>
             <p>

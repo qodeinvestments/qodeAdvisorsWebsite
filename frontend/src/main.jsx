@@ -22,6 +22,7 @@ import PythonCalculator from "./Pages/PythonCalculator.jsx";
 import Tool from "./Pages/Tool.jsx";
 import Support from "./Pages/Support.jsx";
 import SchemeD from "./Pages/SchemeD.jsx";
+import QodeFutureHorizons from "./Pages/QodeFutureHorizons.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: "/strategies/qode-tactical-fund",
         element: <MomentumTabs />,
+      },
+      {
+        path: "/strategies/qode-future-horizons",
+        element: <QodeFutureHorizons/>,
       },
       {
         path: "/strategies/qode-all-weather",

@@ -100,7 +100,7 @@ const QvfVsMomentumCurve = () => {
         height: 400,
         zoomType: "x",
         backgroundColor: "#ffffff",
-        style: { fontFamily: "Arial, sans-serif" },
+        style: { fontFamily: 'DM Sans, sans-serif' },
       },
       title: {
         text: "",

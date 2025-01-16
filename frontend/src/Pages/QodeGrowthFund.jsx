@@ -311,14 +311,14 @@ const QodeGrowthFund = () => {
                 <table className="w-full min-w-[640px] border-collapse">
                   <thead>
                     <tr className="text-sm bg-lightBeige sm:text-body font-body">
-                      <th className="sticky left-0 z-10 bg-lightBeige p-18 font-semibold text-start text-black bg-lightBeige border border-brown">
+                      <th className="sticky left-0 z-10 p-18 w-1/3 font-semibold text-center text-black bg-lightBeige border-t border-l border-b border-brown">
                         <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                         Name of company
                       </th>
-                      <th className="p-18 bg-lightBeige font-semibold text-center text-black border border-brown">
+                      <th className="p-18 w-1/3 bg-lightBeige font-semibold text-center text-black border-t  border-b border-brown">
                         Returns
                       </th>
-                      <th className="p-18 bg-lightBeige font-semibold text-center text-black border border-brown">
+                      <th className="p-18 w-1/3 bg-lightBeige font-semibold text-center text-black border border-brown">
                         Holding period
                       </th>
                     </tr>
@@ -336,32 +336,31 @@ const QodeGrowthFund = () => {
                       ["Deepak Nitrite Ltd", "292%", "1 Year"],
                       ["Amara Raja Batteries Ltd", "235%", "3 Years"]
                     ].map(([name, returns, period]) => (
-                      <tr key={name} className="border-b border-brown text-sm sm:text-body">
-                        <td className="sticky left-0 z-10 p-18 font-semibold text-sm sm:text-body  border border-brown">
+                      <tr key={name} className="border-b border-brown text-center text-sm sm:text-body">
+                        <td className="sticky left-0 z-10 p-18 w-1/3 font-semibold text-sm sm:text-body border-l border-b border-brown">
                           <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                           {name}
                         </td>
-                        <td className="p-18 text-center border border-brown">{returns}</td>
-                        <td className="p-18 text-center border border-brown">{period}</td>
+                        <td className="p-18 text-center w-1/3 border-b border-brown">{returns}</td>
+                        <td className="p-18 text-center w-1/3 border border-brown">{period}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
               </div>
             </div>
-            <div className="post-content gh-content mt-2">
-              <ul>
-                <li><strong>Advantage of Rebalancing</strong>
-                  <ul>
-                    <li><strong>Tax Efficiency</strong> - We enhance tax efficiency by selling losing positions within a year for tax loss harvesting and holding winners for over a year to defer or reduce taxes. This strategy not only boosts returns but also smartly manages the tax burden.</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-            <div className="post-content gh-content">
+            
+            <div className="post-content gh-content mt-1">
               <ul>
                 <li>By adopting this approach, we've observed that the maximum drawdown on the invested capital remains under 10%, effectively reducing the periods where your portfolio might be "underwater."</li>
                 <li>Our SIP model helps smooth out volatility and provides a strategic pathway into high-growth investments, ensuring you don't miss out on opportunities when market sentiment turns bleak.</li>
+              </ul>
+              <ul>
+                <li><strong>Advantage of Rebalancing</strong>
+                  <ul>
+                    <strong> - Tax Efficiency</strong> - We enhance tax efficiency by selling losing positions within a year for tax loss harvesting and holding winners for over a year to defer or reduce taxes. This strategy not only boosts returns but also smartly manages the tax burden
+                  </ul>
+                </li>
               </ul>
               <h3 id="4-drawdown-protection">3. Drawdown Protection</h3>
               <ul>
@@ -370,6 +369,7 @@ const QodeGrowthFund = () => {
                 <li>This approach allows us to preserve capital while staying invested, ensuring that we capture the upside when markets recover.</li>
                 <li>Below you can see how our hedge mechanism was able to reduce drawdowns and sharp fall in Covid-19 crash.</li>
               </ul>
+              
             </div>
 
             <div className="mb-3 mt-3">
@@ -423,9 +423,9 @@ const QodeGrowthFund = () => {
               </LazyChart>
             </div>
 
-            <div className="post-content gh-content">
-              <p>Above is the industry breakdown of the QGF portfolio as of 31-07-2024.</p>
-            </div>
+            {/* <div className="post-content gh-content">
+              <p>Above is the industry breakdown of the QGF portfolio as of 31-12-2024.</p>
+            </div> */}
           </div>
         </div>
       </div>

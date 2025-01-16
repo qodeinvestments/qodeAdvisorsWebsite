@@ -121,14 +121,17 @@ const QodeAllWeather = () => {
                 September 20, 2024
               </p> */}
             </div>
-
+            <Heading
+                    isItalic
+                    className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
+                  >Summary of Strategy</Heading>
             <div className="post-content gh-content">
-              <blockquote>
+              {/* <blockquote>
                 <strong >
                   <em>Lower risk need not necessarily mean lower returns!</em>
                 </strong>
-              </blockquote>
-              <h2 id="summary-of-strategy">Summary of Strategy</h2>
+              </blockquote> */}
+        
               <ul>
                 <li>
                   Conventional wisdom in finance often suggests that higher
@@ -227,7 +230,7 @@ const QodeAllWeather = () => {
 
                 <div className="post-content gh-content">
                   <h3 id="the-specifics">The Specifics</h3>
-                  <ul><li>Qode All Weather outperforms the Nifty 50 index over holding periods of three years and longer.</li><li>It is an ETF-only portfolio, rebalanced annually at the start of every financial year, or may be changed based on the manager.</li><li>Our proprietary models use sentiment analysis to adjust asset weights dynamically based on market situations.</li><li>In periods of extreme fear, our strategy increases exposure to equities, capitalizing on potential recovery opportunities. Conversely, during times of extreme greed, we adopt a more cautious stance by allocating more to gold and low-volatility strategies, prioritizing capital preservation.</li></ul>
+                  <ul><li>Qode All Weather outperforms the Nifty 50 index over holding periods of three years and longer</li><li>It is an ETF-only portfolio, rebalanced annually at the start of every financial year, or may be changed based on the manager</li><li>Our proprietary models use sentiment analysis to adjust asset weights dynamically based on market situations</li><li>In periods of extreme fear, our strategy increases exposure to equities, capitalizing on potential recovery opportunities Conversely, during times of extreme greed, we adopt a more cautious stance by allocating more to gold and low-volatility strategies, prioritizing capital preservation</li></ul>
                   <h3 id="what-is-the-strategy">What is the Strategy?</h3>
                   <ul><li>This strategy is comprised of ETFs<ul><li>Momentum ETF</li><li>Low Volatility ETF</li><li>Gold ETF</li><li>Derivative Hedging</li></ul></li><li><strong>The Momentum Index</strong> chooses 50 stocks from the NSE-listed stock universe based on the Normalized Momentum Score for each company which is determined based on its 6-month and 12-month price return, adjusted for volatility.</li><li><strong>Low Volatility Index</strong> chooses 30 stocks from the Nifty 100 with the lowest volatility in the last year.</li><li>For exposure to <strong>Gold,</strong> we use Gold ETF which has historically proven to be uncorrelated with equity markets.</li><li>We use a dynamic <strong>Derivative Hedging</strong> mechanism that helps protect your portfolio during market downturns.</li></ul>
                   <blockquote>All the results in this backtest contains the derivative hedging from 2011 onwards, due to unavailability of options data prior to it.<br />The portfolio only has Momentum ETF, Low Volatility ETF and Gold ETF as the components before 2011.</blockquote>
@@ -265,7 +268,7 @@ const QodeAllWeather = () => {
             )}
 
             <div className="post-content gh-content">
-              <p>It is observed that from 2015, the Qode All Weather Portfolio has outperformed the Nifty 50 index, almost every calendar year. It performs well in a bull market,because of its exposure to momentum strategies. It has underperformed the Nifty 50 index by a very thin margin many times before that. To combat that let's see, how much the portfolio fallen intra-year and compare it with the Nifty 50.</p>
+              <p>It is observed that from 2015, the Qode All Weather Portfolio has outperformed the Nifty 50 index, almost every calendar year. It performs well in a bull market, because of its exposure to momentum strategies. It has underperformed the Nifty 50 index by a very thin margin many times before that. To combat that let's see, how much the portfolio fallen intra-year and compare it with the Nifty 50.</p>
               <p>We have compared the calendar year drawdowns of Qode All Weather and Nifty 50 index below.</p>
             </div>
 
@@ -363,7 +366,7 @@ const QodeAllWeather = () => {
             )}
 
             <div className="post-content gh-content">
-              <h3 id="why-should-someone-invest-in-this-strategy">
+              {/* <h3 id="why-should-someone-invest-in-this-strategy">
                 Why should someone invest in this Strategy?
               </h3>
               <ul>
@@ -389,7 +392,7 @@ const QodeAllWeather = () => {
                     </li>
                   </ul>
                 </li>
-              </ul>
+              </ul> */}
 
               <h3 id="why-should-you-not-invest-in-the-index-directly">
                 Why should you not invest in the Index directly?

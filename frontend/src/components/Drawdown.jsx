@@ -49,12 +49,12 @@ const Drawdown = ({ data = [], strategyKey = "qaw", benchmarkKey = "nifty_50", s
         type: "area",
         backgroundColor: "#ffffff",
         style: {
-          fontFamily: "Arial, sans-serif",
+          fontFamily: "DM Sans, sans-serif",
         },
         height: 600,
       },
       title: {
-        text: "Drawdown Chart",
+        text: "",
         style: {
           color: "#333333",
           fontSize: "18px",

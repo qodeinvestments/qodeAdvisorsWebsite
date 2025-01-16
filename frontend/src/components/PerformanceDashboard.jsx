@@ -249,55 +249,54 @@ const MetricsTable = React.memo(
       <>
         <Text className="text-xl font-semibold mt-2 mb-1">Key Metrics</Text>
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[640px] border-collapse">
+          <table className="w-full min-w-[640px] table-fixed border-collapse">
             <thead>
               <tr className="text-sm sm:text-body font-body">
-                <th className="sticky left-0 z-10 p-18 font-semibold text-start text-black bg-lightBeige border border-brown">
+                <th className="sticky left-0 z-10 p-18 font-semibold text-center text-black bg-lightBeige border border-brown w-1/3">
                   Metric
                 </th>
-                <th className="p-18 font-semibold text-center border-r text-black border-t border-b border-brown">
+                <th className="p-18 font-semibold text-center border-r text-black border-t border-b border-brown w-1/3">
                   {strategyName || 'Strategy'}
                 </th>
-                <th className="p-18 font-semibold text-center border-r text-black border-t border-b border-brown">
+                <th className="p-18 font-semibold text-center border-r text-black border-t border-b border-brown w-1/3">
                   {benchmarkName || 'Benchmark'}
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr className="border-b border-brown">
-                <td className="sticky left-0 z-10 p-18 font-semibold text-sm bg-lightBeige border border-brown">
+                <td className="sticky left-0 z-10 p-18 font-semibold  text-center text-sm bg-lightBeige border border-brown w-1/3">
                   Sharpe Ratio
                 </td>
-                <td className="p-18 text-center border-b border-r border-brown">
+                <td className="p-18 text-center border-b border-r  border-brown w-1/3">
                   {metrics.sharpeRatio.portfolio.toFixed(2)}%
                 </td>
-                <td className="p-18 text-center border-b border-r border-brown">
+                <td className="p-18 text-center border-b border-r  border-brown w-1/3">
                   {metrics.sharpeRatio.benchmark.toFixed(2)}%
                 </td>
               </tr>
               <tr className="border-b border-brown">
-                <td className="sticky left-0 z-10 p-18 font-semibold text-sm bg-lightBeige border border-brown">
+                <td className="sticky left-0 z-10 p-18 text-center font-semibold text-sm bg-lightBeige border border-brown w-1/3">
                   Annualized Std Dev (%)
                 </td>
-                <td className="p-18 text-center border-b border-r border-brown">
+                <td className="p-18 text-center border-b border-r border-brown w-1/3">
                   {metrics.stdDev.portfolio.toFixed(2)}%
                 </td>
-                <td className="p-18 text-center border-b border-r border-brown">
+                <td className="p-18 text-center border-b border-r border-brown w-1/3">
                   {metrics.stdDev.benchmark.toFixed(2)}%
                 </td>
               </tr>
               <tr>
-                <td className="sticky left-0 z-10 p-18 font-semibold border-r text-sm bg-lightBeige border border-brown">
+                <td className="sticky left-0 z-10 p-18 text-center font-semibold border-r text-sm bg-lightBeige border border-brown w-1/3">
                   Max Drawdown (%)
                 </td>
-                <td className="p-18 text-center border-r border-brown border-b">
+                <td className="p-18 text-center border-r border-brown border-b w-1/3">
                   {metrics.maxDrawdown.portfolio.toFixed(2)}%
                 </td>
-                <td className="p-18 text-center border-r border-brown border-b">
+                <td className="p-18 text-center border-r border-brown border-b w-1/3">
                   {metrics.maxDrawdown.benchmark.toFixed(2)}%
                 </td>
               </tr>
-
             </tbody>
           </table>
         </div>
@@ -323,52 +322,52 @@ const RollingReturnsTable = React.memo(
           Rolling Returns
         </Text>
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[640px] border-collapse">
+          <table className="w-full min-w-[640px] table-fixed border-collapse">
             <thead>
               <tr className="text-sm sm:text-body font-body">
                 <th
-                  className="sticky left-0 z-10 p-18 font-semibold text-start text-black bg-lightBeige border border-brown"
+                  className="sticky left-0 z-10 p-18 font-semibold text-center text-black bg-lightBeige border border-brown w-[14.28%]"
                   rowSpan="2"
                 >
                   Period (Years)
                 </th>
                 <th
-                  className="p-18 font-semibold text-center text-black border-t border-r border-b border-brown"
+                  className="p-18 font-semibold text-center text-black border-t border-r border-b border-brown w-[28.57%]"
                   colSpan="2"
                 >
                   Worst
                 </th>
                 <th
-                  className="p-18 font-semibold text-center text-black border-t border-r border-b border-brown"
+                  className="p-18 font-semibold text-center text-black border-t border-r border-b border-brown w-[28.57%]"
                   colSpan="2"
                 >
                   Median
                 </th>
                 <th
-                  className="p-18 font-semibold text-center text-black border-t border-r border-b border-brown"
+                  className="p-18 font-semibold text-center text-black border-t border-r border-b border-brown w-[28.57%]"
                   colSpan="2"
                 >
                   Best
                 </th>
               </tr>
               <tr className="text-sm sm:text-body font-body border-brown">
-                <th className="p-18 text-center border-b border-r border-brown">
-                  {strategyName || 'Strategy'} 
+                <th className="p-18 text-center border-b border-r border-brown w-[14.28%]">
+                  {strategyName || 'Strategy'}
                 </th>
-                <th className="p-18 text-center border-b border-r border-brown">
-                  {benchmarkName || 'Benchmark'} 
+                <th className="p-18 text-center border-b border-r border-brown w-[14.28%]">
+                  {benchmarkName || 'Benchmark'}
                 </th>
-                <th className="p-18 text-center border-b border-r border-brown">
-                  {strategyName || 'Strategy'} 
+                <th className="p-18 text-center border-b border-r border-brown w-[14.28%]">
+                  {strategyName || 'Strategy'}
                 </th>
-                <th className="p-18 text-center border-b border-r border-brown">
-                  {benchmarkName || 'Benchmark'} 
+                <th className="p-18 text-center border-b border-r border-brown w-[14.28%]">
+                  {benchmarkName || 'Benchmark'}
                 </th>
-                <th className="p-18 text-center border-b border-r border-brown">
-                  {strategyName || 'Strategy'} 
+                <th className="p-18 text-center border-b border-r border-brown w-[14.28%]">
+                  {strategyName || 'Strategy'}
                 </th>
-                <th className="p-18 text-center border-b border-r border-brown">
-                  {benchmarkName || 'Benchmark'} 
+                <th className="p-18 text-center border-b border-r border-brown w-[14.28%]">
+                  {benchmarkName || 'Benchmark'}
                 </th>
               </tr>
             </thead>
@@ -377,32 +376,31 @@ const RollingReturnsTable = React.memo(
                 const row = returns[year];
                 return (
                   <tr key={year} className="border-b border-brown text-sm sm:text-body">
-                    <td className="sticky left-0 z-10 p-18 font-semibold bg-lightBeige border border-brown">
+                    <td className="sticky left-0 z-10 p-18 font-semibold text-center bg-lightBeige border border-brown w-[14.28%]">
                       {year}
                     </td>
-                    <td className="p-18 text-center border-b border-r border-brown">
+                    <td className="p-18 text-center border-b border-r border-brown w-[14.28%]">
                       {row.worst.portfolio.toFixed(2)}%
                     </td>
-                    <td className="p-18 text-center border-b border-r border-brown">
+                    <td className="p-18 text-center border-b border-r border-brown w-[14.28%]">
                       {row.worst.benchmark.toFixed(2)}%
                     </td>
-                    <td className="p-18 text-center border-b border-r border-brown">
+                    <td className="p-18 text-center border-b border-r border-brown w-[14.28%]">
                       {row.median.portfolio.toFixed(2)}%
                     </td>
-                    <td className="p-18 text-center border-b border-r border-brown">
+                    <td className="p-18 text-center border-b border-r border-brown w-[14.28%]">
                       {row.median.benchmark.toFixed(2)}%
                     </td>
-                    <td className="p-18 text-center border-b border-r border-brown">
+                    <td className="p-18 text-center border-b border-r border-brown w-[14.28%]">
                       {row.best.portfolio.toFixed(2)}%
                     </td>
-                    <td className="p-18 text-center border-b border-r border-brown">
+                    <td className="p-18 text-center border-b border-r border-brown w-[14.28%]">
                       {row.best.benchmark.toFixed(2)}%
                     </td>
                   </tr>
                 );
               })}
             </tbody>
-
           </table>
         </div>
       </>

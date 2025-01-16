@@ -37,7 +37,7 @@ const StrategyCard = ({ strategy, name, description, slug }) => {
   const renderCustomLink = () => {
     return (
       <CustomLink
-        to={name === "Qode Future Horizons" ? `/blogs/${slug}` : slug}
+        to={slug}
         className="p-2 sm:p-3 relative  sm:h-auto transition-all group justify-between items-start flex-col sm:flex-row border border-brown flex duration-500 bg-white  hover:bg-beige hover:text-black hover:shadow-xl group"
       >
         <div className="text-black mb-2 sm:mb-0">
@@ -186,8 +186,8 @@ const Strategies = () => {
             <Button
               onClick={() => {
                 const link = document.createElement("a");
-                link.href = "/Qode Presentation.pdf"; // Update this path to your PDF file
-                link.download = "Qode Presentation.pdf";
+                link.href = "/Qode_Presentation_Dec_2024.pdf"; // Update this path to your PDF file
+                link.download = "Qode_Presentation_Dec_2024.pdf";
                 link.click();
               }}
             >

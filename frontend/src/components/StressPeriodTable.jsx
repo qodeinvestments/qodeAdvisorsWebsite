@@ -95,19 +95,19 @@ const StressPeriodTable = ({
         <table className="w-full min-w-[640px] border-collapse">
           <thead>
             <tr className="text-sm sm:text-body font-body">
-              <th className="sticky border border-brown border-r-0 left-0 z-10 p-18 font-semibold text-end text-black bg-lightBeige">
+              <th className="sticky border border-brown border-r-0 left-0 z-10 p-18 font-semibold text-center text-black bg-lightBeige">
                 <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                 Sr. No
               </th>
-              <th className="relative p-18 font-semibold text-center text-black border-t border-b border-brown">
+              <th className="relative p-18 font-semibold text-center text-black border-t border-r border-b border-brown">
                 <div className="absolute inset-y-0 right-0 bg-brown" />
                 Start Date
               </th>
-              <th className="relative p-18 font-semibold text-center text-black border-t border-b border-brown">
+              <th className="relative p-18 font-semibold text-center text-black border-t border-r border-b border-brown">
                 <div className="absolute inset-y-0 right-0 bg-brown" />
                 End Date
               </th>
-              <th className="relative p-18 font-semibold text-center text-black border-t border-b border-brown">
+              <th className="relative p-18 font-semibold text-center text-black border-t border-r border-b border-brown">
                 <div className="absolute inset-y-0 right-0 bg-brown" />
                 Nifty 50 (%)
               </th>
@@ -122,26 +122,26 @@ const StressPeriodTable = ({
               const strategyDrawdown = calculatePeriodDrawdown(period.startDate, period.endDate, strategy);
 
               return (
-                <tr key={period.id} className="text-black text-end border-b border-brown">
-                  <td className="sticky border border-brown border-r-0 w-24 text-nowrap left-0 z-10 p-18 font-semibold text-sm sm:text-body bg-lightBeige">
+                <tr key={period.id} className="text-black text-center border-b border-brown">
+                  <td className="sticky border border-brown border-r-0 w-24 text-nowrap border-r left-0 z-10 p-18 font-semibold text-sm sm:text-body bg-lightBeige">
                     <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                     <span className="break-word-mobile">
                       {period.id}
                     </span>
                   </td>
-                  <td className="relative p-18 text-black text-center font-body text-sm sm:text-body border-b border-brown">
+                  <td className="relative p-18 text-black text-center font-body border-r text-sm sm:text-body border-b border-brown">
                     <div className="absolute inset-y-0 right-0 bg-brown" />
                     {period.label.start}
                   </td>
-                  <td className="relative p-18 text-black text-center font-body text-sm sm:text-body border-b border-brown">
+                  <td className="relative p-18 text-black text-center font-body border-r text-sm sm:text-body border-b border-brown">
                     <div className="absolute inset-y-0 right-0 bg-brown" />
                     {period.label.end}
                   </td>
-                  <td className="relative p-18 text-black text-center font-body text-sm sm:text-body border-b border-brown">
+                  <td className="relative p-18 text-black text-center font-body border-r text-sm sm:text-body border-b border-brown">
                     <div className="absolute inset-y-0 right-0 bg-brown" />
                     {benchmarkDrawdown}%
                   </td>
-                  <td className="p-18 text-center border-l text-black border border-brown">
+                  <td className="p-18 text-center border-l text-black border border-r border-brown">
                     {strategyDrawdown}%
                   </td>
                 </tr>

@@ -195,6 +195,9 @@ const useChartData = (strategy, isMobile, name, showDrawdown = false) => {
           zoomType: "x",
           marginLeft: isMobile ? 50 : 80,
           marginRight: isMobile ? 0 : 40,
+          style: {
+            fontFamily: "DM Sans, sans-serif",
+          },
         },
         tooltip: {
           shared: true,

@@ -78,7 +78,7 @@ const LogPerformanceChart = ({
         marginLeft: isMobile ? 50 : 90,  // Adjusted left margin
         marginRight: isMobile ? 0 : 40,
         style: {
-          fontFamily: "Inter, sans-serif",
+          fontFamily: "DM Sans, sans-serif",
         },
       },
       title: {
@@ -89,7 +89,7 @@ const LogPerformanceChart = ({
       xAxis: {
         type: "datetime",
         labels: {
-          format: "{value:%Y-%m-%d}",
+          format: "{value:%Y}",
         },
       },
       yAxis: {

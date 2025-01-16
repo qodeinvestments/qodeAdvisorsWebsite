@@ -173,6 +173,9 @@ const AnnualReturns = ({
         type: "column",
         height: 600,
         backgroundColor: "#ffffff",
+        style: {
+          fontFamily: "DM Sans, sans-serif",
+        },
       },
       title: {
         text: title,

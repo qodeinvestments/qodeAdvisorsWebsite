@@ -39,19 +39,18 @@ const QgfEquityCurve = () => {
     });
 
     const options = {
-      chart: { type: 'line', height: 600 },
+      chart: { type: 'line', height: 600,style: { fontFamily: 'DM Sans, sans-serif' } },
       title: { text: '' },
-      subtitle: { text: 'Indexed to base 100' },
+      subtitle: { text: '' },
       xAxis: {
         type: 'datetime',
         tickInterval: 365 * 24 * 3600 * 1000, // 1-year interval in milliseconds
         labels: {
           format: '{value:%Y}', // Format to display only the year
-          rotation: -45
         },
         title: { text: 'Year' },
       },
-      yAxis: { title: { text: 'Indexed Value' }, tickInterval: 200,max: 500, },
+      yAxis: { title: { text: 'Indexed Value' }, tickInterval: 50,max: 350, },
       tooltip: {
         shared: true,
         formatter: function () {

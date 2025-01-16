@@ -112,6 +112,7 @@ const MultiIndexChart = () => {
         enabled: true,
         type: 'xy',
       },
+      style: { fontFamily: 'DM Sans, sans-serif' },
       panKey: 'shift',
     },
     title: {
@@ -178,14 +179,14 @@ const MultiIndexChart = () => {
         <table className="w-full min-w-[640px] border-collapse mt-6">
           <thead>
             <tr className="text-sm sm:text-body font-body">
-              <th className="sticky border border-brown border-r-0 left-0 z-10 p-18 font-semibold text-start text-black bg-lightBeige">
+              <th className="sticky border border-brown border-r-0 left-0 z-10 p-18 w-1/6 font-semibold text-center text-black bg-lightBeige">
                 <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                 Metric
               </th>
               {Object.keys(performanceData).map(index => (
                 <th
                   key={index}
-                  className="relative p-18 font-semibold text-center text-black border-t border-b border-brown"
+                  className="relative p-18 font-semibold text-center w-1/6 text-black border-t border-r border-b border-brown"
                 >
                   {index}
                 </th>
@@ -193,15 +194,15 @@ const MultiIndexChart = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="text-black text-start border-b border-brown">
-              <td className="sticky border border-brown border-r-0 w-44 text-nowrap left-0 z-10 p-18 font-semibold text-sm sm:text-body bg-lightBeige">
+            <tr className="text-black text-center border-b border-brown">
+              <td className="sticky border border-brown border-r-0 w-44 text-nowrap left-0 z-10 w-1/6 p-18 font-semibold text-sm sm:text-body bg-lightBeige">
                 <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                 CAGR
               </td>
               {Object.keys(performanceData).map(index => (
                 <td
                   key={index}
-                  className="relative p-18 text-black text-center font-body text-sm sm:text-body border-b border-brown"
+                  className="relative p-18 text-black text-center font-body text-sm sm:text-body w-1/6 border-b border-r border-brown"
                 >
                   {performanceData[index]
                     ? `${performanceData[index].toFixed(2)}%`

@@ -110,7 +110,7 @@ const Header = () => {
               >
                 About Us
               </CustomLink>
-              <CustomLink
+              {/* <CustomLink
                 to={"https://dashboard.qodeinvest.com/"}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -119,7 +119,7 @@ const Header = () => {
                 }`}
               >
                 Dashboard
-              </CustomLink>
+              </CustomLink> */}
               <CustomLink
                 to="https://eclientreporting.nuvamaassetservices.com/wealthspectrum/app/login"
                 target="_blank"
@@ -203,7 +203,7 @@ const Header = () => {
                     >
                       About Us
                     </CustomLink>
-                    <CustomLink
+                    {/* <CustomLink
                       to="https://dashboard.qodeinvest.com/"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -211,7 +211,7 @@ const Header = () => {
                       onClick={closeMobileMenu}
                     >
                       Dashboard
-                    </CustomLink>
+                    </CustomLink> */}
                     <CustomLink
                       to="https://eclientreporting.nuvamaassetservices.com/wealthspectrum/app/login"
                       target="_blank"

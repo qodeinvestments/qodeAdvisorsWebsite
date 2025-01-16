@@ -71,7 +71,8 @@ const QvfVsMomentumDrawdownLine = () => {
       chart: {
         type: "line",
         backgroundColor: "#ffffff",
-        style: { fontFamily: "Arial, sans-serif" },
+        style: { fontFamily: 'DM Sans, sans-serif' },
+
         height: 500,
       },
       title: {

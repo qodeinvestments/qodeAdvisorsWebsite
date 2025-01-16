@@ -134,14 +134,14 @@ const TrailingReturns = ({
         <table className="w-full min-w-[640px] border-collapse">
           <thead>
             <tr className="text-sm sm:text-body font-body">
-              <th className="sticky border border-brown border-r-0 left-0 z-10 p-18 font-semibold text-start text-black bg-lightBeige">
+              <th className="sticky border border-brown border-r-0 border-r left-0 z-10 p-18 font-semibold text-center text-black bg-lightBeige">
                 <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                 Strategy
               </th>
               {periods.map((period) => (
                 <th
                   key={period}
-                  className="relative p-18 font-semibold text-center text-black border-t border-b border-brown"
+                  className="relative p-18 font-semibold text-center border-r text-black border-t border-b border-brown"
                 >
                   <div className="absolute inset-y-0 right-0 bg-brown" />
                   {period}
@@ -155,7 +155,7 @@ const TrailingReturns = ({
           <tbody>
             {[strategy, benchmark].map((strat) => (
               <tr key={strat} className="text-black text-start border-b border-brown">
-                <td className="sticky border border-brown border-r-0 w-44 text-nowrap left-0 z-10 p-18 font-semibold text-sm sm:text-body bg-lightBeige">
+                <td className="sticky border border-brown border-r-0 w-44 text-nowrap left-0 z-10 p-18 font-semibold text-sm text-center sm:text-body bg-lightBeige">
                   <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                   <span className="break-word-mobile">
                     {getDisplayName(strat)}
@@ -164,7 +164,7 @@ const TrailingReturns = ({
                 {periods.map((period) => (
                   <td
                     key={period}
-                    className="relative p-18 text-black text-center font-body text-sm sm:text-body border-b border-brown"
+                    className="relative p-18 text-black text-center border-r font-body text-sm sm:text-body border-b border-brown"
                   >
                     <div className="absolute inset-y-0 right-0 bg-brown" />
                     {returns[period] && returns[period][strat]

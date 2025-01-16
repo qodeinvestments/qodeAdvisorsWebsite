@@ -73,9 +73,7 @@ const Footer = () => {
                 <CustomLink to="/terms-n-conditions">
                   Terms and Conditions
                 </CustomLink>,
-                <CustomLink to={"/portfolio-visualiser"}>
-                  Portfolio Visualizer
-                </CustomLink>,
+               
               ]}
             />
           </div>
@@ -97,7 +95,7 @@ const Footer = () => {
                 <CustomLink to="/strategies/qode-tactical-fund">
                   Qode Tactical Fund
                 </CustomLink>,
-                <CustomLink to="/blogs/qode-future-horizons">
+                <CustomLink to="/strategies/qode-future-horizons">
                   Qode Future Horizons
                 </CustomLink>,
               ]}

@@ -96,6 +96,8 @@ const MomentumIndicesChart = () => {
         chart: {
           type: 'line',
           height: 600,
+          style: { fontFamily: 'DM Sans, sans-serif' },
+
         },
         title: {
           text: '',
@@ -114,7 +116,7 @@ const MomentumIndicesChart = () => {
             text: 'Indexed Value',
           },
           labels: {
-            formatter: function() {
+            formatter: function () {
               // Ensure full numeric values without abbreviation
               return this.value;
             },
@@ -159,20 +161,36 @@ const MomentumIndicesChart = () => {
   return (
     <div>
       <HighchartsReact highcharts={Highcharts} options={chartOptions} />
-      <table>
+      <table className="w-full table-fixed border-collapse border border-brown">
         <thead>
-          <tr>
-            <th>Metric</th>
+          <tr className="text-sm bg-lightBeige sm:text-body font-body">
+            {/* First header cell */}
+            <th className="p-18 font-semibold text-center text-black bg-lightBeige border border-brown">
+              Metric
+            </th>
+            {/* Render remaining header cells dynamically */}
             {seriesConfig.map(({ name }) => (
-              <th key={name}>{name}</th>
+              <th
+                key={name}
+                className="p-18 bg-lightBeige font-semibold text-center text-black border border-brown"
+              >
+                {name}
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>CAGR</td>
+          <tr className="text-center text-sm sm:text-body">
+            {/* First data cell */}
+            <td className="p-18 font-semibold border border-brown">
+              CAGR
+            </td>
+            {/* Render dynamic cells for each series */}
             {seriesConfig.map(({ key }) => (
-              <td key={key}>
+              <td
+                key={key}
+                className="p-18 border border-brown"
+              >
                 {performanceData[key]?.CAGR !== null
                   ? `${performanceData[key].CAGR.toFixed(2)}%`
                   : 'NA'}

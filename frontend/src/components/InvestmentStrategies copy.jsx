@@ -64,7 +64,7 @@ const InvestmentStrategies = () => {
     {
       title: "Qode Future Horizons",
       description: "Precision stock picking using data-driven models.",
-      link: "/blogs/qode-future-horizons",
+      link: "/strategies/qode-future-horizons",
       cagr: "",
     },
   ];

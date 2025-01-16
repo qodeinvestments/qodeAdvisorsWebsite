@@ -84,7 +84,7 @@ const MultiIndexDrawdownLine = () => {
         type: "line",
         backgroundColor: "#ffffff",
         style: { fontFamily: 'DM Sans, sans-serif' },
-        height: 500,
+        height: window.innerWidth < 768 ? 400 : 600,
       },
       title: {
         text: "",
@@ -114,7 +114,7 @@ const MultiIndexDrawdownLine = () => {
       },
       yAxis: {
         title: {
-          text: "Drawdown (%)",
+          text: "",
           style: {
             color: "#333333",
           },

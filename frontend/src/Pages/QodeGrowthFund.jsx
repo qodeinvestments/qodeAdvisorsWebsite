@@ -349,7 +349,7 @@ const QodeGrowthFund = () => {
                       ["Amara Raja Batteries Ltd", "235%", "3 Years"]
                     ].map(([name, returns, period]) => (
                       <tr key={name} className="border-b border-brown text-center text-sm sm:text-body">
-                        <td className="sticky left-0 z-10 p-18 w-1/3 font-semibold text-sm sm:text-body border-l border-b border-brown">
+                        <td className="sticky left-0 z-10 p-18 w-1/3 font-semibold bg-white text-sm sm:text-body border-l border-b border-brown">
                           <div className="absolute inset-y-0 right-0 w-[1px] bg-brown" />
                           {name}
                         </td>
@@ -384,7 +384,7 @@ const QodeGrowthFund = () => {
 
             </div>
 
-            <div className="mb-3 mt-3">
+            <div className="mb-1 mt-3">
 
               <LazyChart>
                 <iframe
@@ -398,7 +398,7 @@ const QodeGrowthFund = () => {
                     border: "none",
                     display: "block"
                   }}
-                  height="478"
+                  height="200"
                   data-external="1"
                   src="https://datawrapper.dwcdn.net/dWlhh/2/"
                 />

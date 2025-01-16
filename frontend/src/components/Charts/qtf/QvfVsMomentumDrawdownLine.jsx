@@ -73,7 +73,8 @@ const QvfVsMomentumDrawdownLine = () => {
         backgroundColor: "#ffffff",
         style: { fontFamily: 'DM Sans, sans-serif' },
 
-        height: 500,
+        height: window.innerWidth < 768 ? 400 : 500,
+
       },
       title: {
         text: "",
@@ -92,7 +93,7 @@ const QvfVsMomentumDrawdownLine = () => {
       },
       yAxis: {
         title: {
-          text: "Drawdown (%)",
+          text: "",
           style: { color: "#333333" },
         },
         max: 0,

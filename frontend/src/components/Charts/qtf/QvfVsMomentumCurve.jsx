@@ -111,7 +111,7 @@ const QvfVsMomentumCurve = () => {
         tickInterval: 365 * 24 * 3600 * 1000, // 1 year
         dateTimeLabelFormats: { year: "%Y" },
         title: {
-          text: "Year",
+          text: "",
           style: { color: "#333333" },
         },
         labels: { style: { color: "#333333" } },
@@ -120,7 +120,7 @@ const QvfVsMomentumCurve = () => {
       yAxis: {
         type: "logarithmic", // <-- Make it log scale
         title: {
-          text: "Normalized Value (Base = 100, Log Scale)",
+          text: "",
           style: { color: "#333333" },
         },
         gridLineWidth: 1,

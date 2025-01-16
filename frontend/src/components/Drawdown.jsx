@@ -51,7 +51,7 @@ const Drawdown = ({ data = [], strategyKey = "qaw", benchmarkKey = "nifty_50", s
         style: {
           fontFamily: "DM Sans, sans-serif",
         },
-        height: 600,
+        height: window.innerWidth < 768 ? 400 : 600,
       },
       title: {
         text: "",
@@ -82,7 +82,7 @@ const Drawdown = ({ data = [], strategyKey = "qaw", benchmarkKey = "nifty_50", s
       
       yAxis: {
         title: {
-          text: "Drawdown (%)",
+          text: "",
           style: {
             color: "#333333",
           },

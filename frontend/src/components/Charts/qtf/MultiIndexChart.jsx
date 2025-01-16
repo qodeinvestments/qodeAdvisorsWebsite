@@ -106,7 +106,8 @@ const MultiIndexChart = () => {
   const options = {
     chart: {
       type: 'spline',
-      height: 600,
+      height: window.innerWidth < 768 ? 400 : 600, // Responsive height
+      zoomType: 'xy',
       zoomType: 'xy',
       panning: {
         enabled: true,
@@ -131,7 +132,7 @@ const MultiIndexChart = () => {
     },
     yAxis: {
       title: {
-        text: 'Normalized Value',
+        text: '',
         style: { fontSize: '14px' },
       },
       labels: {
@@ -169,14 +170,13 @@ const MultiIndexChart = () => {
   if (error) return <p>Error loading chart data: {error}</p>;
 
   return (
-    <div>
+    <div className='mt-2 w-full'>
       <HighchartsReact
         highcharts={Highcharts}
         options={options}
-        containerProps={{ style: { height: '600px', width: '100%' } }}
       />
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[640px] border-collapse mt-6">
+        <table className="w-full min-w-[640px] border-collapse mt-2">
           <thead>
             <tr className="text-sm sm:text-body font-body">
               <th className="sticky border border-brown border-r-0 left-0 z-10 p-18 w-1/6 font-semibold text-center text-black bg-lightBeige">

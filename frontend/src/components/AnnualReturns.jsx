@@ -171,7 +171,7 @@ const AnnualReturns = ({
     return {
       chart: {
         type: "column",
-        height: 600,
+        height: window.innerWidth < 768 ? 400 : 600,
         backgroundColor: "#ffffff",
         style: {
           fontFamily: "DM Sans, sans-serif",
@@ -189,7 +189,7 @@ const AnnualReturns = ({
         title: { text: "Year" },
       },
       yAxis: {
-        title: { text: "Return (%)" },
+        title: { text: "" },
         plotLines: chartData.plotLines,
         labels: {
           format: "{value}%",

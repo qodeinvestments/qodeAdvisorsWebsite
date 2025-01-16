@@ -106,7 +106,7 @@ const AnnualCalendarDrawdown = ({
     () => ({
       chart: {
         type: "column",
-        height: 600,
+        height: window.innerWidth < 768 ? 400 : 600,
         backgroundColor: "#ffffff",
         style: {
           fontFamily: "DM Sans, sans-serif",
@@ -132,7 +132,7 @@ const AnnualCalendarDrawdown = ({
       },
       yAxis: {
         title: {
-          text: "Drawdown (%)",
+          text: "",
           style: { fontSize: "14px" },
         },
         labels: {

@@ -398,7 +398,7 @@ const QodeGrowthFund = () => {
                     border: "none",
                     display: "block"
                   }}
-                  height="200"
+                  height="478"
                   data-external="1"
                   src="https://datawrapper.dwcdn.net/dWlhh/2/"
                 />

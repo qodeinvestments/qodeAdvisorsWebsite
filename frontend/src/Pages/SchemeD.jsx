@@ -1,46 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-
 import Section from '../components/container/Section';
 import Button from '../components/common/Button';
 import Text from '../components/common/Text';
 
 const SchemeD = () => {
-  // State to hold data for all schemas
   const [performanceData, setPerformanceData] = useState({
     sarla_performance: {},
     sarla_performance_batch1: {},
     sarla_performance_batch2: {},
   });
 
-  // State to hold chart options for each schema
   const [allChartOptions, setAllChartOptions] = useState({});
-  
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
-  // Which schema is currently selected for display
   const [selectedSchema, setSelectedSchema] = useState('sarla_performance');
-
-  // If needed, track lastUpdated dates for each schema
   const [lastUpdated, setLastUpdated] = useState({
     sarla_performance: '',
     sarla_performance_batch1: '',
     sarla_performance_batch2: '',
   });
-  const [chartKey, setChartKey] = useState(0); // Add this line to force re-render
+  const [chartKey, setChartKey] = useState(0);
+
   const handleSchemaChange = (schema) => {
     setSelectedSchema(schema);
-    setChartKey(prevKey => prevKey + 1); // Force chart re-render
+    setChartKey(prevKey => prevKey + 1);
   };
-  // API URL based on environment
-  const API_URL =
-    import.meta.env.MODE === 'production'
-      ? import.meta.env.VITE_BACKEND_PROD_URL
-      : import.meta.env.VITE_BACKEND_DEV_URL;
 
-  // Fetch data for all schemas when component mounts
+  const API_URL = import.meta.env.MODE === 'production'
+    ? import.meta.env.VITE_BACKEND_PROD_URL
+    : import.meta.env.VITE_BACKEND_DEV_URL;
+
+  const findLatestDate = (schemaData) => {
+    if (!schemaData?.strategyDailyPnl?.length) return '';
+    
+    const dates = schemaData.strategyDailyPnl.map(item => new Date(item.date));
+    const latestDate = new Date(Math.max(...dates));
+    
+    return latestDate.toLocaleDateString('en-IN', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -52,6 +56,7 @@ const SchemeD = () => {
         const data = await response.json();
 
         const newChartOptions = {};
+        const newLastUpdated = {};
         const schemaKeys = [
           'sarla_performance',
           'sarla_performance_batch1',
@@ -61,80 +66,80 @@ const SchemeD = () => {
         schemaKeys.forEach((schemaKey) => {
           const schemaData = data[schemaKey];
           if (schemaData) {
+            newLastUpdated[schemaKey] = findLatestDate(schemaData);
             const processedData = processDataForChart(schemaData);
             
             const options = {
-                chart: {
-                  type: 'line',
-                  zoomType: 'x',
+              chart: {
+                type: 'line',
+                zoomType: 'x',
+              },
+              title: '',
+              xAxis: {
+                type: 'datetime',
+                labels: {
+                  format: '{value:%d/%m}',
                 },
-                title: '',
-                xAxis: {
-                  type: 'datetime',
-                  labels: {
-                    format: '{value:%d/%m}',
-                  },
-                  // Add these options to ensure proper date display
-                  startOnTick: true,
-                  endOnTick: true,
-                  minTickInterval: 24 * 3600 * 1000, // One day
+                startOnTick: true,
+                endOnTick: true,
+                minTickInterval: 24 * 3600 * 1000,
+              },
+              yAxis: {
+                title: {
+                  text: 'PnL Value (₹)',
                 },
-                yAxis: {
-                  title: {
-                    text: 'PnL Value (₹)',
-                  },
-                  labels: {
-                    formatter: function () {
-                      return (this.value / 1000).toFixed(0) + 'K';
-                    },
-                  },
-                },
-                tooltip: {
-                  shared: true,
-                  crosshairs: true,
+                labels: {
                   formatter: function () {
-                    let tooltip = '<b>' + Highcharts.dateFormat('%d/%m/%Y', this.x) + '</b><br/>';
-                    this.points.forEach((point) => {
-                      tooltip += `${point.series.name}: <b>₹${point.y.toFixed(2)}</b><br/>`;
-                    });
-                    return tooltip;
+                    return (this.value / 1000).toFixed(0) + 'K';
                   },
                 },
-                plotOptions: {
-                  line: {
-                    marker: {
-                      enabled: false,
+              },
+              tooltip: {
+                shared: true,
+                crosshairs: true,
+                formatter: function () {
+                  let tooltip = '<b>' + Highcharts.dateFormat('%d/%m/%Y', this.x) + '</b><br/>';
+                  this.points.forEach((point) => {
+                    tooltip += `${point.series.name}: <b>₹${point.y.toFixed(2)}</b><br/>`;
+                  });
+                  return tooltip;
+                },
+              },
+              plotOptions: {
+                line: {
+                  marker: {
+                    enabled: false,
+                  },
+                },
+                series: {
+                  connectNulls: true,
+                },
+              },
+              series: processedData,
+              legend: {
+                enabled: true,
+                align: 'right',
+                verticalAlign: 'top',
+                layout: 'vertical',
+              },
+              colors: ['#8884d8', '#82ca9d', '#ffc658', '#ff7300'],
+              responsive: {
+                rules: [
+                  {
+                    condition: {
+                      maxWidth: 500,
+                    },
+                    chartOptions: {
+                      legend: {
+                        align: 'center',
+                        verticalAlign: 'bottom',
+                        layout: 'horizontal',
+                      },
                     },
                   },
-                  series: {
-                    connectNulls: true,
-                  },
-                },
-                series: processedData,
-                legend: {
-                  enabled: true,
-                  align: 'right',
-                  verticalAlign: 'top',
-                  layout: 'vertical',
-                },
-                colors: ['#8884d8', '#82ca9d', '#ffc658', '#ff7300'],
-                responsive: {
-                  rules: [
-                    {
-                      condition: {
-                        maxWidth: 500,
-                      },
-                      chartOptions: {
-                        legend: {
-                          align: 'center',
-                          verticalAlign: 'bottom',
-                          layout: 'horizontal',
-                        },
-                      },
-                    },
-                  ],
-                },
-              };
+                ],
+              },
+            };
 
             newChartOptions[schemaKey] = options;
           }
@@ -142,6 +147,7 @@ const SchemeD = () => {
 
         setPerformanceData(data);
         setAllChartOptions(newChartOptions);
+        setLastUpdated(newLastUpdated);
         setLoading(false);
       } catch (err) {
         console.error('Error fetching data:', err);
@@ -152,25 +158,19 @@ const SchemeD = () => {
 
     fetchData();
   }, [API_URL]);
-  // Helper: process data into Highcharts series
+
   const processDataForChart = (schemaData) => {
-    console.log('Processing data for chart:', schemaData);
-    
     const strategies = ['put_protection', 'covered_calls', 'long_options', 'total', 'dynamic_puts'];
     const seriesData = {};
   
-    // Initialize an empty array for each strategy
     strategies.forEach((strategy) => {
       seriesData[strategy] = [];
     });
   
-    // 'strategyDailyPnl' is the table that has daily PnL data
     const strategyPnLData = schemaData.strategyDailyPnl || [];
   
-    // Fill arrays for each strategy
     strategyPnLData.forEach((item) => {
       if (strategies.includes(item.derivative_strategy)) {
-        // Create date object and set it to UTC midnight
         const date = new Date(item.date);
         const utcDate = Date.UTC(
           date.getFullYear(),
@@ -187,15 +187,12 @@ const SchemeD = () => {
       }
     });
   
-    // Return in the Highcharts series format, sorted by date
     return strategies.map((strategy) => ({
       name: strategy.replace(/_/g, ' ').toUpperCase(),
       data: seriesData[strategy].sort((a, b) => a[0] - b[0]),
     }));
   };
-  
 
-  // -------------- TABLE RENDERING LOGIC (SAME AS YOURS) --------------
   const percentageFields = [
     'pnl_percentage',
     'nifty_percentage',
@@ -298,7 +295,6 @@ const SchemeD = () => {
                     let bgColorClass = '';
 
                     if (item[column] != null && item[column] !== 'NaN') {
-                      // Format the value based on its type
                       if (percentageFields.includes(column)) {
                         displayValue = formatPercentage(item[column]);
                       } else if (currencyFields.includes(column)) {
@@ -309,11 +305,9 @@ const SchemeD = () => {
                         displayValue = String(item[column]);
                       }
 
-                      // Apply always red background if the column is in alwaysRedColumns
                       if (alwaysRedColumns.includes(column)) {
                         bgColorClass = 'bg-red-100';
                       }
-                      // Else if the column is in conditionalBgColors, apply conditional coloring
                       else if (conditionalBgColors.includes(column)) {
                         const numericValue = parseFloat(item[column]);
                         if (!isNaN(numericValue)) {
@@ -357,7 +351,7 @@ const SchemeD = () => {
 
     return (
       <div key={schemaName} className="mb-8">
-        <Text className=" playFair-scheme-page italic mb-2 text-brown font-heading text-[1.6rem] capitalize">
+        <Text className="playFair-scheme-page italic mb-2 text-brown font-heading text-[1.6rem] capitalize">
           {schemaName.replace(/_/g, ' ')}
         </Text>
         {Object.entries(tableGroupsOrdered).map(([groupHeader, tables]) => {
@@ -368,7 +362,7 @@ const SchemeD = () => {
           return (
             validTables.length > 0 && (
               <div key={groupHeader} className="mb-2">
-                <Text className=" playFair-scheme-page text-brown font-heading text-[1.2rem] capitalize">
+                <Text className="playFair-scheme-page text-brown font-heading text-[1.2rem] capitalize">
                   {groupHeader}
                 </Text>
                 <div className="flex flex-col sm:flex-row flex-wrap">
@@ -382,7 +376,7 @@ const SchemeD = () => {
         })}
         <div className="mt-4">
           <Text className="text-right text-sm text-gray-600">
-            Last Updated Date: <strong>31/12/2024</strong>
+            Last Updated Date: <strong>{lastUpdated[selectedSchema]}</strong>
           </Text>
         </div>
       </div>
@@ -442,19 +436,19 @@ const SchemeD = () => {
             <div className="mb-4 px-2">
               {allChartOptions[selectedSchema] && (
                 <HighchartsReact
-                  key={chartKey} // Add this key prop
-                  highcharts={Highcharts}
-                  options={allChartOptions[selectedSchema]}
-                />
-              )}
-            </div>
-
-            {renderSelectedSchemaTables()}
+                key={chartKey}
+                highcharts={Highcharts}
+                options={allChartOptions[selectedSchema]}
+              />
+            )}
           </div>
-        )}
-      </div>
-    </Section>
-  );
+
+          {renderSelectedSchemaTables()}
+        </div>
+      )}
+    </div>
+  </Section>
+);
 };
 
 export default SchemeD;

@@ -22,6 +22,7 @@ const db = {
 db.Strategy = require("./strategy")(sequelize, Sequelize.DataTypes);
 db.Email = require('./email')(sequelize, Sequelize.DataTypes);
 db.StrategyNav = require('./strategyNav')(sequelize, Sequelize.DataTypes); // <-- Added StrategyNav model
+db.ClientEnquiry = require('./client_enquiry')(sequelize, Sequelize.DataTypes); // <-- Added ClientEnquiry model
 
 // Function to create models for schema
 const createModelsForSchema = (schema) => ({

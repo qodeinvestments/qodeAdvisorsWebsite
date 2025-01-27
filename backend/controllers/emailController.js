@@ -1,11 +1,7 @@
 // emailController.js
 const { sendMail } = require('../services/mailService');
+const { ClientEnquiry } = require('../models');
 
-/**
- * Handle email sending for contact form submissions
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- */
 const sendGeneralMail = async (req, res) => {
     const { 
         userEmail, 
@@ -25,27 +21,6 @@ const sendGeneralMail = async (req, res) => {
     }
 
     try {
-        // Define the HTML signature
-        const signature = `
-            <div style="margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px; font-family: Arial, sans-serif; font-size: 14px; color: #555;">
-                <p>
-                    <a href="https://qodeinvest.com" target="_blank">
-                        <img src="https://workspace.qodeinvest.com/files/output-onlinejpgtools.png" width="114" alt="Qode Logo" style="display: block;">
-                    </a>
-                </p>
-                <p style="margin: 0px;">M: +91 98203 00028</p>
-                <p style="margin: 0px;">E: <a href="mailto:investor.relations@qodeinvest.com" style="color: #1a0dab; text-decoration: none;">investor.relations@qodeinvest.com</a></p>
-                <p style="margin: 0px;">W: <a href="http://www.qodeinvest.com" style="color: #1a0dab; text-decoration: none;">www.qodeinvest.com</a></p>
-                <p style="margin: 0px;">A: 2nd Floor, Tree House, Raghuvanshi Mills, Lower Parel, Mumbai-400013</p>
-                <p style="margin: 0px;">Follow us:</p>
-                <p>
-                    <a style="margin: 0px;" href="https://www.linkedin.com/company/qode1/" target="_blank">
-                        <img src="https://workspace.qodeinvest.com/files/linkedin%20(1).png" alt="LinkedIn" style="width: 24px; height: 24px;">
-                    </a>
-                </p>
-            </div>
-        `;
-
         // Build styled table with form inputs
         const formattedMessage = `
             <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6; color: #555;">
@@ -71,7 +46,7 @@ const sendGeneralMail = async (req, res) => {
                 </tr>
                 <tr>
                     <td style="font-weight: bold; padding: 5px 0; color: #333;">Preferred Strategy:</td>
-                    <td style="padding: 5px 0;">${preferredStrategy.join(", ")}</td>
+                    <td style="padding: 5px 0;">${Array.isArray(preferredStrategy) ? preferredStrategy.join(", ") : preferredStrategy}</td>
                 </tr>
                 <tr>
                     <td style="font-weight: bold; padding: 5px 0; color: #333;">Initial Investment Size:</td>
@@ -82,6 +57,39 @@ const sendGeneralMail = async (req, res) => {
                     <td style="padding: 5px 0;">${message.replace(/\n/g, '<br>')}</td>
                 </tr>
             </table>
+        `;
+
+        // Save form data to database with formatted HTML
+        const clientEnquiry = await ClientEnquiry.create({
+            name: fromName,
+            email: userEmail,
+            phone_number: phone,
+            investment_goal: investmentGoal,
+            investment_experience: investmentExperience,
+            preferred_strategy: Array.isArray(preferredStrategy) ? preferredStrategy.join(", ") : preferredStrategy,
+            initial_investment_size: initialInvestmentSize,
+            additional_message: message,
+        });
+
+        // Define the HTML signature
+        const signature = `
+            <div style="margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px; font-family: Arial, sans-serif; font-size: 14px; color: #555;">
+                <p>
+                    <a href="https://qodeinvest.com" target="_blank">
+                        <img src="https://workspace.qodeinvest.com/files/output-onlinejpgtools.png" width="114" alt="Qode Logo" style="display: block;">
+                    </a>
+                </p>
+                <p style="margin: 0px;">M: +91 98203 00028</p>
+                <p style="margin: 0px;">E: <a href="mailto:investor.relations@qodeinvest.com" style="color: #1a0dab; text-decoration: none;">investor.relations@qodeinvest.com</a></p>
+                <p style="margin: 0px;">W: <a href="http://www.qodeinvest.com" style="color: #1a0dab; text-decoration: none;">www.qodeinvest.com</a></p>
+                <p style="margin: 0px;">A: 2nd Floor, Tree House, Raghuvanshi Mills, Lower Parel, Mumbai-400013</p>
+                <p style="margin: 0px;">Follow us:</p>
+                <p>
+                    <a style="margin: 0px;" href="https://www.linkedin.com/company/qode1/" target="_blank">
+                        <img src="https://workspace.qodeinvest.com/files/linkedin%20(1).png" alt="LinkedIn" style="width: 24px; height: 24px;">
+                    </a>
+                </p>
+            </div>
         `;
 
         // Send email to operations team
@@ -115,7 +123,8 @@ const sendGeneralMail = async (req, res) => {
         });
 
         res.status(200).json({
-            message: "Your message has been sent successfully. We'll get back to you soon!"
+            message: "Your message has been sent successfully. We'll get back to you soon!",
+            enquiryId: clientEnquiry.id
         });
     } catch (error) {
         console.error('Error handling contact form:', error);

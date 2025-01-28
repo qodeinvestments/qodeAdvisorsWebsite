@@ -18,48 +18,66 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      }
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       validate: {
         isEmail: true,
-      },
+        notEmpty: true,
+      }
     },
     phone_number: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
+      type: DataTypes.STRING, // Changed from INTEGER to STRING
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+        is: /^[0-9]{10}$/ // Validates 10-digit phone numbers
+      }
     },
     investment_goal: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      }
     },
     investment_experience: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      }
     },
     preferred_strategy: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      }
     },
     initial_investment_size: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      }
     },
     additional_message: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT, // Changed from STRING to TEXT for longer messages
       allowNull: true,
     },
     createdAt: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE, // Changed from STRING to DATE
       allowNull: false,
-      defaultValue: () => moment().tz('Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss')
     },
     updatedAt: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATE, // Changed from STRING to DATE
       allowNull: false,
-      defaultValue: () => moment().tz('Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss')
     }
   }, {
     sequelize,
@@ -68,12 +86,11 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
     hooks: {
       beforeCreate: (record) => {
-        const currentTime = moment().tz('Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss');
-        record.createdAt = currentTime;
-        record.updatedAt = currentTime;
+        record.createdAt = moment().tz('Asia/Kolkata');
+        record.updatedAt = moment().tz('Asia/Kolkata');
       },
       beforeUpdate: (record) => {
-        record.updatedAt = moment().tz('Asia/Kolkata').format('YYYY-MM-DD HH:mm:ss');
+        record.updatedAt = moment().tz('Asia/Kolkata');
       }
     }
   });

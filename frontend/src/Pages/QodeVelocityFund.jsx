@@ -34,7 +34,7 @@ const QodeTacticalFund = () => {
   const [isPending, startTransition] = useTransition();
   const fields = useMemo(() => ["qtf", "nifty_500_momentum_50"], []);
   const options = useMemo(() => ({ refreshInterval: 15000 }), []);
-  const { data, isLoading, error } = useFetchStrategyNavField(fields, options);
+  const { data, isLoading, error } = useFetchStrategyNavField(fields);
   const tableData = [
     { Year: 0, StockPortfolio: 100.0, Tax: 0.0, IndexFundETF: 100.0, TaxIndex: 0.0 },
     { Year: 1, StockPortfolio: 120.0, Tax: 5.0, IndexFundETF: 125.0, TaxIndex: 0.0 },

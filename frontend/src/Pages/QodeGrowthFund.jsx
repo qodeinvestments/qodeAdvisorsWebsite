@@ -29,7 +29,7 @@ const QodeGrowthFund = () => {
   const fields = useMemo(() => ["qgf", "nifty_smallcap_100"], []);
   const options = useMemo(() => ({ refreshInterval: 15000 }), []);
 
-  const { data, isLoading, error } = useFetchStrategyNavField(fields, options);
+  const { data, isLoading, error } = useFetchStrategyNavField(fields);
   const memoizedData = useMemo(() => data, [data]);
   const formatDate = (dateString) => {
     const date = new Date(dateString);

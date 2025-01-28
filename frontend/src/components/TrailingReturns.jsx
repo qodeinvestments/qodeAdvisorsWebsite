@@ -61,6 +61,7 @@ const TrailingReturns = ({
       };
     }
 
+
     // Handle custom shorter periods (10D, 1W)
     const sortedData = [...data].sort(
       (a, b) => new Date(a.date) - new Date(b.date)

@@ -1,7 +1,7 @@
 // emailController.js
 const { sendMail } = require('../services/mailService');
 const { ClientEnquiry } = require('../models');
-const { verifyRecaptchaToken } = require('./path/to/verifyRecaptchaToken'); // adjust the path accordingly
+const { verifyRecaptchaToken } = require('../services/verifyRecaptchaToken'); // adjust the path accordingly
 
 const sendGeneralMail = async (req, res) => {
     const { 

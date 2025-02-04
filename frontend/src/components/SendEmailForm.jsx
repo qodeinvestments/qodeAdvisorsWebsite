@@ -170,6 +170,17 @@ const SendEmailForm = () => {
     setIsSubmitting(true);
 
     try {
+      const token = await new Promise((resolve, reject) => {
+        if (window.grecaptcha && window.grecaptcha.enterprise) {
+          window.grecaptcha.enterprise.ready(() => {
+            window.grecaptcha.enterprise.execute('6Lf7VcwqAAAAAJIm0sR-zrMGipoXSoZ0TKjjovLP', { action: 'SUBMIT_FORM' })
+              .then(resolve)
+              .catch(reject);
+          });
+        } else {
+          reject(new Error("reCAPTCHA is not loaded"));
+        }
+      });
       const response = await fetch(`${API_URL}/emails/send`, {
         method: "POST",
         headers: {
@@ -184,7 +195,8 @@ const SendEmailForm = () => {
           investmentGoal: formData.investmentGoal,
           investmentExperience: formData.investmentExperience,
           preferredStrategy: formData.preferredStrategy,
-          initialInvestmentSize: formData.initialInvestmentSize
+          initialInvestmentSize: formData.initialInvestmentSize,
+          recaptchaToken: token,
         }),
       });
     

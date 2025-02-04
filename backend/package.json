@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@azure/msal-node": "^2.16.2",
+    "@google-cloud/recaptcha-enterprise": "^5.13.0",
     "@mailerlite/mailerlite-nodejs": "^1.2.2",
     "@microsoft/microsoft-graph-client": "^3.0.7",
     "axios": "^1.7.9",

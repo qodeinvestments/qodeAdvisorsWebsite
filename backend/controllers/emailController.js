@@ -12,7 +12,8 @@ const sendGeneralMail = async (req, res) => {
         phone,
         investmentExperience, 
         preferredStrategy,
-        initialInvestmentSize 
+        initialInvestmentSize,
+        recaptchaToken
     } = req.body;
 
     if (!userEmail || !fromName) {

@@ -69,6 +69,7 @@ const Footer = () => {
               items={[
                 <CustomLink to="/about-us">About Us</CustomLink>,
                 <CustomLink to="/contact-us">Contact Us</CustomLink>,
+                <CustomLink to="/featured-in">Media</CustomLink>,
                 <CustomLink to="/privacy-policy">Privacy Policy</CustomLink>,
                 <CustomLink to="/terms-n-conditions">
                   Terms and Conditions

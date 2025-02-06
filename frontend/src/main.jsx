@@ -23,6 +23,8 @@ import Tool from "./Pages/Tool.jsx";
 import Support from "./Pages/Support.jsx";
 import SchemeD from "./Pages/SchemeD.jsx";
 import QodeFutureHorizons from "./Pages/QodeFutureHorizons.jsx";
+import FeaturedIn from "./Pages/FeaturedIn.jsx";
+import NewsDetails from "./Pages/NewsDetails.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -103,10 +105,14 @@ const router = createBrowserRouter([
         path: "/blogs/:slug", // This route captures the postId parameter
         element: <BlogDetails />,
       },
-      // {
-      //   path: "/tool", // This route captures the postId parameter
-      //   element: <Tool />,
-      // },
+      {
+        path: "/news/:slug", // This route captures the postId parameter
+        element: <NewsDetails />,
+      },
+      {
+        path: "/featured-in",
+        element : <FeaturedIn/>,
+      },
       {
         path: "/scheme-d", // This route captures the postId parameter
         element: <SchemeD />,

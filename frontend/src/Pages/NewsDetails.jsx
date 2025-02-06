@@ -1,0 +1,200 @@
+// src/pages/NewsDetails.jsx
+import React from "react";
+import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import Section from "../components/container/Section";
+import Heading from "../components/common/Heading";
+import Text from "../components/common/Text";
+
+// Dummy data representing featured articles. 
+// In a production app, replace this with data fetched from an API.
+const articles = [
+    {
+        date: "January 27, 2025",
+        title:
+            "Daily Voice: Incentivizing green energy, attracting foreign investment likely seen in Budget 2025, says Rishabh Nahar",
+        synopsis:
+            "According to Rishabh Nahar, the equity markets could continue to experience extreme volatility following the budget.",
+        excerpt:
+            "In the FY26 budget, the emphasis will likely be on incentivizing green energy, boosting manufacturing, and attracting more foreign investment into India, said Rishabh Nahar, Partner and Fund Manager at Qode Advisors in an interview to Moneycontrol. Further, given the current pace of capital expenditure, he believes it looks unlikely that the government will meet its capex targets for FY25.",
+        additionalParagraph:
+            "India’s capital expenditure has risen significantly over the years, with a large push in infrastructure spending. The FY25 capex target was set at Rs 11 lakh crore. From April to November, the government utilized 46% of this target, compared to 58% in the same period of the previous year. To meet the target, the government will need to accelerate spending in the second half. Given the current pace, it looks unlikely that the government will meet its capex targets for FY25. Based on Prime Minister Narendra Modi’s recent interviews, it appears that the FY26 capex target will be much more aggressive than FY25. The government remains bullish about changing India’s global image, and we’ve already seen significant spending on infrastructure, green energy, and manufacturing. This momentum will most likely continue into FY26.",
+        url: "https://www.moneycontrol.com/news/business/markets/daily-voice-incentivizing-green-energy-attracting-foreign-investment-likely-seen-in-budget-2025-says-this-fund-manager-12919603.html/amp",
+        imageUrl:
+            "https://images.moneycontrol.com/static-mcnews/2025/01/20250125224302_Rishabh_Nahar.jpg?impolicy=website&width=350&height=195",
+        source: "Money Control",
+        // Custom slug for internal routing
+        slug: "daily-voice-green-energy-budget-2025"
+    },
+    {
+        date: "January 21, 2025",
+        title:
+            "Taking Stock | Sensex closes below 76,000 mark for first time in 7 months, Nifty near 23,000",
+        synopsis:
+            "At the close, the Sensex fell by 1.6 percent, losing 1,235 points to settle at 75,838.36 -- a level last seen on 6 June 2024, while the Nifty declined by 1.37 percent, or 320.1 points, ending at 23024.65.",
+        additionalParagraph:
+            "Sectoral indices were broadly negative, with Nifty Realty and Consumer Durables being the worst performers, both plunging over 4 percent. Nifty PSU Bank and Auto followed closely, down 1.7 percent and 1.6 percent, respectively. Other notable losers included Nifty Bankex and Private Bank, both down by 1.5 percent, while Nifty Pharma and Metal shed 1.3 percent and 1.1 percent, respectively. As the quarterly earnings season progresses, the market is still awaiting signs of a recovery in corporate performance. Of the 51 Nifty constituents, only 10 have reported their earnings, with just three—Reliance Industries among them—exceeding estimates. Four others met expectations, while new-age tech companies like Zomato and Paytm contributed to the negative sentiment with disappointing results.",
+        excerpt:
+            "Rishabh Nahar - Partner and Fund Manager at Qode Advisors. The recent rise in India VIX is nothing unusual—volatility always picks up ahead of key events like the Budget. While it's higher than six months ago, a VIX level of 17 is still well within the normal range. For context, during the election results in June 2024, India VIX had surged to 30, a far more extreme move. Rather than overreacting to short-term fluctuations, investors should focus on the bigger picture. Volatility is part of market cycles, and temporary spikes don't necessarily imply a structural shift.",
+        // If no custom slug is provided, we can use the URL as a fallback.
+        slug: "taking-stock-sensex-below-76000-first-time",
+        url: "https://www.moneycontrol.com/news/business/earnings/taking-stock-sensex-closes-below-76-000-mark-for-first-time-in-7-months-nifty-near-23-000-12916049.html",
+        imageUrl:
+            "https://images.moneycontrol.com/static-mcnews/2025/01/20250111040413_sensex_nifty_sensexdown.jpg?impolicy=website&width=770&height=431",
+        source: "Money Control"
+    },
+    {
+        date: "January 21, 2025",
+        title:
+            "Markets plunge as Trump's trade tariff plans rattle investors; Sensex tanks 1,235 points",
+        excerpt:
+            "Market volatility isn’t just turbulence; it’s a stress test for portfolios. The key to emerging stronger lies in precision: trim weak holdings, reinforce stability with gold and debt, hedge risks smartly, and seize mispriced opportunities. Adaptation, not reaction, defines long-term outperformance.” said Rishabh Nahar, Partner and Fund Manager, Qode Advisors ",
+        slug: "fii-selling-crosses-50000-crore",
+        synopsis:
+            "The market-wide selling pressure was evident in the broader indices, with the Nifty Next 50 falling 2.61 per cent and the Nifty Midcap Select declining 2.78 per cent",
+        additionalParagraph:
+            "Equity markets witnessed a very volatile session which ended with a sharp selloff on Tuesday, and the benchmark Sensex plummeting 1,235.08 points to close at 75,838.36, marking its biggest single day drop in recent months. The broader Nifty 50 index fell 320.10 points to end at 23,024.65, as investors grappled with concerns over potential global trade disruptions following former US President Trump’s announcement of new tariffs. Besides, subdued Q3 financial performances from India Inc too added selling pressure.",
+        url: "https://www.thehindubusinessline.com/markets/stock-markets/markets-plunge-as-trumps-trade-tariff-plans-rattle-investors-sensex-tanks-1235-points/article69123229.ece",
+        imageUrl:
+            "https://bl-i.thgim.com/public/incoming/wsa63d/article69112900.ece/alternates/LANDSCAPE_1200/IMG_Digitally_enhanced_s_2_1_U7CQLCHT.jpg",
+        source: "The Hindu BusinessLine"
+    },
+    {
+        date: "January 22, 2025",
+        title:
+            "FII selling crosses Rs 50,000 crore this month. Trump sarkar may just deepen the exodus",
+        synopsis:
+            "Foreign institutional investors (FIIs) have withdrawn over Rs 50,000 crore from India's stock market in January 2025, impacting Sensex and Nifty. With Donald Trump's presidency and potential pro-American policies, analysts anticipate further outflows, continued market volatility, and pressure on the Indian rupee.",
+        excerpt:
+            "\"The 'buy the dip' mantra, which has worked well for retail investors in the bull cycle, may not hold water during every corrective phase as many stocks with high valuations are going through a phase of mean reversion. The real risk isn't volatility; it's holding assets that can't justify their valuations. Investors should actively trim weak holdings—especially those unlikely to meet growth expectations—and redeploy capital into resilient, high-conviction names. A strategic allocation to gold and high-quality debt can dampen volatility while maintaining liquidity for redeployment,\" ",
+        url: "https://economictimes.indiatimes.com/markets/stocks/news/fii-selling-crosses-rs-50000-crore-this-month-trump-sarkar-may-just-deepen-the-exodus/articleshow/117443672.cms?from=mdr",
+        additionalParagraph:
+            "Making Sensex tumble by 2,300 points and Nifty by 2.6% so far in the month, foreign institutional investors (FIIs) have pulled out over Rs 50,000 crore from Dalal Street in January. And now with Donald Trump taking over as the US President, there are fears that FII outflow could accelerate as pro-America policies may suck in liquidity back to Wall Street.<br/>In the first 15 trading days of 2025, FIIs have sold Indian stocks worth over Rs 57,000 crore as the ongoing Q3 earnings season is doing little to convince big boys to stay put. InCred Equities estimates that profit growth has been flat so far on a year-on-year basis on 4% sales growth. While heavyweights like TCS and Reliance Industries (RIL) surprised positively, Zomato numbers show consumption slowdown.`",
+        imageUrl:
+            "https://img.etimg.com/thumb/msid-117443918,width-650,height-488,imgsize-1092996,resizemode-75/foreign-investors-exit-indian-market.jpg",
+        source: "The Economic Times",
+        slug: "market-selloff-investor-strategy"
+    }
+];
+
+const NewsDetails = () => {
+    // Get the 'slug' parameter from the URL
+    const { slug } = useParams();
+    const decodedSlug = decodeURIComponent(slug);
+
+    // Then search for the article using the decoded slug:
+    const article = articles.find(
+        (art) => (art.slug || art.url) === decodedSlug
+    );
+
+    // If no matching article is found, render an error message.
+    if (!article) {
+        return (
+            <Section padding="none" className="mt-9 p-18">
+                <div className="sm:max-w-[820px] mx-auto text-center">
+                    <Heading className="text-heading font-heading text-brown mb-4">
+                        Article Not Found
+                    </Heading>
+                    <Text className="text-primary font-body">
+                        We couldn’t find the article you’re looking for.
+                    </Text>
+                </div>
+            </Section>
+        );
+    }
+
+    return (
+        <>
+            <Helmet>
+                <title>{article.title} - Qode Blog</title>
+                <meta name="description" content={article.excerpt} />
+                <meta name="author" content={article.source} />
+                <link
+                    rel="canonical"
+                    href={`https://www.qodeinvest.com/news/${encodeURIComponent(slug)}`}
+                />
+            </Helmet>
+
+            <Section padding="none" className="mt-8 p-18">
+                <div className="sm:max-w-[820px] mx-auto">
+                    <Heading
+                        isItalic
+                        className="text-mobileHeading sm:text-heading font-heading text-brown mb-4 text-center"
+                    >
+                        {article.title}
+                    </Heading>
+                    <div className="text-center mb-4">
+                        <Text className="text-primary font-body text-sm">
+                            Source: {article.source}
+                        </Text>
+                        {article.date &&
+                            <span className="text-gray-400">{article.date}</span>}
+                    </div>
+                    {article.imageUrl && (
+                        <img
+                            src={article.imageUrl}
+                            alt={article.title}
+                            className="w-full object-cover h-auto mb-4 rounded-lg"
+                        />
+                    )}
+
+                    <div className="article-content">
+                        {/* Synopsis styling */}
+                        {article.synopsis && (
+                            <Text className="text-md font-semibold text-gray-600 mb-4">
+                                {article.synopsis}
+                            </Text>
+                        )}
+
+                        {/* Blockquote with big inverted commas */}
+                        {article.excerpt && (
+                            <div className="relative text-base sm:max-w-4xl leading-relaxed mb-4 italic flex flex-col">
+                                <blockquote className="flex items-start relative">
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        className="sm:w-2 sm:h-2 w-18 h-18 text-brown mr-18 shrink-0"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M11.3,3.3c-2.3,0.5-4.1,1.5-5.6,3c-1.4,1.5-2.2,3.3-2.2,5.3c0,2.3,0.8,4.2,2.2,5.9c1.5,1.7,3.4,2.5,5.6,2.5 c1.7,0,3.1-0.5,4.2-1.6c1.1-1.1,1.7-2.4,1.7-4c0-1.7-0.5-3-1.4-4.1c-1-1.1-2.2-1.6-3.7-1.6c-0.9,0-1.7,0.2-2.3,0.7L9.1,9 c0.3-1.2,1-2.2,2.1-3C12.3,5.2,13.4,4.8,14.7,4.7L11.3,3.3z" />
+                                    </svg>
+                                    <span className="mt-1">{article.excerpt}</span>
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        className="sm:w-2 sm:h-2 w-18 h-18 text-brown  self-end shrink-0"
+                                        fill="currentColor"
+                                    >
+                                        <path d="M12.7,20.7c2.3-0.5,4.1-1.5,5.6-3c1.4-1.5,2.2-3.3,2.2-5.3c0-2.3-0.8-4.2-2.2-5.9c-1.5-1.7-3.4-2.5-5.6-2.5 c-1.7,0-3.1,0.5-4.2,1.6c-1.1,1.1-1.7,2.4-1.7,4c0,1.7,0.5,3,1.4,4.1c1,1.1,2.2,1.6,3.7,1.6c0.9,0,1.7-0.2,2.3-0.7l0.7,0.4 c-0.3,1.2-1,2.2-2.1,3c-1.1,0.8-2.2,1.2-3.5,1.3L12.7,20.7z" />
+                                    </svg>
+                                </blockquote>
+                                <div className="text-right sm:mr-4 mt-18">
+                                    - Rishabh Nahar, Partner and Fund Manager at Qode Advisors
+                                </div>
+                            </div>
+                        )}
+
+
+                        {/* Additional paragraph styling */}
+                        {article.additionalParagraph && (
+                            <Text className="text-base leading-relaxed text-gray-700 mb-4">
+                                {article.additionalParagraph}
+                            </Text>
+                        )}
+
+                        <div className="mt-2 text-center">
+                            <a
+                                href={article.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block sm:px-6 sm:py-2 p-2 text-brown border-brown border"
+                            >
+                                Click here to read the full article
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </Section>
+        </>
+    );
+};
+
+export default NewsDetails;

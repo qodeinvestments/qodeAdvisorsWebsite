@@ -56,13 +56,12 @@ const Header = () => {
           md:w-[700px] md:left-1/2 md:-translate-x-1/2 
           lg:w-[1066px] 
           xl:w-[1386px] 
-          max-w-full ${
-            isHomePage
-              ? isScrolled
-                ? "bg-white top-0 bg-opacity-100 shadow-md"
-                : "bg-black opacity-100 sm:opacity-70 sm:top-2 backdrop-blur-md"
-              : "bg-white top-0 bg-opacity-100 shadow-md"
-          }`}
+          max-w-full ${isHomePage
+          ? isScrolled
+            ? "bg-white top-0 bg-opacity-100 shadow-md"
+            : "bg-black opacity-100 sm:opacity-70 sm:top-2 backdrop-blur-md"
+          : "bg-white top-0 bg-opacity-100 shadow-md"
+        }`}
     >
       <div className="mx-auto">
         <div className="shadow-md py-18 sm:py-18 sm:px-4 px-18">
@@ -71,17 +70,15 @@ const Header = () => {
             <nav className="hidden lg:flex items-center space-x-6 flex-1">
               <CustomLink
                 to="/blogs"
-                className={`text-body transition duration-300 ${
-                  isHomePage && !isScrolled ? "text-beige" : "text-beige"
-                }`}
+                className={`text-body transition duration-300 ${isHomePage && !isScrolled ? "text-beige" : "text-beige"
+                  }`}
               >
                 Blogs
               </CustomLink>
               <CustomLink
                 to="/strategies"
-                className={`text-body transition duration-300 ${
-                  isHomePage && !isScrolled ? "text-beige" : "text-beige"
-                }`}
+                className={`text-body transition duration-300 ${isHomePage && !isScrolled ? "text-beige" : "text-beige"
+                  }`}
               >
                 Strategies
               </CustomLink>
@@ -91,9 +88,8 @@ const Header = () => {
             <div className="flex-shrink-0">
               <Link
                 to="/"
-                className={`playfair-display-font text-[24px] sm:text-[32px] font-bold ${
-                  isHomePage && !isScrolled ? "text-beige" : "text-beige"
-                }`}
+                className={`playfair-display-font text-[24px] sm:text-[32px] font-bold ${isHomePage && !isScrolled ? "text-beige" : "text-beige"
+                  }`}
                 onClick={closeMobileMenu}
               >
                 Qode
@@ -104,29 +100,26 @@ const Header = () => {
             <nav className="hidden lg:flex items-center space-x-6 flex-1 justify-end">
               <CustomLink
                 to="/about-us"
-                className={`text-body transition duration-300 ${
-                  isHomePage && !isScrolled ? "text-beige" : "text-beige"
-                }`}
+                className={`text-body transition duration-300 ${isHomePage && !isScrolled ? "text-beige" : "text-beige"
+                  }`}
               >
                 About Us
               </CustomLink>
-              {/* <CustomLink
-                to={"https://dashboard.qodeinvest.com/"}
+              <CustomLink
+                to="/featured-in"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-body font-body transition duration-300 ${
-                  isHomePage && !isScrolled ? "text-beige" : "text-beige"
-                }`}
+                className="block px-4 py-2 dm-sans-font text-body hover:bg-beige hover:text-black text-beige transition"
+                onClick={closeMobileMenu}
               >
-                Dashboard
-              </CustomLink> */}
+                Media
+              </CustomLink>
               <CustomLink
                 to="https://eclientreporting.nuvamaassetservices.com/wealthspectrum/app/login"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`text-body font-body transition duration-300 ${
-                  isHomePage && !isScrolled ? "text-beige" : "text-beige"
-                }`}
+                className={`text-body font-body transition duration-300 ${isHomePage && !isScrolled ? "text-beige" : "text-beige"
+                  }`}
               >
                 Client Login
               </CustomLink>
@@ -136,9 +129,8 @@ const Header = () => {
             <div className="lg:hidden relative bottom-1/2 z-50">
               <button
                 onClick={toggleMobileMenu}
-                className={`focus:outline-none ${
-                  isHomePage && !isScrolled ? "text-beige" : "text-black"
-                }`}
+                className={`focus:outline-none ${isHomePage && !isScrolled ? "text-beige" : "text-black"
+                  }`}
               >
                 <svg
                   className="h-2 w-2"
@@ -203,15 +195,15 @@ const Header = () => {
                     >
                       About Us
                     </CustomLink>
-                    {/* <CustomLink
-                      to="https://dashboard.qodeinvest.com/"
+                    <CustomLink
+                      to="/featured-in"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="block px-4 py-2 dm-sans-font text-body hover:bg-beige hover:text-black text-beige transition"
                       onClick={closeMobileMenu}
                     >
-                      Dashboard
-                    </CustomLink> */}
+                      Media
+                    </CustomLink>
                     <CustomLink
                       to="https://eclientreporting.nuvamaassetservices.com/wealthspectrum/app/login"
                       target="_blank"

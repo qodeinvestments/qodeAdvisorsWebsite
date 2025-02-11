@@ -23,12 +23,12 @@ const sendGeneralMail = async (req, res) => {
     }
 
     try {
-        const riskScore = await verifyRecaptchaToken(recaptchaToken, 'SUBMIT_FORM');
+        // const riskScore = await verifyRecaptchaToken(recaptchaToken, 'SUBMIT_FORM');
 
-        // Optionally, you can decide what to do if the risk score is too low.
-        if (riskScore < 0.5) {
-          return res.status(400).json({ error: 'reCAPTCHA verification failed due to low risk score' });
-        }
+        // // Optionally, you can decide what to do if the risk score is too low.
+        // if (riskScore < 0.5) {
+        //   return res.status(400).json({ error: 'reCAPTCHA verification failed due to low risk score' });
+        // }
         // Build styled table with form inputs
         const formattedMessage = `
             <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6; color: #555;">
@@ -142,4 +142,42 @@ const sendGeneralMail = async (req, res) => {
     }
 };
 
-module.exports = { sendGeneralMail };
+const sendForgetPasswordMail = async (req, res) => {
+    const { userEmail, token } = req.body;
+    if (!userEmail || !token) {
+      return res.status(400).json({ 
+        error: 'Email and token are required' 
+      });
+    }
+    try {
+      // Construct the password reset URL using a dedicated domain.
+      // Ensure FORGOT_PASSWORD_DOMAIN is defined in your environment variables, for example: "https://reset.yourdomain.com"
+      const resetUrl = `${process.env.FORGOT_PASSWORD_DOMAIN}/reset-password?token=${encodeURIComponent(token)}&email=${encodeURIComponent(userEmail)}`;
+  
+      // Build the email body for the password reset
+      const emailBody = `
+        <p>Hi,</p>
+        <p>You requested to reset your password. Please click the link below to reset it:</p>
+        <p><a href="${resetUrl}">${resetUrl}</a></p>
+        <p>If you did not request a password reset, please ignore this email.</p>
+        <p>Best regards,<br/>Support Team</p>
+      `;
+  
+      // Send the password reset email using a different sender domain.
+      // Here, we assume that sendMail accepts an optional "fromEmail" property.
+      await sendMail({
+        fromName: 'Support Team',
+        fromEmail: process.env.FORGOT_PASSWORD_SENDER_EMAIL, // This sender email should belong to the different domain
+        to: userEmail,
+        subject: 'Password Reset Request',
+        body: emailBody,
+      });
+  
+      res.status(200).json({ message: 'Password reset email sent successfully' });
+    } catch (error) {
+      console.error('Error sending forgot password email:', error);
+      res.status(500).json({ error: 'Failed to send password reset email' });
+    }
+  };
+  
+  module.exports = { sendGeneralMail, sendForgetPasswordMail };

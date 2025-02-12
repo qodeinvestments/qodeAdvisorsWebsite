@@ -10,6 +10,20 @@ import Text from "../components/common/Text";
 // In a production app, replace this with data fetched from an API.
 const articles = [
     {
+        date: "February 12, 2025",
+        title:
+            "The market timing illusion: Why sitting on cash can be a costly mistake",
+        synopsis:"While waiting for the 'perfect' entry point, investors forgo dividends, reinvestment opportunities, and long-term growth, which can be far more costly than a short-term loss.",
+        // excerpt:
+        //     "While waiting for the 'perfect' entry point, investors forgo dividends, reinvestment opportunities, and long-term growth, which can be far more costly than a short-term loss.",
+        additionalParagraph:"Successful market timing requires two correct decisions: when to exit and when to re-enter. If we assume you have a 50 percent chance of being right on each decision (an optimistic assumption), the probability of being right on both decisions is just 25 percent. Make these decisions multiple times, and your odds of sustained success plummet further.Consider that to successfully time the market over a 10-year period, making just two timing decisions per year, you would need to be right 20 times in a row. The probability of getting all these decisions correct, even with a 50 percent success rate per decision, is less than 0.0001 percent.",
+        url: "https://www.moneycontrol.com/news/business/personal-finance/the-market-timing-illusion-why-sitting-on-cash-can-be-a-costly-mistake-12937555.html",
+        imageUrl:
+            "https://images.moneycontrol.com/static-mcnews/2025/01/20250115072022_Market_up1-Copy.jpeg?impolicy=website&width=770&height=431",
+        source: "Money Control",
+        slug: "the-market-timing-illusion"
+    },
+    {
         date: "January 27, 2025",
         title:
             "Daily Voice: Incentivizing green energy, attracting foreign investment likely seen in Budget 2025, says Rishabh Nahar",

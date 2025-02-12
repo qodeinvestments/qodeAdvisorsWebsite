@@ -6,6 +6,18 @@ import NewsCard from "../components/NewsCard";
 const FeaturedArticles = () => {
     const articles = [
         {
+            date: "February 12, 2025",
+            title:
+                "The market timing illusion: Why sitting on cash can be a costly mistake",
+            excerpt:
+                "While waiting for the 'perfect' entry point, investors forgo dividends, reinvestment opportunities, and long-term growth, which can be far more costly than a short-term loss.",
+            url: "https://www.moneycontrol.com/news/business/personal-finance/the-market-timing-illusion-why-sitting-on-cash-can-be-a-costly-mistake-12937555.html",
+            imageUrl:
+                "https://images.moneycontrol.com/static-mcnews/2025/01/20250115072022_Market_up1-Copy.jpeg?impolicy=website&width=770&height=431",
+            source: "Money Control",
+            slug: "the-market-timing-illusion"
+        },
+        {
             date: "January 27, 2025",
             title:
                 "Daily Voice: Incentivizing green energy, attracting foreign investment likely seen in Budget 2025, says this fund manager",

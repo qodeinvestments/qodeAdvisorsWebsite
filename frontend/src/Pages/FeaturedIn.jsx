@@ -13,7 +13,7 @@ const FeaturedArticles = () => {
                 "While waiting for the 'perfect' entry point, investors forgo dividends, reinvestment opportunities, and long-term growth, which can be far more costly than a short-term loss.",
             url: "https://www.moneycontrol.com/news/business/personal-finance/the-market-timing-illusion-why-sitting-on-cash-can-be-a-costly-mistake-12937555.html",
             imageUrl:
-                "https://images.moneycontrol.com/static-mcnews/2025/01/20250115072022_Market_up1-Copy.jpeg?impolicy=website&width=770&height=431",
+                "https://images.moneycontrol.com/static-mcnews/2025/02/20250212015353_cash-trap-1102251.jpg",
             source: "Money Control",
             slug: "the-market-timing-illusion"
         },

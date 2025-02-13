@@ -6,6 +6,20 @@ import NewsCard from "../components/NewsCard";
 const FeaturedArticles = () => {
     const articles = [
         {
+            date: "February 13, 2025",
+            title:
+                "How to play Nifty bears in the current market? Do’s & don’ts for investors",
+    
+            excerpt:
+                "This one isn't driven by a single catastrophic event. It's more like a slow leak after the post-Covid liquidity surge. Midcaps and smallcaps were priced for perfection -- many doubling in a year. But now, with interest rates rising, global growth slowing, and the rupee steadily weakening, the cracks are showing.",
+            additionalParagraph:"Indian markets have been in a corrective phase for quite sometime now with the headline index Nifty falling 12% from the peak. However, the extent of damage is varied in different pockets of the market. For instance, the Nifty Smallcap 250 index is down nearly 20% from the highs, officially entering a bearish territory, while the midcap index is still yet to touch those levels.",
+            url: "https://economictimes.indiatimes.com/markets/stocks/news/how-to-play-nifty-bears-in-the-current-market-dos-donts-for-investors/articleshow/118201159.cms?from=mdr",
+            imageUrl:
+                "https://img.etimg.com/thumb/msid-118201136,width-400,height-300,imgsize-88652,resizemode-75/how-to-play-nifty-bears-in-the-current-market-dos-donts-for-investors.jpg",
+            source: "Economic Times",
+            slug: "dos-and-donts-for-investors"
+        },
+        {
             date: "February 12, 2025",
             title:
                 "The market timing illusion: Why sitting on cash can be a costly mistake",

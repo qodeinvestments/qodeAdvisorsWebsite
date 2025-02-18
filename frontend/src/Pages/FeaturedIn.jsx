@@ -114,6 +114,24 @@ const FeaturedArticles = () => {
         </>
       ),
       videoUrl: "https://www.youtube.com/embed/Aev4dO8EBH4"
+    },
+    {
+      title: "Union Budget 2025 Market Insights | Vidhi Chheda | Indiabulls Securities",
+      description: (
+        <>
+          <Text className="text-gray-700">
+            Watch Vidhi Chheda, Partner & Head of Quant Research at Qode, and Rakesh Pujara as they break down the Union Budget 2025 and its impact on markets, sectors, and investment strategies. Hosted by Indiabulls Securities.
+          </Text>
+          {/* <ul className="list-disc list-inside text-gray-700">
+            <li>How the Budget’s impact on markets has evolved over the years</li>
+            <li>Key sectors poised for growth in the current economic environment</li>
+            <li>Actionable insights for investors and traders</li>
+            <li>Strategies to navigate volatility with patience</li>
+          </ul> */}
+
+        </>
+      ),
+      videoUrl: "https://www.youtube.com/embed/wnFKxKX_B1Y"
     }
     // Add more insight objects here as needed
   ];
@@ -172,8 +190,8 @@ const FeaturedArticles = () => {
       {activeTab === "insights" && (
         <Section padding="none">
           {insights.map((insight, index) => (
-            <div key={index} className="mb-12">
-              <Heading className="text-brown text-xl mb-2">{insight.title}</Heading>
+            <div key={index} className="mb-8">
+              <Heading className="text-brown text-lg mb-2">{insight.title}</Heading>
               <div className="mb-4">{insight.description}</div>
               <div className="flex justify-center">
                 <iframe

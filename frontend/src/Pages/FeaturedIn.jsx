@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Section from "../components/container/Section";
 import Heading from "../components/common/Heading";
+import Text from "../components/common/Text";
 import NewsCard from "../components/NewsCard";
 
 const FeaturedArticles = () => {
@@ -105,11 +106,11 @@ const FeaturedArticles = () => {
       title: "Rishabh Nahar at Laqsa’s Lambda Conference 2025",
       description: (
         <>
-          <p className="text-gray-700">
+          <Text className="text-gray-700">
             Rishabh Nahar, Partner &amp; Fund Manager at Qode Advisors, was a panelist at
             Laqsa’s Lambda Conference 2025, held at St. Regis, Mumbai, where he discussed{" "}
             <strong>"How to incorporate fundamental factor Quant vs Quantamental"</strong>.
-          </p>
+          </Text>
         </>
       ),
       videoUrl: "https://www.youtube.com/embed/Aev4dO8EBH4"

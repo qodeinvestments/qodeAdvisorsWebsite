@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import Section from "../components/container/Section";
 import Heading from "../components/common/Heading";
 import Text from "../components/common/Text";
@@ -122,13 +123,6 @@ const FeaturedArticles = () => {
           <Text className="text-gray-700">
             Watch Vidhi Chheda, Partner & Head of Quant Research at Qode, and Rakesh Pujara as they break down the Union Budget 2025 and its impact on markets, sectors, and investment strategies. Hosted by Indiabulls Securities.
           </Text>
-          {/* <ul className="list-disc list-inside text-gray-700">
-            <li>How the Budget’s impact on markets has evolved over the years</li>
-            <li>Key sectors poised for growth in the current economic environment</li>
-            <li>Actionable insights for investors and traders</li>
-            <li>Strategies to navigate volatility with patience</li>
-          </ul> */}
-
         </>
       ),
       videoUrl: "https://www.youtube.com/embed/wnFKxKX_B1Y"
@@ -189,24 +183,58 @@ const FeaturedArticles = () => {
 
       {activeTab === "insights" && (
         <Section padding="none">
-          {insights.map((insight, index) => (
-            <div key={index} className="mb-8">
-              <Heading className="text-brown text-lg mb-2">{insight.title}</Heading>
-              <div className="mb-4">{insight.description}</div>
-              <div className="flex justify-center">
-                <iframe
-                  className="rounded-lg shadow-lg"
-                  width="800"
-                  height="450"
-                  src={insight.videoUrl}
-                  title={insight.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </div>
-          ))}
+          <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {insights.map((insight, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="overflow-hidden transition-all duration-75 max-w-[485px] group p-2 sm:p-3 hover:bg-lightBeige rounded-lg hover:scale-105 flex flex-col h-full"
+              >
+                <div className="h-full group overflow-hidden relative flex flex-col">
+                  {/* Video Section */}
+                  <div className="mb-2">
+                    <iframe
+                      src={insight.videoUrl}
+                      title={insight.title}
+                      className="w-full h-48 rounded-md"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+
+                  <div className="flex flex-col h-full">
+                    <div className="overflow-hidden h-[4.5em]">
+                      <Heading className="md:text-subheading text-mobileSubHeading text-brown group-hover:text-black font-bold line-clamp-2">
+                        {insight.title}
+                      </Heading>
+                    </div>
+                    <div className="flex-grow">
+                      {insight.description}
+                    </div>
+                  </div>
+                  <div className="flex justify-end mt-2 items-center">
+                    <div className="group-hover:text-black -mt-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 100 100"
+                        width="44"
+                        height="44"
+                      >
+                        <path
+                          d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <hr className="mt-1 border-t group-hover:border-beige border-lightBeige" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </Section>
       )}
     </Section>

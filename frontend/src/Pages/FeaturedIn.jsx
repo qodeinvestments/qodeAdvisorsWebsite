@@ -99,12 +99,27 @@ const FeaturedArticles = () => {
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 
+  // Array of insights that can be easily expanded in the future
+  const insights = [
+    {
+      title: "Rishabh Nahar at Laqsa’s Lambda Conference 2025",
+      description: (
+        <>
+          <p className="text-gray-700">
+            Rishabh Nahar, Partner &amp; Fund Manager at Qode Advisors, was a panelist at
+            Laqsa’s Lambda Conference 2025, held at St. Regis, Mumbai, where he discussed{" "}
+            <strong>"How to incorporate fundamental factor Quant vs Quantamental"</strong>.
+          </p>
+        </>
+      ),
+      videoUrl: "https://www.youtube.com/embed/Aev4dO8EBH4"
+    }
+    // Add more insight objects here as needed
+  ];
+
   return (
     <Section className="mt-8">
-      <Heading
-        isItalic
-        className="text-center text-brown mb-4 text-heading font-heading"
-      >
+      <Heading isItalic className="text-center text-brown mb-4 text-heading font-heading">
         Featured In
       </Heading>
 
@@ -154,18 +169,26 @@ const FeaturedArticles = () => {
       )}
 
       {activeTab === "insights" && (
-        <div className="flex justify-center">
-          <iframe
-            className="rounded-lg shadow-lg"
-            width="800"
-            height="450"
-            src="https://www.youtube.com/embed/Aev4dO8EBH4"
-            title="Insights Video"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
-        </div>
+        <Section padding="none">
+          {insights.map((insight, index) => (
+            <div key={index} className="mb-12">
+              <Heading className="text-brown text-xl mb-2">{insight.title}</Heading>
+              <div className="mb-4">{insight.description}</div>
+              <div className="flex justify-center">
+                <iframe
+                  className="rounded-lg shadow-lg"
+                  width="800"
+                  height="450"
+                  src={insight.videoUrl}
+                  title={insight.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+          ))}
+        </Section>
       )}
     </Section>
   );

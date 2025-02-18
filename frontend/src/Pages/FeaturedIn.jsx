@@ -8,6 +8,18 @@ const FeaturedArticles = () => {
 
   const articles = [
     {
+      date: "February 17, 2025",
+      title:
+        "Retailers At Risk As Speculative Games Continue; Govt Gets Rewards",
+      excerpt:
+        "A 2024 study by the regulator revealed that 90 per cent of individual traders incurred losses in the futures and options (F&O) segment of the stock market in FY24, highlighting concerns regarding speculation by retail investors.  The report published by the Securities and Exchange Board of India (Sebi) had indicated that the percentage of individual traders in the F&O segment that experienced losses increased from 89 per cent to 91.1 per cent from to roughly 7.3 million. ",
+      url: "https://www.businessworld.in/article/retailers-at-risk-as-speculative-games-continue-govt-gets-rewards-548180",
+      imageUrl:
+        "https://static.businessworld.in/IMG_7300_20250216213853_original_image_2.webp",
+      source: "BW Business World",
+      slug: "retailers-at-risk"
+    },
+    {
       date: "February 13, 2025",
       title:
         "How to play Nifty bears in the current market? Do’s & don’ts for investors",

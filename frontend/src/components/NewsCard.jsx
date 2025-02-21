@@ -11,11 +11,11 @@ function NewsCard({ title, excerpt, feature_image, slug, primary_author, date, e
       transition={{ duration: 0.8 }}
       className="relative overflow-hidden transition-all duration-75 max-w-[485px] group p-2 sm:p-3 hover:bg-lightBeige rounded-lg hover:scale-105 flex flex-col h-full"
     >
-      {externalLinks && externalLinks.length > 0 && (
+      {/* {externalLinks && externalLinks.length > 0 && (
         <div className="absolute top-2 right-2 bg-brown text-white text-xs px-2 py-1 rounded">
           Multi Source
         </div>
-      )}
+      )} */}
       <Link to={`/news/${encodeURIComponent(slug)}`} className="block flex-grow">
         <div className="h-full group overflow-hidden relative flex flex-col">
           {feature_image && (

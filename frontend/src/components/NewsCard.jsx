@@ -3,17 +3,21 @@ import { motion } from "framer-motion";
 import Heading from "./common/Heading";
 import { Link } from "react-router-dom";
 
-function NewsCard({ title, excerpt, feature_image, slug, primary_author, date }) {
+function NewsCard({ title, excerpt, feature_image, slug, primary_author, date, externalLinks }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="overflow-hidden transition-all duration-75 max-w-[485px] group p-2 sm:p-3 hover:bg-lightBeige rounded-lg hover:scale-105 flex flex-col h-full"
+      className="relative overflow-hidden transition-all duration-75 max-w-[485px] group p-2 sm:p-3 hover:bg-lightBeige rounded-lg hover:scale-105 flex flex-col h-full"
     >
+      {externalLinks && externalLinks.length > 0 && (
+        <div className="absolute top-2 right-2 bg-brown text-white text-xs px-2 py-1 rounded">
+          Multi Source
+        </div>
+      )}
       <Link to={`/news/${encodeURIComponent(slug)}`} className="block flex-grow">
         <div className="h-full group overflow-hidden relative flex flex-col">
-          {/* Feature image section */}
           {feature_image && (
             <div className="mb-2">
               <img
@@ -26,14 +30,13 @@ function NewsCard({ title, excerpt, feature_image, slug, primary_author, date })
 
           <div className="flex flex-col h-full">
             <div className="overflow-hidden h-[4.5em]">
-              {/* Fixed height for title */}
               <Heading className="md:text-subheading text-mobileSubHeading text-brown group-hover:text-black font-bold line-clamp-2">
                 {title}
               </Heading>
             </div>
             {date && (
-                <span className="text-sm my-1 text-gray-500">{date}</span>
-              )}
+              <span className="text-sm my-1 text-gray-500">{date}</span>
+            )}
             <div className="flex-grow">
               <p className="text-body font-body">{excerpt}</p>
             </div>
@@ -50,7 +53,6 @@ function NewsCard({ title, excerpt, feature_image, slug, primary_author, date })
                   <span className="text-xs">{primary_author.name}</span>
                 </div>
               )}
-              
             </div>
           </div>
           <div className="flex justify-end mt-2 items-center">

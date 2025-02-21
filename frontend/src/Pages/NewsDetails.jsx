@@ -1,5 +1,5 @@
 // src/pages/NewsDetails.jsx
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import Section from "../components/container/Section";
@@ -10,25 +10,76 @@ import Text from "../components/common/Text";
 // In a production app, replace this with data fetched from an API.
 const articles = [
     {
+        date: "February 20, 2025",
+        title: "Indian Equity Markets Pain Worsen as Economy, Corporate Profits Slow",
+        excerpt: "The broader markets may struggle to deliver the returns investors have grown accustomed to,",
+        slug: "indian-equity-multi",
+        imageUrl: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202502/stock-market-ahead-20445435-16x9_0.jpg?VersionId=EAUJ0wPUqEKyM8yTVjOY3w3CAV7RNjko&size=690:388",
+        source: "Multiple Sources",
+        externalLinks: [
+            {
+                id: "reuters",
+                source: "Reuters",
+                url: "https://www.reuters.com/world/india/indian-equity-markets-pain-worsen-economy-corporate-profits-slow-2025-02-20/",
+                date: "February 20, 2025",
+                title: "Indian Equity Markets Pain Worsen as Economy, Corporate Profits Slow"
+            },
+            {
+                id: "deccan",
+                source: "Deccan Herald",
+                url: "https://www.deccanherald.com/business/markets/indian-equity-markets-pain-to-worsen-as-economy-corporate-profits-slow-3413569",
+                date: "February 20, 2025",
+                title: "Indian Equity Markets Pain to Worsen as Economy, Corporate Profits Slow"
+            },
+            {
+                id: "theprint",
+                source: "The Print",
+                url: "https://theprint.in/india/indian-equity-markets-pain-to-worsen-as-economy-corporate-profits-slow/2502953/",
+                date: "February 20, 2025",
+                title: "Indian Equity Markets Pain to Worsen as Economy, Corporate Profits Slow"
+            },
+            {
+                id: "indiatoday",
+                source: "India Today",
+                url: "https://www.indiatoday.in/business/story/stock-market-ahead-outlook-dalal-streets-losing-streak-why-the-market-fall-may-not-end-soon-nse-bse-2682632-2025-02-20",
+                date: "February 20, 2025",
+                title: "Stock Market Ahead Outlook: Dalal Street Losing Streak, Why the Market Fall May Not End Soon"
+            }
+        ]
+    },
+    {
+        date: "February 19, 2025",
+        title:
+            "One in five PMS schemes hold over 10% in cash",
+        excerpt:
+            "With the valuations being what they are, it would be very hard for anybody to outperform on new AUM. This explains the reason why some schemes are sitting on high levels of cash.",
+        additionalParagraph: "Some portfolio managers are navigating the current market turbulence by bulking up on cash.Forty-four out of the 207 portfolio management services (PMS) schemes held over 10 per cent in cash at the end of January, data from PMS Bazaar show. Ninety-six schemes have raised their cash holdings in the past year.Aequitas’ India Opportunities Product has over 88 per cent of its assets in cash, the most among PMS schemes. Shree Rama Managers’ Vriddhi Plan, Alchemy Capital Management’s Ascent and Turtle Wealth Management’s Wealth Mantra are other schemes with a high percentage of cash.",
+        url: "https://www.thehindubusinessline.com/markets/one-in-five-pms-schemes-hold-over-10-in-cash/article69238969.ece",
+        imageUrl:
+            "https://bl-i.thgim.com/public/incoming/yk5j71/article69239341.ece/alternates/LANDSCAPE_1200/PO19_Coins_stack_chart.jpg",
+        source: "The Hindu Businessline",
+        slug: "one-in-five-pms-schemes-hold-over-10-in-cash"
+    },
+    {
         date: "February 17, 2025",
         title:
-          "Retailers At Risk As Speculative Games Continue; Govt Gets Rewards",
+            "Retailers At Risk As Speculative Games Continue; Govt Gets Rewards",
         excerpt:
-          "By imposing heavy taxes on F&O transactions, the government is not really helping the retail trader. If taxes such as STT, stamp duty, and high broker fees were reduced or eliminated, many retail traders could become profitable. However, doing so would lead to a significant loss of revenue for the government. If the government’s true intention is to discourage speculative trading among retail investors, the solution is simple: increase the net worth requirements for individuals to trade in futures and options. In its attempt to curb retail trading through higher taxes and charges, the government may ultimately be causing more harm than good.",
-          additionalParagraph:"Approximately 11.3 million distinct individual traders together incurred losses of Rs 1.81 lakh crore from FY22 to FY24. Merely 7.2 per cent of individual F&O traders reported a profit during the three-year timeframe, with only 1 per cent earning more than Rs 1 lakh once transaction costs were considered. According to the report by Sebi, over 75 per cent of the loss-making traders continued to operate in the F&O segment even after incurring losses in the previous two consecutive years.",
+            "By imposing heavy taxes on F&O transactions, the government is not really helping the retail trader. If taxes such as STT, stamp duty, and high broker fees were reduced or eliminated, many retail traders could become profitable. However, doing so would lead to a significant loss of revenue for the government. If the government’s true intention is to discourage speculative trading among retail investors, the solution is simple: increase the net worth requirements for individuals to trade in futures and options. In its attempt to curb retail trading through higher taxes and charges, the government may ultimately be causing more harm than good.",
+        additionalParagraph: "Approximately 11.3 million distinct individual traders together incurred losses of Rs 1.81 lakh crore from FY22 to FY24. Merely 7.2 per cent of individual F&O traders reported a profit during the three-year timeframe, with only 1 per cent earning more than Rs 1 lakh once transaction costs were considered. According to the report by Sebi, over 75 per cent of the loss-making traders continued to operate in the F&O segment even after incurring losses in the previous two consecutive years.",
         url: "https://www.businessworld.in/article/retailers-at-risk-as-speculative-games-continue-govt-gets-rewards-548180",
         imageUrl:
-          "https://static.businessworld.in/IMG_7300_20250216213853_original_image_2.webp",
+            "https://static.businessworld.in/IMG_7300_20250216213853_original_image_2.webp",
         source: "BW Business World",
         slug: "retailers-at-risk"
-      },
+    },
     {
         date: "February 13, 2025",
         title:
             "How to play Nifty bears in the current market? Do’s & don’ts for investors",
         excerpt:
             "This one isn't driven by a single catastrophic event. It's more like a slow leak after the post-Covid liquidity surge. Midcaps and smallcaps were priced for perfection -- many doubling in a year. But now, with interest rates rising, global growth slowing, and the rupee steadily weakening, the cracks are showing.",
-        additionalParagraph:"Indian markets have been in a corrective phase for quite sometime now with the headline index Nifty falling 12% from the peak. However, the extent of damage is varied in different pockets of the market. For instance, the Nifty Smallcap 250 index is down nearly 20% from the highs, officially entering a bearish territory, while the midcap index is still yet to touch those levels. Analysts say the current bearish phase is not as extreme as seen in the past. If we take the 2008 downturn as an example, Nifty's P/E ratio peaked at around 28x, compared with the CY25 P/E of 18.8x.",
+        additionalParagraph: "Indian markets have been in a corrective phase for quite sometime now with the headline index Nifty falling 12% from the peak. However, the extent of damage is varied in different pockets of the market. For instance, the Nifty Smallcap 250 index is down nearly 20% from the highs, officially entering a bearish territory, while the midcap index is still yet to touch those levels. Analysts say the current bearish phase is not as extreme as seen in the past. If we take the 2008 downturn as an example, Nifty's P/E ratio peaked at around 28x, compared with the CY25 P/E of 18.8x.",
         url: "https://economictimes.indiatimes.com/markets/stocks/news/how-to-play-nifty-bears-in-the-current-market-dos-donts-for-investors/articleshow/118201159.cms?from=mdr",
         imageUrl:
             "https://img.etimg.com/thumb/msid-118201136,width-400,height-300,imgsize-88652,resizemode-75/how-to-play-nifty-bears-in-the-current-market-dos-donts-for-investors.jpg",
@@ -42,7 +93,7 @@ const articles = [
 
         excerpt:
             "While waiting for the 'perfect' entry point, investors forgo dividends, reinvestment opportunities, and long-term growth, which can be far more costly than a short-term loss.",
-        additionalParagraph:"Successful market timing requires two correct decisions: when to exit and when to re-enter. If we assume you have a 50 percent chance of being right on each decision (an optimistic assumption), the probability of being right on both decisions is just 25 percent. Make these decisions multiple times, and your odds of sustained success plummet further. Consider that to successfully time the market over a 10-year period, making just two timing decisions per year, you would need to be right 20 times in a row. The probability of getting all these decisions correct, even with a 50 percent success rate per decision, is less than 0.0001 percent.",
+        additionalParagraph: "Successful market timing requires two correct decisions: when to exit and when to re-enter. If we assume you have a 50 percent chance of being right on each decision (an optimistic assumption), the probability of being right on both decisions is just 25 percent. Make these decisions multiple times, and your odds of sustained success plummet further. Consider that to successfully time the market over a 10-year period, making just two timing decisions per year, you would need to be right 20 times in a row. The probability of getting all these decisions correct, even with a 50 percent success rate per decision, is less than 0.0001 percent.",
         url: "https://www.moneycontrol.com/news/business/personal-finance/the-market-timing-illusion-why-sitting-on-cash-can-be-a-costly-mistake-12937555.html",
         imageUrl:
             "https://images.moneycontrol.com/static-mcnews/2025/02/20250212015353_cash-trap-1102251.jpg",
@@ -118,16 +169,13 @@ const articles = [
 ];
 
 const NewsDetails = () => {
-    // Get the 'slug' parameter from the URL
     const { slug } = useParams();
     const decodedSlug = decodeURIComponent(slug);
 
-    // Then search for the article using the decoded slug:
     const article = articles.find(
         (art) => (art.slug || art.url) === decodedSlug
     );
 
-    // If no matching article is found, render an error message.
     if (!article) {
         return (
             <Section padding="none" className="mt-9 p-18">
@@ -142,6 +190,11 @@ const NewsDetails = () => {
             </Section>
         );
     }
+
+    // For articles with multiple external links, manage active link state
+    const [activeExternalIndex, setActiveExternalIndex] = useState(0);
+    const hasMultipleSources = article.externalLinks && article.externalLinks.length > 0;
+    const activeExternal = hasMultipleSources ? article.externalLinks[activeExternalIndex] : null;
 
     return (
         <>
@@ -167,8 +220,7 @@ const NewsDetails = () => {
                         <Text className="text-primary font-body text-sm">
                             Source: {article.source}
                         </Text>
-                        {article.date &&
-                            <span className="text-gray-400">{article.date}</span>}
+                        {article.date && <span className="text-gray-400">{article.date}</span>}
                     </div>
                     {article.imageUrl && (
                         <img
@@ -179,14 +231,12 @@ const NewsDetails = () => {
                     )}
 
                     <div className="article-content">
-                        {/* Synopsis styling */}
                         {article.synopsis && (
                             <Text className="text-md font-semibold text-gray-600 mb-4">
                                 {article.synopsis}
                             </Text>
                         )}
 
-                        {/* Blockquote with big inverted commas */}
                         {article.excerpt && (
                             <div className="relative text-base sm:max-w-4xl leading-relaxed mb-4 italic flex flex-col">
                                 <blockquote className="flex items-start relative">
@@ -200,7 +250,7 @@ const NewsDetails = () => {
                                     <span className="mt-1">{article.excerpt}</span>
                                     <svg
                                         viewBox="0 0 24 24"
-                                        className="sm:w-2 sm:h-2 w-18 h-18 text-brown  self-end shrink-0"
+                                        className="sm:w-2 sm:h-2 w-18 h-18 text-brown self-end shrink-0"
                                         fill="currentColor"
                                     >
                                         <path d="M12.7,20.7c2.3-0.5,4.1-1.5,5.6-3c1.4-1.5,2.2-3.3,2.2-5.3c0-2.3-0.8-4.2-2.2-5.9c-1.5-1.7-3.4-2.5-5.6-2.5 c-1.7,0-3.1,0.5-4.2,1.6c-1.1,1.1-1.7,2.4-1.7,4c0,1.7,0.5,3,1.4,4.1c1,1.1,2.2,1.6,3.7,1.6c0.9,0,1.7-0.2,2.3-0.7l0.7,0.4 c-0.3,1.2-1,2.2-2.1,3c-1.1,0.8-2.2,1.2-3.5,1.3L12.7,20.7z" />
@@ -212,24 +262,51 @@ const NewsDetails = () => {
                             </div>
                         )}
 
-
-                        {/* Additional paragraph styling */}
                         {article.additionalParagraph && (
                             <Text className="text-base leading-relaxed text-gray-700 mb-4">
                                 {article.additionalParagraph}
                             </Text>
                         )}
 
-                        <div className="mt-2 text-center">
-                            <a
-                                href={article.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-block sm:px-6 sm:py-2 p-2 text-brown border-brown border"
-                            >
-                                Click here to read the full article
-                            </a>
-                        </div>
+                        {hasMultipleSources ? (
+                            <div className="mt-4">
+                                <div className="flex justify-center space-x-4 mb-4">
+                                    {article.externalLinks.map((link, index) => (
+                                        <button
+                                            key={link.id}
+                                            onClick={() => setActiveExternalIndex(index)}
+                                            className={`py-18 px-18 border rounded transition-colors duration-300 ${activeExternalIndex === index
+                                                    ? "bg-brown text-white"
+                                                    : "bg-white text-brown hover:bg-brown hover:text-white"
+                                                }`}
+                                        >
+                                            {link.source}
+                                        </button>
+                                    ))}
+                                </div>
+                                <div className="text-center">
+                                    <a
+                                        href={activeExternal.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-block sm:px-6 sm:py-2 p-2 text-brown border-brown border rounded hover:bg-brown hover:text-white"
+                                    >
+                                        Read Full Article from {activeExternal.source}
+                                    </a>
+                                </div>
+                            </div>
+                        ) : (
+                            <div className="mt-2 text-center">
+                                <a
+                                    href={article.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-block sm:px-6 sm:py-2 p-2 text-brown border-brown border rounded hover:bg-brown hover:text-white"
+                                >
+                                    Click here to read the full article
+                                </a>
+                            </div>
+                        )}
                     </div>
                 </div>
             </Section>

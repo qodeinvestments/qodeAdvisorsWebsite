@@ -10,6 +10,56 @@ const FeaturedArticles = () => {
 
   const articles = [
     {
+      date: "February 20, 2025",
+      title: "Indian Equity Markets Pain Worsen as Economy, Corporate Profits Slow",
+      excerpt: "The slide was triggered by a sharp slowdown in profit growth in India's top companies. The earnings growth of the Nifty 50 companies was 5 per cent in the October-December quarter, a third straight quarter of single-digit increases after two years of double-digit growth.",
+      slug: "indian-equity-multi",
+      imageUrl: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202502/stock-market-ahead-20445435-16x9_0.jpg?VersionId=EAUJ0wPUqEKyM8yTVjOY3w3CAV7RNjko&size=690:388", // replace with an actual image URL if available
+      source: "Multiple Sources",
+      externalLinks: [
+        {
+          id: "reuters",
+          source: "Reuters",
+          url: "https://www.reuters.com/world/india/indian-equity-markets-pain-worsen-economy-corporate-profits-slow-2025-02-20/",
+          date: "February 20, 2025",
+          title: "Indian Equity Markets Pain Worsen as Economy, Corporate Profits Slow"
+        },
+        {
+          id: "deccan",
+          source: "Deccan Herald",
+          url: "https://www.deccanherald.com/business/markets/indian-equity-markets-pain-to-worsen-as-economy-corporate-profits-slow-3413569",
+          date: "February 20, 2025",
+          title: "Indian Equity Markets Pain to Worsen as Economy, Corporate Profits Slow"
+        },
+        {
+          id: "theprint",
+          source: "The Print",
+          url: "https://theprint.in/india/indian-equity-markets-pain-to-worsen-as-economy-corporate-profits-slow/2502953/",
+          date: "February 20, 2025",
+          title: "Indian Equity Markets Pain to Worsen as Economy, Corporate Profits Slow"
+        },
+        {
+          id: "indiatoday",
+          source: "India Today",
+          url: "https://www.indiatoday.in/business/story/stock-market-ahead-outlook-dalal-streets-losing-streak-why-the-market-fall-may-not-end-soon-nse-bse-2682632-2025-02-20",
+          date: "February 20, 2025",
+          title: "Stock Market Ahead Outlook: Dalal Street Losing Streak, Why the Market Fall May Not End Soon"
+        }
+      ]
+    },
+    {
+      date: "February 19, 2025",
+      title:
+        "One in five PMS schemes hold over 10% in cash",
+      excerpt:
+        "Forty-four out of the 207 portfolio management services (PMS) schemes held over 10 per cent in cash at the end of January, data from PMS Bazaar show. Ninety-six schemes have raised their cash holdings in the past year.",
+      url: "https://www.thehindubusinessline.com/markets/one-in-five-pms-schemes-hold-over-10-in-cash/article69238969.ece",
+      imageUrl:
+        "https://bl-i.thgim.com/public/incoming/yk5j71/article69239341.ece/alternates/LANDSCAPE_1200/PO19_Coins_stack_chart.jpg",
+      source: "The Hindu Businessline",
+      slug: "one-in-five-pms-schemes-hold-over-10-in-cash"
+    },
+    {
       date: "February 17, 2025",
       title:
         "Retailers At Risk As Speculative Games Continue; Govt Gets Rewards",
@@ -101,7 +151,6 @@ const FeaturedArticles = () => {
     (a, b) => new Date(b.date) - new Date(a.date)
   );
 
-  // Array of insights that can be easily expanded in the future
   const insights = [
     {
       title: "Rishabh Nahar at Laqsa’s Lambda Conference 2025",
@@ -127,7 +176,6 @@ const FeaturedArticles = () => {
       ),
       videoUrl: "https://www.youtube.com/embed/wnFKxKX_B1Y"
     }
-    // Add more insight objects here as needed
   ];
 
   return (
@@ -141,21 +189,19 @@ const FeaturedArticles = () => {
         <nav className="flex justify-center space-x-8">
           <button
             onClick={() => setActiveTab("news")}
-            className={`py-2 text-lg font-medium transition-colors duration-300 ${
-              activeTab === "news"
+            className={`py-2 text-lg font-medium transition-colors duration-300 ${activeTab === "news"
                 ? "border-b-2 border-brown text-brown"
                 : "text-gray-600 hover:text-brown"
-            }`}
+              }`}
           >
             News
           </button>
           <button
             onClick={() => setActiveTab("insights")}
-            className={`py-2 text-lg font-medium transition-colors duration-300 ${
-              activeTab === "insights"
+            className={`py-2 text-lg font-medium transition-colors duration-300 ${activeTab === "insights"
                 ? "border-b-2 border-brown text-brown"
                 : "text-gray-600 hover:text-brown"
-            }`}
+              }`}
           >
             Insights
           </button>
@@ -168,13 +214,14 @@ const FeaturedArticles = () => {
           <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {sortedArticles.map((article, index) => (
               <NewsCard
-                key={article.url || index}
+                key={article.slug || index}
                 title={article.title}
                 excerpt={article.excerpt}
                 date={article.date}
                 slug={article.slug || article.url}
                 feature_image={article.imageUrl}
                 primary_author={{ name: article.source }}
+                externalLinks={article.externalLinks}
               />
             ))}
           </div>

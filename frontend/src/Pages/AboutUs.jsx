@@ -163,16 +163,9 @@ const AboutUs = () => {
           Our Story
         </Heading>
         <Text className="text-center text-body font-body mb-7 px-18 lg:px-10">
-          Our journey began in 2016 when we (Karan, Kavan, and Rishabh) decided
-          to invest our own money in the stock market using quant models. We
-          quickly began outperforming market averages. This success gave us the
-          confidence to invest the reserve capital from our family business, and
-          we were able to grow that capital significantly. <br />
-          <br /> As time passed, we thought, why not use our expertise to help
-          others grow their wealth too? With this idea in mind, we launched our
-          first quant strategy, “The Quant Growth Fund,” partnering with another
-          fund manager.
-          <br />
+          Our journey began in 2016 when we (Karan, Kavan, and Rishabh) decided to grow our own money in the stock market using quant models. We were one of the early pioneers of quant investing and trading in India. We adopted data-driven strategies when it was still a new concept in the country. <br />
+          <br />We began outperforming the market. This success gave us the confidence to invest the reserve capital from our family business. <br />
+          <br />As time passed, we thought, why not use our expertise to help others grow their wealth too? With this idea in mind, we launched our first quant strategy, “The Quant Growth Fund,” partnering with another fund manager. <br />
           <br /> In fact, we were one of the early pioneers of quant investing
           and trading in India, adopting data-driven strategies when it was
           still a new concept in the country. This success fueled the next phase

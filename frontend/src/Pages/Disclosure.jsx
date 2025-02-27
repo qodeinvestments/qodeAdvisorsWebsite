@@ -240,6 +240,31 @@ const Disclosure = () => {
               </div>
             </div>
           </CustomLink>
+          <CustomLink
+            to={"/documents/Fee_Calculator.xlsx"}
+            target="_blank"
+          >
+            <div className=" p-1 md:p-3 cursor-pointer border border-brown transition-all group duration-300 hover:bg-beige hover:text-black capitalize hover:shadow-xl">
+              <div className="flex justify-between items-center">
+                <div>
+                  <Heading className="group-hover:text-black sm:text-subheading text-brown text-mobileSubHeading font-subheading">
+                    Fee Calculation
+                  </Heading>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 100 100"
+                    width="44"
+                    height="44"
+                    fill="currentColor"
+                  >
+                    <path d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </CustomLink>
         </div>
         <div className=" mt-3">
           <Text className="text-body font-body">

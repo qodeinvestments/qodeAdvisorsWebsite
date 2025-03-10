@@ -10,6 +10,27 @@ import Text from "../components/common/Text";
 // In a production app, replace this with data fetched from an API.
 const articles = [
     {
+        date: "March 10, 2025",
+        title: "March is Usually Strong for Indian Equities, Will Trump’s Policy Swings Disrupt the Trend?",
+        excerpt: "Harvest losses for tax benefits, trim laggards and offset gains. Lower return expectations. The last five years of equity returns won’t repeat, so churn wisely. Bull markets fill portfolios with high-growth, high-debt stocks. Bear markets demand discipline, clean out weak names and position for the next cycle.",
+        imageUrl: "https://media.assettype.com/outlookbusiness/import/uploadimage/library/16_9/16_9_5/IMAGE_1651656523.webp?w=640&auto=format%2Ccompress&fit=max&format=webp&dpr=1.0",
+        additionalParagraph: "Foreign capital outflow continues to weigh heavily on investor sentiment causing panic across D-street. However, the pace of selling has somewhat reduced. As per a report by Elara Securities, outflows from India have slowed to their lowest level since January 2025. Last week's outflows stood at $113 million compared to the average weekly outflow of $460 million since the beginning of the year.The current market correction has also eased hot valuations in certain pockets, which was necessary. The bloodbath in domestic equities has resulted in a significant valuation adjustment across indices. The Nifty-50 is now trading at a forward PE of 18.6x, which is 9% below its long-term average, as per Motilal Oswal. India’s market cap-to-GDP ratio, which hit a high of 146% last year in September month, has also declined to 120%. A level closer to its historical averages",
+        source: "Outlook Business",
+        slug: "march-strong-for-indian-equities",
+        url: "https://www.outlookbusiness.com/markets/march-is-usually-strong-for-indian-equities-will-trumps-policy-swings-disrupt-the-trend",
+      },
+    {
+        date: "March 10, 2025",
+        title: "How to navigate the rollercoaster ride on Dalal Street? Here are 6 strategies to beat stock market volatility",
+        excerpt: "Despite the ongoing market correction, Nahar views this phase as a strategic opportunity for investors to buy quality stocks at attractive valuations. By maintaining discipline, focusing on long-term fundamentals, and avoiding reactionary decisions, investors may position themselves to benefit significantly when market sentiment improves. Instead of fearing volatility, he suggests embracing it as part of the investment journey towards wealth creation.",
+        additionalParagraph: "Sensex and Nifty traded higher on Thursday, tracking positive global cues after former US President Donald Trump granted a one-month exemption on new tariffs for imports from Mexico and Canada, benefiting US automakers.Asian markets followed an overnight rally on Wall Street after Trump softened his stance on the new tariffs. Moreover, the US dollar index slipped to a four-month low of 104.3, a development seen as favourable for emerging markets like India. Meanwhile, crude oil prices plunged to a six-month low of below $70 per barrel, boosting market sentiment after the OPEC+ alliance decided to increase output from April, a move expected to benefit Indian refiners by improving marketing margins on retail fuel.",
+        url: "https://www.livemint.com/market/how-to-navigate-the-rollercoaster-ride-on-dalal-street-here-are-6-key-strategies-to-beat-stock-market-volatility-11741252507737.html",
+
+        slug: "dalal-street-strategies",
+        imageUrl: "https://www.livemint.com/lm-img/img/2025/03/06/600x338/2-0-1396200818-iStock-1069549614-0_1679764637217_1741252994127.jpg",
+        source: "Mint Markets",
+    },
+    {
         date: "February 20, 2025",
         title: "Indian Equity Markets Pain Worsen as Economy, Corporate Profits Slow",
         excerpt: "The broader markets may struggle to deliver the returns investors have grown accustomed to,",
@@ -276,8 +297,8 @@ const NewsDetails = () => {
                                             key={link.id}
                                             onClick={() => setActiveExternalIndex(index)}
                                             className={`py-18 px-18 border rounded transition-colors duration-300 ${activeExternalIndex === index
-                                                    ? "bg-brown text-white"
-                                                    : "bg-white text-brown hover:bg-brown hover:text-white"
+                                                ? "bg-brown text-white"
+                                                : "bg-white text-brown hover:bg-brown hover:text-white"
                                                 }`}
                                         >
                                             {link.source}

@@ -10,6 +10,24 @@ const FeaturedArticles = () => {
 
   const articles = [
     {
+      date: "March 10, 2025",
+      title: "March is Usually Strong for Indian Equities, Will Trump’s Policy Swings Disrupt the Trend?",
+      excerpt: "Stock markets took a breather last week after a prolonged period of downtrend. Historical trends suggest that March is usually considered a strong month for Indian equities. However, markets might succumb to broader pain with Trump's policybook creating uncertainty and China drawing strong FII interests. Here's what analysts are saying",
+      imageUrl: "https://media.assettype.com/outlookbusiness/import/uploadimage/library/16_9/16_9_5/IMAGE_1651656523.webp?w=640&auto=format%2Ccompress&fit=max&format=webp&dpr=1.0",
+      source: "Outlook Business",
+      slug: "march-strong-for-indian-equities",
+      url: "https://www.outlookbusiness.com/markets/march-is-usually-strong-for-indian-equities-will-trumps-policy-swings-disrupt-the-trend",
+    },
+    {
+      date: "March 10, 2025",
+      title: "How to navigate the rollercoaster ride on Dalal Street? Here are 6 strategies to beat stock market volatility",
+      excerpt: "Sensex and Nifty rose on positive global cues, aided by Trump's tariff exemption for Mexico and Canada. Amid ongoing corrections, experts recommend long-term investing strategies and disciplined approaches to navigate market volatility and seize opportunities in undervalued stocks.",
+      slug: "dalal-street-strategies",
+      url: "https://www.livemint.com/market/how-to-navigate-the-rollercoaster-ride-on-dalal-street-here-are-6-key-strategies-to-beat-stock-market-volatility-11741252507737.html",
+      imageUrl: "https://www.livemint.com/lm-img/img/2025/03/06/600x338/2-0-1396200818-iStock-1069549614-0_1679764637217_1741252994127.jpg",
+      source: "Mint Markets",
+    },
+    {
       date: "February 20, 2025",
       title: "Indian Equity Markets Pain Worsen as Economy, Corporate Profits Slow",
       excerpt: "The slide was triggered by a sharp slowdown in profit growth in India's top companies. The earnings growth of the Nifty 50 companies was 5 per cent in the October-December quarter, a third straight quarter of single-digit increases after two years of double-digit growth.",

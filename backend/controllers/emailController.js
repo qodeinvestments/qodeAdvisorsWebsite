@@ -157,7 +157,7 @@ const sendForgetPasswordMail = async (req, res) => {
       // Build the email body for the password reset
       const emailBody = `
         <p>Hi,</p>
-        <p>You requested to reset your password. Please click the link below to reset it:</p>
+        <p>You have requested to reset your password. Please click the link below to reset it:</p>
         <p><a href="${resetUrl}">${resetUrl}</a></p>
         <p>If you did not request a password reset, please ignore this email.</p>
         <p>Best regards,<br/>Support Team</p>

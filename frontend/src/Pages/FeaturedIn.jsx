@@ -33,7 +33,7 @@ const FeaturedArticles = () => {
       excerpt: "The slide was triggered by a sharp slowdown in profit growth in India's top companies. The earnings growth of the Nifty 50 companies was 5 per cent in the October-December quarter, a third straight quarter of single-digit increases after two years of double-digit growth.",
       slug: "indian-equity-multi",
       imageUrl: "https://akm-img-a-in.tosshub.com/indiatoday/images/story/202502/stock-market-ahead-20445435-16x9_0.jpg?VersionId=EAUJ0wPUqEKyM8yTVjOY3w3CAV7RNjko&size=690:388", // replace with an actual image URL if available
-      source: "Multiple Sources",
+      source: "Reuters, Deccan Herald, The Print, India Today",
       externalLinks: [
         {
           id: "reuters",

@@ -98,6 +98,8 @@ const sendGeneralMail = async (req, res) => {
             </div>
         `;
 
+        
+
         // Send email to operations team
         await sendMail({
             fromName: 'Qode Contact Form',
@@ -142,24 +144,44 @@ const sendGeneralMail = async (req, res) => {
 };
 
 const sendForgetPasswordMail = async (req, res) => {
-    const { userEmail, token } = req.body;
+    const { fullName,userEmail, token } = req.body;
     if (!userEmail || !token) {
         return res.status(400).json({
             error: 'Email and token are required'
         });
     }
     try {
+        const pwdSignature = `
+            <div style="margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px; font-family: Arial, sans-serif; font-size: 14px; color: #555;">
+                <p>
+                    <a href="https://qodeinvest.com" target="_blank">
+                        <img src="https://workspace.qodeinvest.com/files/output-onlinejpgtools.png" width="114" alt="Qode Logo" style="display: block;">
+                    </a>
+                </p>
+                <p style="margin: 0px;">E: <a href="mailto:support@qodeinvest.com" style="color: #1a0dab; text-decoration: none;">support@qodeinvest.com</a></p>
+                <p style="margin: 0px;">W: <a href="http://www.qodeinvest.com" style="color: #1a0dab; text-decoration: none;">www.qodeinvest.com</a></p>
+                <p style="margin: 0px;">A: 2nd Floor, Tree House, Raghuvanshi Mills, Lower Parel, Mumbai-400013</p>
+                <p style="margin: 0px;">Follow us:</p>
+                <p>
+                    <a style="margin: 0px;" href="https://www.linkedin.com/company/qode1/" target="_blank">
+                        <img src="https://workspace.qodeinvest.com/files/linkedin%20(1).png" alt="LinkedIn" style="width: 24px; height: 24px;">
+                    </a>
+                </p>
+            </div>
+        `;
         // Construct the password reset URL using a dedicated domain.
         // Ensure FORGOT_PASSWORD_DOMAIN is defined in your environment variables, for example: "https://reset.yourdomain.com"
         const resetUrl = `${process.env.FORGOT_PASSWORD_DOMAIN}/reset-password?token=${encodeURIComponent(token)}&email=${encodeURIComponent(userEmail)}`;
 
         // Build the email body for the password reset
         const emailBody = `
-        <p>Hi,</p>
-        <p>You have requested to reset your password. Please click the link below to reset it:</p>
+        <p>Hi,${fullName}</p>
+        <p>We received a request to reset your password for your account. If you initiated this request, please click here to reset your password:</p>
         <p><a href="${resetUrl}">${resetUrl}</a></p>
-        <p>If you did not request a password reset, please ignore this email.</p>
+        <p>This link will expire in 10 minutes for security reasons. If you did not request a password reset, please ignore this email. Your account remains secure.</p>
+        <p>If you need any further assistance, feel free to contact our team.</p>
         <p>Best regards,<br/>Support Team</p>
+        ${pwdSignature}
       `;
 
         // Send the password reset email using a different sender domain.

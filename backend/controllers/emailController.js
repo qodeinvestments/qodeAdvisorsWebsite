@@ -1,24 +1,22 @@
 // emailController.js
 const { sendMail } = require('../services/mailService');
 const { ClientEnquiry } = require('../models');
-const { verifyRecaptchaToken } = require('../services/verifyRecaptchaToken'); // adjust the path accordingly
 
 const sendGeneralMail = async (req, res) => {
-    const { 
-        userEmail, 
-        message, 
-        fromName, 
+    const {
+        userEmail,
+        message,
+        fromName,
         investmentGoal,
         phone,
-        investmentExperience, 
+        investmentExperience,
         preferredStrategy,
-        initialInvestmentSize,
-        recaptchaToken
+        initialInvestmentSize
     } = req.body;
 
     if (!userEmail || !fromName) {
-        return res.status(400).json({ 
-            error: 'Email and name are required' 
+        return res.status(400).json({
+            error: 'Email and name are required'
         });
     }
 
@@ -115,6 +113,7 @@ const sendGeneralMail = async (req, res) => {
         // Send confirmation email to user
         await sendMail({
             fromName: 'Qode Support',
+            fromEmail : process.env.SENDER_EMAIL,
             to: userEmail,
             subject: "We've Received Your Message",
             body: `
@@ -136,8 +135,8 @@ const sendGeneralMail = async (req, res) => {
         });
     } catch (error) {
         console.error('Error handling contact form:', error);
-        res.status(500).json({ 
-            error: 'Failed to process your request. Please try again later.' 
+        res.status(500).json({
+            error: 'Failed to process your request. Please try again later.'
         });
     }
 };
@@ -145,39 +144,39 @@ const sendGeneralMail = async (req, res) => {
 const sendForgetPasswordMail = async (req, res) => {
     const { userEmail, token } = req.body;
     if (!userEmail || !token) {
-      return res.status(400).json({ 
-        error: 'Email and token are required' 
-      });
+        return res.status(400).json({
+            error: 'Email and token are required'
+        });
     }
     try {
-      // Construct the password reset URL using a dedicated domain.
-      // Ensure FORGOT_PASSWORD_DOMAIN is defined in your environment variables, for example: "https://reset.yourdomain.com"
-      const resetUrl = `${process.env.FORGOT_PASSWORD_DOMAIN}/reset-password?token=${encodeURIComponent(token)}&email=${encodeURIComponent(userEmail)}`;
-  
-      // Build the email body for the password reset
-      const emailBody = `
+        // Construct the password reset URL using a dedicated domain.
+        // Ensure FORGOT_PASSWORD_DOMAIN is defined in your environment variables, for example: "https://reset.yourdomain.com"
+        const resetUrl = `${process.env.FORGOT_PASSWORD_DOMAIN}/reset-password?token=${encodeURIComponent(token)}&email=${encodeURIComponent(userEmail)}`;
+
+        // Build the email body for the password reset
+        const emailBody = `
         <p>Hi,</p>
         <p>You have requested to reset your password. Please click the link below to reset it:</p>
         <p><a href="${resetUrl}">${resetUrl}</a></p>
         <p>If you did not request a password reset, please ignore this email.</p>
         <p>Best regards,<br/>Support Team</p>
       `;
-  
-      // Send the password reset email using a different sender domain.
-      // Here, we assume that sendMail accepts an optional "fromEmail" property.
-      await sendMail({
-        fromName: 'Support Team',
-        fromEmail: process.env.FORGOT_PASSWORD_SENDER_EMAIL, // This sender email should belong to the different domain
-        to: userEmail,
-        subject: 'Password Reset Request',
-        body: emailBody,
-      });
-  
-      res.status(200).json({ message: 'Password reset email sent successfully' });
+
+        // Send the password reset email using a different sender domain.
+        // Here, we assume that sendMail accepts an optional "fromEmail" property.
+        await sendMail({
+            fromName: 'Support Team',
+            fromEmail: process.env.FORGOT_PASSWORD_SENDER_EMAIL, // This sender email should belong to the different domain
+            to: userEmail,
+            subject: 'Password Reset Request',
+            body: emailBody,
+        });
+
+        res.status(200).json({ message: 'Password reset email sent successfully' });
     } catch (error) {
-      console.error('Error sending forgot password email:', error);
-      res.status(500).json({ error: 'Failed to send password reset email' });
+        console.error('Error sending forgot password email:', error);
+        res.status(500).json({ error: 'Failed to send password reset email' });
     }
-  };
-  
-  module.exports = { sendGeneralMail, sendForgetPasswordMail };
+};
+
+module.exports = { sendGeneralMail, sendForgetPasswordMail };

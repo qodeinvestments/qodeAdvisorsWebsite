@@ -41,7 +41,8 @@ const getGraphClient = async () => {
  * @param {string} options.body - HTML email body
  * @returns {Promise<Object>} - Result of the operation
  */
-async function sendMail({ fromName, to, subject, body }) {
+async function sendMail({ fromName,fromEmail, to, subject, body }) {
+    console.log('fromEmail',fromEmail)
     try {
         const client = await getGraphClient();
         
@@ -59,7 +60,7 @@ async function sendMail({ fromName, to, subject, body }) {
                 }],
                 from: {
                     emailAddress: {
-                        address: process.env.SENDER_EMAIL,
+                        address: fromEmail,
                         name: fromName
                     }
                 }

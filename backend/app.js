@@ -24,10 +24,7 @@ app.use(cors({
 }));
 app.use(bodyParser.json());
 
-// Initialize MailerLite
-const mailerlite = new MailerLite({
-  api_key: process.env.MAILERLITE_API_KEY
-});
+
 
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key',

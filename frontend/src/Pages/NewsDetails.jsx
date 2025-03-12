@@ -26,7 +26,7 @@ const articles = [
         additionalParagraph: "Long-Term Horizon Over Market Timing: According to Nahar, attempting to predict the exact market bottom is challenging, making investing for a long-term horizon—at least three years—more prudent. He notes that declining markets often lead to attractive valuations in high-quality stocks, which can deliver strong returns once sentiment improves and the market rebounds.",
         url: "https://www.livemint.com/market/how-to-navigate-the-rollercoaster-ride-on-dalal-street-here-are-6-key-strategies-to-beat-stock-market-volatility-11741252507737.html",
         slug: "dalal-street-strategies",
-        imageUrl: "https://www.livemint.com/lm-img/img/2025/03/06/600x338/2-0-1396200818-iStock-1069549614-0_1679764637217_1741252994127.jpg",
+        imageUrl: "/Rishabh-15.png",
         source: "Mint Markets",
         },
     {

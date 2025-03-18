@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Container, GrayContainer } from "../components";
 import Heading from "../components/common/Heading";
 import Text from "../components/common/Text";
 import Section from "../components/container/Section";
@@ -77,7 +76,7 @@ const ContactUs = () => {
                     </a>
                   </Text>
                 </div>
-                <div>
+                <div className="mb-4">
                   <Text className="sm:text-subheading text-mobileSubHeading font-subheading mb-2">
                     Email
                   </Text>
@@ -87,6 +86,21 @@ const ContactUs = () => {
                       className="text-gray-900 hover:text-gray-600 transition duration-300"
                     >
                       investor.relations@qodeinvest.com
+                    </a>
+                  </Text>
+                </div>
+                {/* New HR-related queries section */}
+                <div className="mb-4">
+                  <Text className="sm:text-subheading text-mobileSubHeading font-subheading mb-2">
+                    HR Queries
+                  </Text>
+                  <Text>
+                    For any HR related queries, please write to{" "}
+                    <a
+                      href="mailto:hr@qodeinvest.com"
+                      className="text-gray-900 hover:text-gray-600 transition duration-300"
+                    >
+                      hr@qodeinvest.com
                     </a>
                   </Text>
                 </div>

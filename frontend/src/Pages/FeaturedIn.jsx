@@ -44,6 +44,27 @@ const FeaturedArticles = () => {
 
   const articles = [
     {
+      "date": "March 19, 2025",
+      "title": "Why gold shines as a hedge against stock market volatility",
+      "excerpt": "Given the rising debt levels in the US and increasing global uncertainty, gold is expected to play a crucial role in future portfolios. While gold may not be a wealth-creation asset in the traditional sense, it remains an essential tool for diversification and capital protection. There are times for wealth creation, and there are times for capital preservation. Striking the right balance in your portfolio is key to successful long-term investing.",
+      "imageUrl": "https://images.moneycontrol.com/static-mcnews/2025/03/20250314103723_goldpricertr.png?impolicy=website&width=770&height=431",
+      "source": "Money Control",
+      "slug": "gold-shines-as-hedge-against-stock-market-volatility",
+      "url": "https://www.moneycontrol.com/news/business/personal-finance/why-gold-shines-as-a-hedge-against-stock-market-volatility-12968465.html"
+    },
+    {
+      date: "March 18, 2025",
+      title:
+        "Top 10 Portfolio Management Schemes for the month of February 2025",
+      excerpt:
+        "The Top 10 best performing Portfolio Management Schemes across equities saw a mixed performance. The rankings reflect the broader market trends, where large and mid-cap strategies showed resilience, while flexicap and multi-cap funds struggled amid volatility.",
+      imageUrl:
+        "https://images.moneycontrol.com/static-mcnews/2025/03/20250318055050_slideshow-khushi-1703251.jpg",
+      source: "Money Control",
+      slug: "top-10-portfolio-management-schemes",
+      url: "https://www.moneycontrol.com/news/business/markets/top-10-portfolio-management-schemes-for-the-month-of-february-2025-12967323.html",
+    },
+    {
       date: "March 10, 2025",
       title:
         "March is Usually Strong for Indian Equities, Will Trump's Policy Swings Disrupt the Trend?",

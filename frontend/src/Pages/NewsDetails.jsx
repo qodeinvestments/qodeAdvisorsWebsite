@@ -10,6 +10,28 @@ import Text from "../components/common/Text";
 // In a production app, replace this with data fetched from an API.
 const articles = [
     {
+        date: "March 19, 2025",
+        title: "Why gold shines as a hedge against stock market volatility",
+        excerpt: "While gold may not be a wealth creation asset in the traditional sense, it remains an essential tool for diversification and capital protection.",
+        additionalParagraph: "When we consider any asset class, we often view it as a store of wealth. The fundamental question we ask is simple: Will this asset retain its value over the next 5, 10, 15 or even 50 years, or will it lose its worth? The general principle is clear: If an asset can be produced in infinite quantities, its value will eventually diminish. However, if an asset is limited in supply and holds intrinsic utility, it is more likely to retain its value.",
+        imageUrl: "https://images.moneycontrol.com/static-mcnews/2025/03/20250314103723_goldpricertr.png?impolicy=website&width=770&height=431",
+        source: "Money Control",
+        slug: "gold-shines-as-hedge-against-stock-market-volatility",
+        url: "https://www.moneycontrol.com/news/business/personal-finance/why-gold-shines-as-a-hedge-against-stock-market-volatility-12968465.html"
+    },    
+    {
+        date: "March 18, 2025",
+        title: "Top 10 Portfolio Management Schemes for the month of February 2025",
+        paragraphs: [
+            "Qode All Weather: Managed by Rishabh Nahar, the investment strategy focuses on constructing a diversified ETF portfolio aimed at delivering risk-adjusted returns. The approach utilises quantitative insights to optimise asset allocation across low-correlated asset classes, ensuring stability and consistent performance across varying market conditions, with an objective to outperform the Nifty.",
+            "Qode Tactical Fund: This strategy follows a momentum-based investment approach, prioritising stocks with strong upward trends while swiftly exiting those that underperform. It integrates advanced timing models and derivatives hedging to manage risk, optimise tax efficiency, and safeguard against market downturns, ensuring steady capital growth."
+        ],
+        imageUrl: "https://images.moneycontrol.com/static-mcnews/2025/03/20250318055050_slideshow-khushi-1703251.jpg",
+        source: "Money Control",
+        slug: "top-10-portfolio-management-schemes",
+        url: "https://www.moneycontrol.com/news/business/markets/top-10-portfolio-management-schemes-for-the-month-of-february-2025-12967323.html",
+    },
+    {
         date: "March 10, 2025",
         title: "March is Usually Strong for Indian Equities, Will Trump's Policy Swings Disrupt the Trend?",
         excerpt: "Harvest losses for tax benefits, trim laggards and offset gains. Lower return expectations. The last five years of equity returns won't repeat, so churn wisely. Bull markets fill portfolios with high-growth, high-debt stocks. Bear markets demand discipline, clean out weak names and position for the next cycle.",
@@ -18,8 +40,8 @@ const articles = [
         source: "Outlook Business",
         slug: "march-strong-for-indian-equities",
         url: "https://www.outlookbusiness.com/markets/march-is-usually-strong-for-indian-equities-will-trumps-policy-swings-disrupt-the-trend",
-        },
-        {
+    },
+    {
         date: "March 10, 2025",
         title: "How to navigate the rollercoaster ride on Dalal Street? Here are 6 strategies to beat stock market volatility",
         excerpt: "Despite the ongoing market correction, Nahar views this phase as a strategic opportunity for investors to buy quality stocks at attractive valuations. By maintaining discipline, focusing on long-term fundamentals, and avoiding reactionary decisions, investors may position themselves to benefit significantly when market sentiment improves. Instead of fearing volatility, he suggests embracing it as part of the investment journey towards wealth creation.",
@@ -28,7 +50,7 @@ const articles = [
         slug: "dalal-street-strategies",
         imageUrl: "/Rishabh-15.png",
         source: "Mint Markets",
-        },
+    },
     {
         date: "February 20, 2025",
         title: "Indian Equity Markets Pain Worsen as Economy, Corporate Profits Slow",
@@ -287,6 +309,12 @@ const NewsDetails = () => {
                                 {article.additionalParagraph}
                             </Text>
                         )}
+
+                        {article.paragraphs && article.paragraphs.map((paragraph, index) => (
+                            <Text key={index} className="text-base leading-relaxed text-gray-700 mb-1">
+                                {paragraph}
+                            </Text>
+                        ))}
 
                         {hasMultipleSources ? (
                             <div className="mt-4">

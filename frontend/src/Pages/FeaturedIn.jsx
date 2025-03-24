@@ -44,6 +44,18 @@ const FeaturedArticles = () => {
 
   const articles = [
     {
+      date: "March 24, 2025",
+      title:
+        "Five years since pandemic crash: Penny stockholders are celebrating. But for how long can they?",
+      excerpt:
+        "The covid-led stock market crash in March 2020 birthed a spectacular four-year bull run. Five years on, the boom phase and the subsequent, ongoing correction have brought significant lessons for investors—especially new entrants. While most have moderated return expectations by now, some have exited the market altogether, and others are holding tight in the face of recent corrections.",
+      imageUrl:
+        "https://www.livemint.com/lm-img/img/2025/03/23/600x338/gccdbfbe1df55fb78eaf53eaaf1b005aa8664a8713b6cbbac2_1727422374094_1742744060141.jpg",
+      source: "Mint Markets",
+      slug: "penny-stockholders-celebrating",
+      url: "https://www.livemint.com/market/stock-market-news/penny-stocks-investors-multi-bagger-covid-pandemic-crash-smallcaps-midcaps-11742702528891.html",
+    },
+    {
       "date": "March 19, 2025",
       "title": "Why gold shines as a hedge against stock market volatility",
       "excerpt": "Given the rising debt levels in the US and increasing global uncertainty, gold is expected to play a crucial role in future portfolios. While gold may not be a wealth-creation asset in the traditional sense, it remains an essential tool for diversification and capital protection. There are times for wealth creation, and there are times for capital preservation. Striking the right balance in your portfolio is key to successful long-term investing.",

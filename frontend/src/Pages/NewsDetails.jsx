@@ -10,6 +10,20 @@ import Text from "../components/common/Text";
 // In a production app, replace this with data fetched from an API.
 const articles = [
     {
+        date: "March 24, 2025",
+        title:
+            "Five years since pandemic crash: Penny stockholders are celebrating. But for how long can they?",
+        excerpt:
+            "The government’s Make in India push through several production-linked incentive (PLI) schemes created a thriving ecosystem for new small companies after covid. Hence, these companies have seen their earnings grow 2-3x faster in the last six years, compared to the growth seen in the last 15 years. Naturally, the risk appetite for this segment also rose sharply after the pandemic, especially from HNIs. ",
+        additionalParagraph: "However, most experts cautioned that even though the broader pool has improved, investors are still locked in risky bets as further corrections will choke the exits from this segment. They also noted that while the latest rally has offered temporary relief to these multi-baggers, any more falls are likely to expose the cracks beneath the surface, and only the fundamentally sound ones will stand strong in the end.",
+        imageUrl:
+            "https://www.livemint.com/lm-img/img/2025/03/23/600x338/gccdbfbe1df55fb78eaf53eaaf1b005aa8664a8713b6cbbac2_1727422374094_1742744060141.jpg",
+        source: "Mint Markets",
+        slug: "penny-stockholders-celebrating",
+        url: "https://www.livemint.com/market/stock-market-news/penny-stocks-investors-multi-bagger-covid-pandemic-crash-smallcaps-midcaps-11742702528891.html",
+        author : "Gaurav Didwania, Partner and Fund Manager at Qode Advisors"
+    },
+    {
         date: "March 19, 2025",
         title: "Why gold shines as a hedge against stock market volatility",
         excerpt: "While gold may not be a wealth creation asset in the traditional sense, it remains an essential tool for diversification and capital protection.",
@@ -17,8 +31,9 @@ const articles = [
         imageUrl: "https://images.moneycontrol.com/static-mcnews/2025/03/20250314103723_goldpricertr.png?impolicy=website&width=770&height=431",
         source: "Money Control",
         slug: "gold-shines-as-hedge-against-stock-market-volatility",
-        url: "https://www.moneycontrol.com/news/business/personal-finance/why-gold-shines-as-a-hedge-against-stock-market-volatility-12968465.html"
-    },    
+        url: "https://www.moneycontrol.com/news/business/personal-finance/why-gold-shines-as-a-hedge-against-stock-market-volatility-12968465.html",
+        author: "Rishabh Nahar, Partner and Fund Manager at Qode Advisors"
+    },
     {
         date: "March 18, 2025",
         title: "Top 10 Portfolio Management Schemes for the month of February 2025",
@@ -30,6 +45,7 @@ const articles = [
         source: "Money Control",
         slug: "top-10-portfolio-management-schemes",
         url: "https://www.moneycontrol.com/news/business/markets/top-10-portfolio-management-schemes-for-the-month-of-february-2025-12967323.html",
+        author: "Rishabh Nahar, Partner and Fund Manager at Qode Advisors"
     },
     {
         date: "March 10, 2025",
@@ -40,6 +56,8 @@ const articles = [
         source: "Outlook Business",
         slug: "march-strong-for-indian-equities",
         url: "https://www.outlookbusiness.com/markets/march-is-usually-strong-for-indian-equities-will-trumps-policy-swings-disrupt-the-trend",
+        author: "Rishabh Nahar, Partner and Fund Manager at Qode Advisors"
+
     },
     {
         date: "March 10, 2025",
@@ -50,6 +68,8 @@ const articles = [
         slug: "dalal-street-strategies",
         imageUrl: "/Rishabh-15.png",
         source: "Mint Markets",
+        author: "Rishabh Nahar, Partner and Fund Manager at Qode Advisors"
+
     },
     {
         date: "February 20, 2025",
@@ -113,7 +133,9 @@ const articles = [
         imageUrl:
             "https://static.businessworld.in/IMG_7300_20250216213853_original_image_2.webp",
         source: "BW Business World",
-        slug: "retailers-at-risk"
+        slug: "retailers-at-risk",
+        author: "Rishabh Nahar, Partner and Fund Manager at Qode Advisors"
+
     },
     {
         date: "February 13, 2025",
@@ -126,7 +148,9 @@ const articles = [
         imageUrl:
             "https://img.etimg.com/thumb/msid-118201136,width-400,height-300,imgsize-88652,resizemode-75/how-to-play-nifty-bears-in-the-current-market-dos-donts-for-investors.jpg",
         source: "Economic Times",
-        slug: "dos-and-donts-for-investors"
+        slug: "dos-and-donts-for-investors",
+        author: "Rishabh Nahar, Partner and Fund Manager at Qode Advisors"
+
     },
     {
         date: "February 12, 2025",
@@ -140,7 +164,9 @@ const articles = [
         imageUrl:
             "https://images.moneycontrol.com/static-mcnews/2025/02/20250212015353_cash-trap-1102251.jpg",
         source: "Money Control",
-        slug: "the-market-timing-illusion"
+        slug: "the-market-timing-illusion",
+        author: "Rishabh Nahar, Partner and Fund Manager at Qode Advisors"
+
     },
     {
         date: "January 27, 2025",
@@ -157,7 +183,9 @@ const articles = [
             "https://images.moneycontrol.com/static-mcnews/2025/01/20250125224302_Rishabh_Nahar.jpg?impolicy=website&width=350&height=195",
         source: "Money Control",
         // Custom slug for internal routing
-        slug: "daily-voice-green-energy-budget-2025"
+        slug: "daily-voice-green-energy-budget-2025",
+        author: "Rishabh Nahar, Partner and Fund Manager at Qode Advisors"
+
     },
     {
         date: "January 21, 2025",
@@ -174,7 +202,9 @@ const articles = [
         url: "https://www.moneycontrol.com/news/business/earnings/taking-stock-sensex-closes-below-76-000-mark-for-first-time-in-7-months-nifty-near-23-000-12916049.html",
         imageUrl:
             "https://images.moneycontrol.com/static-mcnews/2025/01/20250111040413_sensex_nifty_sensexdown.jpg?impolicy=website&width=770&height=431",
-        source: "Money Control"
+        source: "Money Control",
+        author: "Rishabh Nahar, Partner and Fund Manager at Qode Advisors"
+
     },
     {
         date: "January 21, 2025",
@@ -190,7 +220,9 @@ const articles = [
         url: "https://www.thehindubusinessline.com/markets/stock-markets/markets-plunge-as-trumps-trade-tariff-plans-rattle-investors-sensex-tanks-1235-points/article69123229.ece",
         imageUrl:
             "https://bl-i.thgim.com/public/incoming/wsa63d/article69112900.ece/alternates/LANDSCAPE_1200/IMG_Digitally_enhanced_s_2_1_U7CQLCHT.jpg",
-        source: "The Hindu BusinessLine"
+        source: "The Hindu BusinessLine",
+        author: "Rishabh Nahar, Partner and Fund Manager at Qode Advisors"
+
     },
     {
         date: "January 22, 2025",
@@ -206,7 +238,9 @@ const articles = [
         imageUrl:
             "https://img.etimg.com/thumb/msid-117443918,width-650,height-488,imgsize-1092996,resizemode-75/foreign-investors-exit-indian-market.jpg",
         source: "The Economic Times",
-        slug: "market-selloff-investor-strategy"
+        slug: "market-selloff-investor-strategy",
+        author: "Rishabh Nahar, Partner and Fund Manager at Qode Advisors"
+
     }
 ];
 
@@ -299,7 +333,7 @@ const NewsDetails = () => {
                                     </svg>
                                 </blockquote>
                                 <div className="text-right sm:mr-4 mt-18">
-                                    - Rishabh Nahar, Partner and Fund Manager at Qode Advisors
+                                    <Text className="text-gray-400">{article.author}</Text>
                                 </div>
                             </div>
                         )}

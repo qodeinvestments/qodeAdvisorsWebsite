@@ -104,18 +104,6 @@ const useFetchStrategyNavField = (fieldNames) => {
         return normalizedRow;
       });
 
-      // Handle end date
-      const targetDate = new Date(2024, 11, 31);
-      processedData = processedData.filter((row) => row.date <= targetDate);
-
-      if (processedData.length > 0) {
-        const lastItem = processedData[processedData.length - 1];
-        if (lastItem.date < targetDate) {
-          const newFinalItem = { ...lastItem, date: targetDate };
-          processedData.push(newFinalItem);
-        }
-      }
-
       // Format dates
       processedData = processedData.map((item) => ({
         ...item,

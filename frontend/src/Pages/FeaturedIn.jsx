@@ -44,6 +44,15 @@ const FeaturedArticles = () => {
 
   const articles = [
     {
+      "date": "April 1, 2025",
+      "title": "This fund manager expects RBI to cut interest rates by 75 bps in FY26, advises betting on these 4 sectors",
+      "excerpt": "Rishabh Nahar of Qode Advisors expects the RBI to implement further rate cuts to the tune of 75 basis points in FY26. This will be contingent on inflation staying within the central bank’s comfort zone and global interest rate movements, he said in an interview with Moneycontrol. In an environment of heightened global trade tensions, domestic-focused sectors appear more resilient, he believes.",
+      "imageUrl": "/Rishabh-15.png",
+      "source": "Money Control",
+      "slug": "rbi-interest-rate-cuts",
+      "url": "https://www.moneycontrol.com/news/business/markets/daily-voice-this-fund-manager-expects-rbi-to-cut-interest-rates-by-75-bps-in-fy26-advises-betting-on-these-4-sectors-12980846.html/amp"
+    },    
+    {
       date: "March 24, 2025",
       title:
         "Five years since pandemic crash: Penny stockholders are celebrating. But for how long can they?",

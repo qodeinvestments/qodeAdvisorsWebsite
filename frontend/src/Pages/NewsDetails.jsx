@@ -10,19 +10,16 @@ import Text from "../components/common/Text";
 // In a production app, replace this with data fetched from an API.
 const articles = [
     {
-        date: "March 24, 2025",
-        title:
-            "Five years since pandemic crash: Penny stockholders are celebrating. But for how long can they?",
-        excerpt:
-            "The government’s Make in India push through several production-linked incentive (PLI) schemes created a thriving ecosystem for new small companies after covid. Hence, these companies have seen their earnings grow 2-3x faster in the last six years, compared to the growth seen in the last 15 years. Naturally, the risk appetite for this segment also rose sharply after the pandemic, especially from HNIs. ",
-        additionalParagraph: "However, most experts cautioned that even though the broader pool has improved, investors are still locked in risky bets as further corrections will choke the exits from this segment. They also noted that while the latest rally has offered temporary relief to these multi-baggers, any more falls are likely to expose the cracks beneath the surface, and only the fundamentally sound ones will stand strong in the end.",
-        imageUrl:
-            "https://www.livemint.com/lm-img/img/2025/03/23/600x338/gccdbfbe1df55fb78eaf53eaaf1b005aa8664a8713b6cbbac2_1727422374094_1742744060141.jpg",
-        source: "Mint Markets",
-        slug: "penny-stockholders-celebrating",
-        url: "https://www.livemint.com/market/stock-market-news/penny-stocks-investors-multi-bagger-covid-pandemic-crash-smallcaps-midcaps-11742702528891.html",
-        author : "Gaurav Didwania, Partner and Fund Manager at Qode Advisors"
-    },
+        "date": "April 2, 2025",
+        "title": "This fund manager expects RBI to cut interest rates by 75 bps in FY26, advises betting on these 4 sectors",
+        "excerpt": "Additionally, sectors such as defense and specialty chemicals could benefit from global supply chain diversification. Select opportunities in energy transition and digitization also remain attractive.",
+        "additionalParagraph": "A 12–13% earnings growth is something we expect in the large-cap space. There is a lot of earnings visibility among the larger businesses. The slowdown is dependent on a lot of global factors, especially a recession in the US. This could impact the coming quarters for many small- and mid-cap businesses. On a consolidated basis, we will definitely see earnings growth, but individually, you will see businesses slow down if they are dependent on global macros.",
+        "imageUrl": "/Rishabh-15.png",
+        "source": "Money Control",
+        "slug": "rbi-interest-rate-cuts",
+        "url": "https://www.moneycontrol.com/news/business/markets/daily-voice-this-fund-manager-expects-rbi-to-cut-interest-rates-by-75-bps-in-fy26-advises-betting-on-these-4-sectors-12980846.html/amp",
+        "author": "Rishabh Nahar, Partner and Fund Manager at Qode Advisors"
+      },      
     {
         date: "March 19, 2025",
         title: "Why gold shines as a hedge against stock market volatility",

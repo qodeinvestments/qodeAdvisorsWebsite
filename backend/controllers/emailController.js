@@ -9,6 +9,7 @@ const sendGeneralMail = async (req, res) => {
         fromName,
         investmentGoal,
         phone,
+        location,
         investmentExperience,
         preferredStrategy,
         initialInvestmentSize

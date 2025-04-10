@@ -33,7 +33,7 @@ const upload = multer({ storage: storage });
 // Send email with attachments using multer
 router.post('/sendEmail', upload.array('attachments', 10), async (req, res) => {
     try {
-        const { fromName, fromEmail, to, toName, subject, body } = req.body;
+        const { fromName, fromEmail, to, toName, subject, body, includeSignature } = req.body;
         
         // Process uploaded files if any
         let attachments = [];
@@ -47,6 +47,10 @@ router.post('/sendEmail', upload.array('attachments', 10), async (req, res) => {
             }));
         }
         
+        // Parse includeSignature as boolean (form data comes as strings)
+        const shouldIncludeSignature = includeSignature === undefined ? true : 
+            (includeSignature === 'false' ? false : Boolean(includeSignature));
+        
         const result = await sendMail({
             fromName,
             fromEmail,
@@ -54,7 +58,8 @@ router.post('/sendEmail', upload.array('attachments', 10), async (req, res) => {
             toName,
             subject,
             body,
-            attachments
+            attachments,
+            includeSignature: shouldIncludeSignature
         });
         
         // Clean up temporary files after sending
@@ -88,7 +93,7 @@ router.post('/sendEmail', upload.array('attachments', 10), async (req, res) => {
 // Send email with JSON payload (for base64 attachments)
 router.post('/sendEmailWithInlineAttachments', express.json({limit: '50mb'}), async (req, res) => {
     try {
-        const { fromName, fromEmail, to, toName, subject, body, attachments } = req.body;
+        const { fromName, fromEmail, to, toName, subject, body, attachments, includeSignature } = req.body;
         
         console.log('Received request to send email with inline attachments');
         
@@ -99,7 +104,8 @@ router.post('/sendEmailWithInlineAttachments', express.json({limit: '50mb'}), as
             toName,
             subject,
             body,
-            attachments: attachments || []
+            attachments: attachments || [],
+            includeSignature: includeSignature !== false // Default to true if not specified
         });
         
         if (result.success) {

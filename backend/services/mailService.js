@@ -2,6 +2,7 @@ const msal = require('@azure/msal-node');
 const { Client } = require('@microsoft/microsoft-graph-client');
 require('isomorphic-fetch');
 const fs = require('fs');
+const { getSignature } = require('../utils/signature');
 
 const msalConfig = {
     auth: {
@@ -41,9 +42,10 @@ const getGraphClient = async () => {
  * @param {string} options.subject - Email subject
  * @param {string} options.body - HTML email body
  * @param {Array} options.attachments - Array of attachment objects
+ * @param {boolean} options.includeSignature - Whether to include signature (default: true)
  * @returns {Promise<Object>} - Result of the operation with messageId
  */
-async function sendMail({ fromName, fromEmail, to, toName, subject, body, attachments = [] }) {
+async function sendMail({ fromName, fromEmail, to, toName, subject, body, attachments = [], includeSignature = true }) {
     console.log('Sending email with fromName:', fromName, 'fromEmail:', fromEmail);
     
     try {
@@ -63,6 +65,13 @@ async function sendMail({ fromName, fromEmail, to, toName, subject, body, attach
                 value: process.env.SENDER_EMAIL
             }
         ];
+
+        // Add signature to the email body if includeSignature is true
+        let emailContent = body;
+        if (includeSignature) {
+            const signature = getSignature(fromEmail || process.env.SENDER_EMAIL);
+            emailContent = `${body}${signature}`;
+        }
         
         // Process attachments if provided
         const processedAttachments = await processAttachments(attachments);
@@ -72,7 +81,7 @@ async function sendMail({ fromName, fromEmail, to, toName, subject, body, attach
                 subject,
                 body: {
                     contentType: "HTML",
-                    content: body
+                    content: emailContent
                 },
                 toRecipients: [{
                     emailAddress: {

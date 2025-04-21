@@ -16,13 +16,21 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 const session = require('express-session');
 
-// Middleware
+const allowedOrigins = ["https://qodeinvest.com", "https://dashboard.qodeinvest.com", "https://www.qodeinvest.com","https://research.qodeinvest.com"];
+
 app.use(cors({
-  origin: true,
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like curl or mobile apps)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: "*",
   allowedHeaders: "*",
 }));
-app.use(bodyParser.json());
 
 
 

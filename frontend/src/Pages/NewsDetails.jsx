@@ -10,6 +10,17 @@ import Text from "../components/common/Text";
 // In a production app, replace this with data fetched from an API.
 const articles = [
     {
+        "date": "April 12, 2025",
+        "title": "Mind Over Money: Bhagavad Gita, First Principles & Fitness: The unconventional investing path of Rishabh Nahar",
+        "excerpt": "For me, staying mentally fit starts with staying physically fit. I work out 5-6 days a week and try to eat healthy most of the time. Honestly, I believe a lot of mental stability comes from being healthy and maintaining a disciplined lifestyle. If you keep your body in good shape, the mind tends to follow. On top of that, getting good sleep at the right times helps me stay mentally sharp throughout the day.",
+        "imageUrl": "/Rishabh_New.png",
+        "source": "Economic Times",
+        "slug": "mind-over-money",
+        "additionalParagraph": "At Qode Invest, our philosophy is all about thinking from first principles and using mental models, a concept popularized by Charlie Munger. First principles thinking is about breaking down complex problems into their most fundamental truths and reasoning from there. Rather than relying on assumptions, it helps us make decisions that are grounded in real understanding.",
+        "author": "Rishabh Nahar, Partner and Fund Manager at Qode Advisors",
+        "url": "https://m.economictimes.com/markets/expert-view/mind-over-m0ney-bhagavad-gita-first-principles-fitness-the-unconventional-investing-path-of-rishabh-nahar/amp_articleshow/120226227.cms"
+      },
+    {
         "date": "April 2, 2025",
         "title": "This fund manager expects RBI to cut interest rates by 75 bps in FY26, advises betting on these 4 sectors",
         "excerpt": "Additionally, sectors such as defense and specialty chemicals could benefit from global supply chain diversification. Select opportunities in energy transition and digitization also remain attractive.",

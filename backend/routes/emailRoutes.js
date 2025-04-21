@@ -38,7 +38,7 @@ router.post('/sendEmail', upload.array('attachments', 10), async (req, res) => {
         // Process uploaded files if any
         let attachments = [];
         if (req.files && req.files.length > 0) {
-            console.log('Processing', req.files.length, 'uploaded files');
+            //console.log('Processing', req.files.length, 'uploaded files');
             
             attachments = req.files.map(file => ({
                 path: file.path,
@@ -95,7 +95,7 @@ router.post('/sendEmailWithInlineAttachments', express.json({limit: '50mb'}), as
     try {
         const { fromName, fromEmail, to, toName, subject, body, attachments, includeSignature } = req.body;
         
-        console.log('Received request to send email with inline attachments');
+        //console.log('Received request to send email with inline attachments');
         
         const result = await sendMail({
             fromName,

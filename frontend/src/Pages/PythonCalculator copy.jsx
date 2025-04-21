@@ -156,7 +156,7 @@ function PythonCalculator() {
   });
 
   const updateChartOptions = (chartData, drawdownData) => {
-    console.log(chartData);
+    //console.log(chartData);
 
     const roundData = (data) =>
       data.map(([timestamp, value]) => [timestamp, Math.round(value)]);
@@ -215,7 +215,7 @@ function PythonCalculator() {
         formData
       );
       const data = response.data;
-      console.log(data);
+      //console.log(data);
       setResultData(data);
 
       if (data && data.equity_curve_data && data.drawdown_data) {

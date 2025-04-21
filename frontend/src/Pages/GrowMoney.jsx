@@ -1,6 +1,4 @@
 import React from "react";
-import Button from "../components/common/Button";
-import Text from "../components/common/Text";
 import SendEmailForm from "../components/SendEmailForm";
 
 const GrowMoney = () => {

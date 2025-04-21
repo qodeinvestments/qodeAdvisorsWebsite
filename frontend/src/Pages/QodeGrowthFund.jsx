@@ -4,7 +4,6 @@ import { faCheckCircle, faChartLine, faBolt, faShieldAlt } from "@fortawesome/fr
 import QgfEquityCurve from "../components/Charts/qgf/qgfEquityCurve";
 import TrailingReturns from "../components/TrailingReturns";
 import useFetchStrategyNavField from "../hooks/useFetchStrategyNavData";
-import Text from "../components/common/Text";
 import Heading from "../components/common/Heading";
 import PerformanceDashboard from "../components/PerformanceDashboard";
 

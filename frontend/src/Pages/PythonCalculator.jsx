@@ -18,7 +18,7 @@ const API_URL =
   import.meta.env.MODE === "production"
     ? import.meta.env.VITE_PROD_API_URL
     : import.meta.env.VITE_DEV_API_URL;
-console.log(API_URL);
+//console.log(API_URL);
 
 function PythonCalculator() {
   const [resultData, setResultData] = useState(null);
@@ -146,7 +146,7 @@ function PythonCalculator() {
   });
 
   const updateChartOptions = (chartData, drawdownData) => {
-    console.log(chartData);
+    //console.log(chartData);
 
     const roundData = (data) =>
       data.map(([timestamp, value]) => [timestamp, Math.round(value)]);
@@ -206,12 +206,12 @@ function PythonCalculator() {
         `${API_URL}`,
         formData
       );
-      console.log(response);
+      //console.log(response);
 
       const data = response.data.result;
       const buttonLink = response.data.download_link;
       setButtonLink(buttonLink)
-      console.log(data);
+      //console.log(data);
       setResultData(data);
 
       if (data && data.equity_curve_data && data.drawdown_data) {

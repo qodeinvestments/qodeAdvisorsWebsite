@@ -13,7 +13,7 @@ const TrailingReturns = ({
   startDates,
   endDates,
 }) => {
-  console.log(name);
+  //console.log(name);
 
   const [returns, setReturns] = useState({
     "10D": {},

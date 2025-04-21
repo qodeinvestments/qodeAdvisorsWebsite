@@ -36,7 +36,7 @@ router.get('/redirect', async (req, res) => {
 
     try {
         const response = await msalClient.acquireTokenByCode(tokenRequest);
-        console.log('Token acquired:', response);
+        //console.log('Token acquired:', response);
         
         // Store token in session
         req.session.graphToken = response.accessToken;

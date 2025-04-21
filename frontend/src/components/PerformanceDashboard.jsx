@@ -16,7 +16,7 @@ const calculateReturns = (values) => {
 };
 
 const calculateSharpe = (returns, riskFreeRate = 0.07) => {
-  console.log("All returns:", returns);
+  //console.log("All returns:", returns);
 
   if (!returns || returns.length === 0) return 0;
 
@@ -34,8 +34,8 @@ const calculateSharpe = (returns, riskFreeRate = 0.07) => {
   const annualMean = dailyMean * 252; // Assuming 252 trading days in a year
 
   // Log daily mean and annual mean for debugging
-  console.log("Daily Mean Return:", dailyMean);
-  console.log("Annualized Mean Return:", annualMean);
+  //console.log("Daily Mean Return:", dailyMean);
+  //console.log("Annualized Mean Return:", annualMean);
 
   // Calculate daily variance
   const dailyVariance = validReturns.reduce((acc, r) => acc + Math.pow(r - dailyMean, 2), 0) / validReturns.length;
@@ -48,21 +48,21 @@ const calculateSharpe = (returns, riskFreeRate = 0.07) => {
   const annualStdDev = Math.sqrt(annualVariance);
 
   // Log standard deviations for debugging
-  console.log("Daily Standard Deviation:", dailyStdDev);
-  console.log("Annualized Standard Deviation:", annualStdDev);
+  //console.log("Daily Standard Deviation:", dailyStdDev);
+  //console.log("Annualized Standard Deviation:", annualStdDev);
 
   // Compute excess return (annualized)
   const excessReturn = annualMean - riskFreeRate;
 
   // Log excess return for debugging
-  console.log("Excess Return:", excessReturn);
+  //console.log("Excess Return:", excessReturn);
 
   // If annual standard deviation is zero, avoid division by zero
   if (annualStdDev === 0) return 0;
 
   // Return the annualized Sharpe ratio
   const sharpeRatio = excessReturn / annualStdDev;
-  console.log("Sharpe Ratio:", sharpeRatio);
+  //console.log("Sharpe Ratio:", sharpeRatio);
 
   return sharpeRatio;
 };

@@ -4,7 +4,7 @@ import HighchartsReact from "highcharts-react-official";
 
 const DiscreteChart = ({ strategy }) => {
   const [chartData, setChartData] = useState([]);
-  // // console.log(strategy);
+  // // //console.log(strategy);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -36,7 +36,7 @@ const DiscreteChart = ({ strategy }) => {
           .map((item, index, array) => {
             const nextItem = array[index + 1];
             const strategyKey = getStrategyKey(strategy);
-            // // console.log("next item", nextItem[strategyKey]);
+            // // //console.log("next item", nextItem[strategyKey]);
             const momentumPercentage = nextItem
               ? (nextItem[strategyKey] / item[strategyKey] - 1) * 100
               : 0;
@@ -73,7 +73,7 @@ const DiscreteChart = ({ strategy }) => {
         }
 
         setChartData(chartData);
-        // // console.log(chartData);
+        // // //console.log(chartData);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }

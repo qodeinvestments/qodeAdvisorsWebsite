@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
-import { Container } from "../components";
 import axios from "axios";
 import Section from "../components/container/Section";
 import Heading from "../components/common/Heading";
@@ -22,7 +21,7 @@ const Blogs = () => {
       })
       .catch((error) => {
         setLoading(false);
-        // console.log(error);
+        // //console.log(error);
       });
   }, [key]);
   return (

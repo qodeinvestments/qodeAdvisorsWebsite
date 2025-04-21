@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import { useInView } from "react-intersection-observer";
 import useFetchStrategyNavField from "../hooks/useFetchStrategyNavData.jsx";
 import Text from "../components/common/Text";
-import ProbabilityOutperformance from "../components/ProbabilityOutperformance.jsx";
 
 const PerformanceChart = lazy(() => import("../components/Charts/PerformanceChart.jsx"));
 const TrailingReturns = lazy(() => import("../components/TrailingReturns"));
@@ -53,7 +52,7 @@ const QodeAllWeather = () => {
   const options = useMemo(() => ({ refreshInterval: 15000 }), []);
 
   const { data, isLoading, error } = useFetchStrategyNavField(fields, options);
-  console.log("📊 Data received for Qode All Weather:", data);
+  //console.log("📊 Data received for Qode All Weather:", data);
   
   const memoizedData = useMemo(() => data, [data]);
 

@@ -13,7 +13,7 @@ const useCalculateCagr = () => {
       const latestData = sortedData[sortedData.length - 1];
       const latestDate = parseDate(latestData.date);
       let startDate = new Date(latestDate);
-      console.log(startDate);
+      //console.log(startDate);
 
       if (timeRange === "Custom") {
         startDate = parseDate(sortedData[0].date);

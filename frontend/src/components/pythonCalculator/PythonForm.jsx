@@ -43,7 +43,7 @@ const groupedOptions = STRATEGIES.reduce((groups, strategy) => {
 }, {});
 
 const handleSystemChange = (value) => {
-  console.log("Selected strategies:", value);
+  //console.log("Selected strategies:", value);
 };
 
 function StyledPortfolioCalculatorForm({ onSubmit, loading, columns }) {

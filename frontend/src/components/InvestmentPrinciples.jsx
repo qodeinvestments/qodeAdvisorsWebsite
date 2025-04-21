@@ -7,7 +7,7 @@ import Text from "./common/Text";
 import Button from "./common/Button";
 
 // Add this function inside your Home component, before the return statement
-const ParallaxSection = () => {
+const InvestmentPrinciples = () => {
   const [isIOS, setIsIOS] = useState(false);
 
   useEffect(() => {
@@ -71,4 +71,4 @@ const ParallaxContent = () => (
   </>
 );
 
-export default ParallaxSection;
+export default InvestmentPrinciples;

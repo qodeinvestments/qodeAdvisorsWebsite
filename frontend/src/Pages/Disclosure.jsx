@@ -1,24 +1,11 @@
 import React from "react";
-import { Container } from "../components";
 import Text from "../components/common/Text";
 import Heading from "../components/common/Heading";
 import Section from "../components/container/Section";
-import Button from "../components/common/Button";
 import { Helmet } from "react-helmet";
 import CustomLink from "../components/common/CustomLink";
 
 const Disclosure = () => {
-  const pdfs = [
-    { name: "Annual Report 2023", url: "/path/to/annual_report_2023.pdf" },
-    {
-      name: "Financial Statement Q1 2023",
-      url: "/path/to/financial_statement_q1_2023.pdf",
-    },
-    {
-      name: "Sustainability Report 2023",
-      url: "/path/to/sustainability_report_2023.pdf",
-    },
-  ];
 
   return (
     <>

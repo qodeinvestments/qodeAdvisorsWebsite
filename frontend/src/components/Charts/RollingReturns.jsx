@@ -81,7 +81,7 @@ const RollingReturns = ({ strategy }) => {
       } else {
       }
     }
-    // // console.log(resultArray);
+    // // //console.log(resultArray);
     return resultArray;
   }
 

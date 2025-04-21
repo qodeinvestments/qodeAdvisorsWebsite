@@ -3,7 +3,7 @@ const strategy = require("../models/strategy");
 const Strategy = db.Strategy;
 const getAllStrategies = async (req, res) => {
   try {
-    // console.log("Attempting to fetch all strategies...");
+    // //console.log("Attempting to fetch all strategies...");
     const strategies = await Strategy.findAll();
     res.status(200).json(strategies);
   } catch (error) {

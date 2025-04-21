@@ -63,7 +63,7 @@ async function verifyRecaptchaToken(token, recaptchaAction = 'SUBMIT_FORM') {
       reasons: response.riskAnalysis.reasons || []
     };
     
-    console.log('reCAPTCHA verification result:', logData);
+    //console.log('reCAPTCHA verification result:', logData);
 
     return response.riskAnalysis.score;
   } catch (error) {

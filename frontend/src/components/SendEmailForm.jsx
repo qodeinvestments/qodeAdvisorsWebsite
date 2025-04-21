@@ -192,6 +192,7 @@ const SendEmailForm = () => {
           message: formData.message,
           fromName: formData.name,
           phone: formData.phone,         // Added phone number
+          location: formData.location,   // Added location
           investmentGoal: formData.investmentGoal,
           investmentExperience: formData.investmentExperience,
           preferredStrategy: formData.preferredStrategy,

@@ -145,7 +145,7 @@ router.get('/email-success', (req, res) => {
 // Send email endpoint using nodemailer
 router.post('/send-email', async (req, res) => {
     const { fromName, to, subject, body } = req.body;
-    console.log('Sending email:', { fromName, to, subject, body });
+    //console.log('Sending email:', { fromName, to, subject, body });
     
     try {
         // Try sending with nodemailer first
@@ -158,7 +158,7 @@ router.post('/send-email', async (req, res) => {
         };
 
         const info = await transporter.sendMail(mailOptions);
-        console.log('Email sent successfully via nodemailer:', info.response);
+        //console.log('Email sent successfully via nodemailer:', info.response);
         res.json({ message: 'Email sent successfully', method: 'nodemailer' });
 
     } catch (nodemailerError) {

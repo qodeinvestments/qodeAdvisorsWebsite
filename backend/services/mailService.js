@@ -46,7 +46,7 @@ const getGraphClient = async () => {
  * @returns {Promise<Object>} - Result of the operation with messageId
  */
 async function sendMail({ fromName, fromEmail, to, toName, subject, body, attachments = [], includeSignature = true }) {
-    console.log('Sending email with fromName:', fromName, 'fromEmail:', fromEmail);
+    //console.log('Sending email with fromName:', fromName, 'fromEmail:', fromEmail);
     
     try {
         const client = await getGraphClient();
@@ -114,13 +114,13 @@ async function sendMail({ fromName, fromEmail, to, toName, subject, body, attach
                 }
             });
         }
-        console.log('Email request structure:', JSON.stringify(logBody));
+        //console.log('Email request structure:', JSON.stringify(logBody));
         
         // Send the real request with actual content
         await client.api(`/users/${process.env.SENDER_EMAIL}/sendMail`)
             .post(mailBody);
             
-        console.log(`Email sent successfully to ${to} with tracking ID: ${messageId}`);
+        //console.log(`Email sent successfully to ${to} with tracking ID: ${messageId}`);
         
         // Store this message ID in your database for tracking purposes
         await storeEmailRecord(messageId, fromEmail, to, subject);
@@ -234,7 +234,7 @@ function getContentTypeFromFilename(filename) {
  */
 async function storeEmailRecord(messageId, sender, recipient, subject) {
     // Implementation depends on your database setup
-    console.log(`Storing email record for tracking: ${messageId}`);
+    //console.log(`Storing email record for tracking: ${messageId}`);
     // await db.emails.create({ messageId, sender, recipient, subject, status: 'sent', sentAt: new Date() });
 }
 

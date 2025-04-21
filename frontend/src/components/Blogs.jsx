@@ -28,7 +28,7 @@ const Blogs = () => {
 
     fetchLatestPosts();
   }, []);
-  // console.log(latestPosts);
+  // //console.log(latestPosts);
 
   if (loading) {
     return <div>Loading...</div>;

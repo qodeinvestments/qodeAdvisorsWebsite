@@ -25,7 +25,7 @@ const HoldingDistribution = ({ strategy }) => {
         const filteredData = jsonData.Sheet1.filter(
           (item) => item.Strategy === strategy
         );
-        // console.log(filteredData);
+        // //console.log(filteredData);
 
         const totals = filteredData.reduce(
           (acc, item) => {

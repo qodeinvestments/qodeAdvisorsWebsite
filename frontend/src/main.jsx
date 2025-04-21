@@ -4,7 +4,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Pages/Home.jsx";
 import App from "./App.jsx";
-import MomentumTabs from "./Pages/QodeVelocityFund.jsx";
+import QodeTacticalFund from "./Pages/QodeTacticalFund.jsx";
 import Blogs from "./Pages/Blogs.jsx";
 import BlogDetails from "./Pages/BlogDetails.jsx";
 import ErrorPage from "./Pages/ErrorPage.jsx";
@@ -18,13 +18,11 @@ import PrivacyPolicy from "./Pages/PrivacyPolicy.jsx";
 import TermsnConditions from "./Pages/TermsandConditions.jsx";
 import Disclosure from "./Pages/Disclosure.jsx";
 import AboutUs from "./Pages/AboutUs.jsx";
-import PythonCalculator from "./Pages/PythonCalculator.jsx";
-import Tool from "./Pages/Tool.jsx";
-import Support from "./Pages/Support.jsx";
 import SchemeD from "./Pages/SchemeD.jsx";
 import QodeFutureHorizons from "./Pages/QodeFutureHorizons.jsx";
 import FeaturedIn from "./Pages/FeaturedIn.jsx";
 import NewsDetails from "./Pages/NewsDetails.jsx";
+import ReadingArticles from "./Pages/ReadingArticles.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -48,7 +46,7 @@ const router = createBrowserRouter([
 
       {
         path: "/strategies/qode-tactical-fund",
-        element: <MomentumTabs />,
+        element: <QodeTacticalFund />,
       },
       {
         path: "/strategies/qode-future-horizons",
@@ -117,6 +115,10 @@ const router = createBrowserRouter([
         path: "/scheme-d", // This route captures the postId parameter
         element: <SchemeD />,
       },
+      {
+        path: "/reading-articles", // This route captures the postId parameter
+        element: <ReadingArticles />,
+      }
     ],
   },
 ]);

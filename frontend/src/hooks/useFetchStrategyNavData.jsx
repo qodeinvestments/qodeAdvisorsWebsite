@@ -28,7 +28,7 @@ const useFetchStrategyNavField = (fieldNames) => {
   const fetchStrategyNavData = useCallback(async () => {
     try {
       setIsLoading(true);
-      console.log("🚀 Starting data fetch for fields:", normalizedFieldNames);
+      //console.log("🚀 Starting data fetch for fields:", normalizedFieldNames);
       
       const response = await fetch(`${backendUrl}/strategyNavs`);
       if (!response.ok) {
@@ -36,7 +36,7 @@ const useFetchStrategyNavField = (fieldNames) => {
       }
 
       const strategyData = await response.json();
-      console.log(`📥 Received raw data with ${strategyData.length} entries`);
+      //console.log(`📥 Received raw data with ${strategyData.length} entries`);
 
       // Find the strategy field and its corresponding benchmark
       let strategy = null;
@@ -65,7 +65,7 @@ const useFetchStrategyNavField = (fieldNames) => {
       }
 
       startDate = new Date(STRATEGY_START_DATES[strategy]);
-      console.log(`Using start date for ${strategy}: ${startDate.toISOString()}`);
+      //console.log(`Using start date for ${strategy}: ${startDate.toISOString()}`);
 
       // Process data
       let processedData = strategyData.map((item) => {
@@ -87,7 +87,7 @@ const useFetchStrategyNavField = (fieldNames) => {
         const firstValueRow = processedData.find((row) => row[field] !== null);
         if (firstValueRow) {
           startValues[field] = firstValueRow[field];
-          console.log(`📊 Base value for ${field}: ${startValues[field]}`);
+          //console.log(`📊 Base value for ${field}: ${startValues[field]}`);
         }
       });
 
@@ -130,7 +130,7 @@ const useFetchStrategyNavField = (fieldNames) => {
       }
       processedData = processedData.slice(validDataStartIndex);
 
-      console.log(`✅ Final dataset has ${processedData.length} entries starting from ${processedData[0]?.date}`);
+      //console.log(`✅ Final dataset has ${processedData.length} entries starting from ${processedData[0]?.date}`);
       setData(processedData);
       setIsLoading(false);
       setError(null);

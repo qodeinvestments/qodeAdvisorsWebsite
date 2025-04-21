@@ -1,7 +1,6 @@
 import React from "react";
 import Button from "../components/common/Button";
 import Heading from "../components/common/Heading";
-import Text from "../components/common/Text";
 
 const BookAMeet = () => {
   const VITE_GOOGLE_MEET_URL = import.meta.env.VITE_GOOGLE_MEET_URL;

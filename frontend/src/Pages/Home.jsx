@@ -1,6 +1,6 @@
+// /src/Pages/Home.jsx
 import React, { useEffect, useState, useCallback } from "react";
 import { Banner, Blogs, InvestmentStrategies } from "../components/index";
-import FundManagers from "../components/FundManagers";
 import { Helmet } from "react-helmet";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -9,7 +9,7 @@ import Text from "../components/common/Text";
 import Section from "../components/container/Section";
 import Modal from "../components/Modal";
 import GrowMoney from "./GrowMoney";
-import ParallaxSection from "../components/ParallexSection";
+import InvestmentPrinciples from "../components/InvestmentPrinciples";
 
 const Home = () => {
   const [email, setEmail] = useState("");
@@ -128,7 +128,7 @@ const Home = () => {
             theme: "light",
             transition: Bounce,
           });
-          console.log(data);
+          //console.log(data);
 
           setEmail("");
         } else {
@@ -190,7 +190,7 @@ const Home = () => {
         <Blogs />
       </Section>
       <Section padding="none" fullWidth className="mt-8 sm:mt-5 ">
-        <ParallaxSection />
+        <InvestmentPrinciples />
       </Section>
       <Section id="newsletter-section" padding="none" className="mb-6">
         <div className="md:flex flex-col items-center text-center gap-2 justify-center">

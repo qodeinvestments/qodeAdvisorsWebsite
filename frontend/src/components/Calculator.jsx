@@ -12,7 +12,7 @@ const Calculator = ({ data, strategy }) => {
   const [maxInvestmentPeriod, setMaxInvestmentPeriod] = useState(Infinity);
 
   useEffect(() => {
-    console.log(data);
+    //console.log(data);
 
     if (data && data.length > 0) {
       const oldestDate = new Date(data[0].date);
@@ -101,7 +101,7 @@ const Calculator = ({ data, strategy }) => {
           const strategyValue = safeParseFloat(
             startOfMonthData[monthIndex].total_portfolio_nav
           );
-          console.log(strategyValue);
+          //console.log(strategyValue);
 
           const shares = investmentAmount / strategyValue;
           totalShares += shares;

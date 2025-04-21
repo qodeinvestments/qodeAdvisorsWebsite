@@ -1,19 +1,13 @@
+// /src/Pages/Strategies.jsx
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet"; // Import Helmet
-import { Container } from "../components";
 import BookAMeet from "./BookAMeet";
 import Modal from "../components/Modal";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import BlogCard from "../components/BlogCard";
 import Heading from "../components/common/Heading";
 import Text from "../components/common/Text";
 import Button from "../components/common/Button";
 import CustomLink from "../components/common/CustomLink";
-import List from "../components/common/List";
 import Section from "../components/container/Section";
-import { motion } from "framer-motion";
 
 const StrategyCard = ({ strategy, name, description, slug }) => {
   // if (loading) return <div>Loading...</div>;
@@ -186,8 +180,8 @@ const Strategies = () => {
             <Button
               onClick={() => {
                 const link = document.createElement("a");
-                link.href = "/Qode_Presentation_Feb_2025.pdf"; // Update this path to your PDF file
-                link.download = "Qode_Presentation_Feb_2025.pdf";
+                link.href = "/Qode_Presentation_March_2025.pdf"; // Update this path to your PDF file
+                link.download = "Qode_Presentation_March_2025.pdf";
                 link.click();
               }}
             >

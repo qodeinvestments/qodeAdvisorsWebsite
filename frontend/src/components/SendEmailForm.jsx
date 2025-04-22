@@ -1,16 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faTimes, faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { Bounce, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "./common/Button";
 import Text from "./common/Text";
 
 const API_URL =
-import.meta.env.MODE === "production"
-  ? import.meta.env.VITE_BACKEND_PROD_URL
-  : import.meta.env.VITE_BACKEND_DEV_URL;
-
+  import.meta.env.MODE === "production"
+    ? import.meta.env.VITE_BACKEND_PROD_URL
+    : import.meta.env.VITE_BACKEND_DEV_URL;
 
 // Validation utility functions
 const validateEmail = (email) => {
@@ -44,6 +43,7 @@ const SendEmailForm = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const [formStartTime, setFormStartTime] = useState(Date.now());
 
   const [formData, setFormData] = useState({
     to: "investor.relations@qodeinvest.com",
@@ -56,14 +56,20 @@ const SendEmailForm = () => {
     preferredStrategy: [],
     initialInvestmentSize: "",
     message: "",
+    website: "", // Honeypot field
+    recaptchaToken: "", // Store reCAPTCHA token
   });
+
+  // Set form start time on component mount
+  useEffect(() => {
+    setFormStartTime(Date.now());
+  }, []);
 
   const validateStep = (step) => {
     const newErrors = {};
 
-    switch(step) {
+    switch (step) {
       case 1:
-        // Personal Information validation
         const nameError = validateName(formData.name);
         const emailError = validateEmail(formData.userEmail);
         const phoneError = validatePhone(formData.phone);
@@ -76,28 +82,24 @@ const SendEmailForm = () => {
         break;
 
       case 2:
-        // Investment Goal validation
         if (!formData.investmentGoal) {
           newErrors.investmentGoal = "Please select an investment goal";
         }
         break;
 
       case 3:
-        // Investment Experience validation
         if (!formData.investmentExperience) {
           newErrors.investmentExperience = "Please select your investment experience";
         }
         break;
 
       case 4:
-        // Strategy validation
         if (!formData.preferredStrategy.length) {
           newErrors.preferredStrategy = "Please select at least one investment strategy";
         }
         break;
 
       case 5:
-        // Final step validation
         if (!formData.initialInvestmentSize) {
           newErrors.initialInvestmentSize = "Please select your initial investment size";
         }
@@ -110,19 +112,19 @@ const SendEmailForm = () => {
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
-    
+
     if (type === "checkbox") {
       setFormData((prevData) => {
         const currentStrategies = prevData.preferredStrategy || [];
         if (checked) {
           return {
             ...prevData,
-            preferredStrategy: [...currentStrategies, value]
+            preferredStrategy: [...currentStrategies, value],
           };
         } else {
           return {
             ...prevData,
-            preferredStrategy: currentStrategies.filter(strategy => strategy !== value)
+            preferredStrategy: currentStrategies.filter((strategy) => strategy !== value),
           };
         }
       });
@@ -131,12 +133,11 @@ const SendEmailForm = () => {
         ...prevData,
         [name]: value,
       }));
-      
-      // Clear error when user starts typing
+
       if (errors[name]) {
-        setErrors(prev => ({
+        setErrors((prev) => ({
           ...prev,
-          [name]: ""
+          [name]: "",
         }));
       }
     }
@@ -144,10 +145,9 @@ const SendEmailForm = () => {
 
   const nextStep = () => {
     if (validateStep(currentStep)) {
-      setCurrentStep(prev => Math.min(prev + 1, 5));
+      setCurrentStep((prev) => Math.min(prev + 1, 5));
     } else {
-      // Display all errors for current step
-      Object.values(errors).forEach(error => {
+      Object.values(errors).forEach((error) => {
         if (error) {
           toast.error(error);
         }
@@ -156,31 +156,53 @@ const SendEmailForm = () => {
   };
 
   const prevStep = () => {
-    setCurrentStep(prev => Math.max(prev - 1, 1));
+    setCurrentStep((prev) => Math.max(prev - 1, 1));
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    
-    // Validate final step before submission
+    e.preventDefault(); // Prevent default form submission
+
+    if (currentStep < 5) {
+      nextStep();
+      return;
+    }
+
+    // Validate final step
     if (!validateStep(5)) {
+      Object.values(errors).forEach((error) => {
+        if (error) {
+          toast.error(error);
+        }
+      });
+      return;
+    }
+
+    if (isSubmitting) return;
+
+    // Execute reCAPTCHA
+    if (!window.grecaptcha || !window.grecaptcha.enterprise) {
+      console.error("reCAPTCHA not loaded");
+      toast.error("reCAPTCHA not loaded. Please check your connection or try again.");
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      const token = await new Promise((resolve, reject) => {
-        if (window.grecaptcha && window.grecaptcha.enterprise) {
-          window.grecaptcha.enterprise.ready(() => {
-            window.grecaptcha.enterprise.execute('6Lf7VcwqAAAAAJIm0sR-zrMGipoXSoZ0TKjjovLP', { action: 'SUBMIT_FORM' })
-              .then(resolve)
-              .catch(reject);
-          });
-        } else {
-          reject(new Error("reCAPTCHA is not loaded"));
-        }
-      });
+      const token = await window.grecaptcha.enterprise.execute(
+        "6LfDSyArAAAAAOCExGxlQORbh6kCxSsTo7QAZcLh",
+        { action: "submit" }
+      );
+      console.log("reCAPTCHA token generated:", token);
+
+      // Update formData with token
+      setFormData((prev) => ({
+        ...prev,
+        recaptchaToken: token,
+      }));
+
+      // Submit form data
+      console.log("Sending request to:", `${API_URL}/emails/send`);
       const response = await fetch(`${API_URL}/emails/send`, {
         method: "POST",
         headers: {
@@ -191,16 +213,19 @@ const SendEmailForm = () => {
           subject: "Qode Investment Inquiry",
           message: formData.message,
           fromName: formData.name,
-          phone: formData.phone,         // Added phone number
-          location: formData.location,   // Added location
+          phone: formData.phone,
+          location: formData.location,
           investmentGoal: formData.investmentGoal,
           investmentExperience: formData.investmentExperience,
           preferredStrategy: formData.preferredStrategy,
           initialInvestmentSize: formData.initialInvestmentSize,
           recaptchaToken: token,
+          website: formData.website,
+          formStartTime,
         }),
       });
-    
+
+      console.log("Fetch response status:", response.status);
       if (response.ok) {
         toast.success("Your message has been sent. We'll get back to you soon!");
         setFormData({
@@ -212,7 +237,9 @@ const SendEmailForm = () => {
           investmentExperience: "",
           preferredStrategy: [],
           initialInvestmentSize: "",
-          message: ""
+          message: "",
+          website: "",
+          recaptchaToken: "",
         });
         setCurrentStep(1);
       } else {
@@ -220,6 +247,7 @@ const SendEmailForm = () => {
         throw new Error(errorData.error || "Submission failed");
       }
     } catch (error) {
+      console.error("Fetch error:", error);
       toast.error(`An error occurred: ${error.message}`);
     } finally {
       setIsSubmitting(false);
@@ -233,7 +261,7 @@ const SendEmailForm = () => {
   };
 
   const renderStep = () => {
-    switch(currentStep) {
+    switch (currentStep) {
       case 1:
         return (
           <div>
@@ -249,10 +277,10 @@ const SendEmailForm = () => {
                 onChange={handleInputChange}
                 placeholder="Your Name"
                 className={`w-full p-[12px] text-body font-body bg-transparent focus:outline-none focus:bg-lightBeige text-white focus:text-black border ${
-                  errors.name ? 'border-red-500' : 'border-brown'
+                  errors.name ? "border-red-500" : "border-brown"
                 }`}
               />
-              {renderError('name')}
+              {renderError("name")}
             </div>
             <div className="mb-4">
               <input
@@ -263,10 +291,10 @@ const SendEmailForm = () => {
                 onChange={handleInputChange}
                 placeholder="Your Email"
                 className={`w-full p-[12px] text-body font-body bg-transparent focus:outline-none focus:bg-lightBeige text-white focus:text-black border ${
-                  errors.email ? 'border-red-500' : 'border-brown'
+                  errors.email ? "border-red-500" : "border-brown"
                 }`}
               />
-              {renderError('email')}
+              {renderError("email")}
             </div>
             <div className="mb-4">
               <input
@@ -278,10 +306,10 @@ const SendEmailForm = () => {
                 placeholder="Your Phone"
                 maxLength={10}
                 className={`w-full p-[12px] text-body font-body bg-transparent focus:outline-none focus:bg-lightBeige text-white focus:text-black border ${
-                  errors.phone ? 'border-red-500' : 'border-brown'
+                  errors.phone ? "border-red-500" : "border-brown"
                 }`}
               />
-              {renderError('phone')}
+              {renderError("phone")}
             </div>
             <div className="mb-4">
               <input
@@ -292,14 +320,14 @@ const SendEmailForm = () => {
                 onChange={handleInputChange}
                 placeholder="Your Location"
                 className={`w-full p-[12px] text-body font-body bg-transparent focus:outline-none focus:bg-lightBeige text-white focus:text-black border ${
-                  errors.location ? 'border-red-500' : 'border-brown'
+                  errors.location ? "border-red-500" : "border-brown"
                 }`}
               />
-              {renderError('location')}
+              {renderError("location")}
             </div>
           </div>
         );
-      
+
       case 2:
         return (
           <div>
@@ -307,7 +335,11 @@ const SendEmailForm = () => {
               What is your investment goal?
             </Text>
             <div className="grid grid-cols-1 text-beige sm:grid-cols-1 gap-2">
-              {["Conservative (Low risk, steady returns)", "Balanced (Moderate risk, moderate returns)", "Aggressive (High risk, higher returns)"].map((goal) => (
+              {[
+                "Conservative (Low risk, steady returns)",
+                "Balanced (Moderate risk, moderate returns)",
+                "Aggressive (High risk, higher returns)",
+              ].map((goal) => (
                 <label key={goal} className="block">
                   <input
                     type="radio"
@@ -322,10 +354,9 @@ const SendEmailForm = () => {
                 </label>
               ))}
             </div>
-           
           </div>
         );
-      
+
       case 3:
         return (
           <div>
@@ -334,8 +365,14 @@ const SendEmailForm = () => {
             </Text>
             <div className="grid grid-cols-1 sm:grid-cols-1 text-beige gap-2">
               {[
-                { value: "Experienced", label: "Yes, I have prior experience with Portfolio Management Services (PMS)." },
-                { value: "New", label: "No, I'm new to PMS or similar investment vehicles." }
+                {
+                  value: "Experienced",
+                  label: "Yes, I have prior experience with Portfolio Management Services (PMS).",
+                },
+                {
+                  value: "New",
+                  label: "No, I'm new to PMS or similar investment vehicles.",
+                },
               ].map(({ value, label }) => (
                 <label key={value} className="block">
                   <input
@@ -352,7 +389,7 @@ const SendEmailForm = () => {
             </div>
           </div>
         );
-      
+
       case 4:
         return (
           <div>
@@ -361,11 +398,11 @@ const SendEmailForm = () => {
             </Text>
             <div className="grid grid-cols-1 text-beige sm:grid-cols-2 gap-2">
               {[
-                "Qode All Weather", 
-                "Qode Growth Fund", 
-                "Qode Future Horizons", 
+                "Qode All Weather",
+                "Qode Growth Fund",
+                "Qode Future Horizons",
                 "Qode Tactical Fund",
-                "Help Me Choose"
+                "Help Me Choose",
               ].map((strategy) => (
                 <label key={strategy} className="block">
                   <input
@@ -382,7 +419,7 @@ const SendEmailForm = () => {
             </div>
           </div>
         );
-      
+
       case 5:
         return (
           <div>
@@ -394,23 +431,21 @@ const SendEmailForm = () => {
                 Initial Investment Size:
               </Text>
               <div className="grid grid-cols-1 sm:grid-cols-1 text-beige gap-2">
-                {[
-                  "₹50 Lakhs - ₹2 Crores",
-                  "₹2 Crores - ₹10 Crores", 
-                  "More than ₹10 Crores"
-                ].map((size) => (
-                  <label key={size} className="block">
-                    <input
-                      type="radio"
-                      name="initialInvestmentSize"
-                      value={size}
-                      checked={formData.initialInvestmentSize === size}
-                      onChange={handleInputChange}
-                      className="mr-2 accent-beige"
-                    />
-                    {size}
-                  </label>
-                ))}
+                {["₹50 Lakhs - ₹2 Crores", "₹2 Crores - ₹10 Crores", "More than ₹10 Crores"].map(
+                  (size) => (
+                    <label key={size} className="block">
+                      <input
+                        type="radio"
+                        name="initialInvestmentSize"
+                        value={size}
+                        checked={formData.initialInvestmentSize === size}
+                        onChange={handleInputChange}
+                        className="mr-2 accent-beige"
+                      />
+                      {size}
+                    </label>
+                  )
+                )}
               </div>
             </div>
             <div className="mb-4">
@@ -424,7 +459,7 @@ const SendEmailForm = () => {
             </div>
           </div>
         );
-      
+
       default:
         return null;
     }
@@ -435,40 +470,48 @@ const SendEmailForm = () => {
       <Text className="mb-18 text-beige font-semiheading text-semiheading">
         Contact Us
       </Text>
-      
+
       <div className="w-full max-w-xl">
-        {/* Progress Indicator */}
         <div className="flex justify-center items-center transition-all duration-500 mb-4">
           {[1, 2, 3, 4, 5].map((step) => (
-            <div 
-              key={step} 
+            <div
+              key={step}
               className={`h-18 w-18 rounded-full mx-1 ${
-                currentStep === step ? 'bg-lightBeige h-[1.5rem] w-[1.5rem]' : 'bg-beige'
+                currentStep === step ? "bg-lightBeige h-[1.5rem] w-[1.5rem]" : "bg-beige"
               }`}
             />
           ))}
         </div>
-        
-        <form onSubmit={handleSubmit}>
+
+        <form onSubmit={handleSubmit} id="contact-form">
+          <input
+            type="text"
+            name="website"
+            style={{ display: "none" }}
+            tabIndex="-1"
+            autoComplete="off"
+            value={formData.website}
+            onChange={handleInputChange}
+          />
           {renderStep()}
-          
+
           <div className="flex justify-between mt-4">
             {currentStep > 1 && (
-              <Button 
-                type="button" 
-                onClick={prevStep} 
-                className=" text-black p-18 px-1 flex items-center"
+              <Button
+                type="button"
+                onClick={prevStep}
+                className="text-black p-18 px-1 flex items-center"
               >
                 <FontAwesomeIcon icon={faChevronLeft} className="mr-18" />
                 Previous
               </Button>
             )}
-            
+
             {currentStep < 5 ? (
-              <Button 
-                type="button" 
-                onClick={nextStep} 
-                className="ml-auto  text-black p-18 px-1 flex items-center"
+              <Button
+                type="button"
+                onClick={nextStep}
+                className="ml-auto text-black p-18 px-1 flex items-center"
               >
                 Next
                 <FontAwesomeIcon icon={faChevronRight} className="ml-18" />
@@ -476,7 +519,9 @@ const SendEmailForm = () => {
             ) : (
               <Button
                 type="submit"
-                className="ml-auto  text-black p-18 px-1"
+                className={`ml-auto text-black p-18 px-1 ${
+                  isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                }`}
                 disabled={isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Submit Inquiry"}

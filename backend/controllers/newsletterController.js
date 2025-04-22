@@ -60,6 +60,7 @@ const addToERPNextEmailGroup = async (email) => {
 };
 
 const subscribeToNewsletter = async (req, res) => {
+    console.log('Received subscription request:', req.body);
     const { email } = req.body;
 
     if (!email) {

@@ -101,7 +101,7 @@ const Home = () => {
         });
         return;
       }
-
+      console.log("Submitting email:", email);
       if (isSubmitting) return;
 
       setIsSubmitting(true);

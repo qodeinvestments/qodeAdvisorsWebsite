@@ -28,7 +28,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <link rel="icon" type="image/png" href="/Q.png" sizes="112x112">
 
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Lf7VcwqAAAAAJIm0sR-zrMGipoXSoZ0TKjjovLP"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfDSyArAAAAAOCExGxlQORbh6kCxSsTo7QAZcLh"></script>
 
 
 
@@ -117,6 +117,13 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5MJPG2H" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     
     <div id="root"></div>
+    <script>
+        function onRecaptchaSubmit(token) {
+          window.recaptchaToken = token;
+          const event = new Event('recaptchaSubmit');
+          window.dispatchEvent(event);
+        }
+      </script>
     <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>

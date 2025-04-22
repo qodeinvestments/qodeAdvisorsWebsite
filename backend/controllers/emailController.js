@@ -1,6 +1,46 @@
-// emailController.js
 const { sendMail } = require('../services/mailService');
 const { ClientEnquiry } = require('../models');
+const { RecaptchaEnterpriseServiceClient } = require('@google-cloud/recaptcha-enterprise');
+
+// Cache the reCAPTCHA client for performance
+const recaptchaClient = new RecaptchaEnterpriseServiceClient();
+
+// reCAPTCHA verification function using @google-cloud/recaptcha-enterprise
+const verifyRecaptchaToken = async (token, action) => {
+    const projectID = 'qodeinvest'; // Your Google Cloud Project ID
+    const recaptchaKey = '6LfDSyArAAAAAOCExGxlQORbh6kCxSsTo7QAZcLh'; // Your site key
+    const projectPath = recaptchaClient.projectPath(projectID);
+
+    const request = {
+        assessment: {
+            event: {
+                token,
+                siteKey: recaptchaKey,
+            },
+        },
+        parent: projectPath,
+    };
+
+    try {
+        const [response] = await recaptchaClient.createAssessment(request);
+        console.log(`reCAPTCHA response: ${JSON.stringify(response, null, 2)}`);
+
+        if (!response.tokenProperties.valid) {
+            console.error(`reCAPTCHA token invalid: ${response.tokenProperties.invalidReason}`);
+            throw new Error('reCAPTCHA token is invalid');
+        }
+
+        if (response.tokenProperties.action !== action) {
+            console.error('reCAPTCHA action mismatch');
+            throw new Error('reCAPTCHA action does not match expected action');
+        }
+
+        return response.riskAnalysis.score;
+    } catch (error) {
+        console.error('reCAPTCHA verification error:', error);
+        throw new Error('reCAPTCHA verification failed');
+    }
+};
 
 const sendGeneralMail = async (req, res) => {
     const {
@@ -12,23 +52,37 @@ const sendGeneralMail = async (req, res) => {
         location,
         investmentExperience,
         preferredStrategy,
-        initialInvestmentSize
+        initialInvestmentSize,
+        recaptchaToken,
+        website,
+        formStartTime
     } = req.body;
 
-    if (!userEmail || !fromName) {
+    // Reject if honeypot field is filled
+    if (website) {
+        return res.status(400).json({ error: 'Invalid submission' });
+    }
+
+    // Reject if form was filled too quickly (less than 5 seconds)
+    if (formStartTime && (Date.now() - formStartTime) < 5000) {
+        return res.status(400).json({ error: 'Form submitted too quickly' });
+    }
+
+    // Validate required fields
+    if (!userEmail || !fromName || !recaptchaToken) {
         return res.status(400).json({
-            error: 'Email and name are required'
+            error: 'Email, name, and reCAPTCHA token are required'
         });
     }
 
     try {
-        // const riskScore = await verifyRecaptchaToken(recaptchaToken, 'SUBMIT_FORM');
+        // Verify reCAPTCHA token
+        const riskScore = await verifyRecaptchaToken(recaptchaToken, 'submit');
+        if (riskScore < 0.5) {
+            return res.status(400).json({ error: 'reCAPTCHA verification failed due to low risk score' });
+        }
 
-        // // Optionally, you can decide what to do if the risk score is too low.
-        // if (riskScore < 0.5) {
-        //   return res.status(400).json({ error: 'reCAPTCHA verification failed due to low risk score' });
-        // }
-        // Build styled table with form inputs
+        // Build styled table with form inputs, including location
         const formattedMessage = `
             <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6; color: #555;">
                 <tr>
@@ -42,6 +96,10 @@ const sendGeneralMail = async (req, res) => {
                 <tr>
                     <td style="font-weight: bold; padding: 5px 0; color: #333;">Phone Number:</td>
                     <td style="padding: 5px 0;">${phone}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Location:</td>
+                    <td style="padding: 5px 0;">${location}</td>
                 </tr>
                 <tr>
                     <td style="font-weight: bold; padding: 5px 0; color: #333;">Investment Goal:</td>
@@ -66,11 +124,12 @@ const sendGeneralMail = async (req, res) => {
             </table>
         `;
 
-        // Save form data to database with formatted HTML
+        // Save form data to database, including location
         const clientEnquiry = await ClientEnquiry.create({
             name: fromName,
             email: userEmail,
             phone_number: phone,
+            location: location,
             investment_goal: investmentGoal,
             investment_experience: investmentExperience,
             preferred_strategy: Array.isArray(preferredStrategy) ? preferredStrategy.join(", ") : preferredStrategy,
@@ -99,8 +158,6 @@ const sendGeneralMail = async (req, res) => {
             </div>
         `;
 
-        
-
         // Send email to operations team
         await sendMail({
             fromName: 'Qode Contact Form',
@@ -116,7 +173,7 @@ const sendGeneralMail = async (req, res) => {
         // Send confirmation email to user
         await sendMail({
             fromName: 'Qode Support',
-            fromEmail : process.env.SENDER_EMAIL,
+            fromEmail: process.env.SENDER_EMAIL,
             to: userEmail,
             subject: "We've Received Your Message",
             body: `
@@ -145,7 +202,7 @@ const sendGeneralMail = async (req, res) => {
 };
 
 const sendForgetPasswordMail = async (req, res) => {
-    const { fullName,userEmail, token } = req.body;
+    const { fullName, userEmail, token } = req.body;
     if (!userEmail || !token) {
         return res.status(400).json({
             error: 'Email and token are required'
@@ -170,36 +227,31 @@ const sendForgetPasswordMail = async (req, res) => {
                 </p>
             </div>
         `;
-        // Construct the password reset URL using a dedicated domain.
-        // Ensure FORGOT_PASSWORD_DOMAIN is defined in your environment variables, for example: "https://reset.yourdomain.com"
         const resetUrl = `${process.env.FORGOT_PASSWORD_DOMAIN}/reset-password?token=${encodeURIComponent(token)}&email=${encodeURIComponent(userEmail)}`;
 
-        // Build the email body for the password reset
         const emailBody = `
-  <p>Hi, ${fullName}</p>
-  <p>
-    We received a request to reset your password for your account. 
-    If you initiated this request, please <a href="${resetUrl}">click here</a> to reset your password.
-  </p>
-  <p>
-    This link will expire in 10 minutes for security reasons. 
-    If you did not request a password reset, please ignore this email. 
-    Your account remains secure.
-  </p>
-  <p>
-    If you need any further assistance, feel free to contact our team.
-  </p>
-  <p>
-    Best regards,<br/>Support Team
-  </p>
-  ${pwdSignature}
-`;
+            <p>Hi, ${fullName}</p>
+            <p>
+                We received a request to reset your password for your account. 
+                If you initiated this request, please <a href="${resetUrl}">click here</a> to reset your password.
+            </p>
+            <p>
+                This link will expire in 10 minutes for security reasons. 
+                If you did not request a password reset, please ignore this email. 
+                Your account remains secure.
+            </p>
+            <p>
+                If you need any further assistance, feel free to contact our team.
+            </p>
+            <p>
+                Best regards,<br/>Support Team
+            </p>
+            ${pwdSignature}
+        `;
 
-        // Send the password reset email using a different sender domain.
-        // Here, we assume that sendMail accepts an optional "fromEmail" property.
         await sendMail({
             fromName: 'Support Team',
-            fromEmail: process.env.FORGOT_PASSWORD_SENDER_EMAIL, // This sender email should belong to the different domain
+            fromEmail: process.env.FORGOT_PASSWORD_SENDER_EMAIL,
             to: userEmail,
             subject: 'Password Reset Request',
             body: emailBody,

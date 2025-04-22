@@ -10,6 +10,17 @@ import Text from "../components/common/Text";
 // In a production app, replace this with data fetched from an API.
 const articles = [
     {
+        "date": "April 18, 2025",
+        "title": "Gold prices on a record-hitting spree: Can MCX Gold hit the ₹1 lakh mark in April or May 2025?",
+        "excerpt": "If gold already forms a large part of your portfolio, it’s a good time to book partial profits. For those underexposed, we think buying on dips - especially when paired with silver - can offer a better risk-reward.",
+        "author": "Rishabh Nahar, Partner and Fund Manager at Qode Advisors",
+        "additionalParagraph": "Gold has rallied over 26% in the past six months, hitting lifetime highs on the MCX and inching closer to the ₹75,000 mark. With geopolitical tensions, a weakening dollar, and expectations of rate cuts by the US Fed, investors are betting big on the yellow metal. The big question now is—can gold touch the elusive ₹1 lakh per 10 grams in the coming months?",
+        "imageUrl": "https://www.livemint.com/lm-img/img/2025/04/18/600x338/pexels-photo-366551_1744966477739_1744966494956.jpeg",
+        "source": "Mint Markets",
+        "slug": "gold-prices-record-highs",
+        "url": "https://www.livemint.com/market/commodities/gold-prices-on-a-record-hitting-spree-can-mcx-gold-rate-hit-1-lakh-mark-in-april-or-may-2025-11744966232802.html",
+      },
+    {
         "date": "April 12, 2025",
         "title": "Mind Over Money: Bhagavad Gita, First Principles & Fitness: The unconventional investing path of Rishabh Nahar",
         "excerpt": "For me, staying mentally fit starts with staying physically fit. I work out 5-6 days a week and try to eat healthy most of the time. Honestly, I believe a lot of mental stability comes from being healthy and maintaining a disciplined lifestyle. If you keep your body in good shape, the mind tends to follow. On top of that, getting good sleep at the right times helps me stay mentally sharp throughout the day.",

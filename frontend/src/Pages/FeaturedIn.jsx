@@ -44,6 +44,15 @@ const FeaturedArticles = () => {
 
   const articles = [
     {
+      "date": "April 18, 2025",
+      "title": "Gold prices on a record-hitting spree: Can MCX Gold hit the ₹1 lakh mark in April or May 2025?",
+      "excerpt": "Gold prices have reached record highs in both domestic and international markets, driven by economic uncertainties and geopolitical tensions.",
+      "imageUrl": "https://www.livemint.com/lm-img/img/2025/04/18/600x338/pexels-photo-366551_1744966477739_1744966494956.jpeg",
+      "source": "Mint Markets",
+      "slug": "gold-prices-record-highs",
+      "url": "https://www.livemint.com/market/commodities/gold-prices-on-a-record-hitting-spree-can-mcx-gold-rate-hit-1-lakh-mark-in-april-or-may-2025-11744966232802.html",
+    },
+    {
       "date": "April 12, 2025",
       "title": "Mind Over Money: Bhagavad Gita, First Principles & Fitness: The unconventional investing path of Rishabh Nahar",
       "excerpt": "Rishabh Nahar, Partner at Qode Advisors, combines physical discipline, spiritual grounding from the Bhagavad Gita, and Charlie Munger’s mental models for a holistic investing approach rooted in clarity, composure, and first principles thinking.",

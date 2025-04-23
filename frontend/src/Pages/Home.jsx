@@ -240,7 +240,7 @@ const Home = () => {
           </div>
         </div>
       </Section>
-      <Section padding="none" className="mt-8 bg-lightBeige sm:mt-5 ">
+      <Section padding="none" className="mt-8 bg-lightBeige/50 sm:mt-5 ">
         <SendEmailForm  />
       </Section>
 

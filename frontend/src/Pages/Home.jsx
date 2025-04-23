@@ -10,6 +10,7 @@ import Section from "../components/container/Section";
 import Modal from "../components/Modal";
 import GrowMoney from "./GrowMoney";
 import InvestmentPrinciples from "../components/InvestmentPrinciples";
+import SendEmailForm from "../components/SendEmailForm";
 
 const Home = () => {
   const [email, setEmail] = useState("");
@@ -239,6 +240,9 @@ const Home = () => {
           </div>
         </div>
       </Section>
+      <Section padding="none" className="mt-8 bg-lightBeige sm:mt-5 ">
+        <SendEmailForm  />
+      </Section>
 
       <ToastContainer
         position="bottom-right"
@@ -252,11 +256,11 @@ const Home = () => {
         pauseOnHover
         theme="light"
       />
-      {isModalOpen && (
+      {/* {isModalOpen && (
         <Modal onClose={closeModal}>
           <GrowMoney />
         </Modal>
-      )}
+      )} */}
     </div>
   );
 };

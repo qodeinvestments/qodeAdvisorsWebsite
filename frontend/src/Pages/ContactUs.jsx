@@ -3,6 +3,7 @@ import Heading from "../components/common/Heading";
 import Text from "../components/common/Text";
 import Section from "../components/container/Section";
 import { Helmet } from "react-helmet";
+import SendEmailForm from "../components/SendEmailForm";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -48,6 +49,7 @@ const ContactUs = () => {
             Contact Us
           </Heading>
         </div>
+        
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/2">
             <div className="bg-white">

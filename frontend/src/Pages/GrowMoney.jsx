@@ -1,13 +1,10 @@
 import React from "react";
 import SendEmailForm from "../components/SendEmailForm";
 
-const GrowMoney = () => {
-  const VITE_GOOGLE_MEET_URL = import.meta.env.VITE_GOOGLE_MEET_URL;
-  const VITE_INPERSON_URL = import.meta.env.VITE_INPERSON_URL;
-
+const GrowMoney = ({ onClose }) => {
   return (
-    <div>
-      <SendEmailForm />
+    <div className=" p-18 rounded-lg">
+      <SendEmailForm onClose={onClose} />
     </div>
   );
 };

@@ -508,7 +508,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
               </Text>
             </div>
 
-            <Text className="text-body font-body font-bold mb-1">FOLLOW US</Text>
+            {/* <Text className="text-body font-body font-bold mb-1">FOLLOW US</Text>
             <div className="flex gap-4 mb-2">
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faLinkedin} className={`text-${textColor} text-xl`} />
@@ -522,7 +522,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faInstagram} className={`text-${textColor} text-xl`} />
               </a>
-            </div>
+            </div> */}
 
             <Text className="text-body font-body font-bold mb-1">OFFICES</Text>
             {["Mumbai"].map((city) => (

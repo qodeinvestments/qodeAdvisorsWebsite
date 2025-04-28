@@ -6,6 +6,8 @@ import { Bounce, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "./common/Button";
 import Text from "./common/Text";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
 
 const API_URL =
   import.meta.env.MODE === "production"
@@ -21,9 +23,17 @@ const validateEmail = (email) => {
 };
 
 const validatePhone = (phone) => {
-  const phoneRegex = /^\d{10}$/;
   if (!phone) return "Phone number is required";
-  if (!phoneRegex.test(phone)) return "Please enter a valid 10-digit phone number";
+  
+  // Strip any non-digit characters except the leading +
+  const cleanedPhone = phone.replace(/(?!^\+)\D/g, '');
+  
+  // Check if it's a valid format (with or without +)
+  const phoneRegex = /^(\+)?\d{1,15}$/;
+  if (!phoneRegex.test(cleanedPhone)) {
+    return "Please enter a valid international phone number starting with '+' followed by 1-15 digits (e.g., +12025550123)";
+  }
+  
   return "";
 };
 
@@ -49,6 +59,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const [formStartTime, setFormStartTime] = useState(Date.now());
+  const [phoneTouched, setPhoneTouched] = useState(false);
 
   const [formData, setFormData] = useState({
     to: "investor.relations@qodeinvest.com",
@@ -120,10 +131,44 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
       }));
     }
 
+    if (name === "phone") {
+      setPhoneTouched(true);
+    }
+
     if (errors[name]) {
       setErrors((prev) => ({
         ...prev,
         [name]: "",
+      }));
+    }
+  };
+
+  // Modify the handlePhoneChange function to add the "+" prefix if missing
+  const handlePhoneChange = (phone) => {
+    // Format the phone number to ensure it starts with "+"
+    const formattedPhone = phone.startsWith('+') ? phone : `+${phone}`;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      phone: formattedPhone,
+    }));
+    setPhoneTouched(true);
+
+    if (errors.phone) {
+      setErrors((prev) => ({
+        ...prev,
+        phone: "",
+      }));
+    }
+  };
+
+  const handlePhoneBlur = () => {
+    setPhoneTouched(true);
+    const phoneError = validatePhone(formData.phone);
+    if (phoneError) {
+      setErrors((prev) => ({
+        ...prev,
+        phone: phoneError,
       }));
     }
   };
@@ -226,6 +271,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
           website: "",
           recaptchaToken: "",
         });
+        setPhoneTouched(false);
       } else {
         const errorData = await response.json();
         throw new Error(errorData.error || "Submission failed");
@@ -309,17 +355,30 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
 
               {/* Contact Number */}
               <div>
-                <input
-                  autoComplete="off"
-                  type="tel"
-                  name="phone"
+                <PhoneInput
+                  country={"in"}
                   value={formData.phone}
-                  onChange={handleInputChange}
-                  placeholder="Contact Number*"
-                  maxLength={10}
-                  className={`${inputStyle} ${errors.phone ? "border-red-500" : ""}`}
+                  onChange={handlePhoneChange}
+                  onBlur={handlePhoneBlur}
+                  placeholder="Contact Number* (e.g., +12025550123)"
+                  inputClass={`${inputStyle} ${errors.phone && phoneTouched ? "border-red-500" : ""}`}
+                  buttonClass="bg-transparent border-none"
+                  dropdownClass="bg-brown text-white"
+                  inputProps={{
+                    name: "phone",
+                    required: true,
+                    autoComplete: "off",
+                  }}
+                  // Add these props to ensure proper formatting
+                  enableSearch={true}
+                  preferredCountries={['in', 'us', 'gb']}
+                  // This is important - it adds the "+" prefix in the UI
+                  format="+## ### ### ####"
                 />
-                {renderError("phone")}
+                <span className={`block text-${textColor} text-xs mt-1`}>
+                  Select your country code (e.g., +91 for India)
+                </span>
+                {phoneTouched && renderError("phone")}
               </div>
 
               {/* Location (City) */}
@@ -508,7 +567,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
               </Text>
             </div>
 
-            {/* <Text className="text-body font-body font-bold mb-1">FOLLOW US</Text>
+            <Text className="text-body font-body font-bold mb-1">FOLLOW US</Text>
             <div className="flex gap-4 mb-2">
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faLinkedin} className={`text-${textColor} text-xl`} />
@@ -522,7 +581,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faInstagram} className={`text-${textColor} text-xl`} />
               </a>
-            </div> */}
+            </div>
 
             <Text className="text-body font-body font-bold mb-1">OFFICES</Text>
             {["Mumbai"].map((city) => (

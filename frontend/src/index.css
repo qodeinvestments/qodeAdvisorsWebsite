@@ -98,3 +98,57 @@ html {
     }
   }
 }
+
+
+.react-tel-input .form-control{
+  background:none !important;
+  border: none !important;
+  border-bottom: 1px solid #945c39 !important;
+  width: 100% !important;
+  border-radius: 0% !important;
+
+}
+
+.react-tel-input .flag-dropdown {
+  background: none !important;
+  border: none !important;
+  border-bottom: 1px solid #945c39 !important;
+}
+
+.react-tel-input .country-list {
+  background: black !important;
+  border: 1px solid #945c39 !important;
+  scrollbar-width: thin !important; /* Firefox: 'thin' for a slim but usable scrollbar */
+  scrollbar-color: #d1a47b #1a1a1a !important; /* Firefox: thumb #d1a47b, track #1a1a1a (dark gray) */
+}
+
+/* WebKit (Chrome, Edge) scrollbar styles */
+.react-tel-input .country-list::-webkit-scrollbar {
+  width: 6px !important; /* Slim but visible scrollbar width */
+}
+
+.react-tel-input .country-list::-webkit-scrollbar-track {
+  background: #1a1a1a !important; /* Dark gray track to blend with black background */
+}
+
+.react-tel-input .country-list::-webkit-scrollbar-thumb {
+  background: #d1a47b !important; /* Thumb matches hover/highlight color */
+  border-radius: 3px !important; /* Rounded edges for a polished look */
+}
+
+.react-tel-input .country-list::-webkit-scrollbar-thumb:hover {
+  background: #e6b894 !important; /* Lighter shade of #d1a47b for hover effect */
+}
+
+.react-tel-input .country-list .country:hover,
+.react-tel-input .country-list .country.highlight {
+  background-color: #d1a47b !important;
+}
+
+.react-tel-input .country-list .country:hover,.react-tel-input .country-list .country.highlight{
+  background-color: #d1a47b !important;
+}
+
+.react-tel-input .flag-dropdown.open .selected-flag, .react-tel-input .flag-dropdown.open .selected-flag:hover{
+  background: #d1a47b !important;
+}

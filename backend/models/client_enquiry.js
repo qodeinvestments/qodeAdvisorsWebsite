@@ -36,7 +36,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         notEmpty: true,
-        is: /^[0-9]{10}$/
+        // Updated regex to allow international format with "+" prefix followed by 1-15 digits
+        is: /^\+\d{1,15}$/
       }
     },
     investment_goal: {
@@ -67,7 +68,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
-    location: { // Include if required by database schema
+    location: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {

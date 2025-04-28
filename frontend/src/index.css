@@ -152,3 +152,13 @@ html {
 .react-tel-input .flag-dropdown.open .selected-flag, .react-tel-input .flag-dropdown.open .selected-flag:hover{
   background: #d1a47b !important;
 }
+
+
+.react-tel-input .country-list .search{
+  background: #945c39 !important;
+}
+
+.react-tel-input .country-list .search-box{
+  background-color: black !important;
+  border: 1px solid #d1a47b;
+}

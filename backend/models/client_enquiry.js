@@ -67,6 +67,13 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       }
     },
+    location: { // Include if required by database schema
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      }
+    },
     additional_message: {
       type: DataTypes.TEXT,
       allowNull: true,
@@ -86,11 +93,11 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
     hooks: {
       beforeCreate: (record) => {
-        record.createdAt = moment().tz('Asia/Kolkata').toDate(); // Convert to Date
-        record.updatedAt = moment().tz('Asia/Kolkata').toDate(); // Convert to Date
+        record.createdAt = moment().tz('Asia/Kolkata').toDate();
+        record.updatedAt = moment().tz('Asia/Kolkata').toDate();
       },
       beforeUpdate: (record) => {
-        record.updatedAt = moment().tz('Asia/Kolkata').toDate(); // Convert to Date
+        record.updatedAt = moment().tz('Asia/Kolkata').toDate();
       }
     }
   });

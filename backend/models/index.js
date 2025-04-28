@@ -3,6 +3,10 @@ const config = require("../config/config");
 
 const sequelize = new Sequelize(config.development.url, {
   dialect: "postgres",
+  timezone: 'Asia/Kolkata', // Enforce IST
+  dialectOptions: {
+    useUTC: false, // Prevent UTC conversion
+  },
 });
 
 // Define your schemas

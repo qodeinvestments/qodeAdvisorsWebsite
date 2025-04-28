@@ -32,11 +32,11 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     phone_number: {
-      type: DataTypes.STRING, // Changed from INTEGER to STRING
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         notEmpty: true,
-        is: /^[0-9]{10}$/ // Validates 10-digit phone numbers
+        is: /^[0-9]{10}$/
       }
     },
     investment_goal: {
@@ -68,15 +68,15 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     additional_message: {
-      type: DataTypes.TEXT, // Changed from STRING to TEXT for longer messages
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     createdAt: {
-      type: DataTypes.DATE, // Changed from STRING to DATE
+      type: DataTypes.DATE,
       allowNull: false,
     },
     updatedAt: {
-      type: DataTypes.DATE, // Changed from STRING to DATE
+      type: DataTypes.DATE,
       allowNull: false,
     }
   }, {
@@ -86,11 +86,11 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
     hooks: {
       beforeCreate: (record) => {
-        record.createdAt = moment().tz('Asia/Kolkata');
-        record.updatedAt = moment().tz('Asia/Kolkata');
+        record.createdAt = moment().tz('Asia/Kolkata').toDate(); // Convert to Date
+        record.updatedAt = moment().tz('Asia/Kolkata').toDate(); // Convert to Date
       },
       beforeUpdate: (record) => {
-        record.updatedAt = moment().tz('Asia/Kolkata');
+        record.updatedAt = moment().tz('Asia/Kolkata').toDate(); // Convert to Date
       }
     }
   });

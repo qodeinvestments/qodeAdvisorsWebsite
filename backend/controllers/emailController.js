@@ -166,7 +166,6 @@ const sendGeneralMail = async (req, res) => {
             body: `
                 <h2 style="color: #333; font-family: Arial, sans-serif;">New Contact Form Submission</h2>
                 ${formattedMessage}
-                ${signature}
             `
         });
 
@@ -185,7 +184,6 @@ const sendGeneralMail = async (req, res) => {
                     Best regards,<br>
                     <span style="color: #000;">Qode Support Team</span>
                 </p>
-                ${signature}
             `
         });
 

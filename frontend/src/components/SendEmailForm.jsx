@@ -23,21 +23,32 @@ const validateEmail = (email) => {
 };
 
 const validatePhone = (phone) => {
-  // Check if phone is empty or contains only spaces
-  if (!phone || phone.trim() === "") return "Phone number is required";
-
+  if (!phone) return "Phone number is required";
+  
   // Strip any non-digit characters except the leading +
-  const cleanedPhone = phone.replace(/(?!^\+)\D/g, "");
-
-  // Check if cleaned phone is empty or just a +
-  if (!cleanedPhone || cleanedPhone === "+") return "Phone number is required";
-
+  const cleanedPhone = phone.replace(/(?!^\+)\D/g, '');
+  
+  // Check if the phone number has digits beyond the country code
+  if (cleanedPhone.length <= 1) {
+    return "Please enter a valid phone number";
+  }
+  
+  // Check if there's at least one digit after the country code
+  // First, remove the "+" if it exists
+  const phoneWithoutPlus = cleanedPhone.startsWith('+') ? cleanedPhone.substring(1) : cleanedPhone;
+  
+  // Extract the country code and the rest of the phone number
+  // Most country codes are 1-3 digits
+  if (phoneWithoutPlus.length <= 3) {
+    return "Please enter a complete phone number with digits after the country code";
+  }
+  
   // Check if it's a valid format (with or without +)
   const phoneRegex = /^(\+)?\d{1,15}$/;
   if (!phoneRegex.test(cleanedPhone)) {
     return "Please enter a valid international phone number starting with '+' followed by 1-15 digits (e.g., +12025550123)";
   }
-
+  
   return "";
 };
 
@@ -147,32 +158,30 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
     }
   };
 
-  // Modify the handlePhoneChange function to add the "+" prefix if missing
+  // Handle phone change with improved validation
   const handlePhoneChange = (phone) => {
-    // Prevent setting the phone number if it's only spaces
-    if (phone.trim() === "") {
-      setFormData((prevData) => ({
-        ...prevData,
-        phone: "",
-      }));
-      return;
-    }
-  
     // Format the phone number to ensure it starts with "+"
-    const formattedPhone = phone.startsWith("+") ? phone : `+${phone}`;
-  
-    setFormData((prevData) => ({
-      ...prevData,
-      phone: formattedPhone,
-    }));
-    setPhoneTouched(true);
-  
-    if (errors.phone) {
+    const formattedPhone = phone.startsWith('+') ? phone : `+${phone}`;
+    
+    // Check for spaces or empty input and set error immediately if needed
+    if (!phone.trim() || phone.trim().length <= 2) {
+      setErrors((prev) => ({
+        ...prev,
+        phone: "Please enter a valid phone number with digits after the country code",
+      }));
+    } else {
+      // Clear error if phone looks valid
       setErrors((prev) => ({
         ...prev,
         phone: "",
       }));
     }
+
+    setFormData((prevData) => ({
+      ...prevData,
+      phone: formattedPhone,
+    }));
+    setPhoneTouched(true);
   };
 
   const handlePhoneBlur = () => {

@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: qodeinvestments-postgres
+    environment:
+      POSTGRES_DB: QodeInvestments
+      POSTGRES_USER: postgres  # Explicitly set the default user
+      POSTGRES_PASSWORD: S@nket@123
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    container_name: qodeinvestments-backend
+    ports:
+      - "6000:6000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:S@nket@123@postgres:5432/QodeInvestments
+    depends_on:
+      - postgres
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+volumes:
+  postgres-data:

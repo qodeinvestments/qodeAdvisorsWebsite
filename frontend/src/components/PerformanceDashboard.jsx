@@ -308,35 +308,35 @@ const RollingReturnsTable = React.memo(
                 <th className="sticky left-0 z-10 p-18 sm:p-1 font-semibold text-center text-black bg-lightBeige border border-brown w-[14.28%]" rowSpan="2">
                   Period (Years)
                 </th>
-                <th className="p-18 sm:p-1 font-semibold text-center text-black border-t border-r border-b border-brown w-[28.57%]" colSpan="2">
+                {/* <th className="p-18 sm:p-1 font-semibold text-center text-black border-t border-r border-b border-brown w-[28.57%]" colSpan="2">
                   Worst
-                </th>
+                </th> */}
                 <th className="p-18 sm:p-1 font-semibold text-center text-black border-t border-r border-b border-brown w-[28.57%]" colSpan="2">
                   Median
                 </th>
-                <th className="p-18 sm:p-1 font-semibold text-center text-black border-t border-r border-b border-brown w-[28.57%]" colSpan="2">
+                {/* <th className="p-18 sm:p-1 font-semibold text-center text-black border-t border-r border-b border-brown w-[28.57%]" colSpan="2">
                   Best
-                </th>
+                </th> */}
               </tr>
               <tr className="text-xs sm:text-sm sm:text-body font-body border-brown">
+                {/* <th className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
+                  {strategyName || 'Strategy'}
+                </th>
+                <th className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
+                  {benchmarkName || 'Benchmark'}
+                </th> */}
                 <th className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
                   {strategyName || 'Strategy'}
                 </th>
                 <th className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
                   {benchmarkName || 'Benchmark'}
                 </th>
-                <th className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
+                {/* <th className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
                   {strategyName || 'Strategy'}
                 </th>
                 <th className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
                   {benchmarkName || 'Benchmark'}
-                </th>
-                <th className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
-                  {strategyName || 'Strategy'}
-                </th>
-                <th className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
-                  {benchmarkName || 'Benchmark'}
-                </th>
+                </th> */}
               </tr>
             </thead>
             <tbody>
@@ -347,24 +347,24 @@ const RollingReturnsTable = React.memo(
                     <td className="sticky left-0 z-10 p-18 sm:p-1 font-semibold text-center bg-lightBeige border border-brown w-[14.28%]">
                       {year}
                     </td>
-                    <td className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
+                    {/* <td className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
                       {row.worst.portfolio.toFixed(2)}%
                     </td>
                     <td className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
                       {row.worst.benchmark.toFixed(2)}%
-                    </td>
+                    </td> */}
                     <td className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
                       {row.median.portfolio.toFixed(2)}%
                     </td>
                     <td className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
                       {row.median.benchmark.toFixed(2)}%
                     </td>
-                    <td className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
+                    {/* <td className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
                       {row.best.portfolio.toFixed(2)}%
                     </td>
                     <td className="p-18 sm:p-1 text-center border-b border-r border-brown w-[14.28%]">
                       {row.best.benchmark.toFixed(2)}%
-                    </td>
+                    </td> */}
                   </tr>
                 );
               })}

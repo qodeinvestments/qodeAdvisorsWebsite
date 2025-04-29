@@ -23,17 +23,21 @@ const validateEmail = (email) => {
 };
 
 const validatePhone = (phone) => {
-  if (!phone) return "Phone number is required";
-  
+  // Check if phone is empty or contains only spaces
+  if (!phone || phone.trim() === "") return "Phone number is required";
+
   // Strip any non-digit characters except the leading +
-  const cleanedPhone = phone.replace(/(?!^\+)\D/g, '');
-  
+  const cleanedPhone = phone.replace(/(?!^\+)\D/g, "");
+
+  // Check if cleaned phone is empty or just a +
+  if (!cleanedPhone || cleanedPhone === "+") return "Phone number is required";
+
   // Check if it's a valid format (with or without +)
   const phoneRegex = /^(\+)?\d{1,15}$/;
   if (!phoneRegex.test(cleanedPhone)) {
     return "Please enter a valid international phone number starting with '+' followed by 1-15 digits (e.g., +12025550123)";
   }
-  
+
   return "";
 };
 

@@ -149,15 +149,24 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
 
   // Modify the handlePhoneChange function to add the "+" prefix if missing
   const handlePhoneChange = (phone) => {
+    // Prevent setting the phone number if it's only spaces
+    if (phone.trim() === "") {
+      setFormData((prevData) => ({
+        ...prevData,
+        phone: "",
+      }));
+      return;
+    }
+  
     // Format the phone number to ensure it starts with "+"
-    const formattedPhone = phone.startsWith('+') ? phone : `+${phone}`;
-
+    const formattedPhone = phone.startsWith("+") ? phone : `+${phone}`;
+  
     setFormData((prevData) => ({
       ...prevData,
       phone: formattedPhone,
     }));
     setPhoneTouched(true);
-
+  
     if (errors.phone) {
       setErrors((prev) => ({
         ...prev,

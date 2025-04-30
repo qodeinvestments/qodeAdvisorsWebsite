@@ -16,9 +16,9 @@ const API_URL =
 
 // Validation utility functions
 const validateEmail = (email) => {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!email) return "Email is required";
-  if (!emailRegex.test(email)) return "Please enter a valid email address";
+  if (!emailRegex.test(email)) return "Please enter a valid email address (e.g., example@domain.com)";
   return "";
 };
 

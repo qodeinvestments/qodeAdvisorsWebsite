@@ -4,8 +4,8 @@ import HighchartsReact from "highcharts-react-official";
 import useFetchStrategyNavField from "../../../hooks/useFetchStrategyNavData";
 
 const QvfVsMomentumCurve = () => {
-  // We'll fetch two fields: QTF and Nifty 500 Momentum 50
-  const fieldNames = useMemo(() => ["qtf", "nifty_500_momentum_50"], []);
+  // We'll fetch two fields: QTF and Nifty Midcap 150 Momentum 50
+  const fieldNames = useMemo(() => ["qtf", "nifty_midcap_150_momentum_50"], []);
 
   const { data, isLoading, error } = useFetchStrategyNavField(fieldNames);
 
@@ -28,7 +28,7 @@ const QvfVsMomentumCurve = () => {
       return !isNaN(val) && val !== 0;
     });
     const earliestMoIndex = sortedData.findIndex((row) => {
-      const val = parseFloat(row.nifty_500_momentum_50);
+      const val = parseFloat(row.nifty_midcap_150_momentum_50);
       return !isNaN(val) && val !== 0;
     });
 
@@ -42,7 +42,7 @@ const QvfVsMomentumCurve = () => {
 
     // Get baseline values at that common start
     const baseQtf = parseFloat(sortedData[commonStartIndex].qtf);
-    const baseMo = parseFloat(sortedData[commonStartIndex].nifty_500_momentum_50);
+    const baseMo = parseFloat(sortedData[commonStartIndex].nifty_midcap_150_momentum_50);
 
     // If either baseline is invalid, bail out
     if (isNaN(baseQtf) || isNaN(baseMo) || baseQtf === 0 || baseMo === 0) {
@@ -59,7 +59,7 @@ const QvfVsMomentumCurve = () => {
       const dateMs = new Date(row.date).getTime();
 
       const qtfVal = parseFloat(row.qtf);
-      const moVal = parseFloat(row.nifty_500_momentum_50);
+      const moVal = parseFloat(row.nifty_midcap_150_momentum_50);
 
       const normalizedQtf = !isNaN(qtfVal) ? (qtfVal / baseQtf) * 100 : null;
       const normalizedMo = !isNaN(moVal) ? (moVal / baseMo) * 100 : null;
@@ -78,7 +78,7 @@ const QvfVsMomentumCurve = () => {
         type: "line",
       },
       {
-        name: "Nifty 500 Momentum 50",
+        name: "Nifty Midcap 150 Momentum 50",
         data: moSeriesData,
         color: "#d1a47b", // Beige
         lineWidth: 2,

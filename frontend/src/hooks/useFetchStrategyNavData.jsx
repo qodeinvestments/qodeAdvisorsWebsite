@@ -18,7 +18,7 @@ const useFetchStrategyNavField = (fieldNames) => {
   const STRATEGY_BENCHMARKS = {
     qgf: 'nifty_smallcap_100',
     qaw: 'nifty_50',
-    qtf: 'nifty_500_momentum_50'
+    qtf: 'nifty_midcap_150_momentum_50'
   };
 
   const backendUrl = import.meta.env.MODE === "production"

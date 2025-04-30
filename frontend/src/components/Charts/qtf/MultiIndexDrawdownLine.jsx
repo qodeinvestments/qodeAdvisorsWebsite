@@ -27,7 +27,7 @@ function calculateDrawdowns(data, key) {
 const MultiIndexDrawdownLine = () => {
   const fieldNames = useMemo(
     () => [
-      "nifty_500_momentum_50",
+      "nifty_midcap_150_momentum_50",
       "nifty_alpha_50",
       "nifty_200_quality_30",
       "nifty_low_volatility_50",
@@ -40,7 +40,7 @@ const MultiIndexDrawdownLine = () => {
 
   // Updated to a brown/beige palette
   const indices = [
-    { key: "nifty_500_momentum_50",  name: "NSE 500 Momentum 50",     color: "#fa8c00" }, // Sienna
+    { key: "nifty_midcap_150_momentum_50",  name: "NSE 500 Momentum 50",     color: "#fa8c00" }, // Sienna
     { key: "nifty_low_volatility_50", name: "NIFTY LOW VOLATILITY 50", color: "#ffca76" }, // SaddleBrown
     { key: "nifty_200_quality_30",    name: "NIFTY200 QUALITY 30",     color: "#c4c4c4" }, // Camel
     { key: "nifty_alpha_50",          name: "NIFTY ALPHA 50",          color: "#474747" }, // BurlyWood

@@ -10,7 +10,7 @@ const calculateCAGR = (startValue, endValue, years) => {
 
 const MomentumIndicesChart = () => {
   const fieldNames = useMemo(
-    () => ['nifty_500_momentum_50', 'nifty_50', 'nifty_midcap_100', 'nifty_smallcap_100'],
+    () => ['nifty_midcap_150_momentum_50', 'nifty_50', 'nifty_midcap_100', 'nifty_smallcap_100'],
     []
   );
 
@@ -23,8 +23,8 @@ const MomentumIndicesChart = () => {
   const seriesConfig = useMemo(
     () => [
       {
-        key: 'nifty_500_momentum_50',
-        name: 'Nifty 500 Momentum 50',
+        key: 'nifty_midcap_150_momentum_50',
+        name: 'Nifty Midcap 150 Momentum 50',
         color: '#A0522D',
       },
       {

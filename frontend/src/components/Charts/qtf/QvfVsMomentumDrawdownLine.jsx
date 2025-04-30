@@ -25,14 +25,14 @@ function calculateDrawdowns(data, key) {
 }
 
 const QvfVsMomentumDrawdownLine = () => {
-  const fieldNames = useMemo(() => ["qtf", "nifty_500_momentum_50"], []);
+  const fieldNames = useMemo(() => ["qtf", "nifty_midcap_150_momentum_50"], []);
 
   const { data, isLoading, error } = useFetchStrategyNavField(fieldNames);
 
   // Updated to a brown/beige palette
   const seriesConfig = [
     { key: "qtf", name: "QTF", color: "#A0522D" }, // Brown
-    { key: "nifty_500_momentum_50", name: "Nifty 500 Momentum 50", color: "#d1a47b" } // Beige
+    { key: "nifty_midcap_150_momentum_50", name: "Nifty Midcap 150 Momentum 50", color: "#d1a47b" } // Beige
   ];
 
   const processedSeries = useMemo(() => {

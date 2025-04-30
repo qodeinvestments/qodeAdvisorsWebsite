@@ -21,7 +21,7 @@ const calculateCAGR = (startValue, endValue, years) => {
 const MultiIndexChart = () => {
   const fieldNames = useMemo(
     () => [
-      'nifty_500_momentum_50',
+      'nifty_midcap_150_momentum_50',
       'nifty_alpha_50',
       'nifty_200_quality_30',
       'nifty_low_volatility_50',
@@ -38,7 +38,7 @@ const MultiIndexChart = () => {
     const categories = data.map(point => point.date);
     const seriesConfig = [
       {
-      field: 'nifty_500_momentum_50',
+      field: 'nifty_midcap_150_momentum_50',
       name: 'Momentum 50',
       color: '#A0522D',
       },

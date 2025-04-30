@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.FLOAT,
       allowNull: true,
     },
-    nifty_500_momentum_50: {
+    nifty_midcap_150_momentum_50: {
       type: DataTypes.FLOAT,
       allowNull: true,
     },

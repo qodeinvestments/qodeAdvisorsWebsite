@@ -70,6 +70,7 @@ const QodeAllWeather = () => {
   };
 
   const extractDateRange = (data) => {
+    console.log(data)
     if (!data || data.length === 0) return { startDate: "0", endDate: "0" };
 
     // Convert all date strings to Date objects
@@ -92,7 +93,8 @@ const QodeAllWeather = () => {
   };
 
   const { startDate, endDate } = extractDateRange(data);
-
+console.log('startDate', startDate)
+console.log('endDate', endDate)
 
   React.useEffect(() => {
     if (data) {

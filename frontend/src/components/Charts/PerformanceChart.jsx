@@ -9,29 +9,47 @@ import useMobileWidth from "../hooks/useMobileWidth";
 import useChartData from "../hooks/useChartOptions";
 import useCalculateCagr from "../hooks/useCalculateCagr";
 import filterDataByCustomRange from "../utils/filterDataByTimeRange";
+import accessibility from "highcharts/modules/accessibility";
 import boost from "highcharts/modules/boost";
+
+accessibility(Highcharts);
 boost(Highcharts);
 
-const FIXED_END_DATE = "2024-12-31";
+// Utility function to format date as DD/MM/YYYY
+const formatDateToUK = (dateStr) => {
+  if (!dateStr) return "";
+  const date = new Date(dateStr);
+  if (isNaN(date.getTime())) return "";
+  return date.toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+};
 
-const PerformanceChart = ({
-  data,
-  strategy,
-  blogUrl,
-  error,
-  isLoading,
-  name
-}) => {
+const PerformanceChart = ({ data, strategy, blogUrl, error, isLoading, name }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [loading, setLoading] = useState(true);
   const customDateRef = useRef(null);
   const customButtonRef = useRef(null);
 
-  // Modified to use fixed end date
+  // Determine the latest end date from data
+  const endDate = useMemo(() => {
+    if (data && data.length > 0) {
+      const dates = data
+        .map((item) => new Date(item.date))
+        .filter((date) => !isNaN(date.getTime()));
+      if (dates.length > 0) {
+        const latestDate = new Date(Math.max(...dates));
+        return latestDate.toISOString().split("T")[0]; // Format as YYYY-MM-DD
+      }
+    }
+    return "2025-04-30"; // Fallback
+  }, [data]);
+
   const {
     timeRange,
     startDate,
-    endDate: originalEndDate, // Rename to avoid confusion
     activeButton,
     isCustomDateOpen,
     setCustomDateRange,
@@ -40,41 +58,42 @@ const PerformanceChart = ({
   } = useCustomTimeRange();
 
   const { isMobile } = useMobileWidth();
-  const { chartOptions, prepareChartData, updateChartOptions } = useChartData(
-    strategy,
-    isMobile,
-    name
-  );
+  const { chartOptions, prepareChartData, updateChartOptions } = useChartData(strategy, isMobile, name);
   const { calculateCAGR } = useCalculateCagr();
 
   if (error) {
-    console.error(error);
-    return null;
+    console.error("Chart error:", error);
+    return <div className="text-red-500 text-center">Error loading chart: {error.message}</div>;
   }
 
-  // Filter data using fixed end date
+  // Filter data using dynamic end date
   const filterData = useMemo(() => {
-    if (!isLoading && data.length > 0) {
-      const filteredData = filterDataByCustomRange(
-        data,
-        timeRange,
-        startDate,
-        FIXED_END_DATE,
-        FIXED_END_DATE
-      );
-
-      return filteredData;
+    if (!isLoading && data && data.length > 0) {
+      try {
+        const filteredData = filterDataByCustomRange(data, timeRange, startDate, endDate, endDate);
+        return filteredData;
+      } catch (err) {
+        console.error("Error filtering data:", err);
+        return [];
+      }
     }
     return [];
-  }, [data, isLoading, timeRange, startDate]);
+  }, [data, isLoading, timeRange, startDate, endDate]);
 
   useEffect(() => {
     if (filterData.length > 0) {
       setLoading(true);
-      const chartData = prepareChartData(filterData);
-      updateChartOptions(chartData);
+      try {
+        const chartData = prepareChartData(filterData);
+        updateChartOptions(chartData);
+        setFilteredData(filterData);
+      } catch (err) {
+        console.error("Error preparing chart data:", err);
+      } finally {
+        setLoading(false);
+      }
+    } else {
       setLoading(false);
-      setFilteredData(filterData);
     }
   }, [filterData, prepareChartData, updateChartOptions]);
 
@@ -89,10 +108,14 @@ const PerformanceChart = ({
     };
   }, [isCustomDateOpen]);
 
-  const strategyCagr = useMemo(
-    () => calculateCAGR(filteredData, timeRange, strategy),
-    [calculateCAGR, filteredData, timeRange, strategy]
-  );
+  const strategyCagr = useMemo(() => {
+    try {
+      return calculateCAGR(filteredData, timeRange, strategy);
+    } catch (err) {
+      console.error("Error calculating CAGR:", err);
+      return 0;
+    }
+  }, [calculateCAGR, filteredData, timeRange, strategy]);
 
   const renderDateRangeButtons = () => {
     const ranges = ["1M", "6M", "1Y", "3Y", "5Y", "Inception"];
@@ -143,10 +166,10 @@ const PerformanceChart = ({
                   <input
                     type="date"
                     id="start-date"
-                    value={startDate}
+                    value={startDate || ""}
                     onChange={(e) => {
                       const newStartDate = e.target.value;
-                      setCustomDateRange(newStartDate, FIXED_END_DATE);
+                      setCustomDateRange(newStartDate, endDate);
                     }}
                     className="mt-1 block w-full border border-brown shadow-sm p-18"
                     aria-label="Start Date"
@@ -163,7 +186,7 @@ const PerformanceChart = ({
                   <input
                     type="date"
                     id="end-date"
-                    value={FIXED_END_DATE}
+                    value={endDate}
                     disabled
                     className="mt-1 block w-full border border-brown shadow-sm p-18 bg-gray-100"
                     aria-label="End Date"
@@ -198,20 +221,19 @@ const PerformanceChart = ({
             </div>
           </div>
           <TabsBody className="mt-3">
-            {startDate && (
+            {startDate && endDate && (
               <Text className="text-center text-xs mb-3">
-                Showing data from {formatDateToUK(startDate)} to {formatDateToUK(FIXED_END_DATE)}
+                Showing data from {formatDateToUK(startDate)} to {formatDateToUK(endDate)}
               </Text>
             )}
             <TabPanel className="p-0" key="chart1" value="chart1">
               {loading ? (
                 <Spinner className="mx-auto text-brown flex justify-center items-center" />
+              ) : filteredData.length === 0 ? (
+                <Text className="text-center text-red-500">No data available for the selected range</Text>
               ) : (
                 chartOptions && (
-                  <HighchartsReact
-                    highcharts={Highcharts}
-                    options={chartOptions}
-                  />
+                  <HighchartsReact highcharts={Highcharts} options={chartOptions} />
                 )
               )}
             </TabPanel>

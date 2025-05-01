@@ -32,7 +32,7 @@ const LazyChart = ({ children }) => {
 
 const QodeTacticalFund = () => {
   const [isPending, startTransition] = useTransition();
-  const fields = useMemo(() => ["qtf", "nifty_500_momentum_50"], []);
+  const fields = useMemo(() => ["qtf", "nifty_midcap_150_momentum_50"], []);
   const options = useMemo(() => ({ refreshInterval: 15000 }), []);
   const { data, isLoading, error } = useFetchStrategyNavField(fields);
   const tableData = [
@@ -66,9 +66,9 @@ const QodeTacticalFund = () => {
       <PerformanceDashboard
         data={data}
         strategyKey="qtf"
-        benchmarkKey="nifty_500_momentum_50"
+        benchmarkKey="nifty_midcap_150_momentum_50"
         strategyName="QTF"
-        benchmarkName="Nifty 500 Momentum 50"
+        benchmarkName="Nifty Midcap 150 Momentum 50"
       />
     );
   }, [data]);

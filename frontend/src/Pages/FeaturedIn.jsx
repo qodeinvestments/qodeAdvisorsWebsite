@@ -44,6 +44,15 @@ const FeaturedArticles = () => {
 
   const articles = [
     {
+      "date": "April 30, 2025",
+      "title": "'Equities are no longer optional': Qode’s Rishabh Nahar on navigating market uncertainty with quant strategy ",
+      "excerpt": `Nahar believes the key to navigating such volatility lies in quantitative investing, but with a first-principles approach. He says, "Quant investing isn’t about secret algorithms. People often think of quant investing as a black box spitting out multibagger stocks."`,
+      "imageUrl": "/Rishabh-15.png",
+      "source": "Economic Times",
+      "slug": "equities-are-no-longer-options",
+      "url": "https://economictimes.indiatimes.com/markets/expert-view/equities-are-no-longer-optional-qodes-rishabh-nahar-on-navigating-market-uncertainty-with-quant-strategy/articleshow/120737564.cms?from=mdr",
+    },
+    {
       "date": "April 18, 2025",
       "title": "Gold prices on a record-hitting spree: Can MCX Gold hit the ₹1 lakh mark in April or May 2025?",
       "excerpt": "Gold prices have reached record highs in both domestic and international markets, driven by economic uncertainties and geopolitical tensions.",

@@ -10,6 +10,17 @@ import Text from "../components/common/Text";
 // In a production app, replace this with data fetched from an API.
 const articles = [
     {
+        "date": "April 30, 2025",
+        "title": "'Equities are no longer optional': Qode’s Rishabh Nahar on navigating market uncertainty with quant strategy ",
+        "excerpt": `Quant investing isn’t about secret algorithms. People often think of quant investing as a black box spitting out multibagger stocks. But at its core, it’s about first principles - owning businesses with strong earnings growth.`,
+        "additionalParagraph": "Many people treat investing seriously but only as a side activity, spending maybe 20–30 minutes a day picking stocks. If you're not able to devote time consistently, it's better to invest via mutual funds or professional managers. However, if you're serious about wealth creation, there are many ways to generate alpha — one of the most eective being a multi-asset approach. Investing is a long-term journey. If your horizon is 5–10 years, what matters is the compounded outcome at the end. You want to own growth-driven businesses and build a peaceful, sustainable investment experience. A multiasset portfolio helps reduce drawdowns and emotional stress, especially during market corrections. ",
+        "imageUrl": "/Rishabh-15.png",
+        "source": "Economic Times",
+        "slug": "equities-are-no-longer-options",
+        "author": "Rishabh Nahar, Partner and Fund Manager at Qode Advisors",
+        "url": "https://economictimes.indiatimes.com/markets/expert-view/equities-are-no-longer-optional-qodes-rishabh-nahar-on-navigating-market-uncertainty-with-quant-strategy/articleshow/120737564.cms?from=mdr",
+    },
+    {
         "date": "April 18, 2025",
         "title": "Gold prices on a record-hitting spree: Can MCX Gold hit the ₹1 lakh mark in April or May 2025?",
         "excerpt": "If gold already forms a large part of your portfolio, it’s a good time to book partial profits. For those underexposed, we think buying on dips - especially when paired with silver - can offer a better risk-reward.",
@@ -19,7 +30,7 @@ const articles = [
         "source": "Mint Markets",
         "slug": "gold-prices-record-highs",
         "url": "https://www.livemint.com/market/commodities/gold-prices-on-a-record-hitting-spree-can-mcx-gold-rate-hit-1-lakh-mark-in-april-or-may-2025-11744966232802.html",
-      },
+    },
     {
         "date": "April 12, 2025",
         "title": "Mind Over Money: Bhagavad Gita, First Principles & Fitness: The unconventional investing path of Rishabh Nahar",
@@ -30,7 +41,7 @@ const articles = [
         "additionalParagraph": "At Qode Invest, our philosophy is all about thinking from first principles and using mental models, a concept popularized by Charlie Munger. First principles thinking is about breaking down complex problems into their most fundamental truths and reasoning from there. Rather than relying on assumptions, it helps us make decisions that are grounded in real understanding.",
         "author": "Rishabh Nahar, Partner and Fund Manager at Qode Advisors",
         "url": "https://m.economictimes.com/markets/expert-view/mind-over-m0ney-bhagavad-gita-first-principles-fitness-the-unconventional-investing-path-of-rishabh-nahar/amp_articleshow/120226227.cms"
-      },
+    },
     {
         "date": "April 2, 2025",
         "title": "This fund manager expects RBI to cut interest rates by 75 bps in FY26, advises betting on these 4 sectors",
@@ -41,8 +52,8 @@ const articles = [
         "slug": "rbi-interest-rate-cuts",
         "url": "https://www.moneycontrol.com/news/business/markets/daily-voice-this-fund-manager-expects-rbi-to-cut-interest-rates-by-75-bps-in-fy26-advises-betting-on-these-4-sectors-12980846.html/amp",
         "author": "Rishabh Nahar, Partner and Fund Manager at Qode Advisors"
-      },
-      {
+    },
+    {
         date: "March 24, 2025",
         title:
             "Five years since pandemic crash: Penny stockholders are celebrating. But for how long can they?",
@@ -54,8 +65,8 @@ const articles = [
         source: "Mint Markets",
         slug: "penny-stockholders-celebrating",
         url: "https://www.livemint.com/market/stock-market-news/penny-stocks-investors-multi-bagger-covid-pandemic-crash-smallcaps-midcaps-11742702528891.html",
-        author : "Gaurav Didwania, Partner and Fund Manager at Qode Advisors"
-    },      
+        author: "Gaurav Didwania, Partner and Fund Manager at Qode Advisors"
+    },
     {
         date: "March 19, 2025",
         title: "Why gold shines as a hedge against stock market volatility",

@@ -42,42 +42,30 @@ module.exports = (sequelize, DataTypes) => {
     },
     investment_goal: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
+      allowNull: true, // Allow null to make field optional
     },
     investment_experience: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
+      allowNull: true, // Allow null to make field optional
     },
     preferred_strategy: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
+      allowNull: true, // Allow null to make field optional
     },
     initial_investment_size: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
+      allowNull: true, // Allow null to make field optional
     },
     location: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: true,
-      }
+      allowNull: true, // Allow null to make field optional
     },
     additional_message: {
       type: DataTypes.TEXT,
-      allowNull: true,
+      allowNull: false, // Keep as required to match frontend
+      validate: {
+        notEmpty: true, // Ensure non-empty message
+      }
     },
     createdAt: {
       type: DataTypes.DATE,

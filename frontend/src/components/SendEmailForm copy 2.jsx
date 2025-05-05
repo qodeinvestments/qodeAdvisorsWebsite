@@ -59,7 +59,7 @@ const validateName = (name) => {
   return "";
 };
 
-/* const validateLocation = (location) => {
+const validateLocation = (location) => {
   if (!location) return "Location is required";
   if (location.length < 2) return "Location must be at least 2 characters long";
   return "";
@@ -68,7 +68,7 @@ const validateName = (name) => {
 const validateRequiredField = (field, fieldName) => {
   if (!field) return `${fieldName} is required`;
   return "";
-}; */
+};
 
 const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -81,11 +81,11 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
     name: "",
     userEmail: "",
     phone: "",
-    //location: "",
-    //investmentGoal: "",
-    //investmentExperience: "",
-    //preferredStrategy: [],
-    //initialInvestmentSize: "",
+    location: "",
+    investmentGoal: "",
+    investmentExperience: "",
+    preferredStrategy: [],
+    initialInvestmentSize: "",
     message: "",
     website: "", // Honeypot field
     recaptchaToken: "", // Store reCAPTCHA token
@@ -102,20 +102,20 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
     const nameError = validateName(formData.name);
     const emailError = validateEmail(formData.userEmail);
     const phoneError = validatePhone(formData.phone);
-    //const locationError = validateLocation(formData.location);
-    //const investmentGoalError = validateRequiredField(formData.investmentGoal, "Investment goal");
-    //const investmentExperienceError = validateRequiredField(formData.investmentExperience, "Investment experience");
-    //const preferredStrategyError = formData.preferredStrategy.length ? "" : "Please select at least one investment strategy";
-    //const initialInvestmentSizeError = validateRequiredField(formData.initialInvestmentSize, "Initial investment size");
+    const locationError = validateLocation(formData.location);
+    const investmentGoalError = validateRequiredField(formData.investmentGoal, "Investment goal");
+    const investmentExperienceError = validateRequiredField(formData.investmentExperience, "Investment experience");
+    const preferredStrategyError = formData.preferredStrategy.length ? "" : "Please select at least one investment strategy";
+    const initialInvestmentSizeError = validateRequiredField(formData.initialInvestmentSize, "Initial investment size");
 
     if (nameError) newErrors.name = nameError;
     if (emailError) newErrors.email = emailError;
     if (phoneError) newErrors.phone = phoneError;
-    //if (locationError) newErrors.location = locationError;
-    //if (investmentGoalError) newErrors.investmentGoal = investmentGoalError;
-    //if (investmentExperienceError) newErrors.investmentExperience = investmentExperienceError;
-    //if (preferredStrategyError) newErrors.preferredStrategy = preferredStrategyError;
-    //if (initialInvestmentSizeError) newErrors.initialInvestmentSize = initialInvestmentSizeError;
+    if (locationError) newErrors.location = locationError;
+    if (investmentGoalError) newErrors.investmentGoal = investmentGoalError;
+    if (investmentExperienceError) newErrors.investmentExperience = investmentExperienceError;
+    if (preferredStrategyError) newErrors.preferredStrategy = preferredStrategyError;
+    if (initialInvestmentSizeError) newErrors.initialInvestmentSize = initialInvestmentSizeError;
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -124,7 +124,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
 
-    /* if (type === "checkbox") {
+    if (type === "checkbox") {
       setFormData((prevData) => {
         const currentStrategies = prevData.preferredStrategy || [];
         if (checked) {
@@ -139,12 +139,12 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
           };
         }
       });
-    } else { */
+    } else {
       setFormData((prevData) => ({
         ...prevData,
         [name]: value,
       }));
-    //}
+    }
 
     if (name === "phone") {
       setPhoneTouched(true);
@@ -261,11 +261,11 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
           message: formData.message,
           fromName: formData.name,
           phone: formData.phone,
-          //location: formData.location,
-          //investmentGoal: formData.investmentGoal,
-          //investmentExperience: formData.investmentExperience,
-          //preferredStrategy: formData.preferredStrategy,
-          //initialInvestmentSize: formData.initialInvestmentSize,
+          location: formData.location,
+          investmentGoal: formData.investmentGoal,
+          investmentExperience: formData.investmentExperience,
+          preferredStrategy: formData.preferredStrategy,
+          initialInvestmentSize: formData.initialInvestmentSize,
           recaptchaToken: token,
           website: formData.website,
           formStartTime,
@@ -284,11 +284,11 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
           name: "",
           userEmail: "",
           phone: "",
-          //location: "",
-          //investmentGoal: "",
-          //investmentExperience: "",
-          //preferredStrategy: [],
-          //initialInvestmentSize: "",
+          location: "",
+          investmentGoal: "",
+          investmentExperience: "",
+          preferredStrategy: [],
+          initialInvestmentSize: "",
           message: "",
           website: "",
           recaptchaToken: "",
@@ -391,8 +391,10 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
                     required: true,
                     autoComplete: "off",
                   }}
+                  // Add these props to ensure proper formatting
                   enableSearch={true}
                   preferredCountries={['in', 'us', 'gb']}
+                  // This is important - it adds the "+" prefix in the UI
                   format="+## ### ### ####"
                 />
                 <span className={`block text-${textColor} text-xs mt-1`}>
@@ -402,7 +404,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
               </div>
 
               {/* Location (City) */}
-              {/* <div>
+              <div>
                 <input
                   autoComplete="off"
                   type="text"
@@ -413,11 +415,11 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
                   className={`${inputStyle} ${errors.location ? "border-red-500" : ""}`}
                 />
                 {renderError("location")}
-              </div> */}
+              </div>
             </div>
 
             {/* Investment Goal */}
-            {/* <div className="mb-4">
+            <div className="mb-4">
               <label className={`block text-${textColor} text-body font-body mb-2`}>
                 What is your investment goal? <span className="text-red-500">*</span>
               </label>
@@ -441,10 +443,10 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
                 ))}
               </div>
               {renderError("investmentGoal")}
-            </div> */}
+            </div>
 
             {/* Investment Experience */}
-            {/* <div className="mb-4">
+            <div className="mb-4">
               <label className={`block text-${textColor} text-body font-body mb-2`}>
                 Tell us about your investment experience <span className="text-red-500">*</span>
               </label>
@@ -473,10 +475,10 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
                 ))}
               </div>
               {renderError("investmentExperience")}
-            </div> */}
+            </div>
 
             {/* Preferred Investment Strategies */}
-            {/* <div className="mb-4">
+            <div className="mb-4">
               <label className={`block text-${textColor} text-body font-body mb-2`}>
                 Select your preferred investment strategies <span className="text-red-500">*</span>
               </label>
@@ -502,10 +504,10 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
                 ))}
               </div>
               {renderError("preferredStrategy")}
-            </div> */}
+            </div>
 
             {/* Initial Investment Size */}
-            {/* <div className="mb-4">
+            <div className="mb-4">
               <label className={`block text-${textColor} text-body font-body mb-2`}>
                 Initial Investment Size <span className="text-red-500">*</span>
               </label>
@@ -527,20 +529,19 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
                 )}
               </div>
               {renderError("initialInvestmentSize")}
-            </div> */}
+            </div>
 
             {/* Additional Message */}
             <div className="mb-4">
               <label className={`block text-${textColor} text-body font-body mb-2`}>
-                Additional Message <span className="text-red-500">*</span>
+                Additional Message
               </label>
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleInputChange}
-                placeholder="Additional Message*"
+                placeholder="Additional Message (Optional)"
                 className="w-full p-[12px] text-body font-body bg-transparent text-white focus:outline-none border-b border-brown h-32"
-                required
               />
             </div>
 
@@ -590,18 +591,18 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
 
             <Text className="text-body font-body font-bold mb-1">FOLLOW US</Text>
             <div className="flex gap-4 mb-2">
-              <a href="https://www.linkedin.com/company/qodeadvisors/" target="_blank" rel="noopener noreferrer">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faLinkedin} className={`text-${textColor} text-xl`} />
               </a>
-              <a href="https://www.youtube.com/@qodeinvest" target="_blank" rel="noopener noreferrer">
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faYoutube} className={`text-${textColor} text-xl`} />
               </a>
-              <a href="https://x.com/qodeinvest" target="_blank" rel="noopener noreferrer">
+              <a href="https://x.com" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faXTwitter} className={`text-${textColor} text-xl`} />
               </a>
-              {/* <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faInstagram} className={`text-${textColor} text-xl`} />
-              </a> */}
+              </a>
             </div>
 
             <Text className="text-body font-body font-bold mb-1">OFFICES</Text>

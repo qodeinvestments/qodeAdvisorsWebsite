@@ -539,7 +539,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
                 value={formData.message}
                 onChange={handleInputChange}
                 placeholder="Additional Message*"
-                className="w-full p-[4px] text-body font-body bg-transparent text-white focus:outline-none border-b border-brown h-5"
+                className="w-full p-[4px] text-body font-body bg-transparent text-black focus:outline-none border-b border-brown h-5"
                 required
               />
             </div>

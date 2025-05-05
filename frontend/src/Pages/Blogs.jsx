@@ -5,6 +5,7 @@ import Section from "../components/container/Section";
 import Heading from "../components/common/Heading";
 import { Spinner } from "@material-tailwind/react";
 import { Helmet } from "react-helmet"; // Import Helmet
+import Newsletter from "../components/NewsLetter";
 
 const Blogs = () => {
   const [blog, setBlog] = useState([]);
@@ -72,6 +73,9 @@ const Blogs = () => {
           )}
         </Section>
       </div>
+      <Section id="newsletter-section" padding="none" className="mb-6">
+        <Newsletter />
+      </Section>
     </>
   );
 };

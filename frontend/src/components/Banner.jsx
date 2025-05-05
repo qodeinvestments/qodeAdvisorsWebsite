@@ -4,9 +4,11 @@ import banImageNew from "../assets/websiteBanner.jpg";
 import SectionContent from "./container/SectionContent";
 import Button from "./common/Button";
 import SendEmailForm from "./SendEmailForm";
+import Modal from "./Modal";
+import Text from "./common/Text";
 
 const Banner = () => {
-  const [isSliderOpen, setIsSliderOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentText, setCurrentText] = useState("");
   const [isTyping, setIsTyping] = useState(true);
   const [index, setIndex] = useState(0);
@@ -20,28 +22,28 @@ const Banner = () => {
     "carried out by Qode.",
   ];
 
-  const toggleSlider = () => {
-    setIsSliderOpen(!isSliderOpen);
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
   };
 
   const handleFormSuccess = () => {
     // Show success message
     setShowSuccessMessage(true);
 
-    // Close the success message and slider after delay
+    // Close the success message and modal after delay
     setTimeout(() => {
       setShowSuccessMessage(false);
-      setIsSliderOpen(false);
+      setIsModalOpen(false);
     }, 3000);
   };
 
   useEffect(() => {
-    // Prevent body scroll when slider is open
-    document.body.style.overflow = isSliderOpen ? 'hidden' : 'auto';
+    // Prevent body scroll when modal is open
+    document.body.style.overflow = isModalOpen ? 'hidden' : 'auto';
     return () => {
       document.body.style.overflow = 'auto';
     };
-  }, [isSliderOpen]);
+  }, [isModalOpen]);
 
   useEffect(() => {
     let timeout;
@@ -86,7 +88,7 @@ const Banner = () => {
           </Heading>
           <Button
             isGlassmorphism={true}
-            onClick={toggleSlider}
+            onClick={toggleModal}
             className="sm:mt-1 mt-3 border border-beige"
           >
             Grow your money with Qode
@@ -94,45 +96,26 @@ const Banner = () => {
         </SectionContent>
       </div>
 
-      {/* Success Message Modal (Above everything) */}
+      {/* Success Message Overlay */}
       {showSuccessMessage && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[60]">
-          <div className="bg-lightBeige p-2 rounded-lg text-center max-w-sm  sm:max-w-md">
-            <h3 className="text-black text-2xl font-bold mb-4">
-              Success!
-            </h3>
-            <p className="text-black text-lg mb-1">
+          <div className="bg-lightBeige p-2 rounded-lg text-center max-w-sm sm:max-w-md">
+            <Heading className="text-black text-2xl font-bold mb-4">Success!</Heading>
+            <Text className="text-black text-lg mb-1">
               Your message has been sent. We'll get back to you soon!
-            </p>
+            </Text>
           </div>
         </div>
       )}
 
-      {/* Scrollable Slider */}
-      <div
-  className={`fixed inset-0 bg-black bg-opacity-90 z-50 transform transition-transform duration-500 ease-in-out ${isSliderOpen ? "translate-y-0" : "-translate-y-full"} overflow-y-auto`}
-  onClick={toggleSlider}
->
-  <div
-    className="relative max-w-7xl mx-auto py-2"
-    onClick={(e) => e.stopPropagation()}
-  >
-    <button
-      onClick={(e) => {
-        e.stopPropagation();
-        console.log("Close button clicked");
-        toggleSlider();
-      }}
-      className="absolute top-2 right-2 sm:top-4 md:right-4 p-2 text-beige text-md cursor-pointer z-[100] "
-    >
-      ✕
-    </button>
-    <SendEmailForm
-      onClose={toggleSlider}
-      onFormSuccess={handleFormSuccess}
-    />
-  </div>
-</div>
+      {/* Modal for SendEmailForm */}
+      {isModalOpen && (
+        <Modal onClose={toggleModal}>
+          <div className="relative">
+            <SendEmailForm onClose={toggleModal} onFormSuccess={handleFormSuccess} />
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

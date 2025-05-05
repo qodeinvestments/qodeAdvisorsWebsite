@@ -24,31 +24,31 @@ const validateEmail = (email) => {
 
 const validatePhone = (phone) => {
   if (!phone) return "Phone number is required";
-  
+
   // Strip any non-digit characters except the leading +
   const cleanedPhone = phone.replace(/(?!^\+)\D/g, '');
-  
+
   // Check if the phone number has digits beyond the country code
   if (cleanedPhone.length <= 1) {
     return "Please enter a valid phone number";
   }
-  
+
   // Check if there's at least one digit after the country code
   // First, remove the "+" if it exists
   const phoneWithoutPlus = cleanedPhone.startsWith('+') ? cleanedPhone.substring(1) : cleanedPhone;
-  
+
   // Extract the country code and the rest of the phone number
   // Most country codes are 1-3 digits
   if (phoneWithoutPlus.length <= 3) {
     return "Please enter a complete phone number with digits after the country code";
   }
-  
+
   // Check if it's a valid format (with or without +)
   const phoneRegex = /^(\+)?\d{1,15}$/;
   if (!phoneRegex.test(cleanedPhone)) {
     return "Please enter a valid international phone number starting with '+' followed by 1-15 digits (e.g., +12025550123)";
   }
-  
+
   return "";
 };
 
@@ -140,10 +140,10 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
         }
       });
     } else { */
-      setFormData((prevData) => ({
-        ...prevData,
-        [name]: value,
-      }));
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
     //}
 
     if (name === "phone") {
@@ -162,7 +162,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
   const handlePhoneChange = (phone) => {
     // Format the phone number to ensure it starts with "+"
     const formattedPhone = phone.startsWith('+') ? phone : `+${phone}`;
-    
+
     // Check for spaces or empty input and set error immediately if needed
     if (!phone.trim() || phone.trim().length <= 2) {
       setErrors((prev) => ({
@@ -323,14 +323,14 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
   };
 
   // Custom input style for the updated design
-  const inputStyle = `w-full p-[6px] bg-transparent border-b border-brown focus:outline-none focus:border-${textColor} text-white text-sm focus:text-white`;
+  const inputStyle = `w-full p-[6px] bg-transparent border-b border-brown focus:outline-none focus:border-${textColor} text-black text-sm focus:text-black`;
 
   return (
-    <div className="flex flex-col items-center justify-center font-body min-h-screen relative">
-      <div className="flex flex-col lg:flex-row w-full max-w-7xl mx-auto py-8 px-18">
+    <div className="flex flex-col items-center py-5 font-body  relative">
+      <div className="flex flex-col lg:flex-row w-full max-w-6xl mx-auto sm:px-18">
         {/* Form Section (Left) */}
         <div className="w-full lg:w-2/3 pr-0 lg:pr-4">
-          <Text className={`mb-2 text-${textColor} font-semiheading text-semiheading`}>
+          <Text className={`mb-2 text-${textColor} font-semiheading text-subheading md:text-semiheading`}>
             Empower Your Financial Growth
           </Text>
 
@@ -539,7 +539,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
                 value={formData.message}
                 onChange={handleInputChange}
                 placeholder="Additional Message*"
-                className="w-full p-[12px] text-body font-body bg-transparent text-white focus:outline-none border-b border-brown h-32"
+                className="w-full p-[4px] text-body font-body bg-transparent text-white focus:outline-none border-b border-brown h-5"
                 required
               />
             </div>
@@ -558,7 +558,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
         </div>
 
         {/* Contact Details Section (Right) */}
-        <div className="w-full lg:w-1/3 pl-0 lg:pl-2 mt-8 lg:mt-0">
+        <div className="w-full md:block hidden lg:w-1/3 pl-0 lg:pl-2 mt-8 lg:mt-0">
           <div className={`text-${textColor}`}>
             <Text className="text-body font-body font-bold mb-1">GENERAL CONTACT</Text>
             <div className="flex items-center gap-2 mb-1">

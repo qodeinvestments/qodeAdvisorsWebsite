@@ -10,6 +10,17 @@ import Text from "../components/common/Text";
 // In a production app, replace this with data fetched from an API.
 const articles = [
     {
+        "date": "May 02, 2025",
+        "title": "Gold prices crack ₹7,000 from peak: Is it time to shift focus towards silver? ",
+        "excerpt": `Historically, when the ratio crosses 80, silver tends to outperform gold in subsequent periods. With the ratio hovering near multi-decade highs, silver appears undervalued relative to gold. This divergence isn’t just technical it reflects how silver has lagged in pricing in the same macro risks that are driving gold: geopolitical uncertainty, central bank accumulation, and currency debasement trends. For investors, this makes silver an attractive, asymmetric bet within the precious metals basket`,
+        "additionalParagraph": "Gold prices have fallen by ₹7,000 to ₹93,000 per 10 grams after a peak above ₹1 lakh amid easing trade tensions and profit-taking as demand for safe-haven assets decreases. With further correction in gold prices likely, analysts' outlook for silver is more constructive.",
+        "imageUrl": "https://www.livemint.com/lm-img/img/2025/05/02/600x338/gold_and_silver_prices_March_31_markets_news_India_1743385413433_1746182173488.jpg",
+        "source": "Mint Markets",
+        "slug": "gold-prices-crack",
+        "author": "Rishabh Nahar, Partner and Fund Manager at Qode Advisors",
+        "url": "https://www.livemint.com/market/commodities/gold-prices-crack-rs-7-000-from-peak-is-it-time-to-shift-focus-towards-silver-11746181967193.html",
+      },
+    {
         "date": "April 30, 2025",
         "title": "'Equities are no longer optional': Qode’s Rishabh Nahar on navigating market uncertainty with quant strategy ",
         "excerpt": `Quant investing isn’t about secret algorithms. People often think of quant investing as a black box spitting out multibagger stocks. But at its core, it’s about first principles - owning businesses with strong earnings growth.`,

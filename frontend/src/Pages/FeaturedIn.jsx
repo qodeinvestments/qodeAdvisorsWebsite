@@ -44,6 +44,15 @@ const FeaturedArticles = () => {
 
   const articles = [
     {
+      "date": "May 02, 2025",
+      "title": "Gold prices crack ₹7,000 from peak: Is it time to shift focus towards silver? ",
+      "excerpt": `Gold prices have fallen by ₹7,000 to ₹93,000 per 10 grams after a peak above ₹1 lakh amid easing trade tensions and profit-taking as demand for safe-haven assets decreases. With further correction in gold prices likely, analysts' outlook for silver is more constructive.`,
+      "imageUrl": "https://www.livemint.com/lm-img/img/2025/05/02/600x338/gold_and_silver_prices_March_31_markets_news_India_1743385413433_1746182173488.jpg",
+      "source": "Mint Markets",
+      "slug": "gold-prices-crack",
+      "url": "https://www.livemint.com/market/commodities/gold-prices-crack-rs-7-000-from-peak-is-it-time-to-shift-focus-towards-silver-11746181967193.html",
+    },
+    {
       "date": "April 30, 2025",
       "title": "'Equities are no longer optional': Qode’s Rishabh Nahar on navigating market uncertainty with quant strategy ",
       "excerpt": `Nahar believes the key to navigating such volatility lies in quantitative investing, but with a first-principles approach. He says, "Quant investing isn’t about secret algorithms. People often think of quant investing as a black box spitting out multibagger stocks."`,

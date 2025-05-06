@@ -5,8 +5,8 @@ import Heading from "../components/common/Heading";
 import Text from "../components/common/Text";
 import NewsCard from "../components/NewsCard";
 
-// Simple Modal component to show video in a popup
-const VideoModal = ({ videoUrl, title, onClose }) => {
+// Simple Modal component to show video or podcast in a popup
+const MediaModal = ({ mediaUrl, title, onClose }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       {/* Backdrop */}
@@ -15,22 +15,21 @@ const VideoModal = ({ videoUrl, title, onClose }) => {
         onClick={onClose}
       ></div>
       {/* Modal Content */}
-      <div className="bg-white rounded-lg p-1 relative z-10 max-w-7xl w-full ">
+      <div className="bg-white rounded-lg p-4 relative z-10 max-w-7xl w-full">
         <div className="flex justify-end">
           <button onClick={onClose} className="text-gray-700 font-bold">
             X
           </button>
         </div>
-        <div className="mt-1">
+        <div className="mt-4">
           <iframe
-            src={`${videoUrl}?autoplay=1`}
+            src={mediaUrl.includes("youtube") ? `${mediaUrl}?autoplay=1` : mediaUrl}
             title={title}
-            className="w-full h-72 sm:h-96 md:h-[40rem] rounded-md"
+            className={`w-full ${mediaUrl.includes("youtube") ? "h-72 sm:h-96 md:h-[40rem]" : "h-48"} rounded-md`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
-
         </div>
       </div>
     </div>
@@ -39,8 +38,7 @@ const VideoModal = ({ videoUrl, title, onClose }) => {
 
 const FeaturedArticles = () => {
   const [activeTab, setActiveTab] = useState("news");
-  const [modalVideo, setModalVideo] = useState(null); // { videoUrl, title } or null
-
+  const [modalMedia, setModalMedia] = useState(null); // { mediaUrl, title } or null
 
   const articles = [
     {
@@ -87,7 +85,7 @@ const FeaturedArticles = () => {
       "source": "Money Control",
       "slug": "rbi-interest-rate-cuts",
       "url": "https://www.moneycontrol.com/news/business/markets/daily-voice-this-fund-manager-expects-rbi-to-cut-interest-rates-by-75-bps-in-fy26-advises-betting-on-these-4-sectors-12980846.html/amp"
-    },   
+    },
     {
       date: "March 24, 2025",
       title:
@@ -128,7 +126,7 @@ const FeaturedArticles = () => {
       excerpt:
         "Stock markets took a breather last week after a prolonged period of downtrend. Historical trends suggest that March is usually considered a strong month for Indian equities. However, markets might succumb to broader pain with Trump's policybook creating uncertainty and China drawing strong FII interests. Here's what analysts are saying.",
       imageUrl:
-        "https://media.assettype.com/outlookbusiness/import/uploadimage/library/16_9/16_9_5/IMAGE_1651656523.webp?w=640&auto=format%2Ccompress&fit=max&format=webp&dpr=1.0",
+        "https://media.assettype.com/outVoutlookbusiness/import/uploadimage/library/16_9/16_9_5/IMAGE_1651656523.webp?w=640&auto=format%2Ccompress&fit=max&format=webp&dpr=1.0",
       source: "Outlook Business",
       slug: "march-strong-for-indian-equities",
       url: "https://www.outlookbusiness.com/markets/march-is-usually-strong-for-indian-equities-will-trumps-policy-swings-disrupt-the-trend",
@@ -295,25 +293,25 @@ const FeaturedArticles = () => {
       description: (
         <>
           <Text className="text-gray-700">
-            Rishabh Nahar, Partner &amp; Fund Manager at Qode Advisors, was a panelist at
+            Rishabh Nahar, Partner & Fund Manager at Qode Advisors, was a panelist at
             Laqsa's Lambda Conference 2025, held at St. Regis, Mumbai, where he discussed{" "}
             <strong>"How to incorporate fundamental factor Quant vs Quantamental"</strong>.
           </Text>
         </>
       ),
-      videoUrl: "https://www.youtube.com/embed/Aev4dO8EBH4",
+      mediaUrl: "https://www.youtube.com/embed/Aev4dO8EBH4",
       thumbnailId: "Aev4dO8EBH4"
     },
     {
       title: "Union Budget 2025 Market Insights | Vidhi Chheda | Indiabulls Securities",
       description: (
         <>
-          <Text className="text-gray-700">
+          <Text className MegaclassName="text-gray-700">
             Watch Vidhi Chheda, Partner & Head of Quant Research at Qode, and Rakesh Pujara as they break down the Union Budget 2025 and its impact on markets, sectors, and investment strategies. Hosted by Indiabulls Securities.
           </Text>
         </>
       ),
-      videoUrl: "https://www.youtube.com/embed/wnFKxKX_B1Y",
+      mediaUrl: "https://www.youtube.com/embed/wnFKxKX_B1Y",
       thumbnailId: "wnFKxKX_B1Y"
     },
     {
@@ -325,8 +323,22 @@ const FeaturedArticles = () => {
           </Text>
         </>
       ),
-      videoUrl: "https://www.youtube.com/embed/832UT629_UI",
+      mediaUrl: "https://www.youtube.com/embed/832UT629_UI",
       thumbnailId: "832UT629_UI"
+    }
+  ];
+
+  const podcasts = [
+    {
+      title: "How This Fund Manager Beat Nifty With Quant Investing (Even in a Crash!)",
+      description: (
+        <Text className="text-gray-700 mt-1">
+          In this episode, Shrishti interviews Rishabh, a leading portfolio manager at Qode, one of India’s top 10 PMS (Portfolio Management Services) this year from Jan-March. While everyone's portfolios were crashing, QODE managed risk extremely well with tremendous downside protection for its investors via quant investing. In this episode, Rishabh breaks down the world of quantitative investing, risk management, multi-asset allocation, and the future of wealth creation through smart investing.
+        </Text>
+      ),
+      mediaUrl: "https://www.youtube.com/embed/jbZbQDIGhTw",
+      thumbnailId: "jbZbQDIGhTw",
+      source: "The India Opportunity with Shrishti Sahu",
     }
   ];
 
@@ -356,6 +368,15 @@ const FeaturedArticles = () => {
               }`}
           >
             Insights
+          </button>
+          <button
+            onClick={() => setActiveTab("podcasts")}
+            className={`py-2 text-lg font-medium transition-colors duration-300 ${activeTab === "podcasts"
+              ? "border-b-2 border-brown text-brown"
+              : "text-gray-600 hover:text-brown"
+              }`}
+          >
+            Podcasts
           </button>
         </nav>
       </div>
@@ -388,14 +409,14 @@ const FeaturedArticles = () => {
                 key={index}
                 initial={{ opacity: 0, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
+               DRAMtransition={{ duration: 0.8 }}
                 className="overflow-hidden transition-all duration-75 max-w-[485px] group p-2 sm:p-3 hover:bg-lightBeige rounded-lg hover:scale-105 flex flex-col h-full"
               >
                 <div className="h-full group overflow-hidden relative flex flex-col">
                   {/* Video Preview Section with Play Button Overlay */}
                   <div className="mb-2 relative cursor-pointer" onClick={() =>
-                    setModalVideo({
-                      videoUrl: insight.videoUrl,
+                    setModalMedia({
+                      mediaUrl: insight.mediaUrl,
                       title: insight.title,
                     })
                   }>
@@ -408,7 +429,7 @@ const FeaturedArticles = () => {
 
                     {/* Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-16 h-16  bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all">
+                      <div className="w-16 h-16 bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M8 5v14l11-7z" />
                         </svg>
@@ -447,12 +468,90 @@ const FeaturedArticles = () => {
         </Section>
       )}
 
-      {/* Modal for Video */}
-      {modalVideo && (
-        <VideoModal
-          videoUrl={modalVideo.videoUrl}
-          title={modalVideo.title}
-          onClose={() => setModalVideo(null)}
+      {activeTab === "podcasts" && (
+        <Section padding="none">
+          <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {podcasts.map((podcast, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 0 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+                className="overflow-hidden transition-all duration-75 max-w-[485px] group p-2 sm:p-3 hover:bg-lightBeige rounded-lg hover:scale-105 flex flex-col h-full"
+              >
+                <div className="h-full group overflow-hidden relative flex flex-col">
+                  {/* Podcast Preview Section with Play Button Overlay */}
+                  <div
+                    className="mb-2 relative cursor-pointer"
+                    onClick={() =>
+                      setModalMedia({
+                        mediaUrl: podcast.mediaUrl,
+                        title: podcast.title,
+                      })
+                    }
+                  >
+                    {/* Podcast Thumbnail */}
+                    <img
+                      src={`https://img.youtube.com/vi/${podcast.thumbnailId}/maxresdefault.jpg`}
+                      alt={podcast.title}
+                      className="w-full h-48 rounded-md object-cover"
+                    />
+
+                    {/* Play Button Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="w-16 h-16 bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-4 w-4 text-white"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col h-full">
+                    <div className="overflow-hidden h-[4.5em]">
+                      <Heading className="md:text-subheading text-mobileSubHeading text-brown group-hover:text-black font-bold line-clamp-2">
+                        {podcast.title}
+                      </Heading>
+                    </div>
+                    <div className="flex-grow">{podcast.description}</div>
+                    <Text className="text-gray-500 text-sm mt-2">
+                      Source: {podcast.source}
+                    </Text>
+                  </div>
+                  <div className="flex justify-end mt-2 items-center">
+                    <div className="group-hover:text-black -mt-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 100 100"
+                        width="44"
+                        height="44"
+                      >
+                        <path
+                          d="M66.3 65.5l0.3-32.1-32.1 0.3v4l25.3-0.2-26.3 26.3 2.8 2.8 26.3-26.3-0.2 25.2 4 0z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <hr className="mt-1 border-t group-hover:border-beige border-lightBeige" />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </Section>
+      )}
+
+      {/* Modal for Media */}
+      {modalMedia && (
+        <MediaModal
+          mediaUrl={modalMedia.mediaUrl}
+          title={modalMedia.title}
+          onClose={() => setModalMedia(null)}
         />
       )}
     </Section>

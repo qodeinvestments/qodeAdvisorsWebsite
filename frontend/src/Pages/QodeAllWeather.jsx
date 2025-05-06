@@ -3,6 +3,9 @@ import { Helmet } from "react-helmet";
 import { useInView } from "react-intersection-observer";
 import useFetchStrategyNavField from "../hooks/useFetchStrategyNavData.jsx";
 import Text from "../components/common/Text";
+import Button from "../components/common/Button";
+import Modal from "../components/Modal";
+import SendEmailForm from "../components/SendEmailForm";
 
 const PerformanceChart = lazy(() => import("../components/Charts/PerformanceChart.jsx"));
 const TrailingReturns = lazy(() => import("../components/TrailingReturns"));
@@ -46,14 +49,14 @@ const LazyChart = ({ children }) => {
 const QodeAllWeather = () => {
   const [isPending, startTransition] = useTransition();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const isMobile = window.innerWidth < 768;
 
   const fields = useMemo(() => ["qaw", "nifty_50"], []);
   const options = useMemo(() => ({ refreshInterval: 15000 }), []);
 
   const { data, isLoading, error } = useFetchStrategyNavField(fields, options);
-  //console.log("📊 Data received for Qode All Weather:", data);
-  
+
   const memoizedData = useMemo(() => data, [data]);
 
   const strategyData = {
@@ -70,38 +73,46 @@ const QodeAllWeather = () => {
   };
 
   const extractDateRange = (data) => {
-    console.log(data)
     if (!data || data.length === 0) return { startDate: "0", endDate: "0" };
 
-    // Convert all date strings to Date objects
     const dates = data.map((entry) => new Date(entry.date));
-
-    // Calculate the minimum and maximum dates
     const minDate = new Date(Math.min(...dates));
     const maxDate = new Date(Math.max(...dates));
 
-    // Subtract one day from the minimum date for the start date
     const minDateMinusOne = new Date(minDate);
     minDateMinusOne.setDate(minDateMinusOne.getDate() + 1);
     const maxDatePlusOne = new Date(maxDate);
     maxDatePlusOne.setDate(maxDatePlusOne.getDate() + 1);
 
     return {
-      startDate: formatDate(minDateMinusOne),  // Use decremented date for startDate
+      startDate: formatDate(minDateMinusOne),
       endDate: formatDate(maxDatePlusOne),
     };
   };
 
   const { startDate, endDate } = extractDateRange(data);
-console.log('startDate', startDate)
-console.log('endDate', endDate)
 
   React.useEffect(() => {
     if (data) {
-      startTransition(() => {
-      });
+      startTransition(() => { });
     }
   }, [data]);
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleFormSuccess = () => {
+    setShowSuccessMessage(true);
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+      setIsModalOpen(false);
+    }, 3000);
+  };
 
   return (
     <>
@@ -120,14 +131,14 @@ console.log('endDate', endDate)
       </Helmet>
 
       <div className="mx-auto sm:mt-8 mt-8">
-        <div className="mt-4  max-w-[93%] md:max-w-[1066px] xl:max-w-[1386px] mx-auto sm:mb-1 mb-1">
+        <div className="mt-4 max-w-[93%] md:max-w-[1066px] xl:max-w-[1386px] mx-auto sm:mb-1 mb-1">
           <div className="sm:max-w-[920px] mx-auto">
             <h1 className="font-heading playfair-font-display text-mobileHeading sm:text-heading font-semibold text-brown mb-1 text-center">
               Qode All Weather
             </h1>
             <div className="post-content gh-content">
               <blockquote>
-                <strong >
+                <strong>
                   <em>Lower risk need not necessarily mean lower returns!</em>
                 </strong>
               </blockquote>
@@ -135,10 +146,10 @@ console.log('endDate', endDate)
             <Heading
               isItalic
               className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
-            >Summary of Strategy</Heading>
+            >
+              Summary of Strategy
+            </Heading>
             <div className="post-content gh-content">
-
-
               <ul>
                 <li>
                   Conventional wisdom in finance often suggests that higher
@@ -174,7 +185,9 @@ console.log('endDate', endDate)
                   <Heading
                     isItalic
                     className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
-                  >Trailing Returns</Heading>
+                  >
+                    Trailing Returns
+                  </Heading>
                   <LazyChart>
                     <TrailingReturns
                       data={memoizedData}
@@ -188,7 +201,9 @@ console.log('endDate', endDate)
                     <Heading
                       isItalic
                       className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
-                    >Stress Period Table</Heading>
+                    >
+                      Stress Period Table
+                    </Heading>
                     <StressPeriodTable
                       data={data}
                       strategy="qaw"
@@ -205,7 +220,9 @@ console.log('endDate', endDate)
                   <Heading
                     isItalic
                     className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
-                  >Equity Curve</Heading>
+                  >
+                    Equity Curve
+                  </Heading>
                   <LazyChart>
                     <PerformanceChart
                       data={memoizedData}
@@ -223,7 +240,9 @@ console.log('endDate', endDate)
                   <Heading
                     isItalic
                     className="text-mobileSubHeading sm:text-subheading font-subheading text-brown my-18"
-                  >Drawdown Chart</Heading>
+                  >
+                    Drawdown Chart
+                  </Heading>
                   <LazyChart>
                     <Drawdown
                       data={memoizedData}
@@ -237,9 +256,27 @@ console.log('endDate', endDate)
 
                 <div className="post-content gh-content">
                   <h3 id="the-specifics">The Specifics</h3>
-                  <ul><li>Qode All Weather outperforms the Nifty 50 index over holding periods of three years and longer</li><li>It is an ETF-only portfolio, rebalanced annually at the start of every financial year, or may be changed based on the manager</li><li>Our proprietary models use sentiment analysis to adjust asset weights dynamically based on market situations</li><li>In periods of extreme fear, our strategy increases exposure to equities, capitalizing on potential recovery opportunities Conversely, during times of extreme greed, we adopt a more cautious stance by allocating more to gold and low-volatility strategies, prioritizing capital preservation</li></ul>
+                  <ul>
+                    <li>Qode All Weather outperforms the Nifty 50 index over holding periods of three years and longer</li>
+                    <li>It is an ETF-only portfolio, rebalanced annually at the start of every financial year, or may be changed based on the manager</li>
+                    <li>Our proprietary models use sentiment analysis to adjust asset weights dynamically based on market situations</li>
+                    <li>In periods of extreme fear, our strategy increases exposure to equities, capitalizing on potential recovery opportunities Conversely, during times of extreme greed, we adopt a more cautious stance by allocating more to gold and low-volatility strategies, prioritizing capital preservation</li>
+                  </ul>
                   <h3 id="what-is-the-strategy">What is the Strategy?</h3>
-                  <ul><li>This strategy is comprised of ETFs<ul><li>Momentum ETF</li><li>Low Volatility ETF</li><li>Gold ETF</li><li>Derivative Hedging</li></ul></li><li><strong>The Momentum Index</strong> chooses 50 stocks from the NSE-listed stock universe based on the Normalized Momentum Score for each company which is determined based on its 6-month and 12-month price return, adjusted for volatility.</li><li><strong>Low Volatility Index</strong> chooses 30 stocks from the Nifty 100 with the lowest volatility in the last year.</li><li>For exposure to <strong>Gold,</strong> we use Gold ETF which has historically proven to be uncorrelated with equity markets.</li><li>We use a dynamic <strong>Derivative Hedging</strong> mechanism that helps protect your portfolio during market downturns.</li></ul>
+                  <ul>
+                    <li>This strategy is comprised of ETFs
+                      <ul>
+                        <li>Momentum ETF</li>
+                        <li>Low Volatility ETF</li>
+                        <li>Gold ETF</li>
+                        <li>Derivative Hedging</li>
+                      </ul>
+                    </li>
+                    <li><strong>The Momentum Index</strong> chooses 50 stocks from the NSE-listed stock universe based on the Normalized Momentum Score for each company which is determined based on its 6-month and 12-month price return, adjusted for volatility.</li>
+                    <li><strong>Low Volatility Index</strong> chooses 30 stocks from the Nifty 100 with the lowest volatility in the last year.</li>
+                    <li>For exposure to <strong>Gold,</strong> we use Gold ETF which has historically proven to be uncorrelated with equity markets.</li>
+                    <li>We use a dynamic <strong>Derivative Hedging</strong> mechanism that helps protect your portfolio during market downturns.</li>
+                  </ul>
                   <blockquote>All the results in this backtest contains the derivative hedging from 2011 onwards, due to unavailability of options data prior to it.<br />The portfolio only has Momentum ETF, Low Volatility ETF and Gold ETF as the components before 2011.</blockquote>
                   <p>Below are the annual returns of Qode All Weather compared to the Nifty 50:</p>
                   <h2 id="how-has-this-strategy-performed">How has this strategy performed?</h2>
@@ -253,7 +290,8 @@ console.log('endDate', endDate)
                     name={strategyData.title}
                     isMobile
                     error={error}
-                    isLoading={isLoading} />
+                    isLoading={isLoading}
+                  />
                 </LazyChart>
 
                 <div className="post-content gh-content">
@@ -270,7 +308,6 @@ console.log('endDate', endDate)
                     benchmarkName="Nifty 50"
                   />
                 </LazyChart>
-
               </>
             )}
 
@@ -297,7 +334,6 @@ console.log('endDate', endDate)
                 </LazyChart>
 
                 <div className="post-content gh-content">
-
                   <p>The donut chart below shows the percentage of the times Qode All Weather has outperformed Nifty 50 on a rolling basis.</p>
                   <p>We can see that the probability of underperformance goes to zero as we increase our holding period. If an investor were to invest for 5 years and above, the likelihood of outperformance is very high close above 99%.</p>
                 </div>
@@ -325,38 +361,63 @@ console.log('endDate', endDate)
                     data-external="1"
                   />
                   <div className="post-content gh-content">
-
                     <p>The Qode All Weather portfolio outperforms the Nifty 50 Index 88% of the time over any 3-year basis and 72% of the time on any 1-year basis.</p>
                     <p>On a longer time frame, this shrinks significantly highlighting of staying invested to reap the eventual outperformance.</p>
                     <h3 id="why-does-the-strategy-work">Why does the strategy work?</h3>
                     <p>When we use <strong>uncorrelated assets</strong> we can capitalize on <strong>diversification benefits</strong> thereby reducing the portfolio's unsystematic risk and downside volatility.</p>
                     <h3 id="year-2007-2009">Year 2007-2009:</h3>
-                    <figure class="kg-card kg-image-card"><img src="https://blogs.qodeinvest.com/content/images/2024/10/Nifty-50-vs-Gold---2008-comparison.png" class="kg-image" alt="" loading="lazy" width="1835" height="833" srcset="https://blogs.qodeinvest.com/content/images/size/w600/2024/10/Nifty-50-vs-Gold---2008-comparison.png 600w, https://blogs.qodeinvest.com/content/images/size/w1000/2024/10/Nifty-50-vs-Gold---2008-comparison.png 1000w, https://blogs.qodeinvest.com/content/images/size/w1600/2024/10/Nifty-50-vs-Gold---2008-comparison.png 1600w, https://blogs.qodeinvest.com/content/images/2024/10/Nifty-50-vs-Gold---2008-comparison.png 1835w" sizes="(min-width: 720px) 720px" /></figure>
+                    <figure className="kg-card kg-image-card">
+                      <img
+                        src="https://blogs.qodeinvest.com/content/images/2024/10/Nifty-50-vs-Gold---2008-comparison.png"
+                        className="kg-image"
+                        alt=""
+                        loading="lazy"
+                        width="1835"
+                        height="833"
+                        srcSet="https://blogs.qodeinvest.com/content/images/size/w600/2024/10/Nifty-50-vs-Gold---2008-comparison.png 600w, https://blogs.qodeinvest.com/content/images/size/w1000/2024/10/Nifty-50-vs-Gold---2008-comparison.png 1000w, https://blogs.qodeinvest.com/content/images/size/w1600/2024/10/Nifty-50-vs-Gold---2008-comparison.png 1600w, https://blogs.qodeinvest.com/content/images/2024/10/Nifty-50-vs-Gold---2008-comparison.png 1835w"
+                        sizes="(min-width: 720px) 720px"
+                      />
+                    </figure>
 
-                    <ul><li>This balance allows investors to <strong>participate in the growth</strong> potential of higher-risk assets (For eg. momentum strategy) <strong>while minimizing the downside</strong> through more conservative holdings (For eg. Low Vol and Gold).</li><li><strong>Asset Allocation</strong> doesn’t just focus on maximizing returns; it’s about achieving an optimal risk-adjusted return.</li><li>The median rolling correlation of Nifty and Gold is <strong>-0.02</strong>.</li></ul>
+                    <ul>
+                      <li>This balance allows investors to <strong>participate in the growth</strong> potential of higher-risk assets (For eg. momentum strategy) <strong>while minimizing the downside</strong> through more conservative holdings (For eg. Low Vol and Gold).</li>
+                      <li><strong>Asset Allocation</strong> doesn’t just focus on maximizing returns; it’s about achieving an optimal risk-adjusted return.</li>
+                      <li>The median rolling correlation of Nifty and Gold is <strong>-0.02</strong>.</li>
+                    </ul>
                     <p>By strategically spreading investments, asset allocation helps mitigate the impact of volatility in any one asset class, thus reducing overall portfolio risk. </p>
-                    <figure class="kg-card kg-image-card"><iframe
-                      title="multiple-donuts-title"
-                      aria-label="multiple-donuts-title"
-                      id="datawrapper-chart-b8gIW"
-                      src="https://datawrapper.dwcdn.net/KyGuv/1/"
-                      scrolling="no"
-                      frameBorder="0"
-                      style={{
-                        width: "100%",
-                        minWidth: "100%",
-                        border: "none",
-                        height: "431px"
-                      }}
-                      data-external="1"
-                    /></figure>
+                    <figure className="kg-card kg-embed-card">
+                      <iframe
+                        title="multiple-donuts-title"
+                        aria-label="multiple-donuts-title"
+                        id="datawrapper-chart-b8gIW"
+                        src="https://datawrapper.dwcdn.net/KyGuv/1/"
+                        scrolling="no"
+                        frameBorder="0"
+                        style={{
+                          width: "100%",
+                          minWidth: "100%",
+                          border: "none",
+                          height: "431px"
+                        }}
+                        data-external="1"
+                      />
+                    </figure>
                     <hr />
                     <h3 id="why-should-someone-invest-in-this-strategy">Why should someone invest in this Strategy?</h3>
-                    <ul><li><strong>Tax Efficient</strong><ul><li>We believe our investors should get the highest risk-adjusted returns using the most tax-efficient ways. Since we hold ETFs and only partially rebalance annually we incur low taxes and let the money compound for the long term resulting in wealth creation for our clients.</li></ul></li><li><strong>High Risk-Adjusted Return</strong><ul><li>The Sharpe ratio of the Qode All Weather portfolio when compared to Nifty 50 is much higher. It implies that it generates alpha with a lower standard deviation.</li></ul></li></ul>
+                    <ul>
+                      <li><strong>Tax Efficient</strong>
+                        <ul>
+                          <li>We believe our investors should get the highest risk-adjusted returns using the most tax-efficient ways. Since we hold ETFs and only partially rebalance annually we incur low taxes and let the money compound for the long term resulting in wealth creation for our clients.</li>
+                        </ul>
+                      </li>
+                      <li><strong>High Risk-Adjusted Return</strong>
+                        <ul>
+                          <li>The Sharpe ratio of the Qode All Weather portfolio when compared to Nifty 50 is much higher. It implies that it generates alpha with a lower standard deviation.</li>
+                        </ul>
+                      </li>
+                    </ul>
                   </div>
                 </figure>
-
-
 
                 <figure className="kg-card kg-embed-card">
                   <LazyChart>
@@ -373,34 +434,6 @@ console.log('endDate', endDate)
             )}
 
             <div className="post-content gh-content">
-              {/* <h3 id="why-should-someone-invest-in-this-strategy">
-                Why should someone invest in this Strategy?
-              </h3>
-              <ul>
-                <li>
-                  <strong>Tax Efficient</strong>
-                  <ul>
-                    <li>
-                      We believe our investors should get the highest
-                      risk-adjusted returns using the most tax-efficient ways.
-                      Since we hold ETFs and only partially rebalance annually
-                      we incur low taxes and let the money compound for the long
-                      term resulting in wealth creation for our clients.
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <strong>High Risk-Adjusted Return</strong>
-                  <ul>
-                    <li>
-                      The Sharpe ratio of the Qode All Weather portfolio when
-                      compared to Nifty 50 is much higher. It implies that it
-                      generates alpha with a lower standard deviation.
-                    </li>
-                  </ul>
-                </li>
-              </ul> */}
-
               <h3 id="why-should-you-not-invest-in-the-index-directly">
                 Why should you not invest in the Index directly?
               </h3>
@@ -408,9 +441,37 @@ console.log('endDate', endDate)
                 Investors could potentially replicate a similar approach using index funds to benefit from basic asset allocation. However, our strategy goes further by providing better returns with lower risks, made possible through our unique derivative hedging methods. Additionally, we leverage the discretion of experienced fund managers at key moments to seize opportunities and generate alpha.
               </p>
             </div>
+
+            <div className="mt-4 text-center">
+              <Button
+                onClick={toggleModal}
+                className="text-body dm-sans-font bg-beige text-black hover:bg-opacity-80 px-2 py-1"
+              >
+                Get In Touch
+              </Button>
+            </div>
           </div>
         </div>
       </div>
+
+      {showSuccessMessage && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[60]">
+          <div className="bg-lightBeige p-2 rounded-lg text-center max-w-sm sm:max-w-md">
+            <h3 className="text-black text-2xl font-bold mb-4">Success!</h3>
+            <p className="text-black text-lg mb-1">
+              Your message has been sent. We'll get back to you soon!
+            </p>
+          </div>
+        </div>
+      )}
+
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <div className="relative">
+            <SendEmailForm onClose={closeModal} onFormSuccess={handleFormSuccess} />
+          </div>
+        </Modal>
+      )}
     </>
   );
 };

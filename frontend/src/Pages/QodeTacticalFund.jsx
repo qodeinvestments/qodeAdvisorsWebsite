@@ -7,6 +7,9 @@ import MultiIndexDrawdownLine from "../components/Charts/qtf/MultiIndexDrawdownL
 import QvfVsMomentumCurve from "../components/Charts/qtf/QvfVsMomentumCurve";
 import QvfVsMomentumDrawdownLine from "../components/Charts/qtf/QvfVsMomentumDrawdownLine";
 import useFetchStrategyNavField from "../hooks/useFetchStrategyNavData";
+import Button from "../components/common/Button";
+import Modal from "../components/Modal";
+import SendEmailForm from "../components/SendEmailForm";
 const PerformanceDashboard = lazy(() => import("../components/PerformanceDashboard"));
 
 const ChartPlaceholder = () => (
@@ -32,6 +35,9 @@ const LazyChart = ({ children }) => {
 
 const QodeTacticalFund = () => {
   const [isPending, startTransition] = useTransition();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  
   const fields = useMemo(() => ["qtf", "nifty_midcap_150_momentum_50"], []);
   const options = useMemo(() => ({ refreshInterval: 15000 }), []);
   const { data, isLoading, error } = useFetchStrategyNavField(fields);
@@ -58,7 +64,7 @@ const QodeTacticalFund = () => {
     { Year: 19, StockPortfolio: 3194.8, Tax: 133.1, IndexFundETF: 6938.9, TaxIndex: 0.0 },
     { Year: 20, StockPortfolio: 3833.8, Tax: 159.7, IndexFundETF: 8673.6, TaxIndex: 0.0 },
   ];
-  
+
   const dashboardComponent = useMemo(() => {
     if (!data) return null;
 
@@ -80,6 +86,22 @@ const QodeTacticalFund = () => {
       "A dynamic investment strategy focusing on momentum investing, balancing high returns with calculated risks through hedging and tax efficiency.",
   };
 
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleFormSuccess = () => {
+    setShowSuccessMessage(true);
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+      setIsModalOpen(false);
+    }, 3000);
+  };
+
   return (
     <>
       <Helmet>
@@ -89,7 +111,6 @@ const QodeTacticalFund = () => {
           content={`Learn more about the ${strategyData.title} strategy at Qode Advisors LLP. ${strategyData.description}`}
         />
         <link rel="canonical" href="https://www.qodeinvest.com/strategies" />
-
       </Helmet>
 
       <div className="mx-auto sm:mt-8 mt-8">
@@ -98,14 +119,13 @@ const QodeTacticalFund = () => {
             <h1 className="font-heading playfair-font-display text-mobileHeading sm:text-heading font-semibold text-brown mb-1 text-center">
               {strategyData.title}
             </h1>
-          <div className="post-content gh-content">
-
-            <blockquote>
-                <strong >
+            <div className="post-content gh-content">
+              <blockquote>
+                <strong>
                   <em>Participate in the Growth of Great Companies!</em>
                 </strong>
               </blockquote>
-</div>
+            </div>
             <div className="post-content gh-content">
               <h3 id="momentum-investing-an-overview">Momentum Investing: An Overview</h3>
               <p>
@@ -130,7 +150,6 @@ const QodeTacticalFund = () => {
               <MomentumIndicesChart />
             </LazyChart>
             <div className="post-content gh-content">
-
               <hr />
               <h3 id="why-choose-momentum-over-other-factors">Why Choose Momentum over other Factors?</h3>
               <p>
@@ -143,7 +162,6 @@ const QodeTacticalFund = () => {
             </LazyChart>
             <hr />
             <div className="post-content gh-content">
-
               <h3 id="drawbacks-of-momentum">Drawbacks of Momentum</h3>
               <ol>
                 <li>
@@ -179,16 +197,6 @@ const QodeTacticalFund = () => {
                   internal portfolio churn isn't taxed.
                 </li>
               </ol>
-              {/* <figure className="kg-card kg-image-card">
-              <img
-                src="https://blogs.qodeinvest.com/content/images/2024/10/image--18-.png"
-                className="kg-image"
-                alt="Tax Efficiency Comparison"
-                loading="lazy"
-                width="1031"
-                height="667"
-              />
-            </figure> */}
             </div>
             <div className="overflow-x-auto mb-2">
               <table className="w-full min-w-[640px] border-collapse mt-6">
@@ -297,9 +305,37 @@ const QodeTacticalFund = () => {
                 without sacrificing potential gains.
               </p>
             </div>
+
+            <div className="mt-4 text-center">
+              <Button
+                onClick={toggleModal}
+                className="text-body dm-sans-font bg-beige text-black hover:bg-opacity-80 px-2 py-1"
+              >
+                Get In Touch
+              </Button>
+            </div>
           </div>
         </div>
       </div>
+
+      {showSuccessMessage && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[60]">
+          <div className="bg-lightBeige p-2 rounded-lg text-center max-w-sm sm:max-w-md">
+            <h3 className="text-black text-2xl font-bold mb-4">Success!</h3>
+            <p className="text-black text-lg mb-1">
+              Your message has been sent. We'll get back to you soon!
+            </p>
+          </div>
+        </div>
+      )}
+
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <div className="relative">
+            <SendEmailForm onClose={closeModal} onFormSuccess={handleFormSuccess} />
+          </div>
+        </Modal>
+      )}
     </>
   );
 };

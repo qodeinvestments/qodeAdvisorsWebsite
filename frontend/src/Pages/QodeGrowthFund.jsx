@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useMemo, useTransition } from "react";
+import React, { lazy, Suspense, useMemo, useTransition, useState } from "react";
 import { Helmet } from "react-helmet";
 import { faCheckCircle, faChartLine, faBolt, faShieldAlt } from "@fortawesome/free-solid-svg-icons";
 import QgfEquityCurve from "../components/Charts/qgf/qgfEquityCurve";
@@ -6,6 +6,9 @@ import TrailingReturns from "../components/TrailingReturns";
 import useFetchStrategyNavField from "../hooks/useFetchStrategyNavData";
 import Heading from "../components/common/Heading";
 import PerformanceDashboard from "../components/PerformanceDashboard";
+import Button from "../components/common/Button";
+import Modal from "../components/Modal";
+import SendEmailForm from "../components/SendEmailForm";
 
 const ChartPlaceholder = () => (
   <div className="w-full h-64 bg-gray-100 animate-pulse rounded-lg flex items-center justify-center">
@@ -14,7 +17,6 @@ const ChartPlaceholder = () => (
 );
 
 const LazyChart = ({ children }) => {
-  // Example useInView hook usage if needed
   return (
     <Suspense fallback={<ChartPlaceholder />}>
       {children}
@@ -24,12 +26,15 @@ const LazyChart = ({ children }) => {
 
 const QodeGrowthFund = () => {
   const [isPending, startTransition] = useTransition();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const fields = useMemo(() => ["qgf", "nifty_smallcap_100"], []);
   const options = useMemo(() => ({ refreshInterval: 15000 }), []);
 
   const { data, isLoading, error } = useFetchStrategyNavField(fields);
   const memoizedData = useMemo(() => data, [data]);
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const options = { day: "numeric", month: "long", year: "numeric" };
@@ -39,21 +44,17 @@ const QodeGrowthFund = () => {
   const extractDateRange = (data) => {
     if (!data || data.length === 0) return { startDate: "0", endDate: "0" };
 
-    // Convert all date strings to Date objects
     const dates = data.map((entry) => new Date(entry.date));
-
-    // Calculate the minimum and maximum dates
     const minDate = new Date(Math.min(...dates));
     const maxDate = new Date(Math.max(...dates));
 
-    // Subtract one day from the minimum date for the start date
     const minDateMinusOne = new Date(minDate);
     minDateMinusOne.setDate(minDateMinusOne.getDate() + 1);
     const maxDatePlusOne = new Date(maxDate);
     maxDatePlusOne.setDate(maxDatePlusOne.getDate() + 1);
 
     return {
-      startDate: formatDate(minDateMinusOne),  // Use decremented date for startDate
+      startDate: formatDate(minDateMinusOne),
       endDate: formatDate(maxDatePlusOne),
     };
   };
@@ -62,11 +63,10 @@ const QodeGrowthFund = () => {
 
   React.useEffect(() => {
     if (data) {
-      startTransition(() => {
-        // This will ensure data updates don't cause synchronous suspense
-      });
+      startTransition(() => {});
     }
   }, [data]);
+
   const strategyData = {
     title: "Qode Growth Fund",
     tagLine: "Investing in quality businesses for long-term growth.",
@@ -89,7 +89,7 @@ const QodeGrowthFund = () => {
       {
         title: "Step 2: Profitability Screener",
         description:
-          "A tool used to filter stocks based on their financial performance, focusing on profitability.",
+          "A tool used to filter stocks based on their financial performance, focusing on profitabilitySuggesth profitability.",
         icon: faChartLine,
       },
       {
@@ -136,6 +136,22 @@ const QodeGrowthFund = () => {
     ],
   };
 
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleFormSuccess = () => {
+    setShowSuccessMessage(true);
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+      setIsModalOpen(false);
+    }, 3000);
+  };
+
   return (
     <>
       <Helmet>
@@ -152,7 +168,6 @@ const QodeGrowthFund = () => {
         <link rel="canonical" href="https://www.qodeinvest.com/qode-growth-fund" />
       </Helmet>
 
-
       <div className="mx-auto sm:mt-8 mt-8">
         <div className="mt-4 p-18 max-w-[93%] md:max-w-[1066px] xl:max-w-[1386px] mx-auto sm:mb-1 mb-1">
           <div className="sm:max-w-[820px] mx-auto">
@@ -161,7 +176,7 @@ const QodeGrowthFund = () => {
             </h1>
             <div className="post-content gh-content">
               <blockquote>
-                <strong >
+                <strong>
                   <em>Investing in quality businesses for long-term growth.</em>
                 </strong>
               </blockquote>
@@ -285,7 +300,6 @@ const QodeGrowthFund = () => {
               </LazyChart>
             </div>
             <div className="post-content gh-content">
-
               <p>Below we can see the rolling returns of the strategy compared with benchmark. We can see that no matter when the investor invests this would be the median return for different holding time periods</p>
             </div>
             <figure className="kg-card kg-embed-card">
@@ -380,11 +394,9 @@ const QodeGrowthFund = () => {
                 <li>This approach allows us to preserve capital while staying invested, ensuring that we capture the upside when markets recover.</li>
                 <li>Below you can see how our hedge mechanism was able to reduce drawdowns and sharp fall in Covid-19 crash.</li>
               </ul>
-
             </div>
 
             <div className="mb-1 mt-3">
-
               <LazyChart>
                 <iframe
                   title="Covid-19 Impact Chart"
@@ -434,12 +446,36 @@ const QodeGrowthFund = () => {
               </LazyChart>
             </div>
 
-            {/* <div className="post-content gh-content">
-              <p>Above is the industry breakdown of the QGF portfolio as of 31-12-2024.</p>
-            </div> */}
+            <div className="mt-4 text-center">
+              <Button
+                onClick={toggleModal}
+                className="text-body dm-sans-font bg-beige text-black hover:bg-opacity-80 px-2 py-1"
+              >
+                Get In Touch
+              </Button>
+            </div>
           </div>
         </div>
       </div>
+
+      {showSuccessMessage && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-[60]">
+          <div className="bg-lightBeige p-2 rounded-lg text-center max-w-sm sm:max-w-md">
+            <h3 className="text-black text-2xl font-bold mb-4">Success!</h3>
+            <p className="text-black text-lg mb-1">
+              Your message has been sent. We'll get back to you soon!
+            </p>
+          </div>
+        </div>
+      )}
+
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <div className="relative">
+            <SendEmailForm onClose={closeModal} onFormSuccess={handleFormSuccess} />
+          </div>
+        </Modal>
+      )}
     </>
   );
 };

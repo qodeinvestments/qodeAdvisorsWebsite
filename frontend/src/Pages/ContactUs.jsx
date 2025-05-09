@@ -4,6 +4,8 @@ import Text from "../components/common/Text";
 import Section from "../components/container/Section";
 import { Helmet } from "react-helmet";
 import SendEmailForm from "../components/SendEmailForm";
+import Modal from "../components/Modal";
+import Button from "../components/common/Button";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +14,7 @@ const ContactUs = () => {
     subject: "",
     message: "",
   });
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -23,6 +26,22 @@ const ContactUs = () => {
     // //console.log("Form submitted:", formData);
     // Reset form after submission
     setFormData({ name: "", email: "", subject: "", message: "" });
+  };
+
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleFormSuccess = () => {
+    setShowSuccessMessage(true);
+    setTimeout(() => {
+      setShowSuccessMessage(false);
+      setIsModalOpen(false);
+    }, 3000);
   };
 
   return (
@@ -49,7 +68,7 @@ const ContactUs = () => {
             Contact Us
           </Heading>
         </div>
-        
+
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/2">
             <div className="bg-white">
@@ -121,6 +140,21 @@ const ContactUs = () => {
             ></iframe>
           </div>
         </div>
+        <div className="mt-4 text-center">
+          <Button
+            onClick={toggleModal}
+            className="text-body dm-sans-font bg-beige text-black hover:bg-opacity-80 px-2 py-1"
+          >
+            Get In Touch
+          </Button>
+        </div>
+        {isModalOpen && (
+          <Modal onClose={closeModal}>
+            <div className="relative">
+              <SendEmailForm onClose={closeModal} onFormSuccess={handleFormSuccess} />
+            </div>
+          </Modal>
+        )}
       </Section>
     </>
   );

@@ -6,7 +6,7 @@ import Text from "../components/common/Text";
 import NewsCard from "../components/NewsCard";
 
 // Simple Modal component to show video or podcast in a popup
-const MediaModal = ({ mediaUrl, title, onClose }) => {
+const MediaModal = ({ mediaUrl, title, description, onClose }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       {/* Backdrop */}
@@ -15,13 +15,17 @@ const MediaModal = ({ mediaUrl, title, onClose }) => {
         onClick={onClose}
       ></div>
       {/* Modal Content */}
-      <div className="bg-white rounded-lg p-4 relative z-10 max-w-7xl w-full">
+      <div className="bg-white rounded-lg p-2 relative z-10 max-w-7xl w-full max-h-[90vh] overflow-y-auto">
         <div className="flex justify-end">
           <button onClick={onClose} className="text-gray-700 font-bold">
             X
           </button>
         </div>
-        <div className="mt-4">
+        <div className="mt-2">
+          {/* Display the title at the top */}
+          <Heading className="text-brown text-subheading font-bold mb-2">
+            {title}
+          </Heading>
           <iframe
             src={mediaUrl.includes("youtube") ? `${mediaUrl}?autoplay=1` : mediaUrl}
             title={title}
@@ -30,6 +34,12 @@ const MediaModal = ({ mediaUrl, title, onClose }) => {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
+          {/* Scrollable description */}
+          {description && (
+            <div className="mt-4 max-h-48 overflow-y-auto">
+              {description}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -38,7 +48,7 @@ const MediaModal = ({ mediaUrl, title, onClose }) => {
 
 const FeaturedArticles = () => {
   const [activeTab, setActiveTab] = useState("news");
-  const [modalMedia, setModalMedia] = useState(null); // { mediaUrl, title } or null
+  const [modalMedia, setModalMedia] = useState(null); // { mediaUrl, title, description } or null
 
   const articles = [
     {
@@ -193,7 +203,7 @@ const FeaturedArticles = () => {
         "Forty-four out of the 207 portfolio management services (PMS) schemes held over 10 per cent in cash at the end of January, data from PMS Bazaar show. Ninety-six schemes have raised their cash holdings in the past year.",
       url: "https://www.thehindubusinessline.com/markets/one-in-five-pms-schemes-hold-over-10-in-cash/article69238969.ece",
       imageUrl:
-        "https://bl-i.thgim.com/public/incoming/yk5j71/article69239341.ece/alternates/LANDSCAPE_1200/PO19_Coins_stack_chart.jpg",
+        "https://bl-i.thgim.com/public/incoming/yk5j71/article69239341.ece/alternates/LANDSCAPE_ Discord.py1200/PO19_Coins_stack_chart.jpg",
       source: "The Hindu Businessline",
       slug: "one-in-five-pms-schemes-hold-over-10-in-cash",
     },
@@ -282,11 +292,6 @@ const FeaturedArticles = () => {
     },
   ];
 
-  // Sort articles by date (newest first)
-  const sortedArticles = articles.sort(
-    (a, b) => new Date(b.date) - new Date(a.date)
-  );
-
   const insights = [
     {
       title: "Rishabh Nahar at Laqsa's Lambda Conference 2025",
@@ -306,7 +311,7 @@ const FeaturedArticles = () => {
       title: "Union Budget 2025 Market Insights | Vidhi Chheda | Indiabulls Securities",
       description: (
         <>
-          <Text className MegaclassName="text-gray-700">
+          <Text className="text-gray-700">
             Watch Vidhi Chheda, Partner & Head of Quant Research at Qode, and Rakesh Pujara as they break down the Union Budget 2025 and its impact on markets, sectors, and investment strategies. Hosted by Indiabulls Securities.
           </Text>
         </>
@@ -350,7 +355,7 @@ const FeaturedArticles = () => {
 
       {/* Tabs Navigation */}
       <div className="border-b border-gray-300 mb-4">
-        <nav className="flex justify-center space-x-8">
+        <nav className="flex justify-center space-x-3">
           <button
             onClick={() => setActiveTab("news")}
             className={`py-2 text-lg font-medium transition-colors duration-300 ${activeTab === "news"
@@ -385,7 +390,7 @@ const FeaturedArticles = () => {
       {activeTab === "news" && (
         <Section padding="none">
           <div className="grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {sortedArticles.map((article, index) => (
+            {articles.sort((a, b) => new Date(b.date) - new Date(a.date)).map((article, index) => (
               <NewsCard
                 key={article.slug || index}
                 title={article.title}
@@ -409,7 +414,7 @@ const FeaturedArticles = () => {
                 key={index}
                 initial={{ opacity: 0, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
-               DRAMtransition={{ duration: 0.8 }}
+                transition={{ duration: 0.8 }}
                 className="overflow-hidden transition-all duration-75 max-w-[485px] group p-2 sm:p-3 hover:bg-lightBeige rounded-lg hover:scale-105 flex flex-col h-full"
               >
                 <div className="h-full group overflow-hidden relative flex flex-col">
@@ -418,17 +423,15 @@ const FeaturedArticles = () => {
                     setModalMedia({
                       mediaUrl: insight.mediaUrl,
                       title: insight.title,
+                      description: insight.description,
                     })
                   }>
-                    {/* YouTube Thumbnail */}
                     <img
                       src={`https://img.youtube.com/vi/${insight.thumbnailId}/maxresdefault.jpg`}
                       alt={insight.title}
                       className="w-full h-48 rounded-md object-cover"
                     />
-
-                    {/* Play Button Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="absolute inset-0 flex items-center accountabilityjustify-center">
                       <div className="w-16 h-16 bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M8 5v14l11-7z" />
@@ -443,7 +446,9 @@ const FeaturedArticles = () => {
                         {insight.title}
                       </Heading>
                     </div>
-                    <div className="flex-grow">{insight.description}</div>
+                    <div className="flex-grow">
+                      {insight.description}
+                    </div>
                   </div>
                   <div className="flex justify-end mt-2 items-center">
                     <div className="group-hover:text-black -mt-2">
@@ -487,18 +492,16 @@ const FeaturedArticles = () => {
                       setModalMedia({
                         mediaUrl: podcast.mediaUrl,
                         title: podcast.title,
+                        description: podcast.description,
                       })
                     }
                   >
-                    {/* Podcast Thumbnail */}
                     <img
                       src={`https://img.youtube.com/vi/${podcast.thumbnailId}/maxresdefault.jpg`}
                       alt={podcast.title}
                       className="w-full h-48 rounded-md object-cover"
                     />
-
-                    {/* Play Button Overlay */}
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="absolute inset-0 flex items-center  justify-center">
                       <div className="w-16 h-16 bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -518,7 +521,9 @@ const FeaturedArticles = () => {
                         {podcast.title}
                       </Heading>
                     </div>
-                    <div className="flex-grow">{podcast.description}</div>
+                    <div className="flex-grow">
+                      {podcast.description}
+                    </div>
                     <Text className="text-gray-500 text-sm mt-2">
                       Source: {podcast.source}
                     </Text>
@@ -551,6 +556,7 @@ const FeaturedArticles = () => {
         <MediaModal
           mediaUrl={modalMedia.mediaUrl}
           title={modalMedia.title}
+          description={modalMedia.description}
           onClose={() => setModalMedia(null)}
         />
       )}

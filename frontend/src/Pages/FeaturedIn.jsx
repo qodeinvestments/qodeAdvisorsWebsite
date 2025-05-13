@@ -344,6 +344,17 @@ const FeaturedArticles = () => {
       mediaUrl: "https://www.youtube.com/embed/jbZbQDIGhTw",
       thumbnailId: "jbZbQDIGhTw",
       source: "The India Opportunity with Shrishti Sahu",
+    },
+    {
+      title: "Quant Investing Unveiled: Rishabh Nahar Talks Strategy, Success & Future || The HashTag Show",
+      description: (
+        <Text className="text-gray-700 mt-1">
+          Dive deep into the world of quantitative investing with Rishabh Nahar! In this insightful conversation, Rishabh shares his journey, investment strategies, key success factors, and his vision for the future of quant investing. Whether you're a beginner exploring the field or an experienced investor looking to sharpen your edge, this discussion is packed with actionable insights and expert perspectives.
+        </Text>
+      ),
+      mediaUrl: "https://www.youtube.com/embed/Dm4icTVNY_0",
+      thumbnailId: "Dm4icTVNY_0",
+      source: "The HashTag Show Official",
     }
   ];
 

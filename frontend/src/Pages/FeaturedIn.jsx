@@ -6,7 +6,7 @@ import Text from "../components/common/Text";
 import NewsCard from "../components/NewsCard";
 
 // Simple Modal component to show video or podcast in a popup
-const MediaModal = ({ mediaUrl, title, description, onClose }) => {
+const MediaModal = ({ mediaUrl, title, description, date, onClose }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       {/* Backdrop */}
@@ -21,22 +21,28 @@ const MediaModal = ({ mediaUrl, title, description, onClose }) => {
             X
           </button>
         </div>
-        <div className="mt-2">
-          {/* Display the title at the top */}
-          <Heading className="text-brown text-subheading font-bold mb-2">
+        <div className="mt-0">
+          {/* Display the date above the title if provided */}
+          {date && (
+            <Text className="text-gray-500 text-sm mb-18">
+              {date}
+            </Text>
+          )}
+          {/* Display the title */}
+          <Heading  className="text-brown text-xl  font-bold mb-1">
             {title}
           </Heading>
           <iframe
             src={mediaUrl.includes("youtube") ? `${mediaUrl}?autoplay=1` : mediaUrl}
             title={title}
-            className={`w-full ${mediaUrl.includes("youtube") ? "h-72 sm:h-96 md:h-[40rem]" : "h-48"} rounded-md`}
+            className={`w-full ${mediaUrl.includes("youtube") ? "h-72 sm:h-72  md:h-[30rem]" : "h-48"} rounded-md`}
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
           {/* Scrollable description */}
           {description && (
-            <div className="mt-4 max-h-48 overflow-y-auto">
+            <div className=" max-h-48 overflow-y-auto">
               {description}
             </div>
           )}
@@ -48,7 +54,7 @@ const MediaModal = ({ mediaUrl, title, description, onClose }) => {
 
 const FeaturedArticles = () => {
   const [activeTab, setActiveTab] = useState("news");
-  const [modalMedia, setModalMedia] = useState(null); // { mediaUrl, title, description } or null
+  const [modalMedia, setModalMedia] = useState(null); // { mediaUrl, title, description, date } or null
 
   const articles = [
     {
@@ -74,7 +80,7 @@ const FeaturedArticles = () => {
       "title": "Gold prices on a record-hitting spree: Can MCX Gold hit the ₹1 lakh mark in April or May 2025?",
       "excerpt": "Gold prices have reached record highs in both domestic and international markets, driven by economic uncertainties and geopolitical tensions.",
       "imageUrl": "https://www.livemint.com/lm-img/img/2025/04/18/600x338/pexels-photo-366551_1744966477739_1744966494956.jpeg",
-      "source": "Mint Markets",
+      "sourceinizin": "Mint Markets",
       "slug": "gold-prices-record-highs",
       "url": "https://www.livemint.com/market/commodities/gold-prices-on-a-record-hitting-spree-can-mcx-gold-rate-hit-1-lakh-mark-in-april-or-may-2025-11744966232802.html",
     },
@@ -105,7 +111,7 @@ const FeaturedArticles = () => {
       imageUrl:
         "https://www.livemint.com/lm-img/img/2025/03/23/600x338/gccdbfbe1df55fb78eaf53eaaf1b005aa8664a8713b6cbbac2_1727422374094_1742744060141.jpg",
       source: "Mint Markets",
-      slug: "penny-stockholders-celebrating",
+      slug: "penny-stockholders-celebrating", 
       url: "https://www.livemint.com/market/stock-market-news/penny-stocks-investors-multi-bagger-covid-pandemic-crash-smallcaps-midcaps-11742702528891.html",
     },
     {
@@ -176,7 +182,7 @@ const FeaturedArticles = () => {
           url: "https://www.deccanherald.com/business/markets/indian-equity-markets-pain-to-worsen-as-economy-corporate-profits-slow-3413569",
           date: "February 20, 2025",
           title:
-            "Indian Equity Markets Pain to Worsen as Economy, Corporate Profits Slow",
+            "Indian Equity Markets Pain to Worsen as Economy, Corporate Profits recursoSlow",
         },
         {
           id: "theprint",
@@ -203,7 +209,7 @@ const FeaturedArticles = () => {
         "Forty-four out of the 207 portfolio management services (PMS) schemes held over 10 per cent in cash at the end of January, data from PMS Bazaar show. Ninety-six schemes have raised their cash holdings in the past year.",
       url: "https://www.thehindubusinessline.com/markets/one-in-five-pms-schemes-hold-over-10-in-cash/article69238969.ece",
       imageUrl:
-        "https://bl-i.thgim.com/public/incoming/yk5j71/article69239341.ece/alternates/LANDSCAPE_ Discord.py1200/PO19_Coins_stack_chart.jpg",
+        "https://bl-i.thgim.com/public/incoming/yk5j71/article69239341.ece/alternates/LANDSCAPE_1200/PO19_Coins_stack_chart.jpg",
       source: "The Hindu Businessline",
       slug: "one-in-five-pms-schemes-hold-over-10-in-cash",
     },
@@ -335,17 +341,6 @@ const FeaturedArticles = () => {
 
   const podcasts = [
     {
-      title: "How This Fund Manager Beat Nifty With Quant Investing (Even in a Crash!)",
-      description: (
-        <Text className="text-gray-700 mt-1">
-          In this episode, Shrishti interviews Rishabh, a leading portfolio manager at Qode, one of India’s top 10 PMS (Portfolio Management Services) this year from Jan-March. While everyone's portfolios were crashing, QODE managed risk extremely well with tremendous downside protection for its investors via quant investing. In this episode, Rishabh breaks down the world of quantitative investing, risk management, multi-asset allocation, and the future of wealth creation through smart investing.
-        </Text>
-      ),
-      mediaUrl: "https://www.youtube.com/embed/jbZbQDIGhTw",
-      thumbnailId: "jbZbQDIGhTw",
-      source: "The India Opportunity with Shrishti Sahu",
-    },
-    {
       title: "Quant Investing Unveiled: Rishabh Nahar Talks Strategy, Success & Future || The HashTag Show",
       description: (
         <Text className="text-gray-700 mt-1">
@@ -355,7 +350,21 @@ const FeaturedArticles = () => {
       mediaUrl: "https://www.youtube.com/embed/Dm4icTVNY_0",
       thumbnailId: "Dm4icTVNY_0",
       source: "The HashTag Show Official",
-    }
+      date : "9th May 2025"
+    },
+    {
+      title: "How This Fund Manager Beat Nifty With Quant Investing (Even in a Crash!)",
+      description: (
+        <Text className="text-gray-700 mt-1">
+          In this episode, Shrishti interviews Rishabh, a leading portfolio manager at Qode, one of India’s top 10 PMS (Portfolio Management Services) this year from Jan-March. While everyone's portfolios were crashing, QODE managed risk extremely well with tremendous downside protection for its investors via quant investing. In this episode, Rishabh breaks down the world of quantitative investing, risk management, multi-asset allocation, and the future of wealth creation through smart investing.
+        </Text>
+      ),
+      mediaUrl: "https://www.youtube.com/embed/jbZbQDIGhTw",
+      thumbnailId: "jbZbQDIGhTw",
+      source: "The India Opportunity with Shrishti Sahu",
+      date : "17th April 2025"
+    },
+    
   ];
 
   return (
@@ -442,7 +451,7 @@ const FeaturedArticles = () => {
                       alt={insight.title}
                       className="w-full h-48 rounded-md object-cover"
                     />
-                    <div className="absolute inset-0 flex items-center accountabilityjustify-center">
+                    <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-16 h-16 bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M8 5v14l11-7z" />
@@ -504,6 +513,7 @@ const FeaturedArticles = () => {
                         mediaUrl: podcast.mediaUrl,
                         title: podcast.title,
                         description: podcast.description,
+                        date: podcast.date
                       })
                     }
                   >
@@ -512,7 +522,7 @@ const FeaturedArticles = () => {
                       alt={podcast.title}
                       className="w-full h-48 rounded-md object-cover"
                     />
-                    <div className="absolute inset-0 flex items-center  justify-center">
+                    <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-16 h-16 bg-opacity-80 rounded-full flex items-center justify-center hover:bg-opacity-100 transition-all">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -535,9 +545,16 @@ const FeaturedArticles = () => {
                     <div className="flex-grow">
                       {podcast.description}
                     </div>
-                    <Text className="text-gray-500 text-sm mt-2">
-                      Source: {podcast.source}
-                    </Text>
+                    <div className="mt-2">
+                      <Text className="text-gray-500 text-sm">
+                        Source: {podcast.source}
+                      </Text>
+                      {podcast.date && (
+                        <Text className="text-gray-500 text-sm">
+                          Date: {podcast.date}
+                        </Text>
+                      )}
+                    </div>
                   </div>
                   <div className="flex justify-end mt-2 items-center">
                     <div className="group-hover:text-black -mt-2">
@@ -568,6 +585,7 @@ const FeaturedArticles = () => {
           mediaUrl={modalMedia.mediaUrl}
           title={modalMedia.title}
           description={modalMedia.description}
+          date={modalMedia.date}
           onClose={() => setModalMedia(null)}
         />
       )}

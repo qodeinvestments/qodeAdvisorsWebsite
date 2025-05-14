@@ -58,6 +58,15 @@ const FeaturedArticles = () => {
 
   const articles = [
     {
+      "date": "May 13, 2025",
+      "title": "PMS Tracker: Top 15 funds gain up to 10% in April, while quant, smallcap strategies falter",
+      "excerpt": `Qode Advisors LLP secured the next two spots with its Tactical Fund and All Weather strategies gaining 9.56% and 8.72%, respectively. 2Point2 Capital’s Long Term Value Fund rose 8.10%, while Alchemy Capital Management’s High Growth strategy returned 7.14%.`,
+      "imageUrl": "https://m.economictimes.com/thumb/height-450,width-600,imgsize-73944,msid-121137912/pms-tracker-top-15-funds-gain-up-to-10-in-april-while-quant-smallcap-strategies-falter.jpg",
+      "source": "The Economic Times",
+      "slug": "pms-tracker-top-15-funds-gain-up-to-10-in-april-while-quant-smallcap-strategies-falter",
+      "url": "https://m.economictimes.com/markets/stocks/news/pms-tracker-top-15-funds-gain-up-to-10-in-april-while-quant-smallcap-strategies-falter/amp_articleshow/121137939.cms",
+    },
+    {
       "date": "May 02, 2025",
       "title": "Gold prices crack ₹7,000 from peak: Is it time to shift focus towards silver? ",
       "excerpt": `Gold prices have fallen by ₹7,000 to ₹93,000 per 10 grams after a peak above ₹1 lakh amid easing trade tensions and profit-taking as demand for safe-haven assets decreases. With further correction in gold prices likely, analysts' outlook for silver is more constructive.`,
@@ -71,7 +80,7 @@ const FeaturedArticles = () => {
       "title": "'Equities are no longer optional': Qode’s Rishabh Nahar on navigating market uncertainty with quant strategy ",
       "excerpt": `Nahar believes the key to navigating such volatility lies in quantitative investing, but with a first-principles approach. He says, "Quant investing isn’t about secret algorithms. People often think of quant investing as a black box spitting out multibagger stocks."`,
       "imageUrl": "/Rishabh-15.png",
-      "source": "Economic Times",
+      "source": "The Economic Times",
       "slug": "equities-are-no-longer-options",
       "url": "https://economictimes.indiatimes.com/markets/expert-view/equities-are-no-longer-optional-qodes-rishabh-nahar-on-navigating-market-uncertainty-with-quant-strategy/articleshow/120737564.cms?from=mdr",
     },
@@ -89,7 +98,7 @@ const FeaturedArticles = () => {
       "title": "Mind Over Money: Bhagavad Gita, First Principles & Fitness: The unconventional investing path of Rishabh Nahar",
       "excerpt": "Rishabh Nahar, Partner at Qode Advisors, combines physical discipline, spiritual grounding from the Bhagavad Gita, and Charlie Munger’s mental models for a holistic investing approach rooted in clarity, composure, and first principles thinking.",
       "imageUrl": "/Rishabh_New.jpg",
-      "source": "Economic Times",
+      "source": "The Economic Times",
       "slug": "mind-over-money",
       "url": "https://m.economictimes.com/markets/expert-view/mind-over-m0ney-bhagavad-gita-first-principles-fitness-the-unconventional-investing-path-of-rishabh-nahar/amp_articleshow/120226227.cms"
     },
@@ -235,7 +244,7 @@ const FeaturedArticles = () => {
       url: "https://economictimes.indiatimes.com/markets/stocks/news/how-to-play-nifty-bears-in-the-current-market-dos-donts-for-investors/articleshow/118201159.cms?from=mdr",
       imageUrl:
         "https://img.etimg.com/thumb/msid-118201136,width-400,height-300,imgsize-88652,resizemode-75/how-to-play-nifty-bears-in-the-current-market-dos-donts-for-investors.jpg",
-      source: "Economic Times",
+      source: "The Economic Times",
       slug: "dos-and-donts-for-investors",
     },
     {

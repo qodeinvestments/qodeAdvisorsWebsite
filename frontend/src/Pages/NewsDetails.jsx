@@ -10,6 +10,16 @@ import Text from "../components/common/Text";
 // In a production app, replace this with data fetched from an API.
 const articles = [
     {
+        "date": "May 13, 2025",
+        "title": "PMS Tracker: Top 15 funds gain up to 10% in April, while quant, smallcap strategies falter",
+        "additionalParagraph": `Qode Advisors LLP secured the next two spots with its Tactical Fund and All Weather strategies gaining 9.56% and 8.72%, respectively. 2Point2 Capital’s Long Term Value Fund rose 8.10%, while Alchemy Capital Management’s High Growth strategy returned 7.14%.
+In April, PMS fund performance varied widely across categories. While several multi-cap, smallcap, and thematic strategies registered solid gains, others — particularly quant-driven and high-beta smallcap portfolios — saw pressure amid market volatility.`,
+        "imageUrl": "https://m.economictimes.com/thumb/height-450,width-600,imgsize-73944,msid-121137912/pms-tracker-top-15-funds-gain-up-to-10-in-april-while-quant-smallcap-strategies-falter.jpg",
+        "source": "The Economic Times",
+        "slug": "pms-tracker-top-15-funds-gain-up-to-10-in-april-while-quant-smallcap-strategies-falter",
+        "url": "https://m.economictimes.com/markets/stocks/news/pms-tracker-top-15-funds-gain-up-to-10-in-april-while-quant-smallcap-strategies-falter/amp_articleshow/121137939.cms",
+    },
+    {
         "date": "May 02, 2025",
         "title": "Gold prices crack ₹7,000 from peak: Is it time to shift focus towards silver? ",
         "excerpt": `Historically, when the ratio crosses 80, silver tends to outperform gold in subsequent periods. With the ratio hovering near multi-decade highs, silver appears undervalued relative to gold. This divergence isn’t just technical it reflects how silver has lagged in pricing in the same macro risks that are driving gold: geopolitical uncertainty, central bank accumulation, and currency debasement trends. For investors, this makes silver an attractive, asymmetric bet within the precious metals basket`,
@@ -19,7 +29,7 @@ const articles = [
         "slug": "gold-prices-crack",
         "author": "Rishabh Nahar, Partner and Fund Manager at Qode Advisors",
         "url": "https://www.livemint.com/market/commodities/gold-prices-crack-rs-7-000-from-peak-is-it-time-to-shift-focus-towards-silver-11746181967193.html",
-      },
+    },
     {
         "date": "April 30, 2025",
         "title": "'Equities are no longer optional': Qode’s Rishabh Nahar on navigating market uncertainty with quant strategy ",

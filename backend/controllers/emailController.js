@@ -88,8 +88,26 @@ const sendGeneralMail = async (req, res) => {
         }
 
         // Build message table...
+        // Build styled table with form inputs
         const formattedMessage = `
-            <table> … </table>
+            <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6; color: #555;">
+                <tr>
+                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Name:</td>
+                    <td style="padding: 5px 0;">${fromName}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Email:</td>
+                    <td style="padding: 5px 0;">${userEmail}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Phone Number:</td>
+                    <td style="padding: 5px 0;">${phone}</td>
+                </tr>
+                <tr>
+                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Additional Message:</td>
+                    <td style="padding: 5px 0;">${message.replace(/\n/g, '<br>')}</td>
+                </tr>
+            </table>
         `;
 
         // Save to DB

@@ -153,7 +153,7 @@ const QodeTacticalFund = () => {
               <hr />
               <h3 id="why-choose-momentum-over-other-factors">Why Choose Momentum over other Factors?</h3>
               <p>
-                Momentum ranks top among strategy indices like the Nifty 500 Value 50 and Nifty 200 Quality 30:
+                Momentum ranks top among strategy indices like the Alpha 50 and Low Vol 50:
               </p>
             </div>
 

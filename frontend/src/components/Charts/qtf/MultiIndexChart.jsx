@@ -47,16 +47,16 @@ const MultiIndexChart = () => {
       name: 'Alpha 50',
       color: 'orange',
       },
-      {
-      field: 'nifty_200_quality_30',
-      name: 'Quality 30',
-      color: '#c19a6b',
-      },
       // {
-      // field: 'nifty_low_volatility_50',
-      // name: 'Low Volatility 50',
-      // color: '#DEB887',
+      // field: 'nifty_200_quality_30',
+      // name: 'Quality 30',
+      // color: '#c19a6b',
       // },
+      {
+      field: 'nifty_low_volatility_50',
+      name: 'Low Volatility 50',
+      color: '#DEB887',
+      },
       // {
       // field: 'nifty_500_value_50',
       // name: 'Value 50',

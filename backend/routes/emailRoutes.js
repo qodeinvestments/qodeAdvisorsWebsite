@@ -8,10 +8,8 @@ const router = express.Router();
 
 // Endpoint for processing contact form submissions
 router.post('/send', sendGeneralMail);
-
 // New endpoint for sending password reset emails
 router.post('/forgot-password', sendForgetPasswordMail);
-
 
 
 const storage = multer.diskStorage({

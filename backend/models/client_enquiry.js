@@ -62,10 +62,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     additional_message: {
       type: DataTypes.TEXT,
-      allowNull: false, // Keep as required to match frontend
-      validate: {
-        notEmpty: true, // Ensure non-empty message
-      }
+      allowNull: true, // Keep as required to match frontend
     },
     createdAt: {
       type: DataTypes.DATE,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone, faEnvelope, faMapMarkerAlt, faCircle } from "@fortawesome/free-solid-svg-icons";
-import { faLinkedin, faYoutube, faXTwitter, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faPhone, faEnvelope, faMapMarkerAlt, faCircle, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { faLinkedin, faYoutube, faXTwitter } from "@fortawesome/free-brands-svg-icons";
 import { Bounce, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "./common/Button";
@@ -13,6 +13,9 @@ const API_URL =
   import.meta.env.MODE === "production"
     ? import.meta.env.VITE_BACKEND_PROD_URL
     : import.meta.env.VITE_BACKEND_DEV_URL;
+// 2Factor.in API details
+const TWO_FACTOR_API_KEY = "13cade6b-2fe1-11f0-8b17-0200cd936042";
+const TWO_FACTOR_OTP_TEMPLATE = "OTP1";
 
 // Validation utility functions
 const validateEmail = (email) => {
@@ -24,31 +27,11 @@ const validateEmail = (email) => {
 
 const validatePhone = (phone) => {
   if (!phone) return "Phone number is required";
-
-  // Strip any non-digit characters except the leading +
-  const cleanedPhone = phone.replace(/(?!^\+)\D/g, '');
-
-  // Check if the phone number has digits beyond the country code
-  if (cleanedPhone.length <= 1) {
-    return "Please enter a valid phone number";
-  }
-
-  // Check if there's at least one digit after the country code
-  // First, remove the "+" if it exists
-  const phoneWithoutPlus = cleanedPhone.startsWith('+') ? cleanedPhone.substring(1) : cleanedPhone;
-
-  // Extract the country code and the rest of the phone number
-  // Most country codes are 1-3 digits
-  if (phoneWithoutPlus.length <= 3) {
-    return "Please enter a complete phone number with digits after the country code";
-  }
-
-  // Check if it's a valid format (with or without +)
+  const cleanedPhone = phone.replace(/(?!^\+)\D/g, "");
+  if (cleanedPhone.length <= 1) return "Please enter a valid phone number";
+  if (cleanedPhone.substring(1).length <= 3) return "Please enter a complete phone number";
   const phoneRegex = /^(\+)?\d{1,15}$/;
-  if (!phoneRegex.test(cleanedPhone)) {
-    return "Please enter a valid international phone number starting with '+' followed by 1-15 digits (e.g., +12025550123)";
-  }
-
+  if (!phoneRegex.test(cleanedPhone)) return "Please enter a valid international phone number (e.g., +12025550123)";
   return "";
 };
 
@@ -59,42 +42,45 @@ const validateName = (name) => {
   return "";
 };
 
-/* const validateLocation = (location) => {
-  if (!location) return "Location is required";
-  if (location.length < 2) return "Location must be at least 2 characters long";
+const validateOTP = (otp) => {
+  if (!otp) return "OTP is required";
+  if (!/^\d{6}$/.test(otp)) return "OTP must be a 6-digit number";
   return "";
 };
-
-const validateRequiredField = (field, fieldName) => {
-  if (!field) return `${fieldName} is required`;
-  return "";
-}; */
 
 const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
   const [formStartTime, setFormStartTime] = useState(Date.now());
   const [phoneTouched, setPhoneTouched] = useState(false);
+  const [otp, setOtp] = useState("");
+  const [isOtpSent, setIsOtpSent] = useState(false);
+  const [isPhoneVerified, setIsPhoneVerified] = useState(false);
+  const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
+  const [lastOtpRequest, setLastOtpRequest] = useState({ phone: "", timestamp: 0 });
+  const [serverOtp, setServerOtp] = useState(""); // Store OTP from 2Factor.in response
+  const [isResendMode, setIsResendMode] = useState(false);
+  const [otpAttempts, setOtpAttempts] = useState(0);
+  const [remainingCooldown, setRemainingCooldown] = useState(0);
+  const [isCooldownActive, setIsCooldownActive] = useState(false);
 
-  const [formData, setFormData] = useState({
-    to: "investor.relations@qodeinvest.com",
-    name: "",
-    userEmail: "",
-    phone: "",
-    //location: "",
-    //investmentGoal: "",
-    //investmentExperience: "",
-    //preferredStrategy: [],
-    //initialInvestmentSize: "",
-    message: "",
-    website: "", // Honeypot field
-    recaptchaToken: "", // Store reCAPTCHA token
-  });
-
-  // Set form start time on component mount
   useEffect(() => {
     setFormStartTime(Date.now());
   }, []);
+
+  useEffect(() => {
+    let timer;
+    if (isCooldownActive && remainingCooldown > 0) {
+      timer = setTimeout(() => {
+        setRemainingCooldown(prev => prev - 1);
+      }, 1000);
+    } else if (remainingCooldown === 0 && isCooldownActive) {
+      setIsCooldownActive(false);
+    }
+    return () => clearTimeout(timer);
+  }, [remainingCooldown, isCooldownActive]);
+
+
 
   const validateForm = () => {
     const newErrors = {};
@@ -102,53 +88,35 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
     const nameError = validateName(formData.name);
     const emailError = validateEmail(formData.userEmail);
     const phoneError = validatePhone(formData.phone);
-    //const locationError = validateLocation(formData.location);
-    //const investmentGoalError = validateRequiredField(formData.investmentGoal, "Investment goal");
-    //const investmentExperienceError = validateRequiredField(formData.investmentExperience, "Investment experience");
-    //const preferredStrategyError = formData.preferredStrategy.length ? "" : "Please select at least one investment strategy";
-    //const initialInvestmentSizeError = validateRequiredField(formData.initialInvestmentSize, "Initial investment size");
+    if (isOtpSent && !isPhoneVerified) {
+      const otpError = validateOTP(otp);
+      if (otpError) newErrors.otp = otpError;
+    }
 
     if (nameError) newErrors.name = nameError;
     if (emailError) newErrors.email = emailError;
     if (phoneError) newErrors.phone = phoneError;
-    //if (locationError) newErrors.location = locationError;
-    //if (investmentGoalError) newErrors.investmentGoal = investmentGoalError;
-    //if (investmentExperienceError) newErrors.investmentExperience = investmentExperienceError;
-    //if (preferredStrategyError) newErrors.preferredStrategy = preferredStrategyError;
-    //if (initialInvestmentSizeError) newErrors.initialInvestmentSize = initialInvestmentSizeError;
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleInputChange = (e) => {
-    const { name, value, type, checked } = e.target;
+  const [formData, setFormData] = useState({
+    to: "investor.relations@qodeinvest.com",
+    name: "",
+    userEmail: "",
+    phone: "",
+    message: "",
+    website: "",
+    recaptchaToken: "",
+  });
 
-    /* if (type === "checkbox") {
-      setFormData((prevData) => {
-        const currentStrategies = prevData.preferredStrategy || [];
-        if (checked) {
-          return {
-            ...prevData,
-            preferredStrategy: [...currentStrategies, value],
-          };
-        } else {
-          return {
-            ...prevData,
-            preferredStrategy: currentStrategies.filter((strategy) => strategy !== value),
-          };
-        }
-      });
-    } else { */
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
-    //}
-
-    if (name === "phone") {
-      setPhoneTouched(true);
-    }
 
     if (errors[name]) {
       setErrors((prev) => ({
@@ -158,30 +126,17 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
     }
   };
 
-  // Handle phone change with improved validation
   const handlePhoneChange = (phone) => {
-    // Format the phone number to ensure it starts with "+"
-    const formattedPhone = phone.startsWith('+') ? phone : `+${phone}`;
-
-    // Check for spaces or empty input and set error immediately if needed
-    if (!phone.trim() || phone.trim().length <= 2) {
-      setErrors((prev) => ({
-        ...prev,
-        phone: "Please enter a valid phone number with digits after the country code",
-      }));
-    } else {
-      // Clear error if phone looks valid
-      setErrors((prev) => ({
-        ...prev,
-        phone: "",
-      }));
-    }
-
+    const formattedPhone = phone.startsWith("+") ? phone : `+${phone}`;
     setFormData((prevData) => ({
       ...prevData,
       phone: formattedPhone,
     }));
     setPhoneTouched(true);
+    setErrors((prev) => ({
+      ...prev,
+      phone: "",
+    }));
   };
 
   const handlePhoneBlur = () => {
@@ -195,8 +150,182 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
     }
   };
 
+
+
+  const handleOtpChange = (e) => {
+    setOtp(e.target.value);
+    if (errors.otp) {
+      setErrors((prev) => ({
+        ...prev,
+        otp: "",
+      }));
+    }
+  };
+
+  const startCooldown = (seconds) => {
+    setRemainingCooldown(seconds);
+    setIsCooldownActive(true);
+  };
+
+  const sendOtp = async () => {
+    const phoneError = validatePhone(formData.phone);
+    if (phoneError) {
+      setErrors((prev) => ({
+        ...prev,
+        phone: phoneError,
+      }));
+      toast.error(phoneError, {
+        position: "bottom-right",
+        autoClose: 5000,
+        theme: "light",
+        transition: Bounce,
+      });
+      return;
+    }
+
+    // Reset OTP field and errors when sending a new OTP
+    setOtp("");
+    setErrors((prev) => ({
+      ...prev,
+      otp: "",
+    }));
+
+    // Rate-limiting: Check if an OTP was requested for this phone recently
+    const currentTime = Date.now();
+    const cooldownPeriod = 60 * 1000; // 60 seconds
+    if (
+      lastOtpRequest.phone === formData.phone &&
+      currentTime - lastOtpRequest.timestamp < cooldownPeriod
+    ) {
+      const remainingTime = Math.ceil((cooldownPeriod - (currentTime - lastOtpRequest.timestamp)) / 1000);
+      startCooldown(remainingTime);
+      toast.error(`Please wait ${remainingTime} seconds before requesting another OTP`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        theme: "light",
+        transition: Bounce,
+      });
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      const twoFactorUrl = `https://2factor.in/API/V1/${TWO_FACTOR_API_KEY}/SMS/${formData.phone}/AUTOGEN2/${TWO_FACTOR_OTP_TEMPLATE}`;
+      const response = await fetch(twoFactorUrl, {
+        method: "GET",
+      });
+
+      const data = await response.json();
+      if (response.ok && data.Status === "Success") {
+        setIsOtpSent(true);
+        setIsResendMode(false);
+        setLastOtpRequest({ phone: formData.phone, timestamp: Date.now() });
+        setServerOtp(data.OTP); // Store OTP from response
+        toast.success("OTP sent to your phone number", {
+          position: "bottom-right",
+          autoClose: 5000,
+          theme: "light",
+          transition: Bounce,
+        });
+        startCooldown(60); // Start cooldown for 60 seconds
+      } else {
+        throw new Error(data.Details || "Failed to send OTP");
+      }
+    } catch (error) {
+      console.error("Error sending OTP:", error);
+      toast.error(`Failed to send OTP: ${error.message}`, {
+        position: "bottom-right",
+        autoClose: 5000,
+        theme: "light",
+        transition: Bounce,
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const verifyOtp = async () => {
+    const otpError = validateOTP(otp);
+    if (otpError) {
+      setErrors((prev) => ({
+        ...prev,
+        otp: otpError,
+      }));
+      toast.error(otpError, {
+        position: "bottom-right",
+        autoClose: 5000,
+        theme: "light",
+        transition: Bounce,
+      });
+      return;
+    }
+
+    try {
+      setIsVerifyingOtp(true);
+      // Verify OTP client-side by comparing with serverOtp
+      if (otp === serverOtp) {
+        setIsPhoneVerified(true);
+        setIsOtpSent(false);
+        setOtpAttempts(0);
+        // No toast; notification is shown next to phone input
+      } else {
+        // Increment attempts and check if we should switch to resend mode
+        const newAttempts = otpAttempts + 1;
+        setOtpAttempts(newAttempts);
+
+        if (newAttempts >= 3) {
+          setIsResendMode(true);
+          throw new Error("Too many failed attempts. Please request a new OTP.");
+        } else {
+          throw new Error("Invalid OTP. Please try again.");
+        }
+      }
+    } catch (error) {
+      console.error("Error verifying OTP:", error);
+      setErrors((prev) => ({
+        ...prev,
+        otp: error.message,
+      }));
+    } finally {
+      setIsVerifyingOtp(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (formData.website) {
+      console.warn("Honeypot triggered: Suspicious activity detected");
+      toast.error("Submission blocked due to suspicious activity.", {
+        position: "bottom-right",
+        autoClose: 5000,
+        theme: "light",
+        transition: Bounce,
+      });
+      return;
+    }
+
+    const timeElapsed = (Date.now() - formStartTime) / 1000;
+    if (timeElapsed < 5) {
+      console.warn("Form submitted too quickly: Potential bot activity");
+      toast.error("Please wait a moment before submitting.", {
+        position: "bottom-right",
+        autoClose: 5000,
+        theme: "light",
+        transition: Bounce,
+      });
+      return;
+    }
+
+    if (!isPhoneVerified) {
+      toast.error("Please verify your phone number with OTP", {
+        position: "bottom-right",
+        autoClose: 5000,
+        theme: "light",
+        transition: Bounce,
+      });
+      return;
+    }
 
     if (!validateForm()) {
       Object.values(errors).forEach((error) => {
@@ -204,11 +333,6 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
           toast.error(error, {
             position: "bottom-right",
             autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
             theme: "light",
             transition: Bounce,
           });
@@ -224,11 +348,6 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
       toast.error("reCAPTCHA not loaded. Please check your connection or try again.", {
         position: "bottom-right",
         autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "light",
         transition: Bounce,
       });
@@ -242,14 +361,12 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
         "6LfDSyArAAAAAOCExGxlQORbh6kCxSsTo7QAZcLh",
         { action: "submit" }
       );
-      console.log("reCAPTCHA token generated:", token);
 
       setFormData((prev) => ({
         ...prev,
         recaptchaToken: token,
       }));
 
-      console.log("Sending request to:", `${API_URL}/emails/send`);
       const response = await fetch(`${API_URL}/emails/send`, {
         method: "POST",
         headers: {
@@ -257,57 +374,49 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
         },
         body: JSON.stringify({
           userEmail: formData.userEmail,
-          subject: "Qode Investment Inquiry",
           message: formData.message,
           fromName: formData.name,
           phone: formData.phone,
-          //location: formData.location,
-          //investmentGoal: formData.investmentGoal,
-          //investmentExperience: formData.investmentExperience,
-          //preferredStrategy: formData.preferredStrategy,
-          //initialInvestmentSize: formData.initialInvestmentSize,
           recaptchaToken: token,
           website: formData.website,
           formStartTime,
         }),
       });
 
-      console.log("Fetch response status:", response.status);
+      const data = await response.json();
       if (response.ok) {
-        // Call onFormSuccess to show success message in parent
         if (onFormSuccess) {
           onFormSuccess();
         }
 
-        // Reset form data
         setFormData({
           name: "",
           userEmail: "",
           phone: "",
-          //location: "",
-          //investmentGoal: "",
-          //investmentExperience: "",
-          //preferredStrategy: [],
-          //initialInvestmentSize: "",
           message: "",
           website: "",
           recaptchaToken: "",
         });
+        setOtp("");
         setPhoneTouched(false);
+        setIsPhoneVerified(false);
+        setIsOtpSent(false);
+        setIsResendMode(false);
+        setOtpAttempts(0);
+        toast.success(data.message || "Form submitted successfully!", {
+          position: "bottom-right",
+          autoClose: 5000,
+          theme: "light",
+          transition: Bounce,
+        });
       } else {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Submission failed");
+        throw new Error(data.error || "Submission failed");
       }
     } catch (error) {
       console.error("Fetch error:", error);
       toast.error(`An error occurred: ${error.message}`, {
         position: "bottom-right",
         autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "light",
         transition: Bounce,
       });
@@ -322,13 +431,11 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
     ) : null;
   };
 
-  // Custom input style for the updated design
   const inputStyle = `w-full p-[6px] bg-transparent border-b border-brown focus:outline-none focus:border-${textColor} text-black text-sm focus:text-black`;
 
   return (
-    <div className="flex flex-col items-center py-5 font-body  relative">
+    <div className="flex flex-col items-center py-5 font-body relative">
       <div className="flex flex-col lg:flex-row w-full max-w-6xl mx-auto sm:px-18">
-        {/* Form Section (Left) */}
         <div className="w-full lg:w-2/3 pr-0 lg:pr-4">
           <Text className={`mb-2 text-${textColor} font-semiheading text-subheading md:text-semiheading`}>
             Empower Your Financial Growth
@@ -345,9 +452,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
               onChange={handleInputChange}
             />
 
-            {/* Basic Contact Fields - Using the new underline style */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
-              {/* Full Name */}
               <div>
                 <input
                   autoComplete="off"
@@ -361,7 +466,6 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
                 {renderError("name")}
               </div>
 
-              {/* Email Address */}
               <div>
                 <input
                   autoComplete="off"
@@ -375,181 +479,109 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
                 {renderError("email")}
               </div>
 
-              {/* Contact Number */}
-              <div>
-                <PhoneInput
-                  country={"in"}
-                  value={formData.phone}
-                  onChange={handlePhoneChange}
-                  onBlur={handlePhoneBlur}
-                  placeholder="Contact Number* (e.g., +12025550123)"
-                  inputClass={`${inputStyle} ${errors.phone && phoneTouched ? "border-red-500" : ""}`}
-                  buttonClass="bg-transparent border-none"
-                  dropdownClass="bg-brown text-white"
-                  inputProps={{
-                    name: "phone",
-                    required: true,
-                    autoComplete: "off",
-                  }}
-                  enableSearch={true}
-                  preferredCountries={['in', 'us', 'gb']}
-                  format="+## ### ### ####"
-                />
+              <div className="flex flex-col">
+                <div className="flex items-center gap-2 relative">
+                  <PhoneInput
+                    country={"in"}
+                    value={formData.phone}
+                    onChange={handlePhoneChange}
+                    onBlur={handlePhoneBlur}
+                    placeholder="Contact Number* (e.g., +12025550123)"
+                    inputClass={`${inputStyle} ${errors.phone && phoneTouched ? "border-red-500" : ""}`}
+                    buttonClass="bg-transparent border-none"
+                    dropdownClass="bg-brown text-white"
+                    inputProps={{
+                      name: "phone",
+                      required: true,
+                      autoComplete: "off",
+                    }}
+                    enableSearch={true}
+                    preferredCountries={["in", "us", "gb"]}
+                    disabled={isPhoneVerified}
+                  />
+                  {!isPhoneVerified && !isOtpSent && (
+                    <Button
+                      type="button"
+                      onClick={sendOtp}
+                      className={`text-black whitespace-nowrap text-sm ${(isSubmitting || isCooldownActive) ? "opacity-50 cursor-not-allowed" : ""}`}
+                      disabled={isSubmitting || isCooldownActive}
+                    >
+                      {isSubmitting ? "Sending..." : isCooldownActive ? `Wait ${remainingCooldown}s` : "Send OTP"}
+                    </Button>
+                  )}
+                  {isPhoneVerified && (
+                    <div className="flex items-center gap-1 absolute right-0 top-1/2 transform -translate-y-1/2">
+                      <FontAwesomeIcon icon={faCheckCircle} className="text-green-500" />
+                      <span className="text-green-500 text-xs">Verified</span>
+                    </div>
+                  )}
+                </div>
                 <span className={`block text-${textColor} text-xs mt-1`}>
                   Select your country code (e.g., +91 for India)
                 </span>
                 {phoneTouched && renderError("phone")}
               </div>
 
-              {/* Location (City) */}
-              {/* <div>
-                <input
-                  autoComplete="off"
-                  type="text"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleInputChange}
-                  placeholder="City*"
-                  className={`${inputStyle} ${errors.location ? "border-red-500" : ""}`}
-                />
-                {renderError("location")}
-              </div> */}
+              {isOtpSent && !isPhoneVerified && (
+                <div className="flex flex-col ">
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="text"
+                      value={otp}
+                      onChange={handleOtpChange}
+                      placeholder="Enter 6-digit OTP*"
+                      className={`${inputStyle} ${errors.otp ? "border-red-500" : ""}`}
+                      autoComplete="off"
+                      maxLength="6"
+                    />
+                    {isResendMode ? (
+                      <Button
+                        type="button"
+                        onClick={sendOtp}
+                        className={`text-black whitespace-nowrap text-sm ${(isSubmitting || isCooldownActive) ? "opacity-50 cursor-not-allowed" : ""}`}
+                        disabled={isSubmitting || isCooldownActive}
+                      >
+                        {isSubmitting ? "Sending..." : isCooldownActive ? `Wait ${remainingCooldown}s` : "Resend OTP"}
+                      </Button>
+                    ) : (
+                      <Button
+                        type="button"
+                        onClick={verifyOtp}
+                        className={`text-black whitespace-nowrap text-sm ${isVerifyingOtp ? "opacity-50 cursor-not-allowed" : ""}`}
+                        disabled={isVerifyingOtp}
+                      >
+                        {isVerifyingOtp ? "Verifying..." : "Verify OTP"}
+                      </Button>
+                    )}
+                  </div>
+                  {renderError("otp")}
+                  {isOtpSent && isCooldownActive && (
+                    <span className="text-blue-500 text-xs mt-1">
+                      Resend available in {remainingCooldown} seconds
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
 
-            {/* Investment Goal */}
-            {/* <div className="mb-4">
-              <label className={`block text-${textColor} text-body font-body mb-2`}>
-                What is your investment goal? <span className="text-red-500">*</span>
-              </label>
-              <div className={`grid grid-cols-1 text-${textColor} gap-2`}>
-                {[
-                  "Conservative (Low risk, steady returns)",
-                  "Balanced (Moderate risk, moderate returns)",
-                  "Aggressive (High risk, higher returns)",
-                ].map((goal) => (
-                  <label key={goal} className="flex items-center">
-                    <input
-                      type="radio"
-                      name="investmentGoal"
-                      value={goal}
-                      checked={formData.investmentGoal === goal}
-                      onChange={handleInputChange}
-                      className={`mr-2 accent-${textColor}`}
-                    />
-                    {goal}
-                  </label>
-                ))}
-              </div>
-              {renderError("investmentGoal")}
-            </div> */}
-
-            {/* Investment Experience */}
-            {/* <div className="mb-4">
-              <label className={`block text-${textColor} text-body font-body mb-2`}>
-                Tell us about your investment experience <span className="text-red-500">*</span>
-              </label>
-              <div className={`grid grid-cols-1 text-${textColor} gap-2`}>
-                {[
-                  {
-                    value: "Experienced",
-                    label: "Yes, I have prior experience with Portfolio Management Services (PMS).",
-                  },
-                  {
-                    value: "New",
-                    label: "No, I'm new to PMS or similar investment vehicles.",
-                  },
-                ].map(({ value, label }) => (
-                  <label key={value} className="flex items-center">
-                    <input
-                      type="radio"
-                      name="investmentExperience"
-                      value={value}
-                      checked={formData.investmentExperience === value}
-                      onChange={handleInputChange}
-                      className={`mr-2 accent-${textColor}`}
-                    />
-                    {label}
-                  </label>
-                ))}
-              </div>
-              {renderError("investmentExperience")}
-            </div> */}
-
-            {/* Preferred Investment Strategies */}
-            {/* <div className="mb-4">
-              <label className={`block text-${textColor} text-body font-body mb-2`}>
-                Select your preferred investment strategies <span className="text-red-500">*</span>
-              </label>
-              <div className={`grid grid-cols-1 sm:grid-cols-2 text-${textColor} gap-2`}>
-                {[
-                  "Qode All Weather",
-                  "Qode Growth Fund",
-                  "Qode Future Horizons",
-                  "Qode Tactical Fund",
-                  "Help Me Choose",
-                ].map((strategy) => (
-                  <label key={strategy} className="flex items-center">
-                    <input
-                      type="checkbox"
-                      name="preferredStrategy"
-                      value={strategy}
-                      checked={formData.preferredStrategy.includes(strategy)}
-                      onChange={handleInputChange}
-                      className={`mr-2 accent-${textColor}`}
-                    />
-                    {strategy}
-                  </label>
-                ))}
-              </div>
-              {renderError("preferredStrategy")}
-            </div> */}
-
-            {/* Initial Investment Size */}
-            {/* <div className="mb-4">
-              <label className={`block text-${textColor} text-body font-body mb-2`}>
-                Initial Investment Size <span className="text-red-500">*</span>
-              </label>
-              <div className={`grid grid-cols-1 text-${textColor} gap-2`}>
-                {["₹50 Lakhs - ₹2 Crores", "₹2 Crores - ₹10 Crores", "More than ₹10 Crores"].map(
-                  (size) => (
-                    <label key={size} className="flex items-center">
-                      <input
-                        type="radio"
-                        name="initialInvestmentSize"
-                        value={size}
-                        checked={formData.initialInvestmentSize === size}
-                        onChange={handleInputChange}
-                        className={`mr-2 accent-${textColor}`}
-                      />
-                      {size}
-                    </label>
-                  )
-                )}
-              </div>
-              {renderError("initialInvestmentSize")}
-            </div> */}
-
-            {/* Additional Message */}
             <div className="mb-4">
               <label className={`block text-${textColor} text-body font-body mb-2`}>
-                Additional Message <span className="text-red-500">*</span>
+                Additional Message
               </label>
               <textarea
                 name="message"
                 value={formData.message}
                 onChange={handleInputChange}
-                placeholder="Additional Message*"
+                placeholder="Additional Message"
                 className="w-full p-[4px] text-body font-body bg-transparent text-black focus:outline-none border-b border-brown h-5"
-                required
               />
             </div>
 
-            {/* Submit Button */}
             <div className="flex justify-end mt-6">
               <Button
                 type="submit"
-                className={`text-black p-18 px-1 ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
-                disabled={isSubmitting}
+                className={`text-black p-18 px-1 ${!isPhoneVerified || isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
+                disabled={!isPhoneVerified || isSubmitting}
               >
                 {isSubmitting ? "Sending..." : "Submit Inquiry"}
               </Button>
@@ -557,7 +589,6 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
           </form>
         </div>
 
-        {/* Contact Details Section (Right) */}
         <div className="w-full md:block hidden lg:w-1/3 pl-0 lg:pl-2 mt-8 lg:mt-0">
           <div className={`text-${textColor}`}>
             <Text className="text-body font-body font-bold mb-1">GENERAL CONTACT</Text>
@@ -599,9 +630,6 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
               <a href="https://x.com/qodeinvest" target="_blank" rel="noopener noreferrer">
                 <FontAwesomeIcon icon={faXTwitter} className={`text-${textColor} text-xl`} />
               </a>
-              {/* <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faInstagram} className={`text-${textColor} text-xl`} />
-              </a> */}
             </div>
 
             <Text className="text-body font-body font-bold mb-1">OFFICES</Text>

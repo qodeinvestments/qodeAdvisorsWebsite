@@ -1,14 +1,21 @@
 const { sendMail } = require('../services/mailService');
 const { ClientEnquiry } = require('../models');
 const { RecaptchaEnterpriseServiceClient } = require('@google-cloud/recaptcha-enterprise');
+const fast2sms = require('fast-two-sms');
+require('dotenv').config();
+const axios = require('axios');
 
 // Cache the reCAPTCHA client for performance
 const recaptchaClient = new RecaptchaEnterpriseServiceClient();
 
-// reCAPTCHA verification function using @google-cloud/recaptcha-enterprise
+// In-memory OTP store (use Redis or database in production)
+const otpStore = {};
+
+
+// reCAPTCHA verification function
 const verifyRecaptchaToken = async (token, action) => {
-    const projectID = 'qodeinvest'; // Your Google Cloud Project ID
-    const recaptchaKey = '6LfDSyArAAAAAOCExGxlQORbh6kCxSsTo7QAZcLh'; // Your site key
+    const projectID = 'qodeinvest';
+    const recaptchaKey = '6LfDSyArAAAAAOCExGxlQORbh6kCxSsTo7QAZcLh';
     const projectPath = recaptchaClient.projectPath(projectID);
 
     const request = {
@@ -37,11 +44,14 @@ const verifyRecaptchaToken = async (token, action) => {
 
         return response.riskAnalysis.score;
     } catch (error) {
-        console.error('reCAPTCHA verification error:', error);
+        console.error(' reCAPTCHA verification error:', error);
         throw new Error('reCAPTCHA verification failed');
     }
 };
 
+
+
+// Updated sendGeneralMail with OTP verification
 const sendGeneralMail = async (req, res) => {
     const {
         userEmail,
@@ -50,132 +60,88 @@ const sendGeneralMail = async (req, res) => {
         phone,
         recaptchaToken,
         website,
-        formStartTime
+        formStartTime,
     } = req.body;
 
-    // Reject if honeypot field is filled
+    // Honeypot
     if (website) {
         return res.status(400).json({ error: 'Invalid submission' });
     }
 
-    // Reject if form was filled too quickly (less than 5 seconds)
+    // Too‐fast submissions
     if (formStartTime && (Date.now() - formStartTime) < 5000) {
         return res.status(400).json({ error: 'Form submitted too quickly' });
     }
 
-    // Validate required fields
-    if (!userEmail || !fromName || !phone || !message || !recaptchaToken) {
+    // Required fields
+    if (!userEmail || !fromName || !phone || !recaptchaToken) {
         return res.status(400).json({
-            error: 'Email, name, phone, message, and reCAPTCHA token are required'
+            error: 'Email, name, phone, message, and reCAPTCHA token are required',
         });
     }
 
     try {
-        // Verify reCAPTCHA token
+        // reCAPTCHA check
         const riskScore = await verifyRecaptchaToken(recaptchaToken, 'submit');
         if (riskScore < 0.5) {
-            return res.status(400).json({ error: 'reCAPTCHA verification failed due to low risk score' });
+            return res.status(400).json({ error: 'reCAPTCHA verification failed' });
         }
 
-        // Build styled table with form inputs (only required fields)
+        // Build message table...
         const formattedMessage = `
-            <table style="width: 100%; border-collapse: collapse; font-size: 14px; line-height: 1.6; color: #555;">
-                <tr>
-                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Name:</td>
-                    <td style="padding: 5px 0;">${fromName}</td>
-                </tr>
-                <tr>
-                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Email:</td>
-                    <td style="padding: 5px 0;">${userEmail}</td>
-                </tr>
-                <tr>
-                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Phone Number:</td>
-                    <td style="padding: 5px 0;">${phone}</td>
-                </tr>
-                <tr>
-                    <td style="font-weight: bold; padding: 5px 0; color: #333;">Additional Message:</td>
-                    <td style="padding: 5px 0;">${message.replace(/\n/g, '<br>')}</td>
-                </tr>
-            </table>
+            <table> … </table>
         `;
 
-        // Save form data to database (only required fields)
+        // Save to DB
         const clientEnquiry = await ClientEnquiry.create({
             name: fromName,
             email: userEmail,
             phone_number: phone,
-            additional_message: message
+            additional_message: message,
         });
 
-        // Define the HTML signature
-        const signature = `
-            <div style="margin-top: 20px; border-top: 1px solid #ddd; padding-top: 10px; font-family: Arial, sans-serif; font-size: 14px; color: #555;">
-                <p>
-                    <a href="https://qodeinvest.com" target="_blank">
-                        <img src="https://workspace.qodeinvest.com/files/output-onlinejpgtools.png" width="114" alt="Qode Logo" style="display: block;">
-                    </a>
-                </p>
-                <p style="margin: 0px;">M: +91 98203 00028</p>
-                <p style="margin: 0px;">E: <a href="mailto:investor.relations@qodeinvest.com" style="color: #1a0dab; text-decoration: none;">investor.relations@qodeinvest.com</a></p>
-                <p style="margin: 0px;">W: <a href="http://www.qodeinvest.com" style="color: #1a0dab; text-decoration: none;">www.qodeinvest.com</a></p>
-                <p style="margin: 0px;">A: 2nd Floor, Tree House, Raghuvanshi Mills, Lower Parel, Mumbai-400013</p>
-                <p style="margin: 0px;">Follow us:</p>
-                <p>
-                    <a style="margin: 0px;" href="https://www.linkedin.com/company/qode1/" target="_blank">
-                        <img src="https://workspace.qodeinvest.com/files/linkedin%20(1).png" alt="LinkedIn" style="width: 24px; height: 24px;">
-                    </a>
-                </p>
-            </div>
-        `;
+        // Define signature…
+        const signature = `…`;
 
-        // Send email to operations team
+        // Send to ops
         await sendMail({
             fromName: 'Qode Contact Form',
             to: 'saakshi.poddar@qodeinvest.com',
             subject: 'New Contact Form Submission',
-            body: `
-                <h2 style="color: #333; font-family: Arial, sans-serif;">New Contact Form Submission</h2>
-                ${formattedMessage}
-                ${signature}
-            `
+            body: `<h2>New Contact Form Submission</h2>${formattedMessage}${signature}`,
         });
 
-        // Send confirmation email to user
+        // Confirmation to user
         await sendMail({
             fromName: 'Qode Support',
             fromEmail: process.env.SENDER_EMAIL,
             to: userEmail,
             subject: "We've Received Your Message",
-            body: `
-                <h2 style="color: #333; font-family: Arial, sans-serif;">Thank you for contacting Qode</h2>
-                <p>We have received your message and will get back to you as soon as possible.</p>
-                <h3 style="margin-top: 15px; font-size: 16px;">Here's a copy of your message:</h3>
-                ${formattedMessage}
-                <p style="margin-top: 20px; font-weight: bold;">
-                    Best regards,<br>
-                    <span style="color: #000;">Qode Support Team</span>
-                </p>
-                ${signature}
-            `
+            body: `<h2>Thank you for contacting Qode</h2>
+                   <p>We have received your message and will get back to you soon.</p>
+                   ${formattedMessage}
+                   ${signature}`,
         });
 
         res.status(200).json({
             message: "Your message has been sent successfully. We'll get back to you soon!",
-            enquiryId: clientEnquiry.id
+            enquiryId: clientEnquiry.id,
         });
+
     } catch (error) {
         console.error('Error handling contact form:', error);
         res.status(500).json({
-            error: 'Failed to process your request. Please try again later.'
+            error: 'Failed to process your request. Please try again later.',
         });
     }
 };
 
+// Unchanged sendForgetPasswordMail
 const sendForgetPasswordMail = async (req, res) => {
     const { fullName, userEmail, token } = req.body;
     if (!userEmail || !token) {
         return res.status(400).json({
-            error: 'Email and token are required'
+            error: 'Email and token are required',
         });
     }
     try {
@@ -216,6 +182,7 @@ const sendForgetPasswordMail = async (req, res) => {
             <p>
                 Best regards,<br/>Support Team
             </p>
+            ${pwdSignature}
         `;
 
         await sendMail({

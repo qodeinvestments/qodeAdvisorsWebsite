@@ -67,7 +67,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
     setFormStartTime(Date.now());
     // Fetch CSRF token
     axios
-      .get(`${API_URL}/api/csrf-token`, { withCredentials: true })
+      .get(`${API_URL}/csrf-token`, { withCredentials: true })
       .then((response) => {
         setCsrfToken(response.data.csrfToken);
       })
@@ -223,7 +223,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
     try {
       setIsSubmitting(true);
       const response = await axios.post(
-        `${API_URL}/api/emails/otp/send`,
+        `${API_URL}/emails/otp/send`,
         { phone: formData.phone },
         {
           headers: { "X-CSRF-Token": csrfToken },
@@ -278,7 +278,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
     try {
       setIsVerifyingOtp(true);
       const response = await axios.post(
-        `${API_URL}/api/emails/otp/verify`,
+        `${API_URL}/emails/otp/verify`,
         { phone: formData.phone, otp },
         {
           headers: { "X-CSRF-Token": csrfToken },
@@ -391,7 +391,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
       );
 
       const response = await axios.post(
-        `${API_URL}/api/emails/send`,
+        `${API_URL}/emails/send`,
         {
           userEmail: formData.userEmail,
           message: formData.message,

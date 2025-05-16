@@ -1,129 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
-    
-    <!-- Primary Meta Tags -->
-    <title>Qode - Data-Driven Investment Strategies for High-Net-Worth Individuals</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Qode helps high-net-worth individuals grow wealth through data-driven investment strategies, with a proven CAGR of 35.1% over 5 years. Our founders Karan, Kavan, and Rishabh have years of experience in the stock market." />
-    <meta name="author" content="Qode">
-    <meta name="keywords" content="qode investment strategies, qode high-net-worth individuals, qode data-driven investing, qode wealth growth, qode investments, qode advisors llp, qode invest, qode portfolio management services, qode PMS advisors, qode wealth management, qode investment advisory, qode stock market investment, qode equity investment, qode SEBI registered investment advisor, qode Mumbai investment firm, qode financial planning, qode wealth advisory, qode investment consultant, qode asset management, qode portfolio advisor, qode market research, qode stock recommendations, qode systematic investment plan, qode SIP, qode wealth creation, qode risk management, qode financial advisor, qode stock portfolio management, qode capital markets, qode Indian stock market, qode NSE BSE investment, qode alternative investment fund, qode AIF, qode mutual funds, qode portfolio optimization, qode financial services, qode investment solutions, qode market analysis, qode equity research, qode investment portfolio, qode wealth advisor Mumbai, qode portfolio tracking, qode investment returns, qode CAGR, qode market insights, qode investment strategy, qode portfolio diversification, qode investment management, qode institutional investing, qode HNI investment, qode UHNI services, qode custom portfolio management">
-    <meta name="robots" content="index, follow">
-
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://www.google.com https://www.googletagmanager.com https://www.gstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.qodeinvest.com https://workspace.qodeinvest.com data:; connect-src 'self' https://www.qodeinvest.com http://localhost:4000 https://*.googleapis.com https://www.google-analytics.com; frame-src 'self' https://www.googletagmanager.com; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="csrf-token-endpoint" content="/api/csrf-token" />
+    <title>Qode - Data-Driven Investment Strategies for High-Net-Worth Individuals</title>
+    <meta name="description"
+        content="Qode helps high-net-worth individuals grow wealth through data-driven investment strategies, with a proven CAGR of 35.1% over 5 years." />
+    <meta name="keywords" content="qode investment strategies, qode wealth management, ..." />
+    <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://www.qodeinvest.com/" />
-
-
-    <!-- Add these right after your other meta tags -->
-    <meta itemprop="image" content="https://www.qodeinvest.com/Q.png">
-    <meta itemprop="logo" content="https://www.qodeinvest.com/Q.png">
-    <meta property="og:image" content="https://www.qodeinvest.com/Q.png">
-
-    
-    <!-- Favicon Configuration -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="icon" type="image/png" href="/Q.png" sizes="112x112">
-
-    <script src="https://www.google.com/recaptcha/enterprise.js?render=6LfDSyArAAAAAOCExGxlQORbh6kCxSsTo7QAZcLh"></script>
-
-    <meta name="fast2sms" content="yUeXIqLnQNk7PzIiE3k89MjoUhv6TCwy">
-
-    <!-- Schema.org markup for Google -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.qodeinvest.com" />
+    <meta property="og:title" content="Qode - Data-Driven Investment Strategies" />
+    <meta property="og:description"
+        content="Qode helps high-net-worth individuals grow wealth through data-driven investment strategies, with a proven CAGR of 35.1% over 5 years." />
+    <meta property="og:image" content="https://www.qodeinvest.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@qodeinvest" />
+    <meta name="twitter:title" content="Qode - Data-Driven Investment Strategies" />
+    <meta name="twitter:description"
+        content="Qode helps high-net-worth individuals grow wealth through data-driven investment strategies, with a proven CAGR of 35.1% over 5 years." />
+    <meta name="twitter:image" content="https://www.qodeinvest.com/og-image.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/png" href="/Q.png" sizes="112x112" />
+    <link rel="preload" href="/src/main.jsx" as="script" />
+    <link rel="preload" href="/Q.png" as="image" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://www.google.com" />
+    <script defer
+        src="https://www.google.com/recaptcha/enterprise.js?render=6LfDSyArAAAAAOCExGxlQORbh6kCxSsTo7QAZcLh"></script>
     <script type="application/ld+json">
-        {
+          {
             "@context": "https://schema.org",
-            "@type": "WebSite",
+            "@type": "Organization",
             "name": "Qode",
             "url": "https://www.qodeinvest.com",
+            "logo": "https://www.qodeinvest.com/Q.png",
             "description": "Qode helps high-net-worth individuals grow wealth through data-driven investment strategies. Investment company in Mumbai, Maharashtra.",
-            "sameAs": [
-                "https://www.linkedin.com/company/qodeinvest"
-            ],
-            "publisher": {
-                "@type": "Organization",
-                "name": "Qode",
-                "logo": {
-                    "@type": "ImageObject",
-                    "url": "https://www.qodeinvest.com/Q.png",
-                    "width": 112,
-                    "height": 112
-                },
-                "address": {
-                    "@type": "PostalAddress",
-                    "streetAddress": "2nd Floor, Tree Building, Raghuvanshi Mills Compound, Gandhi Nagar, Upper Worli",
-                    "addressLocality": "Lower Parel, Mumbai",
-                    "addressRegion": "Maharashtra",
-                    "postalCode": "400013",
-                    "addressCountry": "IN"
-                }
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+91-98203-00028",
+              "contactType": "customer service",
+              "email": "investor.relations@qodeinvest.com",
+              "areaServed": "IN",
+              "availableLanguage": "English"
             },
-            "hasPart": [
-                {
-                    "@type": "WebPage",
-                    "name": "Strategies",
-                    "url": "https://www.qodeinvest.com/strategies"
-                },
-                {
-                    "@type": "WebPage",
-                    "name": "About Us",
-                    "url": "https://www.qodeinvest.com/about-us"
-                },
-                {
-                    "@type": "WebPage",
-                    "name": "Contact",
-                    "url": "https://www.qodeinvest.com/contact"
-                },
-                {
-                    "@type": "WebPage",
-                    "name": "Blog",
-                    "url": "https://www.qodeinvest.com/blog"
-                }
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "2nd Floor, Tree Building, Raghuvanshi Mills Compound, Gandhi Nagar, Upper Worli",
+              "addressLocality": "Lower Parel, Mumbai",
+              "addressRegion": "Maharashtra",
+              "postalCode": "400013",
+              "addressCountry": "IN"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/company/qodeinvest",
+              "https://x.com/qodeinvest",
+              "https://www.youtube.com/@qodeinvest"
             ]
-        }
+          }
         </script>
-        
-        
-    <!-- Open Graph / Social Media Meta Tags -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.qodeinvest.com">
-    <meta property="og:title" content="Qode - Data-Driven Investment Strategies">
-    <meta property="og:description" content="Qode helps high-net-worth individuals grow wealth through data-driven investment strategies, with a proven CAGR of 35.1% over 5 years.">
-    <meta property="og:image" content="https://www.qodeinvest.com/og-image.png">
-
-    <!-- Google Tag Manager -->
-    <script>
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-N5MJPG2H');
-    </script>
-
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-665QML5D4L"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-665QML5D4L');
     </script>
 </head>
+
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5MJPG2H" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    
-    <div id="root"></div>
+    <a href="#main-content" class="sr-only focus:not-sr-only">Skip to main content</a>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N5MJPG2H" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <header role="banner"></header>
+    <main id="main-content" role="main">
+        <div id="root"></div>
+    </main>
+    <footer role="contentinfo"></footer>
     <script>
+        window.recaptchaToken = null;
         function onRecaptchaSubmit(token) {
-          window.recaptchaToken = token;
-          const event = new Event('recaptchaSubmit');
-          window.dispatchEvent(event);
+            window.recaptchaToken = token;
+            const event = new Event("recaptchaSubmit");
+            window.dispatchEvent(existingEvent);
         }
-      </script>
+        window.addEventListener("load", () => {
+            if (!window.grecaptcha || !window.grecaptcha.enterprise) {
+                console.error("reCAPTCHA failed to load");
+            }
+        });
+    </script>
     <script type="module" src="/src/main.jsx"></script>
 </body>
+
 </html>

@@ -8,14 +8,12 @@ import Button from "./common/Button";
 import Text from "./common/Text";
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
+import axios from "axios";
 
 const API_URL =
   import.meta.env.MODE === "production"
     ? import.meta.env.VITE_BACKEND_PROD_URL
-    : import.meta.env.VITE_BACKEND_DEV_URL;
-// 2Factor.in API details
-const TWO_FACTOR_API_KEY = "13cade6b-2fe1-11f0-8b17-0200cd936042";
-const TWO_FACTOR_OTP_TEMPLATE = "OTP1";
+    : "http://localhost:4000"; // Updated to match backend port
 
 // Validation utility functions
 const validateEmail = (email) => {
@@ -58,29 +56,43 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
   const [isPhoneVerified, setIsPhoneVerified] = useState(false);
   const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
   const [lastOtpRequest, setLastOtpRequest] = useState({ phone: "", timestamp: 0 });
-  const [serverOtp, setServerOtp] = useState(""); // Store OTP from 2Factor.in response
   const [isResendMode, setIsResendMode] = useState(false);
   const [otpAttempts, setOtpAttempts] = useState(0);
   const [remainingCooldown, setRemainingCooldown] = useState(0);
   const [isCooldownActive, setIsCooldownActive] = useState(false);
+  const [csrfToken, setCsrfToken] = useState("");
+  const [verificationToken, setVerificationToken] = useState("");
 
   useEffect(() => {
     setFormStartTime(Date.now());
+    // Fetch CSRF token
+    axios
+      .get(`${API_URL}/api/csrf-token`, { withCredentials: true })
+      .then((response) => {
+        setCsrfToken(response.data.csrfToken);
+      })
+      .catch((error) => {
+        console.error("Error fetching CSRF token:", error);
+        toast.error("Failed to initialize form. Please refresh the page.", {
+          position: "bottom-right",
+          autoClose: 5000,
+          theme: "light",
+          transition: Bounce,
+        });
+      });
   }, []);
 
   useEffect(() => {
     let timer;
     if (isCooldownActive && remainingCooldown > 0) {
       timer = setTimeout(() => {
-        setRemainingCooldown(prev => prev - 1);
+        setRemainingCooldown((prev) => prev - 1);
       }, 1000);
     } else if (remainingCooldown === 0 && isCooldownActive) {
       setIsCooldownActive(false);
     }
     return () => clearTimeout(timer);
   }, [remainingCooldown, isCooldownActive]);
-
-
 
   const validateForm = () => {
     const newErrors = {};
@@ -150,8 +162,6 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
     }
   };
 
-
-
   const handleOtpChange = (e) => {
     setOtp(e.target.value);
     if (errors.otp) {
@@ -183,21 +193,23 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
       return;
     }
 
-    // Reset OTP field and errors when sending a new OTP
+    // Reset OTP field and errors
     setOtp("");
     setErrors((prev) => ({
       ...prev,
       otp: "",
     }));
 
-    // Rate-limiting: Check if an OTP was requested for this phone recently
+    // Client-side cooldown check
     const currentTime = Date.now();
     const cooldownPeriod = 60 * 1000; // 60 seconds
     if (
       lastOtpRequest.phone === formData.phone &&
       currentTime - lastOtpRequest.timestamp < cooldownPeriod
     ) {
-      const remainingTime = Math.ceil((cooldownPeriod - (currentTime - lastOtpRequest.timestamp)) / 1000);
+      const remainingTime = Math.ceil(
+        (cooldownPeriod - (currentTime - lastOtpRequest.timestamp)) / 1000
+      );
       startCooldown(remainingTime);
       toast.error(`Please wait ${remainingTime} seconds before requesting another OTP`, {
         position: "bottom-right",
@@ -210,35 +222,38 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
 
     try {
       setIsSubmitting(true);
-      const twoFactorUrl = `https://2factor.in/API/V1/${TWO_FACTOR_API_KEY}/SMS/${formData.phone}/AUTOGEN2/${TWO_FACTOR_OTP_TEMPLATE}`;
-      const response = await fetch(twoFactorUrl, {
-        method: "GET",
-      });
+      const response = await axios.post(
+        `${API_URL}/api/emails/otp/send`,
+        { phone: formData.phone },
+        {
+          headers: { "X-CSRF-Token": csrfToken },
+          withCredentials: true,
+        }
+      );
 
-      const data = await response.json();
-      if (response.ok && data.Status === "Success") {
-        setIsOtpSent(true);
-        setIsResendMode(false);
-        setLastOtpRequest({ phone: formData.phone, timestamp: Date.now() });
-        setServerOtp(data.OTP); // Store OTP from response
-        toast.success("OTP sent to your phone number", {
-          position: "bottom-right",
-          autoClose: 5000,
-          theme: "light",
-          transition: Bounce,
-        });
-        startCooldown(60); // Start cooldown for 60 seconds
-      } else {
-        throw new Error(data.Details || "Failed to send OTP");
-      }
-    } catch (error) {
-      console.error("Error sending OTP:", error);
-      toast.error(`Failed to send OTP: ${error.message}`, {
+      setIsOtpSent(true);
+      setIsResendMode(false);
+      setLastOtpRequest({ phone: formData.phone, timestamp: Date.now() });
+      toast.success(response.data.message, {
         position: "bottom-right",
         autoClose: 5000,
         theme: "light",
         transition: Bounce,
       });
+      startCooldown(60);
+    } catch (error) {
+      console.error("Error sending OTP:", error);
+      const errorMessage = error.response?.data?.error || "Failed to send OTP";
+      toast.error(errorMessage, {
+        position: "bottom-right",
+        autoClose: 5000,
+        theme: "light",
+        transition: Bounce,
+      });
+      if (error.response?.status === 429) {
+        const remainingTime = parseInt(error.response.data.error.match(/\d+/)[0]);
+        startCooldown(remainingTime);
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -262,30 +277,44 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
 
     try {
       setIsVerifyingOtp(true);
-      // Verify OTP client-side by comparing with serverOtp
-      if (otp === serverOtp) {
-        setIsPhoneVerified(true);
-        setIsOtpSent(false);
-        setOtpAttempts(0);
-        // No toast; notification is shown next to phone input
-      } else {
-        // Increment attempts and check if we should switch to resend mode
-        const newAttempts = otpAttempts + 1;
-        setOtpAttempts(newAttempts);
-
-        if (newAttempts >= 3) {
-          setIsResendMode(true);
-          throw new Error("Too many failed attempts. Please request a new OTP.");
-        } else {
-          throw new Error("Invalid OTP. Please try again.");
+      const response = await axios.post(
+        `${API_URL}/api/emails/otp/verify`,
+        { phone: formData.phone, otp },
+        {
+          headers: { "X-CSRF-Token": csrfToken },
+          withCredentials: true,
         }
-      }
+      );
+
+      setIsPhoneVerified(true);
+      setIsOtpSent(false);
+      setVerificationToken(response.data.verificationToken);
+      setOtpAttempts(0);
+      toast.success("Phone number verified successfully", {
+        position: "bottom-right",
+        autoClose: 5000,
+        theme: "light",
+        transition: Bounce,
+      });
     } catch (error) {
       console.error("Error verifying OTP:", error);
+      const errorMessage = error.response?.data?.error || "Failed to verify OTP";
       setErrors((prev) => ({
         ...prev,
-        otp: error.message,
+        otp: errorMessage,
       }));
+      toast.error(errorMessage, {
+        position: "bottom-right",
+        autoClose: 5000,
+        theme: "light",
+        transition: Bounce,
+      });
+
+      const newAttempts = otpAttempts + 1;
+      setOtpAttempts(newAttempts);
+      if (newAttempts >= 3) {
+        setIsResendMode(true);
+      }
     } finally {
       setIsVerifyingOtp(false);
     }
@@ -305,8 +334,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
       return;
     }
 
-    const timeElapsed = (Date.now() - formStartTime) / 1000;
-    if (timeElapsed < 5) {
+    if ((Date.now() - formStartTime) < 5000) {
       console.warn("Form submitted too quickly: Potential bot activity");
       toast.error("Please wait a moment before submitting.", {
         position: "bottom-right",
@@ -341,7 +369,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
       return;
     }
 
-    if (isSubmitting) return;
+    if (isSubmitting || !csrfToken) return;
 
     if (!window.grecaptcha || !window.grecaptcha.enterprise) {
       console.error("reCAPTCHA not loaded");
@@ -362,59 +390,53 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
         { action: "submit" }
       );
 
-      setFormData((prev) => ({
-        ...prev,
-        recaptchaToken: token,
-      }));
-
-      const response = await fetch(`${API_URL}/emails/send`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+      const response = await axios.post(
+        `${API_URL}/api/emails/send`,
+        {
           userEmail: formData.userEmail,
           message: formData.message,
           fromName: formData.name,
           phone: formData.phone,
           recaptchaToken: token,
+          verificationToken,
           website: formData.website,
           formStartTime,
-        }),
-      });
-
-      const data = await response.json();
-      if (response.ok) {
-        if (onFormSuccess) {
-          onFormSuccess();
+        },
+        {
+          headers: { "X-CSRF-Token": csrfToken },
+          withCredentials: true,
         }
+      );
 
-        setFormData({
-          name: "",
-          userEmail: "",
-          phone: "",
-          message: "",
-          website: "",
-          recaptchaToken: "",
-        });
-        setOtp("");
-        setPhoneTouched(false);
-        setIsPhoneVerified(false);
-        setIsOtpSent(false);
-        setIsResendMode(false);
-        setOtpAttempts(0);
-        toast.success(data.message || "Form submitted successfully!", {
-          position: "bottom-right",
-          autoClose: 5000,
-          theme: "light",
-          transition: Bounce,
-        });
-      } else {
-        throw new Error(data.error || "Submission failed");
+      if (onFormSuccess) {
+        onFormSuccess();
       }
+
+      setFormData({
+        name: "",
+        userEmail: "",
+        phone: "",
+        message: "",
+        website: "",
+        recaptchaToken: "",
+      });
+      setOtp("");
+      setPhoneTouched(false);
+      setIsPhoneVerified(false);
+      setIsOtpSent(false);
+      setIsResendMode(false);
+      setOtpAttempts(0);
+      setVerificationToken("");
+      toast.success(response.data.message || "Form submitted successfully!", {
+        position: "bottom-right",
+        autoClose: 5000,
+        theme: "light",
+        transition: Bounce,
+      });
     } catch (error) {
       console.error("Fetch error:", error);
-      toast.error(`An error occurred: ${error.message}`, {
+      const errorMessage = error.response?.data?.error || "An error occurred";
+      toast.error(errorMessage, {
         position: "bottom-right",
         autoClose: 5000,
         theme: "light",
@@ -523,7 +545,7 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
               </div>
 
               {isOtpSent && !isPhoneVerified && (
-                <div className="flex flex-col ">
+                <div className="flex flex-col">
                   <div className="flex items-center gap-2">
                     <input
                       type="text"

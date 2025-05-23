@@ -58,6 +58,15 @@ const FeaturedArticles = () => {
 
   const articles = [
     {
+      "date": "May 23, 2025",
+      "title": "ETMarkets PMS Talk: India’s growth + global devaluation = next bull market - Qode’s FY26 outlook",
+      "excerpt": `With a strong emphasis on risk management, data-backed decision-making, and selective risk-taking, Qode’s approach focuses on consistent outperformance, particularly during volatile or bearish phases.`,
+      "imageUrl": "/Rishabh-15.png",
+      "source": "The Economic Times",
+      "slug": "etmarkets-pms-talk-indias-growth-global-devaluation-next-bull-market-qodes-fy26-outlook",
+      "url": "https://economictimes.indiatimes.com/markets/expert-view/etmarkets-pms-talk-indias-growth-global-devaluation-next-bull-market-qodes-fy26-outlook/articleshow/121333426.cms?from=mdr",
+    },
+    {
       "date": "May 13, 2025",
       "title": "PMS Tracker: Top 15 funds gain up to 10% in April, while quant, smallcap strategies falter",
       "excerpt": `Qode Advisors LLP secured the next two spots with its Tactical Fund and All Weather strategies gaining 9.56% and 8.72%, respectively. 2Point2 Capital’s Long Term Value Fund rose 8.10%, while Alchemy Capital Management’s High Growth strategy returned 7.14%.`,

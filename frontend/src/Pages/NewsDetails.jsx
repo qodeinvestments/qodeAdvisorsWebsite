@@ -10,6 +10,17 @@ import Text from "../components/common/Text";
 // In a production app, replace this with data fetched from an API.
 const articles = [
     {
+        "date": "May 23, 2025",
+        "title": "ETMarkets PMS Talk: India’s growth + global devaluation = next bull market - Qode’s FY26 outlook",
+        "excerpt": `Money printing and devaluation, coupled with India’s strong growth, are setting the stage for the next bull market`,
+        "imageUrl": "/Rishabh-15.png",
+        "source": "The Economic Times",
+        "slug": "etmarkets-pms-talk-indias-growth-global-devaluation-next-bull-market-qodes-fy26-outlook",
+        "url": "https://economictimes.indiatimes.com/markets/expert-view/etmarkets-pms-talk-indias-growth-global-devaluation-next-bull-market-qodes-fy26-outlook/articleshow/121333426.cms?from=mdr",
+        "author": "Rishabh Nahar, Partner and Fund Manager at Qode Advisors",
+        "additionalParagraph": "Our macro view remains fixed at the growth story for India and Equity markets. With the US debt crisis coming closer, a large amount of US debt is maturing in the next four years. Money printing and devaluation will be a large factor for equities to do well. So, money printing/devaluation plus a strong position for India will fuel the next bull market. Having exposure to assets like equities/gold and real estate (mostly land) will be a key component for individuals to maintain/grow their wealth."
+    },
+    {
         "date": "May 13, 2025",
         "title": "PMS Tracker: Top 15 funds gain up to 10% in April, while quant, smallcap strategies falter",
         "additionalParagraph": `Qode Advisors LLP secured the next two spots with its Tactical Fund and All Weather strategies gaining 9.56% and 8.72%, respectively. 2Point2 Capital’s Long Term Value Fund rose 8.10%, while Alchemy Capital Management’s High Growth strategy returned 7.14%.

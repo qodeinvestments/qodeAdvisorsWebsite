@@ -58,6 +58,16 @@ const FeaturedArticles = () => {
 
   const articles = [
     {
+      "date": "May 20, 2025",
+      "title": "Top 10 Portfolio Management Schemes for the month of April",
+      "excerpt": `The month of April saw the top 10 Portfolio Management Schemes give about 10% to 6% returns, with Trivantage Capital Management taking the lead at 9.86%. Followed by Qode Advisors' PMS, Tactical Fund and All Weather, with 9.56% and 8.72% returns, respectively.
+      The strategy is benchmarked to the S&P BSE 500 TRI.`,
+      "imageUrl": "https://images.moneycontrol.com/static-mcnews/2025/05/20241109033650_sensex_nifty_stock_markets.jpg?impolicy=website&width=770&height=431",
+      "source": "Money Control",
+      "slug": "top-10-portfolio-management-schemes-april-2025",
+      "url": "https://www.moneycontrol.com/news/business/markets/top-10-portfolio-management-schemes-for-the-month-of-april-13034763.html",
+    },
+    {
       "date": "May 23, 2025",
       "title": "ETMarkets PMS Talk: India’s growth + global devaluation = next bull market - Qode’s FY26 outlook",
       "excerpt": `With a strong emphasis on risk management, data-backed decision-making, and selective risk-taking, Qode’s approach focuses on consistent outperformance, particularly during volatile or bearish phases.`,

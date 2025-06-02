@@ -212,15 +212,27 @@ router.post("/send", async (req, res) => {
 
   // Verify reCAPTCHA
   try {
-    const recaptchaResponse = await axios.post(
-      `https://recaptchaenterprise.googleapis.com/v1/projects/YOUR_PROJECT/assessments?key=${process.env.RECAPTCHA_API_KEY}`,
-      { event: { token: recaptchaToken, expectedAction: "submit" } }
-    );
-    if (recaptchaResponse.data.score < 0.7) {
-      return res.status(400).json({ error: "reCAPTCHA verification failed" });
+    if (!process.env.RECAPTCHA_API_KEY || !process.env.GOOGLE_CLOUD_PROJECT_ID) {
+      console.error("reCAPTCHA configuration missing: API key or project ID not set");
+      return res.status(500).json({ error: "Server configuration error" });
     }
 
-    // Verify verificationToken
+    const recaptchaResponse = await axios.post(
+      `https://recaptchaenterprise.googleapis.com/v1/projects/${process.env.GOOGLE_CLOUD_PROJECT_ID}/assessments?key=${process.env.RECAPTCHA_SITE_KEY}`,
+      { event: { token: recaptchaToken, expectedAction: "submit" } }
+    );
+
+    if (!recaptchaResponse.data || recaptchaResponse.data.score < 0.7) {
+      console.error("reCAPTCHA verification failed:", recaptchaResponse.data);
+      return res.status(400).json({ error: "reCAPTCHA verification failed" });
+    }
+  } catch (error) {
+    console.error("reCAPTCHA error:", error.response?.data || error.message);
+    return res.status(500).json({ error: "Failed to verify reCAPTCHA", details: error.message });
+  }
+
+  // Verify verificationToken
+  try {
     const storedToken = await redisClient.get(`verified:${phone}`);
     if (!storedToken || storedToken !== verificationToken) {
       return res.status(400).json({ error: "Invalid verification token" });

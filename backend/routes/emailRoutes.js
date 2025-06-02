@@ -58,17 +58,30 @@ router.use(async (req, res, next) => {
 });
 
 // Optional: Check for disposable phone numbers (requires Numverify API key)
-/*
+
 const isDisposable = async (phone) => {
   try {
-    const response = await axios.get(`https://api.numverify.com/verify?number=${phone}&access_key=${process.env.NUMVERIFY_API_KEY}`);
-    return response.data.disposable;
+    const response = await axios.get(
+      `http://apilayer.net/api/validate?access_key=${process.env.NUMVERIFY_API_KEY}&number=${phone}`
+    );
+    // Numverify doesn't directly return a 'disposable' field; infer from line_type or carrier
+    const { valid, line_type, carrier } = response.data;
+    if (!valid) return true; // Invalid numbers are treated as disposable
+    // Example: Flag VoIP or known temporary carriers (customize based on your needs)
+    const tempCarriers = ["TextNow", "Google Voice"];
+    const isTempCarrier = tempCarriers.some((c) => carrier?.toLowerCase().includes(c.toLowerCase()));
+    const isVoIP = line_type?.toLowerCase() === "voip";
+    return isVoIP || isTempCarrier;
   } catch (error) {
     console.error("Numverify error:", error.message);
-    return false;
+    return false; // Allow on error to avoid blocking legitimate users
   }
 };
-*/
+
+
+if (await isDisposable(phone)) {
+  return res.status(400).json({ error: "Disposable phone numbers are not allowed" });
+}
 
 router.post("/otp/send", ipRateLimiter, otpRateLimiter, async (req, res) => {
   const { phone } = req.body;
@@ -189,7 +202,9 @@ router.post("/otp/verify", ipRateLimiter, otpRateLimiter, async (req, res) => {
 router.post("/send", async (req, res) => {
   const { userEmail, phone, fromName, message, verificationToken, formStartTime } = req.body;
   const ip = req.ip;
-  console.log(`Form submission - Email: ${userEmail}, Phone: ${phone}, IP: ${ip}, Time: ${new Date().toISOString()}`);
+  const forwardedFor = req.headers['x-forwarded-for'] || 'none';
+  const ips = req.ips || [];
+  console.log(`Form submission - Email: ${userEmail}, Phone: ${phone}, IP: ${ip}, X-Forwarded-For: ${forwardedFor}, IPs: ${ips}, Time: ${new Date().toISOString()}`);
 
   // Store log in Redis
   const logEntry = {
@@ -198,6 +213,7 @@ router.post("/send", async (req, res) => {
     name: fromName,
     message,
     ip,
+    forwardedFor, // Add for debugging
     timestamp: Date.now(),
     action: "form_submit",
   };
@@ -265,8 +281,8 @@ router.post("/sendEmail", upload.array("attachments", 10), async (req, res) => {
       includeSignature === undefined
         ? true
         : includeSignature === "false"
-        ? false
-        : Boolean(includeSignature);
+          ? false
+          : Boolean(includeSignature);
 
     const result = await sendMail({
       fromName,

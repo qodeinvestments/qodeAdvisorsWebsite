@@ -15,8 +15,13 @@ const sarlaPerformance = require("./routes/sarlaPerformance");
 const graphRoutes = require("./routes/graphRoutes");
 const strategyNavRoutes = require("./routes/strategyNavRoutes");
 const db = require("./models");
+
 const app = express();
 const PORT = process.env.PORT || 4000;
+
+// CRITICAL: Configure Express to trust the nginx proxy
+// This enables proper client IP extraction from X-Forwarded-For and X-Real-IP headers
+app.set('trust proxy', 1);
 
 // Initialize Redis client
 const redisClient = Redis.createClient({
@@ -78,6 +83,12 @@ app.get("/api/csrf-token", csrfProtection, (req, res) => {
   res.json({ csrfToken: req.csrfToken() });
 });
 
+// Optional: Add middleware to log client IPs for debugging
+app.use((req, res, next) => {
+  console.log(`Request from IP: ${req.ip}, X-Forwarded-For: ${req.headers['x-forwarded-for']}, X-Real-IP: ${req.headers['x-real-ip']}`);
+  next();
+});
+
 // Routes
 app.use("/api/strategies", strategyRoutes);
 app.post("/api/uploads", upload.single("file"), uploadFiles);
@@ -94,6 +105,7 @@ db.sequelize
   .then(() => {
     app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
+      console.log(`Trust proxy setting: ${app.get('trust proxy')}`);
     });
   })
   .catch((err) => {

@@ -30,22 +30,28 @@ const storage = multer.diskStorage({
     cb(null, uniqueSuffix + "-" + file.originalname);
   },
 });
-
 const upload = multer({ storage: storage });
 
-// IP-based rate limiter for OTP endpoints
+// Rate limiters
 const ipRateLimiter = rateLimit({
-  windowMs: 60 * 1000, // 1 minute
-  max: 10, // 10 OTP requests per minute per IP
+  windowMs: 60 * 1000,
+  max: 10,
   keyGenerator: (req) => req.ip,
   message: "Too many OTP requests from this IP, please try again later.",
 });
 
-// Phone-based rate limiter for OTP endpoints
 const otpRateLimiter = rateLimit({
-  windowMs: 60 * 1000, // 1 minute
-  max: 5, // 5 requests per minute per phone
+  windowMs: 60 * 1000,
+  max: 5,
+  keyGenerator: (req) => req.body.phone || req.ip,
   message: "Too many OTP requests, please try again later.",
+});
+
+const formRateLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 5,
+  keyGenerator: (req) => req.ip,
+  message: "Too many form submissions from this IP, please try again later.",
 });
 
 // Check for blocked IPs
@@ -57,17 +63,14 @@ router.use(async (req, res, next) => {
   next();
 });
 
-// Optional: Check for disposable phone numbers (requires Numverify API key)
-
+// Numverify disposable phone number check
 const isDisposable = async (phone) => {
   try {
     const response = await axios.get(
       `http://apilayer.net/api/validate?access_key=${process.env.NUMVERIFY_API_KEY}&number=${phone}`
     );
-    // Numverify doesn't directly return a 'disposable' field; infer from line_type or carrier
     const { valid, line_type, carrier } = response.data;
-    if (!valid) return true; // Invalid numbers are treated as disposable
-    // Example: Flag VoIP or known temporary carriers (customize based on your needs)
+    if (!valid) return true;
     const tempCarriers = ["TextNow", "Google Voice"];
     const isTempCarrier = tempCarriers.some((c) => carrier?.toLowerCase().includes(c.toLowerCase()));
     const isVoIP = line_type?.toLowerCase() === "voip";
@@ -78,37 +81,37 @@ const isDisposable = async (phone) => {
   }
 };
 
-
-if (await isDisposable(phone)) {
-  return res.status(400).json({ error: "Disposable phone numbers are not allowed" });
-}
-
 router.post("/otp/send", ipRateLimiter, otpRateLimiter, async (req, res) => {
   const { phone } = req.body;
   const ip = req.ip;
-  console.log(`OTP request - Phone: ${phone}, IP: ${ip}, Time: ${new Date().toISOString()}`);
+  const forwardedFor = req.headers["x-forwarded-for"] || "none";
+  const ips = req.ips || [];
+  console.log(
+    `OTP request - Phone: ${phone}, IP: ${ip}, X-Forwarded-For: ${forwardedFor}, IPs: ${ips}, Time: ${new Date().toISOString()}`
+  );
 
   // Store log in Redis
   const logEntry = {
     phone,
     ip,
+    forwardedFor,
     timestamp: Date.now(),
     action: "otp_send",
   };
   await redisClient.lPush("form:logs", JSON.stringify(logEntry));
-  await redisClient.lTrim("form:logs", 0, 9999); // Keep latest 10,000 entries
-  await redisClient.expire("form:logs", 7 * 24 * 60 * 60); // Expire after 7 days
+  await redisClient.lTrim("form:logs", 0, 9999);
+  await redisClient.expire("form:logs", 7 * 24 * 60 * 60);
 
   if (!phone) {
     return res.status(400).json({ error: "Phone number is required" });
   }
 
-  // Optional: Block disposable phone numbers
-  /*
+  // Block disposable phone numbers
   if (await isDisposable(phone)) {
+    const blockLogEntry = { ...logEntry, action: "otp_send_blocked" };
+    await redisClient.lPush("form:logs", JSON.stringify(blockLogEntry));
     return res.status(400).json({ error: "Disposable phone numbers are not allowed" });
   }
-  */
 
   const lastRequest = await redisClient.get(`otp:cooldown:${phone}`);
   if (lastRequest) {
@@ -147,12 +150,17 @@ router.post("/otp/send", ipRateLimiter, otpRateLimiter, async (req, res) => {
 router.post("/otp/verify", ipRateLimiter, otpRateLimiter, async (req, res) => {
   const { phone, otp } = req.body;
   const ip = req.ip;
-  console.log(`OTP verify - Phone: ${phone}, IP: ${ip}, Time: ${new Date().toISOString()}`);
+  const forwardedFor = req.headers["x-forwarded-for"] || "none";
+  const ips = req.ips || [];
+  console.log(
+    `OTP verify - Phone: ${phone}, IP: ${ip}, X-Forwarded-For: ${forwardedFor}, IPs: ${ips}, Time: ${new Date().toISOString()}`
+  );
 
   // Store log in Redis
   const logEntry = {
     phone,
     ip,
+    forwardedFor,
     timestamp: Date.now(),
     action: "otp_verify",
   };
@@ -199,12 +207,14 @@ router.post("/otp/verify", ipRateLimiter, otpRateLimiter, async (req, res) => {
   }
 });
 
-router.post("/send", async (req, res) => {
+router.post("/send", formRateLimiter, async (req, res) => {
   const { userEmail, phone, fromName, message, verificationToken, formStartTime } = req.body;
   const ip = req.ip;
-  const forwardedFor = req.headers['x-forwarded-for'] || 'none';
+  const forwardedFor = req.headers["x-forwarded-for"] || "none";
   const ips = req.ips || [];
-  console.log(`Form submission - Email: ${userEmail}, Phone: ${phone}, IP: ${ip}, X-Forwarded-For: ${forwardedFor}, IPs: ${ips}, Time: ${new Date().toISOString()}`);
+  console.log(
+    `Form submission - Email: ${userEmail}, Phone: ${phone}, IP: ${ip}, X-Forwarded-For: ${forwardedFor}, IPs: ${ips}, Time: ${new Date().toISOString()}`
+  );
 
   // Store log in Redis
   const logEntry = {
@@ -213,7 +223,7 @@ router.post("/send", async (req, res) => {
     name: fromName,
     message,
     ip,
-    forwardedFor, // Add for debugging
+    forwardedFor,
     timestamp: Date.now(),
     action: "form_submit",
   };
@@ -254,13 +264,18 @@ router.post("/sendEmail", upload.array("attachments", 10), async (req, res) => {
   try {
     const { fromName, fromEmail, to, toName, subject, body, includeSignature } = req.body;
     const ip = req.ip;
-    console.log(`Send email - From: ${fromEmail}, To: ${to}, IP: ${ip}, Time: ${new Date().toISOString()}`);
+    const forwardedFor = req.headers["x-forwarded-for"] || "none";
+    const ips = req.ips || [];
+    console.log(
+      `Send email - From: ${fromEmail}, To: ${to}, IP: ${ip}, X-Forwarded-For: ${forwardedFor}, IPs: ${ips}, Time: ${new Date().toISOString()}`
+    );
 
     // Store log in Redis
     const logEntry = {
       email: fromEmail,
       to,
       ip,
+      forwardedFor,
       timestamp: Date.now(),
       action: "send_email",
     };
@@ -281,8 +296,8 @@ router.post("/sendEmail", upload.array("attachments", 10), async (req, res) => {
       includeSignature === undefined
         ? true
         : includeSignature === "false"
-          ? false
-          : Boolean(includeSignature);
+        ? false
+        : Boolean(includeSignature);
 
     const result = await sendMail({
       fromName,
@@ -326,13 +341,18 @@ router.post("/sendEmailWithInlineAttachments", express.json({ limit: "50mb" }), 
   try {
     const { fromName, fromEmail, to, toName, subject, body, attachments, includeSignature } = req.body;
     const ip = req.ip;
-    console.log(`Send email with inline attachments - From: ${fromEmail}, To: ${to}, IP: ${ip}, Time: ${new Date().toISOString()}`);
+    const forwardedFor = req.headers["x-forwarded-for"] || "none";
+    const ips = req.ips || [];
+    console.log(
+      `Send email with inline attachments - From: ${fromEmail}, To: ${to}, IP: ${ip}, X-Forwarded-For: ${forwardedFor}, IPs: ${ips}, Time: ${new Date().toISOString()}`
+    );
 
     // Store log in Redis
     const logEntry = {
       email: fromEmail,
       to,
       ip,
+      forwardedFor,
       timestamp: Date.now(),
       action: "send_email_inline",
     };

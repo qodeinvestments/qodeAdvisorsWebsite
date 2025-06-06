@@ -10,15 +10,26 @@ import Text from "../components/common/Text";
 // In a production app, replace this with data fetched from an API.
 const articles = [
     {
-      "date": "May 20, 2025",
-      "title": "Top 10 Portfolio Management Schemes for the month of April",
-      "additionalParagraph": `The month of April saw the top 10 Portfolio Management Schemes give about 10% to 6% returns, with Trivantage Capital Management taking the lead at 9.86%. Followed by Qode Advisors' PMS, Tactical Fund and All Weather, with 9.56% and 8.72% returns, respectively.
+        "date": "June 04, 2025",
+        "title": "Expert view: Market valuation looks stretched; maintain a 5–10% allocation to gold, says Rishabh Nahar of Qode Advisors",
+        "excerpt": "We continue to like high-quality companies with strong earnings visibility. However, we are balancing this with a healthy dose of caution",
+        "additionalParagraph": `We advocate maintaining a 5–10 per cent strategic allocation to gold across all time horizons. This positioning serves as an effective hedge against inflation, negative real rates, and geopolitical uncertainty. We recommend adding to positions on meaningful pullbacks, as even a modest allocation can help dampen the volatility of an equity-heavy portfolio`,
+        "imageUrl": "https://www.livemint.com/lm-img/img/2025/06/04/600x338/Rishabh_Nahar_of_Qode_Advisors_1749038899076_1749038904120.jpg",
+        "source": "Mint Market",
+        "slug": "expert-view-market-valuation-looks-stretched-maintain-a-5-10-allocation-to-gold-says-rishabh-nahar-of-qode-advisors",
+        "url": "https://www.livemint.com/market/stock-market-news/expert-view-market-valuation-looks-stretched-maintain-a-5-10-allocation-to-gold-says-rishabh-nahar-of-qode-advisors-11749038786157.html",
+        "author": "Rishabh Nahar, Partner and Fund Manager at Qode Advisors",
+    },
+    {
+        "date": "May 20, 2025",
+        "title": "Top 10 Portfolio Management Schemes for the month of April",
+        "additionalParagraph": `The month of April saw the top 10 Portfolio Management Schemes give about 10% to 6% returns, with Trivantage Capital Management taking the lead at 9.86%. Followed by Qode Advisors' PMS, Tactical Fund and All Weather, with 9.56% and 8.72% returns, respectively.
 The strategy is benchmarked to the S&P BSE 500 TRI.  It is managed by Rishabh Nahar and employs a quantitative framework to construct a diversified ETF portfolio. The approach focuses on allocating across low-correlated asset classes such as momentum, low volatility, and gold. Qode Tactical fund is based on a multi cap and flexi cap strategy, benchmarked to the S&P BSE 500 TRI.`,
-      "imageUrl": "https://images.moneycontrol.com/static-mcnews/2025/05/20241109033650_sensex_nifty_stock_markets.jpg?impolicy=website&width=770&height=431",
-      "source": "Money Control",
-      "slug": "top-10-portfolio-management-schemes-april-2025",
-      "author": "Rishabh Nahar, Partner and Fund Manager at Qode Advisors",
-      "url": "https://www.moneycontrol.com/news/business/markets/top-10-portfolio-management-schemes-for-the-month-of-april-13034763.html",
+        "imageUrl": "https://images.moneycontrol.com/static-mcnews/2025/05/20241109033650_sensex_nifty_stock_markets.jpg?impolicy=website&width=770&height=431",
+        "source": "Money Control",
+        "slug": "top-10-portfolio-management-schemes-april-2025",
+        "author": "Rishabh Nahar, Partner and Fund Manager at Qode Advisors",
+        "url": "https://www.moneycontrol.com/news/business/markets/top-10-portfolio-management-schemes-for-the-month-of-april-13034763.html",
     },
     {
         "date": "May 23, 2025",

@@ -58,6 +58,15 @@ const FeaturedArticles = () => {
 
   const articles = [
     {
+      "date": "June 04, 2025",
+      "title": "Expert view: Market valuation looks stretched; maintain a 5–10% allocation to gold, says Rishabh Nahar of Qode Advisors",
+      "excerpt": `Expert view on markets: Rishabh Nahar from Qode Advisors notes that Indian mid- and small-caps were oversold earlier, and expects continued market advancement if corporate earnings remain positive and global risks are contained`,
+      "imageUrl": "https://www.livemint.com/lm-img/img/2025/06/04/600x338/Rishabh_Nahar_of_Qode_Advisors_1749038899076_1749038904120.jpg",
+      "source": "Mint Market",
+      "slug": "expert-view-market-valuation-looks-stretched-maintain-a-5-10-allocation-to-gold-says-rishabh-nahar-of-qode-advisors",
+      "url": "https://www.livemint.com/market/stock-market-news/expert-view-market-valuation-looks-stretched-maintain-a-5-10-allocation-to-gold-says-rishabh-nahar-of-qode-advisors-11749038786157.html",
+    },
+    {
       "date": "May 20, 2025",
       "title": "Top 10 Portfolio Management Schemes for the month of April",
       "excerpt": `The month of April saw the top 10 Portfolio Management Schemes give about 10% to 6% returns, with Trivantage Capital Management taking the lead at 9.86%. Followed by Qode Advisors' PMS, Tactical Fund and All Weather, with 9.56% and 8.72% returns, respectively.

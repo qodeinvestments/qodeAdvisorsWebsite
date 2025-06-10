@@ -151,9 +151,9 @@ const TermsnConditions = () => {
             <Text className="md:text-body">
               If you have any questions or concerns about these Terms &
               Conditions, please contact us at{" "}
-              <a href="mailto:investor.relations@qodeinvest.com">
+              <a href="mailto:contact@qodeinvest.com">
                 <strong className="text-beige">
-                  investor.relations@qodeinvest.com
+                  contact@qodeinvest.com
                 </strong>
               </a>
               .

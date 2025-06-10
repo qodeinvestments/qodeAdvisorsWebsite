@@ -36,10 +36,10 @@ const Footer = () => {
                 For Investor onboarding and other queries contact us at
                 <br /> Email:{" "}
                 <a
-                  href="mailto:contact@qodeinvest.com"
+                  href="mailto:investor.relations@qodeinvest.com"
                   className="hover:text-black"
                 >
-                  contact@qodeinvest.com
+                  investor.relations@qodeinvest.com
                 </a>
               </Text>
               <Text>
@@ -144,10 +144,10 @@ const Footer = () => {
                 For Investor onboarding and other queries contact us at
                 <br /> Email:{" "}
                 <a
-                  href="mailto:contact@qodeinvest.com"
+                  href="mailto:investor.relations@qodeinvest.com"
                   className="hover:text-black"
                 >
-                  contact@qodeinvest.com
+                  investor.relations@qodeinvest.com
                 </a>{" "}
               </Text>
               <br />

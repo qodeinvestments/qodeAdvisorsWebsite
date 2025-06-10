@@ -625,8 +625,8 @@ const SendEmailForm = ({ onClose, onFormSuccess, textColor = "beige" }) => {
             <div className="flex items-center gap-2 mb-2">
               <FontAwesomeIcon icon={faEnvelope} className={`text-${textColor}`} />
               <Text className="text-body font-body">
-                <a href="mailto:contact@qodeinvest.com" className="hover:underline">
-                  contact@qodeinvest.com
+                <a href="mailto:investor.relations@qodeinvest.com" className="hover:underline">
+                  investor.relations@qodeinvest.com
                 </a>
               </Text>
             </div>

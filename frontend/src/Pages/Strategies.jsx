@@ -180,8 +180,8 @@ const Strategies = () => {
             <Button
               onClick={() => {
                 const link = document.createElement("a");
-                link.href = "/Qode Presentation_April 2025.pdf"; // Update this path to your PDF file
-                link.download = "Qode Presentation_April 2025.pdf";
+                link.href = "/Qode Presentation_May 2025.pdf"; // Update this path to your PDF file
+                link.download = "Qode Presentation_May 2025.pdf";
                 link.click();
               }}
             >

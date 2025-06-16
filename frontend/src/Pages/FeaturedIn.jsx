@@ -29,7 +29,7 @@ const MediaModal = ({ mediaUrl, title, description, date, onClose }) => {
             </Text>
           )}
           {/* Display the title */}
-          <Heading  className="text-brown text-xl  font-bold mb-1">
+          <Heading className="text-brown text-xl  font-bold mb-1">
             {title}
           </Heading>
           <iframe
@@ -148,7 +148,7 @@ const FeaturedArticles = () => {
       imageUrl:
         "https://www.livemint.com/lm-img/img/2025/03/23/600x338/gccdbfbe1df55fb78eaf53eaaf1b005aa8664a8713b6cbbac2_1727422374094_1742744060141.jpg",
       source: "Mint Markets",
-      slug: "penny-stockholders-celebrating", 
+      slug: "penny-stockholders-celebrating",
       url: "https://www.livemint.com/market/stock-market-news/penny-stocks-investors-multi-bagger-covid-pandemic-crash-smallcaps-midcaps-11742702528891.html",
     },
     {
@@ -377,21 +377,37 @@ const FeaturedArticles = () => {
   ];
 
   const podcasts = [
+    {
+      title: "This is how I would invest ₹10 Lakhs | Ft. Rishabh Nahar",
+      description: (
+        <Text className="text-gray-700 mt-1">
+          In this episode, we sit down with Rishabh Nahar, a seasoned expert in quantitative investing, to decode how retail investors can build long-term wealth using simple, data-driven strategies.
 
+          From understanding the basics of quant investing to knowing how to start, Rishab breaks it down in a very practical way. He also shares how he would invest ₹10 lakhs across asset classes, how to pick sectors during global trade tensions, and how to spot stocks with strong potential.
+
+          We also talk about the role of ETFs in building a balanced portfolio and whether the current correction in the Indian stock market is an opportunity or a trap.
+
+        </Text>
+      ),
+      mediaUrl: "https://www.youtube.com/embed/hdna1Vlsqkk",
+      thumbnailId: "hdna1Vlsqkk",
+      source: "Investing With Upsurge",
+      date: "15th June 2025"
+    },
     {
       title: "'How I Beat The Stock Market With Just 2 Metrics' l Quant Investing l Power Talks Ep 6",
       description: (
         <Text className="text-gray-700 mt-1">
-          This episode breaks down everything you need to know - from why Quant investing is gaining ground in investing, the returns you can make, and how you can use it without a PMS? 
+          This episode breaks down everything you need to know - from why Quant investing is gaining ground in investing, the returns you can make, and how you can use it without a PMS?
         </Text>
       ),
-      mediaUrl:"https://www.youtube.com/embed/Ja4zFZSpLww",
+      mediaUrl: "https://www.youtube.com/embed/Ja4zFZSpLww",
       thumbnailId: "Ja4zFZSpLww",
       source: "PowerUp Money",
-      date : "12th June 2025"
-      
+      date: "12th June 2025"
+
     },
-        {
+    {
       title: "Quant Investing Unveiled: Rishabh Nahar Talks Strategy, Success & Future || The HashTag Show",
       description: (
         <Text className="text-gray-700 mt-1">
@@ -401,7 +417,7 @@ const FeaturedArticles = () => {
       mediaUrl: "https://www.youtube.com/embed/Dm4icTVNY_0",
       thumbnailId: "Dm4icTVNY_0",
       source: "The HashTag Show Official",
-      date : "9th May 2025"
+      date: "9th May 2025"
     },
     {
       title: "How This Fund Manager Beat Nifty With Quant Investing (Even in a Crash!)",
@@ -413,9 +429,10 @@ const FeaturedArticles = () => {
       mediaUrl: "https://www.youtube.com/embed/jbZbQDIGhTw",
       thumbnailId: "jbZbQDIGhTw",
       source: "The India Opportunity with Shrishti Sahu",
-      date : "17th April 2025"
+      date: "17th April 2025"
     },
-    
+
+
   ];
 
   return (

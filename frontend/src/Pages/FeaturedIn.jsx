@@ -377,7 +377,21 @@ const FeaturedArticles = () => {
   ];
 
   const podcasts = [
+
     {
+      title: "'How I Beat The Stock Market With Just 2 Metrics' l Quant Investing l Power Talks Ep 6",
+      description: (
+        <Text className="text-gray-700 mt-1">
+          This episode breaks down everything you need to know - from why Quant investing is gaining ground in investing, the returns you can make, and how you can use it without a PMS? 
+        </Text>
+      ),
+      mediaUrl:"https://www.youtube.com/embed/Ja4zFZSpLww",
+      thumbnailId: "Ja4zFZSpLww",
+      source: "PowerUp Money",
+      date : "12th June 2025"
+      
+    },
+        {
       title: "Quant Investing Unveiled: Rishabh Nahar Talks Strategy, Success & Future || The HashTag Show",
       description: (
         <Text className="text-gray-700 mt-1">
